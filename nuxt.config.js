@@ -10,9 +10,13 @@ module.exports = {
       { hid: 'description', name: 'description', content: 'Nuxt.js project' }
     ],
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
+      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+      { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Titillium+Web:400,600' }
+      // { href: 'https://fonts.googleapis.com/icon?family=Material+Icons', rel: 'stylesheet' }
     ]
   },
+
+  css: ['@/assets/styles/main.styl'],
   /*
   ** Customize the progress bar color
   */

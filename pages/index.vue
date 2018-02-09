@@ -1,44 +1,37 @@
 <template>
-  <section class="container">
-    <div>
-      <app-logo/>
-      <h1 class="title">
-        bombo-dashboard
-      </h1>
-      <h2 class="subtitle">
-        Nuxt.js project
-      </h2>
-      <div class="links">
-        <a
-          href="https://nuxtjs.org/"
-          target="_blank"
-          class="button--green">Documentation</a>
-        <a
-          href="https://github.com/nuxt/nuxt.js"
-          target="_blank"
-          class="button--grey">GitHub</a>
+  <div>
+    <toolbar/>
+    <section class="container">
+      <div>
+        <app-logo/>
+        <div>
+          <card type-card="jugados"
+                title="MI EQUIPO"/>
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
+  </div>
 </template>
 
 <script>
 import AppLogo from '~/components/AppLogo.vue'
+import Toolbar from '~/components/Toolbar.vue'
+import Card from '~/components/Card.vue'
 
 export default {
   components: {
-    AppLogo
+    AppLogo, Card, Toolbar
   }
 }
 </script>
 
 <style>
 .container {
+  margin-top: 76px;
   min-height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  text-align: center;
 }
 
 .title {
