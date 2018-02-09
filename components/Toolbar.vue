@@ -70,4 +70,8 @@ toolbar-height = 76px
   transform: translateX(-50%)
 .nav-section li
   float left
+
+@media screen and (max-width: 1023px)
+  .img-container
+    display none
 </style>
