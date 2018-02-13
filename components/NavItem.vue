@@ -1,6 +1,6 @@
 <template>
     <div id="nav-item" :class="{ active: isActive }">
-      <a :href="url">{{ text }}</a>
+      <nuxt-link :to="url">{{ text }}</nuxt-link>
     </div>
 </template>
 

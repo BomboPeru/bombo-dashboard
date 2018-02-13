@@ -22,13 +22,7 @@
     },
     data () {
       return {
-        isActive: 0,
-        navbarItems: [
-          { name: 'MIS EQUIPOS', url: 'https://www.google.com' },
-          { name: 'PROXIMAS FECHAS', url: 'https://www.google.com' },
-          { name: 'DASHBOARD', url: 'https://www.google.com' },
-          { name: 'HISTORIAL', url: 'https://www.google.com' }
-        ]
+        isActive: 0
       }
     }
   }

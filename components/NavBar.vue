@@ -3,21 +3,21 @@
       <ul class="nav-section-desktop">
         <li v-for="(item, i) in navbarItems" :key="i">
           <nav-item
-            :is-active="i === isActive"
+            :is-active="item.urlPath === $route.path"
             :text="item.name"
-            :url="item.name"/>
+            :url="item.urlPath"/>
         </li>
       </ul>
       <div class="nav-section-mobile dropdown">
         <div @click="openNavItems" class="nav-title">
-          {{ navbarItems[isActive].name }}
+          {{ activePath }}
           <span class="icon"> <img src="../assets/icons/arrow_down.png" width="20px" alt=""></span>
         </div>
       </div>
       <div class="dropdown-content elevation" :style="{ 'visibility': isMenuNavItemOpen? 'visible' : 'collapse'}">
         <ul class="dropdown-list">
           <li v-for="(item, i) in navbarItems" :key="i" class="dropdown-item">
-            <a :href="item.url">{{ item.name }}</a>
+            <a :href="item.urlPath">{{ item.name }}</a>
           </li>
         </ul>
       </div>
@@ -32,14 +32,24 @@
     components: {
       NavItem
     },
+    computed: {
+      activePath () {
+        let title = ''
+        for (let i = 0; i < this.navbarItems.length; i++) {
+          if ( this.navbarItems[i].urlPath === this.$route.path ) {
+            title = this.navbarItems[i].name
+          }
+        }
+        return title
+      }
+    },
     data () {
       return {
-        isActive: 0,
         navbarItems: [
-          { name: 'MIS EQUIPOS', url: 'https://www.google.com' },
-          { name: 'PROXIMAS FECHAS', url: 'https://www.google.com' },
-          { name: 'DASHBOARD', url: 'https://www.google.com' },
-          { name: 'HISTORIAL', url: 'https://www.google.com' }
+          { name: 'MIS EQUIPOS', urlPath: '/client/teams' },
+          { name: 'PROXIMAS FECHAS', urlPath: '/client/matches' },
+          { name: 'DASHBOARD', urlPath: '/client/dashboard' },
+          { name: 'HISTORIAL', urlPath: '/client/history' }
         ],
         isMenuNavItemOpen: false
       }

@@ -1,7 +1,6 @@
 <template>
   <div class="background">
     <toolbar/>
-    <sidebar/>
     <nuxt class="content"/>
     <floating-container bottom-right class="fab">
       <icon-button text="$ 0000.00"
@@ -14,13 +13,12 @@
 
 <script>
   import Toolbar from '~/components/Toolbar.vue'
-  import Sidebar from '~/components/Sidebar.vue'
   import FloatingContainer from '~/components/FloatingContainer'
   import IconButton from '~/components/IconButton'
 
   export default {
     components: {
-      Toolbar, Sidebar, FloatingContainer, IconButton
+      Toolbar, FloatingContainer, IconButton
     }
   }
 </script>
@@ -42,20 +40,18 @@
   margin: 0;
 }
 
+
 .background
   background url(../assets/background/background_desktop.png)
   background-size cover
 .content
-  margin-left 232px
-.fab
-  display block
+  margin-left 0px
+
 
 @media screen and (max-width: 1023px)
   .background
     background url(../assets/background/background_mobile.png)
-  .content
-    margin-left 0px
-  .fab
-    display none
 
+.fab
+  display block
 </style>

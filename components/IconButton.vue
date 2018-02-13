@@ -31,6 +31,7 @@
 
   #icon-button
     height 50px
+    display inline-block
     position relative
     min-width 200px
     background #fafafa
@@ -56,6 +57,7 @@
     font-family Titillium Web
     line-height 50px
     text-align center
+    padding 1px 10px
   .left-text
     margin-left 50px
   .right-text
