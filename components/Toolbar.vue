@@ -3,26 +3,22 @@
       <div class="img-container">
         <img src="../assets/bombo_transparency.png" alt="">
       </div>
-      <ul class="nav-section">
-        <li v-for="(item, i) in navbarItems" :key="i">
-          <nav-item
-            :is-active="i === isActive"
-            :text="item.name"
-            :url="item.name"/>
-        </li>
-      </ul>
+      <div class="menu-btn">
+        <img src="../assets/icons/menu.png" alt="" width="32px" height="32px">
+      </div>
+      <nav-bar/>
       <status-bar/>
     </div>
 </template>
 
 <script>
-  import NavItem from './NavItem'
+  import NavBar from './NavBar'
   import StatusBar from './StatusBar'
 
   export default {
     name: 'toolbar',
     components: {
-      NavItem, StatusBar
+      NavBar, StatusBar
     },
     data () {
       return {
@@ -40,14 +36,17 @@
 
 <style scoped lang="stylus">
 toolbar-height = 76px
+toolbar-height-mobile = 56px
 
 #toolbar
   background #243237
   width 100%
-  position absolute
-  top 0
-  left 0
+  position relative
+  /*top 0*/
+  /*left 0*/
   height toolbar-height
+.menu-btn
+  display none
 .img-container
   float left
   margin-left 23px
@@ -58,20 +57,17 @@ toolbar-height = 76px
   position absolute
   top 50%
   transform translateY(-50%)
-.nav-section
-  list-style-type none
-  overflow hidden
-  padding 0
-  //min-height toolbar-height
-  /*margin-left 211px*/
-  display inline-block
-  left: 50%
-  position: relative
-  transform: translateX(-50%)
-.nav-section li
-  float left
+
 
 @media screen and (max-width: 1023px)
   .img-container
     display none
+  .menu-btn
+    margin-left 18px
+    float left
+    align-items: center
+    height 100%
+    display flex
+  #toolbar
+    height toolbar-height-mobile
 </style>

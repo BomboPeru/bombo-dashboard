@@ -34,6 +34,7 @@
   width 300px
   height 300px
   overflow hidden
+  background #fafafa
 /*
 .rounded
   border-radius 10px
