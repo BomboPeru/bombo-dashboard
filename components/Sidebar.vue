@@ -9,7 +9,7 @@
           <span class="icon-input"><img src="../assets/icons/search.svg" alt=""></span>
         </div>
       </div>
-      <div class="sidebar elevation">
+      <div class="sidebar elevation" v-if="sidebar">
         <div>
           <div v-for="(item, i) in itemsForEachPath[activeSection].items"
                :key="i"
@@ -23,11 +23,12 @@
               <template
                 v-for="(item, i) in itemsForEachPath[activeSection].items"
                 v-if="item.type === 'bottom'">
-                <icon-button :key="i"
+                <icon-button :key="i + '- bottom'"
                              :text="item.name"
                              icon-direction="left"
                              :color="item.color"
                              :icon="item.icon"
+                             @click="goTo(item.to)"
                              class="bottom-btn"/>
               </template>
             </div>
@@ -36,7 +37,9 @@
       </div>
 
       <!-- MOBILE -->
-      <div v-for="(item, i) in itemsForEachPath[activeSection].items" :key="i" class="mobile sub-nav-btn elevation">
+      <div v-for="(item, i) in itemsForEachPath[activeSection].items"
+           :key="i" class="mobile sub-nav-btn elevation"
+           v-if="item.type !== 'bottom'">
         <div class="line" :style="{ background: item.color }"></div>
         <span class="text">{{ item.name }}</span>
       </div>
@@ -52,6 +55,12 @@
     components: {
       IconButton
     },
+    props: {
+      sidebar: {
+        type: Boolean,
+        default: true
+      }
+    },
     computed: {
       activeSection () {
         for (let i = 0; i < this.navbarItems.length; i++ ) {
@@ -64,16 +73,13 @@
     },
     data () {
       return {
-        items: [
-          {name: 'EN JUEGO', color: '#EA504C'},
-          {name: 'GUARDADOS', color:'#25BF89'},
-          {name: 'JUGADOS', color:'#67A6F0'}
-        ],
         navbarItems: [
           { name: 'MIS EQUIPOS', urlPath: '/client/teams' },
           { name: 'PROXIMAS FECHAS', urlPath: '/client/matches' },
           { name: 'DASHBOARD', urlPath: '/client/dashboard' },
-          { name: 'HISTORIAL', urlPath: '/client/history' }
+          { name: 'HISTORIAL', urlPath: '/client/history' },
+          { name: 'ARMA UN EQUIPO', urlPath: '/client/createteam' },
+          { name: 'MI PERFIL', urlPath: '/client/profile' }
         ],
         itemsForEachPath: {
           'MIS EQUIPOS': {
@@ -81,7 +87,7 @@
               {name: 'EN JUEGO', color: '#EA504C', type: 'normal'},
               {name: 'GUARDADOS', color:'#25BF89', type: 'normal'},
               {name: 'JUGADOS', color:'#67A6F0', type: 'normal'},
-              {name: '¡CREAR EQUIPO!', color:'#25BF89', type: 'bottom', icon: 'plus'}
+              {name: '¡CREAR EQUIPO!', color:'#25BF89', type: 'bottom', icon: 'plus', to:'/client/createteam'}
             ]
           },
           'PROXIMAS FECHAS': {
@@ -98,7 +104,21 @@
           'HISTORIAL': {
             items: [
             ]
+          },
+          'ARMA UN EQUIPO': {
+            items: [
+            ]
+          },
+          'MI PERFIL': {
+            items: []
           }
+        }
+      }
+    },
+    methods: {
+      goTo (to) {
+        if(to !== undefined) {
+          this.$router.push({ path: to})
         }
       }
     }
@@ -164,6 +184,7 @@
     font-size 24px
     color #243237
     font-family Titillium Web
+    font-weight bold
     margin 8px 0px 7px 21px
   .search-input
     float right

@@ -1,8 +1,8 @@
 <template>
   <div class="background">
     <toolbar/>
-    <sidebar/>
-    <nuxt class="content"/>
+    <sidebar v-if="sidebarAndNavbar" :sidebar="sidebar"/>
+    <nuxt :class="{ 'margin-sidebar': sidebar }"/>
     <floating-container bottom-right class="fab">
       <icon-button text="$ 0000.00"
                    icon-direction="right"
@@ -21,6 +21,16 @@
   export default {
     components: {
       Toolbar, Sidebar, FloatingContainer, IconButton
+    },
+    computed: {
+      sidebarAndNavbar () {
+        let notAllowed = []
+        return notAllowed.indexOf(this.$route.path) === -1
+      },
+      sidebar () {
+        let notAllowed = ['/client/profile', '/client/createteam']
+        return notAllowed.indexOf(this.$route.path) === -1
+      }
     }
   }
 </script>
@@ -45,7 +55,7 @@
 .background
   background url(../assets/background/background_desktop.png)
   background-size cover
-.content
+.margin-sidebar
   margin-left 232px
 .fab
   display block
@@ -57,5 +67,7 @@
     margin-left 0px
   .fab
     display none
+  .margin-sidebar
+    margin-left 0
 
 </style>

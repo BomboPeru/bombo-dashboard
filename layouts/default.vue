@@ -1,11 +1,20 @@
 <template>
   <div>
+    <basic-toolbar/>
     <nuxt/>
   </div>
 </template>
 
-<!--<script>-->
-<!--</script>-->
+<script>
+  import BasicToolbar from '../components/BasicToolbar'
+
+  export default {
+    name: 'default',
+    components: {
+      BasicToolbar
+    }
+  }
+</script>
 
 <style lang="stylus">
 html {
@@ -52,4 +61,5 @@ html {
   color: #fff;
   background-color: #35495e;
 }
+
 </style>

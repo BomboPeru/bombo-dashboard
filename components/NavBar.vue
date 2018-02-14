@@ -49,7 +49,8 @@
           { name: 'MIS EQUIPOS', urlPath: '/client/teams' },
           { name: 'PROXIMAS FECHAS', urlPath: '/client/matches' },
           { name: 'DASHBOARD', urlPath: '/client/dashboard' },
-          { name: 'HISTORIAL', urlPath: '/client/history' }
+          { name: 'HISTORIAL', urlPath: '/client/history' },
+          { name: 'ARMA TU EQUIPO!', urlPath: '/client/createteam' }
         ],
         isMenuNavItemOpen: false
       }

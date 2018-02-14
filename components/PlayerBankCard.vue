@@ -1,0 +1,149 @@
+<template>
+    <div id="player-bank-card" class="round-card rounded elevation">
+      <div class="header elevation">
+        <div class="title">
+          <span class="">{{ title }}</span>
+        </div>
+        <search-component/>
+      </div>
+      <div class="line elevation"></div>
+      <!-- header -->
+      <div class="header-text">
+        <div class="name">Nombre</div>
+        <div class="prom">Prom</div>
+        <div class="up">UP</div>
+        <div class="costo">Costo</div>
+        <div class="posicion">Posicion</div>
+      </div>
+      <!-- content -->
+      <template v-for="(_team, _key) in teams">
+        <div :key="_key">
+          <div class="title-team" >{{ _key }}</div>
+          <div class="line-team"></div>
+          <div>
+            <player-row-card
+              v-for="(player, key) in _team.porteros"
+              :key="key + '-portero'"
+              :player="player"
+              position="ARQUERO"
+              @onPlayerSelected="selectPlayer(player, 'porteros')"/>
+
+            <player-row-card
+              v-for="(player, key) in _team.defensas" :key="key + '-defensa'" :player="player"
+              position="DEFENSA"
+              @onPlayerSelected="selectPlayer(player, 'defensas')"/>
+
+            <player-row-card
+              v-for="(player, key) in _team.centrocampistas"
+              :key="key + '-centrocampista'" :player="player" position="CENTROCAMPISTA"
+              @onPlayerSelected="selectPlayer(player, 'centrocampistas')"/>
+
+            <player-row-card
+              v-for="(player, key) in _team.delanteros"
+              :key="key + '-delantero'" :player="player" position="DELANTERO"
+              @onPlayerSelected="selectPlayer(player, 'delanteros')"/>
+          </div>
+        </div>
+      </template>
+    </div>
+</template>
+
+<script>
+  import SearchComponent from './SearchComponent'
+  import PlayerRowCard from './PlayerRowCard'
+  import SampleData from '../assets/sample/full'
+
+  export default {
+    name: 'player-bank-card',
+    components: {
+      SearchComponent, PlayerRowCard
+    },
+    data () {
+      return {
+        title: 'JUGADORES DE LA TEMPORADA',
+        teams: {}
+      }
+    },
+    methods: {
+      async fetchSomething() {
+        // const ip = await this.$axios.$get('https://bombo-open-api-nbjozjbvyl.now.sh/api/v1/full')
+        this.teams = SampleData
+        console.log('fetch done')
+      },
+      selectPlayer (player, type) {
+        let data = {
+          player: player,
+          type: type
+        }
+        this.$emit('onPlayerSelected', data)
+      }
+    },
+    created () {
+      this.fetchSomething()
+    }
+  }
+</script>
+
+<style scoped lang="stylus">
+  #player-bank-card
+    background #fafafa
+  .round-card
+    width 700px
+    max-height calc(100vh - 200px)
+    overflow auto
+    background #fafafa
+  .header
+    width 100%
+    height 50px
+    background #417F96
+    padding 8px 15px
+  .header span
+    padding 0px 0px
+  .title
+    display inline-block
+    height 100%
+    line-height 34px
+    margin-right 30px
+  .title span
+    text-align left
+    color white
+    font-size 18px
+    font-weight bold
+    font-family Titillium Web
+  .line
+    width 100%
+    background #25BF89
+    height 8px
+  .header-text
+    width 100%
+    text-align center
+  .header-text div
+    display inline-block
+    font-size 10px
+    font-family Titillium Web
+  .name
+    width 37.5%
+  .prom
+    width 12.5%
+  .up
+    width 12.5%
+  .costo
+    width 12.5%
+  .posicion
+    width 25%
+  .title-team
+    text-transform uppercase
+    font-family: Titillium Web;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    font-size: 14px;
+    text-align: left;
+    color #000000
+    margin 4px 10px
+  .line-team
+    height 4px
+    background #25BF89
+    margin 2px 10px
+
+</style>

@@ -1,5 +1,5 @@
 <template>
-    <div id="icon-button" class="elevation">
+    <div id="icon-button" class="elevation" @click="onClick">
       <div :class="['text', iconDirection+'-text']">{{text}}</div>
       <div :class="['icon', iconDirection, 'elevation']" :style="{ background: color }">
         <img :src="icons[icon]" class="icon-image" alt="">
@@ -22,6 +22,11 @@
         icons: {
           plus: IconSvg
         }
+      }
+    },
+    methods: {
+      onClick (e) {
+        this.$emit('click', e)
       }
     }
   }

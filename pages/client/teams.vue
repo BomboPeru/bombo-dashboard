@@ -8,6 +8,7 @@
                      color="#25BF89"
                      icon="plus"
                      class="create-team-btn"
+                     @click="goToCreateTeam"
         />
       </div>
     </div>
@@ -29,6 +30,11 @@
     data () {
       return {
         teams: []
+      }
+    },
+    methods: {
+      goToCreateTeam () {
+        this.$router.push({ path: '/client/createteam'})
       }
     }
   }
