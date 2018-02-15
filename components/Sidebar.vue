@@ -1,6 +1,5 @@
 <template>
     <div id="sidebar" class="elevation">
-
       <!-- DESKTOP -->
       <div class="title-bar desktop">
         <span class="title-menu-section">{{ activeSection }}</span>

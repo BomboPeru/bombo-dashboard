@@ -16,35 +16,37 @@
         <div class="posicion">Posicion</div>
       </div>
       <!-- content -->
-      <template v-for="(_team, _key) in teams">
-        <div :key="_key">
-          <div class="title-team" >{{ _key }}</div>
-          <div class="line-team"></div>
-          <div>
-            <player-row-card
-              v-for="(player, key) in _team.porteros"
-              :key="key + '-portero'"
-              :player="player"
-              position="ARQUERO"
-              @onPlayerSelected="selectPlayer(player, 'porteros')"/>
+      <div class="content">
+        <template v-for="(_team, _key) in teams">
+          <div :key="_key">
+            <div class="title-team" >{{ _key }}</div>
+            <div class="line-team"></div>
+            <div>
+              <player-row-card
+                v-for="(player, key) in _team.porteros"
+                :key="key + '-portero'"
+                :player="player"
+                position="ARQUERO"
+                @onPlayerSelected="selectPlayer(player, 'porteros')"/>
 
-            <player-row-card
-              v-for="(player, key) in _team.defensas" :key="key + '-defensa'" :player="player"
-              position="DEFENSA"
-              @onPlayerSelected="selectPlayer(player, 'defensas')"/>
+              <player-row-card
+                v-for="(player, key) in _team.defensas" :key="key + '-defensa'" :player="player"
+                position="DEFENSA"
+                @onPlayerSelected="selectPlayer(player, 'defensas')"/>
 
-            <player-row-card
-              v-for="(player, key) in _team.centrocampistas"
-              :key="key + '-centrocampista'" :player="player" position="CENTROCAMPISTA"
-              @onPlayerSelected="selectPlayer(player, 'centrocampistas')"/>
+              <player-row-card
+                v-for="(player, key) in _team.centrocampistas"
+                :key="key + '-centrocampista'" :player="player" position="CENTROCAMPISTA"
+                @onPlayerSelected="selectPlayer(player, 'centrocampistas')"/>
 
-            <player-row-card
-              v-for="(player, key) in _team.delanteros"
-              :key="key + '-delantero'" :player="player" position="DELANTERO"
-              @onPlayerSelected="selectPlayer(player, 'delanteros')"/>
+              <player-row-card
+                v-for="(player, key) in _team.delanteros"
+                :key="key + '-delantero'" :player="player" position="DELANTERO"
+                @onPlayerSelected="selectPlayer(player, 'delanteros')"/>
+            </div>
           </div>
-        </div>
-      </template>
+        </template>
+      </div>
     </div>
 </template>
 
@@ -90,15 +92,19 @@
   .round-card
     width 700px
     max-height calc(100vh - 200px)
-    overflow auto
     background #fafafa
+    overflow hidden
   .header
     width 100%
     height 50px
-    background #417F96
+    background #445F69
     padding 8px 15px
   .header span
     padding 0px 0px
+  .content
+    height calc(100vh - 270px)
+    overflow-y scroll
+    padding-bottom 15px
   .title
     display inline-block
     height 100%
@@ -122,6 +128,8 @@
     font-size 10px
     font-family Titillium Web
   .name
+    text-align left !important
+    padding-left 50px
     width 37.5%
   .prom
     width 12.5%
@@ -130,6 +138,8 @@
   .costo
     width 12.5%
   .posicion
+    text-align left !important
+    padding-left 24px
     width 25%
   .title-team
     text-transform uppercase
@@ -140,7 +150,8 @@
     font-size: 14px;
     text-align: left;
     color #000000
-    margin 4px 10px
+    margin 12px 10px 2px 10px
+
   .line-team
     height 4px
     background #25BF89

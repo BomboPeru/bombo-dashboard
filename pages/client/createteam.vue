@@ -53,11 +53,13 @@
   #createteam
     padding 23px
     min-height calc(100vh - 128px)
-    display -webkit-box
+    display flex
+    flex-flow row
     align-items: flex-start;
     flex-wrap nowrap
     overflow-x scroll
   .player-bank-card
   .new-team-card
     margin 5px 10px
+    flex 0 0 auto
 </style>

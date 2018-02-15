@@ -1,7 +1,7 @@
 <template>
     <div id="player-row-card" class="card-player elevation">
       <template v-if="mode === 'bank'">
-        <span class="shirt"><img src="../assets/icons/soccer_jersey.svg" width="27px" alt=""></span>
+        <span class="shirt"><img src="../assets/icons/soccer_jersey.svg" width="24px" alt=""></span>
         <span class="name1">{{ player.name }}</span>
         <span class="prom1">{{ player.yellows }}</span>
         <span class="up1">{{ player.played }}</span>
@@ -65,20 +65,23 @@
     font-family: Titillium Web;
     font-size 14px
   .shirt
+    margin-top 4px
+    margin-bottom 2px
     margin-left 8px
     margin-right 8px
   .name1
-    width 30%
+    text-align left !important
+    width 31.5%
   .prom1
-    width 14%
+    width 12.5%
   .up1
-    width 12%
+    width 12.5%
   .costo1
-    width 12%
+    width 12.5%
   .posicion1
-    width 20%
+    width 18%
     display inline-block
-    text-align right
+    text-align center
   .posicion1 span
     border-radius 4px
     padding 0px 4px
@@ -92,6 +95,7 @@
   .delantero span
     background #FDA237
   .add
+    padding-left 5px
     width 36px
     cursor pointer
 

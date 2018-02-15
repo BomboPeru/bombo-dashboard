@@ -7,6 +7,7 @@
              :value="value"
              :placeholder="placeholder"
              :disabled="disabled"
+             :style="{ 'width': width }"
       >
     </div>
 </template>
@@ -15,6 +16,10 @@
   export default {
     name: 'input-text',
     props: {
+      width: {
+        type: String,
+        default: '340px'
+      },
       type: {
         type: String,
         default: 'text'
