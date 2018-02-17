@@ -12,14 +12,13 @@
 <script>
   import Toolbar from '~/components/Toolbar'
   import Sidebar from '~/components/Sidebar'
-  import Card from '~/components/Card'
   import FloatingContainer from '~/components/FloatingContainer'
   import IconButton from '~/components/IconButton'
 
   export default {
     layout: 'dashboard',
     components: {
-      Card, Toolbar, Sidebar, FloatingContainer, IconButton
+      Toolbar, Sidebar, FloatingContainer, IconButton
     }
   }
 </script>

@@ -46,8 +46,11 @@
     height 30px
     width 340px
     border-radius: 15px
+    border 0px solid black
+    outline none
     background: #FAFAFA
-    box-shadow: inset -1px 0px 4px rgba(0, 0, 0, 0.25)
-    padding-left 5px
+    box-shadow: inset 0px 2px 4px rgba(0, 0, 0, 0.25)
+    /*padding-left 5px*/
+    padding: 5px 12px 5px 12px;
     font-family: Titillium Web;
 </style>

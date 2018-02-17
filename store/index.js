@@ -1,5 +1,5 @@
 import Vuex from 'vuex'
-
+import team from './team'
 
 const store = () => {
   return new Vuex.Store({
@@ -10,6 +10,7 @@ const store = () => {
     mutations: {
     },
     modules: {
+      team
     }
   })
 }

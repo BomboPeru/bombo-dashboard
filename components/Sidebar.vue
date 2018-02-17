@@ -12,6 +12,7 @@
         <div>
           <div v-for="(item, i) in itemsForEachPath[activeSection].items"
                :key="i"
+               @click="selectTypeTeam(item.name)"
                v-if="item.type === 'normal'"
                class="sidebar-item elevation">
             <div class="line" :style="{ background: item.color }"></div>
@@ -27,7 +28,7 @@
                              icon-direction="left"
                              :color="item.color"
                              :icon="item.icon"
-                             @click="goTo(item.to)"
+                             @click="callback(item.name)"
                              class="bottom-btn"/>
               </template>
             </div>
@@ -85,8 +86,8 @@
             items: [
               {name: 'EN JUEGO', color: '#EA504C', type: 'normal'},
               {name: 'GUARDADOS', color:'#25BF89', type: 'normal'},
-              {name: 'JUGADOS', color:'#67A6F0', type: 'normal'},
-              {name: '¡CREAR EQUIPO!', color:'#25BF89', type: 'bottom', icon: 'plus', to:'/client/createteam'}
+              {name: 'PASADOS', color:'#67A6F0', type: 'normal'},
+              {name: '¡CREAR EQUIPO!', color:'#25BF89', type: 'bottom', icon: 'plus'}
             ]
           },
           'PROXIMAS FECHAS': {
@@ -115,9 +116,18 @@
       }
     },
     methods: {
-      goTo (to) {
-        if(to !== undefined) {
-          this.$router.push({ path: to})
+      selectTypeTeam (name) {
+        let indexSelected = this.$store.state.typeTeams.indexOf(name)
+        this.$store.commit('team/setActiveTypeTeam', indexSelected)
+      },
+      createNewTeamCallback () {
+        this.$store.commit('team/turnOnSelectLeageDialog')
+      },
+      callback (name) {
+
+        let createTeam = '¡CREAR EQUIPO!'
+        if (name === createTeam) {
+          this.createNewTeamCallback()
         }
       }
     }
@@ -156,6 +166,7 @@
     margin-top 4px
     background-color: #243237;
     border-radius: 0px 12px 12px 0px;
+    cursor pointer
   .sidebar-item .line
     position absolute
     top 0

@@ -49,6 +49,10 @@
                   <div class="close-icon">
                     <img src="../assets/icons/close_ground.svg" width="20px" alt="" @click="deletePlayer(player, 'porteros')">
                   </div>
+                  <div class="player-info">
+                    <div><span class="player-name">{{ player.name }}</span></div>
+                    <div><span>{{ player.player_age }}</span></div>
+                  </div>
                 </span>
               </div>
             </div>
@@ -59,6 +63,11 @@
                   <div class="close-icon">
                     <img src="../assets/icons/close_ground.svg" width="20px" alt="" @click="deletePlayer(player, 'defensas')">
                   </div>
+                  <div class="player-info">
+                    <div><span class="player-name">{{ player.name }}</span></div>
+                    <div><span>{{ player.player_age }}</span></div>
+                  </div>
+
                 </span>
               </div>
             </div>
@@ -69,6 +78,11 @@
                   <div class="close-icon">
                     <img src="../assets/icons/close_ground.svg" width="20px" alt="" @click="deletePlayer(player, 'centrocampistas')">
                   </div>
+                  <div class="player-info">
+                    <div><span class="player-name">{{ player.name }}</span></div>
+                    <div><span>{{ player.player_age }}</span></div>
+                  </div>
+
                 </span>
               </div>
             </div>
@@ -79,6 +93,11 @@
                   <div class="close-icon">
                     <img src="../assets/icons/close_ground.svg" width="20px" alt="" @click="deletePlayer(player, 'delanteros')">
                   </div>
+                  <div class="player-info">
+                    <div><span class="player-name">{{ player.name }}</span></div>
+                    <div><span>{{ player.player_age }}</span></div>
+                  </div>
+
                 </span>
               </div>
             </div>
@@ -238,4 +257,21 @@
     position relative
   .player-container:hover .close-icon
     display block
+  .player-info
+    position absolute
+    display none
+    top: 28px
+    left: -50%
+    font-size 10px
+    font-family Titillium Web
+  .player-name
+    white-space:nowrap;
+    padding 3px 6px
+    background white
+    border-radius 8px
+  .player-info div
+    margin-bottom 4px
+  .player-container:hover .player-info
+    display block
+
 </style>

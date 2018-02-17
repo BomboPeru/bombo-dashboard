@@ -1,7 +1,9 @@
 <template>
     <div id="round-card" class="elevation rounded">
       <div class="header" :style="{ background: typeColorCards[typeCard] }">
-        <p><span class="title" :style="{ color: typeCard==='guardado'?'#417F96':'#fff' }">{{ title }}</span></p>
+        <div>
+          <span class="title">{{ title }}</span>
+          <span class="right">{{ points }}</span></div>
       </div>
 
     </div>
@@ -15,14 +17,15 @@
         type: String,
         default: 'guardado'
       },
-      title: String
+      title: String,
+      points: Number
     },
     data () {
       return {
         typeColorCards: {
           en_juego: '#FF6666',
-          guardado: '#fafafa',
-          jugados: '#417F96'
+          guardado: '#25BF89',
+          pasados: '#417F96'
         }
       }
     }
@@ -31,10 +34,12 @@
 
 <style scoped lang="stylus">
 #round-card
-  width 300px
-  height 300px
+  width 240px
+  height 64vh
   overflow hidden
   background #fafafa
+  margin-left 24px
+  margin-right 24px
 /*
 .rounded
   border-radius 10px
@@ -46,7 +51,7 @@
   height 38px
   background #fff
   padding 10px 0px
-.header p
+.header div
   padding 0px 18px
 .title
   text-align left
@@ -54,6 +59,14 @@
   font-size 12px
   font-weight bold
   font-family Titillium Web
+  text-transform uppercase
+.right
+  float right
+  color white
+  font-size 12px
+  font-weight bold
+  font-family Titillium Web
+  text-transform uppercase
 
 
 </style>

@@ -1,14 +1,20 @@
 <template>
   <div class="background">
-    <toolbar/>
-    <sidebar v-if="sidebarAndNavbar" :sidebar="sidebar"/>
-    <nuxt :class="{ 'margin-sidebar': sidebar }"/>
-    <floating-container bottom-right class="fab">
-      <icon-button text="$ 0000.00"
-                   icon-direction="right"
-                   color="#EA504C"
-                   icon="plus"/>
-    </floating-container>
+    <div id="dashboard-layout">
+      <toolbar/>
+      <sidebar v-if="sidebarAndNavbar" :sidebar="sidebar"/>
+      <nuxt :class="{ 'margin-sidebar': sidebar }"/>
+      <floating-container bottom-right class="fab">
+        <icon-button text="$ 0000.00"
+                     icon-direction="right"
+                     color="#EA504C"
+                     icon="plus"/>
+      </floating-container>
+    </div>
+
+    <select-league-dialog
+      :is-open="isSelectLeagueDialog"
+      @onCollapse="onCollapseDialog"/>
   </div>
 </template>
 
@@ -17,19 +23,28 @@
   import Sidebar from '~/components/Sidebar.vue'
   import FloatingContainer from '~/components/FloatingContainer'
   import IconButton from '~/components/IconButton'
+  import SelectLeagueDialog from '~/components/SelectLeagueDialog'
 
   export default {
     components: {
-      Toolbar, Sidebar, FloatingContainer, IconButton
+      Toolbar, Sidebar, FloatingContainer, IconButton, SelectLeagueDialog
     },
     computed: {
       sidebarAndNavbar () {
         let notAllowed = []
         return notAllowed.indexOf(this.$route.path) === -1
       },
+      isSelectLeagueDialog () {
+        return this.$store.getters['team/isSelectLeagueDialog']
+      },
       sidebar () {
         let notAllowed = ['/client/profile', '/client/createteam']
         return notAllowed.indexOf(this.$route.path) === -1
+      }
+    },
+    methods: {
+      onCollapseDialog () {
+        this.$store.commit('team/turnOffSelectLeageDialog')
       }
     }
   }
