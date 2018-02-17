@@ -25,7 +25,21 @@
         if ((this.constraints[data.type][1] > this.team[data.type].length) &&
             ( this.constraints.total > currentTotal )
         ) {
-          this.team[data.type].push(data.player)
+          let lengthPlayers = this.team[data.type].length
+          if (lengthPlayers > 0) {
+            let isAlreadyAdded = false
+            for (let i = 0; i < lengthPlayers; i++) {
+              if ((data.player.name === this.team[data.type][i].name)) {
+                isAlreadyAdded = true
+                break
+              }
+            }
+            if (isAlreadyAdded === false) {
+              this.team[data.type].push(data.player)
+            }
+          } else {
+            this.team[data.type].push(data.player)
+          }
         }
       }
     },
@@ -62,4 +76,7 @@
   .new-team-card
     margin 5px 10px
     flex 0 0 auto
+  @media screen and (max-width: 1023px)
+    #createteam
+      min-height calc(100vh - 56px)
 </style>

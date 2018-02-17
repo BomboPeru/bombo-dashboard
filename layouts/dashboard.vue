@@ -85,4 +85,18 @@
   .margin-sidebar
     margin-left 0
 
+
+::-webkit-scrollbar-trackx
+  background-color: #000000;
+  height: 6px;
+  width: 3px;
+::-webkit-scrollbar
+  width: 3px;
+  height: 6px;
+  background-color: rgba(227, 222, 245, 0);
+::-webkit-scrollbar-thumb
+  width: 3px;
+  height: 6px;
+  background-color: #7d7d80
+
 </style>

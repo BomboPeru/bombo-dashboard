@@ -1,5 +1,5 @@
 <template>
-    <div id="sidebar" class="elevation">
+    <div id="sidebar" class="elevation" v-if="activeSection !== 'ARMA UN EQUIPO'">
       <!-- DESKTOP -->
       <div class="title-bar desktop">
         <span class="title-menu-section">{{ activeSection }}</span>
@@ -8,6 +8,7 @@
           <span class="icon-input"><img src="../assets/icons/search.svg" alt=""></span>
         </div>
       </div>
+
       <div class="sidebar elevation" v-if="sidebar">
         <div>
           <div v-for="(item, i) in itemsForEachPath[activeSection].items"
@@ -39,10 +40,12 @@
       <!-- MOBILE -->
       <div v-for="(item, i) in itemsForEachPath[activeSection].items"
            :key="i" class="mobile sub-nav-btn elevation"
+           @click="selectTypeTeam(item.name)"
            v-if="item.type !== 'bottom'">
         <div class="line" :style="{ background: item.color }"></div>
         <span class="text">{{ item.name }}</span>
       </div>
+
 
     </div>
 </template>
@@ -117,7 +120,8 @@
     },
     methods: {
       selectTypeTeam (name) {
-        let indexSelected = this.$store.state.typeTeams.indexOf(name)
+        let indexSelected = this.$store.state.team.typeTeams.indexOf(name)
+        // this.$store.state.activeTypeTeam = indexSelected
         this.$store.commit('team/setActiveTypeTeam', indexSelected)
       },
       createNewTeamCallback () {

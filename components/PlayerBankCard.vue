@@ -4,7 +4,7 @@
         <div class="title">
           <span class="">{{ title }}</span>
         </div>
-        <search-component/>
+        <search-component v-model="searchText"/>
       </div>
       <div class="line elevation"></div>
       <!-- header -->
@@ -60,16 +60,50 @@
     components: {
       SearchComponent, PlayerRowCard
     },
+    computed: {
+      search: {
+        get () {
+          // this.fetchSomething(this.searchText)
+          // console.log('get')
+          return this.searchText
+        },
+        set (value) {
+          if (value !== '') {
+            // console.log('set')
+            this.fetchSomething(this.searchText)
+            return value
+          }
+        }
+      }
+    },
     data () {
       return {
         title: 'JUGADORES DE LA TEMPORADA',
-        teams: {}
+        teams: {},
+        searchText: ''
       }
     },
     methods: {
-      async fetchSomething() {
+      async fetchSomething(searchText) {
         // const ip = await this.$axios.$get('https://bombo-open-api-nbjozjbvyl.now.sh/api/v1/full')
-        this.teams = SampleData
+
+        console.log('fetching')
+        if (searchText !== '') {
+
+          let types = ['porteros', 'defensas', 'centrocampistas', 'delanteros']
+          // for (let teamName in SampleData) {
+          //   for (let i=0; i < types.length; i++) {
+          //     let listPlayers = SampleData[teamName][types[i]]
+          //     for (let j =0; j < listPlayers.length; j++) {
+          //       if (listPlayers[j].name.includes(searchText)) {
+          //         this.teams[teamName][types[i]].push(listPlayers[j])
+          //       }
+          //     }
+          //   }
+          // }
+        } else {
+          this.teams = SampleData
+        }
         console.log('fetch done')
       },
       selectPlayer (player, type) {
@@ -81,7 +115,7 @@
       }
     },
     created () {
-      this.fetchSomething()
+      this.fetchSomething('')
     }
   }
 </script>
@@ -91,7 +125,7 @@
     background #fafafa
   .round-card
     width 700px
-    max-height calc(100vh - 200px)
+    max-height calc(100vh - 100px)
     background #fafafa
     overflow hidden
   .header

@@ -18,7 +18,7 @@
         </div>
         <div class="points">
           <span class="points-label">Costo Acumulado</span>
-          <span class="points-value">{{points}}</span>
+          <span class="points-value">{{totalPoints}}</span>
         </div>
 
         <div
@@ -27,13 +27,29 @@
           Escoge jugadores!
         </div>
         <div v-else class="player-list">
-          <player-row-card v-for="(player, key) in team.porteros" :key="key+'-arquero'" :player="player" position="ARQUERO"/>
+          <player-row-card v-for="(player, key) in team.porteros"
+                           :key="key+'-arquero'"
+                           mode="selected"
+                           :player="player"
+                           position="ARQUERO"/>
 
-          <player-row-card v-for="(player, key) in team.defensas" :key="key+'-defensa'" :player="player" position="DEFENSA"/>
+          <player-row-card v-for="(player, key) in team.defensas"
+                           :key="key+'-defensa'"
+                           mode="selected"
+                           :player="player"
+                           position="DEFENSA"/>
 
-          <player-row-card v-for="(player, key) in team.centrocampistas" :key="key+'-centrocampista'" :player="player" position="CENTROCAMPISTA"/>
+          <player-row-card v-for="(player, key) in team.centrocampistas"
+                           :key="key+'-centrocampista'"
+                           mode="selected"
+                           :player="player"
+                           position="CENTROCAMPISTA"/>
 
-          <player-row-card v-for="(player, key) in team.delanteros" :key="key+'-delantero'" :player="player" position="DELANTERO"/>
+          <player-row-card v-for="(player, key) in team.delanteros"
+                           :key="key+'-delantero'"
+                           mode="selected"
+                           :player="player"
+                           position="DELANTERO"/>
         </div>
       </template>
       <template v-else-if="tabs[activeTab] === 'FORMACION'">
@@ -45,7 +61,7 @@
             <div class="portero-section">
               <div v-for="(player, key) in team.porteros" :key="key+'-arquero2'" :player="player" class="portero-in-ground">
                 <span class="player-container">
-                  <img src="../assets/icons/shirt.svg" width="27px" alt="">
+                  <squad-number ground :number="player.j_number"/>
                   <div class="close-icon">
                     <img src="../assets/icons/close_ground.svg" width="20px" alt="" @click="deletePlayer(player, 'porteros')">
                   </div>
@@ -59,7 +75,7 @@
             <div class="defensa-section">
               <div v-for="(player, key) in team.defensas" :key="key+'-defensa2'" :player="player" class="defensa-in-ground">
                 <span class="player-container">
-                  <img src="../assets/icons/shirt.svg" width="27px" alt="">
+                  <squad-number ground :number="player.j_number"/>
                   <div class="close-icon">
                     <img src="../assets/icons/close_ground.svg" width="20px" alt="" @click="deletePlayer(player, 'defensas')">
                   </div>
@@ -74,7 +90,7 @@
             <div class="centrocampista-section">
               <div v-for="(player, key) in team.centrocampistas" :key="key+'-centrocampista2'" :player="player" class="centrocampista-in-ground">
                 <span class="player-container">
-                  <img src="../assets/icons/shirt.svg" width="27px" alt="">
+                  <squad-number ground :number="player.j_number"/>
                   <div class="close-icon">
                     <img src="../assets/icons/close_ground.svg" width="20px" alt="" @click="deletePlayer(player, 'centrocampistas')">
                   </div>
@@ -89,7 +105,7 @@
             <div class="delantero-section">
               <div v-for="(player, key) in team.delanteros" :key="key+'-delantero2'" :player="player" class="delantero-in-ground">
                 <span class="player-container">
-                  <img src="../assets/icons/shirt.svg" width="27px" alt="">
+                  <squad-number ground :number="player.j_number"/>
                   <div class="close-icon">
                     <img src="../assets/icons/close_ground.svg" width="20px" alt="" @click="deletePlayer(player, 'delanteros')">
                   </div>
@@ -111,22 +127,45 @@
 <script>
   import PlayerRowCard from './PlayerRowCard'
   import InputText from './InputText'
+  import SquadNumber from './SquadNumber'
 
   export default {
     name: 'new-team-card',
     components: {
-      PlayerRowCard, InputText
+      PlayerRowCard, InputText, SquadNumber
     },
     props: {
       team: Object
+    },
+    computed: {
+      totalPoints () {
+        let total = 0
+
+        this.team['porteros'].map((item) => {
+          total+= parseInt(item.played)
+        })
+
+        this.team['defensas'].map((item) => {
+          total+= parseInt(item.played)
+        })
+
+        this.team['centrocampistas'].map((item) => {
+          total+= parseInt(item.played)
+        })
+
+        this.team['delanteros'].map((item) => {
+          total+= parseInt(item.played)
+        })
+
+        return total
+      }
     },
     data () {
       return{
         activeTab: 0,
         tabs: ['LISTA', 'FORMACION'],
         title: 'MI EQUIPO',
-        teamName: '',
-        points: 0
+        teamName: ''
       }
     },
     methods: {
@@ -143,7 +182,6 @@
           this.team[type].splice(index, 1)
         }
       }
-
     }
   }
 </script>
@@ -153,7 +191,7 @@
     background #fafafa
     padding-bottom 14px
   .round-card
-    width 700px
+    width 400px
     max-height calc(100vh - 200px)
     overflow auto
     background #fafafa
@@ -231,12 +269,12 @@
   .delantero-section
     display flex
     flex-wrap wrap
-    height 100px
+    height 68px
     justify-content center
     align-items center
     text-align center
   .centrocampista-section
-    height 200px !important
+    height 100px !important
   .defensa-section
     margin-left 90px
     margin-right 90px
@@ -259,9 +297,9 @@
     display block
   .player-info
     position absolute
-    display none
-    top: 28px
-    left: -50%
+    top: 20px
+    left: 0
+    transform: translateX(-25%);
     font-size 10px
     font-family Titillium Web
   .player-name
@@ -271,7 +309,8 @@
     border-radius 8px
   .player-info div
     margin-bottom 4px
-  .player-container:hover .player-info
-    display block
 
+  @media screen and (max-width: 1023px)
+    .close-icon
+      display block
 </style>

@@ -21,6 +21,9 @@ const team = {
   getters: {
     isSelectLeagueDialog (state) {
       return state.selectLeagueDialog
+    },
+    activeTypeTeam (state) {
+      return state.activeTypeTeam
     }
   }
 }

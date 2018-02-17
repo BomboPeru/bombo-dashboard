@@ -16,25 +16,41 @@
       <!-- EN JUEGO -->
       <template v-if="activeTypeTeam === 0">
         <team-card
+          class="teamcard"
           v-for="(item, i) in mteams[0]"
           :key="i+'card'"
           :title="item.name"
           :points="item.points"
-          type-card="pasados"
+          :ranking="item.ranking"
+          type-card="en_juego"
+          :league-img="item.leagueImg"
+          :players="item.players"
         />
       </template>
       <!-- GUARDADOS -->
       <template v-else-if="activeTypeTeam === 1">
         <team-card
-          title="nombre equipo"
-          type-card="pasados"
+          v-for="(item, i) in mteams[1]"
+          :key="i+'card'"
+          :title="item.name"
+          :cost="item.points.toString()"
+          :status="'DISPONIBLE'"
+          type-card="guardado"
+          :league-img="item.leagueImg"
+          :players="item.players"
         />
       </template>
       <!-- PASADOS -->
       <template v-else-if="activeTypeTeam === 2">
         <team-card
-          title="nombre equipo"
+          v-for="(item, i) in mteams[1]"
+          :key="i+'card'"
+          :title="item.name"
+          :points="item.points"
+          :ranking="item.ranking"
           type-card="pasados"
+          :league-img="item.leagueImg"
+          :players="item.players"
         />
       </template>
 
@@ -55,26 +71,38 @@
     computed: {
       hasNotTeams () {
         return (this.mteams['0'].length === 0) && (this.mteams['1'].length === 0) && (this.mteams['2'].length === 0)
+      },
+      activeTypeTeam () {
+        return this.$store.getters['team/activeTypeTeam']
       }
-    },
-    created () {
-      console.log(this.$store.state.activeTypeTeam)
     },
     data () {
       return {
-        typeTeams: this.$store.state.typeTeams,
-        activeTypeTeam: this.$store.state.activeTypeTeam,
+        typeTeams: this.$store.state.team.typeTeams,
         mteams: {
           0: [
-            { name: 'NOmbre de equipo',
+            { name: 'NOmbre de equipo sadadasdsa sadasdasdasd',
               balance: +23.0,
               leagueImg: '',
               createdAt: '23/02/2018',
               ranking: 2,
               points: 233,
-              players: [
-                { name: 'NOmbre Plyaer' }
-              ]
+              players: {
+                porteros: [ { name: 'NOmbre Plyaer', j_number: '23', points: 23 } ],
+                defensas: [
+                  { name: 'NOmbre Plyae sdsds dsd s dsdsds dsdsds sdsdsd dsds dsds r', j_number: '23' },
+                  { name: 'NOmbre Plyaer', j_number: '23' },
+                  { name: 'NOmbre Plyaer', j_number: '23' },
+                  { name: 'NOmbre Plyaer', j_number: '23' },
+                  { name: 'NOmbre Plyaer', j_number: '23' },
+                  { name: 'NOmbre Plyaer', j_number: '23' },
+                  { name: 'NOmbre Plyaer', j_number: '23' },
+                  { name: 'NOmbre Plyaer', j_number: '23' },
+                  { name: 'NOmbre Plyaer', j_number: '23' }
+                ],
+                centrocampistas: [ { name: 'NOmbre Plyaer', j_number: '23' } ],
+                delanteros: [ { name: 'NOmbre Plyaer', j_number: '23' } ]
+              }
             },
             { name: 'NOmbre de equipo',
               balance: +23.0,
@@ -82,9 +110,12 @@
               createdAt: '23/02/2018',
               ranking: 2,
               points: 233,
-              players: [
-                { name: 'NOmbre Plyaer' }
-              ]
+              players: {
+                porteros: [ { name: 'NOmbre Plyaer', j_number: '23' } ],
+                defensas: [ { name: 'NOmbre Plyaer', j_number: '23' } ],
+                centrocampistas: [ { name: 'NOmbre Plyaer', j_number: '23' } ],
+                delanteros: [ { name: 'NOmbre Plyaer', j_number: '23' } ]
+              }
             },
             { name: 'NOmbre de equipo',
               balance: +23.0,
@@ -92,21 +123,61 @@
               createdAt: '23/02/2018',
               ranking: 2,
               points: 233,
-              players: [
-                { name: 'NOmbre Plyaer' }
-              ]
+              players: {
+                porteros: [ { name: 'NOmbre Plyaer', j_number: '23' } ],
+                defensas: [ { name: 'NOmbre Plyaer', j_number: '23' } ],
+                centrocampistas: [ { name: 'NOmbre Plyaer', j_number: '23' } ],
+                delanteros: [ { name: 'NOmbre Plyaer', j_number: '23' } ]
+              }
+            },
+            { name: 'NOmbre de equipo',
+              balance: +23.0,
+              leagueImg: '',
+              createdAt: '23/02/2018',
+              ranking: 2,
+              points: 233,
+              players: {
+                porteros: [ { name: 'NOmbre Plyaer', j_number: '23' } ],
+                defensas: [ { name: 'NOmbre Plyaer', j_number: '23' } ],
+                centrocampistas: [ { name: 'NOmbre Plyaer', j_number: '23' } ],
+                delanteros: [ { name: 'NOmbre Plyaer', j_number: '23' } ]
+              }
             }
           ],
           1: [
-            { name: 'NOmbre de equipo',
+            { name: 'NOmbre de NOmbre de equipo sadadasdsa sadasdasdasd',
               balance: +23.0,
               leagueImg: '',
               createdAt: '23/02/2018',
               ranking: 2,
               points: 233,
-              players: [
-                { name: 'NOmbre Plyaer' }
-              ]
+              players: {
+                porteros: [
+                  {
+                    name: 'NOmbre Plyaer',
+                    j_number: '23',
+                    points: 23
+                  }
+                ],
+                defensas: [
+                  {
+                    name: 'NOmbre Plyaer',
+                    j_number: '23'
+                  }
+                ],
+                centrocampistas: [
+                  {
+                    name: 'NOmbre Plyaer',
+                    j_number: '23'
+                  }
+                ],
+                delanteros: [
+                  {
+                    name: 'NOmbre Plyaer',
+                    j_number: '23'
+                  }
+                ],
+              }
             },
             { name: 'NOmbre de equipo',
               balance: +23.0,
@@ -114,9 +185,32 @@
               createdAt: '23/02/2018',
               ranking: 2,
               points: 233,
-              players: [
-                { name: 'NOmbre Plyaer' }
-              ]
+              players: {
+                porteros:  [
+                  {
+                    name: 'NOmbre Plyaer',
+                    j_number: '23'
+                  }
+                ],
+                defensas: [
+                  {
+                    name: 'NOmbre Plyaer',
+                    j_number: '23'
+                  }
+                ],
+                centrocampistas: [
+                  {
+                    name: 'NOmbre Plyaer',
+                    j_number: '23'
+                  }
+                ],
+                delanteros: [
+                  {
+                    name: 'NOmbre Plyaer',
+                    j_number: '23'
+                  }
+                ]
+              }
             }
           ],
           2: [
@@ -146,12 +240,19 @@
 <style scoped lang="stylus">
 
   .container
-    min-height: calc(100vh - 128px)
-    display: flex;
+    overflow-x auto
+    overflow-y hidden
+    min-height: calc(100vh - 190px)
+    display: flex
+    flex nowrap
     justify-content flex-start
     /*align-items: center;*/
     margin-top 62px
-    margin-left 18px
+    padding-left 18px
+
+  .teamcard
+    flex-shrink 0
+    /*display: inline-block*/
   .create-team-btn
     width 200px
   .empty-teams-message
@@ -165,4 +266,16 @@
     font-size: 24px;
     text-align: center;
     padding-bottom 15px
+
+  @media screen and (max-width: 1023px)
+    .container
+      overflow-x auto
+      overflow-y hidden
+      height: calc(100vh - 174px)
+      display: flex;
+      //justify-content flex-start
+      margin-top 62px
+      margin-left 0
+      //min-height: calc(100vh - 128px)
+
 </style>

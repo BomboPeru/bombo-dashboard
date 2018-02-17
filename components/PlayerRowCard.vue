@@ -1,7 +1,7 @@
 <template>
     <div id="player-row-card" class="card-player elevation">
       <template v-if="mode === 'bank'">
-        <span class="shirt"><img src="../assets/icons/soccer_jersey.svg" width="24px" alt=""></span>
+        <squad-number :img="'/shirt_placeholder.svg'" :number="player.j_number"/>
         <span class="name1">{{ player.name }}</span>
         <span class="prom1">{{ player.yellows }}</span>
         <span class="up1">{{ player.played }}</span>
@@ -12,7 +12,31 @@
         <span class="add" @click="selectPlayer(player)"><img src="../assets/icons/plus_black.svg" alt=""></span>
       </template>
       <template v-else-if="mode === 'selected'">
-        <span class="shirt"><img src="../assets/icons/soccer_jersey.svg" width="27px" alt=""></span>
+        <squad-number :img="'/shirt_placeholder.svg'" :number="player.j_number"/>
+        <span class="name2">{{ player.name }}</span>
+        <span class="costo2">{{ player.played }}</span>
+        <div :class="['posicion2', kind[position]]">
+          <span>{{position}}</span>
+        </div>
+        <!--<span class="add" @click="selectPlayer(player)"><img src="../assets/icons/plus_black.svg" alt=""></span>-->
+      </template>
+      <template v-else-if="mode === 'small-a'">
+        <squad-number class="dorsal3" :img="'/shirt_placeholder.svg'" :number="player.j_number"/>
+        <div class="name-team3">
+          <div class="name3">{{ player.name }}</div>
+          <div class="team3">{{ 'REAL MADRID' }}</div>
+        </div>
+        <div :class="['posicion3', kind[position]]">
+          <span>{{position.substring(0,3)}}</span>
+        </div>
+        <div class="points3-container">
+          <span>Puntos</span>
+          <span class="points3">{{ player.points }}</span>
+        </div>
+        <!--<span class="add" @click="selectPlayer(player)"><img src="../assets/icons/plus_black.svg" alt=""></span>-->
+      </template>
+      <template v-else-if="mode === 'small-b'">
+        <squad-number :img="'/shirt_placeholder.svg'" :number="player.j_number"/>
         <span class="name1">{{ player.name }}</span>
         <span class="costo1">{{ player.played }}</span>
         <div :class="['posicion1', kind[position]]">
@@ -20,12 +44,18 @@
         </div>
         <!--<span class="add" @click="selectPlayer(player)"><img src="../assets/icons/plus_black.svg" alt=""></span>-->
       </template>
+
     </div>
 </template>
 
 <script>
+  import SquadNumber from './SquadNumber'
+
   export default {
     name: 'player-row-card',
+    components: {
+      SquadNumber
+    },
     props: {
       player: Object,
       position: String,
@@ -58,45 +88,109 @@
     height 30px
     margin 4px 10px
     background #fafafa
+    font-family: Titillium Web;
   .card-player span
     display inline-block
     text-align center
     vertical-align: middle
-    font-family: Titillium Web;
     font-size 14px
-  .shirt
-    margin-top 4px
-    margin-bottom 2px
-    margin-left 8px
-    margin-right 8px
   .name1
     text-align left !important
     width 31.5%
   .prom1
     width 12.5%
+    font-size 10px !important
   .up1
     width 12.5%
+    font-size 10px !important
   .costo1
     width 12.5%
+    font-size 10px !important
   .posicion1
     width 18%
     display inline-block
     text-align center
   .posicion1 span
     border-radius 4px
-    padding 0px 4px
     color white
+    font-size 10px
+    padding 0px 7px
+
+
+  .name2
+    text-align left !important
+    width 45%
+  .costo2
+    width 12.5%
+    font-size 10px !important
+  .posicion2
+    float right
+    width 98px
+    text-align center
+    margin-top 7px
+    margin-right 8px
+  .posicion2 span
+    font-size 10px
+    padding 0px 7px
+    border-radius 4px
+    color white
+
+  .dorsal3
+    margin-top -5px !important
+  .name-team3
+    display inline-block
+    font-size 10px !important
+    text-align left !important
+    width 42%
+    margin-right 3px
+  .name3
+    text-overflow ellipsis
+    white-space: nowrap;
+    overflow: hidden;
+    color #4A4A4A
+    font-weight bold
+  .team3
+    font-size 8px !important
+  .posicion3
+    display inline-block
+    text-align center
+    margin-top 7px
+    margin-right 1px
+    top: -4px
+    position: relative
+  .posicion3 span
+    font-size 10px
+    padding 0px 7px
+    border-radius 4px
+    color white
+  .points3-container
+    float right
+    margin-top 3px
+    margin-right 5px
+  .points3-container span
+    font-size 8px
+    display block
+  /*.points3*/
+    /*font-size 10px !important*/
+
+
   .portero span
     background #67A6F0
   .defensa span
-    background #DBE889
+    background #CDE344
   .centrocampista span
     background #A789E8
   .delantero span
     background #FDA237
   .add
+    visibility hidden
     padding-left 5px
     width 36px
     cursor pointer
+  #player-row-card:hover .add
+    visibility visible
+  @media screen and (max-width: 1023px)
+    .add
+      visibility visible
 
 </style>

@@ -1,5 +1,5 @@
 import Vuex from 'vuex'
-import team from './team'
+import team from './teams'
 
 const store = () => {
   return new Vuex.Store({

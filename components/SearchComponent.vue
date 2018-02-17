@@ -1,6 +1,6 @@
 <template>
     <div class="search-input">
-      <input type="text" @input="emitValue" v-model="text" placeholder="Busca jugadores">
+      <input type="text" @input="emitValue" ref="inputText" :value="value" placeholder="Busca jugadores">
       <span class="icon-input"><img src="../assets/icons/search.svg" alt=""></span>
     </div>
 </template>
@@ -13,6 +13,9 @@
       return {
         text: ''
       }
+    },
+    props: {
+      value: String
     },
     methods: {
       emitValue() {

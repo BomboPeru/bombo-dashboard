@@ -1,13 +1,14 @@
 <template>
     <div id="nav-bar">
       <ul class="nav-section-desktop">
-        <li v-for="(item, i) in navbarItems" :key="i">
+        <li v-for="(item, i) in navbarItems" :key="i" v-if="item.justTitle === false">
           <nav-item
             :is-active="item.urlPath === $route.path"
             :text="item.name"
             :url="item.urlPath"/>
         </li>
       </ul>
+
       <div class="nav-section-mobile dropdown">
         <div @click="openNavItems" class="nav-title">
           {{ activePath }}
@@ -16,7 +17,7 @@
       </div>
       <div class="dropdown-content elevation" :style="{ 'visibility': isMenuNavItemOpen? 'visible' : 'collapse'}">
         <ul class="dropdown-list">
-          <li v-for="(item, i) in navbarItems" :key="i" class="dropdown-item">
+          <li v-for="(item, i) in navbarItems" :key="i" class="dropdown-item"  v-if="item.justTitle === false">
             <a :href="item.urlPath">{{ item.name }}</a>
           </li>
         </ul>
@@ -46,11 +47,11 @@
     data () {
       return {
         navbarItems: [
-          { name: 'MIS EQUIPOS', urlPath: '/client/teams' },
-          { name: 'PROXIMAS FECHAS', urlPath: '/client/matches' },
-          { name: 'DASHBOARD', urlPath: '/client/dashboard' },
-          { name: 'HISTORIAL', urlPath: '/client/history' }
-          // { name: 'ARMA TU EQUIPO!', urlPath: '/client/createteam' }
+          { name: 'MIS EQUIPOS', urlPath: '/client/teams', justTitle: false },
+          { name: 'PROXIMAS FECHAS', urlPath: '/client/matches', justTitle: false },
+          { name: 'DASHBOARD', urlPath: '/client/dashboard', justTitle: false },
+          { name: 'HISTORIAL', urlPath: '/client/history', justTitle: false },
+          { name: 'ARMA TU EQUIPO!', urlPath: '/client/createteam', justTitle: true }
         ],
         isMenuNavItemOpen: false
       }
