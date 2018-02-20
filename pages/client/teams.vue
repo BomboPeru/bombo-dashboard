@@ -17,40 +17,40 @@
       <template v-if="activeTypeTeam === 0">
         <team-card
           class="teamcard"
-          v-for="(item, i) in mteams[0]"
+          v-for="(team, i) in mteams[0]"
           :key="i+'card'"
-          :title="item.name"
-          :points="item.points"
-          :ranking="item.ranking"
+          :title="team.name"
+          :points="team.points"
+          :ranking="team.ranking"
           type-card="en_juego"
-          :league-img="item.leagueImg"
-          :players="item.players"
+          :league-img="team.leagueImg"
+          :players="team.players"
         />
       </template>
       <!-- GUARDADOS -->
       <template v-else-if="activeTypeTeam === 1">
         <team-card
-          v-for="(item, i) in mteams[1]"
+          v-for="(team, i) in mteams[1]"
           :key="i+'card'"
-          :title="item.name"
-          :cost="item.points.toString()"
+          :title="team.name"
+          :cost="team.points.toString()"
           :status="'DISPONIBLE'"
           type-card="guardado"
-          :league-img="item.leagueImg"
-          :players="item.players"
+          :league-img="team.leagueImg"
+          :players="team.players"
         />
       </template>
       <!-- PASADOS -->
       <template v-else-if="activeTypeTeam === 2">
         <team-card
-          v-for="(item, i) in mteams[1]"
+          v-for="(team, i) in mteams[1]"
           :key="i+'card'"
-          :title="item.name"
-          :points="item.points"
-          :ranking="item.ranking"
+          :title="team.name"
+          :points="team.points"
+          :ranking="team.ranking"
           type-card="pasados"
-          :league-img="item.leagueImg"
-          :players="item.players"
+          :league-img="team.leagueImg"
+          :players="team.players"
         />
       </template>
 
@@ -244,11 +244,11 @@
     overflow-y hidden
     min-height: calc(100vh - 190px)
     display: flex
-    flex nowrap
+    flex-wrap nowrap
     justify-content flex-start
-    /*align-items: center;*/
     margin-top 62px
     padding-left 18px
+    align-items: flex-start;
 
   .teamcard
     flex-shrink 0

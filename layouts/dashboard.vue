@@ -12,9 +12,12 @@
       </floating-container>
     </div>
 
+    <sign-out-dialog @onCollapse="onCollapseSignoutDialog"
+                     :is-open="isSignoutDialog"/>
+
     <select-league-dialog
       :is-open="isSelectLeagueDialog"
-      @onCollapse="onCollapseDialog"/>
+      @onCollapse="onCollapseSelectLeagueDialog"/>
   </div>
 </template>
 
@@ -24,26 +27,33 @@
   import FloatingContainer from '~/components/FloatingContainer'
   import IconButton from '~/components/IconButton'
   import SelectLeagueDialog from '~/components/SelectLeagueDialog'
+  import SignOutDialog from '~/components/SignOutDialog'
 
   export default {
     components: {
-      Toolbar, Sidebar, FloatingContainer, IconButton, SelectLeagueDialog
+      Toolbar, Sidebar, FloatingContainer, IconButton, SelectLeagueDialog, SignOutDialog
     },
     computed: {
       sidebarAndNavbar () {
         let notAllowed = []
         return notAllowed.indexOf(this.$route.path) === -1
       },
+      isSignoutDialog () {
+        return this.$store.getters['isSignoutDialog']
+      },
       isSelectLeagueDialog () {
         return this.$store.getters['team/isSelectLeagueDialog']
       },
       sidebar () {
-        let notAllowed = ['/client/profile', '/client/createteam']
+        let notAllowed = ['/client/profile', '/client/createteam', '/client/dashboard']
         return notAllowed.indexOf(this.$route.path) === -1
       }
     },
     methods: {
-      onCollapseDialog () {
+      onCollapseSignoutDialog () {
+        this.$store.commit('turnOffSignoutDialog')
+      },
+      onCollapseSelectLeagueDialog () {
         this.$store.commit('team/turnOffSelectLeageDialog')
       }
     }

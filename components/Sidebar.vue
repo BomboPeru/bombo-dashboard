@@ -2,11 +2,27 @@
     <div id="sidebar" class="elevation" v-if="activeSection !== 'ARMA UN EQUIPO'">
       <!-- DESKTOP -->
       <div class="title-bar desktop">
-        <span class="title-menu-section">{{ activeSection }}</span>
+
         <div class="search-input" v-if="activeSection === 'MIS EQUIPOS'">
           <input type="text" placeholder="Busca equipos">
           <span class="icon-input"><img src="../assets/icons/search.svg" alt=""></span>
         </div>
+
+        <span class="title-menu-section" v-if="activeSection !== 'DASHBOARD'">{{ activeSection }}</span>
+
+        <template v-if="activeSection === 'DASHBOARD'">
+          <div class="dashboard-navbar">
+            <div v-for="(item, i) in itemsForEachPath[activeSection].items"
+                 :key="i"
+                 @click="selectTypeTeam(item.name)"
+                 v-if="item.type === 'normal'"
+                 class="dashboard-navbar-item">
+              <span class="text">{{ item.name }}</span>
+              <div class="line" :style="{ background: item.color }"></div>
+            </div>
+          </div>
+        </template>
+
       </div>
 
       <div class="sidebar elevation" v-if="sidebar">
@@ -99,9 +115,9 @@
           },
           'DASHBOARD': {
             items: [
-              {name: 'POSICIONES', color: '#EA504C', type: 'normal'},
+              {name: 'TABLA DE POSICIONES', color: '#EA504C', type: 'normal'},
               {name: 'PARTIDOS', color:'#25BF89', type: 'normal'},
-              {name: 'TU EQUIPOS', color:'#67A6F0', type: 'normal'}
+              {name: 'TUS EQUIPOS', color:'#67A6F0', type: 'normal'}
             ]
           },
           'HISTORIAL': {
@@ -217,6 +233,33 @@
     font-size: 15px
   .bottom-btn
     margin 8px 1px
+
+  .dashboard-navbar
+    background #243237
+    height 100%
+    width 100%
+    display: flex
+    justify-content space-around
+  .dashboard-navbar-item
+    color white
+    flex-grow 1
+    width 100%
+    height 100%
+    text-align center
+    font-family Titillium Web
+    font-size 24px
+    font-weight bold
+    cursor pointer
+    /*transition background .5s ease-in*/
+  /*.dashboard-navbar-item:hover*/
+    /*background #445F69*/
+
+  .dashboard-navbar-item .text
+    display inline-block
+    height 42px
+  .dashboard-navbar-item .line
+    height 10px
+    width 100%
 
   @media screen and (max-width: 1023px)
     #sidebar

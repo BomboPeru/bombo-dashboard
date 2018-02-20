@@ -24,7 +24,7 @@
   export default {
     name: 'select-league-dialog',
     components: {
-      DialogContainer,
+      DialogContainer
     },
     props: {
       isOpen: { type: Boolean, default: false },

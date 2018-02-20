@@ -48,28 +48,44 @@
         </table>
       </div>
       <div class="divider"></div>
-      <p class="subheader selected-players-title">JUGADORES SELECCIONADOS</p>
-      <div class="list-players-container">
-        <player-row-card v-for="(item, i) in players.porteros" :key="i+'prc-portero'" mode="small-a" :player="item" position="ARQUERO"/>
-
-        <player-row-card v-for="(item, i) in players.defensas" :key="i+'prc-defensa'" mode="small-a" :player="item" position="DEFENSA"/>
-
-        <player-row-card v-for="(item, i) in players.centrocampistas" :key="i+'prc-centrocampista'" mode="small-a" :player="item" position="CENTROCAMPISTA"/>
-
-        <player-row-card v-for="(item, i) in players.delanteros" :key="i+'prc-delantero'" mode="small-a" :player="item" position="DELANTERO"/>
-      </div>
-
-      <div class="bottom-button-container" v-if="typeCard !== 'en_juego'">
-        <div class="button-play-again" v-if="typeCard === 'guardado'">
-          JUEGA YA!
+      <!-- COLLAPSABLE -->
+      <template v-if="collapsable">
+        <div v-if="!isCollapsed" class="btn-expand" @click="expand">
+          M&Aacute;S DETALLES
         </div>
-        <div class="button-delete" v-if="typeCard === 'pasados'">
-          Borrar
+      </template>
+      <template v-if="collapsable === false || isCollapsed === true">
+        <p class="subheader selected-players-title">JUGADORES SELECCIONADOS</p>
+        <!-- PLAYERS -->
+        <div class="list-players-container">
+          <player-row-card v-for="(item, i) in players.porteros" :key="i+'prc-portero'" mode="small-a" :player="item" position="ARQUERO"/>
+
+          <player-row-card v-for="(item, i) in players.defensas" :key="i+'prc-defensa'" mode="small-a" :player="item" position="DEFENSA"/>
+
+          <player-row-card v-for="(item, i) in players.centrocampistas" :key="i+'prc-centrocampista'" mode="small-a" :player="item" position="CENTROCAMPISTA"/>
+
+          <player-row-card v-for="(item, i) in players.delanteros" :key="i+'prc-delantero'" mode="small-a" :player="item" position="DELANTERO"/>
         </div>
-        <div class="button-save" v-if="typeCard === 'pasados'">
-          Guardar
+
+        <div class="bottom-button-container" v-if="typeCard !== 'en_juego'">
+          <div class="button-play-again" v-if="typeCard === 'guardado'">
+            JUEGA YA!
+          </div>
+          <div class="button-delete" v-if="typeCard === 'pasados'">
+            Borrar
+          </div>
+          <div class="button-save" v-if="typeCard === 'pasados'">
+            Guardar
+          </div>
         </div>
-      </div>
+      </template>
+      <template v-if="collapsable">
+        <div v-if="isCollapsed" class="btn-expand" @click="collapse">
+          MINIMIZAR
+        </div>
+      </template>
+
+
     </div>
 </template>
 
@@ -93,10 +109,15 @@
       ranking: Number,
       players: Object,
       cost: String,
-      status: String
+      status: String,
+      collapsable: {
+        type: Boolean,
+        default: false
+      }
     },
     data () {
       return {
+        isCollapsed: false,
         isFavoriteSaved: true,
         typeColorCards: {
           en_juego: '#EA504C',
@@ -105,9 +126,20 @@
         }
       }
     },
+    created () {
+      if (this.collapsable === true) {
+        this.isCollapsed = false
+      }
+    },
     methods: {
       toggleFavorite() {
         this.isFavoriteSaved = !this.isFavoriteSaved
+      },
+      expand () {
+        this.isCollapsed = true
+      },
+      collapse () {
+        this.isCollapsed = false
       }
     }
   }
@@ -116,7 +148,7 @@
 <style scoped lang="stylus">
 #round-card
   width 240px
-  height 64vh
+  /*height 64vh*/
   overflow hidden
   background #fafafa
   margin-left 24px
@@ -232,6 +264,7 @@
   justify-content space-around
   padding-left 15px
   padding-right 15px
+  padding-bottom 9px
 .button-play-again
   display inline-block
   padding 4px 20px 4px 20px
@@ -262,4 +295,14 @@
   background #FFC400
   border-radius 12px
 
+.btn-expand
+  background #445F69
+  border-radius: 0px 0px 12px 12px;
+  height 30px
+  font-family Titillium Web
+  text-align center
+  color white
+  font-size 14px
+  line-height 30px
+  cursor pointer
 </style>

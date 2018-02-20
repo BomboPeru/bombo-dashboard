@@ -1,36 +1,76 @@
 <template>
-  <ul id="status-bar" class="left-side">
-    <li class="help">
+  <div class="status-bar-container">
+    <ul id="status-bar" class="left-side">
+      <li class="help" @click="openTooltip('help')">
         <span>
           <img src="../assets/icons/help.svg" width="20px" alt="">
         </span>
-    </li>
-    <li class="notification">
+      </li>
+      <li class="notification"  @click="openTooltip('notification')">
         <div class="indicator" v-if="indicator > 0"><span>{{ indicator }}</span></div>
         <span>
           <img src="../assets/icons/notification.svg" width="20px" alt="">
         </span>
-    </li>
-    <li class="avatar">
+      </li>
+      <li class="avatar" @click="openTooltip('profile')" >
         <span>
           <img src="../assets/icons/avatar.png" width="40px" alt="">
         </span>
-    </li>
-  </ul>
+      </li>
+    </ul>
+    <tooltip-menu listSupport v-if="help"/>
+    <tooltip-menu listNotifications v-if="notification" :notifications="notifications" right-offset="70px"/>
+    <tooltip-menu profile v-if="profile" right-offset="30px"/>
+  </div>
 </template>
 
 <script>
+  import TooltipMenu from './TooltipMenu'
+
   export default {
     name: 'status-bar',
+    components: {
+      TooltipMenu
+    },
     data () {
       return {
-        indicator: 1
+        indicator: 1,
+        help: false,
+        notification: false,
+        profile: false,
+        statusBarItems: ['help', 'notification', 'profile'],
+        notifications: [
+          { subject: 'Finalizado', message: 'GANASTE S/. 50' },
+          { subject: 'Finalizado', message: 'GANASTE S/. 50' },
+          { subject: 'Incongruencias', message: 'GANASTE S/. 50' },
+          { subject: 'Finalizado', message: 'GANASTE S/. 50' }
+        ]
+      }
+    },
+    methods: {
+      closeTooltip() {
+        this.statusBarItems.map((item) => {
+          this[item] = false
+        })
+      },
+      openTooltip(name) {
+        let i = this.statusBarItems.indexOf(name)
+        this.statusBarItems.map((item, _i) => {
+          if (i !== _i) {
+            if (this[item] === true) {
+              this[item] = false
+            }
+          }
+        })
+        this[name] = !this[name]
       }
     }
   }
 </script>
 
 <style scoped lang="stylus">
+.status-bar-container
+  display inline
 #status-bar
   margin-right 10px
 .left-side
@@ -43,6 +83,7 @@
   position relative
   float left
   margin 0 12px
+  cursor pointer
 .indicator
   position absolute
   top -10px
