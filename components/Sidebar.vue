@@ -1,6 +1,10 @@
 <template>
-    <div id="sidebar" class="elevation" v-if="activeSection !== 'ARMA UN EQUIPO'">
+    <div id="sidebar" :class="['elevation', itemsForEachPath[activeSection].items.length > 0?'':'collapse-movil']" >
+      <!-- v-if="activeSection !== 'ARMA UN EQUIPO'" -->
+      <!-- itemsForEachPath[activeSection].items.length > 0 -->
+
       <!-- DESKTOP -->
+      <!-- TITLE BAR (WHITE) -->
       <div class="title-bar desktop">
 
         <div class="search-input" v-if="activeSection === 'MIS EQUIPOS'">
@@ -8,7 +12,9 @@
           <span class="icon-input"><img src="../assets/icons/search.svg" alt=""></span>
         </div>
 
-        <span class="title-menu-section" v-if="activeSection !== 'DASHBOARD'">{{ activeSection }}</span>
+        <div :class="['title-container', itemsForEachPath[activeSection].center?'center':'']">
+          <span :class="['title-menu-section', itemsForEachPath[activeSection].center?'font-weight-light':'']"  v-if="activeSection !== 'DASHBOARD'">{{ activeSection }}</span>
+        </div>
 
         <template v-if="activeSection === 'DASHBOARD'">
           <div class="dashboard-navbar">
@@ -22,7 +28,6 @@
             </div>
           </div>
         </template>
-
       </div>
 
       <div class="sidebar elevation" v-if="sidebar">
@@ -54,6 +59,7 @@
       </div>
 
       <!-- MOBILE -->
+      <!-- BLACK BAR FOR NAVIGATE INSIDE PAGES -->
       <div v-for="(item, i) in itemsForEachPath[activeSection].items"
            :key="i" class="mobile sub-nav-btn elevation"
            @click="selectTypeTeam(item.name)"
@@ -61,8 +67,6 @@
         <div class="line" :style="{ background: item.color }"></div>
         <span class="text">{{ item.name }}</span>
       </div>
-
-
     </div>
 </template>
 
@@ -98,7 +102,8 @@
           { name: 'DASHBOARD', urlPath: '/client/dashboard' },
           { name: 'HISTORIAL', urlPath: '/client/history' },
           { name: 'ARMA UN EQUIPO', urlPath: '/client/createteam' },
-          { name: 'MI PERFIL', urlPath: '/client/profile' }
+          { name: 'MI PERFIL', urlPath: '/client/profile' },
+          { name: 'PREGUNTAS FRECUENTES', urlPath: '/client/faq' }
         ],
         itemsForEachPath: {
           'MIS EQUIPOS': {
@@ -129,8 +134,14 @@
             ]
           },
           'MI PERFIL': {
+            center: true,
             items: []
-          }
+          },
+          'PREGUNTAS FRECUENTES': {
+            center: true,
+            items: [
+            ]
+          },
         }
       }
     },
@@ -164,6 +175,8 @@
     width 100%
     height sidebar_height
     background white
+  .collapse-movil
+    display block
   .desktop
     display block
   .title-bar
@@ -209,8 +222,16 @@
 
   .mobile
     display none
+  .center
+    text-align: center !important
+  .font-weight-light
+    font-weight lighter !important
+  .title-container
+    text-align: left;
+    height: 52px;
+    line-height: 52px;
   .title-menu-section
-    float left
+    /*float left*/
     font-size 24px
     color #243237
     font-family Titillium Web
@@ -268,6 +289,8 @@
       background #243237
       display flex
       justify-content space-around
+    .collapse-movil
+      display none !important
     .sidebar
       display none
     .sub-nav-btn .text

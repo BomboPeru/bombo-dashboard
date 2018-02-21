@@ -45,7 +45,7 @@
         return this.$store.getters['team/isSelectLeagueDialog']
       },
       sidebar () {
-        let notAllowed = ['/client/profile', '/client/createteam', '/client/dashboard']
+        let notAllowed = ['/client/profile', '/client/createteam', '/client/dashboard', '/client/faq']
         return notAllowed.indexOf(this.$route.path) === -1
       }
     },
@@ -78,7 +78,7 @@
 }
 
 .background
-  background url(../assets/background/background_desktop.png)
+  /*background url(../assets/background/background_desktop.png)*/
   background-size cover
 .margin-sidebar
   margin-left 232px
@@ -87,7 +87,7 @@
 
 @media screen and (max-width: 1023px)
   .background
-    background url(../assets/background/background_mobile.png)
+    /*background url(../assets/background/background_mobile.png)*/
   .content
     margin-left 0px
   .fab
