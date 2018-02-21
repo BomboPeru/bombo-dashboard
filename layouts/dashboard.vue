@@ -1,6 +1,6 @@
 <template>
   <div class="background">
-    <div id="dashboard-layout">
+    <div id="cover-layout">
       <toolbar/>
       <sidebar v-if="sidebarAndNavbar" :sidebar="sidebar"/>
       <nuxt :class="{ 'margin-sidebar': sidebar }"/>

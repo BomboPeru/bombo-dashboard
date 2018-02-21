@@ -8,15 +8,21 @@
         <nuxt-link to="/register">PROXIMAS FECHAS</nuxt-link>
       </div>
       <div class="links right">
-        <nuxt-link to="/login">Registrate</nuxt-link>
-        <nuxt-link to="/register">Inicia sesion</nuxt-link>
+        <nuxt-link to="/register" class="register">Registrate</nuxt-link>
+        <span @click="openLoginDialog">Inicia sesion</span>
       </div>
     </div>
 </template>
 
 <script>
+
   export default {
-    name: 'basic-toolbar'
+    name: 'basic-toolbar',
+    methods: {
+      openLoginDialog () {
+        this.$store.commit('openLoginDialog')
+      }
+    }
   }
 </script>
 
@@ -45,6 +51,9 @@
     display inline-block
     margin-left 150px
     height 100%
+  .links span
+    cursor pointer
+  .links span
   .links a
     line-height 76px
     margin 0 15px
@@ -59,4 +68,6 @@
     margin-right 10px
   .uppercase
     text-transform uppercase
+  .register
+    color #EA504C !important
 </style>

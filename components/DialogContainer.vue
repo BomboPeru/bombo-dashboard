@@ -26,11 +26,11 @@
       if (this.fixed === false) {
         window.addEventListener('click', this.clickEventHandler)
       }
-      document.getElementById('dashboard-layout').style.filter = 'blur(5px)'
+      document.getElementById('cover-layout').style.filter = 'blur(5px)'
     },
     beforeDestroy () {
       window.removeEventListener('click', this.clickEventHandler)
-      document.getElementById('dashboard-layout').style.filter = 'none'
+      document.getElementById('cover-layout').style.filter = 'none'
     }
   }
 </script>

@@ -4,11 +4,15 @@ import team from './teams'
 const store = () => {
   return new Vuex.Store({
     state: {
-      signOutDialog: false
+      signOutDialog: false,
+      loginDialog: false
     },
     getters: {
       isSignoutDialog (state) {
         return state.signOutDialog
+      },
+      loginDialog (state) {
+        return state.loginDialog
       }
     },
     mutations: {
@@ -17,6 +21,12 @@ const store = () => {
       },
       turnOnSignoutDialog (state) {
         state.signOutDialog = true
+      },
+      openLoginDialog (state) {
+        state.loginDialog = true
+      },
+      closeLoginDialog (state) {
+        state.loginDialog = false
       }
     },
     modules: {

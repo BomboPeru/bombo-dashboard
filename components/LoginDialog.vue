@@ -1,21 +1,24 @@
 <template>
-    <div id="signout-dialog" v-if="isOpen">
+    <div id="login-dialog" v-if="isOpen">
       <dialog-container @closeDialog="closeDialog" :fixed="false">
         <div class="container">
-          <div class="logout-card elevation rounded">
+          <div class="signin-card elevation rounded">
             <div class="header elevation">
               {{ title }}
             </div>
             <div class="line"></div>
-            <p class="message">{{message}}</p>
+
+            <div class="form">
+              <input-text v-model="username" placeholder="nombre@correo.com"/>
+              <input-text v-model="password" placeholder="****"/>
+            </div>
+
             <div class="bottom-button-container">
-              <div class="button-cancel" @click="collapse">
-                Cancelar
-              </div>
-              <div class="button-exit" @click="collapse">
-                Salir
+              <div class="button-login elevation" @click="login">
+                ACCEDER
               </div>
             </div>
+            <p class="message">{{messageForgotPass}}</p>
           </div>
         </div>
       </dialog-container>
@@ -24,11 +27,12 @@
 
 <script>
   import DialogContainer from './DialogContainer'
+  import InputText from './InputText'
 
   export default {
-    name: 'sign-out-dialog',
+    name: 'login-dialog',
     components: {
-      DialogContainer
+      DialogContainer, InputText
     },
     props: {
       isOpen: { type: Boolean, default: false }
@@ -36,33 +40,31 @@
     data () {
       return {
         title: 'CERRAR SESSION',
-        message: 'RECUERDA QUE AL CERRAR SESION DEJARAN DE LLEGARTE NOTIFICACIONES SOBRE TUS EQUIPOS.'
+        messageForgotPass: 'Aun no tienes una cuenta?, Registrate',
+        username: '',
+        password: ''
       }
     },
     methods: {
       closeDialog () {
         this.$emit('onCollapse', false)
       },
-      collapse () {
-        this.$store.commit('turnOffSignoutDialog')
+      login () {
+      //  ...
       }
     }
   }
 </script>
 
 <style scoped lang="stylus">
+
   .container
     border-radius: 12px
-    background #FAFAFA
-  .logout-card
+    background #E8E8E8
+  .signin-card
     width 375px
     overflow hidden
     font-family Titillium Web
-  .message
-    margin 20px 12px 34px 12px
-    color black
-    font-size: 14px;
-    text-align: center
   .header
     background: #243237;
     height 56px
@@ -75,7 +77,10 @@
   .line
     widows: 100%;
     height 10px
-    background: #FFC400;
+    background: #25BF89;
+  .form
+    padding-top 12px
+
   .bottom-button-container
     display flex
     justify-content space-around
@@ -89,15 +94,9 @@
     font-size: 14px;
     text-align: center;
     color: #FAFAFA;
-  .button-cancel
+  .button-login
     background: #25BF89;
     border-radius: 12px;
     padding 4px 28px 4px 28px
     cursor pointer
-  .button-exit
-    padding 4px 28px 4px 28px
-    background: #FFC400;
-    border-radius: 12px;
-    cursor pointer
-
 </style>

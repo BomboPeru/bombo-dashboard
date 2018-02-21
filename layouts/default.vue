@@ -1,17 +1,31 @@
 <template>
   <div>
-    <basic-toolbar/>
-    <nuxt/>
+    <div id="cover-layout">
+      <basic-toolbar/>
+      <nuxt/>
+    </div>
+    <login-dialog :is-open="login" @onCollapse="closeLoginDialog"/>
   </div>
 </template>
 
 <script>
   import BasicToolbar from '../components/BasicToolbar'
+  import LoginDialog from '../components/LoginDialog'
 
   export default {
     name: 'default',
     components: {
-      BasicToolbar
+      BasicToolbar, LoginDialog
+    },
+    computed: {
+      login () {
+        return this.$store.getters.loginDialog
+      }
+    },
+    methods: {
+      closeLoginDialog () {
+        this.$store.commit('closeLoginDialog')
+      }
     }
   }
 </script>
@@ -62,4 +76,16 @@ html {
   background-color: #35495e;
 }
 
+::-webkit-scrollbar-trackx
+  background-color: #000000;
+  height: 6px;
+  width: 3px;
+::-webkit-scrollbar
+  width: 3px;
+  height: 6px;
+  background-color: rgba(227, 222, 245, 0);
+::-webkit-scrollbar-thumb
+  width: 3px;
+  height: 6px;
+  background-color: #000000
 </style>
