@@ -5,26 +5,34 @@
       <nuxt/>
     </div>
     <login-dialog :is-open="login" @onCollapse="closeLoginDialog"/>
+    <terms-conditions-dialog :is-open="termsAndConditions" @onCollapse="closeTermsConditionsDialog"/>
   </div>
 </template>
 
 <script>
   import BasicToolbar from '../components/BasicToolbar'
   import LoginDialog from '../components/LoginDialog'
+  import TermsConditionsDialog from '../components/TermsConditionsDialog'
 
   export default {
     name: 'default',
     components: {
-      BasicToolbar, LoginDialog
+      BasicToolbar, LoginDialog, TermsConditionsDialog
     },
     computed: {
       login () {
         return this.$store.getters.loginDialog
+      },
+      termsAndConditions () {
+        return this.$store.getters.termsAndConditionsDialog
       }
     },
     methods: {
       closeLoginDialog () {
         this.$store.commit('closeLoginDialog')
+      },
+      closeTermsConditionsDialog () {
+        this.$store.commit('closeTermsConditionsDialog')
       }
     }
   }

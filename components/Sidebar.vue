@@ -12,9 +12,11 @@
           <span class="icon-input"><img src="../assets/icons/search.svg" alt=""></span>
         </div>
 
-        <div :class="['title-container', itemsForEachPath[activeSection].center?'center':'']">
-          <span :class="['title-menu-section', itemsForEachPath[activeSection].center?'font-weight-light':'']"  v-if="activeSection !== 'DASHBOARD'">{{ activeSection }}</span>
-        </div>
+        <template v-if="activeSection !== 'DASHBOARD'">
+          <div :class="['title-container', itemsForEachPath[activeSection].center?'center':'']">
+            <span :class="['title-menu-section', itemsForEachPath[activeSection].center?'font-weight-light':'']"  v-if="activeSection !== 'DASHBOARD'">{{ activeSection }}</span>
+          </div>
+        </template>
 
         <template v-if="activeSection === 'DASHBOARD'">
           <div class="dashboard-navbar">

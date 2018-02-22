@@ -5,7 +5,8 @@
                   v-model="inputValue"
                   @input="updateValue"
                   placeholder="select item"
-                  :disabled="true"/>
+                  :disabled="true"
+                  :square="square"/>
       <div class="menu" v-if="isShowed">
         <ul>
           <li v-for="(item, i) in items"
@@ -32,7 +33,11 @@
       }
     },
     props: {
-      items: Array
+      items: Array,
+      square: {
+        type: Boolean,
+        default: false
+      },
     },
     methods: {
       updateValue () {
@@ -52,7 +57,7 @@
 <style scoped lang="stylus">
   .menu
     width 100px
-    background #fafafa
+    background #929292
   .menu ul
     list-style-type none
     padding-left 1px

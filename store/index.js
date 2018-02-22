@@ -5,7 +5,8 @@ const store = () => {
   return new Vuex.Store({
     state: {
       signOutDialog: false,
-      loginDialog: false
+      loginDialog: false,
+      termsAndConditionsDialog: false
     },
     getters: {
       isSignoutDialog (state) {
@@ -13,6 +14,9 @@ const store = () => {
       },
       loginDialog (state) {
         return state.loginDialog
+      },
+      termsAndConditionsDialog (state) {
+        return state.termsAndConditionsDialog
       }
     },
     mutations: {
@@ -27,6 +31,12 @@ const store = () => {
       },
       closeLoginDialog (state) {
         state.loginDialog = false
+      },
+      openTermsConditionsDialog (state) {
+        state.termsAndConditionsDialog = true
+      },
+      closeTermsConditionsDialog (state) {
+        state.termsAndConditionsDialog = false
       }
     },
     modules: {
