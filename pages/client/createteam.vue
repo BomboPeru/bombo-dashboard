@@ -18,27 +18,51 @@
     methods: {
       onPlayerSelected (data) {
         let currentTotal = 0
-        currentTotal += this.team.porteros.length
-        currentTotal += this.team.defensas.length
-        currentTotal += this.team.centrocampistas.length
-        currentTotal += this.team.delanteros.length
-        if ((this.constraints[data.type][1] > this.team[data.type].length) &&
-            ( this.constraints.total > currentTotal )
-        ) {
-          let lengthPlayers = this.team[data.type].length
-          if (lengthPlayers > 0) {
-            let isAlreadyAdded = false
-            for (let i = 0; i < lengthPlayers; i++) {
-              if ((data.player.name === this.team[data.type][i].name)) {
-                isAlreadyAdded = true
-                break
-              }
+        currentTotal = this.team.porteros.length +
+                      this.team.defensas.length +
+                      this.team.centrocampistas.length +
+                      this.team.delanteros.length
+
+        let playerTypes = ['porteros', 'defensas', 'centrocampistas', 'delanteros']
+        let teamToEvaluate = data.player.team
+        let sameTeamCount = 0
+
+        for (let i = 0; i < playerTypes.length; i++) {
+          let type = playerTypes[i]
+          for (let j = 0; j < this.team[type].length; j++) {
+            let player = this.team[type][j]
+            if (player.team === teamToEvaluate) {
+              sameTeamCount++
             }
-            if (isAlreadyAdded === false) {
+          }
+          if (sameTeamCount === 4) {
+            break
+          }
+        }
+
+        if (sameTeamCount > this.constraints.maxPlayersSameTeam) {
+          return false
+        }
+
+        if (sameTeamCount < this.constraints.maxPlayersSameTeam) {
+          if ( (this.constraints[data.type][1] > this.team[data.type].length) &&
+            ( this.constraints.total > currentTotal )
+          ) {
+            let lengthPlayers = this.team[data.type].length
+            if (lengthPlayers > 0) {
+              let isAlreadyAdded = false
+              for (let i = 0; i < lengthPlayers; i++) {
+                if ((data.player.name === this.team[data.type][i].name)) {
+                  isAlreadyAdded = true
+                  break
+                }
+              }
+              if (isAlreadyAdded === false) {
+                this.team[data.type].push(data.player)
+              }
+            } else {
               this.team[data.type].push(data.player)
             }
-          } else {
-            this.team[data.type].push(data.player)
           }
         }
       }
@@ -56,7 +80,8 @@
           porteros: [1, 1],
           defensas: [3, 5],
           centrocampistas: [3, 5],
-          delanteros: [1, 3]
+          delanteros: [1, 3],
+          maxPlayersSameTeam: 3
         }
       }
     }

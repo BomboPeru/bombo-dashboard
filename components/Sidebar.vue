@@ -32,6 +32,7 @@
         </template>
       </div>
 
+      <!-- ONLY FOR TEAMS -->
       <div class="sidebar elevation" v-if="sidebar">
         <div>
           <div v-for="(item, i) in itemsForEachPath[activeSection].items"

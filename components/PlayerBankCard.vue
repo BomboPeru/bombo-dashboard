@@ -4,7 +4,7 @@
         <div class="title">
           <span class="">{{ title }}</span>
         </div>
-        <search-component v-model="searchText"/>
+        <search-component v-model="search"/>
       </div>
       <div class="line elevation"></div>
       <!-- header -->
@@ -68,11 +68,9 @@
           return this.searchText
         },
         set (value) {
-          if (value !== '') {
-            // console.log('set')
-            this.fetchSomething(this.searchText)
-            return value
-          }
+          // console.log('set')
+          this.fetchSomething(value)
+          return value
         }
       }
     },
@@ -87,20 +85,29 @@
       async fetchSomething(searchText) {
         // const ip = await this.$axios.$get('https://bombo-open-api-nbjozjbvyl.now.sh/api/v1/full')
 
-        console.log('fetching')
+        console.log('fetching', searchText)
         if (searchText !== '') {
 
+          console.log('do something')
           let types = ['porteros', 'defensas', 'centrocampistas', 'delanteros']
-          // for (let teamName in SampleData) {
-          //   for (let i=0; i < types.length; i++) {
-          //     let listPlayers = SampleData[teamName][types[i]]
-          //     for (let j =0; j < listPlayers.length; j++) {
-          //       if (listPlayers[j].name.includes(searchText)) {
-          //         this.teams[teamName][types[i]].push(listPlayers[j])
-          //       }
-          //     }
-          //   }
-          // }
+          let results = {}
+          for (let key in SampleData) {
+
+            for (let typePlayer = 0; typePlayer < types.length ;typePlayer++) {
+              SampleData[key][types[typePlayer]].map(player => {
+                if (player.name.includes(searchText)) {
+                  if (results[key] === undefined) {
+                    results[key] = {}
+                  }
+                  if (results[key][types[typePlayer]] === undefined) {
+                    results[key][types[typePlayer]] = []
+                  }
+                  results[key][types[typePlayer]].push(player)
+                }
+              })
+            }
+          }
+          this.teams = results
         } else {
           this.teams = SampleData
         }
