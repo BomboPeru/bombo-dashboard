@@ -7,6 +7,7 @@
       <!-- TITLE BAR (WHITE) -->
       <div class="title-bar desktop">
 
+        <!-- SEARCH VIEW -->
         <div class="search-input" v-if="activeSection === 'MIS EQUIPOS'">
           <input type="text" placeholder="Busca equipos">
           <span class="icon-input"><img src="../assets/icons/search.svg" alt=""></span>
@@ -14,7 +15,8 @@
 
         <template v-if="activeSection !== 'DASHBOARD'">
           <div :class="['title-container', itemsForEachPath[activeSection].center?'center':'']">
-            <span :class="['title-menu-section', itemsForEachPath[activeSection].center?'font-weight-light':'']"  v-if="activeSection !== 'DASHBOARD'">{{ activeSection }}</span>
+            <span :class="['title-menu-section', itemsForEachPath[activeSection].center?'font-weight-light':'']"
+                  v-if="activeSection !== 'DASHBOARD'">{{ activeSection }}</span>
           </div>
         </template>
 
@@ -22,7 +24,7 @@
           <div class="dashboard-navbar">
             <div v-for="(item, i) in itemsForEachPath[activeSection].items"
                  :key="i"
-                 @click="selectTypeTeam(item.name)"
+                 @click="clickOnTab(item.name)"
                  v-if="item.type === 'normal'"
                  class="dashboard-navbar-item">
               <span class="text">{{ item.name }}</span>
@@ -37,7 +39,7 @@
         <div>
           <div v-for="(item, i) in itemsForEachPath[activeSection].items"
                :key="i"
-               @click="selectTypeTeam(item.name)"
+               @click="clickOnTab(item.name)"
                v-if="item.type === 'normal'"
                class="sidebar-item elevation">
             <div class="line" :style="{ background: item.color }"></div>
@@ -65,7 +67,7 @@
       <!-- BLACK BAR FOR NAVIGATE INSIDE PAGES -->
       <div v-for="(item, i) in itemsForEachPath[activeSection].items"
            :key="i" class="mobile sub-nav-btn elevation"
-           @click="selectTypeTeam(item.name)"
+           @click="clickOnTab(item.name)"
            v-if="item.type !== 'bottom'">
         <div class="line" :style="{ background: item.color }"></div>
         <span class="text">{{ item.name }}</span>
@@ -134,6 +136,9 @@
           },
           'ARMA UN EQUIPO': {
             items: [
+              {name: 'JUGADORES', color:'#EA504C', type: 'normal'},
+              {name: 'LISTA', color:'#67A6F0', type: 'normal'},
+              {name: 'FORMACION', color:'#25BF89', type: 'normal'}
             ]
           },
           'MI PERFIL': {
@@ -149,10 +154,17 @@
       }
     },
     methods: {
-      selectTypeTeam (name) {
-        let indexSelected = this.$store.state.team.typeTeams.indexOf(name)
-        // this.$store.state.activeTypeTeam = indexSelected
-        this.$store.commit('team/setActiveTypeTeam', indexSelected)
+      clickOnTab (name) {
+        if (this.activeSection === 'MIS EQUIPOS') {
+          let indexSelected = this.$store.state.team.typeTeams.indexOf(name)
+          // this.$store.state.activeTypeTeam = indexSelected
+          this.$store.commit('team/setActiveTypeTeam', indexSelected)
+        } else if (this.activeSection === 'ARMA UN EQUIPO') {
+          let indexSelected = this.$store.state.createteam.tabViews.indexOf(name)
+          // this.$store.state.activeTypeTeam = indexSelected
+          this.$store.commit('createteam/setActiveTabView', indexSelected)
+        }
+
       },
       createNewTeamCallback () {
         this.$store.commit('team/turnOnSelectLeageDialog')

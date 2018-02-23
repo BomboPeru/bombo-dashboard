@@ -2,7 +2,7 @@
     <div id="forgotpassword">
       <div class="title-bar elevation">Opciones de Recuperacion de cuenta</div>
       <div class="container">
-        <p class="instructions">Escribe la direccion de correo afiliada a tu cuenta, para poder enviarte el formato de renovacion de contraseña</p>
+        <p class="instructions">Escribe la direccion de correo afiliada a tu cuenta, para poder enviarte el <br> formato de renovacion de contraseña</p>
         <input-text v-model="email" placeholder="Correo Electronico"/>
         <p class="message">{{message}}</p>
         <div class="btn-container">

@@ -1,7 +1,9 @@
 <template>
     <div id="createteam">
-      <player-bank-card class="player-bank-card" @onPlayerSelected="onPlayerSelected"/>
-      <new-team-card class="new-team-card" :team="team"/>
+
+      <player-bank-card :class="['player-bank-card', activeTabView === 0?'show':'hide']" @onPlayerSelected="onPlayerSelected"/>
+      <new-team-card :class="['new-team-card', (activeTabView === 1 || activeTabView === 2)?'show':'hide']" :team="team"/>
+
     </div>
 </template>
 
@@ -14,6 +16,11 @@
     name: 'createteam',
     components: {
       PlayerBankCard, NewTeamCard
+    },
+    computed: {
+      activeTabView () {
+        return this.$store.getters['createteam/activeTabView']
+      }
     },
     methods: {
       onPlayerSelected (data) {
@@ -90,7 +97,7 @@
 
 <style scoped lang="stylus">
   #createteam
-    padding 23px
+    padding 23px 10px 0 10px
     min-height calc(100vh - 128px)
     display flex
     flex-flow row
@@ -101,7 +108,20 @@
   .new-team-card
     margin 5px 10px
     flex 0 0 auto
+  .hide
+    display block
+  .show
+    display block
   @media screen and (max-width: 1023px)
     #createteam
       min-height calc(100vh - 56px)
+    .hide
+      display none
+    .show
+      display block
+    .player-bank-card
+    .new-team-card
+      margin 0
+    /*.new-team-card*/
+    /*margin 0 !important*/
 </style>

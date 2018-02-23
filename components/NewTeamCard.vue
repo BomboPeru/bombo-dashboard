@@ -1,12 +1,19 @@
 <template>
     <div id="new-team-card" class="round-card rounded elevation">
-      <div class="header elevation tabs">
+
+      <div class="header elevation tabs desktop">
         <div v-for="(item, i) in tabs" :key="i"
-             @click="toggleTab"
+             @click="toggleTab(i)"
              :class="['tab', activeTab === i ?'':'inactive-tab']">
           <span class="">{{ item }}</span>
         </div>
       </div>
+      <div class="header elevation tabs mobile">
+        <div :class="['tab']">
+          <span class="">{{ tabs[activeTab] }}</span>
+        </div>
+      </div>
+
 
       <div class="line elevation"></div>
 
@@ -138,6 +145,19 @@
       team: Object
     },
     computed: {
+      // IN A SYSTEM WHERE THE THIRD TAB TURNS INTO THE FIRST ONE
+      activeTab: {
+        get () {
+          if (this.$store.getters['createteam/activeTabView'] === 0) {
+            return 0
+          } else {
+            return this.$store.getters['createteam/activeTabView'] - 1
+          }
+        },
+        set (i) {
+          this.$store.commit('createteam/setActiveTabView', i + 1)
+        }
+      },
       totalPoints () {
         let total = 0
 
@@ -162,19 +182,23 @@
     },
     data () {
       return{
-        activeTab: 0,
+        // activeTab: 0,
         tabs: ['LISTA', 'FORMACION'],
         title: 'MI EQUIPO',
         teamName: ''
       }
     },
     methods: {
-      toggleTab () {
-        if (this.tabs.length === (this.activeTab + 1)) {
-          this.activeTab = 0
-        } else {
-          this.activeTab++
-        }
+      toggleTab (i) {
+        // if () {
+        //
+        // }
+        this.activeTab = i
+        // if (this.tabs.length === (this.activeTab + 1)) {
+        //   this.activeTab = 0
+        // } else {
+        //   this.activeTab++
+        // }
       },
       deletePlayer (player, type) {
         let index = this.team[type].indexOf(player)
@@ -310,7 +334,20 @@
   .player-info div
     margin-bottom 4px
 
+  .desktop
+    display flex
+  .mobile
+    display none
+    text-align left
   @media screen and (max-width: 1023px)
     .close-icon
       display block
+    .round-card
+      width 100%
+    .desktop
+      display none
+    .mobile
+      text-align center
+      display flex
+
 </style>

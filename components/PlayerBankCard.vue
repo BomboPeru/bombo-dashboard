@@ -2,7 +2,7 @@
     <div id="player-bank-card" class="round-card rounded elevation">
       <div class="header elevation">
         <div class="title">
-          <span class="">{{ title }}</span>
+          <span class="title-text">{{ title }}</span>
         </div>
         <search-component v-model="search"/>
       </div>
@@ -135,6 +135,21 @@
     max-height calc(100vh - 100px)
     background #fafafa
     overflow hidden
+
+  //  width 100px
+  //  white-space: nowrap;
+  //  overflow: hidden;
+  //  text-overflow: ellipsis;
+  /*.title-text*/
+  /*color: white !important*/
+
+  @media screen and (max-width: 1023px)
+    .title
+      display none !important
+    .round-card
+      width 100%
+      // max-height calc(100vh - 100px)
+
   .header
     width 100%
     height 50px

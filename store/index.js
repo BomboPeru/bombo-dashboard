@@ -1,5 +1,6 @@
 import Vuex from 'vuex'
 import team from './teams'
+import createteam from './createteam'
 
 const store = () => {
   return new Vuex.Store({
@@ -40,7 +41,8 @@ const store = () => {
       }
     },
     modules: {
-      team
+      team,
+      createteam
     }
   })
 }
