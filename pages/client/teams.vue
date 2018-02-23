@@ -30,6 +30,7 @@
       <!-- GUARDADOS -->
       <template v-else-if="activeTypeTeam === 1">
         <team-card
+          class="teamcard"
           v-for="(team, i) in mteams[1]"
           :key="i+'card'"
           :title="team.name"
@@ -43,6 +44,7 @@
       <!-- PASADOS -->
       <template v-else-if="activeTypeTeam === 2">
         <team-card
+          class="teamcard"
           v-for="(team, i) in mteams[1]"
           :key="i+'card'"
           :title="team.name"
@@ -253,6 +255,8 @@
   .teamcard
     flex-shrink 0
     /*display: inline-block*/
+    // height calc(100vh - 300px)
+    overflow-y auto
   .create-team-btn
     width 200px
   .empty-teams-message

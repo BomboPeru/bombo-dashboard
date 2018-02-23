@@ -240,8 +240,12 @@
   left: 50%
   transform: translateX(-50%)
 
+//  NOTE: MANAGED TO BE FILL THE HEIGHT AND STILL BE RESPONSIVE
+//  STILL MUTABLE
 .list-players-container
-  height 200px
+  // height 200px
+  height calc(100vh - 500px)
+  /*height 40vh*/
   overflow-y: auto
 @media screen and (max-width: 1023px)
   #round-card
