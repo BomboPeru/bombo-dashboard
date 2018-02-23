@@ -163,6 +163,10 @@
           let indexSelected = this.$store.state.createteam.tabViews.indexOf(name)
           // this.$store.state.activeTypeTeam = indexSelected
           this.$store.commit('createteam/setActiveTabView', indexSelected)
+        } else if (this.activeSection === 'DASHBOARD') {
+          let indexSelected = this.$store.state.dashboard.tabViews.indexOf(name)
+          // this.$store.state.activeTypeTeam = indexSelected
+          this.$store.commit('dashboard/setActiveTabView', indexSelected)
         }
 
       },

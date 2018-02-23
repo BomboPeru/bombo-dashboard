@@ -1,15 +1,15 @@
 <template>
   <div id="dashboard">
     <div class="content">
-      <div class="section">
+      <div :class="['section', activeTab === 0?'show':'hide']">
         <ranking-card/>
       </div>
-      <div class="section matches-container">
+      <div :class="['section', 'matches-container', activeTab === 1?'show':'hide']">
         <historic-match-card v-for="(item, i) in matches"
                              :key="i+'-match-card'"
                              :match="item"/>
       </div>
-      <div class="section teams-container">
+      <div :class="['section', 'teams-container', activeTab === 2?'show-flex':'hide']">
         <team-card class="team-card"
                    v-for="(team, i) in teams"
                    :key="i+'-team'"
@@ -34,6 +34,11 @@
     name: 'dashboard',
     components: {
       RankingCard, HistoricMatchCard, TeamCard
+    },
+    computed: {
+      activeTab () {
+        return this.$store.getters['dashboard/activeTabView']
+      }
     },
     data () {
       return {
@@ -174,4 +179,17 @@
     /*flex-shrink 0*/
     margin-bottom 26px
 
+  /*.show*/
+    /*display block*/
+  /*.hide*/
+    /*display block*/
+  /*.show-flex*/
+    /*display flex*/
+  @media screen and (max-width: 1023px)
+    .show
+      display block
+    .hide
+      display none
+    .show-flex
+      display flex
 </style>

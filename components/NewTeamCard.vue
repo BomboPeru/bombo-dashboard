@@ -136,6 +136,7 @@
   import InputText from './InputText'
   import SquadNumber from './SquadNumber'
 
+  // TO DO SAVE TEAM
   export default {
     name: 'new-team-card',
     components: {
