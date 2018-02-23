@@ -17,6 +17,7 @@
       <template v-if="activeTypeTeam === 0">
         <team-card
           class="teamcard"
+          :style="{ 'flex-grow': mteams[0].length > 3 ? '1':'0' }"
           v-for="(team, i) in mteams[0]"
           :key="i+'card'"
           :title="team.name"
@@ -31,6 +32,7 @@
       <template v-else-if="activeTypeTeam === 1">
         <team-card
           class="teamcard"
+          :style="{ 'flex-grow': mteams[1].length > 3 ? '1':'0' }"
           v-for="(team, i) in mteams[1]"
           :key="i+'card'"
           :title="team.name"
@@ -45,7 +47,8 @@
       <template v-else-if="activeTypeTeam === 2">
         <team-card
           class="teamcard"
-          v-for="(team, i) in mteams[1]"
+          :style="{ 'flex-grow': mteams[2].length > 3 ? '1':'0' }"
+          v-for="(team, i) in mteams[2]"
           :key="i+'card'"
           :title="team.name"
           :points="team.points"
@@ -180,42 +183,19 @@
                   }
                 ],
               }
-            },
+            }
+          ],
+          2: [
             { name: 'NOmbre de equipo',
               balance: +23.0,
               leagueImg: '',
               createdAt: '23/02/2018',
               ranking: 2,
               points: 233,
-              players: {
-                porteros:  [
-                  {
-                    name: 'NOmbre Plyaer',
-                    j_number: '23'
-                  }
-                ],
-                defensas: [
-                  {
-                    name: 'NOmbre Plyaer',
-                    j_number: '23'
-                  }
-                ],
-                centrocampistas: [
-                  {
-                    name: 'NOmbre Plyaer',
-                    j_number: '23'
-                  }
-                ],
-                delanteros: [
-                  {
-                    name: 'NOmbre Plyaer',
-                    j_number: '23'
-                  }
-                ]
-              }
-            }
-          ],
-          2: [
+              players: [
+                { name: 'NOmbre Plyaer' }
+              ]
+            },
             { name: 'NOmbre de equipo',
               balance: +23.0,
               leagueImg: '',
@@ -250,7 +230,9 @@
     justify-content flex-start
     margin-top 62px
     padding-left 18px
-    align-items: flex-start;
+    /*align-items: flex-start;*/
+    align-items: stretch;
+    padding-bottom 50px
 
   .teamcard
     flex-shrink 0

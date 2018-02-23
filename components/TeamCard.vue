@@ -147,7 +147,9 @@
 
 <style scoped lang="stylus">
 #round-card
-  width 240px
+  /*width 240px*/
+  width 350px
+  flex-grow 1
   /*height 64vh*/
   overflow hidden
   background #fafafa
