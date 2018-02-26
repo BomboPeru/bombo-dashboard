@@ -41,7 +41,7 @@
                :key="i"
                @click="clickOnTab(item.name)"
                v-if="item.type === 'normal'"
-               class="sidebar-item elevation">
+               :class="['sidebar-item', 'elevation', tabSelected===i?'sidebar-item-selected':'']">
             <div class="line" :style="{ background: item.color }"></div>
             <span class="text">{{ item.name }}</span>
           </div>
@@ -101,6 +101,7 @@
     },
     data () {
       return {
+        tabSelected: 0,
         navbarItems: [
           { name: 'MIS EQUIPOS', urlPath: '/client/teams' },
           { name: 'PROXIMAS FECHAS', urlPath: '/client/matches' },
@@ -155,20 +156,24 @@
     },
     methods: {
       clickOnTab (name) {
+        let indexSelected
         if (this.activeSection === 'MIS EQUIPOS') {
-          let indexSelected = this.$store.state.team.typeTeams.indexOf(name)
+          indexSelected = this.$store.state.team.typeTeams.indexOf(name)
           // this.$store.state.activeTypeTeam = indexSelected
+
           this.$store.commit('team/setActiveTypeTeam', indexSelected)
         } else if (this.activeSection === 'ARMA UN EQUIPO') {
-          let indexSelected = this.$store.state.createteam.tabViews.indexOf(name)
+          indexSelected = this.$store.state.createteam.tabViews.indexOf(name)
           // this.$store.state.activeTypeTeam = indexSelected
           this.$store.commit('createteam/setActiveTabView', indexSelected)
         } else if (this.activeSection === 'DASHBOARD') {
-          let indexSelected = this.$store.state.dashboard.tabViews.indexOf(name)
+          indexSelected = this.$store.state.dashboard.tabViews.indexOf(name)
           // this.$store.state.activeTypeTeam = indexSelected
           this.$store.commit('dashboard/setActiveTabView', indexSelected)
         }
-
+        if (indexSelected !== undefined) {
+          this.tabSelected = indexSelected
+        }
       },
       createNewTeamCallback () {
         this.$store.commit('team/turnOnSelectLeageDialog')
@@ -219,6 +224,8 @@
     background-color: #243237;
     border-radius: 0px 12px 12px 0px;
     cursor pointer
+  .sidebar-item-selected
+    background #445F69
   .sidebar-item .line
     position absolute
     top 0

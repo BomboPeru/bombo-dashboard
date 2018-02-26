@@ -168,6 +168,46 @@
                   {
                     name: 'NOmbre Plyaer',
                     j_number: '23'
+                  },
+                  {
+                    name: 'NOmbre Plyaer',
+                    j_number: '23'
+                  },
+                  {
+                    name: 'NOmbre Plyaer',
+                    j_number: '23'
+                  },
+                  {
+                    name: 'NOmbre Plyaer',
+                    j_number: '23'
+                  },
+                  {
+                    name: 'NOmbre Plyaer',
+                    j_number: '23'
+                  },
+                  {
+                    name: 'NOmbre Plyaer',
+                    j_number: '23'
+                  },
+                  {
+                    name: 'NOmbre Plyaer',
+                    j_number: '23'
+                  },
+                  {
+                    name: 'NOmbre Plyaer',
+                    j_number: '23'
+                  },
+                  {
+                    name: 'NOmbre Plyaer',
+                    j_number: '23'
+                  },
+                  {
+                    name: 'NOmbre Plyaer',
+                    j_number: '23'
+                  },
+                  {
+                    name: 'NOmbre Plyaer',
+                    j_number: '23'
                   }
                 ],
                 centrocampistas: [
@@ -186,15 +226,27 @@
             }
           ],
           2: [
-            { name: 'NOmbre de equipo',
+            {
+              name: 'NOmbre de equipo',
               balance: +23.0,
               leagueImg: '',
               createdAt: '23/02/2018',
               ranking: 2,
               points: 233,
-              players: [
-                { name: 'NOmbre Plyaer' }
-              ]
+              players: {
+                centrocampistas: [
+                  {
+                    name: 'NOmbre Plyaer',
+                    j_number: '23'
+                  }
+                ],
+                delanteros: [
+                  {
+                    name: 'NOmbre Plyaer',
+                    j_number: '23'
+                  }
+                ]
+              }
             },
             { name: 'NOmbre de equipo',
               balance: +23.0,
@@ -202,10 +254,21 @@
               createdAt: '23/02/2018',
               ranking: 2,
               points: 233,
-              players: [
-                { name: 'NOmbre Plyaer' }
-              ]
-            }
+              players: {
+                centrocampistas: [
+                  {
+                    name: 'NOmbre Plyaer',
+                    j_number: '23'
+                  }
+                ],
+                delanteros: [
+                  {
+                    name: 'NOmbre Plyaer',
+                    j_number: '23'
+                  }
+                ]
+              }
+            },
           ]
         }
       }

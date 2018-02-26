@@ -1,5 +1,5 @@
 <template>
-    <div id="round-card" class="elevation rounded">
+    <div id="round-card" class="elevation rounded" :style="{ 'padding-bottom': collapsable?'0px':'5px' }">
       <div class="header" :style="{ background: typeColorCards[typeCard] }">
         <div :style="{ 'text-align': typeCard !== 'en_juego'?'center':'left' }">
           <span class="title" :style="{ 'text-align': typeCard !== 'en_juego'?'center':'left' }">{{ title }}</span>
@@ -57,14 +57,16 @@
       <template v-if="collapsable === false || isCollapsed === true">
         <p class="subheader selected-players-title">JUGADORES SELECCIONADOS</p>
         <!-- PLAYERS -->
-        <div class="list-players-container">
-          <player-row-card v-for="(item, i) in players.porteros" :key="i+'prc-portero'" mode="small-a" :player="item" position="ARQUERO"/>
+        <div>
+          <div :class="['list-players-container', typeCard === 'guardado'||typeCard === 'pasados'?'list-players-container-b':'']">
+            <player-row-card v-for="(item, i) in players.porteros" :key="i+'prc-portero'" mode="small-a" :player="item" position="ARQUERO"/>
 
-          <player-row-card v-for="(item, i) in players.defensas" :key="i+'prc-defensa'" mode="small-a" :player="item" position="DEFENSA"/>
+            <player-row-card v-for="(item, i) in players.defensas" :key="i+'prc-defensa'" mode="small-a" :player="item" position="DEFENSA"/>
 
-          <player-row-card v-for="(item, i) in players.centrocampistas" :key="i+'prc-centrocampista'" mode="small-a" :player="item" position="CENTROCAMPISTA"/>
+            <player-row-card v-for="(item, i) in players.centrocampistas" :key="i+'prc-centrocampista'" mode="small-a" :player="item" position="CENTROCAMPISTA"/>
 
-          <player-row-card v-for="(item, i) in players.delanteros" :key="i+'prc-delantero'" mode="small-a" :player="item" position="DELANTERO"/>
+            <player-row-card v-for="(item, i) in players.delanteros" :key="i+'prc-delantero'" mode="small-a" :player="item" position="DELANTERO"/>
+          </div>
         </div>
 
         <div class="bottom-button-container" v-if="typeCard !== 'en_juego'">
@@ -155,6 +157,9 @@
   background #fafafa
   margin-left 24px
   margin-right 24px
+  /*height: 72%;*/
+  /*padding-bottom: 12px;*/
+
 /*
 .rounded
   border-radius 10px
@@ -246,9 +251,13 @@
 //  STILL MUTABLE
 .list-players-container
   // height 200px
-  height calc(100vh - 500px)
+  height calc(100vh - 450px)
+  //height calc(100vh - 500px)
   /*height 40vh*/
   overflow-y: auto
+.list-players-container-b
+  height calc(100vh - 500px) !important
+
 @media screen and (max-width: 1023px)
   #round-card
     min-width 300px
@@ -271,6 +280,9 @@
   padding-left 15px
   padding-right 15px
   padding-bottom 9px
+  padding-top 22px
+  height 67px
+  line-height 27px
 .button-play-again
   display inline-block
   padding 4px 20px 4px 20px
@@ -282,6 +294,7 @@
   border-radius 12px
 .button-save
   float right
+  text-align center
   display inline-block
   padding 4px 28px 4px 28px
   color #FAFAFA
@@ -290,8 +303,10 @@
   font-size 14px
   background #25BF89
   border-radius 12px
+  flex-grow 2
 .button-delete
   display inline-block
+  text-align center
   margin-right 12px
   padding 4px 12px 4px 12px
   color #FAFAFA
@@ -300,6 +315,7 @@
   font-size 14px
   background #FFC400
   border-radius 12px
+  flex-grow 1
 
 .btn-expand
   background #445F69

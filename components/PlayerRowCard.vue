@@ -1,5 +1,6 @@
 <template>
-    <div id="player-row-card" class="card-player elevation">
+    <div id="player-row-card" class="card-player">
+
       <template v-if="mode === 'bank'">
         <squad-number :img="'/shirt_placeholder.svg'" :number="player.j_number"/>
         <span class="name1">{{ player.name }}</span>
@@ -11,6 +12,7 @@
         </div>
         <span class="add" @click="selectPlayer(player)"><img src="../assets/icons/plus_black.svg" alt=""></span>
       </template>
+
       <template v-else-if="mode === 'selected'">
         <squad-number :img="'/shirt_placeholder.svg'" :number="player.j_number"/>
         <span class="name2">{{ player.name }}</span>
@@ -20,6 +22,7 @@
         </div>
         <!--<span class="add" @click="selectPlayer(player)"><img src="../assets/icons/plus_black.svg" alt=""></span>-->
       </template>
+
       <template v-else-if="mode === 'small-a'">
         <squad-number class="dorsal3" :img="'/shirt_placeholder.svg'" :number="player.j_number"/>
         <div class="name-team3">
@@ -85,10 +88,15 @@
 <style scoped lang="stylus">
   .card-player
     border-radius 2px
-    height 30px
+    padding-top: 5px
+    padding-right: 5px
+    padding-left: 5px
+    /*height 30px*/
     margin 4px 10px
     background #fafafa
     font-family: Titillium Web;
+    box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.25);
+
   .card-player span
     display inline-block
     text-align center
@@ -137,6 +145,8 @@
 
   .dorsal3
     margin-top -5px !important
+    position: relative;
+    top: -2px;
   .name-team3
     display inline-block
     font-size 10px !important
@@ -149,6 +159,7 @@
     overflow: hidden;
     color #4A4A4A
     font-weight bold
+    font-size 12px !important
   .team3
     font-size 8px !important
   .posicion3
