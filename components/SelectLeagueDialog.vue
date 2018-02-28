@@ -8,8 +8,10 @@
           <div class="card-header-line elevation"></div>
           <div class="content">
             <ul>
-              <li v-for="(item, i) in leagues" :key="i" class="card-league elevation rounded" @click="onClickLeague(item)">
-                <img :src="item.image===''? '/placeholder_league.jpg':item.image" alt="" @click="selectLeague(i)">
+              <li v-for="(item, i) in leagues" :key="i"
+                  :class="['card-league', 'elevation', 'rounded', item.coming_soon===true?'blurred':'']"
+                  @click="onClickLeague(item)">
+                <img :src="item.image===''? '/leagues/uefa_card.png':item.image" alt="" @click="selectLeague(i)">
               </li>
             </ul>
           </div>
@@ -35,8 +37,8 @@
         leagues: [
           { name: 'PREMIER LEAGUE', image: '' },
           { name: 'CHAMPIONS LEAGUE', image: '' },
-          { name: 'CHAMPIONS LEAGUE', image: '' },
-          { name: 'CHAMPIONS LEAGUE', image: '' }
+          { name: 'COMMING SOON', image: '', coming_soon: true },
+          { name: 'COMMING SOON', image: '', coming_soon: true }
         ]
       }
     },
@@ -84,12 +86,13 @@
     cursor pointer
     background #fafafa
     width 250px
-    height 200px
+    /*height 200px*/
+    height 122px
     display inline-block
     position relative
     margin 5px 5px
-
-
+  .blurred
+    filter blur(0.4)
   .card-league img
     width 250px
   .card-container

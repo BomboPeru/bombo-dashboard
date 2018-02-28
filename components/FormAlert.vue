@@ -28,9 +28,11 @@
     left: 13px;
   .message
     display inline-block
-    position: relative
-    top: -6px
-    left: 4px
+    position: absolute
+    text-align center
+    min-width 150px
+    top: 0px
+    left: 32px
 
     background: #FFC400;
     box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.25);

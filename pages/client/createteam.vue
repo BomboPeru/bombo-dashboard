@@ -78,7 +78,13 @@
           }
         }
 
-        if (sameTeamCount > this.constraints.maxPlayersSameTeam) {
+        if (currentTotal >= 11) {
+          this.$store.dispatch('turnOnSnackbar', 'No puedes agregar mas de 11 jugadores a tu equipo')
+          return false
+        }
+
+        if (sameTeamCount >= this.constraints.maxPlayersSameTeam) {
+          this.$store.dispatch('turnOnSnackbar', 'No puedes agregar mas de 3 jugadores del mismo equipo')
           return false
         }
 
@@ -101,6 +107,14 @@
             } else {
               this.team.players[data.type].push(data.player)
             }
+          } else {
+            let playerType = {
+              'goal_keeper': 'portero',
+              'defender': 'defensa',
+              'mid_fielder': 'mediocampista',
+              'forward': 'delantero'
+            }
+            this.$store.dispatch('turnOnSnackbar', `No puedes agregar mas de ${this.constraints[data.type][1]} ${playerType[data.type]}(s)`)
           }
         }
       }
@@ -123,7 +137,8 @@
           defender: [3, 5],
           mid_fielder: [3, 5],
           forward: [1, 3],
-          maxPlayersSameTeam: 3
+          maxPlayersSameTeam: 3,
+          maxCost: 100
         }
       }
     }

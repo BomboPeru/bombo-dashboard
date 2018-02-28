@@ -16,7 +16,7 @@
         </div>
       </div>
       <div class="league-background">
-        <img :src="leagueImg" alt="" width="100%">
+        <img :src="'/leagues/uefa_card.png'" alt="" height="128px">
       </div>
       <p class="created-at subheader">FECHA DE CREACION: {{ createdAt }}</p>
       <div class="table-container">
@@ -178,7 +178,8 @@
 <style scoped lang="stylus">
 #round-card
   /*width 240px*/
-  width 350px
+  /*width 350px*/
+  width 420px
   flex-grow 1
   /*height 64vh*/
   overflow hidden
@@ -226,8 +227,9 @@
   cursor pointer
 .league-background
   width 100%
-  height 58px
-  background #8d82fa
+  height 128px
+  background #0f1921
+  text-align center
 .subheader
   font-size 10px
   color #A6A6A6

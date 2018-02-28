@@ -25,7 +25,7 @@
         </div>
         <div class="points">
           <span class="points-label">Costo Acumulado</span>
-          <span class="points-value">{{totalPoints}}</span>
+          <span class="points-value">{{totalPoints}} M</span>
         </div>
 
         <div
@@ -38,25 +38,29 @@
                            :key="key+'-arquero'"
                            mode="selected"
                            :player="player"
-                           position="ARQUERO"/>
+                           position="ARQUERO"
+                           @onPlayerSelected="deletePlayer(player, 'goal_keeper')"/>
 
           <player-row-card v-for="(player, key) in team.players.defender"
                            :key="key+'-defensa'"
                            mode="selected"
                            :player="player"
-                           position="DEFENSA"/>
+                           position="DEFENSA"
+                           @onPlayerSelected="deletePlayer(player, 'defender')"/>
 
           <player-row-card v-for="(player, key) in team.players.mid_fielder"
                            :key="key+'-centrocampista'"
                            mode="selected"
                            :player="player"
-                           position="CENTROCAMPISTA"/>
+                           position="CENTROCAMPISTA"
+                           @onPlayerSelected="deletePlayer(player, 'mid_fielder')"/>
 
           <player-row-card v-for="(player, key) in team.players.forward"
                            :key="key+'-delantero'"
                            mode="selected"
                            :player="player"
-                           position="DELANTERO"/>
+                           position="DELANTERO"
+                           @onPlayerSelected="deletePlayer(player, 'forward')"/>
         </div>
       </template>
       <template v-else-if="tabs[activeTab] === 'FORMACION'">
@@ -164,20 +168,22 @@
 
         console.log(this.team.players)
         this.team.players['goal_keeper'].map((item) => {
-          total+= parseInt(item.played)
+          total+= (item.cost)
         })
 
         this.team.players['defender'].map((item) => {
-          total+= parseInt(item.played)
+          total+= (item.cost)
         })
 
         this.team.players['mid_fielder'].map((item) => {
-          total+= parseInt(item.played)
+          total+= (item.cost)
         })
 
         this.team.players['forward'].map((item) => {
-          total+= parseInt(item.played)
+          total+= (item.cost)
         })
+
+        total = Math.round(total * 100)/100
 
         return total
       }

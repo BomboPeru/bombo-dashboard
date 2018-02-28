@@ -4,7 +4,12 @@ const team = {
   state: {
     selectLeagueDialog: false,
     typeTeams: ['EN JUEGO','GUARDADOS','PASADOS'],
-    activeTypeTeam: 0
+    activeTypeTeam: 0,
+    mteams: {
+      0: [],
+      1: [],
+      2: []
+    }
   },
   mutations: {
     setActiveTypeTeam (state, index) {
@@ -17,7 +22,15 @@ const team = {
       state.selectLeagueDialog = false
     }
   },
-  actions: {},
+  actions: {
+    async fetchUserData () {
+      let response = await this.$axios.$get('http://api.bombo.pe/api/v1.0/user/' + this.testUserId)
+      //
+      this.mteams['0'] = response.data.playing_teams === null ? [] : response.data.playing_teams
+      this.mteams['1'] = response.data.saved_teams === null ? [] : response.data.saved_teams
+      this.mteams['2'] = response.data.old_teams === null ? [] : response.data.old_teams
+    }
+  },
   getters: {
     isSelectLeagueDialog (state) {
       return state.selectLeagueDialog

@@ -1,6 +1,6 @@
 <template>
     <span id="squad-number" class="shirt">
-      <img :src="img" width="27px" alt="">
+      <img :src="img" class="dorsal-src" width="27px" alt="">
       <span class="dorsal" :style="{ 'top': ground===false? '6px':'-2px' }">{{dorsal}}</span>
     </span>
 </template>
@@ -13,7 +13,7 @@
         if ( this.number.length === 2) {
           return this.number
         } else {
-          return this.number.padStart(2, '0')
+          return this.number.toString().padStart(2, '0')
         }
       }
     },
@@ -26,7 +26,7 @@
         type: String,
         default: '/shirt_placeholder.svg'
       },
-      number: String
+      number: Number
     }
   }
 </script>
@@ -44,5 +44,8 @@
     font-size 10px
     top: 6px;
     left: 8px;
+
+  .dorsal-src
+    filter: hue-rotate(116deg)
 
 </style>

@@ -1,7 +1,7 @@
 <template>
     <div id="input-text">
       <input :type="type"
-             :class="['input', square?'square':'']"
+             :class="['input', square?'square':'', flat?'flat':'']"
              @input="updateValue()"
              ref="inputText"
              :value="value"
@@ -26,6 +26,10 @@
       },
       value: [String, Number],
       placeholder: String,
+      flat: {
+        type: Boolean,
+        default: false
+      },
       square: {
         type: Boolean,
         default: false
@@ -59,4 +63,11 @@
     font-family: Titillium Web;
   .square
     border-radius: 4px
+  .flat
+    color #424242
+    padding: 5px 0;
+    box-shadow none
+    font-size 18px
+    border-radius: 0px !important;
+    border-bottom: 0.5px solid #bbbbbb;
 </style>

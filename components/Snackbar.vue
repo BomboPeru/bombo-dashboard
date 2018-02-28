@@ -33,7 +33,7 @@
     right 0
     padding 12px
   .sb-card
-    width 200px
+    width 280px
     min-height 50px
     background #243237de
     border-radius: 10px
@@ -42,6 +42,6 @@
     color white
     font-family: Titillium Web
     text-align center
-    font-weight bold
+    font-weight 100
 
 </style>

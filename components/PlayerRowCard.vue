@@ -6,21 +6,21 @@
         <span class="name1">{{ player.name }}</span>
         <span class="prom1">{{ player.yellows }}</span>
         <span class="up1">{{ player.played }}</span>
-        <span class="costo1">{{ player.played }}</span>
+        <span class="costo1">{{ player.cost }} M</span>
         <div :class="['posicion1', kind[position]]">
           <span>{{position}}</span>
         </div>
-        <span class="add" @click="selectPlayer(player)"><img src="../assets/icons/plus_black.svg" alt=""></span>
+        <span class="add" @click="selectPlayer(player)"><img src="../assets/icons/plus_circle.svg" alt=""></span>
       </template>
 
       <template v-else-if="mode === 'selected'">
         <squad-number :img="'/shirt_placeholder.svg'" :number="player.j_number"/>
         <span class="name2">{{ player.name }}</span>
-        <span class="costo2">{{ player.played }}</span>
+        <span class="costo2">{{ player.cost }} M</span>
         <div :class="['posicion2', kind[position]]">
           <span>{{position}}</span>
         </div>
-        <!--<span class="add" @click="selectPlayer(player)"><img src="../assets/icons/plus_black.svg" alt=""></span>-->
+        <span class="delete" @click="selectPlayer(player)"><img src="../assets/icons/trash.svg" alt=""></span>
       </template>
 
       <template v-else-if="mode === 'small-a'">
@@ -41,7 +41,7 @@
       <template v-else-if="mode === 'small-b'">
         <squad-number :img="'/shirt_placeholder.svg'" :number="player.j_number"/>
         <span class="name1">{{ player.name }}</span>
-        <span class="costo1">{{ player.played }}</span>
+        <span class="costo1">{{ player.cost }} M</span>
         <div :class="['posicion1', kind[position]]">
           <span>{{position}}</span>
         </div>
@@ -113,7 +113,7 @@
     font-size 10px !important
   .costo1
     width 12.5%
-    font-size 10px !important
+    font-size 13px !important
   .posicion1
     width 18%
     display inline-block
@@ -127,12 +127,13 @@
 
   .name2
     text-align left !important
-    width 45%
+    width 30%
   .costo2
     width 12.5%
-    font-size 10px !important
+    font-size 13px !important
   .posicion2
-    float right
+    /*float right*/
+    display inline-block
     width 98px
     text-align center
     margin-top 7px
@@ -193,14 +194,22 @@
     background #A789E8
   .delantero span
     background #FDA237
+  .delete
   .add
     visibility hidden
     padding-left 5px
-    width 36px
+    width 36px !important
     cursor pointer
+  .add img
+    width 18px !important
+  .delete img
+    width 18px !important
   #player-row-card:hover .add
     visibility visible
+  #player-row-card:hover .delete
+    visibility visible
   @media screen and (max-width: 1023px)
+    .delete
     .add
       visibility visible
 

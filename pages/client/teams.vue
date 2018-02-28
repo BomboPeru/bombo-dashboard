@@ -61,7 +61,6 @@
           :players="team.players"
         />
       </template>
-
     </div>
   </div>
 </template>
@@ -82,63 +81,20 @@
       },
       activeTypeTeam () {
         return this.$store.getters['team/activeTypeTeam']
+      },
+      testUserId () {
+        return this.$store.getters.testUserId
       }
+      // mteams () {
+      //   return this.$store.getters['teams/mteams']
+      // }
     },
     data () {
       return {
-        testUserId: '58e87f29-3b46-45a1-8069-5c7189bfa805',
+        // testUserId: '58e87f29-3b46-45a1-8069-5c7189bfa805',
         typeTeams: this.$store.state.team.typeTeams,
         mteams: {
           0: [
-            { name: 'NOmbre de equipo sadadasdsa sadasdasdasd',
-              balance: +23.0,
-              leagueImg: '',
-              createdAt: '23/02/2018',
-              ranking: 2,
-              points: 233,
-              players: {
-                goal_keeper: [ { name: 'NOmbre Plyaer', j_number: '23', points: 23 } ],
-                defender: [
-                  { name: 'NOmbre Plyae sdsds dsd s dsdsds dsdsds sdsdsd dsds dsds r', j_number: '23' },
-                  { name: 'NOmbre Plyaer', j_number: '23' },
-                  { name: 'NOmbre Plyaer', j_number: '23' },
-                  { name: 'NOmbre Plyaer', j_number: '23' },
-                  { name: 'NOmbre Plyaer', j_number: '23' },
-                  { name: 'NOmbre Plyaer', j_number: '23' },
-                  { name: 'NOmbre Plyaer', j_number: '23' },
-                  { name: 'NOmbre Plyaer', j_number: '23' },
-                  { name: 'NOmbre Plyaer', j_number: '23' }
-                ],
-                mid_fielder: [ { name: 'NOmbre Plyaer', j_number: '23' } ],
-                forward: [ { name: 'NOmbre Plyaer', j_number: '23' } ]
-              }
-            },
-            { name: 'NOmbre de equipo',
-              balance: +23.0,
-              leagueImg: '',
-              createdAt: '23/02/2018',
-              ranking: 2,
-              points: 233,
-              players: {
-                goal_keeper: [ { name: 'NOmbre Plyaer', j_number: '23' } ],
-                defender: [ { name: 'NOmbre Plyaer', j_number: '23' } ],
-                mid_fielder: [ { name: 'NOmbre Plyaer', j_number: '23' } ],
-                forward: [ { name: 'NOmbre Plyaer', j_number: '23' } ]
-              }
-            },
-            { name: 'NOmbre de equipo',
-              balance: +23.0,
-              leagueImg: '',
-              createdAt: '23/02/2018',
-              ranking: 2,
-              points: 233,
-              players: {
-                goal_keeper: [ { name: 'NOmbre Plyaer', j_number: '23' } ],
-                defender: [ { name: 'NOmbre Plyaer', j_number: '23' } ],
-                mid_fielder: [ { name: 'NOmbre Plyaer', j_number: '23' } ],
-                forward: [ { name: 'NOmbre Plyaer', j_number: '23' } ]
-              }
-            },
             { name: 'NOmbre de equipo',
               balance: +23.0,
               leagueImg: '',
@@ -251,28 +207,7 @@
                   }
                 ]
               }
-            },
-            { name: 'NOmbre de equipo',
-              balance: +23.0,
-              leagueImg: '',
-              createdAt: '23/02/2018',
-              ranking: 2,
-              points: 233,
-              players: {
-                mid_fielder: [
-                  {
-                    name: 'NOmbre Plyaer',
-                    j_number: '23'
-                  }
-                ],
-                forward: [
-                  {
-                    name: 'NOmbre Plyaer',
-                    j_number: '23'
-                  }
-                ]
-              }
-            },
+            }
           ]
         }
       }
@@ -284,7 +219,6 @@
         this.mteams['0'] = response.data.playing_teams === null ? [] : response.data.playing_teams
         this.mteams['1'] = response.data.saved_teams === null ? [] : response.data.saved_teams
         this.mteams['2'] = response.data.old_teams === null ? [] : response.data.old_teams
-
       },
       goToCreateTeam () {
         // this
@@ -308,11 +242,13 @@
     display: flex
     flex-wrap nowrap
     justify-content flex-start
-    margin-top 62px
+    /*margin-top 62px*/
+    margin-top: 26px
     padding-left 18px
     /*align-items: flex-start;*/
     align-items: stretch;
-    padding-bottom 50px
+    /*padding-bottom 50px*/
+    padding-bottom 25px
 
   .teamcard
     flex-shrink 0
@@ -320,7 +256,7 @@
     // height calc(100vh - 300px)
     overflow-y auto
   .create-team-btn
-    width 200px
+    width 280px
   .empty-teams-message
     text-align: center
     width: 100%;

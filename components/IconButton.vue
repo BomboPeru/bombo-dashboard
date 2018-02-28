@@ -1,5 +1,5 @@
 <template>
-    <div id="icon-button" class="elevation" @click="onClick">
+    <div id="icon-button" class="elevation-2" @click="onClick">
       <div :class="['text', iconDirection+'-text']">{{text}}</div>
       <div :class="['icon', iconDirection, 'elevation']" :style="{ background: color }">
         <img :src="icons[icon]" class="icon-image" alt="">

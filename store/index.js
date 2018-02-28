@@ -12,7 +12,7 @@ const store = () => {
       snackbar: false,
       snackbarDuration: 5000,
       snackbarMessage: '',
-      testUserId: '58e87f29-3b46-45a1-8069-5c7189bfa805'
+      testUserId: null
     },
     getters: {
       isSignoutDialog (state) {
@@ -29,6 +29,13 @@ const store = () => {
       },
       snackbarMessage (state) {
         return state.snackbarMessage
+      },
+      testUserId (state) {
+        let id = localStorage.getItem('testuserid')
+        if (id !== null) {
+          state.testUserId = id
+        }
+        return state.testUserId
       }
     },
     mutations: {
@@ -53,7 +60,19 @@ const store = () => {
       turnOnSnackbar (state, message) {
         state.snackbarMessage = message
         state.snackbar = true
+      },
+      getUserId (state) {
+        console.log(localStorage.getItem('testuserid'))
+        let id = localStorage.getItem('testuserid')
+        if (id !== null) {
+          state.testUserId = id
+        }
+      },
+      setUserId (state, id) {
+        state.testUserId = id
+        localStorage.setItem('testuserid', id)
       }
+
     },
     actions: {
       turnOnSnackbar (context, message) {

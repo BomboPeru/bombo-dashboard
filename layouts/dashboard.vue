@@ -64,6 +64,10 @@
       onCollapseSelectLeagueDialog () {
         this.$store.commit('team/turnOffSelectLeageDialog')
       }
+    },
+    mounted () {
+      // JUST FOR TESTING
+      this.$store.commit('getUserId')
     }
   }
 </script>

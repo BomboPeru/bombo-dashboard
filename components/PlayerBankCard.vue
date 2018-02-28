@@ -22,8 +22,9 @@
             <div class="title-team" >{{ _team.name }}</div>
             <div class="line-team"></div>
             <div>
+              <!--v-for="(player, key) in _team.goal_keeper"-->
               <player-row-card
-                v-for="(player, key) in _team.goal_keeper"
+                v-for="(player, key) in _team.gol_keeper"
                 :key="key + '-portero'"
                 :player="player"
                 position="ARQUERO"
@@ -39,8 +40,9 @@
                 :key="key + '-centrocampista'" :player="player" position="CENTROCAMPISTA"
                 @onPlayerSelected="selectPlayer(player, 'mid_fielder')"/>
 
+              <!--v-for="(player, key) in _team.forward"-->
               <player-row-card
-                v-for="(player, key) in _team.forward"
+                v-for="(player, key) in _team.forwarder"
                 :key="key + '-delantero'" :player="player" position="DELANTERO"
                 @onPlayerSelected="selectPlayer(player, 'forward')"/>
             </div>
@@ -53,7 +55,7 @@
 <script>
   import SearchComponent from './SearchComponent'
   import PlayerRowCard from './PlayerRowCard'
-  import SampleData from '../assets/sample/full'
+  import SampleData from '../assets/sample/premier_league_full'
 
   export default {
     name: 'player-bank-card',
@@ -83,7 +85,7 @@
     },
     methods: {
       async fetchSomething(searchText) {
-        const data = await this.$axios.$get('https://bombo-open-api-nbjozjbvyl.now.sh/api/v1/full')
+        // const data = await this.$axios.$get('https://bombo-open-api-nbjozjbvyl.now.sh/api/v1/full')
 
         console.log('fetching', searchText)
         if (searchText !== '') {
@@ -95,7 +97,7 @@
 
             for (let typePlayer = 0; typePlayer < types.length ;typePlayer++) {
               SampleData[key][types[typePlayer]].map(player => {
-                if (player.name.includes(searchText)) {
+                if (player.name.toUpperCase().includes(searchText.toUpperCase())) {
                   if (results[key] === undefined) {
                     results[key] = {}
                   }
@@ -109,8 +111,8 @@
           }
           this.teams = results
         } else {
-          // this.teams = SampleData
-          this.teams = data
+          this.teams = SampleData
+          // this.teams = data
         }
         console.log('fetch done')
       },

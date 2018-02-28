@@ -6,49 +6,54 @@
         <div class="card-container">
           <p class="title">Datos personales</p>
           <div class="form-row">
-            <input-text placeholder="Nombre" square v-model="user.name" class="form-input"/>
+            <input-text placeholder="Nombre" square flat v-model="user.name" class="form-input"/>
             <form-alert :message="constraints['name'].message"
                         :correct="constraints['name'].minLength <= user.name.length"/>
           </div>
           <!--<input-text placeholder="Apellidos" square v-model="user.lastname"/>-->
-          <p class="title">Fecha de nacimiento</p>
-          <input-text type="date" square v-model="user.birthday"/>
+          <!--<p class="title">Fecha de nacimiento</p>-->
+          <!--<input-text type="date" square v-model="user.birthday"/>-->
           <!--<p class="title">Documento de identidad</p>-->
           <!--<input-text type="text" square/>-->
           <!--<input-select :items="['DNI']" square/>-->
           <p class="title">Datos de la cuenta</p>
           <div class="form-row">
-            <input-text placeholder="Correo electronico" square v-model="user.email" class="form-input"/>
+            <input-text placeholder="Correo electronico" square flat v-model="user.email" class="form-input"/>
             <form-alert :message="constraints['email'].message"
                         :correct="constraints['email'].minLength <= user.email.length"/>
           </div>
           <div class="form-row">
-            <input-text placeholder="Nombre de usuario" square v-model="user.username" class="form-input"/>
+            <input-text placeholder="Nombre de usuario" square flat v-model="user.username" class="form-input"/>
             <form-alert :message="constraints['username'].message"
                         :correct="constraints['username'].minLength <= user.username.length"/>
           </div>
           <div class="form-row">
-            <input-text placeholder="Contrasena" square v-model="user.password" type="password" class="form-input"/>
+            <input-text placeholder="Contrasena" square flat v-model="user.password" type="password" class="form-input"/>
             <form-alert :message="constraints['password'].message"
                         :correct="constraints['password'].minLength <= user.password.length"/>
           </div>
-          <input-text placeholder="Repetir Contrasena" square type="password"/>
+          <!--<input-text placeholder="Repetir Contrasena" square type="password"/>-->
 
           <div class="form-row">
 
-            <form-alert :message="constraints['terms'].message"
-                        :correct="constraints['terms'].checked === termsChecked"/>
+            <!--<form-alert :message="constraints['terms'].message"-->
+                        <!--:correct="constraints['terms'].checked === termsChecked"/>-->
             <p class="terms-conditions">
               <input type="checkbox" v-model="termsChecked">
               HE LEIDO Y ACEPTO LOS <span @click="openTermsConditionsDialog">TERMINOS Y CONDICIONES</span>
             </p>
 
           </div>
+
+          <div class="form-row">
+            <div class="btn-continue elevation" @click="createUser"
+                 :style="{ 'background': isValidToSubmit?'#25BF89':'#969696' }">
+              Registrar
+            </div>
+          </div>
         </div>
       </div>
       <div class="bottom-container">
-        <div class="btn-continue elevation" @click="createUser"
-             :style="{ 'background': isValidToSubmit?'#ea504c':'#969696' }">Registrar</div>
         <div class="link-login">
           Ya eres usuario? <span @click="openLoginDialog">Inicia Sesion</span>
         </div>
@@ -113,8 +118,22 @@
           if (this.user.name !== '' && this.user.email !== ''
             && this.user.username !== '' && this.user.password!== '') {
 
-            await this.$axios.$post(
-              'http://api.bombo.pe/api/v1.0/user/create', this.user )
+            try {
+              let response = await this.$axios.$post(
+                'http://api.bombo.pe/api/v1.0/user/create', this.user )
+              console.log(response)
+              if (response.error !== null) {
+                this.$store.dispatch('turnOnSnackbar', 'Hubo un problema al momento del registro.')
+              } else {
+                setTimeout(() => {
+                  this.$store.commit('setUserId', response.data.id)
+                  this.$router.push('/')
+                  this.$store.dispatch('turnOnSnackbar', 'Usuario regitrado!')
+                }, 300)
+              }
+            } catch (e) {
+              this.$store.dispatch('turnOnSnackbar', 'Hubo un problema al momento del registro.')
+            }
           } else {
             console.log('invalid data')
           }
@@ -154,6 +173,8 @@
     },
     created () {
       this.fetchSomething()
+    },
+    mounted () {
     }
   }
 </script>
@@ -188,7 +209,7 @@
   .title-bar
     width 100%
     height 52px
-    background #EA504C
+    background #67A6F0
 
     font-family: Titillium Web;
     font-style: normal;
@@ -213,9 +234,13 @@
     margin-bottom 59px
     text-align center
   .btn-continue
-    display: inline-block
-    background: #EA504C;
-    border-radius: 12px;
+    /*display: inline-block*/
+    position relative
+    display: block
+    margin-top 46px
+    text-align center
+    background: #25BF89;
+    border-radius: 3px;
     padding 4px 28px 4px 28px
     cursor pointer
     color white
@@ -224,8 +249,13 @@
     font-style: normal;
     font-weight: 600;
     line-height: normal;
-    font-size: 18px;
+    font-size: 22px;
     margin-bottom 6px
+    text-transform uppercase
+    transition all .2s ease-out
+  .btn-continue:hover
+    transform translateY(-4px)
+
   .link-login
     font-family: Titillium Web;
     font-style: normal;
@@ -237,6 +267,9 @@
   .link-login span
     color #25BF89
     cursor pointer
+  .form-row
+    margin-top 10px
+    margin-bottom 20px
   .form-input
     display inline-block
 </style>
