@@ -8,7 +8,11 @@ const store = () => {
     state: {
       signOutDialog: false,
       loginDialog: false,
-      termsAndConditionsDialog: false
+      termsAndConditionsDialog: false,
+      snackbar: false,
+      snackbarDuration: 5000,
+      snackbarMessage: '',
+      testUserId: '58e87f29-3b46-45a1-8069-5c7189bfa805'
     },
     getters: {
       isSignoutDialog (state) {
@@ -19,6 +23,12 @@ const store = () => {
       },
       termsAndConditionsDialog (state) {
         return state.termsAndConditionsDialog
+      },
+      snackbar (state) {
+        return state.snackbar
+      },
+      snackbarMessage (state) {
+        return state.snackbarMessage
       }
     },
     mutations: {
@@ -39,6 +49,18 @@ const store = () => {
       },
       closeTermsConditionsDialog (state) {
         state.termsAndConditionsDialog = false
+      },
+      turnOnSnackbar (state, message) {
+        state.snackbarMessage = message
+        state.snackbar = true
+      }
+    },
+    actions: {
+      turnOnSnackbar (context, message) {
+        context.commit('turnOnSnackbar', message)
+        setTimeout(() => {
+          context.state.snackbar = false
+        }, context.state.snackbarDuration)
       }
     },
     modules: {

@@ -55,8 +55,8 @@
           {
             name: 'Nombre Team', points: 233, createdAt: '23/12/18', ranking: 2,
             players: {
-              porteros: [ { name: 'NOmbre Plyaer', j_number: '23', points: 23 } ],
-              defensas: [
+              goal_keeper: [ { name: 'NOmbre Plyaer', j_number: '23', points: 23 } ],
+              defender: [
                 { name: 'NOmbre Plyae sdsds dsd s dsdsds dsdsds sdsdsd dsds dsds r', j_number: '23' },
                 { name: 'NOmbre Plyaer', j_number: '23' },
                 { name: 'NOmbre Plyaer', j_number: '23' },
@@ -67,15 +67,15 @@
                 { name: 'NOmbre Plyaer', j_number: '23' },
                 { name: 'NOmbre Plyaer', j_number: '23' }
               ],
-              centrocampistas: [ { name: 'NOmbre Plyaer', j_number: '23' } ],
-              delanteros: [ { name: 'NOmbre Plyaer', j_number: '23' } ]
+              mid_fielder: [ { name: 'NOmbre Plyaer', j_number: '23' } ],
+              forward: [ { name: 'NOmbre Plyaer', j_number: '23' } ]
             }
           },
           {
             name: 'Nombre Team', points: 233, createdAt: '23/12/18', ranking: 2,
             players: {
-              porteros: [ { name: 'NOmbre Plyaer', j_number: '23', points: 23 } ],
-              defensas: [
+              goal_keeper: [ { name: 'NOmbre Plyaer', j_number: '23', points: 23 } ],
+              defender: [
                 { name: 'NOmbre Plyae sdsds dsd s dsdsds dsdsds sdsdsd dsds dsds r', j_number: '23' },
                 { name: 'NOmbre Plyaer', j_number: '23' },
                 { name: 'NOmbre Plyaer', j_number: '23' },
@@ -86,15 +86,15 @@
                 { name: 'NOmbre Plyaer', j_number: '23' },
                 { name: 'NOmbre Plyaer', j_number: '23' }
               ],
-              centrocampistas: [ { name: 'NOmbre Plyaer', j_number: '23' } ],
-              delanteros: [ { name: 'NOmbre Plyaer', j_number: '23' } ]
+              mid_fielder: [ { name: 'NOmbre Plyaer', j_number: '23' } ],
+              forward: [ { name: 'NOmbre Plyaer', j_number: '23' } ]
             }
           },
           {
             name: 'Nombre Team', points: 233, createdAt: '23/12/18', ranking: 2,
             players: {
-              porteros: [ { name: 'NOmbre Plyaer', j_number: '23', points: 23 } ],
-              defensas: [
+              goal_keeper: [ { name: 'NOmbre Plyaer', j_number: '23', points: 23 } ],
+              defender: [
                 { name: 'NOmbre Plyae sdsds dsd s dsdsds dsdsds sdsdsd dsds dsds r', j_number: '23' },
                 { name: 'NOmbre Plyaer', j_number: '23' },
                 { name: 'NOmbre Plyaer', j_number: '23' },
@@ -105,15 +105,15 @@
                 { name: 'NOmbre Plyaer', j_number: '23' },
                 { name: 'NOmbre Plyaer', j_number: '23' }
               ],
-              centrocampistas: [ { name: 'NOmbre Plyaer', j_number: '23' } ],
-              delanteros: [ { name: 'NOmbre Plyaer', j_number: '23' } ]
+              mid_fielder: [ { name: 'NOmbre Plyaer', j_number: '23' } ],
+              forward: [ { name: 'NOmbre Plyaer', j_number: '23' } ]
             }
           },
           {
             name: 'Nombre Team', points: 233, createdAt: '23/12/18', ranking: 2,
             players: {
-              porteros: [ { name: 'NOmbre Plyaer', j_number: '23', points: 23 } ],
-              defensas: [
+              goal_keeper: [ { name: 'NOmbre Plyaer', j_number: '23', points: 23 } ],
+              defender: [
                 { name: 'NOmbre Plyae sdsds dsd s dsdsds dsdsds sdsdsd dsds dsds r', j_number: '23' },
                 { name: 'NOmbre Plyaer', j_number: '23' },
                 { name: 'NOmbre Plyaer', j_number: '23' },
@@ -124,15 +124,15 @@
                 { name: 'NOmbre Plyaer', j_number: '23' },
                 { name: 'NOmbre Plyaer', j_number: '23' }
               ],
-              centrocampistas: [ { name: 'NOmbre Plyaer', j_number: '23' } ],
-              delanteros: [ { name: 'NOmbre Plyaer', j_number: '23' } ]
+              mid_fielder: [ { name: 'NOmbre Plyaer', j_number: '23' } ],
+              forward: [ { name: 'NOmbre Plyaer', j_number: '23' } ]
             }
           },
           {
             name: 'Nombre Team', points: 233, createdAt: '23/12/18', ranking: 2,
             players: {
-              porteros: [ { name: 'NOmbre Plyaer', j_number: '23', points: 23 } ],
-              defensas: [
+              goal_keeper: [ { name: 'NOmbre Plyaer', j_number: '23', points: 23 } ],
+              defender: [
                 { name: 'NOmbre Plyae sdsds dsd s dsdsds dsdsds sdsdsd dsds dsds r', j_number: '23' },
                 { name: 'NOmbre Plyaer', j_number: '23' },
                 { name: 'NOmbre Plyaer', j_number: '23' },
@@ -143,8 +143,8 @@
                 { name: 'NOmbre Plyaer', j_number: '23' },
                 { name: 'NOmbre Plyaer', j_number: '23' }
               ],
-              centrocampistas: [ { name: 'NOmbre Plyaer', j_number: '23' } ],
-              delanteros: [ { name: 'NOmbre Plyaer', j_number: '23' } ]
+              mid_fielder: [ { name: 'NOmbre Plyaer', j_number: '23' } ],
+              forward: [ { name: 'NOmbre Plyaer', j_number: '23' } ]
             }
           }
         ]

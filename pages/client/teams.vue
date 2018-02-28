@@ -20,6 +20,7 @@
           :style="{ 'flex-grow': mteams[0].length > 3 ? '1':'0' }"
           v-for="(team, i) in mteams[0]"
           :key="i+'card'"
+          :id="team.id"
           :title="team.name"
           :points="team.points"
           :ranking="team.ranking"
@@ -35,6 +36,7 @@
           :style="{ 'flex-grow': mteams[1].length > 3 ? '1':'0' }"
           v-for="(team, i) in mteams[1]"
           :key="i+'card'"
+          :id="team.id"
           :title="team.name"
           :cost="team.points.toString()"
           :status="'DISPONIBLE'"
@@ -50,6 +52,7 @@
           :style="{ 'flex-grow': mteams[2].length > 3 ? '1':'0' }"
           v-for="(team, i) in mteams[2]"
           :key="i+'card'"
+          :id="team.id"
           :title="team.name"
           :points="team.points"
           :ranking="team.ranking"
@@ -83,6 +86,7 @@
     },
     data () {
       return {
+        testUserId: '58e87f29-3b46-45a1-8069-5c7189bfa805',
         typeTeams: this.$store.state.team.typeTeams,
         mteams: {
           0: [
@@ -93,8 +97,8 @@
               ranking: 2,
               points: 233,
               players: {
-                porteros: [ { name: 'NOmbre Plyaer', j_number: '23', points: 23 } ],
-                defensas: [
+                goal_keeper: [ { name: 'NOmbre Plyaer', j_number: '23', points: 23 } ],
+                defender: [
                   { name: 'NOmbre Plyae sdsds dsd s dsdsds dsdsds sdsdsd dsds dsds r', j_number: '23' },
                   { name: 'NOmbre Plyaer', j_number: '23' },
                   { name: 'NOmbre Plyaer', j_number: '23' },
@@ -105,8 +109,8 @@
                   { name: 'NOmbre Plyaer', j_number: '23' },
                   { name: 'NOmbre Plyaer', j_number: '23' }
                 ],
-                centrocampistas: [ { name: 'NOmbre Plyaer', j_number: '23' } ],
-                delanteros: [ { name: 'NOmbre Plyaer', j_number: '23' } ]
+                mid_fielder: [ { name: 'NOmbre Plyaer', j_number: '23' } ],
+                forward: [ { name: 'NOmbre Plyaer', j_number: '23' } ]
               }
             },
             { name: 'NOmbre de equipo',
@@ -116,10 +120,10 @@
               ranking: 2,
               points: 233,
               players: {
-                porteros: [ { name: 'NOmbre Plyaer', j_number: '23' } ],
-                defensas: [ { name: 'NOmbre Plyaer', j_number: '23' } ],
-                centrocampistas: [ { name: 'NOmbre Plyaer', j_number: '23' } ],
-                delanteros: [ { name: 'NOmbre Plyaer', j_number: '23' } ]
+                goal_keeper: [ { name: 'NOmbre Plyaer', j_number: '23' } ],
+                defender: [ { name: 'NOmbre Plyaer', j_number: '23' } ],
+                mid_fielder: [ { name: 'NOmbre Plyaer', j_number: '23' } ],
+                forward: [ { name: 'NOmbre Plyaer', j_number: '23' } ]
               }
             },
             { name: 'NOmbre de equipo',
@@ -129,10 +133,10 @@
               ranking: 2,
               points: 233,
               players: {
-                porteros: [ { name: 'NOmbre Plyaer', j_number: '23' } ],
-                defensas: [ { name: 'NOmbre Plyaer', j_number: '23' } ],
-                centrocampistas: [ { name: 'NOmbre Plyaer', j_number: '23' } ],
-                delanteros: [ { name: 'NOmbre Plyaer', j_number: '23' } ]
+                goal_keeper: [ { name: 'NOmbre Plyaer', j_number: '23' } ],
+                defender: [ { name: 'NOmbre Plyaer', j_number: '23' } ],
+                mid_fielder: [ { name: 'NOmbre Plyaer', j_number: '23' } ],
+                forward: [ { name: 'NOmbre Plyaer', j_number: '23' } ]
               }
             },
             { name: 'NOmbre de equipo',
@@ -142,10 +146,10 @@
               ranking: 2,
               points: 233,
               players: {
-                porteros: [ { name: 'NOmbre Plyaer', j_number: '23' } ],
-                defensas: [ { name: 'NOmbre Plyaer', j_number: '23' } ],
-                centrocampistas: [ { name: 'NOmbre Plyaer', j_number: '23' } ],
-                delanteros: [ { name: 'NOmbre Plyaer', j_number: '23' } ]
+                goal_keeper: [ { name: 'NOmbre Plyaer', j_number: '23' } ],
+                defender: [ { name: 'NOmbre Plyaer', j_number: '23' } ],
+                mid_fielder: [ { name: 'NOmbre Plyaer', j_number: '23' } ],
+                forward: [ { name: 'NOmbre Plyaer', j_number: '23' } ]
               }
             }
           ],
@@ -157,14 +161,14 @@
               ranking: 2,
               points: 233,
               players: {
-                porteros: [
+                goal_keeper: [
                   {
                     name: 'NOmbre Plyaer',
                     j_number: '23',
                     points: 23
                   }
                 ],
-                defensas: [
+                defender: [
                   {
                     name: 'NOmbre Plyaer',
                     j_number: '23'
@@ -210,13 +214,13 @@
                     j_number: '23'
                   }
                 ],
-                centrocampistas: [
+                mid_fielder: [
                   {
                     name: 'NOmbre Plyaer',
                     j_number: '23'
                   }
                 ],
-                delanteros: [
+                forward: [
                   {
                     name: 'NOmbre Plyaer',
                     j_number: '23'
@@ -234,13 +238,13 @@
               ranking: 2,
               points: 233,
               players: {
-                centrocampistas: [
+                mid_fielder: [
                   {
                     name: 'NOmbre Plyaer',
                     j_number: '23'
                   }
                 ],
-                delanteros: [
+                forward: [
                   {
                     name: 'NOmbre Plyaer',
                     j_number: '23'
@@ -255,13 +259,13 @@
               ranking: 2,
               points: 233,
               players: {
-                centrocampistas: [
+                mid_fielder: [
                   {
                     name: 'NOmbre Plyaer',
                     j_number: '23'
                   }
                 ],
-                delanteros: [
+                forward: [
                   {
                     name: 'NOmbre Plyaer',
                     j_number: '23'
@@ -274,10 +278,23 @@
       }
     },
     methods: {
+      async fetchUserData () {
+        let response = await this.$axios.$get('http://api.bombo.pe/api/v1.0/user/' + this.testUserId)
+        //
+        this.mteams['0'] = response.data.playing_teams === null ? [] : response.data.playing_teams
+        this.mteams['1'] = response.data.saved_teams === null ? [] : response.data.saved_teams
+        this.mteams['2'] = response.data.old_teams === null ? [] : response.data.old_teams
+
+      },
       goToCreateTeam () {
         // this
         this.$store.commit('team/turnOnSelectLeageDialog')
       }
+    },
+    created () {
+      this.fetchUserData()
+    },
+    mounted () {
     }
   }
 </script>
@@ -306,6 +323,7 @@
     width 200px
   .empty-teams-message
     text-align: center
+    width: 100%;
   .empty-teams-message p
     color #445F69
     font-family: Titillium Web;

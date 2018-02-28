@@ -1,6 +1,6 @@
 {
   "arsenal": {
-    "centrocampistas": [
+    "mid_fielder": [
       {
         "goals": "0",
         "j_number": "43",
@@ -146,7 +146,7 @@
         "yellows": "4"
       }
     ],
-    "defensas": [
+    "defender": [
       {
         "goals": "2",
         "j_number": "24",
@@ -268,7 +268,7 @@
         "yellows": "0"
       }
     ],
-    "delanteros": [
+    "forward": [
       {
         "goals": "1",
         "j_number": "14",
@@ -356,7 +356,7 @@
         "yellows": ""
       }
     ],
-    "porteros": [
+    "goal_keeper": [
       {
         "goals": "0",
         "j_number": "33",
@@ -408,7 +408,7 @@
     ]
   },
   "bournemouth": {
-    "centrocampistas": [
+    "mid_fielder": [
       {
         "goals": "1",
         "j_number": "8",
@@ -542,7 +542,7 @@
         "yellows": "0"
       }
     ],
-    "defensas": [
+    "defender": [
       {
         "goals": "2",
         "j_number": "5",
@@ -616,7 +616,7 @@
         "yellows": "0"
       }
     ],
-    "delanteros": [
+    "forward": [
       {
         "goals": "3",
         "j_number": "18",
@@ -692,7 +692,7 @@
         "yellows": ""
       }
     ],
-    "porteros": [
+    "goal_keeper": [
       {
         "goals": "0",
         "j_number": "27",
@@ -732,7 +732,7 @@
     ]
   },
   "brighton": {
-    "centrocampistas": [
+    "mid_fielder": [
       {
         "goals": "5",
         "j_number": "13",
@@ -854,7 +854,7 @@
         "yellows": "0"
       }
     ],
-    "defensas": [
+    "defender": [
       {
         "goals": "0",
         "j_number": "3",
@@ -964,7 +964,7 @@
         "yellows": "0"
       }
     ],
-    "delanteros": [
+    "forward": [
       {
         "goals": "0",
         "j_number": "9",
@@ -1064,7 +1064,7 @@
         "yellows": ""
       }
     ],
-    "porteros": [
+    "goal_keeper": [
       {
         "goals": "0",
         "j_number": "26",
@@ -1104,7 +1104,7 @@
     ]
   },
   "burnley": {
-    "centrocampistas": [
+    "mid_fielder": [
       {
         "goals": "2",
         "j_number": "37",
@@ -1226,7 +1226,7 @@
         "yellows": "0"
       }
     ],
-    "defensas": [
+    "defender": [
       {
         "goals": "0",
         "j_number": "26",
@@ -1300,7 +1300,7 @@
         "yellows": "1"
       }
     ],
-    "delanteros": [
+    "forward": [
       {
         "goals": "3",
         "j_number": "10",
@@ -1400,7 +1400,7 @@
         "yellows": ""
       }
     ],
-    "porteros": [
+    "goal_keeper": [
       {
         "goals": "0",
         "j_number": "1",
@@ -1452,7 +1452,7 @@
     ]
   },
   "chelsea": {
-    "centrocampistas": [
+    "mid_fielder": [
       {
         "goals": "0",
         "j_number": "44",
@@ -1586,7 +1586,7 @@
         "yellows": "0"
       }
     ],
-    "defensas": [
+    "defender": [
       {
         "goals": "6",
         "j_number": "3",
@@ -1708,7 +1708,7 @@
         "yellows": "0"
       }
     ],
-    "delanteros": [
+    "forward": [
       {
         "goals": "0",
         "j_number": "18",
@@ -1748,7 +1748,7 @@
         "yellows": ""
       }
     ],
-    "porteros": [
+    "goal_keeper": [
       {
         "goals": "0",
         "j_number": "1",
@@ -1788,7 +1788,7 @@
     ]
   },
   "crystal palace": {
-    "centrocampistas": [
+    "mid_fielder": [
       {
         "goals": "0",
         "j_number": "7",
@@ -1898,7 +1898,7 @@
         "yellows": "2"
       }
     ],
-    "defensas": [
+    "defender": [
       {
         "goals": "1",
         "j_number": "6",
@@ -2032,7 +2032,7 @@
         "yellows": "5"
       }
     ],
-    "delanteros": [
+    "forward": [
       {
         "goals": "2",
         "j_number": "17",
@@ -2132,7 +2132,7 @@
         "yellows": ""
       }
     ],
-    "porteros": [
+    "goal_keeper": [
       {
         "goals": "0",
         "j_number": "13",
@@ -2172,7 +2172,7 @@
     ]
   },
   "everton": {
-    "centrocampistas": [
+    "mid_fielder": [
       {
         "goals": "0",
         "j_number": "54",
@@ -2342,7 +2342,7 @@
         "yellows": "0"
       }
     ],
-    "defensas": [
+    "defender": [
       {
         "goals": "2",
         "j_number": "3",
@@ -2452,7 +2452,7 @@
         "yellows": "3"
       }
     ],
-    "delanteros": [
+    "forward": [
       {
         "goals": "0",
         "j_number": "11",
@@ -2540,7 +2540,7 @@
         "yellows": ""
       }
     ],
-    "porteros": [
+    "goal_keeper": [
       {
         "goals": "0",
         "j_number": "41",
@@ -2592,7 +2592,7 @@
     ]
   },
   "huddersfield": {
-    "centrocampistas": [
+    "mid_fielder": [
       {
         "goals": "0",
         "j_number": "8",
@@ -2702,7 +2702,7 @@
         "yellows": "2"
       }
     ],
-    "defensas": [
+    "defender": [
       {
         "goals": "0",
         "j_number": "44",
@@ -2788,7 +2788,7 @@
         "yellows": "4"
       }
     ],
-    "delanteros": [
+    "forward": [
       {
         "goals": "5",
         "j_number": "20",
@@ -2876,7 +2876,7 @@
         "yellows": ""
       }
     ],
-    "porteros": [
+    "goal_keeper": [
       {
         "goals": "0",
         "j_number": "13",
@@ -2916,7 +2916,7 @@
     ]
   },
   "leicester": {
-    "centrocampistas": [
+    "mid_fielder": [
       {
         "goals": "2",
         "j_number": "11",
@@ -3038,7 +3038,7 @@
         "yellows": "0"
       }
     ],
-    "defensas": [
+    "defender": [
       {
         "goals": "0",
         "j_number": "29",
@@ -3160,7 +3160,7 @@
         "yellows": "1"
       }
     ],
-    "delanteros": [
+    "forward": [
       {
         "goals": "0",
         "j_number": "8",
@@ -3212,7 +3212,7 @@
         "yellows": ""
       }
     ],
-    "porteros": [
+    "goal_keeper": [
       {
         "goals": "0",
         "j_number": "12",
@@ -3252,7 +3252,7 @@
     ]
   },
   "liverpool": {
-    "centrocampistas": [
+    "mid_fielder": [
       {
         "goals": "2",
         "j_number": "23",
@@ -3338,7 +3338,7 @@
         "yellows": "1"
       }
     ],
-    "defensas": [
+    "defender": [
       {
         "goals": "1",
         "j_number": "66",
@@ -3448,7 +3448,7 @@
         "yellows": "0"
       }
     ],
-    "delanteros": [
+    "forward": [
       {
         "goals": "12",
         "j_number": "9",
@@ -3512,7 +3512,7 @@
         "yellows": ""
       }
     ],
-    "porteros": [
+    "goal_keeper": [
       {
         "goals": "0",
         "j_number": "1",
@@ -3552,7 +3552,7 @@
     ]
   },
   "manchester city": {
-    "centrocampistas": [
+    "mid_fielder": [
       {
         "goals": "7",
         "j_number": "17",
@@ -3710,7 +3710,7 @@
         "yellows": "0"
       }
     ],
-    "defensas": [
+    "defender": [
       {
         "goals": "0",
         "j_number": "24",
@@ -3820,7 +3820,7 @@
         "yellows": "4"
       }
     ],
-    "delanteros": [
+    "forward": [
       {
         "goals": "21",
         "j_number": "10",
@@ -3872,7 +3872,7 @@
         "yellows": ""
       }
     ],
-    "porteros": [
+    "goal_keeper": [
       {
         "goals": "0",
         "j_number": "1",
@@ -3912,7 +3912,7 @@
     ]
   },
   "manchester utd": {
-    "centrocampistas": [
+    "mid_fielder": [
       {
         "goals": "0",
         "j_number": "17",
@@ -4046,7 +4046,7 @@
         "yellows": "5"
       }
     ],
-    "defensas": [
+    "defender": [
       {
         "goals": "1",
         "j_number": "3",
@@ -4144,7 +4144,7 @@
         "yellows": "5"
       }
     ],
-    "delanteros": [
+    "forward": [
       {
         "goals": "0",
         "j_number": "10",
@@ -4220,7 +4220,7 @@
         "yellows": ""
       }
     ],
-    "porteros": [
+    "goal_keeper": [
       {
         "goals": "0",
         "j_number": "40",
@@ -4260,7 +4260,7 @@
     ]
   },
   "newcastle": {
-    "centrocampistas": [
+    "mid_fielder": [
       {
         "goals": "2",
         "j_number": "10",
@@ -4334,7 +4334,7 @@
         "yellows": "4"
       }
     ],
-    "defensas": [
+    "defender": [
       {
         "goals": "2",
         "j_number": "2",
@@ -4456,7 +4456,7 @@
         "yellows": "3"
       }
     ],
-    "delanteros": [
+    "forward": [
       {
         "goals": "2",
         "j_number": "30",
@@ -4532,7 +4532,7 @@
         "yellows": ""
       }
     ],
-    "porteros": [
+    "goal_keeper": [
       {
         "goals": "0",
         "j_number": "26",
@@ -4572,7 +4572,7 @@
     ]
   },
   "southampton": {
-    "centrocampistas": [
+    "mid_fielder": [
       {
         "goals": "2",
         "j_number": "19",
@@ -4694,7 +4694,7 @@
         "yellows": "1"
       }
     ],
-    "defensas": [
+    "defender": [
       {
         "goals": "0",
         "j_number": "35",
@@ -4768,7 +4768,7 @@
         "yellows": "1"
       }
     ],
-    "delanteros": [
+    "forward": [
       {
         "goals": "6",
         "j_number": "10",
@@ -4856,7 +4856,7 @@
         "yellows": ""
       }
     ],
-    "porteros": [
+    "goal_keeper": [
       {
         "goals": "0",
         "j_number": "44",
@@ -4884,7 +4884,7 @@
     ]
   },
   "stoke": {
-    "centrocampistas": [
+    "mid_fielder": [
       {
         "goals": "0",
         "j_number": "16",
@@ -4994,7 +4994,7 @@
         "yellows": "2"
       }
     ],
-    "defensas": [
+    "defender": [
       {
         "goals": "0",
         "j_number": "2",
@@ -5104,7 +5104,7 @@
         "yellows": "1"
       }
     ],
-    "delanteros": [
+    "forward": [
       {
         "goals": "0",
         "j_number": "9",
@@ -5192,7 +5192,7 @@
         "yellows": ""
       }
     ],
-    "porteros": [
+    "goal_keeper": [
       {
         "goals": "0",
         "j_number": "1",
@@ -5232,7 +5232,7 @@
     ]
   },
   "swansea": {
-    "centrocampistas": [
+    "mid_fielder": [
       {
         "goals": "0",
         "j_number": "19",
@@ -5366,7 +5366,7 @@
         "yellows": "1"
       }
     ],
-    "defensas": [
+    "defender": [
       {
         "goals": "0",
         "j_number": "27",
@@ -5476,7 +5476,7 @@
         "yellows": "2"
       }
     ],
-    "delanteros": [
+    "forward": [
       {
         "goals": "4",
         "j_number": "10",
@@ -5552,7 +5552,7 @@
         "yellows": ""
       }
     ],
-    "porteros": [
+    "goal_keeper": [
       {
         "goals": "0",
         "j_number": "1",
@@ -5592,7 +5592,7 @@
     ]
   },
   "tottenham": {
-    "centrocampistas": [
+    "mid_fielder": [
       {
         "goals": "5",
         "j_number": "20",
@@ -5726,7 +5726,7 @@
         "yellows": "0"
       }
     ],
-    "defensas": [
+    "defender": [
       {
         "goals": "0",
         "j_number": "4",
@@ -5836,7 +5836,7 @@
         "yellows": "0"
       }
     ],
-    "delanteros": [
+    "forward": [
       {
         "goals": "23",
         "j_number": "10",
@@ -5900,7 +5900,7 @@
         "yellows": ""
       }
     ],
-    "porteros": [
+    "goal_keeper": [
       {
         "goals": "0",
         "j_number": "22",
@@ -5952,7 +5952,7 @@
     ]
   },
   "watford": {
-    "centrocampistas": [
+    "mid_fielder": [
       {
         "goals": "1",
         "j_number": "29",
@@ -6062,7 +6062,7 @@
         "yellows": "2"
       }
     ],
-    "defensas": [
+    "defender": [
       {
         "goals": "1",
         "j_number": "3",
@@ -6196,7 +6196,7 @@
         "yellows": "4"
       }
     ],
-    "delanteros": [
+    "forward": [
       {
         "goals": "1",
         "j_number": "28",
@@ -6284,7 +6284,7 @@
         "yellows": ""
       }
     ],
-    "porteros": [
+    "goal_keeper": [
       {
         "goals": "0",
         "j_number": "35",
@@ -6324,7 +6324,7 @@
     ]
   },
   "west brom": {
-    "centrocampistas": [
+    "mid_fielder": [
       {
         "goals": "1",
         "j_number": "18",
@@ -6506,7 +6506,7 @@
         "yellows": "4"
       }
     ],
-    "defensas": [
+    "defender": [
       {
         "goals": "1",
         "j_number": "25",
@@ -6604,7 +6604,7 @@
         "yellows": "4"
       }
     ],
-    "delanteros": [
+    "forward": [
       {
         "goals": "0",
         "j_number": "7",
@@ -6680,7 +6680,7 @@
         "yellows": ""
       }
     ],
-    "porteros": [
+    "goal_keeper": [
       {
         "goals": "0",
         "j_number": "1",
@@ -6720,7 +6720,7 @@
     ]
   },
   "west ham": {
-    "centrocampistas": [
+    "mid_fielder": [
       {
         "goals": "1",
         "j_number": "30",
@@ -6878,7 +6878,7 @@
         "yellows": "1"
       }
     ],
-    "defensas": [
+    "defender": [
       {
         "goals": "1",
         "j_number": "19",
@@ -6988,7 +6988,7 @@
         "yellows": "8"
       }
     ],
-    "delanteros": [
+    "forward": [
       {
         "goals": "0",
         "j_number": "9",
@@ -7100,7 +7100,7 @@
         "yellows": ""
       }
     ],
-    "porteros": [
+    "goal_keeper": [
       {
         "goals": "0",
         "j_number": "13",

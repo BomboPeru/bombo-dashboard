@@ -19,30 +19,30 @@
       <div class="content">
         <template v-for="(_team, _key) in teams">
           <div :key="_key">
-            <div class="title-team" >{{ _key }}</div>
+            <div class="title-team" >{{ _team.name }}</div>
             <div class="line-team"></div>
             <div>
               <player-row-card
-                v-for="(player, key) in _team.porteros"
+                v-for="(player, key) in _team.goal_keeper"
                 :key="key + '-portero'"
                 :player="player"
                 position="ARQUERO"
-                @onPlayerSelected="selectPlayer(player, 'porteros')"/>
+                @onPlayerSelected="selectPlayer(player, 'goal_keeper')"/>
 
               <player-row-card
-                v-for="(player, key) in _team.defensas" :key="key + '-defensa'" :player="player"
+                v-for="(player, key) in _team.defender" :key="key + '-defensa'" :player="player"
                 position="DEFENSA"
-                @onPlayerSelected="selectPlayer(player, 'defensas')"/>
+                @onPlayerSelected="selectPlayer(player, 'defender')"/>
 
               <player-row-card
-                v-for="(player, key) in _team.centrocampistas"
+                v-for="(player, key) in _team.mid_fielder"
                 :key="key + '-centrocampista'" :player="player" position="CENTROCAMPISTA"
-                @onPlayerSelected="selectPlayer(player, 'centrocampistas')"/>
+                @onPlayerSelected="selectPlayer(player, 'mid_fielder')"/>
 
               <player-row-card
-                v-for="(player, key) in _team.delanteros"
+                v-for="(player, key) in _team.forward"
                 :key="key + '-delantero'" :player="player" position="DELANTERO"
-                @onPlayerSelected="selectPlayer(player, 'delanteros')"/>
+                @onPlayerSelected="selectPlayer(player, 'forward')"/>
             </div>
           </div>
         </template>
@@ -83,13 +83,13 @@
     },
     methods: {
       async fetchSomething(searchText) {
-        // const ip = await this.$axios.$get('https://bombo-open-api-nbjozjbvyl.now.sh/api/v1/full')
+        const data = await this.$axios.$get('https://bombo-open-api-nbjozjbvyl.now.sh/api/v1/full')
 
         console.log('fetching', searchText)
         if (searchText !== '') {
 
           console.log('do something')
-          let types = ['porteros', 'defensas', 'centrocampistas', 'delanteros']
+          let types = ['goal_keeper', 'defender', 'mid_fielder', 'forward']
           let results = {}
           for (let key in SampleData) {
 
@@ -109,7 +109,8 @@
           }
           this.teams = results
         } else {
-          this.teams = SampleData
+          // this.teams = SampleData
+          this.teams = data
         }
         console.log('fetch done')
       },

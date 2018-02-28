@@ -20,7 +20,7 @@
       <template v-if="tabs[activeTab] === 'LISTA'">
         <div class="form-name">
           <span class="name-label">Nombre</span>
-          <input-text v-model="teamName" width="200px" class="input-text"
+          <input-text v-model="team.name" width="200px" class="input-text"
                       placeholder="Nombre de tu equipo"/>
         </div>
         <div class="points">
@@ -29,30 +29,30 @@
         </div>
 
         <div
-          v-if="team.porteros.length === 0 && team.defensas.length === 0 && team.centrocampistas.length === 0 && team.delanteros.length === 0"
+          v-if="team.players.goal_keeper.length === 0 && team.players.defender.length === 0 && team.players.mid_fielder.length === 0 && team.players.forward.length === 0"
           class="empty-players">
           Escoge jugadores!
         </div>
         <div v-else class="player-list">
-          <player-row-card v-for="(player, key) in team.porteros"
+          <player-row-card v-for="(player, key) in team.players.goal_keeper"
                            :key="key+'-arquero'"
                            mode="selected"
                            :player="player"
                            position="ARQUERO"/>
 
-          <player-row-card v-for="(player, key) in team.defensas"
+          <player-row-card v-for="(player, key) in team.players.defender"
                            :key="key+'-defensa'"
                            mode="selected"
                            :player="player"
                            position="DEFENSA"/>
 
-          <player-row-card v-for="(player, key) in team.centrocampistas"
+          <player-row-card v-for="(player, key) in team.players.mid_fielder"
                            :key="key+'-centrocampista'"
                            mode="selected"
                            :player="player"
                            position="CENTROCAMPISTA"/>
 
-          <player-row-card v-for="(player, key) in team.delanteros"
+          <player-row-card v-for="(player, key) in team.players.forward"
                            :key="key+'-delantero'"
                            mode="selected"
                            :player="player"
@@ -66,11 +66,11 @@
           </div>
           <div class="players-layer" ref="playersLayer">
             <div class="portero-section">
-              <div v-for="(player, key) in team.porteros" :key="key+'-arquero2'" :player="player" class="portero-in-ground">
+              <div v-for="(player, key) in team.players.goal_keeper" :key="key+'-arquero2'" :player="player" class="portero-in-ground">
                 <span class="player-container">
                   <squad-number ground :number="player.j_number"/>
                   <div class="close-icon">
-                    <img src="../assets/icons/close_ground.svg" width="20px" alt="" @click="deletePlayer(player, 'porteros')">
+                    <img src="../assets/icons/close_ground.svg" width="20px" alt="" @click="deletePlayer(player, 'goal_keeper')">
                   </div>
                   <div class="player-info">
                     <div><span class="player-name">{{ player.name }}</span></div>
@@ -80,11 +80,11 @@
               </div>
             </div>
             <div class="defensa-section">
-              <div v-for="(player, key) in team.defensas" :key="key+'-defensa2'" :player="player" class="defensa-in-ground">
+              <div v-for="(player, key) in team.players.defender" :key="key+'-defensa2'" :player="player" class="defensa-in-ground">
                 <span class="player-container">
                   <squad-number ground :number="player.j_number"/>
                   <div class="close-icon">
-                    <img src="../assets/icons/close_ground.svg" width="20px" alt="" @click="deletePlayer(player, 'defensas')">
+                    <img src="../assets/icons/close_ground.svg" width="20px" alt="" @click="deletePlayer(player, 'defender')">
                   </div>
                   <div class="player-info">
                     <div><span class="player-name">{{ player.name }}</span></div>
@@ -95,11 +95,11 @@
               </div>
             </div>
             <div class="centrocampista-section">
-              <div v-for="(player, key) in team.centrocampistas" :key="key+'-centrocampista2'" :player="player" class="centrocampista-in-ground">
+              <div v-for="(player, key) in team.players.mid_fielder" :key="key+'-centrocampista2'" :player="player" class="centrocampista-in-ground">
                 <span class="player-container">
                   <squad-number ground :number="player.j_number"/>
                   <div class="close-icon">
-                    <img src="../assets/icons/close_ground.svg" width="20px" alt="" @click="deletePlayer(player, 'centrocampistas')">
+                    <img src="../assets/icons/close_ground.svg" width="20px" alt="" @click="deletePlayer(player, 'mid_fielder')">
                   </div>
                   <div class="player-info">
                     <div><span class="player-name">{{ player.name }}</span></div>
@@ -110,11 +110,11 @@
               </div>
             </div>
             <div class="delantero-section">
-              <div v-for="(player, key) in team.delanteros" :key="key+'-delantero2'" :player="player" class="delantero-in-ground">
+              <div v-for="(player, key) in team.players.forward" :key="key+'-delantero2'" :player="player" class="delantero-in-ground">
                 <span class="player-container">
                   <squad-number ground :number="player.j_number"/>
                   <div class="close-icon">
-                    <img src="../assets/icons/close_ground.svg" width="20px" alt="" @click="deletePlayer(player, 'delanteros')">
+                    <img src="../assets/icons/close_ground.svg" width="20px" alt="" @click="deletePlayer(player, 'forward')">
                   </div>
                   <div class="player-info">
                     <div><span class="player-name">{{ player.name }}</span></div>
@@ -162,19 +162,20 @@
       totalPoints () {
         let total = 0
 
-        this.team['porteros'].map((item) => {
+        console.log(this.team.players)
+        this.team.players['goal_keeper'].map((item) => {
           total+= parseInt(item.played)
         })
 
-        this.team['defensas'].map((item) => {
+        this.team.players['defender'].map((item) => {
           total+= parseInt(item.played)
         })
 
-        this.team['centrocampistas'].map((item) => {
+        this.team.players['mid_fielder'].map((item) => {
           total+= parseInt(item.played)
         })
 
-        this.team['delanteros'].map((item) => {
+        this.team.players['forward'].map((item) => {
           total+= parseInt(item.played)
         })
 
@@ -202,9 +203,9 @@
         // }
       },
       deletePlayer (player, type) {
-        let index = this.team[type].indexOf(player)
+        let index = this.team.players[type].indexOf(player)
         if (index !== -1) {
-          this.team[type].splice(index, 1)
+          this.team.players[type].splice(index, 1)
         }
       }
     }
@@ -257,7 +258,7 @@
     margin 20px 5px
     font-family Titillium Web
     text-align center
-    height calc(100vh - 400px)
+    height calc(100vh - 450px)
 
   .player-list
     margin-top 14px

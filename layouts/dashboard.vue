@@ -18,11 +18,13 @@
     <select-league-dialog
       :is-open="isSelectLeagueDialog"
       @onCollapse="onCollapseSelectLeagueDialog"/>
+    <snackbar :show="snackbar" :message="snackbarMessage"/>
   </div>
 </template>
 
 <script>
   import Toolbar from '~/components/Toolbar.vue'
+  import Snackbar from '~/components/Snackbar.vue'
   import Sidebar from '~/components/Sidebar.vue'
   import FloatingContainer from '~/components/FloatingContainer'
   import IconButton from '~/components/IconButton'
@@ -31,7 +33,7 @@
 
   export default {
     components: {
-      Toolbar, Sidebar, FloatingContainer, IconButton, SelectLeagueDialog, SignOutDialog
+      Toolbar, Sidebar, FloatingContainer, IconButton, SelectLeagueDialog, SignOutDialog, Snackbar
     },
     computed: {
       sidebarAndNavbar () {
@@ -47,6 +49,12 @@
       sidebar () {
         let notAllowed = ['/client/profile', '/client/createteam', '/client/dashboard', '/client/faq']
         return notAllowed.indexOf(this.$route.path) === -1
+      },
+      snackbar () {
+        return this.$store.getters.snackbar
+      },
+      snackbarMessage () {
+        return this.$store.getters.snackbarMessage
       }
     },
     methods: {

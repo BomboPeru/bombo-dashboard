@@ -1,9 +1,12 @@
 <template>
     <div id="createteam">
-
       <player-bank-card :class="['player-bank-card', activeTabView === 0?'show':'hide']" @onPlayerSelected="onPlayerSelected"/>
-      <new-team-card :class="['new-team-card', (activeTabView === 1 || activeTabView === 2)?'show':'hide']" :team="team"/>
-
+      <div :class="['new-team-card', (activeTabView === 1 || activeTabView === 2)?'show':'hide']">
+        <new-team-card :team="team"/>
+        <div class="btn-container">
+          <div class="button-create rounded elevation" @click="createTeam">Crear</div>
+        </div>
+      </div>
     </div>
 </template>
 
@@ -23,21 +26,49 @@
       }
     },
     methods: {
+      createTeam () {
+        console.log('create')
+        let total = 0
+        total += this.team.players.goal_keeper.length
+        total += this.team.players.defender.length
+        total += this.team.players.mid_fielder.length
+        total += this.team.players.forward.length
+        if (this.team.name === '') {
+          this.$store.dispatch('turnOnSnackbar', 'Debes darle un nombre a tu equipo')
+          return false
+        }
+        if (total !== 11) {
+          console.log('empty')
+          this.$store.dispatch('turnOnSnackbar', 'No puedes crear un equipo con menos de 11 jugadores')
+        } else {
+          console.log(this.team)
+          this.$axios.$post('http://api.bombo.pe/api/v1.0/user/add-team/' + 'saved', {
+            user_id: this.testUserId,
+            team: this.team
+          }).then(res => {
+            this.$store.dispatch('turnOnSnackbar', 'Equipo Creado!. Visita Mis Equipos para jugar')
+            console.log(res)
+          }).catch(e => {
+            this.$store.dispatch('turnOnSnackbar', 'Error al crear Equipo, pruebalo mas tarde.')
+            console.log(e)
+          })
+        }
+      },
       onPlayerSelected (data) {
         let currentTotal = 0
-        currentTotal = this.team.porteros.length +
-                      this.team.defensas.length +
-                      this.team.centrocampistas.length +
-                      this.team.delanteros.length
+        currentTotal = this.team.players.goal_keeper.length +
+                      this.team.players.defender.length +
+                      this.team.players.mid_fielder.length +
+                      this.team.players.forward.length
 
-        let playerTypes = ['porteros', 'defensas', 'centrocampistas', 'delanteros']
+        let playerTypes = ['goal_keeper', 'defender', 'mid_fielder', 'forward']
         let teamToEvaluate = data.player.team
         let sameTeamCount = 0
 
         for (let i = 0; i < playerTypes.length; i++) {
           let type = playerTypes[i]
-          for (let j = 0; j < this.team[type].length; j++) {
-            let player = this.team[type][j]
+          for (let j = 0; j < this.team.players[type].length; j++) {
+            let player = this.team.players[type][j]
             if (player.team === teamToEvaluate) {
               sameTeamCount++
             }
@@ -52,23 +83,23 @@
         }
 
         if (sameTeamCount < this.constraints.maxPlayersSameTeam) {
-          if ( (this.constraints[data.type][1] > this.team[data.type].length) &&
+          if ( (this.constraints[data.type][1] > this.team.players[data.type].length) &&
             ( this.constraints.total > currentTotal )
           ) {
-            let lengthPlayers = this.team[data.type].length
+            let lengthPlayers = this.team.players[data.type].length
             if (lengthPlayers > 0) {
               let isAlreadyAdded = false
               for (let i = 0; i < lengthPlayers; i++) {
-                if ((data.player.name === this.team[data.type][i].name)) {
+                if ((data.player.name === this.team.players[data.type][i].name)) {
                   isAlreadyAdded = true
                   break
                 }
               }
               if (isAlreadyAdded === false) {
-                this.team[data.type].push(data.player)
+                this.team.players[data.type].push(data.player)
               }
             } else {
-              this.team[data.type].push(data.player)
+              this.team.players[data.type].push(data.player)
             }
           }
         }
@@ -76,18 +107,22 @@
     },
     data () {
       return {
+        testUserId: '58e87f29-3b46-45a1-8069-5c7189bfa805',
         team: {
-          porteros: [],
-          defensas: [],
-          centrocampistas: [],
-          delanteros: []
+          name: '',
+          players: {
+            goal_keeper: [],
+            defender: [],
+            mid_fielder: [],
+            forward: []
+          }
         },
         constraints: {
           total: 11,
-          porteros: [1, 1],
-          defensas: [3, 5],
-          centrocampistas: [3, 5],
-          delanteros: [1, 3],
+          goal_keeper: [1, 1],
+          defender: [3, 5],
+          mid_fielder: [3, 5],
+          forward: [1, 3],
           maxPlayersSameTeam: 3
         }
       }
@@ -112,6 +147,22 @@
     display block
   .show
     display block
+  .btn-container
+    margin-top 18px
+    text-align center
+  .button-create
+    /*width 100px*/
+    width: 100%;
+    cursor pointer
+    font-family: Titillium Web
+    text-align center
+    font-weight bold
+    font-size 18px
+    line-height 50px
+    display inline-block
+    background #25bf89
+    height 50px
+    color white
   @media screen and (max-width: 1023px)
     #createteam
       min-height calc(100vh - 56px)
