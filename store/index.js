@@ -12,7 +12,7 @@ const store = () => {
       snackbar: false,
       snackbarDuration: 5000,
       snackbarMessage: '',
-      testUserId: 'ada51b19-ddf2-406f-97eb-9f0571aa6409'
+      testUserId: 'cc89b389-b42b-41bc-85cf-cc8e3169de83'
     },
     getters: {
       isSignoutDialog (state) {
