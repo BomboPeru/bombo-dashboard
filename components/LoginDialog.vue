@@ -19,7 +19,7 @@
                 <p class="label">Nombre de usuario o Correo electronico</p>
                 <input-text class="input-text" v-model="username" placeholder="nombre@correo.com" square width="300px"/>
                 <p class="label">Contraseña</p>
-                <input-text class="input-text" v-model="password" placeholder="****" square width="300px"/>
+                <input-text class="input-text" v-model="password" placeholder="****" square width="300px" type="password"/>
                 <p class="link-forgotpass"><span @click="goToForgotPassword">olvide mi contraseña</span></p>
               </div>
 
@@ -40,6 +40,8 @@
 <script>
   import DialogContainer from './DialogContainer'
   import InputText from './InputText'
+
+  let users = []
 
   export default {
     name: 'login-dialog',
@@ -64,6 +66,24 @@
       },
       login () {
       //  ...
+        if (users.length === 0) {
+          console.log('empty bank of users')
+        }
+        if (this.username !== '' && this.password !== '') {
+          console.log('non empty')
+          for (let i = 0; i < users.length; i++) {
+            if ( users[i].username === this.username && users[i].password === this.password) {
+              this.$store.commit('setUserId', users[i].id)
+              this.$router.push({path: '/client/teams'})
+              break
+            }
+          }
+        }
+      },
+      async fetchAllUsers () {
+        let response = await this.$axios.$get('http://api.bombo.pe/api/v1.0/user/all')
+        users = response.data
+        // response.data
       },
       goToForgotPassword () {
         this.$store.commit('closeLoginDialog')
@@ -73,6 +93,9 @@
         this.$store.commit('closeLoginDialog')
         this.$router.push({path: '/register'})
       }
+    },
+    mounted () {
+      this.fetchAllUsers()
     }
   }
 </script>

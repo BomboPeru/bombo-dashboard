@@ -126,7 +126,6 @@
                 this.$store.dispatch('turnOnSnackbar', 'Hubo un problema al momento del registro.')
               } else {
                 setTimeout(() => {
-                  this.$store.commit('setUserId', response.data.id)
                   this.$router.push('/')
                   this.$store.dispatch('turnOnSnackbar', 'Usuario regitrado!')
                 }, 300)

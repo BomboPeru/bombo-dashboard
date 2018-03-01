@@ -15,7 +15,6 @@ module.exports = {
       // { href: 'https://fonts.googleapis.com/icon?family=Material+Icons', rel: 'stylesheet' }
     ]
   },
-
   modules: [
     '@nuxtjs/axios',
   ],

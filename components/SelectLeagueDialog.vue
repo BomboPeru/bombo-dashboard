@@ -35,10 +35,10 @@
     data () {
       return {
         leagues: [
-          { name: 'PREMIER LEAGUE', image: '' },
-          { name: 'CHAMPIONS LEAGUE', image: '' },
-          { name: 'COMMING SOON', image: '', coming_soon: true },
-          { name: 'COMMING SOON', image: '', coming_soon: true }
+          { name: 'PREMIER LEAGUE', image: '' }
+          // { name: 'CHAMPIONS LEAGUE', image: '' },
+          // { name: 'COMMING SOON', image: '', coming_soon: true },
+          // { name: 'COMMING SOON', image: '', coming_soon: true }
         ]
       }
     },

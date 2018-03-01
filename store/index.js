@@ -12,7 +12,7 @@ const store = () => {
       snackbar: false,
       snackbarDuration: 5000,
       snackbarMessage: '',
-      testUserId: 'cc89b389-b42b-41bc-85cf-cc8e3169de83'
+      testUserId: null
     },
     getters: {
       isSignoutDialog (state) {
@@ -31,10 +31,14 @@ const store = () => {
         return state.snackbarMessage
       },
       testUserId (state) {
-        // let id = localStorage.getItem('testuserid')
-        // if (id !== null) {
-        //   state.testUserId = id
-        // }
+
+        if(process.browser){
+          console.log('process.browser')
+          let id = window.localStorage.getItem('testuserid')
+          if (id !== null) {
+            state.testUserId = id
+          }
+        }
         return state.testUserId
       }
     },
@@ -62,15 +66,22 @@ const store = () => {
         state.snackbar = true
       },
       getUserId (state) {
-        console.log(localStorage.getItem('testuserid'))
-        let id = localStorage.getItem('testuserid')
+        // let id = localStorage.getItem('testuserid')
+        if (process.browser) {
+          console.log('process.browser')
+          console.log(localStorage.getItem('testuserid'))
+          let id = localStorage.getItem('testuserid')
+        }
         if (id !== null) {
           state.testUserId = id
         }
       },
       setUserId (state, id) {
+        if (process.browser) {
+          console.log('process.browser')
+          localStorage.setItem('testuserid', id)
+        }
         state.testUserId = id
-        localStorage.setItem('testuserid', id)
       }
 
     },

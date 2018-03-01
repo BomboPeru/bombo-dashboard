@@ -79,13 +79,15 @@
     data () {
       return {
         title: 'JUGADORES DE LA TEMPORADA',
-        teams: {},
+        teams: [],
         searchText: ''
       }
     },
     methods: {
       async fetchSomething(searchText) {
-        // const data = await this.$axios.$get('https://bombo-open-api-nbjozjbvyl.now.sh/api/v1/full')
+        const response = await this.$axios.$get('http://165.227.212.75:8500/api/v1.0/premier_league')
+        const data = response.data
+        // const data = SampleData
 
         console.log('fetching', searchText)
         if (searchText !== '') {
@@ -93,10 +95,10 @@
           console.log('do something')
           let types = ['gol_keeper', 'defender', 'mid_fielder', 'forwarder']
           let results = {}
-          for (let key = 0; key < SampleData.length; key++) {
+          for (let key = 0; key < data.length; key++) {
 
             for (let typePlayer = 0; typePlayer < types.length ;typePlayer++) {
-              SampleData[key][types[typePlayer]].map(player => {
+              data[key][types[typePlayer]].map(player => {
                 if (player.name.toUpperCase().includes(searchText.toUpperCase())) {
                   if (results[key] === undefined) {
                     results[key] = {}
@@ -111,8 +113,7 @@
           }
           this.teams = results
         } else {
-          this.teams = SampleData
-          // this.teams = data
+          this.teams = data
         }
         console.log('fetch done')
       },

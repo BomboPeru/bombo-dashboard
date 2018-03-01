@@ -164,6 +164,11 @@
           maxCost: 100
         }
       }
+    },
+    mounted () {
+      // if (this.testUserId === null) {
+      //   this.$router.push('/')
+      // }
     }
   }
 </script>

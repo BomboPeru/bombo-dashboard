@@ -112,6 +112,10 @@
           { name: 'PREGUNTAS FRECUENTES', urlPath: '/client/faq' }
         ],
         itemsForEachPath: {
+          '': {
+            items: [
+            ]
+          },
           'MIS EQUIPOS': {
             items: [
               {name: 'EN JUEGO', color: '#EA504C', type: 'normal'},
@@ -179,7 +183,6 @@
         this.$store.commit('team/turnOnSelectLeageDialog')
       },
       callback (name) {
-
         let createTeam = '¡CREAR EQUIPO!'
         if (name === createTeam) {
           this.createNewTeamCallback()

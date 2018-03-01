@@ -55,6 +55,9 @@
       },
       snackbarMessage () {
         return this.$store.getters.snackbarMessage
+      },
+      testUserId () {
+        return this.$store.getters.testUserId
       }
     },
     methods: {
@@ -66,6 +69,17 @@
       }
     },
     mounted () {
+    },
+    created () {
+      console.log(this.testUserId)
+      if (this.testUserId === null) {
+        this.$router.push({path: '/register'})
+        // setTimeout(() => {
+        // }, 5000)
+      }
+      // else {
+      //   // this.fetchUserData()
+      // }
     }
   }
 </script>
