@@ -83,6 +83,7 @@
         return this.$store.getters['team/activeTypeTeam']
       },
       testUserId () {
+        console.log(this.$store.getters.testUserId)
         return this.$store.getters.testUserId
       }
       // mteams () {

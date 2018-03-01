@@ -66,8 +66,6 @@
       }
     },
     mounted () {
-      // JUST FOR TESTING
-      this.$store.commit('getUserId')
     }
   }
 </script>

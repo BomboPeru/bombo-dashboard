@@ -15,8 +15,8 @@
           <!--<span class="right pasados" v-if="typeCard === 'pasados'">{{ points }}</span>-->
         </div>
       </div>
-      <div class="league-background">
-        <img :src="'/leagues/uefa_card.png'" alt="" height="128px">
+      <div class="league-background" style="padding-top: 10px;">
+        <img :src="'/leagues/premier_league.png'" alt="" height="100px">
       </div>
       <p class="created-at subheader">FECHA DE CREACION: {{ createdAt }}</p>
       <div class="table-container">
@@ -228,7 +228,7 @@
 .league-background
   width 100%
   height 128px
-  background #0f1921
+  background #fafafa
   text-align center
 .subheader
   font-size 10px

@@ -11,7 +11,7 @@
               <li v-for="(item, i) in leagues" :key="i"
                   :class="['card-league', 'elevation', 'rounded', item.coming_soon===true?'blurred':'']"
                   @click="onClickLeague(item)">
-                <img :src="item.image===''? '/leagues/uefa_card.png':item.image" alt="" @click="selectLeague(i)">
+                <img :src="item.image===''? '/leagues/premier_league.png':item.image" alt="" @click="selectLeague(i)">
               </li>
             </ul>
           </div>

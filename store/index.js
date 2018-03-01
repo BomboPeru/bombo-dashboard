@@ -12,7 +12,7 @@ const store = () => {
       snackbar: false,
       snackbarDuration: 5000,
       snackbarMessage: '',
-      testUserId: null
+      testUserId: 'ada51b19-ddf2-406f-97eb-9f0571aa6409'
     },
     getters: {
       isSignoutDialog (state) {
@@ -31,10 +31,10 @@ const store = () => {
         return state.snackbarMessage
       },
       testUserId (state) {
-        let id = localStorage.getItem('testuserid')
-        if (id !== null) {
-          state.testUserId = id
-        }
+        // let id = localStorage.getItem('testuserid')
+        // if (id !== null) {
+        //   state.testUserId = id
+        // }
         return state.testUserId
       }
     },

@@ -168,18 +168,22 @@
 
         console.log(this.team.players)
         this.team.players['goal_keeper'].map((item) => {
+          item.j_number = ''+item.j_number
           total+= (item.cost)
         })
 
         this.team.players['defender'].map((item) => {
+          item.j_number = ''+item.j_number
           total+= (item.cost)
         })
 
         this.team.players['mid_fielder'].map((item) => {
+          item.j_number = ''+item.j_number
           total+= (item.cost)
         })
 
         this.team.players['forward'].map((item) => {
+          item.j_number = ''+item.j_number
           total+= (item.cost)
         })
 

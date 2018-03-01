@@ -91,9 +91,9 @@
         if (searchText !== '') {
 
           console.log('do something')
-          let types = ['goal_keeper', 'defender', 'mid_fielder', 'forward']
+          let types = ['gol_keeper', 'defender', 'mid_fielder', 'forwarder']
           let results = {}
-          for (let key in SampleData) {
+          for (let key = 0; key < SampleData.length; key++) {
 
             for (let typePlayer = 0; typePlayer < types.length ;typePlayer++) {
               SampleData[key][types[typePlayer]].map(player => {

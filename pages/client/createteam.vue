@@ -23,6 +23,9 @@
     computed: {
       activeTabView () {
         return this.$store.getters['createteam/activeTabView']
+      },
+      testUserId () {
+        return this.$store.getters.testUserId
       }
     },
     methods: {
@@ -42,9 +45,29 @@
           this.$store.dispatch('turnOnSnackbar', 'No puedes crear un equipo con menos de 11 jugadores')
         } else {
           console.log(this.team)
+
+          let temporalTeam = this.team
+
+          temporalTeam.players.goal_keeper.map((player) => {
+            player.j_number = player.j_number.toString()
+            delete player.cost
+          })
+          temporalTeam.players.defender.map((player) => {
+            player.j_number = player.j_number.toString()
+            delete player.cost
+          })
+          temporalTeam.players.mid_fielder.map((player) => {
+            player.j_number = player.j_number.toString()
+            delete player.cost
+          })
+          temporalTeam.players.forward.map((player) => {
+            player.j_number = player.j_number.toString()
+            delete player.cost
+          })
+
           this.$axios.$post('http://api.bombo.pe/api/v1.0/user/add-team/' + 'saved', {
             user_id: this.testUserId,
-            team: this.team
+            team: temporalTeam
           }).then(res => {
             this.$store.dispatch('turnOnSnackbar', 'Equipo Creado!. Visita Mis Equipos para jugar')
             console.log(res)
@@ -121,7 +144,7 @@
     },
     data () {
       return {
-        testUserId: '58e87f29-3b46-45a1-8069-5c7189bfa805',
+        // testUserId: '58e87f29-3b46-45a1-8069-5c7189bfa805',
         team: {
           name: '',
           players: {

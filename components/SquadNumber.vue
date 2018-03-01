@@ -26,7 +26,7 @@
         type: String,
         default: '/shirt_placeholder.svg'
       },
-      number: Number
+      number: [String, Number]
     }
   }
 </script>
