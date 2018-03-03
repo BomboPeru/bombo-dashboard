@@ -40,7 +40,7 @@
       return {
         activeTab: 0,
         tabs: [
-          { id: 1, name: 'Champions', img: '' },
+          // { id: 1, name: 'Champions', img: '' },
           { id: 2, name: 'Premier League', img: '' }
         ],
         headers: [
@@ -55,27 +55,15 @@
           { username: 'Maxlr', position: '1', teamName: 'Barza', score: '6700' },
           { username: 'Maxlr', position: '1', teamName: 'Barza', score: '6700' },
           { username: 'Maxlr', position: '1', teamName: 'Barza', score: '6700' },
-          { username: 'Maxlr', position: '1', teamName: 'Barza', score: '6700' },
-          { username: 'Maxlr', position: '1', teamName: 'Barza', score: '6700' },
-          { username: 'Maxlr', position: '1', teamName: 'Barza', score: '6700' },
-          { username: 'Maxlr', position: '1', teamName: 'Barza', score: '6700' },
-          { username: 'Maxlr', position: '1', teamName: 'Barza', score: '6700' },
-          { username: 'Maxlr', position: '1', teamName: 'Barza', score: '6700' },
-          { username: 'Maxlr', position: '1', teamName: 'Barza', score: '6700' },
-          { username: 'Maxlr', position: '1', teamName: 'Barza', score: '6700' },
-          { username: 'Maxlr', position: '1', teamName: 'Barza', score: '6700' },
-          { username: 'Maxlr', position: '1', teamName: 'Barza', score: '6700' },
-          { username: 'Maxlr', position: '1', teamName: 'Barza', score: '6700' },
-          { username: 'Maxlr', position: '1', teamName: 'Barza', score: '6700' },
-          { username: 'Maxlr', position: '1', teamName: 'Barza', score: '6700' },
-          { username: 'Maxlr', position: '1', teamName: 'Barza', score: '6700' },
-          { username: 'Maxlr', position: '1', teamName: 'Barza', score: '6700' }
         ]
       }
     },
     methods: {
       selectTab(i) {
         this.activeTab = i
+      },
+      async fetchRankingData () {
+        // this.$axios.$get('')
       }
     }
   }

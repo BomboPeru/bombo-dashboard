@@ -12,7 +12,8 @@ const store = () => {
       snackbar: false,
       snackbarDuration: 5000,
       snackbarMessage: '',
-      testUserId: null
+      testUserId: null,
+      testUser: {}
     },
     getters: {
       isSignoutDialog (state) {
@@ -40,6 +41,17 @@ const store = () => {
           }
         }
         return state.testUserId
+      },
+      testUser (state) {
+
+        if(process.browser){
+          console.log('process.browser')
+          let user = window.localStorage.getItem('testuser')
+          if (user !== null) {
+            state.testUser = JSON.parse(user)
+          }
+        }
+        return state.testUser
       }
     },
     mutations: {
@@ -76,12 +88,14 @@ const store = () => {
           state.testUserId = id
         }
       },
-      setUserId (state, id) {
+      setUserId (state, user) {
         if (process.browser) {
           console.log('process.browser')
-          localStorage.setItem('testuserid', id)
+          localStorage.setItem('testuserid', user.id)
+          localStorage.setItem('testuser', JSON.stringify(user))
         }
-        state.testUserId = id
+        state.testUser = user
+        state.testUserId = user.id
       }
 
     },

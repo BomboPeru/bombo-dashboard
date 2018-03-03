@@ -10,15 +10,22 @@
                              :match="item"/>
       </div>
       <div :class="['section', 'teams-container', activeTab === 2?'show-flex':'hide']">
-        <team-card class="team-card"
-                   v-for="(team, i) in teams"
-                   :key="i+'-team'"
-                   :title="team.name"
-                   :ranking="team.ranking"
-                   :points="team.points"
-                   :created-at="team.createdAt"
-                   :players="team.players"
-                   :collapsable="true"/>
+        <ul>
+          <li v-for="(team, i) in teams"
+              :key="i+'-team'">
+            <div>
+              <team-card class="team-card"
+                         :key="i+'-team'"
+                         :title="team.name"
+                         :ranking="team.ranking"
+                         :points="team.points"
+                         :created-at="team.createdAt"
+                         :players="team.players"
+                         :collapsable="true"
+                          width="100%"/>
+            </div>
+          </li>
+        </ul>
       </div>
     </div>
   </div>
@@ -38,6 +45,10 @@
     computed: {
       activeTab () {
         return this.$store.getters['dashboard/activeTabView']
+      },
+      testUserId () {
+        console.log(this.$store.getters.testUserId)
+        return this.$store.getters.testUserId
       }
     },
     data () {
@@ -52,103 +63,23 @@
           }
         ],
         teams: [
-          {
-            name: 'Nombre Team', points: 233, createdAt: '23/12/18', ranking: 2,
-            players: {
-              goal_keeper: [ { name: 'NOmbre Plyaer', j_number: '23', points: 23 } ],
-              defender: [
-                { name: 'NOmbre Plyae sdsds dsd s dsdsds dsdsds sdsdsd dsds dsds r', j_number: '23' },
-                { name: 'NOmbre Plyaer', j_number: '23' },
-                { name: 'NOmbre Plyaer', j_number: '23' },
-                { name: 'NOmbre Plyaer', j_number: '23' },
-                { name: 'NOmbre Plyaer', j_number: '23' },
-                { name: 'NOmbre Plyaer', j_number: '23' },
-                { name: 'NOmbre Plyaer', j_number: '23' },
-                { name: 'NOmbre Plyaer', j_number: '23' },
-                { name: 'NOmbre Plyaer', j_number: '23' }
-              ],
-              mid_fielder: [ { name: 'NOmbre Plyaer', j_number: '23' } ],
-              forward: [ { name: 'NOmbre Plyaer', j_number: '23' } ]
-            }
-          },
-          {
-            name: 'Nombre Team', points: 233, createdAt: '23/12/18', ranking: 2,
-            players: {
-              goal_keeper: [ { name: 'NOmbre Plyaer', j_number: '23', points: 23 } ],
-              defender: [
-                { name: 'NOmbre Plyae sdsds dsd s dsdsds dsdsds sdsdsd dsds dsds r', j_number: '23' },
-                { name: 'NOmbre Plyaer', j_number: '23' },
-                { name: 'NOmbre Plyaer', j_number: '23' },
-                { name: 'NOmbre Plyaer', j_number: '23' },
-                { name: 'NOmbre Plyaer', j_number: '23' },
-                { name: 'NOmbre Plyaer', j_number: '23' },
-                { name: 'NOmbre Plyaer', j_number: '23' },
-                { name: 'NOmbre Plyaer', j_number: '23' },
-                { name: 'NOmbre Plyaer', j_number: '23' }
-              ],
-              mid_fielder: [ { name: 'NOmbre Plyaer', j_number: '23' } ],
-              forward: [ { name: 'NOmbre Plyaer', j_number: '23' } ]
-            }
-          },
-          {
-            name: 'Nombre Team', points: 233, createdAt: '23/12/18', ranking: 2,
-            players: {
-              goal_keeper: [ { name: 'NOmbre Plyaer', j_number: '23', points: 23 } ],
-              defender: [
-                { name: 'NOmbre Plyae sdsds dsd s dsdsds dsdsds sdsdsd dsds dsds r', j_number: '23' },
-                { name: 'NOmbre Plyaer', j_number: '23' },
-                { name: 'NOmbre Plyaer', j_number: '23' },
-                { name: 'NOmbre Plyaer', j_number: '23' },
-                { name: 'NOmbre Plyaer', j_number: '23' },
-                { name: 'NOmbre Plyaer', j_number: '23' },
-                { name: 'NOmbre Plyaer', j_number: '23' },
-                { name: 'NOmbre Plyaer', j_number: '23' },
-                { name: 'NOmbre Plyaer', j_number: '23' }
-              ],
-              mid_fielder: [ { name: 'NOmbre Plyaer', j_number: '23' } ],
-              forward: [ { name: 'NOmbre Plyaer', j_number: '23' } ]
-            }
-          },
-          {
-            name: 'Nombre Team', points: 233, createdAt: '23/12/18', ranking: 2,
-            players: {
-              goal_keeper: [ { name: 'NOmbre Plyaer', j_number: '23', points: 23 } ],
-              defender: [
-                { name: 'NOmbre Plyae sdsds dsd s dsdsds dsdsds sdsdsd dsds dsds r', j_number: '23' },
-                { name: 'NOmbre Plyaer', j_number: '23' },
-                { name: 'NOmbre Plyaer', j_number: '23' },
-                { name: 'NOmbre Plyaer', j_number: '23' },
-                { name: 'NOmbre Plyaer', j_number: '23' },
-                { name: 'NOmbre Plyaer', j_number: '23' },
-                { name: 'NOmbre Plyaer', j_number: '23' },
-                { name: 'NOmbre Plyaer', j_number: '23' },
-                { name: 'NOmbre Plyaer', j_number: '23' }
-              ],
-              mid_fielder: [ { name: 'NOmbre Plyaer', j_number: '23' } ],
-              forward: [ { name: 'NOmbre Plyaer', j_number: '23' } ]
-            }
-          },
-          {
-            name: 'Nombre Team', points: 233, createdAt: '23/12/18', ranking: 2,
-            players: {
-              goal_keeper: [ { name: 'NOmbre Plyaer', j_number: '23', points: 23 } ],
-              defender: [
-                { name: 'NOmbre Plyae sdsds dsd s dsdsds dsdsds sdsdsd dsds dsds r', j_number: '23' },
-                { name: 'NOmbre Plyaer', j_number: '23' },
-                { name: 'NOmbre Plyaer', j_number: '23' },
-                { name: 'NOmbre Plyaer', j_number: '23' },
-                { name: 'NOmbre Plyaer', j_number: '23' },
-                { name: 'NOmbre Plyaer', j_number: '23' },
-                { name: 'NOmbre Plyaer', j_number: '23' },
-                { name: 'NOmbre Plyaer', j_number: '23' },
-                { name: 'NOmbre Plyaer', j_number: '23' }
-              ],
-              mid_fielder: [ { name: 'NOmbre Plyaer', j_number: '23' } ],
-              forward: [ { name: 'NOmbre Plyaer', j_number: '23' } ]
-            }
-          }
         ]
       }
+    },
+    methods: {
+      async fetchMyTeams () {
+        let response = await this.$axios.$get('http://api.bombo.pe/api/v1.0/user/' + this.testUserId)
+        console.log(response.data.playing_teams[0])
+        this.teams = response.data.playing_teams
+      },
+      async fetchPastMatches () {
+        let response = await this.$axios.$get('http://159.65.238.89:8500/manager/get-works')
+        this.matches = response.data
+      }
+    },
+    mounted () {
+      this.fetchMyTeams()
+      this.fetchPastMatches()
     }
   }
 </script>
@@ -169,11 +100,14 @@
   .matches-container
     padding-left 24px
     padding-right 24px
-  .teams-container
-    display flex
-    flex-wrap wrap
-    justify-content space-around
-    align-content flex-start
+  /*.teams-container*/
+    /*display flex*/
+    /*flex-wrap wrap*/
+    /*justify-content space-around*/
+    /*align-content flex-start*/
+  .teams-container ul
+    list-style-type none
+    padding-left 0
 
   .team-card
     /*flex-shrink 0*/

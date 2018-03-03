@@ -1,5 +1,5 @@
 <template>
-    <div id="round-card" class="elevation rounded" :style="{ 'padding-bottom': collapsable?'0px':'5px' }">
+    <div id="round-card" class="elevation rounded" :style="{ 'padding-bottom': collapsable?'0px':'5px', 'width': width }">
       <div class="header" :style="{ background: typeColorCards[typeCard] }">
         <div :style="{ 'text-align': typeCard !== 'en_juego'?'center':'left' }">
           <span class="title" :style="{ 'text-align': typeCard !== 'en_juego'?'center':'left' }">{{ title }}</span>
@@ -116,6 +116,10 @@
       collapsable: {
         type: Boolean,
         default: false
+      },
+      width: {
+        type: String,
+        default: '420px'
       }
     },
     data () {
@@ -184,8 +188,9 @@
   /*height 64vh*/
   overflow hidden
   background #fafafa
-  margin-left 24px
-  margin-right 24px
+  /*margin-left 24px*/
+  /*margin-right 24px*/
+
   /*height: 72%;*/
   /*padding-bottom: 12px;*/
 

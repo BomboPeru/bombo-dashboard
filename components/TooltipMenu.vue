@@ -23,7 +23,7 @@
           </ul>
         </template>
         <template v-else-if="profile">
-          <p class="username">{{ profileData.name }}</p>
+          <p class="username">{{ testUser.name }}</p>
           <p class="coins">{{ profileData.coins }}</p>
           <div class="divider"></div>
           <ul class="ul-profile">
@@ -70,13 +70,17 @@
         } else {
           return ''
         }
+      },
+      testUser () {
+        console.log(this.$store.getters.testUser)
+        return this.$store.getters.testUser
       }
     },
     data () {
       return {
         profileData: {
           name: 'Jaime Bustamante',
-          coins: '45B'
+          coins: '0B'
         },
         listProfileItems: [
           { name: 'Mi Perfil', url: '' },

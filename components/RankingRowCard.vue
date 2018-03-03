@@ -51,22 +51,23 @@
   #position
     width 55px
     text-align center
-    font-size: 14px;
+    font-size: 16px;
   #username
     width 76px
-    font-size: 10px;
+    font-size: 14px;
   #username div
     display block
     width 60px
   #team-name
     width 132px
-    font-size: 8px;
+    font-size: 12px;
     text-transform uppercase
   #team-name div
     display block
     width 120px
   #score
     width 60px
-    font-size: 10px;
+    font-weight bold
+    font-size: 12px;
     text-align center
 </style>

@@ -7,7 +7,7 @@
         </span>
       </li>
       <li class="notification"  @click="openTooltip('notification')">
-        <div class="indicator" v-if="indicator > 0"><span>{{ indicator }}</span></div>
+        <!--<div class="indicator" v-if="indicator > 0"><span>{{ indicator }}</span></div>-->
         <span>
           <img src="../assets/icons/notification.svg" width="20px" alt="">
         </span>
@@ -40,10 +40,7 @@
         profile: false,
         statusBarItems: ['help', 'notification', 'profile'],
         notifications: [
-          { subject: 'Finalizado', message: 'GANASTE S/. 50' },
-          { subject: 'Finalizado', message: 'GANASTE S/. 50' },
-          { subject: 'Incongruencias', message: 'GANASTE S/. 50' },
-          { subject: 'Finalizado', message: 'GANASTE S/. 50' }
+          { subject: 'NUEVO USUARIO', message: 'BIENVENIDO A BOM...' }
         ]
       }
     },

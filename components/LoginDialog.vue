@@ -73,7 +73,7 @@
           console.log('non empty')
           for (let i = 0; i < users.length; i++) {
             if ( users[i].username === this.username && users[i].password === this.password) {
-              this.$store.commit('setUserId', users[i].id)
+              this.$store.commit('setUserId', users[i])
               this.$router.push({path: '/client/teams'})
               this.message = ''
               break
