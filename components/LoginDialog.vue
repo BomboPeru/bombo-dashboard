@@ -17,20 +17,20 @@
                   </div>
                 </div>
                 <p class="label">Nombre de usuario o Correo electronico</p>
-                <input-text class="input-text" v-model="username" placeholder="nombre@correo.com" square width="300px"/>
+                <input-text class="input-text" v-model="username" placeholder="nombre@correo.com" square flat width="300px"/>
                 <p class="label">Contraseña</p>
-                <input-text class="input-text" v-model="password" placeholder="****" square width="300px" type="password"/>
-                <p class="link-forgotpass"><span @click="goToForgotPassword">olvide mi contraseña</span></p>
+                <input-text class="input-text" v-model="password" placeholder="****" square flat width="300px" type="password"/>
+                <!--<p class="link-forgotpass"><span @click="goToForgotPassword">olvide mi contraseña</span></p>-->
               </div>
 
             </div>
 
             <div class="bottom-button-container">
-              <div class="button-login elevation" @click="login">
+              <div class="button-login elevation" @click="login" style="margin-top: 23px;">
                 ACCEDER
               </div>
             </div>
-            <p class="messageForgotPass">{{messageForgotPass}} <span class="link-register" @click="goToRegister">AQUI</span></p>
+            <!--<p class="messageForgotPass">{{messageForgotPass}} <span class="link-register" @click="goToRegister">AQUI</span></p>-->
           </div>
         </div>
       </dialog-container>
@@ -75,9 +75,11 @@
             if ( users[i].username === this.username && users[i].password === this.password) {
               this.$store.commit('setUserId', users[i].id)
               this.$router.push({path: '/client/teams'})
+              this.message = ''
               break
             }
           }
+          this.message = 'username y/o password no es correcto.'
         }
       },
       async fetchAllUsers () {
@@ -107,8 +109,10 @@
     flex-wrap wrap
     justify-content center
   .container
-    border-radius: 12px
-    background #E8E8E8
+    /*border-radius: 12px*/
+    /*background #E8E8E8*/
+    border-radius: 12px;
+    background: #fafafa;
   .signin-card
     width 375px
     overflow hidden
@@ -141,11 +145,14 @@
   .link-forgotpass span
     cursor pointer
   .bottom-button-container
-    display flex
-    justify-content space-around
+    /*display flex*/
+    /*justify-content space-around*/
+    margin-left 22px
+    margin-right 22px
     padding-left 15px
     padding-right 15px
     padding-bottom 9px
+    margin-bottom 22px
     text-transform uppercase
 
     font-weight: 600;
@@ -155,7 +162,8 @@
     color: #FAFAFA;
   .button-login
     background: #25BF89;
-    border-radius: 12px;
+    border-radius: 4px;
+    font-size: 18px;
     padding 4px 28px 4px 28px
     cursor pointer
   .messageForgotPass
@@ -181,7 +189,7 @@
     font-style: normal;
     font-weight: 600;
     line-height: normal;
-    font-size: 14px;
+    font-size: 16px;
     color: #445F69;
   .input-text
     margin-top: 4px !important;

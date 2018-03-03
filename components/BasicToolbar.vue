@@ -7,7 +7,7 @@
         <nuxt-link to="/login">COMO JUGAR</nuxt-link>
         <nuxt-link to="/register">PROXIMAS FECHAS</nuxt-link>
       </div>
-      <div class="links right">
+      <div class="links right" style="visibility: hidden;">
         <nuxt-link to="/register" class="register">Registrate</nuxt-link>
         <span @click="openLoginDialog">Inicia sesion</span>
       </div>

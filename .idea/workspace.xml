@@ -2,18 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="bf24282d-3075-4fc1-a7e6-a1352eba2675" name="Default" comment="">
+      <change beforePath="" afterPath="$PROJECT_DIR$/static/bombo_dashboard_login.jpg" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change beforePath="$PROJECT_DIR$/components/BasicToolbar.vue" afterPath="$PROJECT_DIR$/components/BasicToolbar.vue" />
       <change beforePath="$PROJECT_DIR$/components/LoginDialog.vue" afterPath="$PROJECT_DIR$/components/LoginDialog.vue" />
-      <change beforePath="$PROJECT_DIR$/components/PlayerBankCard.vue" afterPath="$PROJECT_DIR$/components/PlayerBankCard.vue" />
-      <change beforePath="$PROJECT_DIR$/components/SelectLeagueDialog.vue" afterPath="$PROJECT_DIR$/components/SelectLeagueDialog.vue" />
-      <change beforePath="$PROJECT_DIR$/components/Sidebar.vue" afterPath="$PROJECT_DIR$/components/Sidebar.vue" />
-      <change beforePath="$PROJECT_DIR$/layouts/dashboard.vue" afterPath="$PROJECT_DIR$/layouts/dashboard.vue" />
-      <change beforePath="$PROJECT_DIR$/nuxt.config.js" afterPath="$PROJECT_DIR$/nuxt.config.js" />
-      <change beforePath="$PROJECT_DIR$/package.json" afterPath="$PROJECT_DIR$/package.json" />
       <change beforePath="$PROJECT_DIR$/pages/client/createteam.vue" afterPath="$PROJECT_DIR$/pages/client/createteam.vue" />
-      <change beforePath="$PROJECT_DIR$/pages/register.vue" afterPath="$PROJECT_DIR$/pages/register.vue" />
-      <change beforePath="$PROJECT_DIR$/store/index.js" afterPath="$PROJECT_DIR$/store/index.js" />
-      <change beforePath="$PROJECT_DIR$/yarn.lock" afterPath="$PROJECT_DIR$/yarn.lock" />
+      <change beforePath="$PROJECT_DIR$/pages/index.vue" afterPath="$PROJECT_DIR$/pages/index.vue" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -30,7 +24,7 @@
       <file leaf-file-name="teams.vue" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/pages/client/teams.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2928">
+            <state relative-caret-position="0">
               <caret line="229" column="11" lean-forward="false" selection-start-line="229" selection-start-column="11" selection-end-line="229" selection-end-column="11" />
               <folding>
                 <element signature="e#2963#3492#0" expanded="false" />
@@ -51,13 +45,37 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="PlayerBankCard.vue" pinned="false" current-in-tab="true">
+      <file leaf-file-name="PlayerBankCard.vue" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/components/PlayerBankCard.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="228">
-              <caret line="88" column="34" lean-forward="false" selection-start-line="88" selection-start-column="34" selection-end-line="88" selection-end-column="34" />
+            <state relative-caret-position="2088">
+              <caret line="89" column="34" lean-forward="false" selection-start-line="89" selection-start-column="34" selection-end-line="89" selection-end-column="34" />
               <folding>
                 <element signature="e#2050#2097#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.vue" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/pages/index.vue">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="168">
+              <caret line="7" column="0" lean-forward="false" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
+              <folding>
+                <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#template#0;n#!!top" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="BasicToolbar.vue" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/components/BasicToolbar.vue">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="528">
+              <caret line="22" column="8" lean-forward="false" selection-start-line="22" selection-start-column="8" selection-end-line="22" selection-end-column="45" />
+              <folding>
+                <element signature="n#style#0;n#div#2;n#div#0;n#template#0;n#!!top" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -73,23 +91,13 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="NavItem.vue" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/components/NavItem.vue">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="312">
-              <caret line="13" column="22" lean-forward="false" selection-start-line="13" selection-start-column="22" selection-end-line="13" selection-end-column="22" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="createteam.vue" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/pages/client/createteam.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="4080">
-              <caret line="170" column="10" lean-forward="false" selection-start-line="170" selection-start-column="10" selection-end-line="170" selection-end-column="10" />
+            <state relative-caret-position="384">
+              <caret line="16" column="0" lean-forward="false" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
               <folding>
-                <element signature="e#488#548#0" expanded="true" />
+                <element signature="e#562#622#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -105,34 +113,15 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SelectLeagueDialog.vue" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/components/SelectLeagueDialog.vue">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="888">
-              <caret line="37" column="47" lean-forward="false" selection-start-line="37" selection-start-column="47" selection-end-line="37" selection-end-column="47" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="LoginDialog.vue" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/components/LoginDialog.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="456">
-              <caret line="19" column="55" lean-forward="true" selection-start-line="19" selection-start-column="55" selection-end-line="19" selection-end-column="55" />
+            <state relative-caret-position="378">
+              <caret line="165" column="20" lean-forward="false" selection-start-line="165" selection-start-column="20" selection-end-line="165" selection-end-column="20" />
               <folding>
-                <element signature="e#1612#1659#0" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#div#3;n#div#0;n#div#0;n#dialog-container#0;n#div#0;n#template#0;n#!!top" expanded="true" />
+                <element signature="e#1662#1709#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="register.vue" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/pages/register.vue">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="816">
-              <caret line="34" column="81" lean-forward="true" selection-start-line="34" selection-start-column="66" selection-end-line="34" selection-end-column="81" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -150,8 +139,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>selectTypeTeam</find>
-      <find>clickOnTab</find>
       <find>teamcard</find>
       <find>toggleTab</find>
       <find>margin</find>
@@ -180,6 +167,8 @@
       <find>items</find>
       <find>fetch</find>
       <find>title-team</find>
+      <find>button-login</find>
+      <find>bottom-button-container</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -208,9 +197,7 @@
         <option value="$PROJECT_DIR$/components/CcAvatar.vue" />
         <option value="$PROJECT_DIR$/pages/client/profile.vue" />
         <option value="$PROJECT_DIR$/pages/client/faq.vue" />
-        <option value="$PROJECT_DIR$/pages/index.vue" />
         <option value="$PROJECT_DIR$/components/DialogContainer.vue" />
-        <option value="$PROJECT_DIR$/components/BasicToolbar.vue" />
         <option value="$PROJECT_DIR$/components/SignOutDialog.vue" />
         <option value="$PROJECT_DIR$/components/InputSelect.vue" />
         <option value="$PROJECT_DIR$/layouts/default.vue" />
@@ -238,13 +225,15 @@
         <option value="$PROJECT_DIR$/store/index.js" />
         <option value="$PROJECT_DIR$/nuxt.config.js" />
         <option value="$PROJECT_DIR$/components/NavBar.vue" />
-        <option value="$PROJECT_DIR$/pages/client/createteam.vue" />
         <option value="$PROJECT_DIR$/components/Sidebar.vue" />
         <option value="$PROJECT_DIR$/components/SelectLeagueDialog.vue" />
         <option value="$PROJECT_DIR$/pages/client/teams.vue" />
         <option value="$PROJECT_DIR$/layouts/dashboard.vue" />
-        <option value="$PROJECT_DIR$/components/LoginDialog.vue" />
         <option value="$PROJECT_DIR$/components/PlayerBankCard.vue" />
+        <option value="$PROJECT_DIR$/components/BasicToolbar.vue" />
+        <option value="$PROJECT_DIR$/pages/client/createteam.vue" />
+        <option value="$PROJECT_DIR$/components/LoginDialog.vue" />
+        <option value="$PROJECT_DIR$/pages/index.vue" />
       </list>
     </option>
   </component>
@@ -259,11 +248,11 @@
   <component name="NodeModulesDirectoryManager">
     <handled-path value="$PROJECT_DIR$/node_modules" />
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="54" />
-    <option name="y" value="-4" />
-    <option name="width" value="1867" />
-    <option name="height" value="1085" />
+  <component name="ProjectFrameBounds">
+    <option name="x" value="119" />
+    <option name="y" value="130" />
+    <option name="width" value="1865" />
+    <option name="height" value="1049" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -281,6 +270,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -292,12 +282,6 @@
               <item name="bombo-dashboard" type="b2602c69:ProjectViewProjectNode" />
               <item name="bombo-dashboard" type="462c0819:PsiDirectoryNode" />
               <item name="assets" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="bombo-dashboard" type="b2602c69:ProjectViewProjectNode" />
-              <item name="bombo-dashboard" type="462c0819:PsiDirectoryNode" />
-              <item name="assets" type="462c0819:PsiDirectoryNode" />
-              <item name="img" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="bombo-dashboard" type="b2602c69:ProjectViewProjectNode" />
@@ -345,19 +329,12 @@
             <path>
               <item name="bombo-dashboard" type="b2602c69:ProjectViewProjectNode" />
               <item name="bombo-dashboard" type="462c0819:PsiDirectoryNode" />
-              <item name="static" type="462c0819:PsiDirectoryNode" />
-              <item name="leagues" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="bombo-dashboard" type="b2602c69:ProjectViewProjectNode" />
-              <item name="bombo-dashboard" type="462c0819:PsiDirectoryNode" />
               <item name="store" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scratches" />
       <pane id="Scope" />
     </panes>
   </component>
@@ -373,16 +350,16 @@
     <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/static" />
+      <recent name="$PROJECT_DIR$/assets/styles" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/static" />
       <recent name="$PROJECT_DIR$/static/leagues" />
       <recent name="$PROJECT_DIR$/assets/sample" />
       <recent name="$PROJECT_DIR$/assets/icons" />
       <recent name="$PROJECT_DIR$/components" />
-      <recent name="$PROJECT_DIR$/static" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/static" />
-      <recent name="$PROJECT_DIR$/assets/styles" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -433,7 +410,9 @@
       <workItem from="1519834498538" duration="28421000" />
       <workItem from="1519884540330" duration="32000" />
       <workItem from="1519924161401" duration="6183000" />
-      <workItem from="1519932217236" duration="3000" />
+      <workItem from="1519932217236" duration="3596000" />
+      <workItem from="1520011692863" duration="1696000" />
+      <workItem from="1520036899343" duration="5456000" />
     </task>
     <task id="LOCAL-00001" summary="topbar">
       <created>1518150213086</created>
@@ -582,28 +561,36 @@
       <option name="project" value="LOCAL" />
       <updated>1519874627094</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="vardy is cheaper">
+      <created>1519932235900</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1519932235900</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="304260000" />
+    <option name="totallyTimeSpent" value="315005000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="54" y="-4" width="1867" height="1085" extended-state="6" />
+    <frame x="119" y="130" width="1865" height="1049" extended-state="0" />
+    <editor active="true" />
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Cargo" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Floobits" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17388919" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17737506" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -663,7 +650,8 @@
     <MESSAGE value="testUSerId *ONLY TESTING" />
     <MESSAGE value="testUSerId *ONLY TESTING HURRY UP NIGGA BITCH" />
     <MESSAGE value="Vardy" />
-    <option name="LAST_COMMIT_MESSAGE" value="Vardy" />
+    <MESSAGE value="vardy is cheaper" />
+    <option name="LAST_COMMIT_MESSAGE" value="vardy is cheaper" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -672,7 +660,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/pages/login.vue" />
     <entry file="file://$PROJECT_DIR$/components/TooltipMenu.vue">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1768">
@@ -710,20 +697,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1416">
           <caret line="59" column="22" lean-forward="false" selection-start-line="59" selection-start-column="16" selection-end-line="59" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/components/BasicToolbar.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="21" column="26" lean-forward="false" selection-start-line="21" selection-start-column="26" selection-end-line="22" selection-end-column="45" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pages/index.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="168">
-          <caret line="16" column="10" lean-forward="false" selection-start-line="16" selection-start-column="10" selection-end-line="16" selection-end-column="10" />
         </state>
       </provider>
     </entry>
@@ -819,6 +792,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="240">
           <caret line="10" column="7" lean-forward="false" selection-start-line="10" selection-start-column="7" selection-end-line="10" selection-end-column="7" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -857,6 +831,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1626">
           <caret line="69" column="16" lean-forward="false" selection-start-line="69" selection-start-column="16" selection-end-line="69" selection-end-column="16" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -901,9 +876,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="432">
           <caret line="18" column="0" lean-forward="false" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
-          <folding>
-            <element signature="n#style#0;n#div#1;n#div#0;n#template#0;n#!!top" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -919,7 +891,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="89928">
           <caret line="3747" column="22" lean-forward="false" selection-start-line="3747" selection-start-column="22" selection-end-line="3747" selection-end-column="22" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -928,6 +899,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-12">
           <caret line="35" column="9" lean-forward="false" selection-start-line="35" selection-start-column="9" selection-end-line="35" selection-end-column="9" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -943,7 +915,7 @@
         <state relative-caret-position="72">
           <caret line="3" column="35" lean-forward="false" selection-start-line="3" selection-start-column="35" selection-end-line="3" selection-end-column="35" />
           <folding>
-            <element signature="e#0#23#0" expanded="true" />
+            <element signature="e#0#23#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -959,18 +931,8 @@
     <entry file="file://$PROJECT_DIR$/pages/register.vue">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="816">
-          <caret line="34" column="81" lean-forward="true" selection-start-line="34" selection-start-column="66" selection-end-line="34" selection-end-column="81" />
+          <caret line="34" column="81" lean-forward="false" selection-start-line="34" selection-start-column="66" selection-end-line="34" selection-end-column="81" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/components/LoginDialog.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="456">
-          <caret line="19" column="55" lean-forward="true" selection-start-line="19" selection-start-column="55" selection-end-line="19" selection-end-column="55" />
-          <folding>
-            <element signature="e#1612#1659#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -990,27 +952,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pages/client/createteam.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4080">
-          <caret line="170" column="10" lean-forward="false" selection-start-line="170" selection-start-column="10" selection-end-line="170" selection-end-column="10" />
-          <folding>
-            <element signature="e#488#548#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/components/Sidebar.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2472">
-          <caret line="103" column="23" lean-forward="false" selection-start-line="103" selection-start-column="23" selection-end-line="103" selection-end-column="23" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/pages/client/teams.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2928">
+        <state relative-caret-position="0">
           <caret line="229" column="11" lean-forward="false" selection-start-line="229" selection-start-column="11" selection-end-line="229" selection-end-column="11" />
           <folding>
             <element signature="e#2963#3492#0" expanded="false" />
@@ -1028,12 +972,66 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/components/Sidebar.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2472">
+          <caret line="103" column="23" lean-forward="false" selection-start-line="103" selection-start-column="23" selection-end-line="103" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/components/PlayerBankCard.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="228">
-          <caret line="88" column="34" lean-forward="false" selection-start-line="88" selection-start-column="34" selection-end-line="88" selection-end-column="34" />
+        <state relative-caret-position="2088">
+          <caret line="89" column="34" lean-forward="false" selection-start-line="89" selection-start-column="34" selection-end-line="89" selection-end-column="34" />
           <folding>
             <element signature="e#2050#2097#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/components/BasicToolbar.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="528">
+          <caret line="22" column="8" lean-forward="false" selection-start-line="22" selection-start-column="8" selection-end-line="22" selection-end-column="45" />
+          <folding>
+            <element signature="n#style#0;n#div#2;n#div#0;n#template#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pages/client/createteam.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="384">
+          <caret line="16" column="0" lean-forward="false" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
+          <folding>
+            <element signature="e#562#622#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/bombo_dashboard_login.jpg">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/components/LoginDialog.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="378">
+          <caret line="165" column="20" lean-forward="false" selection-start-line="165" selection-start-column="20" selection-end-line="165" selection-end-column="20" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#div#3;n#div#0;n#div#0;n#dialog-container#0;n#div#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="e#1662#1709#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pages/index.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="168">
+          <caret line="7" column="0" lean-forward="false" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#template#0;n#!!top" expanded="true" />
           </folding>
         </state>
       </provider>

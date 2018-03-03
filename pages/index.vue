@@ -5,7 +5,7 @@
       <div class="bottom-part">
         <p class="big-title">En Bombo tu eres el experto nosotros te alentamos</p>
         <div class="btn-container">
-          <div class="juega-ya">Juega Ya!</div>
+          <div class="juega-ya elevation" @click="openLoginDialog" style="cursor: pointer">SI ERES BETA TESTER, INGRESA AQUI</div>
         </div>
       </div>
     </div>
@@ -22,7 +22,11 @@
 
   export default {
     // layout: 'dashboard',
-
+    methods: {
+      openLoginDialog () {
+        this.$store.commit('openLoginDialog')
+      }
+    }
   }
 </script>
 
@@ -32,7 +36,8 @@
   .landing
     height 640px
     width 100%
-    background: linear-gradient(0deg, rgb(19, 145, 191), rgb(216, 255, 0))
+    background: url(../static/bombo_dashboard_login.jpg), linear-gradient(0deg, #fff, #243337)
+    background-blend-mode multiply
     color white
     text-align center
     padding 27px 42px 12px 42px
@@ -59,7 +64,7 @@
     font-family: Titillium Web;
     padding 6px 41px 6px 41px
     background: #EA504C;
-    border-radius: 12px;
+    border-radius: 4px;
 
   .block-content
     background white
