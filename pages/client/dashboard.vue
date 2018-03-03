@@ -54,13 +54,7 @@
     data () {
       return {
         matches: [
-          { teamAImg: '', teamBImg: '',
-            info: { teamA: 'FCB', teamB: 'RMFC', date: '12/02/18' },
-            facts: [
-              { min: '12\'', event:'GOL', player: 'Jugador Name', score: '+100', yellow: true, green: false },
-              { min: '12\'', event:'GOL', player: 'Jugador Name', score: '+100', yellow: false, green: true }
-            ]
-          }
+          { away: { events: [], name: 'FCB', score: '1' }, home: { events: [], name: 'RMD', score: '2' } }
         ],
         teams: [
         ]
@@ -69,17 +63,38 @@
     methods: {
       async fetchMyTeams () {
         let response = await this.$axios.$get('http://api.bombo.pe/api/v1.0/user/' + this.testUserId)
-        console.log(response.data.playing_teams[0])
+        // console.log(response.data.playing_teams[0])
         this.teams = response.data.playing_teams
       },
-      async fetchPastMatches () {
-        let response = await this.$axios.$get('http://159.65.238.89:8500/manager/get-works')
-        this.matches = response.data
+      async fetchAllMatches () {
+        const self = this
+        let response = await this.$axios({
+          method: 'get',
+          url: 'http://open.bombo.pe/manager/get-works'
+          // auth: {
+          //   username: 'bregymr',
+          //   password: 'malpartida1'
+          // }
+        })
+        const matches = response.data.data.filter((match) => {
+          return match.type === 'match'
+        })
+        for (let i = 0; i < matches.length; i++) {
+          self.fetchMatchById(matches[i].name)
+        }
+      },
+      async fetchMatchById (matchId) {
+        const response = await this.$axios.$get('http://open.bombo.pe/api/v1.0/' + matchId)
+        const match = response.data
+        this.matches.push(match)
+        // match
+        // response.data
       }
     },
     mounted () {
+      this.matches = []
       this.fetchMyTeams()
-      this.fetchPastMatches()
+      this.fetchAllMatches()
     }
   }
 </script>

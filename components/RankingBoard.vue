@@ -61,9 +61,6 @@
     methods: {
       selectTab(i) {
         this.activeTab = i
-      },
-      async fetchRankingData () {
-        // this.$axios.$get('')
       }
     }
   }

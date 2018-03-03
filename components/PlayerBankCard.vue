@@ -85,7 +85,7 @@
     },
     methods: {
       async fetchSomething(searchText) {
-        const response = await this.$axios.$get('http://165.227.212.75:8500/api/v1.0/premier_league')
+        const response = await this.$axios.$get('http://open.bombo.pe/api/v1.0/premier_league')
         const data = response.data
         // const data = SampleData
 

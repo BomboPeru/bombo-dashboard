@@ -5,22 +5,22 @@
           <thead>
             <tr>
               <th id="team-a" class="team-logo">
-                <img v-if="match.teamAImg !== '' || match.teamAImg === null" :src="match.teamAImg"/>
-                <img v-else src="../assets/icons/placeholder_team_icon.svg" width="20px"/>
+                <img src="../assets/icons/placeholder_team_icon.svg" width="20px"/>
               </th>
               <th class="match-info">
                 <div class="date">
-                  <span>{{ match.info.date }}</span>
+                  <!--<span>{{ match.info.date }}</span>-->
                 </div>
                 <div class="match-team">
-                  <span>{{ match.info.teamA }}</span>
+                  <span>{{ match.home.name }}</span>
+                  {{ match.home.score }}
                   vs
-                  <span>{{ match.info.teamB }}</span>
+                  {{ match.away.score }}
+                  <span>{{ match.away.name }}</span>
                 </div>
               </th>
               <th id="team-b" class="team-logo">
-                <img v-if="match.teamBImg !== '' || match.teamBImg === null" :src="match.teamBImg"/>
-                <img v-else src="../assets/icons/placeholder_team_icon.svg" width="20px"/>
+                <img src="../assets/icons/placeholder_team_icon.svg" width="20px"/>
               </th>
             </tr>
           </thead>
@@ -39,14 +39,16 @@
             </tr>
           </thead>
           <tbody>
-            <tr class="content-tr" v-for="(item, i) in match.facts" :key="i+'-match-fact'">
-              <td class="green-dot"> <span class="green-ball" v-if="item.green"></span></td>
-              <td class="min">{{ item.min }}</td>
-              <td class="event"> {{ item.event }} </td>
-
-              <td class="player"> {{ item.player }}</td>
-              <td :class="['score', item.yellow?'score-yellow':'score-green']">{{ item.score }} </td>
-              <td class="yellow-dot"> <span class="yellow-ball" v-if="item.yellow"></span> </td>
+            <tr class="content-tr" v-for="(player, i) in events" :key="i+'-match-fact'">
+              <!--<template v-for="(event, j) in player.data.events">-->
+                <!--<td class="green-dot"> <span class="green-ball" v-if="player.type === 'home'"></span></td>-->
+                <td ></td>
+                <td class="min">{{ player.data.events[0].at }}</td>
+                <td class="event"> {{ eventTypes[player.data.events[0].type] }} </td>
+                <td class="player"> {{ player.data.name }}</td>
+                <!--<td :class="['score', player.yellow?'score-yellow':'score-green']">{{ player.score }} </td>-->
+                <!--<td class="yellow-dot"> <span class="yellow-ball" v-if="player.type === 'away'"></span> </td>-->
+              <!--</template>-->
             </tr>
           </tbody>
         </table>
@@ -59,6 +61,56 @@
     name: 'historic-match-card',
     props: {
       match: Object
+    },
+    data () {
+      return {
+        eventTypes: {
+          'substitution-in': 'INGRESO',
+          'substitution-out': 'SALIDA',
+          'y-card': 'AMARILLA',
+          'yr-card': 'AM-ROJA',
+          'r-card': 'ROJA',
+          'soccer-ball': 'GOL',
+          'soccer-ball-own': 'AUTOGOL'
+        }
+      }
+    },
+    computed: {
+      events () {
+        let allEvents = []
+        if (this.match.away.events['alineaciones_iniciales'] !== undefined
+          && this.match.away.events['suplentes'] !== undefined)
+        {
+          console.log(this.match.away.events['alineaciones_iniciales'])
+          const awayEventsAlineaciones = this.match.away.events['alineaciones_iniciales'].filter((player) => {
+            return player.events.length > 0
+          })
+          const awayEventsSuplentes = this.match.away.events.suplentes.filter((player) => {
+            return player.events.length > 0
+          })
+
+          const homeEventsAlineaciones = this.match.home.events.alineaciones_iniciales.filter((player) => {
+            return player.events.length > 0
+          })
+          const homeEventsSuplentes = this.match.home.events.suplentes.filter((player) => {
+            return player.events.length > 0
+          })
+
+          awayEventsAlineaciones.map((away) => {
+            allEvents.push({data: away, type: 'away'})
+          })
+          awayEventsSuplentes.map((away) => {
+            allEvents.push({data: away, type: 'away'})
+          })
+          homeEventsAlineaciones.map((home) => {
+            allEvents.push({data: home, type: 'home'})
+          })
+          homeEventsSuplentes.map((home) => {
+            allEvents.push({data: home, type: 'home'})
+          })
+        }
+        return allEvents
+      }
     }
   }
 </script>
@@ -67,6 +119,7 @@
   #historic-match-card
     background #fafafa
     border-radius: 12px;
+    margin-bottom 23px
   .header
     background #243237
     height 56px
@@ -116,7 +169,7 @@
     width 50%
   .content-tr .player
     padding-left 14px
-    text-align left
+    text-align center
   .score
     width 10%
   .score-yellow
