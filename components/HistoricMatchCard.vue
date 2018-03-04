@@ -39,13 +39,13 @@
             </tr>
           </thead>
           <tbody>
-            <tr class="content-tr" v-for="(player, i) in events" :key="i+'-match-fact'">
+            <tr class="content-tr" v-for="(event, i) in events" :key="i+'-match-fact'">
               <!--<template v-for="(event, j) in player.data.events">-->
                 <!--<td class="green-dot"> <span class="green-ball" v-if="player.type === 'home'"></span></td>-->
                 <td ></td>
-                <td class="min">{{ player.data.events[0].at }}</td>
-                <td class="event"> {{ eventTypes[player.data.events[0].type] }} </td>
-                <td class="player"> {{ player.data.name }}</td>
+                <td class="min">{{ event.event.at }}</td>
+                <td class="event"> {{eventTypes[event.event.type] }} </td>
+                <td class="player"> {{ event.player.name }}</td>
                 <!--<td :class="['score', player.yellow?'score-yellow':'score-green']">{{ player.score }} </td>-->
                 <!--<td class="yellow-dot"> <span class="yellow-ball" v-if="player.type === 'away'"></span> </td>-->
               <!--</template>-->
@@ -97,18 +97,44 @@
           })
 
           awayEventsAlineaciones.map((away) => {
-            allEvents.push({data: away, type: 'away'})
+            away.events.map((event) => {
+              let _away = away
+              delete _away.events
+              allEvents.push({event: event, player: _away, type: 'away'})
+            })
           })
           awayEventsSuplentes.map((away) => {
-            allEvents.push({data: away, type: 'away'})
+            away.events.map((event) => {
+              let _away = away
+              delete _away.events
+              allEvents.push({event: event, player: _away, type: 'away'})
+            })
           })
           homeEventsAlineaciones.map((home) => {
-            allEvents.push({data: home, type: 'home'})
+            home.events.map((event) => {
+              let _home = home
+              delete _home.events
+              allEvents.push({event: event, player: _home, type: 'home'})
+            })
           })
           homeEventsSuplentes.map((home) => {
-            allEvents.push({data: home, type: 'home'})
+            home.events.map((event) => {
+              let _home = home
+              delete _home.events
+              allEvents.push({event: event, player: _home, type: 'home'})
+            })
           })
         }
+        let sortByTime = function sortByTime(a,b) {
+          let _a = parseInt(a.event.at.substring(0, a.event.at.length - 1))
+          let _b = parseInt(b.event.at.substring(0, b.event.at.length - 1))
+          if (_a < _b)
+            return -1;
+          if (_a > _b)
+            return 1;
+          return 0;
+        }
+        allEvents.sort(sortByTime)
         return allEvents
       }
     }
