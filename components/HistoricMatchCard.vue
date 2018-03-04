@@ -46,6 +46,7 @@
                 <td class="min">{{ event.event.at }}</td>
                 <td class="event"> {{eventTypes[event.event.type] }} </td>
                 <td class="player"> {{ event.player.name }}</td>
+                <td>{{ pointTypes[event.event.type]===undefined?0:pointTypes[event.event.type] }}</td>
                 <!--<td :class="['score', player.yellow?'score-yellow':'score-green']">{{ player.score }} </td>-->
                 <!--<td class="yellow-dot"> <span class="yellow-ball" v-if="player.type === 'away'"></span> </td>-->
               <!--</template>-->
@@ -72,6 +73,15 @@
           'r-card': 'ROJA',
           'soccer-ball': 'GOL',
           'soccer-ball-own': 'AUTOGOL'
+        },
+        pointTypes: {
+          'y-card': -1,
+          'yr-card': -2,
+          'r-card': -2,
+          'soccer-ball': 6,
+          'soccer-ball-own': -3,
+          'substitution-in': 1,
+          'substitution-out': -1,
         }
       }
     },
