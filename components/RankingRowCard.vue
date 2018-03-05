@@ -3,18 +3,18 @@
       <table>
         <tbody>
           <tr>
-            <td id="position">{{user.position}}</td>
+            <td id="position">{{user.place + 1}}</td>
             <td id="username" >
               <div class="ellipsis">
-                {{user.username}}
+                {{user.user}}
               </div>
             </td>
             <td id="team-name">
               <div class="ellipsis">
-                {{user.teamName}}
+                {{user.team_name}}
               </div>
             </td>
-            <td id="score">{{user.score}}</td>
+            <td id="score">{{Math.round(user.points * 100)/100}}</td>
           </tr>
         </tbody>
       </table>
@@ -57,7 +57,7 @@
     font-size: 14px;
   #username div
     display block
-    width 60px
+    width 72px
   #team-name
     width 132px
     font-size: 12px;

@@ -50,18 +50,38 @@
           'PUNTAJE'
         ],
         ranking: [
-          { username: 'Maxlrsdadasd asd asdasdadasdasdasdas', position: '1', teamName: 'Barza', score: '6700' },
-          { username: 'Maxlr', position: '1', teamName: 'Barsdsdsdsdsdsdsdsdsds dsdsdsds sddsdsdsdsza', score: '6700' },
-          { username: 'Maxlr', position: '1', teamName: 'Barza', score: '6700' },
-          { username: 'Maxlr', position: '1', teamName: 'Barza', score: '6700' },
-          { username: 'Maxlr', position: '1', teamName: 'Barza', score: '6700' },
+          // {
+          //   user: 'rodrigor99',
+          //   place: 7,
+          //   team_name: 'Romanticos',
+          //   points: 39.6
+          // },
+          // {
+          //   user: 'rodrigor99',
+          //   place: 7,
+          //   team_name: 'Romanticos',
+          //   points: 39.6
+          // },
+          // {
+          //   user: 'rodrigor99',
+          //   place: 7,
+          //   team_name: 'Romanticos',
+          //   points: 39.6
+          // }
         ]
       }
     },
     methods: {
       selectTab(i) {
         this.activeTab = i
+      },
+      async fetchRanking () {
+        let response = await this.$axios.$get('http://api.bombo.pe/api/v1.0/extra/get-ranking')
+        this.ranking = response.data
       }
+    },
+    mounted () {
+      this.fetchRanking()
     }
   }
 </script>
