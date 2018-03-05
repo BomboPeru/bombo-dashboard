@@ -3,7 +3,7 @@
       <table>
         <tbody>
           <tr>
-            <td id="position">{{user.place + 1}}</td>
+            <td id="position">{{user.place}}</td>
             <td id="username" >
               <div class="ellipsis">
                 {{user.user}}

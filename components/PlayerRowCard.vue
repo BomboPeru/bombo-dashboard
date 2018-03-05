@@ -27,7 +27,7 @@
         <squad-number class="dorsal3" :img="'/shirt_placeholder.svg'" :number="player.j_number"/>
         <div class="name-team3">
           <div class="name3">{{ player.name }}</div>
-          <div class="team3">{{ 'REAL MADRID' }}</div>
+          <div class="team3">{{ player.team }}</div>
         </div>
         <div :class="['posicion3', kind[position]]">
           <span>{{position.substring(0,3)}}</span>
@@ -162,7 +162,7 @@
     font-weight bold
     font-size 12px !important
   .team3
-    font-size 8px !important
+    font-size 10px !important
   .posicion3
     display inline-block
     text-align center

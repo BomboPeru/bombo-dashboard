@@ -77,7 +77,7 @@
       },
       async fetchRanking () {
         let response = await this.$axios.$get('http://api.bombo.pe/api/v1.0/extra/get-ranking')
-        this.ranking = response.data
+        this.ranking = response.data.reverse()
       }
     },
     mounted () {
