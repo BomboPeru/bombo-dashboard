@@ -80,8 +80,8 @@
       <file leaf-file-name="createteam.vue" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/pages/client/createteam.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="432">
-              <caret line="169" column="40" lean-forward="true" selection-start-line="169" selection-start-column="40" selection-end-line="169" selection-end-column="40" />
+            <state relative-caret-position="168">
+              <caret line="8" column="14" lean-forward="true" selection-start-line="8" selection-start-column="14" selection-end-line="8" selection-end-column="14" />
               <folding />
             </state>
           </provider>
@@ -407,7 +407,7 @@
       <workItem from="1520058074959" duration="9209000" />
       <workItem from="1520103393616" duration="8355000" />
       <workItem from="1520181744081" duration="6001000" />
-      <workItem from="1520213552457" duration="2386000" />
+      <workItem from="1520213552457" duration="2861000" />
     </task>
     <task id="LOCAL-00001" summary="topbar">
       <created>1518150213086</created>
@@ -605,11 +605,18 @@
       <option name="project" value="LOCAL" />
       <updated>1520215497789</updated>
     </task>
-    <option name="localTasksCounter" value="29" />
+    <task id="LOCAL-00029" summary="create team enabled">
+      <created>1520216982562</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1520216982562</updated>
+    </task>
+    <option name="localTasksCounter" value="30" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="340956000" />
+    <option name="totallyTimeSpent" value="341431000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1974" y="-4" width="1867" height="1085" extended-state="6" />
@@ -666,7 +673,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="topbar breakpoints view" />
     <MESSAGE value="translate sidebar topbar to layout file" />
     <MESSAGE value="routes binded with mis equipos/next matches/dashboard/historial" />
     <MESSAGE value="create team function with constraints" />
@@ -691,7 +697,8 @@
     <MESSAGE value="points in match card" />
     <MESSAGE value="ranking" />
     <MESSAGE value="ranking team card bind team_name" />
-    <option name="LAST_COMMIT_MESSAGE" value="ranking team card bind team_name" />
+    <MESSAGE value="create team enabled" />
+    <option name="LAST_COMMIT_MESSAGE" value="create team enabled" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1052,8 +1059,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/pages/client/createteam.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="432">
-          <caret line="169" column="40" lean-forward="true" selection-start-line="169" selection-start-column="40" selection-end-line="169" selection-end-column="40" />
+        <state relative-caret-position="168">
+          <caret line="8" column="14" lean-forward="true" selection-start-line="8" selection-start-column="14" selection-end-line="8" selection-end-column="14" />
           <folding />
         </state>
       </provider>

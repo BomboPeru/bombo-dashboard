@@ -4,8 +4,8 @@
       <div :class="['new-team-card', (activeTabView === 1 || activeTabView === 2)?'show':'hide']">
         <new-team-card :team="team"/>
         <div class="btn-container">
-          <div class="button-create rounded elevation" @click="createTeam">Crear</div>
-          <!--<div class="button-create rounded elevation">Crear</div>-->
+          <!--<div class="button-create rounded elevation" @click="createTeam">Crear</div>-->
+          <div class="button-create rounded elevation">Crear</div>
         </div>
       </div>
     </div>
