@@ -73,4 +73,20 @@
     padding 21px 120px 12px 120px
     height 350px
     font-weight:bold
+  @media screen and (max-width: 1023px)
+    .landing
+      height 480px
+    .semi-big-title
+      font-size 18px !important
+    .big-title
+      font-size 22px !important
+    .extra-big-title
+      font-size 36px !important
+    .juega-ya
+      padding 6px 12px 6px 12px
+    .block-content
+      padding 21px 12px 12px 12px
+    .bottom-part
+      padding 12px 16px 25px 16px
+
 </style>
