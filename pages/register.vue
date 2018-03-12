@@ -10,18 +10,25 @@
             <form-alert :message="constraints['name'].message"
                         :correct="constraints['name'].minLength <= user.name.length"/>
           </div>
-          <!--<input-text placeholder="Apellidos" square v-model="user.lastname"/>-->
-          <!--<p class="title">Fecha de nacimiento</p>-->
-          <!--<input-text type="date" square v-model="user.birthday"/>-->
-          <!--<p class="title">Documento de identidad</p>-->
-          <!--<input-text type="text" square/>-->
-          <!--<input-select :items="['DNI']" square/>-->
-          <p class="title">Datos de la cuenta</p>
           <div class="form-row">
             <input-text placeholder="Correo electronico" square flat v-model="user.email" class="form-input"/>
             <form-alert :message="constraints['email'].message"
                         :correct="constraints['email'].minLength <= user.email.length"/>
           </div>
+          <div class="form-row">
+            <input-text placeholder="Documento de identidad (DNI)" square flat v-model="user.identity_document" class="form-input"/>
+            <form-alert :message="constraints['identity_document'].message"
+                        :correct="constraints['identity_document'].minLength <= user.identity_document.length"/>
+          </div>
+          <div class="birthday-container">
+            <label class="birthday-label">Fecha de nacimiento</label>
+          </div>
+          <div class="form-row">
+            <input-text placeholder="Fecha de nacimiento" square flat v-model="user.birthday_fake" class="form-input" type="date"/>
+            <!--<form-alert :message="constraints['identity_document'].message"-->
+                        <!--:correct="constraints['identity_document'].minLength <= user.identity_document.length"/>-->
+          </div>
+          <p class="title">Datos de la cuenta</p>
           <div class="form-row">
             <input-text placeholder="Nombre de usuario" square flat v-model="user.username" class="form-input"/>
             <form-alert :message="constraints['username'].message"
@@ -91,15 +98,28 @@
             minLength: 3,
             message: '3 letras como minimo.'
           },
+          identity_document: {
+            minLength: 9,
+            message: '9 letras como minimo.'
+          },
           terms: {
             checked: true,
             message: 'Debe aceptar los terminos y condiciones'
           }
         },
+        // "name": "Luis Carrasco",
+        // "username": "luis.carrasco",
+        // "email": "luis.carrasco@fake.com",
+        // "birthday": "2000-03-11T00:39:48.037Z",
+        // "password": "12345678",
+        // "document_type": "DNI",
+        // "identity_document": "7986542"
         user: {
           name: '',
-          lastname: '',
-          // birthday: '',
+          birthday_fake: '',
+          birthday: '',
+          document_type: 'DNI',
+          identity_document: '',
           email: '',
           username: '',
           password: ''
@@ -118,17 +138,34 @@
           if (this.user.name !== '' && this.user.email !== ''
             && this.user.username !== '' && this.user.password!== '') {
 
+            let birthdayDate = new Date(this.user.birthday_fake)
+            this.user.birthday = birthdayDate.toISOString()
+
             try {
-              let response = await this.$axios.$post(
-                'http://api.bombo.pe/api/v1.0/user/create', this.user )
-              console.log(response)
+              let response = await this.$axios.$post('http://api.bombo.pe/auth/signup', this.user )
               if (response.error !== null) {
                 this.$store.dispatch('turnOnSnackbar', 'Hubo un problema al momento del registro.')
               } else {
                 setTimeout(() => {
-                  this.$router.push('/')
+                  // this.$router.push('/')
                   this.$store.dispatch('turnOnSnackbar', 'Usuario regitrado!')
                 }, 300)
+                // response.data.token
+                // response.data.user.username
+                // response.data.user.password
+
+                this.$axios.post('http://api.bombo.pe/auth/login', {
+                  username: this.user.username,
+                  password: this.user.password
+                })
+                  .then(res => {
+                    auth.setToken(res.data.token)
+                    this.$router.push('/client/teams')
+                  })
+                  .catch(err => {
+                    console.log(err)
+                    this.message = 'username y/o password no es correcto.'
+                  })
               }
             } catch (e) {
               this.$store.dispatch('turnOnSnackbar', 'Hubo un problema al momento del registro.')
@@ -138,16 +175,6 @@
           }
         }
         console.log(this.isValidToSubmit)
-      },
-      async fetchSomething () {
-        try {
-          let response = await this.$axios.$get(
-            'http://api.bombo.pe/api/v1.0/user/all'
-          )
-          console.log(response)
-        } catch(e) {
-          console.log(e)
-        }
       }
     },
     computed: {
@@ -169,11 +196,6 @@
         }
         return isValid
       }
-    },
-    created () {
-      this.fetchSomething()
-    },
-    mounted () {
     }
   }
 </script>
@@ -271,4 +293,11 @@
     margin-bottom 20px
   .form-input
     display inline-block
+  .birthday-container
+    position relative
+  .birthday-label
+    position: absolute;
+    top: -5px;
+    left 0
+    font-size: 12px;
 </style>

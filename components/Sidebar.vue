@@ -13,14 +13,14 @@
           <span class="icon-input"><img src="../assets/icons/search.svg" alt=""></span>
         </div>
 
-        <template v-if="activeSection !== 'DASHBOARD'">
+        <template v-if="activeSection !== 'TABLERO'">
           <div :class="['title-container', itemsForEachPath[activeSection].center?'center':'']">
             <span :class="['title-menu-section', itemsForEachPath[activeSection].center?'font-weight-light':'']"
-                  v-if="activeSection !== 'DASHBOARD'">{{ activeSection }}</span>
+                  v-if="activeSection !== 'TABLERO'">{{ activeSection }}</span>
           </div>
         </template>
 
-        <template v-if="activeSection === 'DASHBOARD'">
+        <template v-if="activeSection === 'TABLERO'">
           <div class="dashboard-navbar">
             <div v-for="(item, i) in itemsForEachPath[activeSection].items"
                  :key="i"
@@ -105,7 +105,7 @@
         navbarItems: [
           { name: 'MIS EQUIPOS', urlPath: '/client/teams' },
           { name: 'PROXIMAS FECHAS', urlPath: '/client/matches' },
-          { name: 'DASHBOARD', urlPath: '/client/dashboard' },
+          { name: 'TABLERO', urlPath: '/client/dashboard' },
           { name: 'HISTORIAL', urlPath: '/client/history' },
           { name: 'ARMA UN EQUIPO', urlPath: '/client/createteam' },
           { name: 'MI PERFIL', urlPath: '/client/profile' },
@@ -128,7 +128,7 @@
             items: [
             ]
           },
-          'DASHBOARD': {
+          'TABLERO': {
             items: [
               {name: 'TABLA DE POSICIONES', color: '#EA504C', type: 'normal'},
               {name: 'PARTIDOS', color:'#25BF89', type: 'normal'},
@@ -142,8 +142,8 @@
           'ARMA UN EQUIPO': {
             items: [
               {name: 'JUGADORES', color:'#EA504C', type: 'normal'},
-              {name: 'LISTA', color:'#67A6F0', type: 'normal'},
-              {name: 'FORMACION', color:'#25BF89', type: 'normal'}
+              {name: 'EQUIPO', color:'#67A6F0', type: 'normal'},
+              {name: 'FIXTURE', color:'#25BF89', type: 'normal'}
             ]
           },
           'MI PERFIL': {
@@ -170,7 +170,7 @@
           indexSelected = this.$store.state.createteam.tabViews.indexOf(name)
           // this.$store.state.activeTypeTeam = indexSelected
           this.$store.commit('createteam/setActiveTabView', indexSelected)
-        } else if (this.activeSection === 'DASHBOARD') {
+        } else if (this.activeSection === 'TABLERO') {
           indexSelected = this.$store.state.dashboard.tabViews.indexOf(name)
           // this.$store.state.activeTypeTeam = indexSelected
           this.$store.commit('dashboard/setActiveTabView', indexSelected)

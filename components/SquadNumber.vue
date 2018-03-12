@@ -1,7 +1,10 @@
 <template>
     <span id="squad-number" class="shirt">
-      <img :src="img" class="dorsal-src" width="27px" alt="">
-      <span class="dorsal" :style="{ 'top': ground===false? '6px':'-2px' }">{{dorsal}}</span>
+      <img :src="img === ''?'/shirt_placeholder.svg':img"
+           class="dorsal-src"
+           :style="{ top: ground===false?'-9px':'-28px', left: ground===false?'-16px':'-26px' }"
+           :width="ground===false?'60px':'80px'" alt="">
+      <span class="dorsal" :style="{ 'top': ground===false? '4px':'-8px' }">{{dorsal}}</span>
     </span>
 </template>
 
@@ -32,6 +35,9 @@
 </script>
 
 <style scoped lang="stylus">
+  colorShadowDorsal = black
+  #squad-number
+    position relative
   .shirt
     margin-top 4px
     margin-bottom 2px
@@ -41,11 +47,14 @@
   .dorsal
     position absolute
     font-family: Titillium Web;
+    color white
     font-size 10px
-    top: 6px;
+    top: 8px;
     left: 8px;
+    text-shadow: -1px 0 colorShadowDorsal, 0 1px colorShadowDorsal, 1px 0 colorShadowDorsal, 0 -1px colorShadowDorsal;
 
   .dorsal-src
-    filter: hue-rotate(116deg)
-
+    position absolute
+    top -9px
+    left -16px
 </style>

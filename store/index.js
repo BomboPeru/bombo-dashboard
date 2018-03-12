@@ -1,6 +1,7 @@
 import Vuex from 'vuex'
 import team from './teams'
 import createteam from './createteam'
+import auth from './auth'
 import dashboard from './dashboard'
 
 const store = () => {
@@ -9,11 +10,10 @@ const store = () => {
       signOutDialog: false,
       loginDialog: false,
       termsAndConditionsDialog: false,
+      isBomboPaymentsDialog: false,
       snackbar: false,
       snackbarDuration: 5000,
-      snackbarMessage: '',
-      testUserId: null,
-      testUser: {}
+      snackbarMessage: ''
     },
     getters: {
       isSignoutDialog (state) {
@@ -25,33 +25,14 @@ const store = () => {
       termsAndConditionsDialog (state) {
         return state.termsAndConditionsDialog
       },
+      isBomboPaymentsDialog (state) {
+        return state.isBomboPaymentsDialog
+      },
       snackbar (state) {
         return state.snackbar
       },
       snackbarMessage (state) {
         return state.snackbarMessage
-      },
-      testUserId (state) {
-
-        if(process.browser){
-          console.log('process.browser')
-          let id = window.localStorage.getItem('testuserid')
-          if (id !== null) {
-            state.testUserId = id
-          }
-        }
-        return state.testUserId
-      },
-      testUser (state) {
-
-        if(process.browser){
-          console.log('process.browser')
-          let user = window.localStorage.getItem('testuser')
-          if (user !== null) {
-            state.testUser = JSON.parse(user)
-          }
-        }
-        return state.testUser
       }
     },
     mutations: {
@@ -64,11 +45,17 @@ const store = () => {
       openLoginDialog (state) {
         state.loginDialog = true
       },
+      openBomboPaymentsDialog (state) {
+        state.isBomboPaymentsDialog = true
+      },
       closeLoginDialog (state) {
         state.loginDialog = false
       },
       openTermsConditionsDialog (state) {
         state.termsAndConditionsDialog = true
+      },
+      turnOffBomboPaymentsDialog (state) {
+        state.isBomboPaymentsDialog = false
       },
       closeTermsConditionsDialog (state) {
         state.termsAndConditionsDialog = false
@@ -76,28 +63,7 @@ const store = () => {
       turnOnSnackbar (state, message) {
         state.snackbarMessage = message
         state.snackbar = true
-      },
-      getUserId (state) {
-        // let id = localStorage.getItem('testuserid')
-        if (process.browser) {
-          console.log('process.browser')
-          console.log(localStorage.getItem('testuserid'))
-          let id = localStorage.getItem('testuserid')
-        }
-        if (id !== null) {
-          state.testUserId = id
-        }
-      },
-      setUserId (state, user) {
-        if (process.browser) {
-          console.log('process.browser')
-          localStorage.setItem('testuserid', user.id)
-          localStorage.setItem('testuser', JSON.stringify(user))
-        }
-        state.testUser = user
-        state.testUserId = user.id
       }
-
     },
     actions: {
       turnOnSnackbar (context, message) {
@@ -110,7 +76,8 @@ const store = () => {
     modules: {
       team,
       createteam,
-      dashboard
+      dashboard,
+      auth
     }
   })
 }

@@ -96,119 +96,10 @@
         typeTeams: this.$store.state.team.typeTeams,
         mteams: {
           0: [
-            { name: 'NOmbre de equipo',
-              balance: +23.0,
-              leagueImg: '',
-              createdAt: '23/02/2018',
-              ranking: 2,
-              points: 233,
-              players: {
-                goal_keeper: [ { name: 'NOmbre Plyaer', j_number: '23' } ],
-                defender: [ { name: 'NOmbre Plyaer', j_number: '23' } ],
-                mid_fielder: [ { name: 'NOmbre Plyaer', j_number: '23' } ],
-                forward: [ { name: 'NOmbre Plyaer', j_number: '23' } ]
-              }
-            }
           ],
           1: [
-            { name: 'NOmbre de NOmbre de equipo sadadasdsa sadasdasdasd',
-              balance: +23.0,
-              leagueImg: '',
-              createdAt: '23/02/2018',
-              ranking: 2,
-              points: 233,
-              players: {
-                goal_keeper: [
-                  {
-                    name: 'NOmbre Plyaer',
-                    j_number: '23',
-                    points: 23
-                  }
-                ],
-                defender: [
-                  {
-                    name: 'NOmbre Plyaer',
-                    j_number: '23'
-                  },
-                  {
-                    name: 'NOmbre Plyaer',
-                    j_number: '23'
-                  },
-                  {
-                    name: 'NOmbre Plyaer',
-                    j_number: '23'
-                  },
-                  {
-                    name: 'NOmbre Plyaer',
-                    j_number: '23'
-                  },
-                  {
-                    name: 'NOmbre Plyaer',
-                    j_number: '23'
-                  },
-                  {
-                    name: 'NOmbre Plyaer',
-                    j_number: '23'
-                  },
-                  {
-                    name: 'NOmbre Plyaer',
-                    j_number: '23'
-                  },
-                  {
-                    name: 'NOmbre Plyaer',
-                    j_number: '23'
-                  },
-                  {
-                    name: 'NOmbre Plyaer',
-                    j_number: '23'
-                  },
-                  {
-                    name: 'NOmbre Plyaer',
-                    j_number: '23'
-                  },
-                  {
-                    name: 'NOmbre Plyaer',
-                    j_number: '23'
-                  }
-                ],
-                mid_fielder: [
-                  {
-                    name: 'NOmbre Plyaer',
-                    j_number: '23'
-                  }
-                ],
-                forward: [
-                  {
-                    name: 'NOmbre Plyaer',
-                    j_number: '23'
-                  }
-                ],
-              }
-            }
           ],
           2: [
-            {
-              name: 'NOmbre de equipo',
-              balance: +23.0,
-              leagueImg: '',
-              createdAt: '23/02/2018',
-              ranking: 2,
-              points: 233,
-              players: {
-                mid_fielder: [
-                  {
-                    name: 'NOmbre Plyaer',
-                    j_number: '23'
-                  }
-                ],
-                forward: [
-                  {
-                    name: 'NOmbre Plyaer',
-                    j_number: '23'
-                  }
-                ]
-              }
-            }
           ]
         }
       }
@@ -227,7 +118,7 @@
       }
     },
     created () {
-      this.fetchUserData()
+      // this.fetchUserData()
     },
     mounted () {
     }

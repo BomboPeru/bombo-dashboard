@@ -49,7 +49,7 @@
         navbarItems: [
           { name: 'MIS EQUIPOS', urlPath: '/client/teams', justTitle: false },
           { name: 'PROXIMAS FECHAS', urlPath: '/client/matches', justTitle: false },
-          { name: 'DASHBOARD', urlPath: '/client/dashboard', justTitle: false },
+          { name: 'TABLERO', urlPath: '/client/dashboard', justTitle: false },
           { name: 'HISTORIAL', urlPath: '/client/history', justTitle: false },
           { name: 'ARMA TU EQUIPO!', urlPath: '/client/createteam', justTitle: true },
           { name: 'MI PERFIL', urlPath: '/client/profile', justTitle: true }

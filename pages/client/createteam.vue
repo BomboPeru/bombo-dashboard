@@ -1,7 +1,7 @@
 <template>
     <div id="createteam">
       <player-bank-card :class="['player-bank-card', activeTabView === 0?'show':'hide']" @onPlayerSelected="onPlayerSelected"/>
-      <div :class="['new-team-card', (activeTabView === 1 || activeTabView === 2)?'show':'hide']">
+      <div :class="['new-team-card', (activeTabView === 1)?'show':'hide']">
         <new-team-card :team="team"/>
         <div class="btn-container">
           <!--<div class="button-create rounded elevation" @click="createTeam">Crear</div>-->

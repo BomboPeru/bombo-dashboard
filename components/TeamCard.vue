@@ -34,16 +34,16 @@
         </table>
         <table class="table-saved-card" v-if="typeCard === 'guardado'">
           <tbody>
-          <tr>
-            <td>COSTO PROMEDIO:</td>
-            <td class="table-value-cost">{{cost}}</td>
-          </tr>
-          <tr>
-            <td>ESTADO EN EL EQUIPO:</td>
-            <td class="table-value-status">
-              <span>{{status}}</span>
-            </td>
-          </tr>
+            <tr>
+              <td>COSTO PROMEDIO:</td>
+              <td class="table-value-cost">{{cost}}</td>
+            </tr>
+            <tr>
+              <td>ESTADO EN EL EQUIPO:</td>
+              <td class="table-value-status">
+                <span>{{status}}</span>
+              </td>
+            </tr>
           </tbody>
         </table>
       </div>

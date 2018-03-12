@@ -1,7 +1,12 @@
 <template>
     <div id="input-text">
+      <span :class="['prepend-icon', big?'big-icon':'']" v-if="prependIcon !== ''"><i :class="['fas', prependIcon]"></i></span>
       <input :type="type"
-             :class="['input', square?'square':'', flat?'flat':'']"
+             :class="['input', square?'square':'',
+             flat?'flat':'', solid?'solid':'',
+             prependIcon!==''?'prepend-padding':'',
+             appendIcon!==''?'append-padding':'',
+             big?'big-input':'']"
              @input="updateValue()"
              ref="inputText"
              :value="value"
@@ -9,6 +14,7 @@
              :disabled="disabled"
              :style="{ 'width': width }"
       >
+      <span :class="['append-icon', big?'big-icon':'']" v-if="appendIcon !== ''"><i :class="['fas', appendIcon]"></i></span>
     </div>
 </template>
 
@@ -34,7 +40,23 @@
         type: Boolean,
         default: false
       },
+      solid: {
+        type: Boolean,
+        default: false
+      },
       disabled: {
+        type: Boolean,
+        default: false
+      },
+      prependIcon: {
+        type: String,
+        default: ''
+      },
+      appendIcon: {
+        type: String,
+        default: ''
+      },
+      big: {
         type: Boolean,
         default: false
       }
@@ -50,6 +72,7 @@
 <style scoped lang="stylus">
   #input-text
     margin 10px 0
+    position relative
   .input
     height 30px
     width 340px
@@ -70,4 +93,30 @@
     font-size 18px
     border-radius: 0px !important;
     border-bottom: 0.5px solid #bbbbbb;
+  .solid
+    background white
+    color #424242
+    border-radius: 0px
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25)
+  .prepend-icon
+  .append-icon
+    position absolute
+    height 100%
+    color #7b7b7b
+  .append-icon
+    top 7px
+    right 10px
+  .prepend-icon
+    top 7px
+    left 10px
+  .append-padding
+    padding-right 34px
+  .prepend-padding
+    padding-left 34px
+  .big-input
+    font-size 16px
+    height 50px
+  .big-icon
+    top 17px !important
+
 </style>

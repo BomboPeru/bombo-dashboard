@@ -4,7 +4,7 @@
         <tbody>
           <tr>
             <td id="position">{{user.place}}</td>
-            <td id="username" >
+            <td id="username">
               <div class="ellipsis">
                 {{user.user}}
               </div>

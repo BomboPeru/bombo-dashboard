@@ -1,32 +1,34 @@
 <template>
     <div id="new-team-card" class="round-card rounded elevation">
 
-      <div class="header elevation tabs desktop">
-        <div v-for="(item, i) in tabs" :key="i"
-             @click="toggleTab(i)"
-             :class="['tab', activeTab === i ?'':'inactive-tab']">
-          <span class="">{{ item }}</span>
+      <div class="header elevation tabs">
+        <div :class="['header-title']">
+          <span class="">{{ team.name===''?'PON UN NOMBRE A TU EQUIPO':team.name }}</span>
         </div>
       </div>
-      <div class="header elevation tabs mobile">
-        <div :class="['tab']">
-          <span class="">{{ tabs[activeTab] }}</span>
-        </div>
-      </div>
-
 
       <div class="line elevation"></div>
 
+      <div class="form-name">
+        <!-- fa-shield-alt -->
+        <input-text v-model="team.name" width="360px" solid class="input-text" prepend-icon="fa-shield-alt"
+                    placeholder="Nombre de tu equipo" big/>
+      </div>
+      <div class="points">
+        <span class="points-label">Saldo restante:</span>
+        <span class="points-value">{{totalPoints}} M</span>
+      </div>
+      <div class="progressbar">
+        <progress-bar :current-number="100 - totalPoints" :max-number="100" />
+      </div>
+      <div class="tabs-container">
+        <button :class="['tab', 'elevation', activeTab===i?'activeTab':'inactiveTab', 'tab-'+i]"
+                v-for="(tab, i) in tabs"
+                @click="toggleTab(i)"
+                :key="i+'-tab'">{{ tab }}</button>
+      </div>
+
       <template v-if="tabs[activeTab] === 'LISTA'">
-        <div class="form-name">
-          <span class="name-label">Nombre</span>
-          <input-text v-model="team.name" width="200px" class="input-text"
-                      placeholder="Nombre de tu equipo"/>
-        </div>
-        <div class="points">
-          <span class="points-label">Costo Acumulado</span>
-          <span class="points-value">{{totalPoints}} M</span>
-        </div>
 
         <div
           v-if="team.players.goal_keeper.length === 0 && team.players.defender.length === 0 && team.players.mid_fielder.length === 0 && team.players.forward.length === 0"
@@ -40,21 +42,18 @@
                            :player="player"
                            position="ARQUERO"
                            @onPlayerSelected="deletePlayer(player, 'goal_keeper')"/>
-
           <player-row-card v-for="(player, key) in team.players.defender"
                            :key="key+'-defensa'"
                            mode="selected"
                            :player="player"
                            position="DEFENSA"
                            @onPlayerSelected="deletePlayer(player, 'defender')"/>
-
           <player-row-card v-for="(player, key) in team.players.mid_fielder"
                            :key="key+'-centrocampista'"
                            mode="selected"
                            :player="player"
                            position="CENTROCAMPISTA"
                            @onPlayerSelected="deletePlayer(player, 'mid_fielder')"/>
-
           <player-row-card v-for="(player, key) in team.players.forward"
                            :key="key+'-delantero'"
                            mode="selected"
@@ -63,16 +62,18 @@
                            @onPlayerSelected="deletePlayer(player, 'forward')"/>
         </div>
       </template>
+
       <template v-else-if="tabs[activeTab] === 'FORMACION'">
         <div class="ground-container">
           <div>
-            <img src="../assets/img/cancha.png" alt="" width="100%">
+            <img src="/team_resources/cancha_1.png" alt="" width="100%">
+            <!--<img src="../assets/img/cancha.png" alt="" width="100%">-->
           </div>
           <div class="players-layer" ref="playersLayer">
             <div class="portero-section">
               <div v-for="(player, key) in team.players.goal_keeper" :key="key+'-arquero2'" :player="player" class="portero-in-ground">
                 <span class="player-container">
-                  <squad-number ground :number="player.j_number"/>
+                  <squad-number ground :img="'http://api.bombo.pe/api/v2.0/shirts/' + player.team.toLowerCase().replace(' ','_')" :number="player.j_number"/>
                   <div class="close-icon">
                     <img src="../assets/icons/close_ground.svg" width="20px" alt="" @click="deletePlayer(player, 'goal_keeper')">
                   </div>
@@ -86,7 +87,7 @@
             <div class="defensa-section">
               <div v-for="(player, key) in team.players.defender" :key="key+'-defensa2'" :player="player" class="defensa-in-ground">
                 <span class="player-container">
-                  <squad-number ground :number="player.j_number"/>
+                  <squad-number ground :img="'http://api.bombo.pe/api/v2.0/shirts/' + player.team.toLowerCase().replace(' ','_')" :number="player.j_number"/>
                   <div class="close-icon">
                     <img src="../assets/icons/close_ground.svg" width="20px" alt="" @click="deletePlayer(player, 'defender')">
                   </div>
@@ -101,7 +102,7 @@
             <div class="centrocampista-section">
               <div v-for="(player, key) in team.players.mid_fielder" :key="key+'-centrocampista2'" :player="player" class="centrocampista-in-ground">
                 <span class="player-container">
-                  <squad-number ground :number="player.j_number"/>
+                  <squad-number ground :img="'http://api.bombo.pe/api/v2.0/shirts/' + player.team.toLowerCase().replace(' ','_')" :number="player.j_number"/>
                   <div class="close-icon">
                     <img src="../assets/icons/close_ground.svg" width="20px" alt="" @click="deletePlayer(player, 'mid_fielder')">
                   </div>
@@ -116,7 +117,7 @@
             <div class="delantero-section">
               <div v-for="(player, key) in team.players.forward" :key="key+'-delantero2'" :player="player" class="delantero-in-ground">
                 <span class="player-container">
-                  <squad-number ground :number="player.j_number"/>
+                  <squad-number ground :img="'http://api.bombo.pe/api/v2.0/shirts/' + player.team.toLowerCase().replace(' ','_')" :number="player.j_number"/>
                   <div class="close-icon">
                     <img src="../assets/icons/close_ground.svg" width="20px" alt="" @click="deletePlayer(player, 'forward')">
                   </div>
@@ -139,34 +140,26 @@
   import PlayerRowCard from './PlayerRowCard'
   import InputText from './InputText'
   import SquadNumber from './SquadNumber'
+  import ProgressBar from './ProgressBar'
 
   // TO DO SAVE TEAM
   export default {
     name: 'new-team-card',
     components: {
-      PlayerRowCard, InputText, SquadNumber
+      PlayerRowCard, InputText, SquadNumber, ProgressBar
     },
     props: {
       team: Object
     },
     computed: {
-      // IN A SYSTEM WHERE THE THIRD TAB TURNS INTO THE FIRST ONE
-      activeTab: {
-        get () {
-          if (this.$store.getters['createteam/activeTabView'] === 0) {
-            return 0
-          } else {
-            return this.$store.getters['createteam/activeTabView'] - 1
-          }
-        },
-        set (i) {
-          this.$store.commit('createteam/setActiveTabView', i + 1)
-        }
+      shirtUrl () {
+        const teamName = this.player.team.toLowerCase().replace(' ','_')
+        return 'http://api.bombo.pe/api/v2.0/shirts/' + teamName
       },
       totalPoints () {
         let total = 0
 
-        console.log(this.team.players)
+        // console.log(this.team.players)
         this.team.players['goal_keeper'].map((item) => {
           item.j_number = ''+item.j_number
           total+= (item.cost)
@@ -194,10 +187,9 @@
     },
     data () {
       return{
-        // activeTab: 0,
+        activeTab: 0,
         tabs: ['LISTA', 'FORMACION'],
-        title: 'MI EQUIPO',
-        teamName: ''
+        title: 'MI EQUIPO'
       }
     },
     methods: {
@@ -233,55 +225,82 @@
     background #fafafa
   .header
     width 100%
-    height 50px
-    background #445F69
+    height 72px
+    background #243337
     padding 0px 0px
+
   .header span
     padding 0px 0px
-  .tabs
-    display flex
-    justify-content space-between
-  .inactive-tab
-    background #243237
+  .tabs-container
+    text-align: center;
+    margin 8px 2px
   .tab
+    background #243237
+    border 0px solid white
+    cursor pointer
+    color white
+    font-family Titillium Web
+    font-size 14px
+    outline none
+    width: 92px;
+  .tab-0
+    border-top-left-radius 6px
+    border-bottom-left-radius 6px
+  .tab-1
+    border-top-right-radius 6px
+    border-bottom-right-radius 6px
+
+  .activeTab
+    color #fafafa
+    background #243237
+  .inactiveTab
+    color #fafafa
+    background #445F69
+
+  .progressbar
+    padding 4px 20px
+
+  .header-title
     flex-grow 1
     display inline-block
     height 100%
-    line-height 34px
+    line-height 54px
     padding 8px 15px
     cursor pointer
-  .tab:hover
-    background #445F69
-
-  .tab span
+  .header-title span
     text-align left
     color white
     font-size 18px
     font-weight bold
     font-family Titillium Web
+
   .line
     width 100%
     background #25BF89
-    height 8px
+    height 4px
 
   .empty-players
     margin 20px 5px
     font-family Titillium Web
     text-align center
-    height calc(100vh - 450px)
+    height calc(100vh - 560px)
 
   .player-list
     margin-top 14px
+    height: 416px;
+    overflow-y: auto;
   .input-text
     display inline-block
   .points
   .form-name
+    margin-top 15px
     text-align center
   .name-label
   .points-value
   .points-label
     font-size 18px
     color #445F69
+    font-weight bold
     font-family Titillium Web
   .name-label
   .points-label
@@ -338,28 +357,24 @@
     transform: translateX(-25%);
     font-size 10px
     font-family Titillium Web
+
   .player-name
     white-space:nowrap;
     padding 3px 6px
     background white
     border-radius 8px
+
   .player-info div
     margin-bottom 4px
+    width: 80px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 
-  .desktop
-    display flex
-  .mobile
-    display none
-    text-align left
   @media screen and (max-width: 1023px)
     .close-icon
       display block
     .round-card
       width 100%
-    .desktop
-      display none
-    .mobile
-      text-align center
-      display flex
 
 </style>

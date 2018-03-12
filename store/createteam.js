@@ -1,7 +1,7 @@
 const createteam = {
   namespaced: true,
   state: {
-    tabViews: ['JUGADORES','LISTA','FORMACION'],
+    tabViews: ['JUGADORES','EQUIPO','FIXTURE'],
     activeTabViews: 0
   },
   mutations: {

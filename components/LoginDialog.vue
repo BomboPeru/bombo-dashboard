@@ -40,6 +40,7 @@
 <script>
   import DialogContainer from './DialogContainer'
   import InputText from './InputText'
+  import auth from '~/utils/auth'
 
   let users = []
 
@@ -65,27 +66,22 @@
         this.$emit('onCollapse', false)
       },
       login () {
-      //  ...
-        if (users.length === 0) {
-          console.log('empty bank of users')
-        }
         if (this.username !== '' && this.password !== '') {
-          console.log('non empty')
-          for (let i = 0; i < users.length; i++) {
-            if ( users[i].username === this.username && users[i].password === this.password) {
-              this.$store.commit('setUserId', users[i])
-              this.$router.push({path: '/client/teams'})
-              this.message = ''
-              break
-            }
-          }
-          this.message = 'username y/o password no es correcto.'
+
+          this.$axios.post('http://api.bombo.pe/auth/login', {
+              username: this.username,
+              password: this.password
+            })
+            .then(res => {
+              // auth.setToken(res.data.token)
+              this.$store.commit('auth/setToken', res.data.token)
+              this.$router.push('/client/teams')
+            })
+            .catch(err => {
+              console.log(err)
+              this.message = 'username y/o password no es correcto.'
+            })
         }
-      },
-      async fetchAllUsers () {
-        let response = await this.$axios.$get('http://api.bombo.pe/api/v1.0/user/all')
-        users = response.data
-        // response.data
       },
       goToForgotPassword () {
         this.$store.commit('closeLoginDialog')
@@ -97,7 +93,6 @@
       }
     },
     mounted () {
-      this.fetchAllUsers()
     }
   }
 </script>

@@ -8,6 +8,7 @@
         <icon-button text="$ 0000.00"
                      icon-direction="right"
                      color="#EA504C"
+                     @click="openBomboPaymentsDialog"
                      icon="plus"/>
       </floating-container>
     </div>
@@ -19,6 +20,9 @@
       :is-open="isSelectLeagueDialog"
       @onCollapse="onCollapseSelectLeagueDialog"/>
     <snackbar :show="snackbar" :message="snackbarMessage"/>
+    <bombo-payments
+      :is-open="isBomboPaymentsDialog"
+      @onCollapse="onCollapseBomboPayments"/>
   </div>
 </template>
 
@@ -30,10 +34,14 @@
   import IconButton from '~/components/IconButton'
   import SelectLeagueDialog from '~/components/SelectLeagueDialog'
   import SignOutDialog from '~/components/SignOutDialog'
+  import BomboPayments from '~/components/BomboPayments'
+
+  import auth from '~/utils/auth'
+
 
   export default {
     components: {
-      Toolbar, Sidebar, FloatingContainer, IconButton, SelectLeagueDialog, SignOutDialog, Snackbar
+      Toolbar, Sidebar, FloatingContainer, IconButton, SelectLeagueDialog, SignOutDialog, Snackbar, BomboPayments
     },
     computed: {
       sidebarAndNavbar () {
@@ -43,11 +51,14 @@
       isSignoutDialog () {
         return this.$store.getters['isSignoutDialog']
       },
+      isBomboPaymentsDialog () {
+        return this.$store.getters['isBomboPaymentsDialog']
+      },
       isSelectLeagueDialog () {
         return this.$store.getters['team/isSelectLeagueDialog']
       },
       sidebar () {
-        let notAllowed = ['/client/profile', '/client/createteam', '/client/dashboard', '/client/faq']
+        let notAllowed = ['/client/profile', '/client/createteam', '/client/dashboard', '/client/faq', '/client/matches']
         return notAllowed.indexOf(this.$route.path) === -1
       },
       snackbar () {
@@ -66,20 +77,29 @@
       },
       onCollapseSelectLeagueDialog () {
         this.$store.commit('team/turnOffSelectLeageDialog')
+      },
+      onCollapseBomboPayments () {
+        this.$store.commit('turnOffBomboPaymentsDialog')
+      },
+      openBomboPaymentsDialog () {
+        this.$store.commit('openBomboPaymentsDialog')
       }
     },
     mounted () {
     },
     created () {
-      console.log(this.testUserId)
-      if (this.testUserId === null) {
-        this.$router.push({path: '/register'})
-        // setTimeout(() => {
-        // }, 5000)
-      }
-      // else {
-      //   // this.fetchUserData()
-      // }
+      // console.log('isAuthenticated', auth.isAuthenticated())
+      auth.isAuthenticated()
+      // this.$store.dispatch('auth/isAuthenticated')
+        .then(res => {
+          console.log(res)
+          if (res === false) {
+              this.$router.push('/')
+          }
+        })
+        .catch(err => {
+          console.log(err)
+        })
     }
   }
 </script>

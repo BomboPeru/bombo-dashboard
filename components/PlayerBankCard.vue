@@ -4,63 +4,88 @@
         <div class="title">
           <span class="title-text">{{ title }}</span>
         </div>
-        <search-component v-model="search"/>
+        <!--<search-component v-model="search"/>-->
+        <players-filter @changeFilter="filterModified"/>
       </div>
       <div class="line elevation"></div>
       <!-- header -->
-      <div class="header-text">
-        <div class="name">Nombre</div>
-        <div class="prom">Prom</div>
-        <div class="up">UP</div>
-        <div class="costo">Costo</div>
-        <div class="posicion">Posicion</div>
-      </div>
+      <table style="width: 100%;" class="row-header">
+        <thead>
+          <tr>
+            <th style="width: 31%;">Nombre</th>
+            <th style="width: 7%;">Estado</th>
+            <th style="width: 10%;">Popularidad</th>
+            <th style="width: 21%;">Costo</th>
+            <th style="width: 15%;">Posicion</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+
       <!-- content -->
-      <div class="content">
-        <template v-for="(_team, _key) in teams">
-          <div :key="_key">
-            <div class="title-team" >{{ _team.name }}</div>
-            <div class="line-team"></div>
-            <div>
-              <!--v-for="(player, key) in _team.goal_keeper"-->
-              <player-row-card
-                v-for="(player, key) in _team.gol_keeper"
-                :key="key + '-portero'"
-                :player="player"
-                position="ARQUERO"
-                @onPlayerSelected="selectPlayer(player, 'goal_keeper')"/>
+      <no-ssr>
+        <div class="content">
+          <player-row-card
+            v-for="(player, key) in playersList"
+            :key="key + '-player'"
+            :player="player"
+            :position="playerTypesConversions[player.position]"
+            @onPlayerSelected="selectPlayer(player, player.position)"/>
 
-              <player-row-card
-                v-for="(player, key) in _team.defender" :key="key + '-defensa'" :player="player"
-                position="DEFENSA"
-                @onPlayerSelected="selectPlayer(player, 'defender')"/>
+          <!--<template v-for="(_team, _key) in teams">-->
+            <!--<div :key="_key">-->
+              <!--<div class="title-team" >{{ _team.name }}</div>-->
+              <!--<div class="line-team"></div>-->
+              <!--<div>-->
+                <!--v-for="(player, key) in _team.goal_keeper"-->
+                <!--<player-row-card-->
+                  <!--v-for="(player, key) in _team.gol_keeper"-->
+                  <!--:key="key + '-portero'"-->
+                  <!--:player="player"-->
+                  <!--position="ARQUERO"-->
+                  <!--@onPlayerSelected="selectPlayer(player, 'goal_keeper')"/>-->
 
-              <player-row-card
-                v-for="(player, key) in _team.mid_fielder"
-                :key="key + '-centrocampista'" :player="player" position="CENTROCAMPISTA"
-                @onPlayerSelected="selectPlayer(player, 'mid_fielder')"/>
+                <!--<player-row-card-->
+                  <!--v-for="(player, key) in _team.defender" :key="key + '-defensa'" :player="player"-->
+                  <!--position="DEFENSA"-->
+                  <!--@onPlayerSelected="selectPlayer(player, 'defender')"/>-->
 
-              <!--v-for="(player, key) in _team.forward"-->
-              <player-row-card
-                v-for="(player, key) in _team.forwarder"
-                :key="key + '-delantero'" :player="player" position="DELANTERO"
-                @onPlayerSelected="selectPlayer(player, 'forward')"/>
-            </div>
-          </div>
-        </template>
-      </div>
+                <!--<player-row-card-->
+                  <!--v-for="(player, key) in _team.mid_fielder"-->
+                  <!--:key="key + '-centrocampista'" :player="player" position="CENTROCAMPISTA"-->
+                  <!--@onPlayerSelected="selectPlayer(player, 'mid_fielder')"/>-->
+
+                <!--&lt;!&ndash;v-for="(player, key) in _team.forward"&ndash;&gt;-->
+                <!--<player-row-card-->
+                  <!--v-for="(player, key) in _team.forwarder"-->
+                  <!--:key="key + '-delantero'" :player="player" position="DELANTERO"-->
+                  <!--@onPlayerSelected="selectPlayer(player, 'forward')"/>-->
+              <!--</div>-->
+            <!--</div>-->
+          <!--</template>-->
+        </div>
+      </no-ssr>
     </div>
 </template>
 
 <script>
   import SearchComponent from './SearchComponent'
   import PlayerRowCard from './PlayerRowCard'
+  import PlayersFilter from './PlayersFilter'
   import SampleData from '../assets/sample/premier_league_full'
+
+  const playerTypes = ['gol_keeper', 'defender', 'mid_fielder', 'forwarder']
+  const playerTypesConversions = {
+    'goal_keeper': 'ARQUERO',
+    'defender': 'DEFENSA',
+    'mid_fielder': 'CENTROCAMPISTA',
+    'forward': 'DELANTERO'
+  }
 
   export default {
     name: 'player-bank-card',
     components: {
-      SearchComponent, PlayerRowCard
+      SearchComponent, PlayerRowCard, PlayersFilter
     },
     computed: {
       search: {
@@ -80,33 +105,46 @@
       return {
         title: 'JUGADORES DE LA TEMPORADA',
         teams: [],
-        searchText: ''
+        playersList: [],
+        searchText: '',
+        playerTypesConversions: {
+          'goal_keeper': 'ARQUERO',
+          'defender': 'DEFENSA',
+          'mid_fielder': 'CENTROCAMPISTA',
+          'forward': 'DELANTERO'
+        }
       }
     },
     methods: {
+      filterModified (filterObj) {
+      },
+      async fetchPlayers () {
+        const response = await this.$axios.$get('http://api.bombo.pe/api/v2.0/players/all')
+        const data = response.data.slice(0,-1)
+        // this.teams = data
+        this.playersList = data
+      },
       async fetchSomething(searchText) {
-        const response = await this.$axios.$get('http://open.bombo.pe/api/v1.0/premier_league')
-        const data = response.data
+        // const data = response.data.slice(0,5)
         // const data = SampleData
 
         console.log('fetching', searchText)
         if (searchText !== '') {
 
           console.log('do something')
-          let types = ['gol_keeper', 'defender', 'mid_fielder', 'forwarder']
           let results = {}
           for (let key = 0; key < data.length; key++) {
 
-            for (let typePlayer = 0; typePlayer < types.length ;typePlayer++) {
-              data[key][types[typePlayer]].map(player => {
+            for (let typePlayer = 0; typePlayer < playerTypes.length ;typePlayer++) {
+              data[key][playerTypes[typePlayer]].map(player => {
                 if (player.name.toUpperCase().includes(searchText.toUpperCase())) {
                   if (results[key] === undefined) {
                     results[key] = {}
                   }
-                  if (results[key][types[typePlayer]] === undefined) {
-                    results[key][types[typePlayer]] = []
+                  if (results[key][playerTypes[typePlayer]] === undefined) {
+                    results[key][playerTypes[typePlayer]] = []
                   }
-                  results[key][types[typePlayer]].push(player)
+                  results[key][playerTypes[typePlayer]].push(player)
                 }
               })
             }
@@ -126,7 +164,7 @@
       }
     },
     created () {
-      this.fetchSomething('')
+      this.fetchPlayers()
     }
   }
 </script>
@@ -156,19 +194,20 @@
 
   .header
     width 100%
-    height 50px
-    background #445F69
-    padding 8px 15px
+    height 72px
+    background #243337
+    padding 8px 24px
   .header span
     padding 0px 0px
+
   .content
-    height calc(100vh - 270px)
+    height calc(100vh - 300px)
     overflow-y scroll
     padding-bottom 15px
   .title
     display inline-block
     height 100%
-    line-height 34px
+    line-height 54px
     margin-right 30px
   .title span
     text-align left
@@ -179,28 +218,11 @@
   .line
     width 100%
     background #25BF89
-    height 8px
-  .header-text
-    width 100%
-    text-align center
-  .header-text div
-    display inline-block
-    font-size 10px
+    height 4px
+  .row-header
     font-family Titillium Web
-  .name
-    text-align left !important
-    padding-left 50px
-    width 37.5%
-  .prom
-    width 12.5%
-  .up
-    width 12.5%
-  .costo
-    width 12.5%
-  .posicion
-    text-align left !important
-    padding-left 24px
-    width 25%
+    font-size 12px
+
   .title-team
     text-transform uppercase
     font-family: Titillium Web;
