@@ -3,7 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="bf24282d-3075-4fc1-a7e6-a1352eba2675" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/components/PlayerRowCard.vue" afterPath="$PROJECT_DIR$/components/PlayerRowCard.vue" />
+      <change beforePath="$PROJECT_DIR$/components/StatusBar.vue" afterPath="$PROJECT_DIR$/components/StatusBar.vue" />
+      <change beforePath="$PROJECT_DIR$/components/TooltipMenu.vue" afterPath="$PROJECT_DIR$/components/TooltipMenu.vue" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -29,6 +30,26 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="TooltipMenu.vue" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/components/TooltipMenu.vue">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="504">
+              <caret line="105" column="55" lean-forward="false" selection-start-line="105" selection-start-column="55" selection-end-line="105" selection-end-column="55" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="StatusBar.vue" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/components/StatusBar.vue">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="312">
+              <caret line="21" column="75" lean-forward="false" selection-start-line="21" selection-start-column="75" selection-end-line="21" selection-end-column="75" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="SelectLeagueDialog.vue" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/components/SelectLeagueDialog.vue">
           <provider selected="true" editor-type-id="text-editor">
@@ -49,24 +70,14 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="PlayerRowCard.vue" pinned="false" current-in-tab="true">
+      <file leaf-file-name="PlayerRowCard.vue" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/components/PlayerRowCard.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1711">
-              <caret line="37" column="65" lean-forward="false" selection-start-line="37" selection-start-column="52" selection-end-line="37" selection-end-column="65" />
+            <state relative-caret-position="161">
+              <caret line="115" column="36" lean-forward="false" selection-start-line="115" selection-start-column="36" selection-end-line="115" selection-end-column="36" />
               <folding>
                 <element signature="n#style#0;n#td#0;n#tr#0;n#tbody#0;n#table#0;n#template#1;n#div#0;n#template#0;n#!!top" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="teams.vue" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/pages/client/teams.vue">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="473">
-              <caret line="113" column="12" lean-forward="false" selection-start-line="113" selection-start-column="12" selection-end-line="113" selection-end-column="12" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -203,8 +214,6 @@
         <option value="$PROJECT_DIR$/components/CcCheckbox.vue" />
         <option value="$PROJECT_DIR$/nuxt.config.js" />
         <option value="$PROJECT_DIR$/components/PlayersFilter.vue" />
-        <option value="$PROJECT_DIR$/components/StatusBar.vue" />
-        <option value="$PROJECT_DIR$/components/TooltipMenu.vue" />
         <option value="$PROJECT_DIR$/components/BasicToolbar.vue" />
         <option value="$PROJECT_DIR$/components/MenuSidebar.vue" />
         <option value="$PROJECT_DIR$/utils/auth.js" />
@@ -219,6 +228,8 @@
         <option value="$PROJECT_DIR$/pages/index.vue" />
         <option value="$PROJECT_DIR$/pages/client/profile.vue" />
         <option value="$PROJECT_DIR$/components/PlayerRowCard.vue" />
+        <option value="$PROJECT_DIR$/components/StatusBar.vue" />
+        <option value="$PROJECT_DIR$/components/TooltipMenu.vue" />
       </list>
     </option>
   </component>
@@ -427,7 +438,7 @@
       <workItem from="1520801713453" duration="16644000" />
       <workItem from="1520887862463" duration="44802000" />
       <workItem from="1520974093864" duration="61472000" />
-      <workItem from="1521120602902" duration="21983000" />
+      <workItem from="1521120602902" duration="22353000" />
     </task>
     <task id="LOCAL-00001" summary="topbar">
       <created>1518150213086</created>
@@ -660,11 +671,18 @@
       <option name="project" value="LOCAL" />
       <updated>1521156235683</updated>
     </task>
-    <option name="localTasksCounter" value="34" />
+    <task id="LOCAL-00034" summary="band captain">
+      <created>1521157502696</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1521157502696</updated>
+    </task>
+    <option name="localTasksCounter" value="35" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="568100000" />
+    <option name="totallyTimeSpent" value="568470000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="54" y="-11" width="1867" height="1092" extended-state="6" />
@@ -721,7 +739,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="soccer ground" />
     <MESSAGE value="select league dialog, changes in css" />
     <MESSAGE value="detail, responsiveness changes" />
     <MESSAGE value="sidebar buttons, dashboard view" />
@@ -746,7 +763,8 @@
     <MESSAGE value="create team disabled" />
     <MESSAGE value="index" />
     <MESSAGE value="shirts, auth" />
-    <option name="LAST_COMMIT_MESSAGE" value="shirts, auth" />
+    <MESSAGE value="band captain" />
+    <option name="LAST_COMMIT_MESSAGE" value="band captain" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -974,14 +992,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/components/StatusBar.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="144">
-          <caret line="35" column="14" lean-forward="false" selection-start-line="35" selection-start-column="14" selection-end-line="35" selection-end-column="14" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/layouts/default.vue">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="96">
@@ -1013,14 +1023,6 @@
     <entry file="file://$PROJECT_DIR$/assets/bombo_transparency.png">
       <provider selected="true" editor-type-id="images">
         <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/components/TooltipMenu.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="504">
-          <caret line="21" column="20" lean-forward="false" selection-start-line="21" selection-start-column="20" selection-end-line="21" selection-end-column="20" />
-          <folding />
-        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/assets/styles/main.styl">
@@ -1157,11 +1159,27 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/components/PlayerRowCard.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1711">
-          <caret line="37" column="65" lean-forward="false" selection-start-line="37" selection-start-column="52" selection-end-line="37" selection-end-column="65" />
+        <state relative-caret-position="161">
+          <caret line="115" column="36" lean-forward="false" selection-start-line="115" selection-start-column="36" selection-end-line="115" selection-end-column="36" />
           <folding>
             <element signature="n#style#0;n#td#0;n#tr#0;n#tbody#0;n#table#0;n#template#1;n#div#0;n#template#0;n#!!top" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/components/StatusBar.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="312">
+          <caret line="21" column="75" lean-forward="false" selection-start-line="21" selection-start-column="75" selection-end-line="21" selection-end-column="75" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/components/TooltipMenu.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="504">
+          <caret line="105" column="55" lean-forward="false" selection-start-line="105" selection-start-column="55" selection-end-line="105" selection-end-column="55" />
+          <folding />
         </state>
       </provider>
     </entry>

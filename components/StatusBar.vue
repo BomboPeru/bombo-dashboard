@@ -19,7 +19,7 @@
       </li>
     </ul>
     <tooltip-menu listSupport v-if="help"/>
-    <tooltip-menu listNotifications v-if="notification" :notifications="notifications" right-offset="70px"/>
+    <tooltip-menu listNotifications v-if="notification" :notifications="[]" right-offset="70px"/>
     <tooltip-menu profile v-if="profile" right-offset="30px"/>
   </div>
 </template>
@@ -40,10 +40,6 @@
         profile: false,
         statusBarItems: ['help', 'notification', 'profile'],
         notifications: [
-          { subject: 'NUEVO USUARIO', message: 'BIENVENIDO A BOM...' },
-          { subject: 'NUEVO USUARIO', message: 'BIENVENIDO A BOM...' },
-          { subject: 'NUEVO USUARIO', message: 'BIENVENIDO A BOM...' },
-          { subject: 'NUEVO USUARIO', message: 'BIENVENIDO A BOM...' },
         ]
       }
     },

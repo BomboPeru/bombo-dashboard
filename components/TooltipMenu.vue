@@ -6,32 +6,32 @@
         <template v-if="listSupport">
           <ul class="ul-support">
             <li v-for="(link, i) in listSupportItems" :key="i+'-support'">
-              <nuxt-link :to="link.url">{{ link.date }}</nuxt-link>
+              <nuxt-link :to="link.url">{{ link.name }}</nuxt-link>
             </li>
           </ul>
         </template>
         <template v-else-if="listNotifications">
           <ul class="ul-notification">
-            <li v-for="(notification, i) in notifications"
+            <li v-for="(notification, i) in mnotifications"
                 :key="i+'-notif'">
               <div :class="['subject', notification.subject==='Incongruencias'?'warning':'']">
-                {{ notification.subject }}
+                {{ notification.title }}
               </div>
               <div class="message">
-                {{ notification.message }}
+                {{ notification.description }}
               </div>
-              <div class="divider" v-if="i !== (notifications.length - 1)"></div>
+              <div class="divider" v-if="i !== (mnotifications.length - 1)"></div>
             </li>
           </ul>
         </template>
         <template v-else-if="profile">
-          <p class="username">{{ profileData.date }}</p>
+          <p class="username">{{ profileData.name }}</p>
           <p class="coins">{{ profileData.coins }}</p>
           <div class="divider"></div>
           <ul class="ul-profile">
             <li v-for="(profileLink, i) in listProfileItems" :key="i+'-profile'">
               <nuxt-link :to="profileLink.url">
-                {{ profileLink.date }}
+                {{ profileLink.name }}
               </nuxt-link>
             </li>
           </ul>
@@ -74,26 +74,23 @@
         } else {
           return ''
         }
-      },
-      testUser () {
-        console.log(this.$store.getters.testUser)
-        return this.$store.getters.testUser
       }
     },
     data () {
       return {
+        mnotifications: [],
         profileData: {
-          date: 'No Name',
+          name: 'No Name',
           coins: '0B'
         },
         listProfileItems: [
-          { date: 'Mi Perfil', url: '/client/profile' },
-          { date: 'Transferencias', url: '' }
+          { name: 'Mi Perfil', url: '/client/profile' },
+          { name: 'Transferencias', url: '' }
         ],
         listSupportItems: [
-          { date: 'FAQ', url: '' },
-          { date: 'Asistencia tecnica', url: '' },
-          { date: 'Reportar un problema', url: '' }
+          { name: 'FAQ', url: '' },
+          { name: 'Asistencia tecnica', url: '' },
+          { name: 'Reportar un problema', url: '' }
         ]
       }
     },
@@ -106,7 +103,8 @@
         let user = this.$store.getters['auth/getUser']
         let response = await this.$axios.get('http://api.bombo.pe/api/v2.0/users/' + user.id)
         const userResponse = response.data.data
-        this.profileData.date = userResponse.date
+        this.mnotifications = userResponse.notifications
+        this.profileData.name = userResponse.name
         this.profileData.coins = userResponse.current_bombo_coins + ' B'
       }
     },
@@ -151,11 +149,11 @@
     font-size 12px
   .subject
     color: #445F69
-    font-size: 9px;
+    font-size: 12px;
     text-align center
   .message
     color: #25BF89
-    font-size: 12px;
+    font-size: 18px;
     text-align center
   .warning
     color: #FFC400
