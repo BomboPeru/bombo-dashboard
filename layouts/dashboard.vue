@@ -5,7 +5,7 @@
       <sidebar v-if="sidebarAndNavbar" :sidebar="sidebar"/>
       <nuxt :class="{ 'margin-sidebar': sidebar }"/>
       <floating-container bottom-right class="fab">
-        <icon-button text="$ 0000.00"
+        <icon-button :text="'S/ ' + saldo"
                      icon-direction="right"
                      color="#EA504C"
                      @click="openBomboPaymentsDialog"
@@ -19,10 +19,19 @@
     <select-league-dialog
       :is-open="isSelectLeagueDialog"
       @onCollapse="onCollapseSelectLeagueDialog"/>
-    <snackbar :show="snackbar" :message="snackbarMessage"/>
+
+    <select-time-dialog :is-open="isSelectTimeDialog"
+                        @onCollapse="onCollapseSelectTimeDialog"/>
+
+    <!--:is-open="true"-->
     <bombo-payments
       :is-open="isBomboPaymentsDialog"
       @onCollapse="onCollapseBomboPayments"/>
+
+    <snackbar :show="snackbar" :message="snackbarMessage"/>
+
+    <menu-sidebar/>
+
   </div>
 </template>
 
@@ -35,13 +44,16 @@
   import SelectLeagueDialog from '~/components/SelectLeagueDialog'
   import SignOutDialog from '~/components/SignOutDialog'
   import BomboPayments from '~/components/BomboPayments'
+  import SelectTimeDialog from '~/components/SelectTimeDialog'
+  import MenuSidebar from '~/components/MenuSidebar'
 
   import auth from '~/utils/auth'
 
 
   export default {
     components: {
-      Toolbar, Sidebar, FloatingContainer, IconButton, SelectLeagueDialog, SignOutDialog, Snackbar, BomboPayments
+      Toolbar, Sidebar, FloatingContainer, IconButton,
+      SelectLeagueDialog, SignOutDialog, Snackbar, BomboPayments, SelectTimeDialog, MenuSidebar
     },
     computed: {
       sidebarAndNavbar () {
@@ -57,6 +69,9 @@
       isSelectLeagueDialog () {
         return this.$store.getters['team/isSelectLeagueDialog']
       },
+      isSelectTimeDialog () {
+        return this.$store.getters['team/isSelectTimeDialog']
+      },
       sidebar () {
         let notAllowed = ['/client/profile', '/client/createteam', '/client/dashboard', '/client/faq', '/client/matches']
         return notAllowed.indexOf(this.$route.path) === -1
@@ -67,8 +82,19 @@
       snackbarMessage () {
         return this.$store.getters.snackbarMessage
       },
-      testUserId () {
-        return this.$store.getters.testUserId
+      saldo () {
+        if (process.server) return
+
+        const user = this.$store.getters['auth/getUser']
+        if ( user === null) {
+          return 0
+        } else {
+          return user.current_credit
+        }
+      }
+    },
+    data () {
+      return {
       }
     },
     methods: {
@@ -78,6 +104,9 @@
       onCollapseSelectLeagueDialog () {
         this.$store.commit('team/turnOffSelectLeageDialog')
       },
+      onCollapseSelectTimeDialog () {
+        this.$store.commit('team/turnOffSelectTimeDialog')
+      },
       onCollapseBomboPayments () {
         this.$store.commit('turnOffBomboPaymentsDialog')
       },
@@ -85,16 +114,14 @@
         this.$store.commit('openBomboPaymentsDialog')
       }
     },
-    mounted () {
-    },
-    created () {
+    beforeCreate () {
       // console.log('isAuthenticated', auth.isAuthenticated())
       auth.isAuthenticated()
       // this.$store.dispatch('auth/isAuthenticated')
-        .then(res => {
-          console.log(res)
-          if (res === false) {
-              this.$router.push('/')
+        .then(validToken => {
+          console.log('verify token', validToken)
+          if (validToken === false) {
+            this.$router.push('/')
           }
         })
         .catch(err => {

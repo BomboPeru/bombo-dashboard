@@ -3,7 +3,7 @@
       <div class="tabs">
         <div :class="['tab', i === activeTab?'active-tab':'']" v-for="(item, i) in tabs"
              :key="i+'-ranking-tab'" @click="selectTab(i)">
-          {{ item.name }}
+          {{ item.date }}
         </div>
       </div>
       <div class="header-table">
@@ -41,7 +41,7 @@
         activeTab: 0,
         tabs: [
           // { id: 1, name: 'Champions', img: '' },
-          { id: 2, name: 'Premier League', img: '' }
+          { id: 2, date: 'Premier League', img: '' }
         ],
         headers: [
           'LUGAR',
@@ -76,7 +76,8 @@
         this.activeTab = i
       },
       async fetchRanking () {
-        let response = await this.$axios.$get('http://api.bombo.pe/api/v1.0/extra/get-ranking')
+        const testTimeId = 'bain1ega70g2mfe993f0'
+        let response = await this.$axios.$get('http://api.bombo.pe/api/v2.0/global/ranking/' + testTimeId)
         this.ranking = response.data.reverse()
       }
     },

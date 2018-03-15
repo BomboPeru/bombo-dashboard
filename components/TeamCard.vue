@@ -2,7 +2,7 @@
     <div id="round-card" class="elevation rounded" :style="{ 'padding-bottom': collapsable?'0px':'5px', 'width': width }">
       <div class="header" :style="{ background: typeColorCards[typeCard] }">
         <div :style="{ 'text-align': typeCard !== 'en_juego'?'center':'left' }">
-          <span class="title" :style="{ 'text-align': typeCard !== 'en_juego'?'center':'left' }">{{ title }}</span>
+          <span class="title" :style="{ 'text-align': typeCard !== 'en_juego'?'center':'left' }">{{ team.name }}</span>
           <span class="right" v-if="typeCard === 'en_juego'">{{ points }}</span>
           <span class="right guardados" v-if="typeCard === 'guardado'">
             <template v-if="isFavoriteSaved">
@@ -59,18 +59,20 @@
         <!-- PLAYERS -->
         <div>
           <div :class="['list-players-container', typeCard === 'guardado'||typeCard === 'pasados'?'list-players-container-b':'']">
-            <player-row-card v-for="(item, i) in players.goal_keeper" :key="i+'prc-portero'" mode="small-a" :player="item" position="ARQUERO"/>
+            <player-row-card v-for="(item, i) in players" :key="i+'prc-player'" mode="small-a" :player="item" :position="playerPositions[item.position]"/>
 
-            <player-row-card v-for="(item, i) in players.defender" :key="i+'prc-defensa'" mode="small-a" :player="item" position="DEFENSA"/>
+            <!--<player-row-card v-for="(item, i) in players.goal_keeper" :key="i+'prc-portero'" mode="small-a" :player="item" position="ARQUERO"/>-->
 
-            <player-row-card v-for="(item, i) in players.mid_fielder" :key="i+'prc-centrocampista'" mode="small-a" :player="item" position="CENTROCAMPISTA"/>
+            <!--<player-row-card v-for="(item, i) in players.defender" :key="i+'prc-defensa'" mode="small-a" :player="item" position="DEFENSA"/>-->
 
-            <player-row-card v-for="(item, i) in players.forward" :key="i+'prc-delantero'" mode="small-a" :player="item" position="DELANTERO"/>
+            <!--<player-row-card v-for="(item, i) in players.mid_fielder" :key="i+'prc-centrocampista'" mode="small-a" :player="item" position="CENTROCAMPISTA"/>-->
+
+            <!--<player-row-card v-for="(item, i) in players.forward" :key="i+'prc-delantero'" mode="small-a" :player="item" position="DELANTERO"/>-->
           </div>
         </div>
 
         <div class="bottom-button-container" v-if="typeCard !== 'en_juego'">
-          <div class="button-play-again" v-if="typeCard === 'guardado'" @click="putInGameTeam">
+          <div class="button-play-again" v-if="typeCard === 'guardado'" @click="putInGameTeam(team)">
             JUEGA YA!
           </div>
           <div class="button-delete" v-if="typeCard === 'pasados'">
@@ -104,13 +106,14 @@
         type: String,
         default: 'en_juego'
       },
+      team: Object,
       id: String,
       title: String,
       points: Number,
       leagueImg: String,
       createdAt: String,
       ranking: Number,
-      players: Object,
+      players: Array,
       cost: String,
       status: String,
       collapsable: {
@@ -126,6 +129,12 @@
       return {
         isCollapsed: false,
         isFavoriteSaved: true,
+        playerPositions: {
+          'goal_keeper':'ARQUERO',
+          'defender':'DEFENSA',
+          'mid_fielder':'CENTROCAMPISTA',
+          'forward':'DELANTERO'
+        },
         typeColorCards: {
           en_juego: '#EA504C',
           guardado: '#25BF89',
@@ -148,33 +157,16 @@
       collapse () {
         this.isCollapsed = false
       },
-      async putInGameTeam () {
-        try {
-          let user = await this.$axios.$get('http://api.bombo.pe/api/v1.0/user/' + this.$store.state.testUserId)
-          user = user.data
-          console.log(user)
-          if (user.playing_teams === null) {
-            user.playing_teams = []
-          }
-          for (let i = 0; i < user.saved_teams.length; i++) {
-            if (user.saved_teams[i].id === this.id) {
-              user.playing_teams.push(user.saved_teams[i])
-              user.saved_teams.splice(i, 1)
-              break
-            }
-          }
-
-          await this.$axios.$post('http://api.bombo.pe/api/v1.0/user/update', {
-            id: user.id,
-            playing_teams: user.playing_teams,
-            saved_teams: user.saved_teams
-          })
-          this.$store.dispatch('turnOnSnackbar', 'Equipo puesto en el juego')
-        } catch (e) {
-          console.log(e)
-          this.$store.dispatch('turnOnSnackbar', 'Error al procesar Equipo, pruebalo mas tarde.')
-        }
+      async putInGameTeam (team) {
+        this.$store.state.team.selectedLeague = team.league_id
+        this.$store.state.team.teamNameToMakePlay = team.name
+        this.$store.commit('team/turnOnSelectTimeDialog')
       }
+    },
+    mounted () {
+      setTimeout(() => {
+        console.log(this.team)
+      }, 2000)
     }
   }
 </script>

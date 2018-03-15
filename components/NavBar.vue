@@ -4,7 +4,7 @@
         <li v-for="(item, i) in navbarItems" :key="i" v-if="item.justTitle === false">
           <nav-item
             :is-active="item.urlPath === $route.path"
-            :text="item.name"
+            :text="item.date"
             :url="item.urlPath"/>
         </li>
       </ul>
@@ -18,7 +18,7 @@
       <div class="dropdown-content elevation" :style="{ 'visibility': isMenuNavItemOpen? 'visible' : 'collapse'}">
         <ul class="dropdown-list">
           <li v-for="(item, i) in navbarItems" :key="i" class="dropdown-item"  v-if="item.justTitle === false">
-            <a :href="item.urlPath">{{ item.name }}</a>
+            <a :href="item.urlPath">{{ item.date }}</a>
           </li>
         </ul>
       </div>
@@ -38,7 +38,7 @@
         let title = ''
         for (let i = 0; i < this.navbarItems.length; i++) {
           if ( this.navbarItems[i].urlPath === this.$route.path ) {
-            title = this.navbarItems[i].name
+            title = this.navbarItems[i].date
           }
         }
         return title
@@ -47,12 +47,12 @@
     data () {
       return {
         navbarItems: [
-          { name: 'MIS EQUIPOS', urlPath: '/client/teams', justTitle: false },
-          { name: 'PROXIMAS FECHAS', urlPath: '/client/matches', justTitle: false },
-          { name: 'TABLERO', urlPath: '/client/dashboard', justTitle: false },
-          { name: 'HISTORIAL', urlPath: '/client/history', justTitle: false },
-          { name: 'ARMA TU EQUIPO!', urlPath: '/client/createteam', justTitle: true },
-          { name: 'MI PERFIL', urlPath: '/client/profile', justTitle: true }
+          { date: 'MIS EQUIPOS', urlPath: '/client/teams', justTitle: false },
+          { date: 'PROXIMAS FECHAS', urlPath: '/client/matches', justTitle: false },
+          { date: 'TABLERO', urlPath: '/client/dashboard', justTitle: false },
+          { date: 'HISTORIAL', urlPath: '/client/history', justTitle: false },
+          { date: 'ARMA TU EQUIPO!', urlPath: '/client/createteam', justTitle: true },
+          { date: 'MI PERFIL', urlPath: '/client/profile', justTitle: true }
         ],
         isMenuNavItemOpen: false
       }

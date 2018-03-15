@@ -1,19 +1,23 @@
 <template>
   <div id="index">
-    <div class="landing">
-      <p class="extra-big-title">Preparate para ser el mejor</p>
-      <div class="bottom-part">
-        <p class="big-title">En Bombo tu eres el experto nosotros te alentamos</p>
-        <div class="btn-container">
-          <div class="juega-ya elevation" @click="openLoginDialog" style="cursor: pointer">SI ERES BETA TESTER, INGRESA AQUI</div>
+    <div class="header">
+      <div class="player-container">
+        <img src="/landing/jugador2.png" alt="" class="player">
+      </div>
+      <div class="content-container">
+        <p class="phrase">
+          El primer daily fantasy peruano donde podrás <span class="highlight">ganar dinero</span>
+        </p>
+        <div class="btn-login">
+          COMIENZA A GANAR <span class="arrow"> <img src="/landing/arrow_right.svg" alt=""> </span>
         </div>
       </div>
     </div>
+    <div class="section">
+      <p class="text-bg">GANA HASTA 20 VECES</p>
+      <div class="blue-bar"></div>
+      <p class="text-md">los 35 primeros ganan</p>
 
-    <div class="block-content">
-      <p class="big-title">GANA HASTA 20 VECES LO INVERTIDO</p>
-      <p class="semi-big-title">LOS 35 PRIMEROS SIEMPRE GANAN</p>
-      <p class="big-title">JUEGA EN TODAS LAS TEMPORADAS</p>
     </div>
   </div>
 </template>
@@ -23,9 +27,6 @@
   export default {
     // layout: 'dashboard',
     methods: {
-      openLoginDialog () {
-        this.$store.commit('openLoginDialog')
-      }
     }
   }
 </script>
@@ -33,60 +34,111 @@
 <style scoped lang="stylus">
   #index
     font-family: Titillium Web;
-  .landing
-    height 640px
-    width 100%
-    background: url(../static/bombo_dashboard_login.jpg), linear-gradient(0deg, #fff, #243337)
-    background-blend-mode multiply
-    color white
-    text-align center
-    padding 27px 42px 12px 42px
+  .header
+    margin-top -76px
+    height 90vh
+    background linear-gradient(62deg, #89F7FE 0%, #66A6FF 100%);
+    /*overflow hidden*/
+  .player
+    width 50%
     position relative
-  .bottom-part
+    top 100px
+    left 50px
+  @media screen and (min-width: 1300px)
+    .player
+      width 50%
+      position relative
+      top 200px
+      left 50px
+
+  .player-container
+    height: 100%;
+    overflow-y: hidden;
+
+  .content-container
     position absolute
-    bottom 0
-    left 0
-    width 100%
-    padding 12px 161px 25px 161px
-  .semi-big-title
-    font-size 36px !important
-  .big-title
-    font-size 48px !important
-  .extra-big-title
-    font-size 72px !important
-  .btn-container
-    text-align center
-  .juega-ya
-    margin-top 48px
-    display inline-block
-    color white
-    font-weight: 600
-    font-family: Titillium Web;
-    padding 6px 41px 6px 41px
-    background: #EA504C;
-    border-radius: 4px;
-
-  .block-content
-    background white
+    top 50%
+    transform translateY(-80%)
+    right 10%
+    padding-right 50px
+    width 360px
+  .phrase
     color black
+    font-family Raleway
+    font-size 26px
+    padding-bottom 24px
+  .highlight
+    font-weight: bold;
+    font-style: italic;
+  .btn-login
+    padding-left 15px
+    font-weight bold
+    height 42px
+    line-height 42px
+    background white
+    width 200px
+    border-radius 40px
+    box-shadow: 0 15px 20px 0 rgba(0,0,0,0.32);
+  .arrow
+    position relative
+    top 1px
+    left 8px
+  .arrow img
+    width 12px
+  .section
+    padding-top 30px
+    padding-bottom 30px
+  .text-md
+  .text-bg
+    font-family Raleway
     text-align center
-    padding 21px 120px 12px 120px
-    height 350px
-    font-weight:bold
-  @media screen and (max-width: 1023px)
-    .landing
-      height 480px
-    .semi-big-title
-      font-size 18px !important
-    .big-title
-      font-size 22px !important
-    .extra-big-title
-      font-size 36px !important
-    .juega-ya
-      padding 6px 12px 6px 12px
-    .block-content
-      padding 21px 12px 12px 12px
-    .bottom-part
-      padding 12px 16px 25px 16px
+    text-transform uppercase
+    color #484848
+  .text-bg
+    font-size 24px
+  .text-md
+    font-size 16px
+  .blue-bar
+    margin 20px 0
+    width 80px
+    height 10px
+    background #30DADF
+    border-radius 10px
+    position relative
+    top 0
+    left 50%
+    transform translateX(-50%)
 
+  @media screen and (max-width: 1200px) and (min-width: 801px)
+    .header
+      height 80vh
+    .content-container
+      right 0%
+    .player
+      top 40%
+
+
+  @media screen and (max-width: 800px)
+    .header
+      height 70vh
+
+    .player-container
+      display none
+    .content-container
+      top 350px
+      left 0
+      width: 100%;
+      padding-right 0
+      // transform translateX(-50%) translateY(-50%)
+    .phrase
+      font-size 18px
+      margin-bottom 40px
+      text-align: center;
+      padding: 4px 30px;
+    .highlight
+      display block
+    .btn-login
+      position: relative;
+      left: 50%;
+      transform: translateX(-50%);
 </style>

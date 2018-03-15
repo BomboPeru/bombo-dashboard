@@ -3,56 +3,59 @@
       <div class="title-bar elevation">REGISTRATE CON NOSOTROS PARA DIFRUTAR DE TODA LA EXPERIENCIA BOMBO</div>
 
       <div class="center">
-        <div class="card-container">
+        <div class="card-container elevation rounded-sm">
           <p class="title">Datos personales</p>
-          <div class="form-row">
-            <input-text placeholder="Nombre" square flat v-model="user.name" class="form-input"/>
-            <form-alert :message="constraints['name'].message"
-                        :correct="constraints['name'].minLength <= user.name.length"/>
+          <form-alert onlytext label="Nombre"
+                      :message="constraints['name'].message"
+                      :correct="constraints['name'].minLength <= user.name.length"/>
+          <div>
+            <input-text placeholder="Nombre" v-model="user.name" big solid/>
           </div>
-          <div class="form-row">
-            <input-text placeholder="Correo electronico" square flat v-model="user.email" class="form-input"/>
-            <form-alert :message="constraints['email'].message"
-                        :correct="constraints['email'].minLength <= user.email.length"/>
+          <form-alert onlytext label="Correo electronico"
+                      :message="constraints['email'].message"
+                      :correct="constraints['email'].minLength <= user.email.length"/>
+          <div>
+            <input-text placeholder="Correo electronico" v-model="user.email" big solid/>
           </div>
-          <div class="form-row">
-            <input-text placeholder="Documento de identidad (DNI)" square flat v-model="user.identity_document" class="form-input"/>
-            <form-alert :message="constraints['identity_document'].message"
-                        :correct="constraints['identity_document'].minLength <= user.identity_document.length"/>
+          <form-alert onlytext  label="Documento de identidad (DNI)"
+                      :message="constraints['identity_document'].message"
+                      :correct="constraints['identity_document'].minLength <= user.identity_document.length"/>
+          <div>
+            <input-text placeholder="Documento de identidad (DNI)" big solid v-model="user.identity_document"/>
           </div>
-          <div class="birthday-container">
+          <div class="birthday-label-container">
             <label class="birthday-label">Fecha de nacimiento</label>
           </div>
-          <div class="form-row">
-            <input-text placeholder="Fecha de nacimiento" square flat v-model="user.birthday_fake" class="form-input" type="date"/>
+          <div class="birthday-container">
+            <input-text placeholder="Fecha de nacimiento" big solid v-model="user.birthday_fake" type="date"/>
             <!--<form-alert :message="constraints['identity_document'].message"-->
                         <!--:correct="constraints['identity_document'].minLength <= user.identity_document.length"/>-->
           </div>
           <p class="title">Datos de la cuenta</p>
-          <div class="form-row">
-            <input-text placeholder="Nombre de usuario" square flat v-model="user.username" class="form-input"/>
-            <form-alert :message="constraints['username'].message"
-                        :correct="constraints['username'].minLength <= user.username.length"/>
+          <form-alert onlytext  label="Username"
+                      :message="constraints['username'].message"
+                      :correct="constraints['username'].minLength <= user.username.length"/>
+          <div>
+            <input-text placeholder="Nombre de usuario" big solid v-model="user.username"/>
+            <!--<input-text placeholder="Nombre de usuario" square flat v-model="user.username" class="form-input"/>-->
           </div>
-          <div class="form-row">
-            <input-text placeholder="Contrasena" square flat v-model="user.password" type="password" class="form-input"/>
-            <form-alert :message="constraints['password'].message"
-                        :correct="constraints['password'].minLength <= user.password.length"/>
+          <form-alert onlytext  label="Password"
+                      :message="constraints['password'].message"
+                      :correct="constraints['password'].minLength <= user.password.length"/>
+          <div>
+            <input-text placeholder="Contrasena" big solid v-model="user.password" type="password"/>
           </div>
-          <!--<input-text placeholder="Repetir Contrasena" square type="password"/>-->
 
-          <div class="form-row">
-
-            <!--<form-alert :message="constraints['terms'].message"-->
-                        <!--:correct="constraints['terms'].checked === termsChecked"/>-->
+          <div style="margin-top: 4px">
+            <cc-checkbox v-model="termsChecked"/>
             <p class="terms-conditions">
-              <input type="checkbox" v-model="termsChecked">
+              <!--<input type="checkbox" v-model="termsChecked">-->
               HE LEIDO Y ACEPTO LOS <span @click="openTermsConditionsDialog">TERMINOS Y CONDICIONES</span>
             </p>
 
           </div>
 
-          <div class="form-row">
+          <div>
             <div class="btn-continue elevation" @click="createUser"
                  :style="{ 'background': isValidToSubmit?'#25BF89':'#969696' }">
               Registrar
@@ -72,11 +75,12 @@
   import InputText from '../components/InputText'
   import InputSelect from '../components/InputSelect'
   import FormAlert from '../components/FormAlert'
+  import CcCheckbox from '../components/CcCheckbox'
 
   export default {
     name: 'register',
     components: {
-      InputText, InputSelect, FormAlert
+      InputText, InputSelect, FormAlert, CcCheckbox
     },
     data () {
       return {
@@ -135,7 +139,7 @@
       },
       async createUser () {
         if (this.isValidToSubmit) {
-          if (this.user.name !== '' && this.user.email !== ''
+          if (this.user.date !== '' && this.user.email !== ''
             && this.user.username !== '' && this.user.password!== '') {
 
             let birthdayDate = new Date(this.user.birthday_fake)
@@ -164,7 +168,6 @@
                   })
                   .catch(err => {
                     console.log(err)
-                    this.message = 'username y/o password no es correcto.'
                   })
               }
             } catch (e) {
@@ -182,6 +185,7 @@
         let isValid = true
         for (let key in this.constraints) {
           if ( this.constraints[key].minLength !== undefined ) {
+            console.log(key)
             isValid = this.constraints[key].minLength <= this.user[key].length
             if (isValid === false) {
               break
@@ -204,7 +208,9 @@
   toolbar_height = 76px
   #register
     min-height calc(100vh - 76px)
-    background #fafafa
+    /*background #fafafa*/
+    background: url(/signup_background.jpeg) center
+    background-size cover
     /*
   .background
     background rgba(255, 0, 0, 0.45) url(../assets/background/background_login.png)
@@ -212,12 +218,13 @@
     background-size cover
     */
   .center
-    padding-top 50px
+    padding-top 12px
     display: flex;
     justify-content: center;
     align-items: center;
   .card-container
     overflow visible
+    padding 8px 20px
   .title
     color #445F69
     font-family: Titillium Web;
@@ -225,6 +232,7 @@
     line-height: normal;
     font-size: 16px;
     padding-bottom 4px
+    margin-top 12px
     font-weight bold
 
   .title-bar
@@ -240,6 +248,8 @@
     text-align: center;
     color: #FAFAFA;
   .terms-conditions
+    display inline-block
+    margin-left 8px
     font-family: Titillium Web;
     font-style: normal;
     font-weight: normal;
@@ -251,8 +261,8 @@
     color #25BF89
     cursor pointer
   .bottom-container
-    margin-top 59px
-    margin-bottom 59px
+    padding-top 8px
+    padding-bottom 8px
     text-align center
   .btn-continue
     /*display: inline-block*/
@@ -284,20 +294,25 @@
     line-height: normal;
     font-size: 18px;
     text-align: center;
-    color: #445F69;
+    color: #fafafa;
   .link-login span
     color #25BF89
     cursor pointer
-  .form-row
-    margin-top 10px
-    margin-bottom 20px
   .form-input
     display inline-block
-  .birthday-container
+  .birthday-label-container
     position relative
+    margin-top 16px
   .birthday-label
     position: absolute;
     top: -5px;
-    left 0
-    font-size: 12px;
+    left: 0;
+    font-size: 11px;
+    z-index: 9;
+  @media screen and (max-width: 1023px)
+    .title-bar
+      font-size 16px
+  @media screen and (max-width: 500px)
+    .title-bar
+      font-size 10px
 </style>

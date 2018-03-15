@@ -12,11 +12,11 @@
                   <!--<span>{{ match.info.date }}</span>-->
                 </div>
                 <div class="match-team">
-                  <span>{{ match.home.name }}</span>
+                  <span>{{ match.home.date }}</span>
                   {{ match.home.score }}
                   vs
                   {{ match.away.score }}
-                  <span>{{ match.away.name }}</span>
+                  <span>{{ match.away.date }}</span>
                 </div>
               </th>
               <th id="team-b" class="team-logo">
@@ -45,7 +45,7 @@
                 <td ></td>
                 <td class="min">{{ event.event.at }}</td>
                 <td class="event"> {{eventTypes[event.event.type] }} </td>
-                <td class="player"> {{ event.player.name }}</td>
+                <td class="player"> {{ event.player.date }}</td>
                 <td>{{ pointTypes[event.event.type]===undefined?0:pointTypes[event.event.type] }}</td>
                 <!--<td :class="['score', player.yellow?'score-yellow':'score-green']">{{ player.score }} </td>-->
                 <!--<td class="yellow-dot"> <span class="yellow-ball" v-if="player.type === 'away'"></span> </td>-->

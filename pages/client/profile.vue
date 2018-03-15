@@ -2,45 +2,119 @@
   <div id="profile">
     <div class="container">
       <div class="profile-section">
-        <div class="card-profile elevation rounded">
-          <cc-avatar src="/profile_photo.png"/>
-          <div class="info-section">
-            <p class="username">m@xlr2005 </p>
-            <p class="coins">45B</p>
-
-            <p class="name">Max Landeo</p>
-            <p class="email">maxlr2005@gmail.com</p>
-            <p class="dni">DNI 74697172</p>
-            <div class="btn-container center">
-              <div class="add-phone-btn">
-                Agregar un numero telefonico
-              </div>
-            </div>
-            <!--<p class="phone-btn">DNI 74697172</p>-->
-            <p class="country"><span><img src="/peru_flag.png" alt=""></span> Peru</p>
+        <div style="display: flex; justify-content: center;">
+          <cc-avatar square src="/profile_photo.png"/>
+        </div>
+        <div style="text-align: center">
+          <div>
+            <input-text solid placeholder="Nombres y Apellidos" v-model="user.date" big/>
           </div>
-          <div class="btn-container right">
-            <div class="edit-btn elevation">
-              <span class="icon-edit"><img src="../../assets/icons/pencil.png" alt=""></span>
-              Editar
-            </div>
+          <div>
+            <input-text solid placeholder="Email" v-model="user.email" big/>
+          </div>
+          <div>
+            <input-text solid placeholder="DNI" v-model="user.identity_document" big/>
+          </div>
+          <div>
+            <input-text solid placeholder="Cumpleaños" v-model="birthdayFake" type="date" big/>
+          </div>
+          <!--<div>-->
+            <!--<input-text solid placeholder="Email" v-model="user.email" big/>-->
+          <!--</div>-->
+          <div class="btn-container" style="display: flex; justify-content: center;">
+            <div class="update-btn elevation" @click="updateUser">ACTUALIZAR PERFIL</div>
           </div>
         </div>
       </div>
+      <!--<div class="profile-section">-->
+        <!--<div class="card-profile elevation rounded">-->
+          <!--<cc-avatar src="/profile_photo.png"/>-->
+          <!--<div class="info-section">-->
+            <!--<p class="username">m@xlr2005 </p>-->
+            <!--<p class="coins">45B</p>-->
+
+            <!--<p class="name">Max Landeo</p>-->
+            <!--<p class="email">maxlr2005@gmail.com</p>-->
+            <!--<p class="dni">DNI 74697172</p>-->
+            <!--<div class="btn-container center">-->
+              <!--<div class="add-phone-btn">-->
+                <!--Agregar un numero telefonico-->
+              <!--</div>-->
+            <!--</div>-->
+            <!--&lt;!&ndash;<p class="phone-btn">DNI 74697172</p>&ndash;&gt;-->
+            <!--<p class="country"><span><img src="/peru_flag.png" alt=""></span> Peru</p>-->
+          <!--</div>-->
+          <!--<div class="btn-container right">-->
+            <!--<div class="edit-btn elevation">-->
+              <!--<span class="icon-edit"><img src="../../assets/icons/pencil.png" alt=""></span>-->
+              <!--Editar-->
+            <!--</div>-->
+          <!--</div>-->
+        <!--</div>-->
+      <!--</div>-->
       <div class="content"></div>
     </div>
   </div>
 </template>
 
 <script>
-  import IconButton from '../../components/IconButton'
+  // import IconButton from '../../components/IconButton'
+  import InputText from '../../components/InputText'
   import CcAvatar from '../../components/CcAvatar'
 
   export default {
     layout: 'dashboard',
     name: 'profile',
     components: {
-      IconButton, CcAvatar
+      CcAvatar, InputText
+    },
+    computed: {
+    },
+    data () {
+      return {
+        date: '',
+        birthdayFake: '',
+        user: {
+          date: '',
+          email: '',
+          identity_document: '',
+          birthday: undefined
+        }
+      }
+    },
+    methods: {
+      async fetchUser() {
+        const user = this.$store.getters['auth/getUser']
+
+        this.user.date = user.date
+        this.user.email = user.email
+        this.user.identity_document = user.identity_document
+
+        let birthdayFake = new Date(user.birthday)
+        let formatMonth = (((birthdayFake.getMonth() + 1).toString()).padStart(2, '0'))
+        let formatBirthday = birthdayFake.getFullYear() + '-' +
+          formatMonth + '-' +
+          birthdayFake.getDate()
+        this.birthdayFake = formatBirthday
+      },
+      async updateUser () {
+        const userId = this.$store.getters['auth/getUserId']
+
+        this.user.birthday = (new Date(this.birthdayFake)).toISOString()
+        this.$axios.post('http://api.bombo.pe/api/v2.0/users/'+ userId +'/update-profile',
+          { user: this.user })
+          .then(res => {
+            console.log(res)
+            this.$store.dispatch('turnOnSnackbar', 'Perfil Actualizado')
+          })
+          .catch(e => {
+            console.log(e)
+            this.$store.dispatch('turnOnSnackbar', 'Ocurrio un error. Intentalo mas tarde.')
+          })
+      }
+    },
+    mounted () {
+      this.fetchUser()
     }
   }
 </script>
@@ -49,11 +123,14 @@
   /*#matches*/
   #profile
     height calc(100vh - 128px)
-  .container
     display flex
-  .profile-section
-    width 250px
+    justify-content center
+  .container
+    width 80%
     padding 24px 12px 4px 15px
+  /*.profile-section*/
+    /*display flex*/
+    /*justify-content center*/
   .card-profile
     background #fafafa
     padding-top 12px
@@ -109,10 +186,21 @@
   .icon-edit
     position: relative;
     top: 3px;
+  .update-btn
+    cursor pointer
+    background #13BBB6
+    color white
+    height 50px
+    line-height 50px
+    border-radius 4px
+    font-weight: bold
+    width 340px
+    font-family: Titillium Web;
 
   @media screen and (max-width: 1023px)
     .container
       display block
-    .profile-section
       width 100%
+    /*.profile-section*/
+      /*width 100%*/
 </style>

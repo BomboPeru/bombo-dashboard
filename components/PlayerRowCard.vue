@@ -5,25 +5,26 @@
         <table class="row-table" style="width: 100%;">
           <tbody>
             <tr>
-              <td style="width: 10%;">
+              <td class="responsive-squadnumber-bk" style="width: 10%;">
                 <squad-number :img="shirtUrl" :number="player.j_number"/>
               </td>
-              <td style="width: 30%;">
+              <td class="responsive-playername-bk" style="width: 30%;">
                 {{ player.name }}
               </td>
-              <td style="width: 10%;" :style="{ 'color': colorStatus }">
+              <td class="responsive-status-bk" style="width: 10%;" :style="{ 'color': statusPlayer.color }">
                 <i class="fas fa-xs fa-circle"></i>
+                <div class="tooltip-status">{{ statusPlayer.text }}</div>
               </td>
-              <td style="width: 15%;">
+              <td class="responsive-popularity-bk" style="width: 15%;">
                 {{ player.popularity }} %
               </td>
-              <td style="width: 20%;">
+              <td class="responsive-cost-bk" style="width: 20%;">
                 <i class="far fa-money-bill-alt"></i>
                 {{ player.cost }} M
               </td>
-              <td style="width: 15%;" class="position-action">
+              <td style="width: 15%;" class="position-action responsive-action-bk" @click="selectPlayer(player)">
                 <span>{{ positionInShort }}</span>
-                <span @click="selectPlayer(player)">
+                <span>
                   <i class="fas fa-plus add-action"></i>
                 </span>
               </td>
@@ -34,10 +35,17 @@
       </template>
 
       <template v-else-if="mode === 'selected'">
+        <div class="hover-select-captain" @click="selectCaptain(player)">
+          <span class="select-text">SELECCIONAR COMO CAPITAN</span>
+        </div>
+
         <table class="row-table" style="width: 100%;">
           <tbody>
           <tr>
             <td style="width: 12%;">
+              <div class="captain-band" v-if="player.is_captain === true">
+                <img src="/team_resources/band_captain.png" height="42px" alt="">
+              </div>
               <squad-number :img="shirtUrl" :number="player.j_number"/>
             </td>
             <td style="width: 40%;">
@@ -48,9 +56,9 @@
               <i class="far fa-money-bill-alt"></i>
               {{ player.cost }} M
             </td>
-            <td style="width: 25%;" class="position-action">
+            <td style="width: 25%;" class="position-action" @click="selectPlayer(player)">
               <span>{{ positionInShort }}</span>
-              <span @click="selectPlayer(player)">
+              <span>
                 <i class="far fa-trash-alt add-action"></i>
               </span>
             </td>
@@ -106,7 +114,7 @@
               <squad-number :img="shirtUrl" :number="player.j_number"/>
             </td>
             <td style="width: 40%;">
-              <div class="title" style="margin-top: -7px;">{{ player.name }}</div>
+              <div class="title" style="margin-top: -7px;">{{ player.date }}</div>
               <div class="subtitle" style="margin-top: -5px;">{{ player.team }}</div>
             </td>
             <td style="width: 25%; text-align: center">
@@ -121,12 +129,6 @@
         </table>
         <div class="right-cover" :style="{ 'background': kind[position].color, 'width': '21%'  }"></div>
 
-        <!--<squad-number :img="'/shirt_placeholder.svg'" :number="player.j_number"/>-->
-        <!--<span class="name1">{{ player.name }}</span>-->
-        <!--<span class="costo1">{{ player.cost }} M</span>-->
-        <!--<div :class="['posicion1', kind[position].label ]">-->
-          <!--<span>{{position}}</span>-->
-        <!--</div>-->
       </template>
 
     </div>
@@ -160,20 +162,35 @@
       positionInShort () {
         return this.position.substring(0,3)
       },
-      colorStatus () {
-        let color = '#fff'
+      statusPlayer () {
+        let status = {
+          color: '#fff',
+          text: ''
+        }
         switch (this.player.status) {
           case 'semi-active':
-            color = 'yellow'
+            status = {
+              color: 'yellow',
+              text: 'Lesionado, 50% de prop. de jugar'
+            }
             break
           case 'not-active':
-            color = 'red'
+            status = {
+              color: 'red',
+              text: 'Lesionado, poca probabilidad de jugar'
+            }
             break
           case 'suspended':
-            color = 'black'
+            status = {
+              color: 'black',
+              text: 'Suspendido, imposible que juegue'
+            }
             break
           default:
-            color = '#3dde00'
+            status = {
+              color: '#3dde00',
+              text: ''
+            }
             break
         }
         return color
@@ -192,6 +209,13 @@
     methods: {
       selectPlayer (player) {
         this.$emit('onPlayerSelected', player)
+      },
+      selectCaptain(player) {
+        console.log('selectCaptain')
+        if (player.is_captain === undefined) {
+          player.is_captain = false
+        }
+        player.is_captain = !player.is_captain
       }
     }
   }
@@ -230,12 +254,60 @@
     font-weight bold
     text-align center
     color white
+    cursor pointer
   .add-action
     position relative
     top 4px
     right 10px
     float right
+
+  .captain-band
+    width: 41px;
+    top: -4px;
+    position: absolute;
+    z-index: 12;
+    left: -5px;
+
+  .hover-select-captain
+    position absolute
+    z-index 10
+    top 0
+    left 0
+    height 45px
+    width 75%
+    border-top-left-radius 6px
+    border-bottom-left-radius 6px
+    background rgba(0, 0, 0, 0)
     cursor pointer
+
+    font-family: Titillium Web;
+    font-weight bold
+    font-size 14px
+    color white
+  .hover-select-captain:hover
+    background #232323ab
+  .hover-select-captain:hover .select-text
+    background #232323ab
+    color white
+  .responsive-status-bk:hover .tooltip-status
+    display inline-block
+  .tooltip-status
+    display none
+    padding 4px 4px
+    position absolute
+    top 0
+    left -50%
+    background rgba(0, 0, 0, 0.51)
+    color white
+
+  .select-text
+    display inline-block
+    position relative
+    top 50%
+    left 50%
+    transform translateX(-50%) translateY(-50%)
+    color rgba(35, 35, 35, 0)
+
   .row-table
     position: relative
     z-index: 2
@@ -248,88 +320,26 @@
   .subtitle
     font-size 12px
 
-  .name1
-    text-align left !important
-    width 31.5%
-  .prom1
-    width 12.5%
-    font-size 10px !important
-  .up1
-    width 12.5%
-    font-size 10px !important
-  .costo1
-    width 12.5%
-    font-size 13px !important
-  .posicion1
-    width 18%
-    display inline-block
-    text-align center
-  .posicion1 span
-    border-radius 4px
-    color white
-    font-size 10px
-    padding 0px 7px
+  @media screen and (max-width: 500px)
+    .position-action
+      text-align center
+      padding-left 5px
+    .add-action
+      right -2px
 
-
-  .name2
-    text-align left !important
-    width 30%
-  .costo2
-    width 12.5%
-    font-size 13px !important
-  .posicion2
-    /*float right*/
-    display inline-block
-    width 98px
-    text-align center
-    margin-top 7px
-    margin-right 8px
-  .posicion2 span
-    font-size 10px
-    padding 0px 7px
-    border-radius 4px
-    color white
-
-  .dorsal3
-    margin-top -5px !important
-    position: relative;
-    top: -2px;
-  .name-team3
-    display inline-block
-    font-size 10px !important
-    text-align left !important
-    width 42%
-    margin-right 3px
-  .name3
-    text-overflow ellipsis
-    white-space: nowrap;
-    overflow: hidden;
-    color #4A4A4A
-    font-weight bold
-    font-size 12px !important
-  .team3
-    font-size 10px !important
-  .posicion3
-    display inline-block
-    text-align center
-    margin-top 7px
-    margin-right 1px
-    top: -4px
-    position: relative
-  .posicion3 span
-    font-size 10px
-    padding 0px 7px
-    border-radius 4px
-    color white
-  .points3-container
-    float right
-    margin-top 3px
-    margin-right 5px
-  .points3-container span
-    font-size 8px
-    display block
-  /*.points3*/
-    /*font-size 10px !important*/
+    .responsive-squadnumber-bk
+      width 8% !important
+    .responsive-playername-bk
+      width 22% !important
+    .responsive-status-bk
+      position relative
+      width 4% !important
+    .responsive-popularity-bk
+      width 6% !important
+    .responsive-cost-bk
+      width 15% !important
+    .right-cover
+      width 21% !important
 
 
   .portero span

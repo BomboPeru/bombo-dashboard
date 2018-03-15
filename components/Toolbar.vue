@@ -4,7 +4,7 @@
         <img src="../assets/bombo_transparency.png" alt="">
       </div>
       <div class="menu-btn">
-        <img src="../assets/icons/menu.png" alt="" width="32px" height="32px">
+        <img src="../assets/icons/menu.png" alt="" width="32px" height="32px" @click="openMenuSidebar">
       </div>
       <nav-bar/>
       <status-bar/>
@@ -23,6 +23,11 @@
     data () {
       return {
         isActive: 0
+      }
+    },
+    methods: {
+      openMenuSidebar () {
+        this.$store.state.menuSidebar = true
       }
     }
   }

@@ -3,13 +3,16 @@ const team = {
   namespaced: true,
   state: {
     selectLeagueDialog: false,
+    selectTimeDialog: false,
     typeTeams: ['EN JUEGO','GUARDADOS','PASADOS'],
     activeTypeTeam: 0,
     mteams: {
       0: [],
       1: [],
       2: []
-    }
+    },
+    teamNameToMakePlay: null,
+    selectedLeague: null
   },
   mutations: {
     setActiveTypeTeam (state, index) {
@@ -20,6 +23,12 @@ const team = {
     },
     turnOffSelectLeageDialog (state) {
       state.selectLeagueDialog = false
+    },
+    turnOnSelectTimeDialog(state) {
+      state.selectTimeDialog = true
+    },
+    turnOffSelectTimeDialog (state) {
+      state.selectTimeDialog = false
     }
   },
   actions: {
@@ -34,6 +43,9 @@ const team = {
   getters: {
     isSelectLeagueDialog (state) {
       return state.selectLeagueDialog
+    },
+    isSelectTimeDialog (state) {
+      return state.selectTimeDialog
     },
     activeTypeTeam (state) {
       return state.activeTypeTeam

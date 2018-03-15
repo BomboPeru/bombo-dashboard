@@ -32,6 +32,7 @@
     top 128px
     right 0
     padding 12px
+    z-index 800
   .sb-card
     width 280px
     min-height 50px

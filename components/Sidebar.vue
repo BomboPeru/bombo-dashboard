@@ -9,8 +9,8 @@
 
         <!-- SEARCH VIEW -->
         <div class="search-input" v-if="activeSection === 'MIS EQUIPOS'">
-          <input type="text" placeholder="Busca equipos">
-          <span class="icon-input"><img src="../assets/icons/search.svg" alt=""></span>
+          <!--<input type="text" placeholder="Busca equipos">-->
+          <!--<span class="icon-input"><img src="../assets/icons/search.svg" alt=""></span>-->
         </div>
 
         <template v-if="activeSection !== 'TABLERO'">
@@ -24,10 +24,10 @@
           <div class="dashboard-navbar">
             <div v-for="(item, i) in itemsForEachPath[activeSection].items"
                  :key="i"
-                 @click="clickOnTab(item.name)"
+                 @click="clickOnTab(item.date)"
                  v-if="item.type === 'normal'"
                  class="dashboard-navbar-item">
-              <span class="text">{{ item.name }}</span>
+              <span class="text">{{ item.date }}</span>
               <div class="line" :style="{ background: item.color }"></div>
             </div>
           </div>
@@ -39,11 +39,11 @@
         <div>
           <div v-for="(item, i) in itemsForEachPath[activeSection].items"
                :key="i"
-               @click="clickOnTab(item.name)"
+               @click="clickOnTab(item.date)"
                v-if="item.type === 'normal'"
                :class="['sidebar-item', 'elevation', tabSelected===i?'sidebar-item-selected':'']">
             <div class="line" :style="{ background: item.color }"></div>
-            <span class="text">{{ item.name }}</span>
+            <span class="text">{{ item.date }}</span>
           </div>
           <div class="bottom-side">
             <div>
@@ -51,11 +51,11 @@
                 v-for="(item, i) in itemsForEachPath[activeSection].items"
                 v-if="item.type === 'bottom'">
                 <icon-button :key="i + '- bottom'"
-                             :text="item.name"
+                             :text="item.date"
                              icon-direction="left"
                              :color="item.color"
                              :icon="item.icon"
-                             @click="callback(item.name)"
+                             @click="callback(item.date)"
                              class="bottom-btn"/>
               </template>
             </div>
@@ -67,10 +67,10 @@
       <!-- BLACK BAR FOR NAVIGATE INSIDE PAGES -->
       <div v-for="(item, i) in itemsForEachPath[activeSection].items"
            :key="i" class="mobile sub-nav-btn elevation"
-           @click="clickOnTab(item.name)"
+           @click="clickOnTab(item.date)"
            v-if="item.type !== 'bottom'">
         <div class="line" :style="{ background: item.color }"></div>
-        <span class="text">{{ item.name }}</span>
+        <span class="text">{{ item.date }}</span>
       </div>
     </div>
 </template>
@@ -93,7 +93,7 @@
       activeSection () {
         for (let i = 0; i < this.navbarItems.length; i++ ) {
           if (this.navbarItems[i].urlPath === this.$route.path) {
-            return this.navbarItems[i].name
+            return this.navbarItems[i].date
           }
         }
         return ''
@@ -103,13 +103,13 @@
       return {
         tabSelected: 0,
         navbarItems: [
-          { name: 'MIS EQUIPOS', urlPath: '/client/teams' },
-          { name: 'PROXIMAS FECHAS', urlPath: '/client/matches' },
-          { name: 'TABLERO', urlPath: '/client/dashboard' },
-          { name: 'HISTORIAL', urlPath: '/client/history' },
-          { name: 'ARMA UN EQUIPO', urlPath: '/client/createteam' },
-          { name: 'MI PERFIL', urlPath: '/client/profile' },
-          { name: 'PREGUNTAS FRECUENTES', urlPath: '/client/faq' }
+          { date: 'MIS EQUIPOS', urlPath: '/client/teams' },
+          { date: 'PROXIMAS FECHAS', urlPath: '/client/matches' },
+          { date: 'TABLERO', urlPath: '/client/dashboard' },
+          { date: 'HISTORIAL', urlPath: '/client/history' },
+          { date: 'ARMA UN EQUIPO', urlPath: '/client/createteam' },
+          { date: 'MI PERFIL', urlPath: '/client/profile' },
+          { date: 'PREGUNTAS FRECUENTES', urlPath: '/client/faq' }
         ],
         itemsForEachPath: {
           '': {
@@ -118,10 +118,10 @@
           },
           'MIS EQUIPOS': {
             items: [
-              {name: 'EN JUEGO', color: '#EA504C', type: 'normal'},
-              {name: 'GUARDADOS', color:'#25BF89', type: 'normal'},
-              {name: 'PASADOS', color:'#67A6F0', type: 'normal'},
-              {name: '¡CREAR EQUIPO!', color:'#25BF89', type: 'bottom', icon: 'plus'}
+              {date: 'EN JUEGO', color: '#EA504C', type: 'normal'},
+              {date: 'GUARDADOS', color:'#25BF89', type: 'normal'},
+              {date: 'PASADOS', color:'#67A6F0', type: 'normal'},
+              {date: '¡CREAR EQUIPO!', color:'#25BF89', type: 'bottom', icon: 'plus'}
             ]
           },
           'PROXIMAS FECHAS': {
@@ -130,9 +130,9 @@
           },
           'TABLERO': {
             items: [
-              {name: 'TABLA DE POSICIONES', color: '#EA504C', type: 'normal'},
-              {name: 'PARTIDOS', color:'#25BF89', type: 'normal'},
-              {name: 'TUS EQUIPOS', color:'#67A6F0', type: 'normal'}
+              {date: 'TABLA DE POSICIONES', color: '#EA504C', type: 'normal'},
+              {date: 'PARTIDOS', color:'#25BF89', type: 'normal'},
+              {date: 'TUS EQUIPOS', color:'#67A6F0', type: 'normal'}
             ]
           },
           'HISTORIAL': {
@@ -141,9 +141,9 @@
           },
           'ARMA UN EQUIPO': {
             items: [
-              {name: 'JUGADORES', color:'#EA504C', type: 'normal'},
-              {name: 'EQUIPO', color:'#67A6F0', type: 'normal'},
-              {name: 'FIXTURE', color:'#25BF89', type: 'normal'}
+              {date: 'JUGADORES', color:'#EA504C', type: 'normal'},
+              {date: 'EQUIPO', color:'#67A6F0', type: 'normal'},
+              {date: 'FIXTURE', color:'#25BF89', type: 'normal'}
             ]
           },
           'MI PERFIL': {

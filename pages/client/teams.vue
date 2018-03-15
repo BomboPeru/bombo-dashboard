@@ -21,6 +21,7 @@
           v-for="(team, i) in mteams[0]"
           :key="i+'card'"
           :id="team.id"
+          :team="team"
           :title="team.name"
           :points="team.points"
           :ranking="team.ranking"
@@ -37,8 +38,9 @@
           v-for="(team, i) in mteams[1]"
           :key="i+'card'"
           :id="team.id"
+          :team="team"
           :title="team.name"
-          :cost="team.points.toString()"
+          :cost="team.total_points.toString()"
           :status="'DISPONIBLE'"
           type-card="guardado"
           :league-img="team.leagueImg"
@@ -52,6 +54,7 @@
           :style="{ 'flex-grow': mteams[2].length > 3 ? '1':'0' }"
           v-for="(team, i) in mteams[2]"
           :key="i+'card'"
+          :team="team"
           :id="team.id"
           :title="team.name"
           :points="team.points"
@@ -81,46 +84,51 @@
       },
       activeTypeTeam () {
         return this.$store.getters['team/activeTypeTeam']
-      },
-      testUserId () {
-        console.log(this.$store.getters.testUserId)
-        return this.$store.getters.testUserId
       }
-      // mteams () {
-      //   return this.$store.getters['teams/mteams']
-      // }
     },
     data () {
       return {
         // testUserId: '58e87f29-3b46-45a1-8069-5c7189bfa805',
         typeTeams: this.$store.state.team.typeTeams,
         mteams: {
-          0: [
-          ],
-          1: [
-          ],
-          2: [
-          ]
+          0: [],
+          1: [],
+          2: []
         }
       }
     },
     methods: {
-      async fetchUserData () {
-        let response = await this.$axios.$get('http://api.bombo.pe/api/v1.0/user/' + this.testUserId)
-        //
-        this.mteams['0'] = response.data.playing_teams === null ? [] : response.data.playing_teams
-        this.mteams['1'] = response.data.saved_teams === null ? [] : response.data.saved_teams
-        this.mteams['2'] = response.data.old_teams === null ? [] : response.data.old_teams
+      async refreshUserData () {
+        const userId = this.$store.getters['auth/getUserId']
+
+        const response = await this.$axios.$get('http://api.bombo.pe/api/v2.0/users/' + userId)
+        console.log(response)
+        this.$store.dispatch('auth/setUser', response.data)
+
+        this.fetchTeams()
       },
       goToCreateTeam () {
         // this
         this.$store.commit('team/turnOnSelectLeageDialog')
+      },
+      fetchTeams () {
+        const user = this.$store.getters['auth/getUser']
+
+        if (user === null) {
+          this.mteams = { '0': [], '1': [], '2': [] }
+        } else {
+          this.mteams =  {
+            '0': user.playing_teams === null ? [] : user.playing_teams,
+            '1': user.saved_teams === null ? [] : user.saved_teams,
+            '2': user.old_teams === null ? [] : user.old_teams
+          }
+        }
+
+        console.log(this.mteams)
       }
     },
-    created () {
-      // this.fetchUserData()
-    },
     mounted () {
+      this.refreshUserData()
     }
   }
 </script>
@@ -131,6 +139,7 @@
     overflow-x auto
     overflow-y hidden
     min-height: calc(100vh - 190px)
+    // min-height: calc(100vh - 280px)
     display: flex
     flex-wrap nowrap
     justify-content flex-start
@@ -140,7 +149,7 @@
     /*align-items: flex-start;*/
     align-items: stretch;
     /*padding-bottom 50px*/
-    padding-bottom 25px
+    padding-bottom 12px
 
   .teamcard
     flex-shrink 0

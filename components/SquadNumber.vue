@@ -4,7 +4,7 @@
            class="dorsal-src"
            :style="{ top: ground===false?'-9px':'-28px', left: ground===false?'-16px':'-26px' }"
            :width="ground===false?'60px':'80px'" alt="">
-      <span class="dorsal" :style="{ 'top': ground===false? '4px':'-8px' }">{{dorsal}}</span>
+      <span class="dorsal" style="display: none;" :class="[ground===false?'overflow-mode':'ground-mode']">{{dorsal}}</span>
     </span>
 </template>
 
@@ -44,6 +44,10 @@
     margin-left 8px
     margin-right 8px
     position relative
+  @media screen and (max-width: 500px)
+    .shirt
+      margin-left -4px !important
+
   .dorsal
     position absolute
     font-family: Titillium Web;
@@ -57,4 +61,10 @@
     position absolute
     top -9px
     left -16px
+  .overflow-mode
+    top -2px
+    left: 4px;
+    font-size 18px !important
+  .ground-mode
+    top 4px
 </style>

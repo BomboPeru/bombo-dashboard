@@ -1,16 +1,32 @@
 <template>
-    <div id="toolbar">
+    <div id="toolbar" :class="[nonLanding?'dark':'transparent']">
       <div class="img-container">
-        <img src="../assets/bombo_transparency.png" alt="">
+        <img :src="nonLanding? '/landing/bombo_transparency.png':'/landing/bombo_outline2_3x.png'" alt="">
       </div>
       <div class="links uppercase">
-        <nuxt-link to="/login">COMO JUGAR</nuxt-link>
-        <nuxt-link to="/register">PROXIMAS FECHAS</nuxt-link>
+        <div :class="['flex', nonLanding?'white-link':'dark-link']" >
+          <nuxt-link to="/">COMO JUGAR</nuxt-link>
+          <nuxt-link to="/">PRECIOS</nuxt-link>
+          <nuxt-link to="/">CONTÁCTANOS</nuxt-link>
+          <nuxt-link to="/register" class="register">Registrate</nuxt-link>
+          <nuxt-link to="/login" class="login">Inicia sesion</nuxt-link>
+        </div>
       </div>
-      <div class="links right">
-        <nuxt-link to="/register" class="register">Registrate</nuxt-link>
-        <span @click="openLoginDialog">Inicia sesion</span>
+      <div class="menu-btn">
+        <i class="fas fa-bars fa-2x" @click="openMenu"></i>
       </div>
+      <transition name="menu">
+        <div v-if="menu" class="menu-container">
+          <div class="menu elevation">
+            <ul :class="['list']">
+              <li v-for="(link, i) in links"
+                  :key="i+'-link'">
+                <nuxt-link :to="link.url">{{ link.name }}</nuxt-link>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </transition>
     </div>
 </template>
 
@@ -18,9 +34,25 @@
 
   export default {
     name: 'basic-toolbar',
+    data () {
+      return {
+        menu : false,
+        links: [
+          { url: '/register', name: 'REGISTRATE' },
+          { url: '/login', name: 'INICIA SESION' },
+          { url: '/', name: 'COMO JUGAR' },
+          { url: '/', name: 'PROXIMAS FECHAS' }
+        ]
+      }
+    },
+    computed: {
+      nonLanding () {
+        return this.$route.path !== '/'
+      }
+    },
     methods: {
-      openLoginDialog () {
-        this.$store.commit('openLoginDialog')
+      openMenu () {
+        this.menu = !this.menu
       }
     }
   }
@@ -31,12 +63,17 @@
   toolbar-height = 76px
 
   #toolbar
-    background #243237
+    background #24323700
     width 100%
     position relative
     /*top 0*/
     /*left 0*/
     height toolbar-height
+  .transparent
+    background #24323700
+  .dark
+    background #243237 !important
+
   .img-container
     float left
     margin-left 23px
@@ -47,27 +84,91 @@
     position absolute
     top 50%
     transform translateY(-50%)
+    width 116px
+
   .links
-    display inline-block
+    display block
     margin-left 150px
-    height 100%
+    padding-top 22px
+
+    /*
+    display: flex;
+    width: 79%;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    */
+  .flex
+    display: flex
+    width: 100%
+    justify-content: space-around
   .links span
     cursor pointer
   .links span
   .links a
-    line-height 76px
     margin 0 15px
     text-decoration none
-    color white
+    color #24313A
     font-family Titillium Web
     font-weight bold
-    font-size 18px
-  .right
-    float right
-    margin 0 5px !important
-    margin-right 10px
+    font-size 16px
+    padding 4px 16px
+  .white-link a
+    color white !important
+  .dark-link
+    color #24313A
+
   .uppercase
     text-transform uppercase
-  .register
-    color #EA504C !important
+  .login
+    border-radius 18px
+    border 2px solid white
+    color white !important
+
+  .menu-btn
+    cursor pointer
+    color #243237
+    float right
+    display none
+    position relative
+    top 29px
+    right 31px
+  .menu-btn i
+    font-size: 24px !important;
+  .menu-container
+    position absolute
+    top 72px
+    right 0
+    z-index 10
+  .menu
+    margin-right 10px
+    padding 4px 10px
+    background #243237
+  .menu ul
+    list-style-type none
+    padding 4px 10px
+  .menu li
+    font-family Titillium Web
+    font-weight bold
+    padding-bottom 14px
+  .list a
+    color white
+    text-decoration none
+
+  .menu-enter-active {
+    transition: all .3s ease;
+  }
+  .menu-leave-active {
+    transition: all .2s cubic-bezier(1.0, 0.5, 0.8, 1.0);
+  }
+  .menu-enter, .menu-leave-to {
+    transform: translateY(-50px);
+    opacity: 0;
+  }
+
+  @media screen and (max-width: 1023px)
+    .menu-btn
+      display inline
+  @media screen and (max-width: 1023px)
+    .links
+      display none
 </style>

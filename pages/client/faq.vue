@@ -74,4 +74,8 @@
     line-height: normal;
     font-size: 18px;
     color: #000000;
+  @media screen and (max-width: 500px)
+    .container
+      margin-top 42px
+      width 100%
 </style>

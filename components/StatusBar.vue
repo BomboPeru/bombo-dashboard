@@ -40,7 +40,10 @@
         profile: false,
         statusBarItems: ['help', 'notification', 'profile'],
         notifications: [
-          { subject: 'NUEVO USUARIO', message: 'BIENVENIDO A BOM...' }
+          { subject: 'NUEVO USUARIO', message: 'BIENVENIDO A BOM...' },
+          { subject: 'NUEVO USUARIO', message: 'BIENVENIDO A BOM...' },
+          { subject: 'NUEVO USUARIO', message: 'BIENVENIDO A BOM...' },
+          { subject: 'NUEVO USUARIO', message: 'BIENVENIDO A BOM...' },
         ]
       }
     },

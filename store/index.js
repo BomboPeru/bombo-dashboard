@@ -13,7 +13,8 @@ const store = () => {
       isBomboPaymentsDialog: false,
       snackbar: false,
       snackbarDuration: 5000,
-      snackbarMessage: ''
+      snackbarMessage: '',
+      menuSidebar: false
     },
     getters: {
       isSignoutDialog (state) {

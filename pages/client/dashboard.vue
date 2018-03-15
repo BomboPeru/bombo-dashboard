@@ -16,7 +16,7 @@
             <div>
               <team-card class="team-card"
                          :key="i+'-team'"
-                         :title="team.name"
+                         :title="team.date"
                          :ranking="team.ranking"
                          :points="team.points"
                          :created-at="team.createdAt"
@@ -54,7 +54,7 @@
     data () {
       return {
         matches: [
-          { away: { events: [], name: 'FCB', score: '1' }, home: { events: [], name: 'RMD', score: '2' } }
+          { away: { events: [], date: 'FCB', score: '1' }, home: { events: [], date: 'RMD', score: '2' } }
         ],
         teams: [
         ]
@@ -80,7 +80,7 @@
           return match.type === 'match'
         })
         for (let i = 0; i < matches.length; i++) {
-          self.fetchMatchById(matches[i].name)
+          self.fetchMatchById(matches[i].date)
         }
       },
       async fetchMatchById (matchId) {

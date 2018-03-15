@@ -1,11 +1,12 @@
 <template>
-    <div id="tooltip-menu" class="elevation rounded" :style="{ 'right': rightOffset }">
+    <div id="tooltip-menu" class="elevation rounded-sm" :style="{ 'right': rightOffset }">
       <div class="body">
         <p class="title">{{ title }}</p>
+        <div class="divider"></div>
         <template v-if="listSupport">
           <ul class="ul-support">
             <li v-for="(link, i) in listSupportItems" :key="i+'-support'">
-              <nuxt-link :to="link.url">{{ link.name }}</nuxt-link>
+              <nuxt-link :to="link.url">{{ link.date }}</nuxt-link>
             </li>
           </ul>
         </template>
@@ -19,16 +20,19 @@
               <div class="message">
                 {{ notification.message }}
               </div>
+              <div class="divider" v-if="i !== (notifications.length - 1)"></div>
             </li>
           </ul>
         </template>
         <template v-else-if="profile">
-          <p class="username">{{ testUser.name }}</p>
+          <p class="username">{{ profileData.date }}</p>
           <p class="coins">{{ profileData.coins }}</p>
           <div class="divider"></div>
           <ul class="ul-profile">
             <li v-for="(profileLink, i) in listProfileItems" :key="i+'-profile'">
-              <nuxt-link :to="profileLink.url">{{ profileLink.name }}</nuxt-link>
+              <nuxt-link :to="profileLink.url">
+                {{ profileLink.date }}
+              </nuxt-link>
             </li>
           </ul>
           <p class="signout-item" @click="logOut">Cerrar session</p>
@@ -79,17 +83,17 @@
     data () {
       return {
         profileData: {
-          name: 'Jaime Bustamante',
+          date: 'No Name',
           coins: '0B'
         },
         listProfileItems: [
-          { name: 'Mi Perfil', url: '' },
-          { name: 'Transferencias', url: '' }
+          { date: 'Mi Perfil', url: '/client/profile' },
+          { date: 'Transferencias', url: '' }
         ],
         listSupportItems: [
-          { name: 'FAQ', url: '' },
-          { name: 'Asistencia tecnica', url: '' },
-          { name: 'Reportar un problema', url: '' }
+          { date: 'FAQ', url: '' },
+          { date: 'Asistencia tecnica', url: '' },
+          { date: 'Reportar un problema', url: '' }
         ]
       }
     },
@@ -97,7 +101,17 @@
       logOut () {
         console.log('clcik')
         this.$store.commit('turnOnSignoutDialog')
+      },
+      async fetchDataUser () {
+        let user = this.$store.getters['auth/getUser']
+        let response = await this.$axios.get('http://api.bombo.pe/api/v2.0/users/' + user.id)
+        const userResponse = response.data.data
+        this.profileData.date = userResponse.date
+        this.profileData.coins = userResponse.current_bombo_coins + ' B'
       }
+    },
+    mounted () {
+      this.fetchDataUser()
     }
   }
 </script>
@@ -107,16 +121,21 @@
   #tooltip-menu
     position absolute
     z-index: 998
-    top 76px
+    top 67px
     right 100px
+    width: 246px;
     background #fafafa
     font-family Titillium Web
 
   .title
-    font-size 12px
+    font-weight: bold;
+    margin-bottom: 12px;
+    font-size 18px
     font-family Titillium Web
     color #243237
     text-align center
+  .divider
+    margin-bottom 12px
   .body
     padding 8px
   .body ul

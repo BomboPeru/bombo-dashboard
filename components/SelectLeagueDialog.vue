@@ -34,12 +34,7 @@
     },
     data () {
       return {
-        leagues: [
-          { name: 'PREMIER LEAGUE', image: '' }
-          // { name: 'CHAMPIONS LEAGUE', image: '' },
-          // { name: 'COMMING SOON', image: '', coming_soon: true },
-          // { name: 'COMMING SOON', image: '', coming_soon: true }
-        ]
+        leagues: []
       }
     },
     methods: {
@@ -53,8 +48,21 @@
       onClickLeague(item) {
       //  go to create team
         this.$store.commit('team/turnOffSelectLeageDialog')
+        this.$store.commit('createteam/setleagueid', item.id)
+
         this.$router.push({ path: '/client/createteam'})
       }
+    },
+    mounted () {
+      this.$axios.get('http://api.bombo.pe/api/v2.0/leagues/all')
+        .then(res => {
+          // res.data.data
+          // this.$store.commit('createteam/setleagueid', res.data.data.id)
+          this.leagues = res.data.data
+        })
+        .catch(e => {
+          console.log(e)
+        })
     }
   }
 </script>
@@ -64,6 +72,7 @@
     height 50px
     line-height 50px
     text-align center
+    background #243237
   .card-header--primary
     padding 0px 15px
     position relative

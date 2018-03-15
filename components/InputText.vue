@@ -6,14 +6,14 @@
              flat?'flat':'', solid?'solid':'',
              prependIcon!==''?'prepend-padding':'',
              appendIcon!==''?'append-padding':'',
-             big?'big-input':'']"
+             big?'big-input':'',
+             responsive?'responsive-input':'']"
              @input="updateValue()"
              ref="inputText"
              :value="value"
              :placeholder="placeholder"
              :disabled="disabled"
-             :style="{ 'width': width }"
-      >
+             :style="{ 'width': width }"/>
       <span :class="['append-icon', big?'big-icon':'']" v-if="appendIcon !== ''"><i :class="['fas', appendIcon]"></i></span>
     </div>
 </template>
@@ -59,7 +59,13 @@
       big: {
         type: Boolean,
         default: false
+      },
+      responsive: {
+        type: Boolean,
+        default: false
       }
+    },
+    computed: {
     },
     methods: {
       updateValue () {
@@ -73,6 +79,7 @@
   #input-text
     margin 10px 0
     position relative
+    display inline-block
   .input
     height 30px
     width 340px
@@ -119,4 +126,12 @@
   .big-icon
     top 17px !important
 
+  @media screen and (max-width: 400px)
+    .responsive-input
+      height 30px !important
+      width 200px !important
+    .big-icon
+      top 7px !important
+    /*.input*/
+    /*height 30px !important*/
 </style>

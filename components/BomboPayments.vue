@@ -1,49 +1,67 @@
 <template>
     <div id="payments" v-if="isOpen">
       <dialog-container :fixed="true" @closeDialog="closeDialog">
-        <div class="elevation card-container body rounded-sm">
-          <div class="close-container">
-            <div class="close-btn" @click="closeDialog">
-              <i class="fas fa-times"></i>
+        <no-ssr>
+          <div class="elevation card-container body rounded-sm loading-container">
+
+            <div class="loading-process" v-if="isLoading">
+              <div class="loading-card elevation">
+                <div class="loadingIcon">
+                  <i class="fas fa-circle-notch fa-spin"></i>
+                </div>
+                <div class="loadingText">
+                  <p>Estamos procesando su compra, espere por favor.</p>
+                </div>
+              </div>
             </div>
-          </div>
 
-          <h3>Recarga tu saldo para seguir jugando en Bombo</h3>
-
-          <div class="plans-container">
-            <div :class="['plan-card', 'card-container', 'elevation', planSelected=== i?'selectedPlan':'']"
-                 v-for="(plan, i) in plans"
-                 :style="{background: plan.color }"
-                 :key="i"
-                  @click="setPlanSelected(i)">
-              <div class="price-label">{{ plan.price }}</div>
-              <div class="name-label">{{ plan.name }}</div>
+            <div class="close-container">
+              <div class="close-btn" @click="closeDialog">
+                <i class="fas fa-times"></i>
+              </div>
             </div>
-          </div>
 
-          <div class="plan-selection-container">
-            Plan seleccionado:
-            <template v-if="planSelected !== undefined">
-              {{ plans[planSelected].price }} ( {{ plans[planSelected].name.toUpperCase() }} )
-            </template>
-            <template v-else>
-              S/ 0
-            </template>
-          </div>
+            <h3>Recarga tu saldo para seguir jugando en Bombo</h3>
 
-          <form action="" method="POST" id="culqi-card-form">
+            <div class="plans-container">
+              <div :class="['plan-card', 'card-container', 'elevation', planSelected=== i?'selectedPlan':'']"
+                   v-for="(plan, i) in plans"
+                   :style="{background: plan.color }"
+                   :key="i"
+                   @click="setPlanSelected(i)">
+                <div class="price-label">{{ plan.price }}</div>
+                <div class="name-label">{{ plan.name }}</div>
+              </div>
+              <!--<div>-->
+                <!--<input type="text" class="input-saldo" ref="amountToCharge" placeholder="00.00" v-model="amount">-->
+              <!--</div>-->
+            </div>
+
+            <div class="plan-selection-container">
+              Plan seleccionado:
+              <template v-if="planSelected !== undefined">
+                {{ plans[planSelected].price }} ( {{ plans[planSelected].name.toUpperCase() }} )
+              </template>
+              <template v-else>
+                S/ 0
+              </template>
+            </div>
+
             <div style="display: none">
               <label class="email-label">Correo electronico</label>
+              {{ isDialogOpen }}
               <div>
                 <input class="email-input"
                        placeholder="aaaa@aaa.com"
                        type="text" size="50"
                        data-culqi="card[email]" id="card[email]">
               </div>
+              <input id="tokenculqi" style="display: none;" value="0">
             </div>
             <div class="credit-card rounded elevation">
               <div class="credit-card-brand">
-                <img src="/type_cards/master_card_logo.png" style="filter: opacity(0.7);" width="50px" alt="">
+                <img :src="typeCC==='visa'? '/type_cards/visa_logo.png' : '/type_cards/master_card_logo.png'"
+                     style="filter: opacity(0.7);" height="26px" alt="">
               </div>
               <div>
                 <input class="input-card card-number"
@@ -56,30 +74,47 @@
               </div>
               <div class="bottom-part-card">
                 <div>
-                  <input class="input-card cvc" placeholder="CVC"  maxlength="3" type="text" size="4" data-culqi="card[cvc]" id="card[cvc]">
+                  <input class="input-card cvc"
+                         placeholder="CVC"
+                         value="123"
+                         maxlength="3"
+                         type="text"
+                         size="3"
+                         data-culqi="card[cvc]"
+                         id="card[cvv]">
                 </div>
                 <div>
-                  <span class="expiring">
-                    VENCE <br>FIN DE
-                  </span>
-                  <input class="input-card" placeholder="MM" type="text" maxlength="2" size="2" data-culqi="card[exp_month]" id="card[exp_month]">
+                <span class="expiring">
+                  VENCE <br>FIN DE
+                </span>
+                  <input class="input-card"
+                         value="09"
+                         placeholder="MM" type="text" maxlength="2" size="2" data-culqi="card[exp_month]" id="card[exp_month]">
                   <span style="font-weight: bold; color: #fff; font-size: 22px;"> / </span>
-                  <input class="input-card" placeholder="YYYY" type="text" maxlength="4" size="4" data-culqi="card[exp_year]" id="card[exp_year]">
+                  <input class="input-card"
+                         value="2020"
+                         placeholder="YY"
+                         type="text" maxlength="4" size="4" data-culqi="card[exp_year]" id="card[exp_year]">
                 </div>
               </div>
-            </div>
-          </form>
+              <!--<div class="pay-btn-container">-->
+                <!--<input id="inputSubmit" type="submit" class="pay-btn elevation" name="SUBMIT" @click="pay"/>-->
+              <!--</div>-->
 
-          <div class="pay-btn-container">
-            <button class="pay-btn elevation">COMPRAR</button>
+            </div>
+
+            <div class="pay-btn-container">
+              <button class="pay-btn elevation" @click="pay">COMPRAR</button>
+            </div>
           </div>
-        </div>
+        </no-ssr>
       </dialog-container>
     </div>
 </template>
 
 <script>
   import DialogContainer from './DialogContainer'
+
   export default {
     name: 'bombo-payments',
     components: { DialogContainer },
@@ -92,6 +127,14 @@
       },
       setPlanSelected (i) {
         this.planSelected = i
+      },
+      fetchUser () {
+        if (process.server) return
+        let user = this.$store.getters['auth/getUser']
+
+        setTimeout(() => {
+          document.getElementById('card[email]').value = user.email
+        }, 1000)
       },
       ccFormat (value) {
         var v = value.replace(/\s+/g, '').replace(/[^0-9]/gi, '')
@@ -106,16 +149,75 @@
         } else {
           return value
         }
+      },
+      async pay () {
+
+        String.prototype.replaceAll = function(search, replacement) {
+          var target = this;
+          return target.replace(new RegExp(search, 'g'), replacement);
+        };
+
+        const email = document.getElementById('card[email]').value
+        const cvv = document.getElementById('card[cvv]').value
+        const cardNumber = document.getElementById('card[number]').value.replaceAll(' ','')
+        const mm = document.getElementById('card[exp_month]').value
+        const yyyy = document.getElementById('card[exp_year]').value
+
+        this.isLoading = true
+
+        try {
+          let response = await this.$axios.post('https://api.culqi.com/v2/tokens', {
+            email: email,
+            card_number: cardNumber,
+            cvv: cvv,
+            expiration_year: yyyy,
+            expiration_month: mm
+          }, { headers: { 'Authorization' : 'Bearer ' + 'pk_test_l3UyeISl0wtTzkSN' } })
+          // public_key: 'pk_live_Sabys0p2rhn2D4ZM',
+          const userId =  this.$store.getters['auth/getUserId']
+          let response2 = await this.$axios.post('http://api.bombo.pe/api/v2.0/users/' + userId + '/set-card', {
+            card_number: document.getElementById('card[number]').value,
+            token_card: response.data.number
+          })
+          console.log(response2)
+          const amount = parseFloat(this.amount)
+          let response3 = await this.$axios.post('http://api.bombo.pe/api/v2.0/users/' + userId + '/charge', {
+            how: amount * 100
+          })
+          console.log(response3)
+        } catch (e) {
+          console.log('culqi error', e)
+        }
+        this.isLoading = false
       }
     },
     computed: {
+      isDialogOpen () {
+        console.log(this.isOpen)
+        if (this.isOpen === true) {
+          this.fetchUser()
+        }
+        return this.isOpen
+      },
       ccFormatted: {
         get () {
           return this.cardNumber
+          // return '4111 1111 1111 1111'
         },
         set (value) {
           let formatValue = this.ccFormat(value)
           this.cardNumber = formatValue
+        }
+      },
+      typeCC () {
+        const ccValue = this.cardNumber
+        if (ccValue === undefined) return 'visa'
+        if (ccValue[0] === '4') {
+          return 'visa'
+        } else if (ccValue[0] === '5') {
+          return 'mastercard'
+        } else {
+          return 'visa'
         }
       }
     },
@@ -123,6 +225,8 @@
       return {
         cardNumber: undefined,
         currency_code: 'PEN',
+        amount: 20,
+        isLoading: false,
         plans: [
           { price: 'S/ 10', amount: 10, name: 'regular', color: 'linear-gradient(-114deg, rgb(210, 105, 202) 0%, rgb(222, 127, 71) 105%)' },
           { price: 'S/ 30', amount: 30, name: 'grande', color: 'linear-gradient(-114deg, rgb(66, 158, 129) 0%, rgb(71, 138, 222) 105%)' },
@@ -179,7 +283,16 @@
   .input-form
     outline none
     border: 0;
-
+  .loading-container
+    position relative
+  .loading-process
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #0c0c0cc7;
+    z-index: 999;
 
   #culqi-card-form
     margin-top 18px
@@ -203,6 +316,18 @@
     top 3px
     font-weight bold
 
+  .loading-card
+    width 200px
+    padding 10px 20px
+    background white
+    border-radius 4px
+    position absolute
+    top 50%
+    left 50%
+    transform translateX(-50%) translateY(-50%)
+  .loadingText
+  .loadingIcon
+    text-align center
   .cvc
     top: 7px;
     position: relative;
@@ -237,6 +362,7 @@
   .pay-btn-container
     margin 16px 8px
   .pay-btn
+    cursor pointer
     width 100%
     height 48px
     display block
@@ -263,4 +389,12 @@
     position relative
     top -8px
     right -16px
+  .input-saldo
+    background: transparent;
+    font-size: 64px;
+    border: 0;
+    width: 200px;
+    color: #15075d;
+    text-align: center;
+    outline: none;
 </style>

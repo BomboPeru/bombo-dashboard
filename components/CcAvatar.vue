@@ -1,7 +1,7 @@
 <template>
-    <div id="cc-avatar" class="avatar-container">
-      <span class="shadow"></span>
-      <img class="avatar-img" :src="src" alt="">
+    <div id="cc-avatar" :class="['avatar-container', sm?'sm':'']">
+      <span class="shadow" :style="{ borderRadius: square? '0px':'50%' }"></span>
+      <img class="avatar-img" :src="src" :style="{ borderRadius: square? '0px':'50%' }" alt="">
     </div>
 </template>
 
@@ -9,7 +9,12 @@
   export default {
     name: 'cc-avatar',
     props: {
-      src: String
+      src: String,
+      square: {
+        type: Boolean,
+        default: false
+      },
+      sm: Boolean
     }
   }
 </script>
@@ -32,6 +37,16 @@
   .avatar-container
     position relative
     width 150px
-    left 50%
-    transform translateX(-50%)
+    /*left 50%*/
+    // transform translateX(-50%)
+  .sm
+    display inline-block
+    width 100px
+  .sm img
+    width 100px
+    height 100px
+  .sm .shadow
+    width 100px
+    height 100px
+
 </style>

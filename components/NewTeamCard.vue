@@ -3,7 +3,7 @@
 
       <div class="header elevation tabs">
         <div :class="['header-title']">
-          <span class="">{{ team.name===''?'PON UN NOMBRE A TU EQUIPO':team.name }}</span>
+          <span class="">{{ team.date===''?'PON UN NOMBRE A TU EQUIPO':team.date }}</span>
         </div>
       </div>
 
@@ -11,15 +11,18 @@
 
       <div class="form-name">
         <!-- fa-shield-alt -->
-        <input-text v-model="team.name" width="360px" solid class="input-text" prepend-icon="fa-shield-alt"
+        <input-text v-model="team.date"
+                    width="360px"
+                    solid class="input-text"
+                    prepend-icon="fa-shield-alt"
                     placeholder="Nombre de tu equipo" big/>
       </div>
       <div class="points">
         <span class="points-label">Saldo restante:</span>
-        <span class="points-value">{{totalPoints}} M</span>
+        <span class="points-value">{{saldo}} M</span>
       </div>
       <div class="progressbar">
-        <progress-bar :current-number="100 - totalPoints" :max-number="100" />
+        <progress-bar :current-number="saldo" :max-number="100" />
       </div>
       <div class="tabs-container">
         <button :class="['tab', 'elevation', activeTab===i?'activeTab':'inactiveTab', 'tab-'+i]"
@@ -65,8 +68,8 @@
 
       <template v-else-if="tabs[activeTab] === 'FORMACION'">
         <div class="ground-container">
-          <div>
-            <img src="/team_resources/cancha_1.png" alt="" width="100%">
+          <div style="text-align: center;" class="ground-container">
+            <img src="/team_resources/cancha_4.png" alt="" class="soccer-ground" height="100%">
             <!--<img src="../assets/img/cancha.png" alt="" width="100%">-->
           </div>
           <div class="players-layer" ref="playersLayer">
@@ -79,7 +82,6 @@
                   </div>
                   <div class="player-info">
                     <div><span class="player-name">{{ player.name }}</span></div>
-                    <div><span>{{ player.player_age }}</span></div>
                   </div>
                 </span>
               </div>
@@ -93,7 +95,6 @@
                   </div>
                   <div class="player-info">
                     <div><span class="player-name">{{ player.name }}</span></div>
-                    <div><span>{{ player.player_age }}</span></div>
                   </div>
 
                 </span>
@@ -108,7 +109,6 @@
                   </div>
                   <div class="player-info">
                     <div><span class="player-name">{{ player.name }}</span></div>
-                    <div><span>{{ player.player_age }}</span></div>
                   </div>
 
                 </span>
@@ -123,7 +123,6 @@
                   </div>
                   <div class="player-info">
                     <div><span class="player-name">{{ player.name }}</span></div>
-                    <div><span>{{ player.player_age }}</span></div>
                   </div>
 
                 </span>
@@ -156,37 +155,25 @@
         const teamName = this.player.team.toLowerCase().replace(' ','_')
         return 'http://api.bombo.pe/api/v2.0/shirts/' + teamName
       },
+      saldo () {
+        let saldo = this.maxLimitCost - this.totalPoints
+        return Math.round(saldo * 100) / 100
+      },
       totalPoints () {
         let total = 0
 
-        // console.log(this.team.players)
-        this.team.players['goal_keeper'].map((item) => {
-          item.j_number = ''+item.j_number
-          total+= (item.cost)
-        })
-
-        this.team.players['defender'].map((item) => {
-          item.j_number = ''+item.j_number
-          total+= (item.cost)
-        })
-
-        this.team.players['mid_fielder'].map((item) => {
-          item.j_number = ''+item.j_number
-          total+= (item.cost)
-        })
-
-        this.team.players['forward'].map((item) => {
-          item.j_number = ''+item.j_number
-          total+= (item.cost)
+        const playerPositions = ['goal_keeper', 'defender', 'mid_fielder', 'forward']
+        playerPositions.map(position => {
+          this.team.players[position].map(item => total += item.cost)
         })
 
         total = Math.round(total * 100)/100
-
         return total
       }
     },
     data () {
       return{
+        maxLimitCost: 100,
         activeTab: 0,
         tabs: ['LISTA', 'FORMACION'],
         title: 'MI EQUIPO'
@@ -219,13 +206,14 @@
     background #fafafa
     padding-bottom 14px
   .round-card
-    width 400px
-    max-height calc(100vh - 200px)
+    width 100%
+    // max-height calc(100vh - 200px)
+    max-height calc(100vh - 227px)
     overflow auto
     background #fafafa
   .header
     width 100%
-    height 72px
+    height 68px
     background #243337
     padding 0px 0px
 
@@ -287,7 +275,8 @@
 
   .player-list
     margin-top 14px
-    height: 416px;
+    /*height: 416px;*/
+    height 363px
     overflow-y: auto;
   .input-text
     display inline-block
@@ -376,5 +365,24 @@
       display block
     .round-card
       width 100%
+    .soccer-ground
+      width 80%
+
+  @media screen and (max-width: 415px)
+    .close-icon
+      left: 20px
+
+    .soccer-ground
+      width: 141%;
+      position: relative;
+      left: -43px;
+    .round-card
+      overflow-x hidden
+      overflow-y auto
+    .ground-container
+      overflow-x: hidden;
+      width: 100%;
+    .centrocampista-section
+      height 80px !important
 
 </style>

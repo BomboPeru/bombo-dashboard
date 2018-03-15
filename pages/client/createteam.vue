@@ -1,11 +1,11 @@
 <template>
     <div id="createteam">
       <player-bank-card :class="['player-bank-card', activeTabView === 0?'show':'hide']" @onPlayerSelected="onPlayerSelected"/>
-      <div :class="['new-team-card', (activeTabView === 1)?'show':'hide']">
+      <div :class="['new-team-section', (activeTabView === 1)?'show':'hide']">
         <new-team-card :team="team"/>
         <div class="btn-container">
-          <!--<div class="button-create rounded elevation" @click="createTeam">Crear</div>-->
-          <div class="button-create rounded elevation">Crear</div>
+          <div class="button-create rounded elevation" @click="createTeam">Crear</div>
+          <!--<div class="button-create rounded elevation">Crear</div>-->
         </div>
       </div>
     </div>
@@ -27,56 +27,77 @@
       },
       testUserId () {
         return this.$store.getters.testUserId
+      },
+      totalCost () {
+        const types = ['goal_keeper', 'mid_fielder', 'defender', 'forward']
+        let cost = 0
+        for (let i = 0; i < types.length; i++) {
+          this.team.players[types[i]].map(player => cost += player.cost)
+        }
+        return cost
       }
     },
     methods: {
       createTeam () {
-        console.log('create')
+        const playerPositions = [
+          'goal_keeper', 'defender', 'mid_fielder', 'forward'
+        ]
         let total = 0
         total += this.team.players.goal_keeper.length
         total += this.team.players.defender.length
         total += this.team.players.mid_fielder.length
         total += this.team.players.forward.length
-        if (this.team.name === '') {
+        if (this.team.date === '') {
           this.$store.dispatch('turnOnSnackbar', 'Debes darle un nombre a tu equipo')
           return false
         }
         if (total !== 11) {
           console.log('empty')
           this.$store.dispatch('turnOnSnackbar', 'No puedes crear un equipo con menos de 11 jugadores')
-        } else {
-          console.log(this.team)
-
-          let temporalTeam = this.team
-
-          temporalTeam.players.goal_keeper.map((player) => {
-            player.j_number = player.j_number.toString()
-            delete player.cost
-          })
-          temporalTeam.players.defender.map((player) => {
-            player.j_number = player.j_number.toString()
-            delete player.cost
-          })
-          temporalTeam.players.mid_fielder.map((player) => {
-            player.j_number = player.j_number.toString()
-            delete player.cost
-          })
-          temporalTeam.players.forward.map((player) => {
-            player.j_number = player.j_number.toString()
-            delete player.cost
-          })
-
-          this.$axios.$post('http://api.bombo.pe/api/v1.0/user/add-team/' + 'saved', {
-            user_id: this.testUserId,
-            team: temporalTeam
-          }).then(res => {
-            this.$store.dispatch('turnOnSnackbar', 'Equipo Creado!. Visita Mis Equipos para jugar')
-            console.log(res)
-          }).catch(e => {
-            this.$store.dispatch('turnOnSnackbar', 'Error al crear Equipo, pruebalo mas tarde.')
-            console.log(e)
-          })
+          return
         }
+        console.log(this.team)
+
+        let temporalTeam = []
+        let totalCaptain = 0
+
+        playerPositions.map(positionName => {
+          this.team.players[positionName].map(player => {
+            if (player.is_captain === true) {
+              totalCaptain += 1
+            }
+
+            temporalTeam.push(player)
+          })
+        })
+
+
+        if (totalCaptain < this.constraints.totalCaptains) {
+          this.$store.dispatch('turnOnSnackbar', 'Debes escoger a un capitan')
+          return
+        }
+        if (totalCaptain > this.constraints.totalCaptains) {
+          this.$store.dispatch('turnOnSnackbar', 'Solo puedes escoger a un capitan')
+          return
+        }
+
+        const userId = this.$store.getters['auth/getUserId']
+        const leagueId = this.$store.getters['createteam/leagueid']
+
+        console.log(userId, leagueId)
+        this.$axios.$post('http://api.bombo.pe/api/v2.0/users/'+ userId + '/create-team', {
+          team: {
+            league_id: leagueId,
+            name: this.team.date,
+            players: temporalTeam
+          }
+        }).then(res => {
+          this.$store.dispatch('turnOnSnackbar', 'Equipo Creado!. Visita Mis Equipos para jugar')
+          console.log(res)
+        }).catch(e => {
+          this.$store.dispatch('turnOnSnackbar', 'Error al crear Equipo, pruebalo mas tarde.')
+          console.log(e)
+        })
       },
       onPlayerSelected (data) {
         let currentTotal = 0
@@ -88,6 +109,11 @@
         let playerTypes = ['goal_keeper', 'defender', 'mid_fielder', 'forward']
         let teamToEvaluate = data.player.team
         let sameTeamCount = 0
+
+        if ((this.totalCost + data.player.cost) > this.saldo) {
+          this.$store.dispatch('turnOnSnackbar', 'Sin saldo suficiente para adquirir a este jugador')
+          return false
+        }
 
         for (let i = 0; i < playerTypes.length; i++) {
           let type = playerTypes[i]
@@ -107,28 +133,35 @@
           return false
         }
 
+
         if (sameTeamCount >= this.constraints.maxPlayersSameTeam) {
           this.$store.dispatch('turnOnSnackbar', 'No puedes agregar mas de 3 jugadores del mismo equipo')
           return false
         }
 
         if (sameTeamCount < this.constraints.maxPlayersSameTeam) {
+
           if ( (this.constraints[data.type][1] > this.team.players[data.type].length) &&
             ( this.constraints.total > currentTotal )
           ) {
+
             let lengthPlayers = this.team.players[data.type].length
             if (lengthPlayers > 0) {
+
               let isAlreadyAdded = false
               for (let i = 0; i < lengthPlayers; i++) {
-                if ((data.player.name === this.team.players[data.type][i].name)) {
+                if ((data.player.internal_id === this.team.players[data.type][i].internal_id)) {
                   isAlreadyAdded = true
                   break
                 }
               }
+
               if (isAlreadyAdded === false) {
+
                 this.team.players[data.type].push(data.player)
               }
             } else {
+
               this.team.players[data.type].push(data.player)
             }
           } else {
@@ -141,13 +174,14 @@
             this.$store.dispatch('turnOnSnackbar', `No puedes agregar mas de ${this.constraints[data.type][1]} ${playerType[data.type]}(s)`)
           }
         }
+
+
       }
     },
     data () {
       return {
-        // testUserId: '58e87f29-3b46-45a1-8069-5c7189bfa805',
         team: {
-          name: '',
+          date: '',
           players: {
             goal_keeper: [],
             defender: [],
@@ -155,8 +189,10 @@
             forward: []
           }
         },
+        saldo: 100,
         constraints: {
           total: 11,
+          totalCaptains: 1,
           goal_keeper: [1, 1],
           defender: [3, 5],
           mid_fielder: [3, 5],
@@ -166,10 +202,16 @@
         }
       }
     },
+    beforeCreate () {
+      if (this.$store.getters['createteam/leagueid'] === null) {
+        this.$router.push('/client/teams')
+        return
+      }
+    },
+    beforeDestroy () {
+      this.$store.commit('createteam/unsetleagueid')
+    },
     mounted () {
-      // if (this.testUserId === null) {
-      //   this.$router.push('/')
-      // }
     }
   }
 </script>
@@ -180,13 +222,18 @@
     min-height calc(100vh - 128px)
     display flex
     flex-flow row
+    justify-content center
     align-items: flex-start;
     flex-wrap nowrap
     overflow-x scroll
   .player-bank-card
-  .new-team-card
+    flex-grow 1
+  .new-team-section
+    flex-grow 1
+  .player-bank-card
+  .new-team-section
     margin 5px 10px
-    flex 0 0 auto
+    /*flex 0 0 auto*/
   .hide
     display block
   .show
@@ -207,9 +254,13 @@
     background #25bf89
     height 50px
     color white
+  @media screen and (min-width: 1700px)
+    #createteam
+      padding-left 200px
+      padding-right 200px
   @media screen and (max-width: 1023px)
     #createteam
-      min-height calc(100vh - 56px)
+      min-height calc(100vh - 116px)
     .hide
       display none
     .show
@@ -219,4 +270,9 @@
       margin 0
     /*.new-team-card*/
     /*margin 0 !important*/
+  @media screen and (max-width: 400px)
+    #createteam
+      display block
+
+
 </style>

@@ -5,18 +5,20 @@
           <span class="title-text">{{ title }}</span>
         </div>
         <!--<search-component v-model="search"/>-->
-        <players-filter @changeFilter="filterModified"/>
+        <players-filter @changeFilter="filterModified"
+                        @changeSearchBy="changeSearchBy"
+                        @searchValue="searchByKeyword"/>
       </div>
       <div class="line elevation"></div>
       <!-- header -->
       <table style="width: 100%;" class="row-header">
         <thead>
           <tr>
-            <th style="width: 31%;">Nombre</th>
-            <th style="width: 7%;">Estado</th>
-            <th style="width: 10%;">Popularidad</th>
-            <th style="width: 21%;">Costo</th>
-            <th style="width: 15%;">Posicion</th>
+            <th class="h-name">Nombre</th>
+            <th class="h-status">Estado</th>
+            <th class="h-popularity">Popularidad</th>
+            <th class="h-cost">Costo</th>
+            <th class="h-position">Posicion</th>
           </tr>
         </thead>
         <tbody></tbody>
@@ -88,23 +90,13 @@
       SearchComponent, PlayerRowCard, PlayersFilter
     },
     computed: {
-      search: {
-        get () {
-          // this.fetchSomething(this.searchText)
-          // console.log('get')
-          return this.searchText
-        },
-        set (value) {
-          // console.log('set')
-          this.fetchSomething(value)
-          return value
-        }
-      }
     },
     data () {
       return {
         title: 'JUGADORES DE LA TEMPORADA',
+        // unused
         teams: [],
+        backuplist: [],
         playersList: [],
         searchText: '',
         playerTypesConversions: {
@@ -112,17 +104,54 @@
           'defender': 'DEFENSA',
           'mid_fielder': 'CENTROCAMPISTA',
           'forward': 'DELANTERO'
+        },
+        filterObj: {
+          searchBy: 'player'
         }
       }
     },
     methods: {
-      filterModified (filterObj) {
+      changeSearchBy (value) {
+        this.filterObj.searchBy = value
+      },
+      async filterModified (filterObj) {
+        this.filterObj = filterObj
+
+        const playerPositions = {
+          'goal_keeper': 'ARQ',
+          'mid_fielder': 'MED',
+          'defender': 'DEF',
+          'forward': 'DEL'
+        }
+
+        // console.log(filterObj.allowedPositions)
+        this.playersList = await this.backuplist.filter(player => {
+          return filterObj.allowedPositions.includes(playerPositions[player.position])
+        })
+
+        this.playersList = await this.playersList.filter(player => {
+          return (filterObj.priceInterval[0] < player.cost) && ( filterObj.priceInterval[1] > player.cost )
+        })
+      },
+      async searchByKeyword (value) {
+        const searchBy = this.filterObj.searchBy === 'player' ? 'name': this.filterObj.searchBy
+        if (value === '') {
+          this.playersList = this.backuplist
+          return
+        }
+        this.playersList = await this.backuplist.filter(player => {
+          return (player[searchBy].toLowerCase()).includes(value.toLowerCase())
+        })
       },
       async fetchPlayers () {
+
         const response = await this.$axios.$get('http://api.bombo.pe/api/v2.0/players/all')
+        if (response === undefined) return
+
         const data = response.data.slice(0,-1)
         // this.teams = data
         this.playersList = data
+        this.backuplist = data
       },
       async fetchSomething(searchText) {
         // const data = response.data.slice(0,5)
@@ -137,7 +166,7 @@
 
             for (let typePlayer = 0; typePlayer < playerTypes.length ;typePlayer++) {
               data[key][playerTypes[typePlayer]].map(player => {
-                if (player.name.toUpperCase().includes(searchText.toUpperCase())) {
+                if (player.date.toUpperCase().includes(searchText.toUpperCase())) {
                   if (results[key] === undefined) {
                     results[key] = {}
                   }
@@ -194,7 +223,7 @@
 
   .header
     width 100%
-    height 72px
+    height 68px
     background #243337
     padding 8px 24px
   .header span
@@ -238,5 +267,31 @@
     height 4px
     background #25BF89
     margin 2px 10px
+
+  .h-name
+    width 31%
+  .h-status
+    width 7%
+  .h-popularity
+    width 10%
+  .h-cost
+    width 21%
+  .h-position
+    width 15%
+  @media screen and (max-width: 500px)
+    .h-name
+      width 36%
+    .h-status
+      width 12%
+    .h-popularity
+      width 2%
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    .h-cost
+      width 12%
+    .h-position
+      width 20%
+
 
 </style>
