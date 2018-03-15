@@ -32,12 +32,19 @@ const team = {
     }
   },
   actions: {
-    async fetchUserData () {
-      let response = await this.$axios.$get('http://api.bombo.pe/api/v1.0/user/' + this.testUserId)
+    async fetchUserData (context) {
+      if (process.server) return
+      const userId = localStorage.getItem('userId')
+      const token = localStorage.getItem('token')
+
+      let response = await this.$axios.$get('http://api.bombo.pe/api/v2.0/users/' + userId,
+        { headers: { 'Authorization': 'Bearer '  +  token} })
       //
-      this.mteams['0'] = response.data.playing_teams === null ? [] : response.data.playing_teams
-      this.mteams['1'] = response.data.saved_teams === null ? [] : response.data.saved_teams
-      this.mteams['2'] = response.data.old_teams === null ? [] : response.data.old_teams
+      let teams = {}
+      teams['0'] = response.data.playing_teams === null ? [] : response.data.playing_teams
+      teams['1'] = response.data.saved_teams === null ? [] : response.data.saved_teams
+      teams['2'] = response.data.old_teams === null ? [] : response.data.old_teams
+      return teams
     }
   },
   getters: {

@@ -8,7 +8,7 @@
         <p class="phrase">
           El primer daily fantasy peruano donde podrás <span class="highlight">ganar dinero</span>
         </p>
-        <div class="btn-login">
+        <div class="btn-login"  @click="goToLogin">
           COMIENZA A GANAR <span class="arrow"> <img src="/landing/arrow_right.svg" alt=""> </span>
         </div>
       </div>
@@ -27,6 +27,9 @@
   export default {
     // layout: 'dashboard',
     methods: {
+      goToLogin() {
+        this.$router.push('/login')
+      }
     }
   }
 </script>

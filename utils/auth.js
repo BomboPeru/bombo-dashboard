@@ -8,7 +8,6 @@ export default {
     if (token === null) return false
 
     try {
-
       const res = await axios.get('http://api.bombo.pe/auth/verify', { headers: { 'Authorization': 'Bearer ' + token }})
 
       const userId = res.data.data.user.id

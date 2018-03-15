@@ -31,18 +31,6 @@ const auth = {
       localStorage.setItem('user', JSON.stringify(user))
       localStorage.setItem('userId', user.id)
     }
-    // isAuthenticated: async function () {
-    //   if (process.server) return
-    //   const token = window.localStorage.getItem('token')
-    //   if (token === null) return false
-    //   try {
-    //     const res = await axios.get('http://api.bombo.pe/auth/verify', { headers: { 'Authorization': 'Bearer ' + token }})
-    //     const currentTimeInSeconds = new Date().getTime() / 1000
-    //     return res.data.data.exp > currentTimeInSeconds;
-    //   } catch (e) {
-    //     console.log(e)
-    //   }
-    // },
   }
 }
 

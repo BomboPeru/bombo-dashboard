@@ -12,7 +12,7 @@
               <div class="button-cancel" @click="collapse">
                 Cancelar
               </div>
-              <div class="button-exit" @click="collapse">
+              <div class="button-exit" @click="logout">
                 Salir
               </div>
             </div>
@@ -44,7 +44,15 @@
         this.$emit('onCollapse', false)
       },
       collapse () {
-        this.$store.commit('turnOffSignoutDialog')
+        this.$store.commit('turnOffSignoulogouttDialog')
+      },
+      logout () {
+        localStorage.removeItem('user')
+        localStorage.removeItem('userAccess')
+        localStorage.removeItem('userId')
+        localStorage.removeItem('token')
+
+        this.$router.push('/')
       }
     }
   }

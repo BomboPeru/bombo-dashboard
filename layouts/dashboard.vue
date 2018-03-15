@@ -115,18 +115,6 @@
       }
     },
     beforeCreate () {
-      // console.log('isAuthenticated', auth.isAuthenticated())
-      auth.isAuthenticated()
-      // this.$store.dispatch('auth/isAuthenticated')
-        .then(validToken => {
-          console.log('verify token', validToken)
-          if (validToken === false) {
-            this.$router.push('/')
-          }
-        })
-        .catch(err => {
-          console.log(err)
-        })
     }
   }
 </script>

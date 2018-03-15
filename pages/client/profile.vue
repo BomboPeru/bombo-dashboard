@@ -7,7 +7,7 @@
         </div>
         <div style="text-align: center">
           <div>
-            <input-text solid placeholder="Nombres y Apellidos" v-model="user.date" big/>
+            <input-text solid placeholder="Nombres y Apellidos" v-model="user.name" big/>
           </div>
           <div>
             <input-text solid placeholder="Email" v-model="user.email" big/>
@@ -26,32 +26,6 @@
           </div>
         </div>
       </div>
-      <!--<div class="profile-section">-->
-        <!--<div class="card-profile elevation rounded">-->
-          <!--<cc-avatar src="/profile_photo.png"/>-->
-          <!--<div class="info-section">-->
-            <!--<p class="username">m@xlr2005 </p>-->
-            <!--<p class="coins">45B</p>-->
-
-            <!--<p class="name">Max Landeo</p>-->
-            <!--<p class="email">maxlr2005@gmail.com</p>-->
-            <!--<p class="dni">DNI 74697172</p>-->
-            <!--<div class="btn-container center">-->
-              <!--<div class="add-phone-btn">-->
-                <!--Agregar un numero telefonico-->
-              <!--</div>-->
-            <!--</div>-->
-            <!--&lt;!&ndash;<p class="phone-btn">DNI 74697172</p>&ndash;&gt;-->
-            <!--<p class="country"><span><img src="/peru_flag.png" alt=""></span> Peru</p>-->
-          <!--</div>-->
-          <!--<div class="btn-container right">-->
-            <!--<div class="edit-btn elevation">-->
-              <!--<span class="icon-edit"><img src="../../assets/icons/pencil.png" alt=""></span>-->
-              <!--Editar-->
-            <!--</div>-->
-          <!--</div>-->
-        <!--</div>-->
-      <!--</div>-->
       <div class="content"></div>
     </div>
   </div>
@@ -75,7 +49,7 @@
         date: '',
         birthdayFake: '',
         user: {
-          date: '',
+          name: '',
           email: '',
           identity_document: '',
           birthday: undefined
@@ -86,7 +60,7 @@
       async fetchUser() {
         const user = this.$store.getters['auth/getUser']
 
-        this.user.date = user.date
+        this.user.name = user.name
         this.user.email = user.email
         this.user.identity_document = user.identity_document
 

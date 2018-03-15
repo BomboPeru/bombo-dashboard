@@ -54,9 +54,10 @@
       }
     },
     mounted () {
-      this.$axios.get('http://api.bombo.pe/api/v2.0/leagues/all')
+      const token = localStorage.getItem('token')
+
+      this.$axios.get('http://api.bombo.pe/api/v2.0/leagues/all', { headers: { 'Authorization': 'Bearer '  +  token} })
         .then(res => {
-          // res.data.data
           // this.$store.commit('createteam/setleagueid', res.data.data.id)
           this.leagues = res.data.data
         })

@@ -98,37 +98,21 @@
       }
     },
     methods: {
-      async refreshUserData () {
-        const userId = this.$store.getters['auth/getUserId']
-
-        const response = await this.$axios.$get('http://api.bombo.pe/api/v2.0/users/' + userId)
-        console.log(response)
-        this.$store.dispatch('auth/setUser', response.data)
-
-        this.fetchTeams()
-      },
       goToCreateTeam () {
         // this
         this.$store.commit('team/turnOnSelectLeageDialog')
-      },
-      fetchTeams () {
-        const user = this.$store.getters['auth/getUser']
-
-        if (user === null) {
-          this.mteams = { '0': [], '1': [], '2': [] }
-        } else {
-          this.mteams =  {
-            '0': user.playing_teams === null ? [] : user.playing_teams,
-            '1': user.saved_teams === null ? [] : user.saved_teams,
-            '2': user.old_teams === null ? [] : user.old_teams
-          }
-        }
-
-        console.log(this.mteams)
       }
     },
     mounted () {
-      this.refreshUserData()
+      // console.log('fetch teams')
+      // const userId = this.$store.getters['auth/userId']
+      // this.$axios.get('http://api.bombo.pe/api/v2.0/users/' + userId)
+      setTimeout(() => {
+        this.$store.dispatch('team/fetchUserData')
+          .then(res=> {
+            this.mteams = res
+          })
+      }, 500)
     }
   }
 </script>

@@ -41,18 +41,16 @@
         this.$axios.post('http://api.bombo.pe/auth/login', {
           username: this.username,
           password: this.password
-        })
-          .then(res => {
-            // auth.setToken(res.data.token)
+        }).then(res => {
             this.$store.commit('auth/setToken', res.data.token)
-
-            this.fetchUser()
+            setTimeout(() => {
+              this.fetchUser()
+            }, 3000)
           })
           .catch(err => {
             console.log(err)
             this.message = 'username y/o password no es correcto.'
           })
-
       }
     }
   }

@@ -193,7 +193,7 @@
             }
             break
         }
-        return color
+        return status
       }
     },
     data () {
