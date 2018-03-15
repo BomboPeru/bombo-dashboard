@@ -35,7 +35,7 @@
       </template>
 
       <template v-else-if="mode === 'selected'">
-        <div class="hover-select-captain" @click="selectCaptain(player)">
+          <div class="hover-select-captain" @click="selectCaptain(player)">
           <span class="select-text">SELECCIONAR COMO CAPITAN</span>
         </div>
 
@@ -43,8 +43,11 @@
           <tbody>
           <tr>
             <td style="width: 12%;">
-              <div class="captain-band" v-if="player.is_captain === true">
-                <img src="/team_resources/band_captain.png" height="42px" alt="">
+              <div class="captain-band"
+                   v-if="isCaptain">
+                <img
+                     src="/team_resources/band_captain.png"
+                     height="42px" alt="">
               </div>
               <squad-number :img="shirtUrl" :number="player.j_number"/>
             </td>
@@ -198,6 +201,7 @@
     },
     data () {
       return {
+        isCaptain: false,
         kind: {
           'ARQUERO': { label: 'portero', color: '#67A6F0' },
           'DEFENSA': { label: 'defensa', color: '#A789E8' },
@@ -211,11 +215,8 @@
         this.$emit('onPlayerSelected', player)
       },
       selectCaptain(player) {
-        console.log('selectCaptain')
-        if (player.is_captain === undefined) {
-          player.is_captain = false
-        }
-        player.is_captain = !player.is_captain
+        this.isCaptain = !this.isCaptain
+        player.is_captain = this.isCaptain
       }
     }
   }
@@ -265,7 +266,7 @@
     width: 41px;
     top: -4px;
     position: absolute;
-    z-index: 12;
+    z-index: 400;
     left: -5px;
 
   .hover-select-captain
@@ -287,7 +288,6 @@
   .hover-select-captain:hover
     background #232323ab
   .hover-select-captain:hover .select-text
-    background #232323ab
     color white
   .responsive-status-bk:hover .tooltip-status
     display inline-block
