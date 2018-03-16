@@ -74,6 +74,7 @@
     font-weight: bold;
     font-style: italic;
   .btn-login
+    cursor pointer
     padding-left 15px
     font-weight bold
     height 42px

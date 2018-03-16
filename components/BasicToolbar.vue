@@ -8,8 +8,8 @@
           <nuxt-link to="/">COMO JUGAR</nuxt-link>
           <nuxt-link to="/">PRECIOS</nuxt-link>
           <nuxt-link to="/">CONTÁCTANOS</nuxt-link>
-          <nuxt-link to="/register" class="register">Registrate</nuxt-link>
-          <nuxt-link to="/login" class="login">Inicia sesion</nuxt-link>
+          <nuxt-link to="/register" class="register">Regístrate</nuxt-link>
+          <nuxt-link to="/login" class="login">Inicia sesión</nuxt-link>
         </div>
       </div>
       <div class="menu-btn">
@@ -38,10 +38,11 @@
       return {
         menu : false,
         links: [
-          { url: '/register', name: 'REGISTRATE' },
+          { url: '/register', name: 'REGÍSTRATE' },
           { url: '/login', name: 'INICIA SESION' },
           { url: '/', name: 'COMO JUGAR' },
-          { url: '/', name: 'PROXIMAS FECHAS' }
+          { url: '/', name: 'PRECIOS' },
+          { url: '/', name: 'CONTÁCTENOS' }
         ]
       }
     },
