@@ -140,6 +140,7 @@
     /*display: inline-block*/
     // height calc(100vh - 300px)
     overflow-y auto
+    margin-right 8px
   .create-team-btn
     width 280px
   .empty-teams-message
