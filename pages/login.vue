@@ -38,6 +38,10 @@
         })
       },
       login () {
+
+        // loading on
+        this.$store.state.isLoading = true
+
         this.$axios.post('http://api.bombo.pe/auth/login', {
           username: this.username,
           password: this.password
@@ -48,6 +52,9 @@
             }, 3000)
           })
           .catch(err => {
+            // loading off
+            this.$store.state.isLoading = false
+
             console.log(err)
             this.message = 'username y/o password no es correcto.'
           })

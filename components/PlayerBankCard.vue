@@ -145,6 +145,9 @@
       },
       async fetchPlayers () {
 
+        // loading on
+        this.$store.state.isLoading = true
+
         const response = await this.$axios.$get('http://api.bombo.pe/api/v2.0/players/all')
         if (response === undefined) return
 
@@ -152,6 +155,10 @@
         // this.teams = data
         this.playersList = data
         this.backuplist = data
+
+        // loading off
+        this.$store.state.isLoading = false
+
       },
       async fetchSomething(searchText) {
         // const data = response.data.slice(0,5)

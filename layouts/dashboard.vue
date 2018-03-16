@@ -32,6 +32,9 @@
 
     <menu-sidebar/>
 
+    <transition name="loading">
+      <loading-screen v-if="isLoading"/>
+    </transition>
   </div>
 </template>
 
@@ -46,6 +49,7 @@
   import BomboPayments from '~/components/BomboPayments'
   import SelectTimeDialog from '~/components/SelectTimeDialog'
   import MenuSidebar from '~/components/MenuSidebar'
+  import LoadingScreen from '~/components/LoadingScreen'
 
   import auth from '~/utils/auth'
 
@@ -53,9 +57,13 @@
   export default {
     components: {
       Toolbar, Sidebar, FloatingContainer, IconButton,
-      SelectLeagueDialog, SignOutDialog, Snackbar, BomboPayments, SelectTimeDialog, MenuSidebar
+      SelectLeagueDialog, SignOutDialog, Snackbar, BomboPayments,
+      SelectTimeDialog, MenuSidebar, LoadingScreen
     },
     computed: {
+      isLoading () {
+        return this.$store.state.isLoading
+      },
       sidebarAndNavbar () {
         let notAllowed = []
         return notAllowed.indexOf(this.$route.path) === -1
@@ -168,4 +176,10 @@
   height: 6px;
   background-color: #7d7d80
 
+.loading-enter-active, .loading-leave-active {
+  transition: opacity .5s;
+}
+.loading-enter, .loading-leave-to /* .fade-leave-active below version 2.1.8 */ {
+  opacity: 0;
+}
 </style>

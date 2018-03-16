@@ -42,6 +42,7 @@
     background #fafafa
     border-radius: 10px
     cursor: pointer
+    z-index: 9;
   .icon
     border-radius: 10px
     height 100%

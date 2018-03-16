@@ -14,7 +14,8 @@ const store = () => {
       snackbar: false,
       snackbarDuration: 5000,
       snackbarMessage: '',
-      menuSidebar: false
+      menuSidebar: false,
+      isLoading: false
     },
     getters: {
       isSignoutDialog (state) {

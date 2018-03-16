@@ -82,7 +82,6 @@
             teamToCreate.push(player)
           })
         })
-
         if (totalGoalKeeper < this.constraints.goal_keeper[0] ||
           totalGoalKeeper > this.constraints.goal_keeper[1]) {
           this.$store.dispatch('turnOnSnackbar', 'Debes escoger al menos un arquero')

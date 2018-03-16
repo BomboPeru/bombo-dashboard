@@ -4,6 +4,11 @@
       <basic-toolbar/>
       <nuxt/>
     </div>
+
+    <transition name="loading">
+      <loading-screen v-if="isLoading"/>
+    </transition>
+
     <login-dialog :is-open="login" @onCollapse="closeLoginDialog"/>
     <terms-conditions-dialog :is-open="termsAndConditions" @onCollapse="closeTermsConditionsDialog"/>
   </div>
@@ -13,13 +18,17 @@
   import BasicToolbar from '../components/BasicToolbar'
   import LoginDialog from '../components/LoginDialog'
   import TermsConditionsDialog from '../components/TermsConditionsDialog'
+  import LoadingScreen from '~/components/LoadingScreen'
 
   export default {
     name: 'default',
     components: {
-      BasicToolbar, LoginDialog, TermsConditionsDialog
+      BasicToolbar, LoginDialog, TermsConditionsDialog, LoadingScreen
     },
     computed: {
+      isLoading () {
+        return this.$store.state.isLoading
+      },
       login () {
         return this.$store.getters.loginDialog
       },
@@ -96,4 +105,12 @@ html {
   width: 3px;
   height: 6px;
   background-color: #000000
+
+.loading-enter-active, .loading-leave-active {
+  transition: opacity .5s;
+}
+.loading-enter, .loading-leave-to /* .fade-leave-active below version 2.1.8 */ {
+  opacity: 0;
+}
+
 </style>

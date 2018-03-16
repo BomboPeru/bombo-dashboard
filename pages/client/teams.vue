@@ -104,6 +104,9 @@
       }
     },
     mounted () {
+      // loading on
+      this.$store.state.isLoading = true
+
       // console.log('fetch teams')
       // const userId = this.$store.getters['auth/userId']
       // this.$axios.get('http://api.bombo.pe/api/v2.0/users/' + userId)
@@ -111,6 +114,8 @@
         this.$store.dispatch('team/fetchUserData')
           .then(res=> {
             this.mteams = res
+            // loading off
+            this.$store.state.isLoading = false
           })
       }, 500)
     }
