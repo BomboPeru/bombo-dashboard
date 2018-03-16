@@ -248,7 +248,10 @@
     beforeCreate () {
       if (process.server) return
       if (this.$store.getters['createteam/leagueid'] === null) {
-        this.$router.push('/client/teams')
+        console.log(this.$store.getters['createteam/leagueid'], 'league id')
+        setTimeout(() => {
+          this.$router.push('/client/teams')
+        }, 200)
       }
     },
     beforeDestroy () {
@@ -307,7 +310,7 @@
       padding-right 200px
   @media screen and (max-width: 1023px)
     #createteam
-      height calc(100vh - 128px)
+      min-height calc(100vh - 128px)
     .mobile-btn-container
       display block
     .hide

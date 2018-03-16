@@ -180,7 +180,7 @@
   background-color: #7d7d80
 
 .loading-enter-active, .loading-leave-active {
-  transition: opacity .5s;
+  transition: opacity .2s;
 }
 .loading-enter, .loading-leave-to /* .fade-leave-active below version 2.1.8 */ {
   opacity: 0;

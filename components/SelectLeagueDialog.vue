@@ -43,6 +43,7 @@
         this.$store.commit('createteam/setleagueid', item.id)
         this.$store.commit('team/turnOffSelectLeageDialog')
 
+        this.$store.state.isLoading = true
         this.$router.push({ path: '/client/createteam'})
       },
       closeDialog () {
@@ -53,7 +54,13 @@
         this.$store.commit('createteam/setleagueid', item.id)
         this.$store.commit('team/turnOffSelectLeageDialog')
 
-        this.$router.push({ path: '/client/createteam'})
+        if (this.$store.getters['createteam/leagueid'] !== null) {
+          this.$store.state.isLoading = true
+
+          setTimeout(() => {
+            this.$router.push({ path: '/client/createteam'})
+          }, 200)
+        }
       }
     },
     mounted () {

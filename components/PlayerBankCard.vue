@@ -117,7 +117,9 @@
         if (process.server) return
 
         // loading on
-        this.$store.state.isLoading = true
+        if (this.$store.state.isLoading === false) {
+          this.$store.state.isLoading = true
+        }
 
         const response = await this.$axios.$get('http://api.bombo.pe/api/v2.0/players/all')
         if (response === undefined) return
