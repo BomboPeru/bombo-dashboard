@@ -112,13 +112,6 @@
             message: 'Debe aceptar los terminos y condiciones'
           }
         },
-        // "name": "Luis Carrasco",
-        // "username": "luis.carrasco",
-        // "email": "luis.carrasco@fake.com",
-        // "birthday": "2000-03-11T00:39:48.037Z",
-        // "password": "12345678",
-        // "document_type": "DNI",
-        // "identity_document": "7986542"
         user: {
           name: '',
           birthday_fake: '',
@@ -186,7 +179,6 @@
         let isValid = true
         for (let key in this.constraints) {
           if ( this.constraints[key].minLength !== undefined ) {
-            console.log(key)
             isValid = this.constraints[key].minLength <= this.user[key].length
             if (isValid === false) {
               break
@@ -200,6 +192,9 @@
           }
           if ( this.constraints[key].hasSpaces !== undefined ) {
             isValid = /\s/.test(this.user[key])
+            if (isValid === false) {
+              break
+            }
           }
         }
         return isValid
