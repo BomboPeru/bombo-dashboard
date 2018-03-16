@@ -168,7 +168,7 @@
     margin-bottom 10px
   .checkbox-filter-container span
     position relative
-    top -3px
+    top -5px
     margin-left 4px
     font-size 13px
     font-weight bold

@@ -1,5 +1,5 @@
 <template>
-    <div id="checkbox" :style="{borderColor: color}" :class="[value?'checked-box':'']" @click="toggle">
+    <div id="checkbox" :style="{borderColor: color}" :class="[value?'checked-box':'unchecked-box']" @click="toggle">
       <div v-if="value === true" class="checked">
         <i :style="{color: color}" class="fas fa-check check-icon"></i>
       </div>
@@ -24,6 +24,7 @@
 
 <style scoped lang="stylus">
   colorPrimary = #243337
+  disabledColor = #7b7b7b
   #checkbox
     cursor pointer
     display inline-block
@@ -33,6 +34,9 @@
     border-radius 2px
     border 4px solid colorPrimary
     position relative
+  .unchecked-box
+    border 4px solid disabledColor !important
+
   .checked-box
     background colorPrimary !important
     border 4px solid colorPrimary !important
