@@ -89,7 +89,7 @@
                 <span class="player-container">
                   <squad-number ground :img="'http://api.bombo.pe/api/v2.0/shirts/' + player.team.toLowerCase().replace(' ','_')" :number="player.j_number"/>
                   <div class="close-icon">
-                    <img src="../assets/icons/close_ground.svg" width="20px" alt="" @click="deletePlayer(player, 'goal_keeper')">
+                    <img src="../assets/icons/close_ground.svg" width="30px" alt="" @click="deletePlayer(player, 'goal_keeper')">
                   </div>
                   <div class="player-info">
                     <div><span class="player-name">{{ player.name }}</span></div>
@@ -102,7 +102,7 @@
                 <span class="player-container">
                   <squad-number ground :img="'http://api.bombo.pe/api/v2.0/shirts/' + player.team.toLowerCase().replace(' ','_')" :number="player.j_number"/>
                   <div class="close-icon">
-                    <img src="../assets/icons/close_ground.svg" width="20px" alt="" @click="deletePlayer(player, 'defender')">
+                    <img src="../assets/icons/close_ground.svg" width="30px" alt="" @click="deletePlayer(player, 'defender')">
                   </div>
                   <div class="player-info">
                     <div><span class="player-name">{{ player.name }}</span></div>
@@ -116,7 +116,7 @@
                 <span class="player-container">
                   <squad-number ground :img="'http://api.bombo.pe/api/v2.0/shirts/' + player.team.toLowerCase().replace(' ','_')" :number="player.j_number"/>
                   <div class="close-icon">
-                    <img src="../assets/icons/close_ground.svg" width="20px" alt="" @click="deletePlayer(player, 'mid_fielder')">
+                    <img src="../assets/icons/close_ground.svg" width="30px" alt="" @click="deletePlayer(player, 'mid_fielder')">
                   </div>
                   <div class="player-info">
                     <div><span class="player-name">{{ player.name }}</span></div>
@@ -130,7 +130,7 @@
                 <span class="player-container">
                   <squad-number ground :img="'http://api.bombo.pe/api/v2.0/shirts/' + player.team.toLowerCase().replace(' ','_')" :number="player.j_number"/>
                   <div class="close-icon">
-                    <img src="../assets/icons/close_ground.svg" width="20px" alt="" @click="deletePlayer(player, 'forward')">
+                    <img src="../assets/icons/close_ground.svg" width="30px" alt="" @click="deletePlayer(player, 'forward')">
                   </div>
                   <div class="player-info">
                     <div><span class="player-name">{{ player.name }}</span></div>
@@ -336,15 +336,16 @@
   .delantero-section
     display flex
     flex-wrap wrap
-    height 68px
+    height 90px
     justify-content center
     align-items center
     text-align center
   .portero-section
-    margin-top: 50px;
+    margin-top: 30px;
+    height 90px !important
 
   .centrocampista-section
-    height 100px !important
+    height 120px !important
     margin-left: 110px;
     margin-right: 110px;
   .defensa-section
@@ -362,8 +363,8 @@
   .close-icon
     position absolute
     display none
-    top: -22px
-    left: 76%
+    top: -32px
+    left: 200%
     width 27px
     height 27px
     cursor pointer
@@ -391,7 +392,6 @@
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-
   .soccer-ground
     position: relative;
     left: -13%;
