@@ -10,7 +10,7 @@
             {{ constraints.name.message }}
           </div>
           <div>
-            <input-text placeholder="Nombre" v-model="user.name" big solid/>
+            <input-text placeholder="Nombres y Apellidos" v-model="user.name" big solid/>
           </div>
 
           <div class="warning" v-if="!isValidInput(constraints.email.rules, user.email)">
