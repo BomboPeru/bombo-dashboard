@@ -72,7 +72,7 @@
           },
           { label: 'Recargar Credito', icon: 'fa-credit-card', action: () => {
               this.close()
-              this.$store.state.isBomboPaymentsDialog = true
+              this.$store.state.bomboPayments = !this.$store.state.bomboPayments
             }
           },
           { label: 'FAQ', icon: 'fa-question-circle', action: () => {

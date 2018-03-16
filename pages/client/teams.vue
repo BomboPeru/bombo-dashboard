@@ -1,6 +1,8 @@
 <template>
   <div id="teams">
-    <div v-if="hasNotTeams" class="container">
+    <sidebar mode="teams"/>
+
+    <div v-if="hasNotTeams" class="container margin-sidebar">
       <div class="empty-teams-message">
         <p>Aun no tienes ningun equipo <br>Que esperas para crear uno?!</p>
         <icon-button text="CREAR EQUIPO!"
@@ -12,7 +14,7 @@
         />
       </div>
     </div>
-    <div v-else class="container">
+    <div v-else class="container margin-sidebar">
       <!-- EN JUEGO -->
       <template v-if="activeTypeTeam === 0">
         <team-card
@@ -71,12 +73,13 @@
 <script>
   import IconButton from '../../components/IconButton'
   import TeamCard from '../../components/TeamCard'
+  import Sidebar from '~/components/Sidebar.vue'
 
   export default {
     layout: 'dashboard',
     name: 'myteams',
     components: {
-      IconButton, TeamCard
+      IconButton, TeamCard, Sidebar
     },
     computed: {
       hasNotTeams () {
@@ -139,6 +142,8 @@
     /*padding-bottom 50px*/
     padding-bottom 12px
 
+  .margin-sidebar
+    margin-left 232px
   .teamcard
     flex-shrink 0
     /*display: inline-block*/
@@ -170,5 +175,7 @@
       margin-top 62px
       margin-left 0
       //min-height: calc(100vh - 128px)
+    .margin-sidebar
+      margin-left 0
 
 </style>

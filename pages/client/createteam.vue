@@ -1,10 +1,13 @@
 <template>
-    <div id="createteam">
-      <player-bank-card :class="['player-bank-card', activeTabView === 0?'show':'hide']" @onPlayerSelected="onPlayerSelected"/>
-      <div :class="['new-team-section', (activeTabView === 1)?'show':'hide']">
-        <new-team-card :team="team" @isCaptain="isCaptain"/>
-        <div class="btn-container">
-          <div class="button-create rounded elevation" @click="createTeam">Crear</div>
+    <div>
+      <sidebar mode="createteam" @onCreateTeamClick="createTeam"/>
+      <div id="createteam">
+        <player-bank-card :class="['player-bank-card', activeTabView === 0?'show':'hide']" @onPlayerSelected="onPlayerSelected"/>
+        <div :class="['new-team-section', (activeTabView === 1)?'show':'hide']">
+          <div class="mobile-btn-container">
+            <div class="button-create rounded elevation" @click="createTeam">CREAR EQUIPO</div>
+          </div>
+          <new-team-card :team="team" @isCaptain="isCaptain"/>
         </div>
       </div>
     </div>
@@ -13,12 +16,13 @@
 <script>
   import PlayerBankCard from '../../components/PlayerBankCard'
   import NewTeamCard from '../../components/NewTeamCard'
+  import Sidebar from '~/components/Sidebar.vue'
 
   export default {
     layout: 'dashboard',
     name: 'createteam',
     components: {
-      PlayerBankCard, NewTeamCard
+      PlayerBankCard, NewTeamCard, Sidebar
     },
     computed: {
       activeTabView () {
@@ -258,7 +262,8 @@
 <style scoped lang="stylus">
   #createteam
     padding 23px 10px 0 10px
-    min-height calc(100vh - 128px)
+    height calc(100vh - 128px)
+    // height calc(100vh - 99px)
     display flex
     flex-flow row
     justify-content center
@@ -266,8 +271,10 @@
     flex-wrap nowrap
     overflow-x scroll
   .player-bank-card
+    width: 100%;
     flex-grow 1
   .new-team-section
+    width: 100%;
     flex-grow 1
   .player-bank-card
   .new-team-section
@@ -277,8 +284,9 @@
     display block
   .show
     display block
-  .btn-container
-    margin-top 18px
+  .mobile-btn-container
+    display none
+    margin-bottom 18px
     text-align center
   .button-create
     /*width 100px*/
@@ -300,6 +308,8 @@
   @media screen and (max-width: 1023px)
     #createteam
       min-height calc(100vh - 116px)
+    .mobile-btn-container
+      display block
     .hide
       display none
     .show

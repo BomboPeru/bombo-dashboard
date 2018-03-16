@@ -1,17 +1,16 @@
 <template>
   <div class="background">
     <div id="cover-layout">
+
       <toolbar/>
 
-      <sidebar v-if="sidebarAndNavbar" :sidebar="sidebar"/>
+      <nuxt/>
 
-      <nuxt :class="{ 'margin-sidebar': sidebar }"/>
-
-      <floating-container bottom-right class="fab">
+      <floating-container bottom-right class="fab" v-if="showFABBomboPayments">
         <icon-button :text="'S/ ' + saldo"
                      icon-direction="right"
                      color="#EA504C"
-                     @click="openBomboPaymentsDialog"
+                     @click="toggleBomboPayments"
                      icon="plus"/>
       </floating-container>
     </div>
@@ -28,8 +27,8 @@
 
     <!--:is-open="true"-->
     <bombo-payments
-      :is-open="isBomboPaymentsDialog"
-      @onCollapse="onCollapseBomboPayments"/>
+      :is-open="bomboPayments"
+      @onCollapse="toggleBomboPayments"/>
 
     <snackbar :show="snackbar" :message="snackbarMessage"/>
 
@@ -48,7 +47,6 @@
 <script>
   import Toolbar from '~/components/Toolbar.vue'
   import Snackbar from '~/components/Snackbar.vue'
-  import Sidebar from '~/components/Sidebar.vue'
   import FloatingContainer from '~/components/FloatingContainer'
   import IconButton from '~/components/IconButton'
   import SelectLeagueDialog from '~/components/SelectLeagueDialog'
@@ -64,7 +62,7 @@
 
   export default {
     components: {
-      Toolbar, Sidebar, FloatingContainer, IconButton,
+      Toolbar, FloatingContainer, IconButton,
       SelectLeagueDialog, SignOutDialog, Snackbar, BomboPayments,
       SelectTimeDialog, MobileMenuSidebar, LoadingScreen, ShortLoadingScreen
     },
@@ -75,15 +73,11 @@
       isShortLoading () {
         return this.$store.state.isShortLoading
       },
-      sidebarAndNavbar () {
-        let notAllowed = []
-        return notAllowed.indexOf(this.$route.path) === -1
-      },
       isSignoutDialog () {
         return this.$store.getters['isSignoutDialog']
       },
-      isBomboPaymentsDialog () {
-        return this.$store.getters['isBomboPaymentsDialog']
+      bomboPayments () {
+        return this.$store.state.bomboPayments
       },
       isSelectLeagueDialog () {
         return this.$store.getters['team/isSelectLeagueDialog']
@@ -91,9 +85,9 @@
       isSelectTimeDialog () {
         return this.$store.getters['team/isSelectTimeDialog']
       },
-      sidebar () {
-        let notAllowed = ['/client/profile', '/client/createteam', '/client/dashboard', '/client/faq', '/client/matches']
-        return notAllowed.indexOf(this.$route.path) === -1
+      showFABBomboPayments () {
+        const routesDisallowed = ['/client/createteam']
+        return routesDisallowed.indexOf(this.$route.path)
       },
       snackbar () {
         return this.$store.getters.snackbar
@@ -126,11 +120,8 @@
       onCollapseSelectTimeDialog () {
         this.$store.commit('team/turnOffSelectTimeDialog')
       },
-      onCollapseBomboPayments () {
-        this.$store.commit('turnOffBomboPaymentsDialog')
-      },
-      openBomboPaymentsDialog () {
-        this.$store.commit('openBomboPaymentsDialog')
+      toggleBomboPayments () {
+        this.$store.state.bomboPayments = !this.$store.state.bomboPayments
       }
     },
     beforeCreate () {
@@ -163,8 +154,6 @@
 .background
   /*background url(../assets/background/background_desktop.png)*/
   background-size cover
-.margin-sidebar
-  margin-left 232px
 .fab
   display block
 
@@ -175,8 +164,6 @@
     margin-left 0px
   .fab
     display none
-  .margin-sidebar
-    margin-left 0
 
 
 ::-webkit-scrollbar-trackx

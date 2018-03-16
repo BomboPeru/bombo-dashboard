@@ -1,26 +1,70 @@
 <template>
     <div id="sidebar" :class="['elevation', itemsForEachPath[activeSection].items.length > 0?'':'collapse-movil']" >
-      <!-- v-if="activeSection !== 'ARMA UN EQUIPO'" -->
-      <!-- itemsForEachPath[activeSection].items.length > 0 -->
 
-      <!-- DESKTOP -->
-      <!-- TITLE BAR (WHITE) -->
-      <div class="title-bar desktop">
-
-        <!-- SEARCH VIEW -->
-        <div class="search-input" v-if="activeSection === 'MIS EQUIPOS'">
-          <!--<input type="text" placeholder="Busca equipos">-->
-          <!--<span class="icon-input"><img src="../assets/icons/search.svg" alt=""></span>-->
-        </div>
-
-        <template v-if="activeSection !== 'TABLERO'">
+      <!-- ONLY FOR TEAMS -->
+      <template v-if="mode=== 'teams'">
+        <div class="title-bar desktop">
           <div :class="['title-container', itemsForEachPath[activeSection].center?'center':'']">
             <span :class="['title-menu-section', itemsForEachPath[activeSection].center?'font-weight-light':'']"
                   v-if="activeSection !== 'TABLERO'">{{ activeSection }}</span>
           </div>
-        </template>
+        </div>
 
-        <template v-if="activeSection === 'TABLERO'">
+        <div class="sidebar elevation">
+          <div>
+            <div v-for="(item, i) in itemsForEachPath[activeSection].items"
+                 :key="i"
+                 @click="clickOnTab(item.name)"
+                 v-if="item.type === 'normal'"
+                 :class="['sidebar-item', 'elevation', tabSelected===i?'sidebar-item-selected':'']">
+              <div class="line" :style="{ background: item.color }"></div>
+              <span class="text">{{ item.name }}</span>
+            </div>
+            <div class="bottom-side">
+              <div>
+                <template
+                  v-for="(item, i) in itemsForEachPath[activeSection].items"
+                  v-if="item.type === 'bottom'">
+                  <icon-button :key="i + '- bottom'"
+                               :text="item.name"
+                               icon-direction="left"
+                               :color="item.color"
+                               :icon="item.icon"
+                               @click="callback(item.name)"
+                               class="bottom-btn"/>
+                </template>
+              </div>
+            </div>
+          </div>
+        </div>
+      </template>
+
+
+      <template v-else-if="mode=== 'simple'">
+        <!-- DESKTOP -->
+        <!-- TITLE BAR (WHITE) -->
+        <div class="title-bar desktop">
+          <div :class="['title-container', itemsForEachPath[activeSection].center?'center':'']">
+            <span :class="['title-menu-section', itemsForEachPath[activeSection].center?'font-weight-light':'']"
+                  v-if="activeSection !== 'TABLERO'">{{ activeSection }}</span>
+          </div>
+        </div>
+      </template>
+
+      <template v-else-if="mode=== 'createteam'">
+
+        <div class="title-bar desktop">
+          <div :class="['title-container', itemsForEachPath[activeSection].center?'center':'']">
+            <span :class="['title-menu-section', itemsForEachPath[activeSection].center?'font-weight-light':'']"
+                  v-if="activeSection !== 'TABLERO'">{{ activeSection }}</span>
+            <div class="btn-sidebar-1 elevation" @click="onCreateTeamClick">CREAR EQUIPO</div>
+            <div class="btn-sidebar-2 elevation" @click="openBomboPayments">RECARGA SALDO</div>
+          </div>
+        </div>
+      </template>
+
+      <template v-else-if="mode === 'dashboard'">
+        <div class="title-bar desktop">
           <div class="dashboard-navbar">
             <div v-for="(item, i) in itemsForEachPath[activeSection].items"
                  :key="i"
@@ -31,37 +75,8 @@
               <div class="line" :style="{ background: item.color }"></div>
             </div>
           </div>
-        </template>
-      </div>
-
-      <!-- ONLY FOR TEAMS -->
-      <div class="sidebar elevation" v-if="sidebar">
-        <div>
-          <div v-for="(item, i) in itemsForEachPath[activeSection].items"
-               :key="i"
-               @click="clickOnTab(item.name)"
-               v-if="item.type === 'normal'"
-               :class="['sidebar-item', 'elevation', tabSelected===i?'sidebar-item-selected':'']">
-            <div class="line" :style="{ background: item.color }"></div>
-            <span class="text">{{ item.name }}</span>
-          </div>
-          <div class="bottom-side">
-            <div>
-              <template
-                v-for="(item, i) in itemsForEachPath[activeSection].items"
-                v-if="item.type === 'bottom'">
-                <icon-button :key="i + '- bottom'"
-                             :text="item.name"
-                             icon-direction="left"
-                             :color="item.color"
-                             :icon="item.icon"
-                             @click="callback(item.name)"
-                             class="bottom-btn"/>
-              </template>
-            </div>
-          </div>
         </div>
-      </div>
+      </template>
 
       <!-- MOBILE -->
       <!-- BLACK BAR FOR NAVIGATE INSIDE PAGES -->
@@ -73,6 +88,7 @@
         <span class="text">{{ item.name }}</span>
       </div>
     </div>
+
 </template>
 
 <script>
@@ -84,6 +100,7 @@
       IconButton
     },
     props: {
+      mode: String,
       sidebar: {
         type: Boolean,
         default: true
@@ -159,6 +176,12 @@
       }
     },
     methods: {
+      onCreateTeamClick () {
+        this.$emit('onCreateTeamClick', null)
+      },
+      openBomboPayments() {
+        this.$store.state.bomboPayments = !this.$store.state.bomboPayments
+      },
       clickOnTab (name) {
         let indexSelected
         if (this.activeSection === 'MIS EQUIPOS') {
@@ -310,6 +333,31 @@
   .dashboard-navbar-item .line
     height 10px
     width 100%
+
+  .btn-sidebar-2
+  .btn-sidebar-1
+    cursor pointer
+    display: inline-block;
+    float: right;
+    padding: 0px 35px;
+    font-family Titillium Web
+    font-weight bold
+
+    margin-top: 6px;
+    min-width: 150px;
+    text-align: center;
+    height: 40px;
+    line-height: 40px;
+    border-radius: 4px;
+  .btn-sidebar-1
+    margin-left: 16px;
+    margin-right: 16px;
+    background: #25bf89;
+    color: white;
+
+  .btn-sidebar-2
+    background: #EA504C;
+    color: white;
 
   @media screen and (max-width: 1023px)
     #sidebar

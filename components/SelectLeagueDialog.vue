@@ -58,14 +58,14 @@
     },
     mounted () {
 
-      // this.$axios.get('http://api.bombo.pe/api/v2.0/leagues/all')
-      //   .then(res => {
-      //     // this.$store.commit('createteam/setleagueid', res.data.data.id)
-      //     this.leagues = res.data.data
-      //   })
-      //   .catch(e => {
-      //     console.log(e)
-      //   })
+      this.$axios.get('http://api.bombo.pe/api/v2.0/leagues/all')
+        .then(res => {
+          // this.$store.commit('createteam/setleagueid', res.data.data.id)
+          this.leagues = res.data.data
+        })
+        .catch(e => {
+          console.log(e)
+        })
     }
   }
 </script>

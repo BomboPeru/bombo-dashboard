@@ -1,32 +1,36 @@
 <template>
-  <div id="profile">
-    <div class="container">
-      <div class="profile-section">
-        <div style="display: flex; justify-content: center;">
-          <cc-avatar square src="/profile_photo.png"/>
-        </div>
-        <div style="text-align: center">
-          <div>
-            <input-text solid placeholder="Nombres y Apellidos" v-model="user.name" big/>
+  <div>
+    <sidebar mode="simple"/>
+
+    <div id="profile">
+      <div class="container">
+        <div class="profile-section">
+          <div style="display: flex; justify-content: center;">
+            <cc-avatar square src="/profile_photo.png"/>
           </div>
-          <div>
-            <input-text solid placeholder="Email" v-model="user.email" big/>
-          </div>
-          <div>
-            <input-text solid placeholder="DNI" v-model="user.identity_document" big/>
-          </div>
-          <div>
-            <input-text solid placeholder="Cumpleaños" v-model="birthdayFake" type="date" big/>
-          </div>
-          <!--<div>-->
+          <div style="text-align: center">
+            <div>
+              <input-text solid placeholder="Nombres y Apellidos" v-model="user.name" big/>
+            </div>
+            <div>
+              <input-text solid placeholder="Email" v-model="user.email" big/>
+            </div>
+            <div>
+              <input-text solid placeholder="DNI" v-model="user.identity_document" big/>
+            </div>
+            <div>
+              <input-text solid placeholder="Cumpleaños" v-model="birthdayFake" type="date" big/>
+            </div>
+            <!--<div>-->
             <!--<input-text solid placeholder="Email" v-model="user.email" big/>-->
-          <!--</div>-->
-          <div class="btn-container" style="display: flex; justify-content: center;">
-            <div class="update-btn elevation" @click="updateUser">ACTUALIZAR PERFIL</div>
+            <!--</div>-->
+            <div class="btn-container" style="display: flex; justify-content: center;">
+              <div class="update-btn elevation" @click="updateUser">ACTUALIZAR PERFIL</div>
+            </div>
           </div>
         </div>
+        <div class="content"></div>
       </div>
-      <div class="content"></div>
     </div>
   </div>
 </template>
@@ -35,12 +39,13 @@
   // import IconButton from '../../components/IconButton'
   import InputText from '../../components/InputText'
   import CcAvatar from '../../components/CcAvatar'
+  import Sidebar from '~/components/Sidebar.vue'
 
   export default {
     layout: 'dashboard',
     name: 'profile',
     components: {
-      CcAvatar, InputText
+      CcAvatar, InputText, Sidebar
     },
     computed: {
     },

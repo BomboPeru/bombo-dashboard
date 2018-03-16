@@ -20,7 +20,7 @@
 
 <script>
   export default {
-    layout: 'dashboard',
+    // layout: 'dashboard',
     name: 'faq',
     components: {
     },

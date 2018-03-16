@@ -10,7 +10,7 @@ const store = () => {
       signOutDialog: false,
       loginDialog: false,
       termsAndConditionsDialog: false,
-      isBomboPaymentsDialog: false,
+      bomboPayments: false,
       snackbar: false,
       snackbarDuration: 5000,
       snackbarMessage: '',
@@ -48,17 +48,11 @@ const store = () => {
       openLoginDialog (state) {
         state.loginDialog = true
       },
-      openBomboPaymentsDialog (state) {
-        state.isBomboPaymentsDialog = true
-      },
       closeLoginDialog (state) {
         state.loginDialog = false
       },
       openTermsConditionsDialog (state) {
         state.termsAndConditionsDialog = true
-      },
-      turnOffBomboPaymentsDialog (state) {
-        state.isBomboPaymentsDialog = false
       },
       closeTermsConditionsDialog (state) {
         state.termsAndConditionsDialog = false

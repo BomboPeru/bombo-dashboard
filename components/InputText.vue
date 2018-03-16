@@ -1,6 +1,7 @@
 <template>
     <div id="input-text">
-      <span :class="['prepend-icon', big?'big-icon':'']" v-if="prependIcon !== ''"><i :class="['fas', prependIcon]"></i></span>
+      <span :class="['prepend-icon', big?'big-icon':'',
+             responsive?'responsive-icon':'']" v-if="prependIcon !== ''"><i :class="['fas', prependIcon]"></i></span>
       <input :type="type"
              :class="['input', square?'square':'',
              flat?'flat':'', solid?'solid':'',
@@ -14,7 +15,8 @@
              :placeholder="placeholder"
              :disabled="disabled"
              :style="{ 'width': width }"/>
-      <span :class="['append-icon', big?'big-icon':'']" v-if="appendIcon !== ''"><i :class="['fas', appendIcon]"></i></span>
+      <span :class="['append-icon', big?'big-icon':'',
+             responsive?'responsive-icon':'']" v-if="appendIcon !== ''"><i :class="['fas', appendIcon]"></i></span>
     </div>
 </template>
 
@@ -130,7 +132,7 @@
     .responsive-input
       height 30px !important
       width 200px !important
-    .big-icon
+    .responsive-icon
       top 7px !important
     /*.input*/
     /*height 30px !important*/

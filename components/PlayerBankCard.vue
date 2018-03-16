@@ -34,37 +34,6 @@
             :position="playerTypesConversions[player.position]"
             @onPlayerSelected="selectPlayer(player, player.position)"/>
 
-          <!--<template v-for="(_team, _key) in teams">-->
-            <!--<div :key="_key">-->
-              <!--<div class="title-team" >{{ _team.name }}</div>-->
-              <!--<div class="line-team"></div>-->
-              <!--<div>-->
-                <!--v-for="(player, key) in _team.goal_keeper"-->
-                <!--<player-row-card-->
-                  <!--v-for="(player, key) in _team.gol_keeper"-->
-                  <!--:key="key + '-portero'"-->
-                  <!--:player="player"-->
-                  <!--position="ARQUERO"-->
-                  <!--@onPlayerSelected="selectPlayer(player, 'goal_keeper')"/>-->
-
-                <!--<player-row-card-->
-                  <!--v-for="(player, key) in _team.defender" :key="key + '-defensa'" :player="player"-->
-                  <!--position="DEFENSA"-->
-                  <!--@onPlayerSelected="selectPlayer(player, 'defender')"/>-->
-
-                <!--<player-row-card-->
-                  <!--v-for="(player, key) in _team.mid_fielder"-->
-                  <!--:key="key + '-centrocampista'" :player="player" position="CENTROCAMPISTA"-->
-                  <!--@onPlayerSelected="selectPlayer(player, 'mid_fielder')"/>-->
-
-                <!--&lt;!&ndash;v-for="(player, key) in _team.forward"&ndash;&gt;-->
-                <!--<player-row-card-->
-                  <!--v-for="(player, key) in _team.forwarder"-->
-                  <!--:key="key + '-delantero'" :player="player" position="DELANTERO"-->
-                  <!--@onPlayerSelected="selectPlayer(player, 'forward')"/>-->
-              <!--</div>-->
-            <!--</div>-->
-          <!--</template>-->
         </div>
       </no-ssr>
     </div>
@@ -211,8 +180,8 @@
   #player-bank-card
     background #fafafa
   .round-card
-    width 700px
-    max-height calc(100vh - 100px)
+    // width 700px
+    // max-height calc(100vh - 100px)
     background #fafafa
     overflow hidden
 
@@ -220,8 +189,11 @@
   //  white-space: nowrap;
   //  overflow: hidden;
   //  text-overflow: ellipsis;
-  /*.title-text*/
-  /*color: white !important*/
+  @media screen and (max-width: 1222px)
+    .title
+      display: inline-block !important
+      width: 150px;
+
 
   @media screen and (max-width: 1023px)
     .title
@@ -239,7 +211,7 @@
     padding 0px 0px
 
   .content
-    height calc(100vh - 300px)
+    height calc(100vh - 280px)
     overflow-y scroll
     padding-bottom 15px
   .title

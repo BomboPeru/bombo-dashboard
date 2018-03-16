@@ -1,5 +1,6 @@
 <template>
   <div id="dashboard">
+    <sidebar mode="dashboard"/>
     <div class="content">
       <div :class="['section', activeTab === 0?'show':'hide']">
         <ranking-card/>
@@ -35,12 +36,13 @@
   import RankingCard from '../../components/RankingBoard'
   import HistoricMatchCard from '../../components/HistoricMatchCard'
   import TeamCard from '../../components/TeamCard'
+  import Sidebar from '~/components/Sidebar.vue'
 
   export default {
     layout: 'dashboard',
     name: 'dashboard',
     components: {
-      RankingCard, HistoricMatchCard, TeamCard
+      RankingCard, HistoricMatchCard, TeamCard, Sidebar
     },
     computed: {
       activeTab () {

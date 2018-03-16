@@ -222,9 +222,9 @@
     background #fafafa
     padding-bottom 14px
   .round-card
-    width 100%
-    // max-height calc(100vh - 200px)
-    max-height calc(100vh - 227px)
+    // width 100%
+    // max-height calc(100vh - 100px)
+    // max-height calc(100vh - 227px)
     overflow auto
     background #fafafa
   .header
@@ -284,15 +284,17 @@
     height 4px
 
   .empty-players
-    margin 20px 5px
+    padding 20px 5px
     font-family Titillium Web
     text-align center
-    height calc(100vh - 560px)
+    // height calc(45.5vh)
 
   .player-list
     margin-top 14px
+    height calc(100vh - 457px)
+    // height calc(45.5vh)
     /*height: 416px;*/
-    height 363px
+    /*height 363px*/
     overflow-y: auto;
   .input-text
     display inline-block

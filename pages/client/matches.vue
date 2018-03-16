@@ -1,18 +1,22 @@
 <template>
-  <div id="matches">
-    <div class="matches-container">
-      <match-card v-for="(match, i) in matches" :key="i+'-match'" class="match-card"/>
+  <div>
+    <sidebar mode="simple"/>
+    <div id="matches">
+      <div class="matches-container">
+        <match-card v-for="(match, i) in matches" :key="i+'-match'" class="match-card"/>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
   import MatchCard from '../../components/MatchCard'
+  import Sidebar from '~/components/Sidebar.vue'
 
   export default {
     layout: 'dashboard',
     name: 'matches',
-    components: { MatchCard },
+    components: { MatchCard, Sidebar },
     data () {
       return {
         matches: [
