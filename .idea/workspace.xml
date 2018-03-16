@@ -3,20 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="bf24282d-3075-4fc1-a7e6-a1352eba2675" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/components/InputText.vue" afterPath="$PROJECT_DIR$/components/InputText.vue" />
-      <change beforePath="$PROJECT_DIR$/components/MobileMenuSidebar.vue" afterPath="$PROJECT_DIR$/components/MobileMenuSidebar.vue" />
       <change beforePath="$PROJECT_DIR$/components/NewTeamCard.vue" afterPath="$PROJECT_DIR$/components/NewTeamCard.vue" />
-      <change beforePath="$PROJECT_DIR$/components/PlayerBankCard.vue" afterPath="$PROJECT_DIR$/components/PlayerBankCard.vue" />
-      <change beforePath="$PROJECT_DIR$/components/SelectLeagueDialog.vue" afterPath="$PROJECT_DIR$/components/SelectLeagueDialog.vue" />
-      <change beforePath="$PROJECT_DIR$/components/Sidebar.vue" afterPath="$PROJECT_DIR$/components/Sidebar.vue" />
-      <change beforePath="$PROJECT_DIR$/layouts/dashboard.vue" afterPath="$PROJECT_DIR$/layouts/dashboard.vue" />
       <change beforePath="$PROJECT_DIR$/pages/client/createteam.vue" afterPath="$PROJECT_DIR$/pages/client/createteam.vue" />
-      <change beforePath="$PROJECT_DIR$/pages/client/dashboard.vue" afterPath="$PROJECT_DIR$/pages/client/dashboard.vue" />
-      <change beforePath="$PROJECT_DIR$/pages/client/faq.vue" afterPath="$PROJECT_DIR$/pages/faq.vue" />
-      <change beforePath="$PROJECT_DIR$/pages/client/matches.vue" afterPath="$PROJECT_DIR$/pages/client/matches.vue" />
-      <change beforePath="$PROJECT_DIR$/pages/client/profile.vue" afterPath="$PROJECT_DIR$/pages/client/profile.vue" />
-      <change beforePath="$PROJECT_DIR$/pages/client/teams.vue" afterPath="$PROJECT_DIR$/pages/client/teams.vue" />
-      <change beforePath="$PROJECT_DIR$/store/index.js" afterPath="$PROJECT_DIR$/store/index.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -50,11 +38,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="createteam.vue" pinned="false" current-in-tab="true">
+      <file leaf-file-name="createteam.vue" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/pages/client/createteam.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="521">
-              <caret line="278" column="19" lean-forward="true" selection-start-line="278" selection-start-column="19" selection-end-line="278" selection-end-column="19" />
+            <state relative-caret-position="401">
+              <caret line="309" column="6" lean-forward="false" selection-start-line="309" selection-start-column="6" selection-end-line="309" selection-end-column="6" />
               <folding>
                 <element signature="e#611#671#0" expanded="true" />
               </folding>
@@ -62,11 +50,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="NewTeamCard.vue" pinned="false" current-in-tab="false">
+      <file leaf-file-name="NewTeamCard.vue" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/components/NewTeamCard.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="523">
-              <caret line="292" column="19" lean-forward="true" selection-start-line="292" selection-start-column="19" selection-end-line="293" selection-end-column="30" />
+            <state relative-caret-position="714">
+              <caret line="298" column="4" lean-forward="false" selection-start-line="298" selection-start-column="4" selection-end-line="298" selection-end-column="4" />
               <folding>
                 <element signature="n#div#1;n#template#0;n#div#0;n#template#0;n#!!top" expanded="false" />
               </folding>
@@ -149,7 +137,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>identityDocumentRules</find>
       <find>testUserId</find>
       <find>ground-container</find>
       <find>ground</find>
@@ -177,8 +164,9 @@
       <find>title-text</find>
       <find>title</find>
       <find>height</find>
-      <find>new-team-section</find>
       <find>responsive-input</find>
+      <find>new-team-section</find>
+      <find>1023</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -240,10 +228,10 @@
         <option value="$PROJECT_DIR$/components/Sidebar.vue" />
         <option value="$PROJECT_DIR$/components/MobileMenuSidebar.vue" />
         <option value="$PROJECT_DIR$/pages/client/teams.vue" />
-        <option value="$PROJECT_DIR$/pages/client/createteam.vue" />
-        <option value="$PROJECT_DIR$/components/NewTeamCard.vue" />
         <option value="$PROJECT_DIR$/components/PlayerBankCard.vue" />
         <option value="$PROJECT_DIR$/components/InputText.vue" />
+        <option value="$PROJECT_DIR$/pages/client/createteam.vue" />
+        <option value="$PROJECT_DIR$/components/NewTeamCard.vue" />
       </list>
     </option>
   </component>
@@ -442,7 +430,7 @@
       <workItem from="1520801713453" duration="16644000" />
       <workItem from="1520887862463" duration="44802000" />
       <workItem from="1520974093864" duration="61472000" />
-      <workItem from="1521120602902" duration="62611000" />
+      <workItem from="1521120602902" duration="63201000" />
     </task>
     <task id="LOCAL-00001" summary="topbar">
       <created>1518150213086</created>
@@ -780,11 +768,18 @@
       <option name="project" value="LOCAL" />
       <updated>1521223163538</updated>
     </task>
-    <option name="localTasksCounter" value="49" />
+    <task id="LOCAL-00049" summary="making create team more responsive">
+      <created>1521231040129</created>
+      <option name="number" value="00049" />
+      <option name="presentableId" value="LOCAL-00049" />
+      <option name="project" value="LOCAL" />
+      <updated>1521231040129</updated>
+    </task>
+    <option name="localTasksCounter" value="50" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="608728000" />
+    <option name="totallyTimeSpent" value="609318000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="54" y="-11" width="1867" height="1092" extended-state="6" />
@@ -841,7 +836,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Vardy" />
     <MESSAGE value="vardy is cheaper" />
     <MESSAGE value="last change" />
     <MESSAGE value="points in match card" />
@@ -866,7 +860,8 @@
     <MESSAGE value="register redirect to /client/teams" />
     <MESSAGE value="using axios interceptors" />
     <MESSAGE value="naming components" />
-    <option name="LAST_COMMIT_MESSAGE" value="naming components" />
+    <MESSAGE value="making create team more responsive" />
+    <option name="LAST_COMMIT_MESSAGE" value="making create team more responsive" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1196,7 +1191,7 @@
         <state relative-caret-position="0">
           <caret line="6" column="12" lean-forward="false" selection-start-line="6" selection-start-column="12" selection-end-line="6" selection-end-column="12" />
           <folding>
-            <element signature="e#1158#1213#0" expanded="true" />
+            <element signature="e#1158#1213#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1251,16 +1246,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/components/NewTeamCard.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="523">
-          <caret line="292" column="19" lean-forward="true" selection-start-line="292" selection-start-column="19" selection-end-line="293" selection-end-column="30" />
-          <folding>
-            <element signature="n#div#1;n#template#0;n#div#0;n#template#0;n#!!top" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/components/PlayerBankCard.vue">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="749">
@@ -1279,10 +1264,20 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/pages/client/createteam.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="521">
-          <caret line="278" column="19" lean-forward="true" selection-start-line="278" selection-start-column="19" selection-end-line="278" selection-end-column="19" />
+        <state relative-caret-position="401">
+          <caret line="309" column="6" lean-forward="false" selection-start-line="309" selection-start-column="6" selection-end-line="309" selection-end-column="6" />
           <folding>
             <element signature="e#611#671#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/components/NewTeamCard.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="714">
+          <caret line="298" column="4" lean-forward="false" selection-start-line="298" selection-start-column="4" selection-end-line="298" selection-end-column="4" />
+          <folding>
+            <element signature="n#div#1;n#template#0;n#div#0;n#template#0;n#!!top" expanded="false" />
           </folding>
         </state>
       </provider>

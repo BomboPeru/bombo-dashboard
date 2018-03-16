@@ -296,6 +296,11 @@
     /*height: 416px;*/
     /*height 363px*/
     overflow-y: auto;
+
+  @media screen and (max-width: 1023px)
+    .player-list
+      height calc(100vh - 509px)
+
   .input-text
     display inline-block
   .points
@@ -393,8 +398,8 @@
   @media screen and (max-width: 1023px)
     .close-icon
       display block
-    .round-card
-      width 100%
+    /*.round-card*/
+      /*width 100%*/
     /*.soccer-ground*/
       /*width 80%*/
 
