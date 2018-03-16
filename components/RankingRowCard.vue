@@ -3,18 +3,18 @@
       <table>
         <tbody>
           <tr>
-            <td id="position">{{user.place}}</td>
+            <td id="position">{{team.position + 1}}</td>
             <td id="username">
               <div class="ellipsis">
-                {{user.user}}
+                {{team.creator}}
               </div>
             </td>
             <td id="team-name">
               <div class="ellipsis">
-                {{user.team_name}}
+                {{team.name}}
               </div>
             </td>
-            <td id="score">{{Math.round(user.points * 100)/100}}</td>
+            <td id="score">{{Math.round(team.total_points * 100)/100}}</td>
           </tr>
         </tbody>
       </table>
@@ -25,7 +25,7 @@
   export default {
     name: 'ranking-row-card',
     props: {
-      user: Object
+      team: Object
     }
   }
 </script>

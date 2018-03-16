@@ -42,23 +42,34 @@
           <player-row-card v-for="(player, key) in team.players.goal_keeper"
                            :key="key+'-arquero'"
                            mode="selected"
+                           @onSelectCaptain="onSelectCaptain"
+                           :captain-id="isCaptain"
                            :player="player"
                            position="ARQUERO"
                            @onPlayerSelected="deletePlayer(player, 'goal_keeper')"/>
+
           <player-row-card v-for="(player, key) in team.players.defender"
                            :key="key+'-defensa'"
+                           @onSelectCaptain="onSelectCaptain"
+                           :captain-id="isCaptain"
                            mode="selected"
                            :player="player"
                            position="DEFENSA"
                            @onPlayerSelected="deletePlayer(player, 'defender')"/>
+
           <player-row-card v-for="(player, key) in team.players.mid_fielder"
                            :key="key+'-centrocampista'"
+                           @onSelectCaptain="onSelectCaptain"
+                           :captain-id="isCaptain"
                            mode="selected"
                            :player="player"
                            position="CENTROCAMPISTA"
                            @onPlayerSelected="deletePlayer(player, 'mid_fielder')"/>
+
           <player-row-card v-for="(player, key) in team.players.forward"
                            :key="key+'-delantero'"
+                           @onSelectCaptain="onSelectCaptain"
+                           :captain-id="isCaptain"
                            mode="selected"
                            :player="player"
                            position="DELANTERO"
@@ -69,7 +80,7 @@
       <template v-else-if="tabs[activeTab] === 'FORMACION'">
         <div class="ground-container">
           <div style="text-align: center;" class="ground-container">
-            <img src="/team_resources/cancha_4.png" alt="" class="soccer-ground" height="100%">
+            <img src="/team_resources/cancha_4.png" alt="" class="soccer-ground" width="100%" height="100%">
             <!--<img src="../assets/img/cancha.png" alt="" width="100%">-->
           </div>
           <div class="players-layer" ref="playersLayer">
@@ -176,7 +187,8 @@
         maxLimitCost: 100,
         activeTab: 0,
         tabs: ['LISTA', 'FORMACION'],
-        title: 'MI EQUIPO'
+        title: 'MI EQUIPO',
+        isCaptain: ''
       }
     },
     methods: {
@@ -190,6 +202,10 @@
         // } else {
         //   this.activeTab++
         // }
+      },
+      onSelectCaptain (playerId) {
+        this.isCaptain = playerId
+        this.$emit('isCaptain', playerId)
       },
       deletePlayer (player, type) {
         let index = this.team.players[type].indexOf(player)
@@ -317,11 +333,20 @@
     justify-content center
     align-items center
     text-align center
+  .portero-section
+    margin-top: 50px;
+
   .centrocampista-section
     height 100px !important
+    margin-left: 110px;
+    margin-right: 110px;
   .defensa-section
-    margin-left 90px
-    margin-right 90px
+    margin-left: 110px;
+    margin-right: 110px;
+  .delantero-section
+    margin-left: 90px;
+    margin-right: 90px;
+
   .portero-in-ground
   .centrocampista-in-ground
   .delantero-in-ground

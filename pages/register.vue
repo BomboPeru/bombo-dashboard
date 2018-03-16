@@ -88,7 +88,8 @@
         constraints: {
           name: {
             minLength: 3,
-            message: '3 letras como minimo.'
+            message: '3 letras como minimo e inserta tu nombre completo',
+            hasSpaces: true
           },
           email: {
             minLength: 3,
@@ -196,6 +197,9 @@
             if (isValid === false) {
               break
             }
+          }
+          if ( this.constraints[key].hasSpaces !== undefined ) {
+            isValid = /\s/.test(this.user[key])
           }
         }
         return isValid

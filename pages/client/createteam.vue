@@ -2,7 +2,7 @@
     <div id="createteam">
       <player-bank-card :class="['player-bank-card', activeTabView === 0?'show':'hide']" @onPlayerSelected="onPlayerSelected"/>
       <div :class="['new-team-section', (activeTabView === 1)?'show':'hide']">
-        <new-team-card :team="team"/>
+        <new-team-card :team="team" @isCaptain="isCaptain"/>
         <div class="btn-container">
           <div class="button-create rounded elevation" @click="createTeam">Crear</div>
           <!--<div class="button-create rounded elevation">Crear</div>-->
@@ -38,7 +38,11 @@
       }
     },
     methods: {
+      isCaptain (playerId) {
+        this.captain_id = playerId
+      },
       createTeam () {
+        const self = this
         const playerPositions = [
           'goal_keeper', 'defender', 'mid_fielder', 'forward'
         ]
@@ -63,7 +67,7 @@
 
         playerPositions.map(positionName => {
           this.team.players[positionName].map(player => {
-            if (player.is_captain === true) {
+            if (player.internal_id === self.captain_id) {
               totalCaptain += 1
             }
 
@@ -189,6 +193,7 @@
             forward: []
           }
         },
+        captain_id: '',
         saldo: 100,
         constraints: {
           total: 11,

@@ -93,8 +93,8 @@
     },
     mounted () {
       this.matches = []
-      this.fetchMyTeams()
-      this.fetchAllMatches()
+      // this.fetchMyTeams()
+      // this.fetchAllMatches()
     }
   }
 </script>

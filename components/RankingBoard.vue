@@ -3,7 +3,7 @@
       <div class="tabs">
         <div :class="['tab', i === activeTab?'active-tab':'']" v-for="(item, i) in tabs"
              :key="i+'-ranking-tab'" @click="selectTab(i)">
-          {{ item.date }}
+          {{ item.name }}
         </div>
       </div>
       <div class="header-table">
@@ -23,7 +23,7 @@
         <ranking-row-card class="ranking-row-card"
                           v-for="(item, i) in ranking"
                           :key="i+'-ranking-user'"
-                          :user="item"/>
+                          :team="item"/>
       </div>
     </div>
 </template>
@@ -41,7 +41,7 @@
         activeTab: 0,
         tabs: [
           // { id: 1, name: 'Champions', img: '' },
-          { id: 2, date: 'Premier League', img: '' }
+          { id: 2, name: 'Premier League', img: '' }
         ],
         headers: [
           'LUGAR',
@@ -78,7 +78,7 @@
       async fetchRanking () {
         const testTimeId = 'bain1ega70g2mfe993f0'
         let response = await this.$axios.$get('http://api.bombo.pe/api/v2.0/global/ranking/' + testTimeId)
-        this.ranking = response.data.reverse()
+        this.ranking = response.data
       }
     },
     mounted () {

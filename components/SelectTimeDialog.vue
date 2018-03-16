@@ -6,6 +6,7 @@
             <p>Selecciona la fecha en que quieres jugar con tu equipo</p>
             <span style="display: none">{{selectedLeague}}</span>
           </div>
+
           <div class="list-times">
             <div v-for="(time, i) in times"
                  :key="i+'-time-card'"
@@ -19,9 +20,15 @@
               </div>
             </div>
           </div>
+
+          <div class="choose-pay-container">
+            <div :class="['pay-coins', payType=== 1?'pay-selected':'']" @click="pay(1)">PAGAR POR BOMBO COINS</div>
+            <div :class="['pay-credit', payType=== 2?'pay-selected':'']" @click="pay(2)">PAGAR POR CREDITO</div>
+          </div>
+
           <div class="btn-container">
             <div @click="makePlayTeam"
-              :class="['btn-juega-ya', 'elevation', 'rounded-sm', selectedTime=== null?'btn-juega-ya-disabled':'']">APOSTAR</div>
+              :class="['btn-juega-ya', 'elevation', 'rounded-sm', (selectedTime=== null || payType === 0)?'btn-juega-ya-disabled':'']">APOSTAR</div>
           </div>
         </div>
       </dialog-container>
@@ -44,6 +51,7 @@
     },
     data () {
       return {
+        payType: 0,
         times: [],
         selectedTime: null
       }
@@ -57,6 +65,9 @@
       }
     },
     methods: {
+      pay(option) {
+        this.payType = option
+      },
       simpleDateFormat (date) {
         return date.getDate() + '/' + (date.getMonth() + 1) + '/' + date.getFullYear()
       },
@@ -83,18 +94,19 @@
 
         const timeId = this.times[this.selectedTime].id
         const teamName = this.$store.state.team.teamNameToMakePlay
+        const payType = this.payType === 1? 'coins' : 'credit'
         try {
           const userId = this.$store.getters['auth/getUserId']
           let response = await this.$axios.$post('http://api.bombo.pe/api/v2.0/users/' + userId + '/to-play', {
             team_name: teamName,
             league_id: this.selectedLeague,
             time_id: timeId,
-            pay_type: 'credit'
+            pay_type: payType
           })
 
           this.$store.dispatch('turnOnSnackbar', 'Equipo puesto en el juego!')
           setTimeout(() => {
-            // window.location.reload(true)
+            window.location.reload(true)
           }, 1000)
 
         } catch (e) {
@@ -133,7 +145,7 @@
   .select-time-card
     font-family: Titillium Web
     width 400px
-    height 400px
+    height 500px
     padding 10px
     background: #fafafa
     position relative
@@ -142,7 +154,6 @@
     flex-wrap wrap
     justify-content: space-between;
     overflow: auto;
-    padding-bottom 50px
   .btn-container
     position absolute
     bottom 0
@@ -159,16 +170,39 @@
     height 40px
     color white
     font-family: Titillium Web
+  .choose-pay-container
+    width 100%
+    display flex
+    flex-wrap wrap
+    padding-bottom 50px
+    padding-top 20px
+  .pay-coins
+  .pay-credit
+    margin 4px 4px
+    cursor pointer
+    display inline-block
+    padding 4px 10px
+    height 30px
+    border-radius 8px
+    border 2px solid red
+    color red
+    font-weight bold
+    font-family: Titillium Web
+  .pay-selected
+    color white
+    background red
 
   .card-time
     cursor pointer
     width 110px
     height 50px
     margin 4px
-  .card-time-selected
-    box-shadow: 0 3px 15px rgb(37, 191, 137), 0 10px 32px rgba(0, 0, 0, .23)
-    // box-shadow 0 3px 8px rgba(63, 212, 65, .70), 2 1px 3px rgba(27, 185, 92, .70)
-    // box-shadow 0 3px 16px rgba(0, 0, 0, .16), 0 10px 32px rgba(0, 0, 0, .23)
+  .card-time-selected .date
+    background: white
+    color #243237
+  .card-time-selected .ronda
+    background: #243237;
+    color white
 
   .title
     font-weight bold

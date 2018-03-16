@@ -35,7 +35,7 @@
       </template>
 
       <template v-else-if="mode === 'selected'">
-          <div class="hover-select-captain" @click="selectCaptain(player)">
+          <div class="hover-select-captain" @click="selectCaptain()">
           <span class="select-text">SELECCIONAR COMO CAPITAN</span>
         </div>
 
@@ -44,7 +44,7 @@
           <tr>
             <td style="width: 12%;">
               <div class="captain-band"
-                   v-if="isCaptain">
+                   v-if="captainId === player.internal_id">
                 <img
                      src="/team_resources/band_captain.png"
                      height="42px" alt="">
@@ -96,17 +96,6 @@
         </table>
         <div class="right-cover" :style="{ 'background': kind[position].color, 'width': '21%'  }"></div>
 
-        <!--<div class="name-team3">-->
-          <!--<div class="name3">{{ player.name }}</div>-->
-          <!--<div class="team3">{{ player.team }}</div>-->
-        <!--</div>-->
-        <!--<div :class="['posicion3', kind[position].label]">-->
-          <!--<span>{{position.substring(0,3)}}</span>-->
-        <!--</div>-->
-        <!--<div class="points3-container">-->
-          <!--<span>Puntos</span>-->
-          <!--<span class="points3">{{ player.points }}</span>-->
-        <!--</div>-->
       </template>
 
       <template v-else-if="mode === 'small-b'">
@@ -151,7 +140,8 @@
       mode: {
         type: String,
         default: 'bank'
-      }
+      },
+      captainId: String
     },
     computed: {
       shirtUrl () {
@@ -201,7 +191,6 @@
     },
     data () {
       return {
-        isCaptain: false,
         kind: {
           'ARQUERO': { label: 'portero', color: '#67A6F0' },
           'DEFENSA': { label: 'defensa', color: '#A789E8' },
@@ -214,9 +203,9 @@
       selectPlayer (player) {
         this.$emit('onPlayerSelected', player)
       },
-      selectCaptain(player) {
-        this.isCaptain = !this.isCaptain
-        player.is_captain = this.isCaptain
+      selectCaptain() {
+        const playerId = this.player.internal_id
+        this.$emit('onSelectCaptain', playerId)
       }
     }
   }
