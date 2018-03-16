@@ -45,6 +45,10 @@ export default {
     if (process.server) return
     window.localStorage.setItem('token', value)
   },
+  setUserId: function (value) {
+    if (process.server) return
+    window.localStorage.setItem('userId', value)
+  },
   getToken: function () {
     if (process.server) return
     const token = window.localStorage.getItem('token')

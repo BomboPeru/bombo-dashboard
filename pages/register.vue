@@ -84,6 +84,7 @@
   import InputSelect from '../components/InputSelect'
   import FormAlert from '../components/FormAlert'
   import CcCheckbox from '../components/CcCheckbox'
+  import auth from '../utils/auth'
 
   export default {
     name: 'register',
@@ -120,9 +121,9 @@
             ]
           },
           identity_document: {
-            message: 'Mayor a 8 caracteres',
+            message: 'Ingresa tu DNI',
             rules: [
-              a => a.length > 8
+              a => a.length === 7
             ]
           },
           terms: {
@@ -179,29 +180,22 @@
             try {
               let response = await this.$axios.$post('http://api.bombo.pe/auth/signup', this.user )
 
-                // setTimeout(() => {
-                //   this.$router.push('/login')
-                // }, 500)
-
-              this.$axios.post('http://api.bombo.pe/auth/login', {
+              let responseLogin = await this.$axios.post('http://api.bombo.pe/auth/login', {
                 username: this.user.username,
                 password: this.user.password
-              }).then(res => {
-                auth.setToken(res.data.token)
-                this.$router.push('/client/teams')
+              })
 
-                // loading off
-                this.$store.state.isLoading = false
-              })
-              .catch(e => {
-                // loading off
-                this.$store.state.isLoading = false
-                console.log(e)
-                this.message = e.response.data.error
-              })
+              auth.setToken(responseLogin.data.token)
+              auth.setUserId(response.user.id)
+
+              this.$router.push('/client/teams')
+              // loading off
+              this.$store.state.isLoading = false
+
             } catch (e) {
               // loading off
               this.$store.state.isLoading = false
+              console.log(e)
               this.message = e.response.data.error
             }
           } else {
