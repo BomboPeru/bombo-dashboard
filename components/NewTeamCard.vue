@@ -79,7 +79,7 @@
 
       <template v-else-if="tabs[activeTab] === 'FORMACION'">
         <div class="ground-container">
-          <div style="text-align: center; overflow: hidden;" class="ground-container">
+          <div style="text-align: center; overflow: hidden;" class="stadium-container">
             <img src="/team_resources/cancha_4.png" alt="" class="soccer-ground" width="130%" height="140%">
             <!--<img src="../assets/img/cancha.png" alt="" width="100%">-->
           </div>
@@ -292,9 +292,6 @@
   .player-list
     margin-top 14px
     height calc(100vh - 457px)
-    // height calc(45.5vh)
-    /*height: 416px;*/
-    /*height 363px*/
     overflow-y: auto;
 
   @media screen and (max-width: 1023px)
@@ -323,6 +320,9 @@
   .ground-container
     padding 15px 15px
     position relative
+    height calc(100vh - 457px)
+    overflow-y: auto;
+
   .players-layer
     position absolute
     top 0
@@ -394,25 +394,17 @@
 
   .soccer-ground
     position: relative;
-    left: -50px;
+    left: -13%;
   @media screen and (max-width: 1023px)
     .close-icon
       display block
     /*.round-card*/
       /*width 100%*/
-    /*.soccer-ground*/
-      /*width 80%*/
 
   @media screen and (max-width: 415px)
     .close-icon
       left: 20px
 
-    /*
-    .soccer-ground
-      width: 141%;
-      position: relative;
-      left: -43px;
-    */
     .round-card
       overflow-x hidden
       overflow-y auto

@@ -164,9 +164,6 @@
       }
     },
     mounted () {
-      setTimeout(() => {
-        console.log(this.team)
-      }, 2000)
     }
   }
 </script>
