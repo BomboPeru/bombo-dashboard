@@ -8,6 +8,9 @@
     <transition name="loading">
       <loading-screen v-if="isLoading"/>
     </transition>
+    <transition name="loading">
+      <short-loading-screen v-if="isShortLoading"/>
+    </transition>
 
     <login-dialog :is-open="login" @onCollapse="closeLoginDialog"/>
     <terms-conditions-dialog :is-open="termsAndConditions" @onCollapse="closeTermsConditionsDialog"/>
@@ -19,15 +22,19 @@
   import LoginDialog from '../components/LoginDialog'
   import TermsConditionsDialog from '../components/TermsConditionsDialog'
   import LoadingScreen from '~/components/LoadingScreen'
+  import ShortLoadingScreen from '~/components/ShortLoadingScreen'
 
   export default {
     name: 'default',
     components: {
-      BasicToolbar, LoginDialog, TermsConditionsDialog, LoadingScreen
+      BasicToolbar, LoginDialog, TermsConditionsDialog, LoadingScreen, ShortLoadingScreen
     },
     computed: {
       isLoading () {
         return this.$store.state.isLoading
+      },
+      isShortLoading () {
+        return this.$store.state.isShortLoading
       },
       login () {
         return this.$store.getters.loginDialog

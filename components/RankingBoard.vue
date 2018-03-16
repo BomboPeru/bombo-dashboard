@@ -49,26 +49,7 @@
           'NOMBRE DE EQUIPO',
           'PUNTAJE'
         ],
-        ranking: [
-          // {
-          //   user: 'rodrigor99',
-          //   place: 7,
-          //   team_name: 'Romanticos',
-          //   points: 39.6
-          // },
-          // {
-          //   user: 'rodrigor99',
-          //   place: 7,
-          //   team_name: 'Romanticos',
-          //   points: 39.6
-          // },
-          // {
-          //   user: 'rodrigor99',
-          //   place: 7,
-          //   team_name: 'Romanticos',
-          //   points: 39.6
-          // }
-        ]
+        ranking: []
       }
     },
     methods: {
@@ -77,8 +58,10 @@
       },
       async fetchRanking () {
         const testTimeId = 'bain1ega70g2mfe993f0'
+        this.$store.state.isLoading = true
         let response = await this.$axios.$get('http://api.bombo.pe/api/v2.0/global/ranking/' + testTimeId)
         this.ranking = response.data
+        this.$store.state.isLoading = false
       }
     },
     mounted () {

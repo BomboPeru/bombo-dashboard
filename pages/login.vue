@@ -9,6 +9,9 @@
        <div class="btn-login" @click="login">
          ENTRAR
        </div>
+       <div class="error">
+         {{message}}
+       </div>
      </div>
    </div>
 </template>
@@ -23,7 +26,8 @@
     data () {
       return {
         username: '',
-        password: ''
+        password: '',
+        message: ''
       }
     },
     methods: {
@@ -54,7 +58,6 @@
           .catch(err => {
             // loading off
             this.$store.state.isLoading = false
-
             console.log(err)
             this.message = 'username y/o password no es correcto.'
           })
@@ -89,6 +92,12 @@
     font-size 22px
     font-family: Titillium Web;
     font-weight bold
+  .error
+    padding-top 10px
+    font-size 20px
+    font-family: Titillium Web;
+    font-weight bold
+    color #ec6a1f
 
   #login
     background url(/login_background.jpeg)

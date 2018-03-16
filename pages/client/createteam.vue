@@ -118,6 +118,8 @@
         const leagueId = this.$store.getters['createteam/leagueid']
 
         console.log(userId, leagueId)
+
+        this.$store.state.isShortLoading = true
         this.$axios.$post('http://api.bombo.pe/api/v2.0/users/'+ userId + '/create-team', {
           team: {
             league_id: leagueId,
@@ -125,9 +127,15 @@
             players: teamToCreate
           }
         }).then(res => {
+          this.$store.state.isShortLoading = false
           this.$store.dispatch('turnOnSnackbar', 'Equipo Creado!. Visita Mis Equipos para jugar')
           console.log(res)
+          setTimeout(() => {
+            this.$router.push('/client/teams')
+          }, 1000)
+
         }).catch(e => {
+          this.$store.state.isShortLoading = false
           this.$store.dispatch('turnOnSnackbar', 'Error al crear Equipo, pruebalo mas tarde.')
           console.log(e)
         })

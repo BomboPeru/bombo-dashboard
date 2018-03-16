@@ -35,6 +35,10 @@
     <transition name="loading">
       <loading-screen v-if="isLoading"/>
     </transition>
+
+    <transition name="loading">
+      <short-loading-screen v-if="isShortLoading"/>
+    </transition>
   </div>
 </template>
 
@@ -50,6 +54,7 @@
   import SelectTimeDialog from '~/components/SelectTimeDialog'
   import MenuSidebar from '~/components/MenuSidebar'
   import LoadingScreen from '~/components/LoadingScreen'
+  import ShortLoadingScreen from '~/components/ShortLoadingScreen'
 
   import auth from '~/utils/auth'
 
@@ -58,11 +63,14 @@
     components: {
       Toolbar, Sidebar, FloatingContainer, IconButton,
       SelectLeagueDialog, SignOutDialog, Snackbar, BomboPayments,
-      SelectTimeDialog, MenuSidebar, LoadingScreen
+      SelectTimeDialog, MenuSidebar, LoadingScreen, ShortLoadingScreen
     },
     computed: {
       isLoading () {
         return this.$store.state.isLoading
+      },
+      isShortLoading () {
+        return this.$store.state.isShortLoading
       },
       sidebarAndNavbar () {
         let notAllowed = []

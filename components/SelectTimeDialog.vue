@@ -75,15 +75,19 @@
         this.selectedTime = i
       },
       fetchTimes () {
+        this.$store.state.isShortLoading = true
+
         this.$axios.get('http://api.bombo.pe/api/v2.0/leagues/all').then(res => {
-          const league = res.data.data.filter(league => league.id === this.$store.state.team.selectedLeague)
-          this.times = league[0].times.map(time => {
-            time.datestart = this.simpleDateFormat((new Date(time.start)))
-            return time
-          })
-          }).catch(e => {
-            console.log(e)
-          })
+            const league = res.data.data.filter(league => league.id === this.$store.state.team.selectedLeague)
+            this.times = league[0].times.map(time => {
+              time.datestart = this.simpleDateFormat((new Date(time.start)))
+              return time
+            })
+          this.$store.state.isShortLoading = false
+        }).catch(e => {
+            this.$store.state.isShortLoading = false
+            this.$store.dispatch('turnOnSnackbar', e)
+        })
       },
       closeDialog () {
         this.$emit('onCollapse', false)
@@ -94,9 +98,11 @@
 
         const timeId = this.times[this.selectedTime].id
         const teamName = this.$store.state.team.teamNameToMakePlay
-        const payType = this.payType === 1? 'coins' : 'credit'
+        const payType = this.payType === 1? 'bombocoins' : 'credit'
         try {
           const userId = this.$store.getters['auth/getUserId']
+          this.$store.state.isShortLoading = true
+
           let response = await this.$axios.$post('http://api.bombo.pe/api/v2.0/users/' + userId + '/to-play', {
             team_name: teamName,
             league_id: this.selectedLeague,
@@ -104,14 +110,15 @@
             pay_type: payType
           })
 
+          this.$store.state.isShortLoading = false
           this.$store.dispatch('turnOnSnackbar', 'Equipo puesto en el juego!')
           setTimeout(() => {
             window.location.reload(true)
           }, 1000)
-
         } catch (e) {
-          console.log(e)
-          this.$store.dispatch('turnOnSnackbar', 'Error al procesar Equipo, pruebalo mas tarde.')
+          console.log(e.response.data)
+          this.$store.state.isShortLoading = false
+          this.$store.dispatch('turnOnSnackbar', e.response.data.error)
         }
       }
     },

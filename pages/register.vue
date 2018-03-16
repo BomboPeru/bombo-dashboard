@@ -5,62 +5,70 @@
       <div class="center">
         <div class="card-container elevation rounded-sm">
           <p class="title">Datos personales</p>
-          <form-alert onlytext label="Nombre"
-                      :message="constraints['name'].message"
-                      :correct="constraints['name'].minLength <= user.name.length"/>
+
+          <div class="warning" v-if="!isValidInput(constraints.name.rules, user.name)">
+            {{ constraints.name.message }}
+          </div>
           <div>
             <input-text placeholder="Nombre" v-model="user.name" big solid/>
           </div>
-          <form-alert onlytext label="Correo electronico"
-                      :message="constraints['email'].message"
-                      :correct="constraints['email'].minLength <= user.email.length"/>
+
+          <div class="warning" v-if="!isValidInput(constraints.email.rules, user.email)">
+            {{ constraints.email.message }}
+          </div>
           <div>
             <input-text placeholder="Correo electronico" v-model="user.email" big solid/>
           </div>
-          <form-alert onlytext  label="Documento de identidad (DNI)"
-                      :message="constraints['identity_document'].message"
-                      :correct="constraints['identity_document'].minLength <= user.identity_document.length"/>
+
+          <div class="warning" v-if="!isValidInput(constraints.identity_document.rules, user.identity_document)">
+            {{ constraints.identity_document.message }}
+          </div>
           <div>
             <input-text placeholder="Documento de identidad (DNI)" big solid v-model="user.identity_document"/>
           </div>
           <div class="birthday-label-container">
             <label class="birthday-label">Fecha de nacimiento</label>
           </div>
+
           <div class="birthday-container">
             <input-text placeholder="Fecha de nacimiento" big solid v-model="user.birthday_fake" type="date"/>
-            <!--<form-alert :message="constraints['identity_document'].message"-->
-                        <!--:correct="constraints['identity_document'].minLength <= user.identity_document.length"/>-->
           </div>
           <p class="title">Datos de la cuenta</p>
-          <form-alert onlytext  label="Username"
-                      :message="constraints['username'].message"
-                      :correct="constraints['username'].minLength <= user.username.length"/>
+
+
+          <div class="warning" v-if="!isValidInput(constraints.username.rules, user.username)">
+            {{ constraints.username.message }}
+          </div>
           <div>
             <input-text placeholder="Nombre de usuario" big solid v-model="user.username"/>
-            <!--<input-text placeholder="Nombre de usuario" square flat v-model="user.username" class="form-input"/>-->
           </div>
-          <form-alert onlytext  label="Password"
-                      :message="constraints['password'].message"
-                      :correct="constraints['password'].minLength <= user.password.length"/>
+
+          <div class="warning" v-if="!isValidInput(constraints.password.rules, user.password)">
+            {{ constraints.password.message }}
+          </div>
           <div>
             <input-text placeholder="Contrasena" big solid v-model="user.password" type="password"/>
           </div>
 
+          <div class="warning" v-if="!isValidInput(constraints.terms.rules, user.terms)">
+            {{ constraints.terms.message }}
+          </div>
           <div style="margin-top: 4px">
-            <cc-checkbox v-model="termsChecked"/>
+            <cc-checkbox v-model="user.terms"/>
             <p class="terms-conditions">
               <!--<input type="checkbox" v-model="termsChecked">-->
-              HE LEIDO Y ACEPTO LOS <span @click="openTermsConditionsDialog">TERMINOS Y CONDICIONES</span>
+              HE LEÍDO Y ACEPTO LOS <span @click="openTermsConditionsDialog">TERMINOS Y CONDICIONES</span>
             </p>
 
           </div>
 
           <div>
             <div class="btn-continue elevation" @click="createUser"
-                 :style="{ 'background': isValidToSubmit?'#25BF89':'#969696' }">
+                 :style="{ 'background': isValidForm?'#25BF89':'#969696' }">
               Registrar
             </div>
           </div>
+          <div class="warning"> {{message}} </div>
         </div>
       </div>
       <div class="bottom-container">
@@ -84,7 +92,7 @@
     },
     data () {
       return {
-        termsChecked: false,
+        message: '',
         nameRules: [
           a => a.length > 3,
           a => /\s/.test(a)
@@ -100,29 +108,41 @@
         ],
         constraints: {
           name: {
-            minLength: 3,
-            message: '3 letras como minimo e inserta tu nombre completo',
-            hasSpaces: true
+            message: 'Ingresa tu nombre y apellidos',
+            rules: [
+              a => a.length > 3,
+              a => /\s/.test(a)
+            ]
           },
           email: {
-            minLength: 3,
-            message: '3 letras como minimo.'
+            message: 'Inserta un e-mail valido',
+            rules: [
+              a => /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(a)
+            ]
           },
           username: {
-            minLength: 3,
-            message: '3 letras como minimo.'
+            message: 'Mayor a 6 caracteres',
+            rules: [
+              a => a.length >= 6
+            ]
           },
           password: {
-            minLength: 3,
-            message: '3 letras como minimo.'
+            message: 'Mayor a 8 caracteres',
+            rules: [
+              a => a.length >= 8
+            ]
           },
           identity_document: {
-            minLength: 9,
-            message: '9 letras como minimo.'
+            message: 'Mayor a 8 caracteres',
+            rules: [
+              a => a.length > 8
+            ]
           },
           terms: {
-            checked: true,
-            message: 'Debe aceptar los terminos y condiciones'
+            message: 'Debes aceptar los terminos y condiciones',
+            rules: [
+              a => a === true
+            ]
           }
         },
         user: {
@@ -133,11 +153,26 @@
           identity_document: '',
           email: '',
           username: '',
-          password: ''
+          password: '',
+          terms: false
         }
       }
     },
     methods: {
+      isValidInput: function (rules, input) {
+        let isValid = true
+
+        for (let i = 0; i < rules.length; i++) {
+          let fn = rules[i]
+          isValid = fn(input)
+          if (isValid === false) break
+        }
+
+        return isValid
+      },
+      validateRule: function (fn, input) {
+        return fn(input)
+      },
       openLoginDialog () {
         this.$store.commit('openLoginDialog')
       },
@@ -145,77 +180,57 @@
         this.$store.commit('openTermsConditionsDialog')
       },
       async createUser () {
-        if (this.isValidToSubmit) {
-          if (this.user.date !== '' && this.user.email !== ''
+        if (this.isValidForm) {
+          if (this.user.name !== '' && this.user.email !== ''
             && this.user.username !== '' && this.user.password!== '') {
 
             let birthdayDate = new Date(this.user.birthday_fake)
             this.user.birthday = birthdayDate.toISOString()
 
+            // loading on
+            this.$store.state.isLoading = true
             try {
               let response = await this.$axios.$post('http://api.bombo.pe/auth/signup', this.user )
-              if (response.error !== null) {
-                this.$store.dispatch('turnOnSnackbar', 'Hubo un problema al momento del registro.')
-              } else {
-                this.$store.dispatch('turnOnSnackbar', 'Usuario regitrado!')
-                setTimeout(() => {
-                  this.$router.push('/login')
-                }, 500)
 
-                // this.$axios.post('http://api.bombo.pe/auth/login', {
-                //   username: this.user.username,
-                //   password: this.user.password
-                // }).then(res => {
-                //     auth.setToken(res.data.token)
-                //     this.$router.push('/client/teams')
-                //   })
-                //   .catch(err => {
-                //     console.log(err)
-                //   })
-              }
+                // setTimeout(() => {
+                //   this.$router.push('/login')
+                // }, 500)
+
+              this.$axios.post('http://api.bombo.pe/auth/login', {
+                username: this.user.username,
+                password: this.user.password
+              }).then(res => {
+                auth.setToken(res.data.token)
+                this.$router.push('/client/teams')
+
+                // loading off
+                this.$store.state.isLoading = false
+              })
+              .catch(e => {
+                // loading off
+                this.$store.state.isLoading = false
+                console.log(e)
+                this.message = e.response.data.error
+              })
             } catch (e) {
-              this.$store.dispatch('turnOnSnackbar', 'Hubo un problema al momento del registro.')
+              // loading off
+              this.$store.state.isLoading = false
+              this.message = e.response.data.error
             }
           } else {
             console.log('invalid data')
           }
         }
-        console.log(this.isValidToSubmit)
+        console.log('isValidForm', this.isValidForm)
       }
     },
     computed: {
-      isValidToSubmit () {
+      isValidForm () {
+        const self = this
         let isValid = true
         for (let key in this.constraints) {
-          if ( this.constraints[key].minLength !== undefined ) {
-            isValid = this.constraints[key].minLength <= this.user[key].length
-            if (isValid === false) {
-              break
-            }
-          }
-          if ( this.constraints[key].checked !== undefined ) {
-            isValid = this.constraints[key].checked === this.termsChecked
-            if (isValid === false) {
-              break
-            }
-          }
-          if ( this.constraints[key].hasSpaces !== undefined ) {
-            isValid = /\s/.test(this.user[key])
-            if (isValid === false) {
-              break
-            }
-          }
-        }
-        return isValid
-      },
-      validEmailRules () {
-        let isValid = true
-        for (let i = 0; i < this.emailRules.length; i++) {
-          let fn = this.emailRules[i]
-          isValid = fn(this.user.email)
-          if (isValid === false) {
-            break
-          }
+          isValid = this.isValidInput(self.constraints[key].rules, self.user[key])
+          if (!isValid) break
         }
         return isValid
       }
@@ -328,6 +343,12 @@
     left: 0;
     font-size: 11px;
     z-index: 9;
+  .warning
+    color orangered
+    font-family: Titillium Web;
+    font-weight: bold;
+    font-size 16px
+
   @media screen and (max-width: 1023px)
     .title-bar
       font-size 16px
