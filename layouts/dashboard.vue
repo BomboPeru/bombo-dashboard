@@ -3,7 +3,9 @@
     <div id="cover-layout">
       <toolbar/>
       <sidebar v-if="sidebarAndNavbar" :sidebar="sidebar"/>
+
       <nuxt :class="{ 'margin-sidebar': sidebar }"/>
+
       <floating-container bottom-right class="fab">
         <icon-button :text="'S/ ' + saldo"
                      icon-direction="right"
@@ -131,6 +133,11 @@
       }
     },
     beforeCreate () {
+      const user = this.$store.getters['auth/getUser']
+      if (user === null) {
+        console.log('null data in localStorage')
+        this.$router.push('/login')
+      }
     }
   }
 </script>

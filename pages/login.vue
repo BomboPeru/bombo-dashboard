@@ -50,6 +50,8 @@
           username: this.username,
           password: this.password
         }).then(res => {
+
+            this.$axios.setToken(res.data.token, 'Bearer')
             this.$store.commit('auth/setToken', res.data.token)
             setTimeout(() => {
               this.fetchUser()
@@ -94,7 +96,7 @@
     font-weight bold
   .error
     padding-top 10px
-    font-size 20px
+    font-size 18px
     font-family: Titillium Web;
     font-weight bold
     color #ec6a1f

@@ -60,6 +60,8 @@
       async fetchUser() {
         const user = this.$store.getters['auth/getUser']
 
+        if (user === null) return
+
         this.user.name = user.name
         this.user.email = user.email
         this.user.identity_document = user.identity_document

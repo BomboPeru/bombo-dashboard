@@ -12,7 +12,7 @@
           <nuxt-link to="/login" class="login">Inicia sesión</nuxt-link>
         </div>
       </div>
-      <div class="menu-btn">
+      <div :class="['menu-btn', !nonLanding?'dark-menu':'white-menu']" >
         <i class="fas fa-bars fa-2x" @click="openMenu"></i>
       </div>
       <transition name="menu">
@@ -127,12 +127,15 @@
 
   .menu-btn
     cursor pointer
-    color #243237
     float right
     display none
     position relative
     top 29px
     right 31px
+  .dark-menu
+    color #243237 !important
+  .white-menu
+    color white !important
   .menu-btn i
     font-size: 24px !important;
   .menu-container

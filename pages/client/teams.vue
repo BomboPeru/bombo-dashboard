@@ -88,7 +88,6 @@
     },
     data () {
       return {
-        // testUserId: '58e87f29-3b46-45a1-8069-5c7189bfa805',
         typeTeams: this.$store.state.team.typeTeams,
         mteams: {
           0: [],

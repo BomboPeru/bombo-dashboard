@@ -11,7 +11,7 @@
               <li v-for="(item, i) in leagues" :key="i"
                   :class="['card-league', 'elevation', 'rounded', item.coming_soon===true?'blurred':'']"
                   @click="onClickLeague(item)">
-                <img :src="item.image===''? '/leagues/premier_league.png':item.image" alt="" @click="selectLeague(i)">
+                <img :src="item.image===''? '/leagues/premier_league.png':item.image" alt="" @click="selectLeague(item)">
               </li>
             </ul>
           </div>
@@ -38,8 +38,11 @@
       }
     },
     methods: {
-      selectLeague (i) {
+      selectLeague (item) {
         // this.leages[i]
+        this.$store.commit('createteam/setleagueid', item.id)
+        this.$store.commit('team/turnOffSelectLeageDialog')
+
         this.$router.push({ path: '/client/createteam'})
       },
       closeDialog () {
@@ -47,23 +50,22 @@
       },
       onClickLeague(item) {
       //  go to create team
-        this.$store.commit('team/turnOffSelectLeageDialog')
         this.$store.commit('createteam/setleagueid', item.id)
+        this.$store.commit('team/turnOffSelectLeageDialog')
 
         this.$router.push({ path: '/client/createteam'})
       }
     },
     mounted () {
-      const token = localStorage.getItem('token')
 
-      this.$axios.get('http://api.bombo.pe/api/v2.0/leagues/all', { headers: { 'Authorization': 'Bearer '  +  token} })
-        .then(res => {
-          // this.$store.commit('createteam/setleagueid', res.data.data.id)
-          this.leagues = res.data.data
-        })
-        .catch(e => {
-          console.log(e)
-        })
+      // this.$axios.get('http://api.bombo.pe/api/v2.0/leagues/all')
+      //   .then(res => {
+      //     // this.$store.commit('createteam/setleagueid', res.data.data.id)
+      //     this.leagues = res.data.data
+      //   })
+      //   .catch(e => {
+      //     console.log(e)
+      //   })
     }
   }
 </script>

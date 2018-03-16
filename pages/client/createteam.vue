@@ -242,9 +242,9 @@
       }
     },
     beforeCreate () {
+      if (process.server) return
       if (this.$store.getters['createteam/leagueid'] === null) {
         this.$router.push('/client/teams')
-        return
       }
     },
     beforeDestroy () {

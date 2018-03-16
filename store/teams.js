@@ -35,10 +35,9 @@ const team = {
     async fetchUserData (context) {
       if (process.server) return
       const userId = localStorage.getItem('userId')
-      const token = localStorage.getItem('token')
+      // const token = localStorage.getItem('token')
 
-      let response = await this.$axios.$get('http://api.bombo.pe/api/v2.0/users/' + userId,
-        { headers: { 'Authorization': 'Bearer '  +  token} })
+      let response = await this.$axios.$get('http://api.bombo.pe/api/v2.0/users/' + userId)
       //
       let teams = {}
       teams['0'] = response.data.playing_teams === null ? [] : response.data.playing_teams
