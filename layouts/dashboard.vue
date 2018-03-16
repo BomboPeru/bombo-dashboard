@@ -2,6 +2,7 @@
   <div class="background">
     <div id="cover-layout">
       <toolbar/>
+
       <sidebar v-if="sidebarAndNavbar" :sidebar="sidebar"/>
 
       <nuxt :class="{ 'margin-sidebar': sidebar }"/>
@@ -32,7 +33,7 @@
 
     <snackbar :show="snackbar" :message="snackbarMessage"/>
 
-    <menu-sidebar/>
+    <mobile-menu-sidebar/>
 
     <transition name="loading">
       <loading-screen v-if="isLoading"/>
@@ -54,7 +55,7 @@
   import SignOutDialog from '~/components/SignOutDialog'
   import BomboPayments from '~/components/BomboPayments'
   import SelectTimeDialog from '~/components/SelectTimeDialog'
-  import MenuSidebar from '~/components/MenuSidebar'
+  import MobileMenuSidebar from '~/components/MobileMenuSidebar'
   import LoadingScreen from '~/components/LoadingScreen'
   import ShortLoadingScreen from '~/components/ShortLoadingScreen'
 
@@ -65,7 +66,7 @@
     components: {
       Toolbar, Sidebar, FloatingContainer, IconButton,
       SelectLeagueDialog, SignOutDialog, Snackbar, BomboPayments,
-      SelectTimeDialog, MenuSidebar, LoadingScreen, ShortLoadingScreen
+      SelectTimeDialog, MobileMenuSidebar, LoadingScreen, ShortLoadingScreen
     },
     computed: {
       isLoading () {
