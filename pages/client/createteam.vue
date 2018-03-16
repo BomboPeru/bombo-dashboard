@@ -24,9 +24,6 @@
       activeTabView () {
         return this.$store.getters['createteam/activeTabView']
       },
-      testUserId () {
-        return this.$store.getters.testUserId
-      },
       totalCost () {
         const types = ['goal_keeper', 'mid_fielder', 'defender', 'forward']
         let cost = 0

@@ -35,7 +35,6 @@
           </div>
           <p class="title">Datos de la cuenta</p>
 
-
           <div class="warning" v-if="!isValidInput(constraints.username.rules, user.username)">
             {{ constraints.username.message }}
           </div>
@@ -59,7 +58,6 @@
               <!--<input type="checkbox" v-model="termsChecked">-->
               HE LEÍDO Y ACEPTO LOS <span @click="openTermsConditionsDialog">TERMINOS Y CONDICIONES</span>
             </p>
-
           </div>
 
           <div>
@@ -68,12 +66,14 @@
               Registrar
             </div>
           </div>
+
           <div class="warning"> {{message}} </div>
+
         </div>
       </div>
       <div class="bottom-container">
         <div class="link-login">
-          Ya eres usuario? <span @click="openLoginDialog">Inicia Sesion</span>
+          Ya eres usuario? <span @click="goToLogin">Inicia Sesion</span>
         </div>
       </div>
     </div>
@@ -93,19 +93,6 @@
     data () {
       return {
         message: '',
-        nameRules: [
-          a => a.length > 3,
-          a => /\s/.test(a)
-        ],
-        emailRules: [
-          a => /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(a)
-        ],
-        usernameAndPasswordRules: [
-          a => a.length >= 6
-        ],
-        identityDocumentRules: [
-          a => a.length > 8
-        ],
         constraints: {
           name: {
             message: 'Ingresa tu nombre y apellidos',
@@ -173,8 +160,8 @@
       validateRule: function (fn, input) {
         return fn(input)
       },
-      openLoginDialog () {
-        this.$store.commit('openLoginDialog')
+      goToLogin () {
+        this.$router.push('/login')
       },
       openTermsConditionsDialog () {
         this.$store.commit('openTermsConditionsDialog')

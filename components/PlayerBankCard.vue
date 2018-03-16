@@ -145,6 +145,8 @@
       },
       async fetchPlayers () {
 
+        if (process.server) return
+
         // loading on
         this.$store.state.isLoading = true
 

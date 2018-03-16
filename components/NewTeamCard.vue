@@ -79,8 +79,8 @@
 
       <template v-else-if="tabs[activeTab] === 'FORMACION'">
         <div class="ground-container">
-          <div style="text-align: center;" class="ground-container">
-            <img src="/team_resources/cancha_4.png" alt="" class="soccer-ground" width="100%" height="100%">
+          <div style="text-align: center; overflow: hidden;" class="ground-container">
+            <img src="/team_resources/cancha_4.png" alt="" class="soccer-ground" width="130%" height="140%">
             <!--<img src="../assets/img/cancha.png" alt="" width="100%">-->
           </div>
           <div class="players-layer" ref="playersLayer">
@@ -121,6 +121,7 @@
                   <div class="player-info">
                     <div><span class="player-name">{{ player.name }}</span></div>
                   </div>
+
                 </span>
               </div>
             </div>
@@ -204,7 +205,7 @@
       },
       onSelectCaptain (playerId) {
         this.isCaptain = playerId
-        this.$emit('isCaptain', playerId)
+        this.$emit()
       },
       deletePlayer (player, type) {
         let index = this.team.players[type].indexOf(player)
@@ -384,22 +385,27 @@
     overflow: hidden;
     text-overflow: ellipsis;
 
+  .soccer-ground
+    position: relative;
+    left: -50px;
   @media screen and (max-width: 1023px)
     .close-icon
       display block
     .round-card
       width 100%
-    .soccer-ground
-      width 80%
+    /*.soccer-ground*/
+      /*width 80%*/
 
   @media screen and (max-width: 415px)
     .close-icon
       left: 20px
 
+    /*
     .soccer-ground
       width: 141%;
       position: relative;
       left: -43px;
+    */
     .round-card
       overflow-x hidden
       overflow-y auto
