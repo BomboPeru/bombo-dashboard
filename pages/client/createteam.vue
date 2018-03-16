@@ -7,7 +7,7 @@
           <div class="mobile-btn-container">
             <div class="button-create rounded elevation" @click="createTeam">CREAR EQUIPO</div>
           </div>
-          <new-team-card :team="team" @isCaptain="isCaptain"/>
+          <new-team-card :team="team"/>
         </div>
       </div>
     </div>
@@ -25,6 +25,9 @@
       PlayerBankCard, NewTeamCard, Sidebar
     },
     computed: {
+      captain_id () {
+        return this.$store.state.createteam.captainId
+      },
       activeTabView () {
         return this.$store.getters['createteam/activeTabView']
       },
@@ -38,9 +41,6 @@
       }
     },
     methods: {
-      isCaptain (playerId) {
-        this.captain_id = playerId
-      },
       createTeam () {
         const self = this
         const playerPositions = [
@@ -231,7 +231,6 @@
             forward: []
           }
         },
-        captain_id: '',
         saldo: 100,
         constraints: {
           total: 11,

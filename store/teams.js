@@ -1,3 +1,4 @@
+import store from "./index"
 
 const team = {
   namespaced: true,
@@ -17,18 +18,6 @@ const team = {
   mutations: {
     setActiveTypeTeam (state, index) {
       state.activeTypeTeam = index
-    },
-    turnOnSelectLeageDialog (state) {
-      state.selectLeagueDialog = true
-    },
-    turnOffSelectLeageDialog (state) {
-      state.selectLeagueDialog = false
-    },
-    turnOnSelectTimeDialog(state) {
-      state.selectTimeDialog = true
-    },
-    turnOffSelectTimeDialog (state) {
-      state.selectTimeDialog = false
     }
   },
   actions: {
@@ -43,6 +32,9 @@ const team = {
       teams['0'] = response.data.playing_teams === null ? [] : response.data.playing_teams
       teams['1'] = response.data.saved_teams === null ? [] : response.data.saved_teams
       teams['2'] = response.data.old_teams === null ? [] : response.data.old_teams
+
+      context.rootState.notifications = response.data.notifications
+
       return teams
     }
   },

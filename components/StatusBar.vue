@@ -7,7 +7,7 @@
         </span>
       </li>
       <li class="notification"  @click="openTooltip('notification')">
-        <!--<div class="indicator" v-if="indicator > 0"><span>{{ indicator }}</span></div>-->
+        <div class="indicator" v-if="indicator > 0"><span>{{ indicator }}</span></div>
         <span>
           <img src="../assets/icons/notification.svg" width="20px" alt="">
         </span>
@@ -19,7 +19,7 @@
       </li>
     </ul>
     <tooltip-menu listSupport v-if="help"/>
-    <tooltip-menu listNotifications v-if="notification" :notifications="[]" right-offset="70px"/>
+    <tooltip-menu listNotifications :notifications="notifications" v-if="notification"  right-offset="70px"/>
     <tooltip-menu profile v-if="profile" right-offset="30px"/>
   </div>
 </template>
@@ -32,15 +32,20 @@
     components: {
       TooltipMenu
     },
+    computed: {
+      notifications () {
+        return this.$store.state.notifications
+      },
+      indicator () {
+        return this.$store.state.notifications.length
+      }
+    },
     data () {
       return {
-        indicator: 1,
         help: false,
         notification: false,
         profile: false,
-        statusBarItems: ['help', 'notification', 'profile'],
-        notifications: [
-        ]
+        statusBarItems: ['help', 'notification', 'profile']
       }
     },
     methods: {

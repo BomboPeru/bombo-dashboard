@@ -1,6 +1,6 @@
 <template>
     <div id="select-league-dialog" v-if="isOpen">
-      <dialog-container @closeDialog="closeDialog" :fixed="fixed">
+      <dialog-container @closeDialog="closeDialog" :fixed="false">
         <div class="elevation rounded card-container">
           <div class="card-header--primary header-content-center elevation">
             SELECCIONA LA LIGA
@@ -29,8 +29,7 @@
       DialogContainer
     },
     props: {
-      isOpen: { type: Boolean, default: false },
-      fixed: { type: Boolean, default: false }
+      isOpen: { type: Boolean, default: false }
     },
     data () {
       return {
@@ -41,18 +40,18 @@
       selectLeague (item) {
         // this.leages[i]
         this.$store.commit('createteam/setleagueid', item.id)
-        this.$store.commit('team/turnOffSelectLeageDialog')
+        this.$store.state.team.selectLeagueDialog = false
 
         this.$store.state.isLoading = true
         this.$router.push({ path: '/client/createteam'})
       },
       closeDialog () {
-        this.$emit('onCollapse', false)
+        this.$store.state.team.selectLeagueDialog = false
       },
       onClickLeague(item) {
       //  go to create team
         this.$store.commit('createteam/setleagueid', item.id)
-        this.$store.commit('team/turnOffSelectLeageDialog')
+        this.$store.state.team.selectLeagueDialog = false
 
         if (this.$store.getters['createteam/leagueid'] !== null) {
           this.$store.state.isLoading = true

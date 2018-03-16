@@ -140,10 +140,12 @@
       mode: {
         type: String,
         default: 'bank'
-      },
-      captainId: String
+      }
     },
     computed: {
+      captainId () {
+        return this.$store.state.createteam.playerId
+      },
       shirtUrl () {
         if (this.player.team !== undefined ) {
           const teamName = this.player.team.toLowerCase().replace(' ','_')
@@ -204,8 +206,7 @@
         this.$emit('onPlayerSelected', player)
       },
       selectCaptain() {
-        const playerId = this.player.internal_id
-        this.$emit('onSelectCaptain', playerId)
+        this.$store.state.createteam.playerId = this.player.internal_id
       }
     }
   }

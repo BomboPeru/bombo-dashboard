@@ -90,7 +90,7 @@
         })
       },
       closeDialog () {
-        this.$emit('onCollapse', false)
+        this.$store.state.team.selectTimeDialog = false
       },
       async makePlayTeam () {
         if (this.selectedTime === null) return

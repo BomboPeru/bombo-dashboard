@@ -16,12 +16,10 @@ const store = () => {
       snackbarMessage: '',
       menuSidebar: false,
       isLoading: false,
-      isShortLoading: false
+      isShortLoading: false,
+      notifications: []
     },
     getters: {
-      isSignoutDialog (state) {
-        return state.signOutDialog
-      },
       loginDialog (state) {
         return state.loginDialog
       },
@@ -39,12 +37,6 @@ const store = () => {
       }
     },
     mutations: {
-      turnOffSignoutDialog (state) {
-        state.signOutDialog = false
-      },
-      turnOnSignoutDialog (state) {
-        state.signOutDialog = true
-      },
       openLoginDialog (state) {
         state.loginDialog = true
       },

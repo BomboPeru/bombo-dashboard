@@ -228,9 +228,10 @@
         amount: 20,
         isLoading: false,
         plans: [
-          { price: 'S/ 10', amount: 10, name: 'regular', color: 'linear-gradient(-114deg, rgb(210, 105, 202) 0%, rgb(222, 127, 71) 105%)' },
+          { price: 'S/ 20', amount: 20, name: 'regular', color: 'linear-gradient(-114deg, rgb(210, 105, 202) 0%, rgb(222, 127, 71) 105%)' },
           { price: 'S/ 30', amount: 30, name: 'grande', color: 'linear-gradient(-114deg, rgb(66, 158, 129) 0%, rgb(71, 138, 222) 105%)' },
-          { price: 'S/ 50', amount: 50, name: 'venti', color: 'linear-gradient(-114deg, rgb(93, 66, 158) 0%, rgb(222, 71, 189) 105%)' }
+          { price: 'S/ 50', amount: 50, name: 'venti', color: 'linear-gradient(-114deg, rgb(93, 66, 158) 0%, rgb(222, 71, 189) 105%)' },
+          { price: 'S/ 100', amount: 100, name: 'venti', color: 'linear-gradient(-114deg, rgb(93, 66, 158) 0%, rgb(222, 71, 189) 105%)' }
         ],
         planSelected: undefined
       }

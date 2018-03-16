@@ -19,13 +19,10 @@
                      :is-open="isSignoutDialog"/>
 
     <select-league-dialog
-      :is-open="isSelectLeagueDialog"
-      @onCollapse="onCollapseSelectLeagueDialog"/>
+      :is-open="isSelectLeagueDialog"/>
 
-    <select-time-dialog :is-open="isSelectTimeDialog"
-                        @onCollapse="onCollapseSelectTimeDialog"/>
+    <select-time-dialog :is-open="isSelectTimeDialog"/>
 
-    <!--:is-open="true"-->
     <bombo-payments
       :is-open="bomboPayments"
       @onCollapse="toggleBomboPayments"/>
@@ -57,8 +54,6 @@
   import LoadingScreen from '~/components/LoadingScreen'
   import ShortLoadingScreen from '~/components/ShortLoadingScreen'
 
-  import auth from '~/utils/auth'
-
 
   export default {
     components: {
@@ -74,16 +69,16 @@
         return this.$store.state.isShortLoading
       },
       isSignoutDialog () {
-        return this.$store.getters['isSignoutDialog']
+        return this.$store.state.signOutDialog
       },
       bomboPayments () {
         return this.$store.state.bomboPayments
       },
       isSelectLeagueDialog () {
-        return this.$store.getters['team/isSelectLeagueDialog']
+        return this.$store.state.team.selectLeagueDialog
       },
       isSelectTimeDialog () {
-        return this.$store.getters['team/isSelectTimeDialog']
+        return this.$store.state.team.selectTimeDialog
       },
       showFABBomboPayments () {
         const routesDisallowed = ['/client/createteam']
@@ -112,13 +107,7 @@
     },
     methods: {
       onCollapseSignoutDialog () {
-        this.$store.commit('turnOffSignoutDialog')
-      },
-      onCollapseSelectLeagueDialog () {
-        this.$store.commit('team/turnOffSelectLeageDialog')
-      },
-      onCollapseSelectTimeDialog () {
-        this.$store.commit('team/turnOffSelectTimeDialog')
+        return this.$store.state.signOutDialog = false
       },
       toggleBomboPayments () {
         this.$store.state.bomboPayments = !this.$store.state.bomboPayments
@@ -135,16 +124,6 @@
 </script>
 
 <style lang="stylus">
-/*html {
-  font-family: "Source Sans Pro", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-  font-size: 16px;
-  word-spacing: 1px;
-  -ms-text-size-adjust: 100%;
-  -webkit-text-size-adjust: 100%;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-font-smoothing: antialiased;
-  box-sizing: border-box;
-}*/
 
 *, *:before, *:after {
   box-sizing: border-box;

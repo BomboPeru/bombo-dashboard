@@ -42,7 +42,6 @@
           <player-row-card v-for="(player, key) in team.players.goal_keeper"
                            :key="key+'-arquero'"
                            mode="selected"
-                           @onSelectCaptain="onSelectCaptain"
                            :captain-id="isCaptain"
                            :player="player"
                            position="ARQUERO"
@@ -50,7 +49,6 @@
 
           <player-row-card v-for="(player, key) in team.players.defender"
                            :key="key+'-defensa'"
-                           @onSelectCaptain="onSelectCaptain"
                            :captain-id="isCaptain"
                            mode="selected"
                            :player="player"
@@ -59,7 +57,6 @@
 
           <player-row-card v-for="(player, key) in team.players.mid_fielder"
                            :key="key+'-centrocampista'"
-                           @onSelectCaptain="onSelectCaptain"
                            :captain-id="isCaptain"
                            mode="selected"
                            :player="player"
@@ -68,7 +65,6 @@
 
           <player-row-card v-for="(player, key) in team.players.forward"
                            :key="key+'-delantero'"
-                           @onSelectCaptain="onSelectCaptain"
                            :captain-id="isCaptain"
                            mode="selected"
                            :player="player"
@@ -203,10 +199,6 @@
         //   this.activeTab++
         // }
       },
-      onSelectCaptain (playerId) {
-        this.isCaptain = playerId
-        this.$emit()
-      },
       deletePlayer (player, type) {
         let index = this.team.players[type].indexOf(player)
         if (index !== -1) {
@@ -287,7 +279,7 @@
     padding 20px 5px
     font-family Titillium Web
     text-align center
-    // height calc(45.5vh)
+    height calc(100vh - 457px)
 
   .player-list
     margin-top 14px
@@ -296,6 +288,8 @@
 
   @media screen and (max-width: 1023px)
     .player-list
+      height calc(100vh - 509px)
+    .empty-players
       height calc(100vh - 509px)
 
   .input-text

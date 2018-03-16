@@ -1,8 +1,13 @@
 <template>
     <div id="tooltip-menu" class="elevation rounded-sm" :style="{ 'right': rightOffset }">
+      <div class="title-notifications" v-if="listNotifications">
+        {{ title }}
+      </div>
+      <p class="title" v-else>{{ title }}</p>
+
       <div class="body">
-        <p class="title">{{ title }}</p>
         <div class="divider"></div>
+
         <template v-if="listSupport">
           <ul class="ul-support">
             <li v-for="(link, i) in listSupportItems" :key="i+'-support'">
@@ -10,20 +15,30 @@
             </li>
           </ul>
         </template>
+
         <template v-else-if="listNotifications">
           <ul class="ul-notification">
-            <li v-for="(notification, i) in mnotifications"
+
+            <li v-if="notifications.length === 0">
+              <div style="text-align: center;">
+                <i class="fas fa-circle-notch fa-spin"></i>
+              </div>
+            </li>
+
+            <li v-for="(notification, i) in notifications"
                 :key="i+'-notif'">
               <div :class="['subject', notification.subject==='Incongruencias'?'warning':'']">
                 {{ notification.title }}
               </div>
+
               <div class="message">
                 {{ notification.description }}
               </div>
-              <div class="divider" v-if="i !== (mnotifications.length - 1)"></div>
+              <div class="divider" v-if="i !== (notifications.length - 1)"></div>
             </li>
           </ul>
         </template>
+
         <template v-else-if="profile">
           <p class="username">{{ profileData.name }}</p>
           <p class="coins">{{ profileData.coins }}</p>
@@ -45,6 +60,7 @@
   export default {
     name: 'tooltip-menu',
     props: {
+      notifications: Array,
       listSupport: {
         type: Boolean,
         default: false
@@ -60,8 +76,7 @@
       rightOffset: {
         type: String,
         default: '100px'
-      },
-      notifications: Array
+      }
     },
     computed: {
       title () {
@@ -78,7 +93,6 @@
     },
     data () {
       return {
-        mnotifications: [],
         profileData: {
           name: 'No Name',
           coins: '0B'
@@ -96,14 +110,12 @@
     },
     methods: {
       logOut () {
-        console.log('clcik')
-        this.$store.commit('turnOnSignoutDialog')
+        this.$store.state.signOutDialog = true
       },
       async fetchDataUser () {
-        let user = this.$store.getters['auth/getUser']
-        let response = await this.$axios.get('http://api.bombo.pe/api/v2.0/users/' + user.id)
+        const userId = this.$store.getters['auth/getUserId']
+        let response = await this.$axios.get('http://api.bombo.pe/api/v2.0/users/' + userId)
         const userResponse = response.data.data
-        this.mnotifications = userResponse.notifications
         this.profileData.name = userResponse.name
         this.profileData.coins = userResponse.current_bombo_coins + ' B'
       }
@@ -127,11 +139,23 @@
 
   .title
     font-weight: bold;
-    margin-bottom: 12px;
+    margin-top: 12px;
+    margin-bottom: 4px;
     font-size 18px
     font-family Titillium Web
     color #243237
     text-align center
+  .title-notifications
+    width 100%
+    background #1b282b
+    text-align: center;
+    height: 50px;
+    border-top-right-radius: 4px;
+    border-top-left-radius: 4px;
+    color: white;
+    font-weight: bold;
+    line-height: 50px;
+
   .divider
     margin-bottom 12px
   .body
@@ -147,14 +171,18 @@
     font-weight bold
   .ul-notification
     font-size 12px
+
+  .message
+  .subject
+    padding-left: 10px;
+    padding-right: 10px;
+
   .subject
     color: #445F69
-    font-size: 12px;
-    text-align center
+    font-size: 16px;
   .message
-    color: #25BF89
-    font-size: 18px;
-    text-align center
+    color: #9a9a9a
+    font-size: 14px;
   .warning
     color: #FFC400
   .username
@@ -178,7 +206,8 @@
     text-align: center;
     color: #FFC400;
     cursor pointer
-
+  .ul-profile
+    text-align center
 
   @media screen and (max-width: 1023px)
     #tooltip-menu

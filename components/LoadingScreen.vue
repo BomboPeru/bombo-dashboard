@@ -1,7 +1,12 @@
 <template>
     <div id="loading-screen">
       <div class="loading-text">
-        CARGANDO...
+        <div>
+          <img src="/landing/bombo_all_white.svg" alt="" width="200px">
+        </div>
+        <div style="margin-top: 20px;">
+          CARGANDO...
+        </div>
       </div>
     </div>
 </template>
@@ -28,7 +33,8 @@
     z-index 999
     background #243237
   .loading-text
-    color #25BF89
+    text-align center
+    color white
     font-size 22px
     font-family: Titillium Web;
     font-weight bold

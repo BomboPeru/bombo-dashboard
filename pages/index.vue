@@ -66,7 +66,7 @@
     padding-right 50px
     width 360px
   .phrase
-    color black
+    color #243237
     font-family Raleway
     font-size 26px
     padding-bottom 24px
@@ -83,6 +83,7 @@
     width 200px
     border-radius 40px
     box-shadow: 0 15px 20px 0 rgba(0,0,0,0.32);
+    color #243237
   .arrow
     position relative
     top 1px

@@ -102,7 +102,7 @@
     methods: {
       goToCreateTeam () {
         // this
-        this.$store.commit('team/turnOnSelectLeageDialog')
+        this.$store.state.selectLeagueDialog
       }
     },
     mounted () {

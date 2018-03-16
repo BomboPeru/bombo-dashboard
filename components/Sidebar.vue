@@ -177,6 +177,7 @@
     },
     methods: {
       onCreateTeamClick () {
+
         this.$emit('onCreateTeamClick', null)
       },
       openBomboPayments() {
@@ -203,7 +204,7 @@
         }
       },
       createNewTeamCallback () {
-        this.$store.commit('team/turnOnSelectLeageDialog')
+        this.$store.state.team.selectLeagueDialog = true
       },
       callback (name) {
         let createTeam = '¡CREAR EQUIPO!'

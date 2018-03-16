@@ -1,6 +1,6 @@
 <template>
     <div id="nav-item" :class="{ active: isActive }">
-      <nuxt-link :to="url">{{ text }}</nuxt-link>
+      <nuxt-link :to="url" class="item">{{ text }}</nuxt-link>
     </div>
 </template>
 
@@ -35,7 +35,6 @@ nav_item_height_inactive = 76px
   color #fafafa
   text-decoration none
   position relative
-  top 36%
   padding 0 15px
   font-family Titillium Web
   font-weight normal
@@ -48,6 +47,9 @@ nav_item_height_inactive = 76px
 .active a
   padding 0 29px !important
   color #445F69 !important
-
+.item
+  height: 76px;
+  display: inline-block;
+  line-height: 76px;
 
 </style>
