@@ -280,7 +280,7 @@
   /*height 40vh*/
   overflow-y: auto
 .list-players-container-b
-  height calc(100vh - 500px) !important
+  height calc(100vh - 502px) !important
 
 @media screen and (max-width: 1023px)
   #round-card

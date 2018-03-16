@@ -322,6 +322,9 @@
     position relative
     height calc(100vh - 457px)
     overflow-y: auto;
+  @media screen and (max-width: 1023px)
+    .ground-container
+      height calc(100vh - 504px)
 
   .players-layer
     position absolute
@@ -400,6 +403,18 @@
       display block
     /*.round-card*/
       /*width 100%*/
+
+
+  @media screen and (max-width: 600px)
+    .centrocampista-section
+      margin-left: 10px;
+      margin-right: 10px;
+    .defensa-section
+      margin-left: 10px;
+      margin-right: 10px;
+    .delantero-section
+      margin-left: 10px;
+      margin-right: 10px;
 
   @media screen and (max-width: 415px)
     .close-icon
