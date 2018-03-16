@@ -5,7 +5,6 @@
         <new-team-card :team="team" @isCaptain="isCaptain"/>
         <div class="btn-container">
           <div class="button-create rounded elevation" @click="createTeam">Crear</div>
-          <!--<div class="button-create rounded elevation">Crear</div>-->
         </div>
       </div>
     </div>
@@ -51,6 +50,7 @@
         total += this.team.players.defender.length
         total += this.team.players.mid_fielder.length
         total += this.team.players.forward.length
+
         if (this.team.date === '') {
           this.$store.dispatch('turnOnSnackbar', 'Debes darle un nombre a tu equipo')
           return false
@@ -60,20 +60,50 @@
           this.$store.dispatch('turnOnSnackbar', 'No puedes crear un equipo con menos de 11 jugadores')
           return
         }
-        console.log(this.team)
 
-        let temporalTeam = []
+
+        let teamToCreate = []
         let totalCaptain = 0
+
+
+        let totalGoalKeeper = this.team.players.goal_keeper.length
+        let totalDefender = this.team.players.defender.length
+        let totalMidFielder = this.team.players.mid_fielder.length
+        let totalForward = this.team.players.forward.length
 
         playerPositions.map(positionName => {
           this.team.players[positionName].map(player => {
             if (player.internal_id === self.captain_id) {
+              player.is_captain = true
               totalCaptain += 1
+            } else {
+              player.is_captain = false
             }
-
-            temporalTeam.push(player)
+            teamToCreate.push(player)
           })
         })
+
+        if (totalGoalKeeper < this.constraints.goal_keeper[0] ||
+          totalGoalKeeper > this.constraints.goal_keeper[1]) {
+          this.$store.dispatch('turnOnSnackbar', 'Debes escoger al menos un arquero')
+          return
+        }
+        if (totalDefender < this.constraints.defender[0] ||
+          totalDefender> this.constraints.defender[1]) {
+          this.$store.dispatch('turnOnSnackbar', 'Debes escoger al menos a un defensa')
+          return
+        }
+        if (totalMidFielder < this.constraints.mid_fielder[0] ||
+          totalMidFielder> this.constraints.mid_fielder[1]) {
+          this.$store.dispatch('turnOnSnackbar', 'Debes escoger al menos a un centrocampista')
+          return
+        }
+        if (totalForward < this.constraints.forward[0] ||
+          totalForward > this.constraints.forward[1]) {
+          this.$store.dispatch('turnOnSnackbar', 'Debes escoger al menos a un delantero')
+          return
+        }
+
 
 
         if (totalCaptain < this.constraints.totalCaptains) {
@@ -93,7 +123,7 @@
           team: {
             league_id: leagueId,
             name: this.team.date,
-            players: temporalTeam
+            players: teamToCreate
           }
         }).then(res => {
           this.$store.dispatch('turnOnSnackbar', 'Equipo Creado!. Visita Mis Equipos para jugar')

@@ -85,6 +85,19 @@
     data () {
       return {
         termsChecked: false,
+        nameRules: [
+          a => a.length > 3,
+          a => /\s/.test(a)
+        ],
+        emailRules: [
+          a => /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(a)
+        ],
+        usernameAndPasswordRules: [
+          a => a.length >= 6
+        ],
+        identityDocumentRules: [
+          a => a.length > 8
+        ],
         constraints: {
           name: {
             minLength: 3,
@@ -144,25 +157,21 @@
               if (response.error !== null) {
                 this.$store.dispatch('turnOnSnackbar', 'Hubo un problema al momento del registro.')
               } else {
+                this.$store.dispatch('turnOnSnackbar', 'Usuario regitrado!')
                 setTimeout(() => {
-                  // this.$router.push('/')
-                  this.$store.dispatch('turnOnSnackbar', 'Usuario regitrado!')
-                }, 300)
-                // response.data.token
-                // response.data.user.username
-                // response.data.user.password
+                  this.$router.push('/login')
+                }, 500)
 
-                this.$axios.post('http://api.bombo.pe/auth/login', {
-                  username: this.user.username,
-                  password: this.user.password
-                })
-                  .then(res => {
-                    auth.setToken(res.data.token)
-                    this.$router.push('/client/teams')
-                  })
-                  .catch(err => {
-                    console.log(err)
-                  })
+                // this.$axios.post('http://api.bombo.pe/auth/login', {
+                //   username: this.user.username,
+                //   password: this.user.password
+                // }).then(res => {
+                //     auth.setToken(res.data.token)
+                //     this.$router.push('/client/teams')
+                //   })
+                //   .catch(err => {
+                //     console.log(err)
+                //   })
               }
             } catch (e) {
               this.$store.dispatch('turnOnSnackbar', 'Hubo un problema al momento del registro.')
@@ -195,6 +204,17 @@
             if (isValid === false) {
               break
             }
+          }
+        }
+        return isValid
+      },
+      validEmailRules () {
+        let isValid = true
+        for (let i = 0; i < this.emailRules.length; i++) {
+          let fn = this.emailRules[i]
+          isValid = fn(this.user.email)
+          if (isValid === false) {
+            break
           }
         }
         return isValid
