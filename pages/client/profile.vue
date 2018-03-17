@@ -16,7 +16,7 @@
               <input-text solid placeholder="Email" v-model="user.email" big/>
             </div>
             <div>
-              <input-text solid placeholder="DNI" v-model="user.identity_document" big/>
+              <input-text solid placeholder="DNI" type="number" v-model="user.identity_document" big/>
             </div>
             <div>
               <input-text solid placeholder="Cumpleaños" v-model="birthdayFake" type="date" big/>
@@ -72,10 +72,10 @@
         this.user.identity_document = user.identity_document
 
         let birthdayFake = new Date(user.birthday)
-        let formatMonth = (((birthdayFake.getMonth() + 1).toString()).padStart(2, '0'))
-        let formatBirthday = birthdayFake.getFullYear() + '-' +
-          formatMonth + '-' +
-          birthdayFake.getDate()
+        const formatMonth = (((birthdayFake.getMonth() + 1).toString()).padStart(2, '0'))
+        let formatBirthday = formatMonth + '/' +
+          birthdayFake.getDate() + '/' +
+          birthdayFake.getFullYear()
         this.birthdayFake = formatBirthday
       },
       async updateUser () {

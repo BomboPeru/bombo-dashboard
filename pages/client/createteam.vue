@@ -132,6 +132,7 @@
           this.$store.dispatch('turnOnSnackbar', 'Equipo Creado!. Visita Mis Equipos para jugar')
           console.log(res)
           setTimeout(() => {
+            this.$store.state.createteam.captainId = null
             this.$router.push('/client/teams')
           }, 1000)
 

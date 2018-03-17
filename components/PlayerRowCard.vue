@@ -76,6 +76,13 @@
           <tbody>
           <tr>
             <td style="width: 20%;">
+              <div class="captain-band"
+                   v-if="player.is_captain === true">
+                <img
+                  src="/team_resources/band_captain.png"
+                  height="42px" alt="">
+              </div>
+
               <squad-number :img="shirtUrl"
                             style="top: 3px;"
                             :number="player.j_number"/>

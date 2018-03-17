@@ -2,25 +2,44 @@
     <div id="input-text">
       <span :class="['prepend-icon', big?'big-icon':'',
              responsive?'responsive-icon':'']" v-if="prependIcon !== ''"><i :class="['fas', prependIcon]"></i></span>
-      <input :type="type"
-             :class="['input', square?'square':'',
+      <template v-if="type === 'date'">
+        <input :type="type === 'date'? 'text':type"
+               :class="['input', square?'square':'',
              flat?'flat':'', solid?'solid':'',
              prependIcon!==''?'prepend-padding':'',
              appendIcon!==''?'append-padding':'',
              big?'big-input':'',
              responsive?'responsive-input':'']"
-             @input="updateValue()"
-             ref="inputText"
-             :value="value"
-             :placeholder="placeholder"
-             :disabled="disabled"
-             :style="{ 'width': width }"/>
+               ref="inputText"
+               v-on:keypress="isDate"
+               v-model="inputValue"
+               :placeholder="type==='date'?'MM / DD / YYYY':placeholder"
+               :disabled="disabled"
+               :style="{ 'width': width }"/>
+      </template>
+      <template v-else>
+        <input :type="type === 'date'? 'text':type"
+               :class="['input', square?'square':'',
+             flat?'flat':'', solid?'solid':'',
+             prependIcon!==''?'prepend-padding':'',
+             appendIcon!==''?'append-padding':'',
+             big?'big-input':'',
+             responsive?'responsive-input':'']"
+               ref="inputText"
+               v-model="inputValue"
+               :placeholder="type==='date'?'dd-mm-yyyy':placeholder"
+               :disabled="disabled"
+               :style="{ 'width': width }"/>
+      </template>
+      <!--@input="updateValue()"-->
+
       <span :class="['append-icon', big?'big-icon':'',
              responsive?'responsive-icon':'']" v-if="appendIcon !== ''"><i :class="['fas', appendIcon]"></i></span>
     </div>
 </template>
 
 <script>
+
   export default {
     name: 'input-text',
     props: {
@@ -68,11 +87,76 @@
       }
     },
     computed: {
+      inputValue: {
+        get () {
+          if (this.type === 'date') {
+            return  this.formatDate(this.value)
+          }
+          return this.value
+        },
+        set (value) {
+          this.$emit('input', value)
+        }
+      }
     },
     methods: {
-      updateValue () {
-        this.$emit('input', this.$refs.inputText.value)
+      isDate (evt) {
+        evt = (evt) ? evt : window.event;
+
+        var charCode = (evt.which) ? evt.which : evt.keyCode;
+        if ((charCode > 31 && (charCode < 48 || charCode > 57)) && charCode !== 46) {
+          evt.preventDefault()
+        } else if (evt.target.value.length > 9) {
+          evt.preventDefault()
+        } else {
+          return true
+        }
+      },
+      formatDate (text) {
+
+        let textFormatted = text
+
+        // month
+        if (textFormatted.length === 2) {
+          const number =  parseInt(textFormatted.slice(0,2))
+
+          if (number > 20) {
+            textFormatted = '0'+ textFormatted[0]
+          } else if (number > 12) {
+            textFormatted = '12'
+          } else if (number === 0) {
+            textFormatted = '01'
+          }
+
+          textFormatted += '/'
+        //  date
+        } else if (textFormatted.length === 5) {
+
+          const monthText = textFormatted[0] + textFormatted[1]
+          const februaryMonth = '02'
+
+          const number = parseInt(textFormatted.slice(3,5))
+          if (number === 0) {
+            textFormatted = textFormatted.slice(0,3) + '00'
+          } else if (number >= 30 && monthText === februaryMonth) {
+            textFormatted = textFormatted.slice(0,3) + '29'
+          } else if (number > 31) {
+            textFormatted = textFormatted.slice(0,3) + '31'
+          }
+          textFormatted += '/'
+        }
+
+        return textFormatted
       }
+      // updateValue () {
+      //   if (this.type === 'date') {
+      //     this.$emit('input', this.$refs.inputText.value)
+      //   } else {
+      //     this.$emit('input', this.$refs.inputText.value)
+      //   }
+      // }
+    },
+    mounted () {
     }
   }
 </script>
