@@ -1,6 +1,5 @@
 <template>
     <div id="register" class="background">
-      <div class="title-bar elevation">REGISTRATE CON NOSOTROS PARA DIFRUTAR DE TODA LA EXPERIENCIA BOMBO</div>
 
       <div class="center">
         <div class="card-container elevation rounded-sm">
@@ -257,25 +256,13 @@
   .title
     color #445F69
     font-family: Titillium Web;
+    font-weight bold
     font-style: normal;
     line-height: normal;
     font-size: 16px;
     padding-bottom 4px
     margin-top 12px
-    font-weight bold
 
-  .title-bar
-    width 100%
-    height 52px
-    background #67A6F0
-
-    font-family: Titillium Web;
-    font-style: normal;
-    font-weight: 600;
-    line-height: 52px;
-    font-size: 24px;
-    text-align: center;
-    color: #FAFAFA;
   .terms-conditions
     display inline-block
     margin-left 8px
@@ -344,10 +331,4 @@
     font-weight: bold;
     font-size 16px
 
-  @media screen and (max-width: 1023px)
-    .title-bar
-      font-size 16px
-  @media screen and (max-width: 500px)
-    .title-bar
-      font-size 10px
 </style>
