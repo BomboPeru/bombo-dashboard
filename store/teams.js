@@ -5,12 +5,12 @@ const team = {
   state: {
     selectLeagueDialog: false,
     selectTimeDialog: false,
-    typeTeams: ['EN JUEGO', 'GUARDADOS', 'PASADOS'],
-    activeTypeTeam: 1,
-    mteams: {
-      0: [],
-      1: [],
-      2: []
+    typeTeams: ['GUARDADOS', 'EN JUEGO', 'PASADOS'],
+    activeTypeTeam: 0,
+    indexTypeTeams: {
+      0: 'guardado',
+      1: 'en_juego',
+      2: 'pasado'
     },
     teamNameToMakePlay: null,
     selectedLeague: null
@@ -29,8 +29,10 @@ const team = {
       let response = await this.$axios.$get('http://api.bombo.pe/api/v2.0/users/' + userId)
       //
       let teams = {}
-      teams['0'] = response.data.playing_teams === null ? [] : response.data.playing_teams
-      teams['1'] = response.data.saved_teams === null ? [] : response.data.saved_teams
+      teams['0'] = response.data.saved_teams === null ? [] : response.data.saved_teams
+
+      teams['1'] = response.data.playing_teams === null ? [] : response.data.playing_teams
+
       teams['2'] = response.data.old_teams === null ? [] : response.data.old_teams
 
       context.rootState.notifications = response.data.notifications

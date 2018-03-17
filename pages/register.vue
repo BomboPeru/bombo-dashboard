@@ -111,13 +111,13 @@
             ]
           },
           username: {
-            message: 'Mayor a 6 caracteres',
+            message: 'Más de 6 caracteres',
             rules: [
               a => a.length >= 6
             ]
           },
           password: {
-            message: 'Mayor a 8 caracteres',
+            message: 'Más de 8 caracteres',
             rules: [
               a => a.length >= 8
             ]
@@ -330,5 +330,6 @@
     font-family: Titillium Web;
     font-weight: bold;
     font-size 16px
+
 
 </style>

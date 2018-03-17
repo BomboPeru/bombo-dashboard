@@ -5,11 +5,11 @@
     <div v-if="hasNotTeams" class="container margin-sidebar">
       <div class="empty-teams-message">
         <p>Aun no tienes ningun equipo
-          {{ activeTypeTeam === 2 ? ' pasado' : activeTypeTeam === 0? ' guardado':' en juego' }}
-          <br> <span v-if="activeTypeTeam !== 2 ">¡Crea uno YA!</span>
+          {{ indexTypeTeams[activeTypeTeam] === 'en_juego' ? ' en juego' : indexTypeTeams[activeTypeTeam] }}
+          <br> <span v-if="indexTypeTeams[activeTypeTeam] !== 'pasado' ">¡Crea uno YA!</span>
         </p>
 
-        <icon-button v-if="activeTypeTeam === 1 || activeTypeTeam === 0"
+        <icon-button v-if="indexTypeTeams[activeTypeTeam] === 'guardado' || indexTypeTeams[activeTypeTeam] === 'en_juego'"
                      text="CREAR EQUIPO!"
                      icon-direction="left"
                      color="#25BF89"
@@ -23,56 +23,23 @@
     <div v-else class="container margin-sidebar">
 
       <!-- EN JUEGO -->
-      <template v-if="activeTypeTeam === 1">
-        <team-card
-          class="teamcard"
-          :style="{ 'flex-grow': mteams[1].length > 3 ? '1':'0' }"
-          v-for="(team, i) in mteams[1]"
-          :key="i+'card'"
-          :id="team.id"
-          :team="team"
-          :title="team.name"
-          :points="team.points"
-          :ranking="team.ranking"
-          type-card="guardado"
-          :league-img="team.leagueImg"
-          :players="team.players"
-        />
-      </template>
       <!-- GUARDADOS -->
-      <template v-else-if="activeTypeTeam === 0">
+      <!--&lt;!&ndash; PASADOS &ndash;&gt;-->
+      <!--<template v-if="activeTypeTeam === 1">-->
         <team-card
           class="teamcard"
-          :style="{ 'flex-grow': mteams[0].length > 3 ? '1':'0' }"
-          v-for="(team, i) in mteams[0]"
+          :style="{ 'flex-grow': mteams[activeTypeTeam].length > 3 ? '1':'0' }"
+          v-for="(team, i) in mteams[activeTypeTeam]"
           :key="i+'card'"
           :id="team.id"
           :team="team"
-          :title="team.name"
-          :cost="team.total_points.toString()"
-          :status="'DISPONIBLE'"
-          type-card="en_juego"
-          :league-img="team.leagueImg"
-          :players="team.players"
-        />
-      </template>
-      <!-- PASADOS -->
-      <template v-else-if="activeTypeTeam === 2">
-        <team-card
-          class="teamcard"
-          :style="{ 'flex-grow': mteams[2].length > 3 ? '1':'0' }"
-          v-for="(team, i) in mteams[2]"
-          :key="i+'card'"
-          :team="team"
-          :id="team.id"
           :title="team.name"
           :points="team.points"
           :ranking="team.ranking"
-          type-card="pasados"
+          :type-card="indexTypeTeams[activeTypeTeam]"
           :league-img="team.leagueImg"
           :players="team.players"
         />
-      </template>
     </div>
   </div>
 </template>
@@ -99,7 +66,7 @@
     },
     data () {
       return {
-        typeTeams: this.$store.state.team.typeTeams,
+        indexTypeTeams: this.$store.state.team.indexTypeTeams,
         mteams: {
           0: [],
           1: [],

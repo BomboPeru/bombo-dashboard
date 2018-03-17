@@ -128,6 +128,16 @@
   .big-icon
     top 17px !important
 
+  input[type='number'] {
+    appearance: textfield;
+  }
+  input[type='number']::-webkit-inner-spin-button,
+  input[type='number']::-webkit-outer-spin-button,
+  input[type='number']:hover::-webkit-inner-spin-button,
+  input[type='number']:hover::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
   @media screen and (max-width: 400px)
     .responsive-input
       height 30px !important

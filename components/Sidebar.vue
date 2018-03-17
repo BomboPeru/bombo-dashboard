@@ -3,20 +3,22 @@
 
       <!-- ONLY FOR TEAMS -->
       <template v-if="mode=== 'teams'">
+        <!--TITULO-->
         <div class="title-bar desktop">
           <div :class="['title-container', itemsForEachPath[activeSection].center?'center':'']">
-            <span :class="['title-menu-section', itemsForEachPath[activeSection].center?'font-weight-light':'']"
-                  v-if="activeSection !== 'TABLERO'">{{ activeSection }}</span>
+            <span :class="['title-menu-section', itemsForEachPath[activeSection].center?'font-weight-light':'']">
+              {{ activeSection }}
+            </span>
           </div>
         </div>
 
         <div class="sidebar elevation">
           <div>
             <div v-for="(item, i) in itemsForEachPath[activeSection].items"
-                 :key="i"
+                 :key="i+'-sidebar_elem_on_team'"
                  @click="clickOnTab(item.name)"
                  v-if="item.type === 'normal'"
-                 :class="['sidebar-item', 'elevation', tabSelected===i?'sidebar-item-selected':'']">
+                 :class="['sidebar-item', 'elevation', tabSelected === i?'sidebar-item-selected':'']">
               <div class="line" :style="{ background: item.color }"></div>
               <span class="text">{{ item.name }}</span>
             </div>
@@ -144,8 +146,8 @@
           },
           'MIS EQUIPOS': {
             items: [
-              {name: 'EN JUEGO', color: '#EA504C', type: 'normal'},
               {name: 'GUARDADOS', color:'#25BF89', type: 'normal'},
+              {name: 'EN JUEGO', color: '#EA504C', type: 'normal'},
               {name: 'PASADOS', color:'#67A6F0', type: 'normal'},
               {name: '¡CREAR EQUIPO!', color:'#25BF89', type: 'bottom', icon: 'plus'}
             ]
@@ -201,7 +203,6 @@
           // this.$store.state.activeTypeTeam = indexSelected
 
           this.$store.commit('team/setActiveTypeTeam', indexSelected)
-
         } else if (this.activeSection === 'ARMA UN EQUIPO') {
           indexSelected = this.$store.state.createteam.tabViews.indexOf(name)
           // this.$store.state.activeTypeTeam = indexSelected
