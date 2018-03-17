@@ -109,6 +109,14 @@
       }
     },
     computed: {
+      tabSelected: {
+        get () {
+          return this.$store.state.team.activeTypeTeam
+        },
+        set (value) {
+          this.$store.state.team.activeTypeTeam = value
+        }
+      },
       activeSection () {
         for (let i = 0; i < this.navbarItems.length; i++ ) {
           if (this.navbarItems[i].urlPath === this.$route.path) {
@@ -120,7 +128,6 @@
     },
     data () {
       return {
-        tabSelected: 0,
         navbarItems: [
           { name: 'MIS EQUIPOS', urlPath: '/client/teams' },
           { name: 'PROXIMAS FECHAS', urlPath: '/client/matches' },

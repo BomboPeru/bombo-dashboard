@@ -6,7 +6,7 @@ const team = {
     selectLeagueDialog: false,
     selectTimeDialog: false,
     typeTeams: ['GUARDADOS','EN JUEGO','PASADOS'],
-    activeTypeTeam: 1,
+    activeTypeTeam: 0,
     mteams: {
       0: [],
       1: [],

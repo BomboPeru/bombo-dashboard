@@ -16,7 +16,7 @@
     </div>
     <div v-else class="container margin-sidebar">
       <!-- EN JUEGO -->
-      <template v-if="activeTypeTeam === 0">
+      <template v-if="activeTypeTeam === 1">
         <team-card
           class="teamcard"
           :style="{ 'flex-grow': mteams[0].length > 3 ? '1':'0' }"
@@ -33,7 +33,7 @@
         />
       </template>
       <!-- GUARDADOS -->
-      <template v-else-if="activeTypeTeam === 1">
+      <template v-else-if="activeTypeTeam === 0">
         <team-card
           class="teamcard"
           :style="{ 'flex-grow': mteams[1].length > 3 ? '1':'0' }"
