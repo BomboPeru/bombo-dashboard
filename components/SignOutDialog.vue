@@ -9,7 +9,7 @@
             <div class="line"></div>
             <p class="message">{{message}}</p>
             <div class="bottom-button-container">
-              <div class="button-cancel" @click="collapse">
+              <div class="button-cancel" @click="closeDialog">
                 Cancelar
               </div>
               <div class="button-exit" @click="logout">
@@ -41,10 +41,7 @@
     },
     methods: {
       closeDialog () {
-        this.$emit('onCollapse', false)
-      },
-      collapse () {
-        this.$store.commit('turnOffSignoulogouttDialog')
+        this.$store.state.signOutDialog = false
       },
       logout () {
         localStorage.removeItem('user')

@@ -5,8 +5,8 @@ const team = {
   state: {
     selectLeagueDialog: false,
     selectTimeDialog: false,
-    typeTeams: ['GUARDADOS','EN JUEGO','PASADOS'],
-    activeTypeTeam: 0,
+    typeTeams: ['EN JUEGO', 'GUARDADOS', 'PASADOS'],
+    activeTypeTeam: 1,
     mteams: {
       0: [],
       1: [],

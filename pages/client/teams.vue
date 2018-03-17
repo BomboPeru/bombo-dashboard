@@ -22,31 +22,8 @@
 
     <div v-else class="container margin-sidebar">
 
-      <!--<div v-if="mteams[activeTypeTeam].length === 0" class="empty-teamcards">-->
-        <!--<span v-if="activeTypeTeam === 1">NO TIENES EQUIPOS EN JUEGO</span>-->
-        <!--<span v-if="activeTypeTeam === 0">NO TIENES EQUIPOS GUARDADOS</span>-->
-        <!--<span v-if="activeTypeTeam === 2">NO TIENES EQUIPOS PASADOS</span>-->
-      <!--</div>-->
-
       <!-- EN JUEGO -->
       <template v-if="activeTypeTeam === 1">
-        <team-card
-          class="teamcard"
-          :style="{ 'flex-grow': mteams[0].length > 3 ? '1':'0' }"
-          v-for="(team, i) in mteams[0]"
-          :key="i+'card'"
-          :id="team.id"
-          :team="team"
-          :title="team.name"
-          :points="team.points"
-          :ranking="team.ranking"
-          type-card="en_juego"
-          :league-img="team.leagueImg"
-          :players="team.players"
-        />
-      </template>
-      <!-- GUARDADOS -->
-      <template v-else-if="activeTypeTeam === 0">
         <team-card
           class="teamcard"
           :style="{ 'flex-grow': mteams[1].length > 3 ? '1':'0' }"
@@ -55,9 +32,26 @@
           :id="team.id"
           :team="team"
           :title="team.name"
+          :points="team.points"
+          :ranking="team.ranking"
+          type-card="guardado"
+          :league-img="team.leagueImg"
+          :players="team.players"
+        />
+      </template>
+      <!-- GUARDADOS -->
+      <template v-else-if="activeTypeTeam === 0">
+        <team-card
+          class="teamcard"
+          :style="{ 'flex-grow': mteams[0].length > 3 ? '1':'0' }"
+          v-for="(team, i) in mteams[0]"
+          :key="i+'card'"
+          :id="team.id"
+          :team="team"
+          :title="team.name"
           :cost="team.total_points.toString()"
           :status="'DISPONIBLE'"
-          type-card="guardado"
+          type-card="en_juego"
           :league-img="team.leagueImg"
           :players="team.players"
         />

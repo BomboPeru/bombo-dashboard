@@ -144,8 +144,8 @@
           },
           'MIS EQUIPOS': {
             items: [
-              {name: 'GUARDADOS', color:'#25BF89', type: 'normal'},
               {name: 'EN JUEGO', color: '#EA504C', type: 'normal'},
+              {name: 'GUARDADOS', color:'#25BF89', type: 'normal'},
               {name: 'PASADOS', color:'#67A6F0', type: 'normal'},
               {name: '¡CREAR EQUIPO!', color:'#25BF89', type: 'bottom', icon: 'plus'}
             ]
