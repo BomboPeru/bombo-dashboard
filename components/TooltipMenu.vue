@@ -26,7 +26,12 @@
             </li>
 
             <li v-for="(notification, i) in notifications"
-                :key="i+'-notif'">
+                :key="i+'-notif'" style="position: relative;">
+
+              <div class="delete-icon">
+                <i class="far fa-trash-alt"></i>
+              </div>
+
               <div :class="['subject', notification.subject==='Incongruencias'?'warning':'']">
                 {{ notification.title }}
               </div>
@@ -137,6 +142,10 @@
     background #fafafa
     font-family Titillium Web
 
+  @media screen and (max-width: 1023px)
+    #tooltip-menu
+      right 17px !important
+
   .title
     font-weight: bold;
     margin-top: 12px;
@@ -209,6 +218,14 @@
   .ul-profile
     text-align center
 
+  .delete-icon
+    position absolute
+    top 5px
+    right 5px
+    color #243337
+    cursor pointer
+  .delete-icon i
+    font-size: 15px;
   @media screen and (max-width: 1023px)
     #tooltip-menu
       top 56px
