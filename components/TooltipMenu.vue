@@ -28,7 +28,7 @@
             <li v-for="(notification, i) in notifications"
                 :key="i+'-notif'" style="position: relative;">
 
-              <div class="delete-icon">
+              <div class="delete-icon" @click="deleteNotification(notification)">
                 <i class="far fa-trash-alt"></i>
               </div>
 
@@ -117,6 +117,21 @@
       logOut () {
         this.$store.state.signOutDialog = true
       },
+      async deleteNotification (item) {
+        const userId = this.$store.getters['auth/getUserId']
+        this.$store.dispatch('turnOnSnackbar', 'Eliminando notificación')
+
+        try {
+          let response = await this.$axios.post('http://api.bombo.pe/api/v2.0/users/' + userId + '/delete-notification', {
+            notification_id: item.id
+          })
+          this.$store.state.notifications = response.data.data.notifications
+          this.$store.dispatch('turnOnSnackbar', 'Notificación eliminada')
+        } catch (e) {
+           console.log(e)
+          this.$store.dispatch('turnOnSnackbar', 'Problemas al eliminar notificación, intente más tarde')
+        }
+      },
       async fetchDataUser () {
         const userId = this.$store.getters['auth/getUserId']
         let response = await this.$axios.get('http://api.bombo.pe/api/v2.0/users/' + userId)
@@ -135,7 +150,7 @@
 
   #tooltip-menu
     position absolute
-    z-index: 998
+    z-index: 800
     top 67px
     right 100px
     width: 246px;
