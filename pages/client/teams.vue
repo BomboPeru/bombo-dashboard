@@ -4,8 +4,13 @@
 
     <div v-if="hasNotTeams" class="container margin-sidebar">
       <div class="empty-teams-message">
-        <p>Aun no tienes ningun equipo <br>Que esperas para crear uno?!</p>
-        <icon-button text="CREAR EQUIPO!"
+        <p>Aun no tienes ningun equipo
+          {{ activeTypeTeam === 2 ? ' pasado' : activeTypeTeam === 0? ' guardado':' en juego' }}
+          <br> <span v-if="activeTypeTeam !== 2 ">¡Crea uno YA!</span>
+        </p>
+
+        <icon-button v-if="activeTypeTeam === 1 || activeTypeTeam === 0"
+                     text="CREAR EQUIPO!"
                      icon-direction="left"
                      color="#25BF89"
                      icon="plus"
@@ -14,7 +19,15 @@
         />
       </div>
     </div>
+
     <div v-else class="container margin-sidebar">
+
+      <!--<div v-if="mteams[activeTypeTeam].length === 0" class="empty-teamcards">-->
+        <!--<span v-if="activeTypeTeam === 1">NO TIENES EQUIPOS EN JUEGO</span>-->
+        <!--<span v-if="activeTypeTeam === 0">NO TIENES EQUIPOS GUARDADOS</span>-->
+        <!--<span v-if="activeTypeTeam === 2">NO TIENES EQUIPOS PASADOS</span>-->
+      <!--</div>-->
+
       <!-- EN JUEGO -->
       <template v-if="activeTypeTeam === 1">
         <team-card
@@ -83,7 +96,8 @@
     },
     computed: {
       hasNotTeams () {
-        return (this.mteams['0'].length === 0) && (this.mteams['1'].length === 0) && (this.mteams['2'].length === 0)
+        return this.mteams[this.activeTypeTeam].length === 0
+        // return (this.mteams['0'].length === 0) && (this.mteams['1'].length === 0) && (this.mteams['2'].length === 0)
       },
       activeTypeTeam () {
         return this.$store.getters['team/activeTypeTeam']

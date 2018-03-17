@@ -197,9 +197,11 @@
 .header div
   padding 0px 18px
 .title
+  position: relative;
+  top -3px
   text-align left
   color white
-  font-size 12px
+  font-size 18px
   font-weight bold
   font-family Titillium Web
   text-transform uppercase
