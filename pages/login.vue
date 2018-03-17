@@ -53,9 +53,8 @@
 
             this.$axios.setToken(res.data.token, 'Bearer')
             this.$store.commit('auth/setToken', res.data.token)
-            setTimeout(() => {
-              this.fetchUser()
-            }, 3000)
+
+            this.fetchUser()
           })
           .catch(err => {
             // loading off

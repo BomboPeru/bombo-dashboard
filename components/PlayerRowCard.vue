@@ -144,7 +144,7 @@
     },
     computed: {
       captainId () {
-        return this.$store.state.createteam.playerId
+        return this.$store.state.createteam.captainId
       },
       shirtUrl () {
         if (this.player.team !== undefined ) {
@@ -206,7 +206,7 @@
         this.$emit('onPlayerSelected', player)
       },
       selectCaptain() {
-        this.$store.state.createteam.playerId = this.player.internal_id
+        this.$store.state.createteam.captainId = this.player.internal_id
       }
     }
   }
