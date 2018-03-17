@@ -24,7 +24,10 @@
             {{ constraints.identity_document.message }}
           </div>
           <div>
-            <input-text placeholder="Documento de identidad (DNI)" big solid v-model="user.identity_document"/>
+            <input-text placeholder="Documento de identidad (DNI)"
+                        type="number"
+                        big solid
+                        v-model="user.identity_document"/>
           </div>
           <div class="birthday-label-container">
             <label class="birthday-label">Fecha de nacimiento</label>
@@ -175,11 +178,11 @@
             let birthdayDate = new Date(this.user.birthday_fake)
             this.user.birthday = birthdayDate.toISOString()
 
-            minYearsOld = 18
+            let minYearsOld = 18
             let currentDate = (new Date ()).getTime()
             const age = (currentDate - birthdayDate.getTime())/(1000*60*60*24*30*12)
 
-            if (age > minYearsOld) {
+            if (age < minYearsOld) {
               this.message = 'No eres mayor de edad'
               return
             }

@@ -102,7 +102,7 @@
     methods: {
       goToCreateTeam () {
         // this
-        this.$store.state.selectLeagueDialog
+        this.$store.state.team.selectLeagueDialog = true
       }
     },
     mounted () {

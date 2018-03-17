@@ -177,7 +177,6 @@
     },
     methods: {
       onCreateTeamClick () {
-
         this.$emit('onCreateTeamClick', null)
       },
       openBomboPayments() {
