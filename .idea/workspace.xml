@@ -4,9 +4,9 @@
     <bookmark url="file://$PROJECT_DIR$/pages/client/createteam.vue" line="5" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bf24282d-3075-4fc1-a7e6-a1352eba2675" name="Default" comment="">
+    <list default="true" id="bf24282d-3075-4fc1-a7e6-a1352eba2675" name="Default" comment="adding blocks, removing redundant variables">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/pages/client/createteam.vue" afterPath="$PROJECT_DIR$/pages/client/createteam.vue" />
+      <change beforePath="$PROJECT_DIR$/components/SquadNumber.vue" afterPath="$PROJECT_DIR$/components/SquadNumber.vue" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -20,14 +20,32 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="createteam.vue" pinned="false" current-in-tab="true">
+      <file leaf-file-name="createteam.vue" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/pages/client/createteam.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="192">
-              <caret line="8" column="16" lean-forward="true" selection-start-line="8" selection-start-column="16" selection-end-line="8" selection-end-column="16" />
-              <folding>
-                <element signature="e#1410#5148#0" expanded="false" />
-              </folding>
+            <state relative-caret-position="336">
+              <caret line="124" column="65" lean-forward="false" selection-start-line="124" selection-start-column="57" selection-end-line="124" selection-end-column="65" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SelectLeagueDialog.vue" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/components/SelectLeagueDialog.vue">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1176">
+              <caret line="49" column="8" lean-forward="true" selection-start-line="49" selection-start-column="8" selection-end-line="49" selection-end-column="8" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="NewTeamCard.vue" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/components/NewTeamCard.vue">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="3096">
+              <caret line="153" column="36" lean-forward="false" selection-start-line="153" selection-start-column="36" selection-end-line="153" selection-end-column="36" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -35,8 +53,8 @@
       <file leaf-file-name="PlayerRowCard.vue" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/components/PlayerRowCard.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="408">
-              <caret line="215" column="8" lean-forward="false" selection-start-line="215" selection-start-column="8" selection-end-line="215" selection-end-column="46" />
+            <state relative-caret-position="192">
+              <caret line="8" column="22" lean-forward="false" selection-start-line="8" selection-start-column="17" selection-end-line="8" selection-end-column="22" />
               <folding>
                 <element signature="n#style#0;n#table#0;n#template#2;n#div#0;n#template#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#table#0;n#template#3;n#div#0;n#template#0;n#!!top" expanded="true" />
@@ -55,6 +73,18 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="SquadNumber.vue" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/components/SquadNumber.vue">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="96">
+              <caret line="4" column="89" lean-forward="false" selection-start-line="4" selection-start-column="89" selection-end-line="4" selection-end-column="89" />
+              <folding>
+                <element signature="n#style#0;n#span#0;n#span#0;n#template#0;n#!!top" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="teams.vue" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/pages/client/teams.vue">
           <provider selected="true" editor-type-id="text-editor">
@@ -68,8 +98,8 @@
       <file leaf-file-name="createteam.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/store/createteam.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="144">
-              <caret line="6" column="22" lean-forward="false" selection-start-line="6" selection-start-column="22" selection-end-line="6" selection-end-column="22" />
+            <state relative-caret-position="288">
+              <caret line="12" column="15" lean-forward="false" selection-start-line="12" selection-start-column="4" selection-end-line="12" selection-end-column="15" />
               <folding />
             </state>
           </provider>
@@ -88,7 +118,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>selectCaptain</find>
       <find>callback</find>
       <find>onCreateTeamClick</find>
       <find>title-bar</find>
@@ -118,6 +147,7 @@
       <find>playerPositions</find>
       <find>self</find>
       <find>isCaptain</find>
+      <find>totalCost</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -136,7 +166,6 @@
         <option value="$PROJECT_DIR$/components/CcAvatar.vue" />
         <option value="$PROJECT_DIR$/pages/client/faq.vue" />
         <option value="$PROJECT_DIR$/components/FormAlert.vue" />
-        <option value="$PROJECT_DIR$/components/SquadNumber.vue" />
         <option value="$PROJECT_DIR$/components/MenuSidebar.vue" />
         <option value="$PROJECT_DIR$/store/auth.js" />
         <option value="$PROJECT_DIR$/components/CcCheckbox.vue" />
@@ -155,7 +184,6 @@
         <option value="$PROJECT_DIR$/components/MobileMenuSidebar.vue" />
         <option value="$PROJECT_DIR$/components/NavItem.vue" />
         <option value="$PROJECT_DIR$/components/SelectTimeDialog.vue" />
-        <option value="$PROJECT_DIR$/components/SelectLeagueDialog.vue" />
         <option value="$PROJECT_DIR$/pages/index.vue" />
         <option value="$PROJECT_DIR$/components/BomboPayments.vue" />
         <option value="$PROJECT_DIR$/components/StatusBar.vue" />
@@ -183,6 +211,8 @@
         <option value="$PROJECT_DIR$/package.json" />
         <option value="$PROJECT_DIR$/components/PlayerRowCard.vue" />
         <option value="$PROJECT_DIR$/pages/client/createteam.vue" />
+        <option value="$PROJECT_DIR$/components/SelectLeagueDialog.vue" />
+        <option value="$PROJECT_DIR$/components/SquadNumber.vue" />
       </list>
     </option>
   </component>
@@ -359,14 +389,7 @@
       <workItem from="1520801713453" duration="16644000" />
       <workItem from="1520887862463" duration="44802000" />
       <workItem from="1520974093864" duration="61472000" />
-      <workItem from="1521120602902" duration="102887000" />
-    </task>
-    <task id="LOCAL-00019" summary="testUSerId *ONLY TESTING">
-      <created>1519860339574</created>
-      <option name="number" value="00019" />
-      <option name="presentableId" value="LOCAL-00019" />
-      <option name="project" value="LOCAL" />
-      <updated>1519860339574</updated>
+      <workItem from="1521120602902" duration="103512000" />
     </task>
     <task id="LOCAL-00020" summary="testUSerId *ONLY TESTING HURRY UP NIGGA BITCH">
       <created>1519866921886</created>
@@ -704,11 +727,18 @@
       <option name="project" value="LOCAL" />
       <updated>1521312728956</updated>
     </task>
-    <option name="localTasksCounter" value="68" />
+    <task id="LOCAL-00068" summary="adding blocks, removing redundant variables">
+      <created>1521315959419</created>
+      <option name="number" value="00068" />
+      <option name="presentableId" value="LOCAL-00068" />
+      <option name="project" value="LOCAL" />
+      <updated>1521315959419</updated>
+    </task>
+    <option name="localTasksCounter" value="69" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="649004000" />
+    <option name="totallyTimeSpent" value="649629000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="54" y="-11" width="1867" height="1092" extended-state="6" />
@@ -765,7 +795,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="soccer-ground 1/2" />
     <MESSAGE value="fix menu toolbar" />
     <MESSAGE value="fix variable date&#10;nombres y apellidos?" />
     <MESSAGE value="register redirect to /client/teams" />
@@ -790,7 +819,8 @@
     <MESSAGE value="select team in /teams" />
     <MESSAGE value="hide arraos in input type number&#10;fix team types order" />
     <MESSAGE value="show captain band on card team" />
-    <option name="LAST_COMMIT_MESSAGE" value="show captain band on card team" />
+    <MESSAGE value="adding blocks, removing redundant variables" />
+    <option name="LAST_COMMIT_MESSAGE" value="adding blocks, removing redundant variables" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -799,14 +829,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/plugins/axios.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="96">
-          <caret line="4" column="0" lean-forward="false" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/nuxt.config.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="456">
@@ -929,14 +951,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/components/SelectLeagueDialog.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="624">
-          <caret line="53" column="30" lean-forward="false" selection-start-line="53" selection-start-column="30" selection-end-line="53" selection-end-column="30" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/components/BasicToolbar.vue">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="240">
@@ -988,14 +1002,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-416">
           <caret line="6" column="45" lean-forward="false" selection-start-line="6" selection-start-column="38" selection-end-line="6" selection-end-column="45" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/components/NewTeamCard.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-456">
-          <caret line="134" column="20" lean-forward="true" selection-start-line="134" selection-start-column="20" selection-end-line="134" selection-end-column="20" />
           <folding />
         </state>
       </provider>
@@ -1182,10 +1188,42 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/store/createteam.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="288">
+          <caret line="12" column="15" lean-forward="false" selection-start-line="12" selection-start-column="4" selection-end-line="12" selection-end-column="15" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pages/client/createteam.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="336">
+          <caret line="124" column="65" lean-forward="false" selection-start-line="124" selection-start-column="57" selection-end-line="124" selection-end-column="65" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/components/SelectLeagueDialog.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1176">
+          <caret line="49" column="8" lean-forward="true" selection-start-line="49" selection-start-column="8" selection-end-line="49" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/components/NewTeamCard.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3096">
+          <caret line="153" column="36" lean-forward="false" selection-start-line="153" selection-start-column="36" selection-end-line="153" selection-end-column="36" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/components/PlayerRowCard.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="215" column="8" lean-forward="false" selection-start-line="215" selection-start-column="8" selection-end-line="215" selection-end-column="46" />
+        <state relative-caret-position="192">
+          <caret line="8" column="22" lean-forward="false" selection-start-line="8" selection-start-column="17" selection-end-line="8" selection-end-column="22" />
           <folding>
             <element signature="n#style#0;n#table#0;n#template#2;n#div#0;n#template#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#table#0;n#template#3;n#div#0;n#template#0;n#!!top" expanded="true" />
@@ -1193,20 +1231,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/store/createteam.js">
+    <entry file="file://$PROJECT_DIR$/components/SquadNumber.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="144">
-          <caret line="6" column="22" lean-forward="false" selection-start-line="6" selection-start-column="22" selection-end-line="6" selection-end-column="22" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pages/client/createteam.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="192">
-          <caret line="8" column="16" lean-forward="true" selection-start-line="8" selection-start-column="16" selection-end-line="8" selection-end-column="16" />
+        <state relative-caret-position="96">
+          <caret line="4" column="89" lean-forward="false" selection-start-line="4" selection-start-column="89" selection-end-line="4" selection-end-column="89" />
           <folding>
-            <element signature="e#1410#5148#0" expanded="false" />
+            <element signature="n#style#0;n#span#0;n#span#0;n#template#0;n#!!top" expanded="true" />
           </folding>
         </state>
       </provider>

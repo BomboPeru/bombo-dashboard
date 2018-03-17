@@ -2,8 +2,8 @@
     <span id="squad-number" class="shirt">
       <img :src="img === ''?'/shirt_placeholder.svg':img"
            class="dorsal-src"
-           :style="{ top: ground===false?'-9px':'-28px', left: ground===false?'-16px':'-26px' }"
-           :width="ground===false?'60px':'80px'" alt="">
+           :style="{ top: ground===false?'-5px':'-28px', left: ground===false?'-2px':'-11px' }"
+           :width="ground===false?'30px':'42px'" alt="">
       <span class="dorsal" style="display: none;" :class="[ground===false?'overflow-mode':'ground-mode']">{{dorsal}}</span>
     </span>
 </template>
