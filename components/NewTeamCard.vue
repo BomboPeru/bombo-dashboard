@@ -3,7 +3,7 @@
 
       <div class="header elevation tabs">
         <div :class="['header-title']">
-          <span class="">{{ team.date===''?'PON UN NOMBRE A TU EQUIPO':team.date }}</span>
+          <span class="">{{ team.name===''?'PON UN NOMBRE A TU EQUIPO':team.name }}</span>
         </div>
       </div>
 
@@ -11,7 +11,7 @@
 
       <div class="form-name">
         <!-- fa-shield-alt -->
-        <input-text v-model="team.date"
+        <input-text v-model="team.name"
                     width="360px"
                     solid class="input-text"
                     prepend-icon="fa-shield-alt"
