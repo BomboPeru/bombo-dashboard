@@ -61,7 +61,7 @@
             <span :class="['title-menu-section', itemsForEachPath[activeSection].center?'font-weight-light':'']"
                   v-if="activeSection !== 'TABLERO'">{{ activeSection }}</span>
             <div class="btn-sidebar-1 elevation" @click="onCreateTeamClick">CREAR EQUIPO</div>
-            <div class="btn-sidebar-2 elevation" @click="openBomboPayments">RECARGA SALDO</div>
+            <!--<div class="btn-sidebar-2 elevation" @click="openBomboPayments">RECARGA SALDO</div>-->
             <div class="btn-sidebar-3 elevation" @click="openRulesDialog">REGLAS DEL JUEGO</div>
           </div>
         </div>
@@ -365,6 +365,7 @@
     line-height: 40px;
     border-radius: 4px;
   .btn-sidebar-1
+    font-size 22px
     margin-left: 16px;
     margin-right: 16px;
     background: #25bf89;

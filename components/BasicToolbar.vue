@@ -6,7 +6,6 @@
       <div class="links uppercase">
         <div :class="['flex', nonLanding?'white-link':'dark-link']" >
           <nuxt-link to="/">COMO JUGAR</nuxt-link>
-          <nuxt-link to="/">PRECIOS</nuxt-link>
           <nuxt-link to="/">CONTÁCTANOS</nuxt-link>
           <nuxt-link to="/register" class="register">Regístrate</nuxt-link>
           <nuxt-link to="/login" class="login">Inicia sesión</nuxt-link>
@@ -41,7 +40,6 @@
           { url: '/register', name: 'REGÍSTRATE' },
           { url: '/login', name: 'INICIA SESION' },
           { url: '/', name: 'COMO JUGAR' },
-          { url: '/', name: 'PRECIOS' },
           { url: '/', name: 'CONTÁCTENOS' }
         ]
       }
