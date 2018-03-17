@@ -39,6 +39,7 @@
           }
         }, err => {
           console.log(err)
+          this.message = 'username y/o password no es correcto.'
         })
       },
       login () {
@@ -51,6 +52,8 @@
           password: this.password
         }).then(res => {
 
+            console.log('res?', res)
+
             this.$axios.setToken(res.data.token, 'Bearer')
             this.$store.commit('auth/setToken', res.data.token)
 
@@ -58,6 +61,8 @@
           })
           .catch(err => {
             // loading off
+            console.log('err?', err)
+
             this.$store.state.isLoading = false
             console.log(err)
             this.message = 'username y/o password no es correcto.'

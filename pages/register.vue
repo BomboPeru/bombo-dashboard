@@ -103,7 +103,7 @@
             ]
           },
           email: {
-            message: 'Inserta un e-mail valido',
+            message: 'Inserta tu email',
             rules: [
               a => /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(a)
             ]
@@ -123,7 +123,7 @@
           identity_document: {
             message: 'Ingresa tu DNI',
             rules: [
-              a => a.length === 7
+              a => a.length === 8
             ]
           },
           terms: {
@@ -175,6 +175,15 @@
             let birthdayDate = new Date(this.user.birthday_fake)
             this.user.birthday = birthdayDate.toISOString()
 
+            minYearsOld = 18
+            let currentDate = (new Date ()).getTime()
+            const age = (currentDate - birthdayDate.getTime())/(1000*60*60*24*30*12)
+
+            if (age > minYearsOld) {
+              this.message = 'No eres mayor de edad'
+              return
+            }
+
             // loading on
             this.$store.state.isLoading = true
             try {
@@ -185,12 +194,14 @@
                 password: this.user.password
               })
 
+              this.$axios.setToken(responseLogin.data.token, 'Bearer')
               auth.setToken(responseLogin.data.token)
               auth.setUserId(response.user.id)
 
-              this.$router.push('/client/teams')
               // loading off
               this.$store.state.isLoading = false
+
+              this.$router.push('/client/teams')
 
             } catch (e) {
               // loading off

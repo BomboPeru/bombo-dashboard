@@ -160,7 +160,7 @@
       async putInGameTeam (team) {
         this.$store.state.team.selectedLeague = team.league_id
         this.$store.state.team.teamNameToMakePlay = team.name
-        this.$store.commit('team/turnOnSelectTimeDialog')
+        this.$store.state.team.selectTimeDialog = true
       }
     },
     mounted () {

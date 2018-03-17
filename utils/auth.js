@@ -15,6 +15,7 @@ export default {
 
       const response = await axios.get('http://api.bombo.pe/api/v2.0/users/' + userId,
         { headers: { 'Authorization': 'Bearer ' + token }})
+
       window.localStorage.setItem('user', JSON.stringify(response.data.data))
 
       return true
