@@ -3,7 +3,8 @@ const createteam = {
   state: {
     tabViews: ['JUGADORES','EQUIPO','FIXTURE'],
     activeTabViews: 0,
-    captainId: null
+    captainId: null,
+    rulesDialog: false
   },
   mutations: {
     setActiveTabView (state, index) {

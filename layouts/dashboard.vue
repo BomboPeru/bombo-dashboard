@@ -23,6 +23,8 @@
 
     <select-time-dialog :is-open="isSelectTimeDialog"/>
 
+    <rules-dialog v-if="rulesDialog"/>
+
     <bombo-payments
       :is-open="bomboPayments"
       @onCollapse="toggleBomboPayments"/>
@@ -53,15 +55,20 @@
   import MobileMenuSidebar from '~/components/MobileMenuSidebar'
   import LoadingScreen from '~/components/LoadingScreen'
   import ShortLoadingScreen from '~/components/ShortLoadingScreen'
+  import RulesDialog from '~/components/RulesDialog'
 
 
   export default {
     components: {
       Toolbar, FloatingContainer, IconButton,
       SelectLeagueDialog, SignOutDialog, Snackbar, BomboPayments,
-      SelectTimeDialog, MobileMenuSidebar, LoadingScreen, ShortLoadingScreen
+      SelectTimeDialog, MobileMenuSidebar, LoadingScreen, ShortLoadingScreen,
+      RulesDialog
     },
     computed: {
+      rulesDialog () {
+        return this.$store.state.createteam.rulesDialog
+      },
       isLoading () {
         return this.$store.state.isLoading
       },

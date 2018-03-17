@@ -33,7 +33,6 @@
             :player="player"
             :position="playerTypesConversions[player.position]"
             @onPlayerSelected="selectPlayer(player, player.position)"/>
-
         </div>
       </no-ssr>
     </div>
@@ -100,6 +99,12 @@
 
         this.playersList = await this.playersList.filter(player => {
           return (filterObj.priceInterval[0] < player.cost) && ( filterObj.priceInterval[1] > player.cost )
+        })
+
+        const searchBy = filterObj.searchBy === 'player' ? 'name': filterObj.searchBy
+
+        this.playersList = await this.playersList.filter(player => {
+          return (player[searchBy].toLowerCase()).includes(filterObj.searchTxt.toLowerCase())
         })
       },
       async searchByKeyword (value) {

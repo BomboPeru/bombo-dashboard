@@ -131,7 +131,6 @@
                   <div class="player-info">
                     <div><span class="player-name">{{ player.name }}</span></div>
                   </div>
-
                 </span>
               </div>
             </div>

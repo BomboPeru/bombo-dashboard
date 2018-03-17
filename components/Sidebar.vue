@@ -20,6 +20,7 @@
               <div class="line" :style="{ background: item.color }"></div>
               <span class="text">{{ item.name }}</span>
             </div>
+
             <div class="bottom-side">
               <div>
                 <template
@@ -59,6 +60,7 @@
                   v-if="activeSection !== 'TABLERO'">{{ activeSection }}</span>
             <div class="btn-sidebar-1 elevation" @click="onCreateTeamClick">CREAR EQUIPO</div>
             <div class="btn-sidebar-2 elevation" @click="openBomboPayments">RECARGA SALDO</div>
+            <div class="btn-sidebar-3 elevation" @click="openRulesDialog">REGLAS DEL JUEGO</div>
           </div>
         </div>
       </template>
@@ -135,8 +137,8 @@
           },
           'MIS EQUIPOS': {
             items: [
-              {name: 'EN JUEGO', color: '#EA504C', type: 'normal'},
               {name: 'GUARDADOS', color:'#25BF89', type: 'normal'},
+              {name: 'EN JUEGO', color: '#EA504C', type: 'normal'},
               {name: 'PASADOS', color:'#67A6F0', type: 'normal'},
               {name: '¡CREAR EQUIPO!', color:'#25BF89', type: 'bottom', icon: 'plus'}
             ]
@@ -182,6 +184,9 @@
       openBomboPayments() {
         this.$store.state.bomboPayments = !this.$store.state.bomboPayments
       },
+      openRulesDialog () {
+        this.$store.state.createteam.rulesDialog = true
+      },
       clickOnTab (name) {
         let indexSelected
         if (this.activeSection === 'MIS EQUIPOS') {
@@ -189,6 +194,7 @@
           // this.$store.state.activeTypeTeam = indexSelected
 
           this.$store.commit('team/setActiveTypeTeam', indexSelected)
+
         } else if (this.activeSection === 'ARMA UN EQUIPO') {
           indexSelected = this.$store.state.createteam.tabViews.indexOf(name)
           // this.$store.state.activeTypeTeam = indexSelected
@@ -334,6 +340,7 @@
     height 10px
     width 100%
 
+  .btn-sidebar-3
   .btn-sidebar-2
   .btn-sidebar-1
     cursor pointer
@@ -358,6 +365,12 @@
   .btn-sidebar-2
     background: #EA504C;
     color: white;
+
+  .btn-sidebar-3
+    margin-right: 16px;
+    background: #5657ea;
+    color: white;
+
 
   @media screen and (max-width: 1023px)
     #sidebar

@@ -119,6 +119,7 @@
       initFilter () {
       //  do something
         let filterObj = {}
+        filterObj['searchTxt'] = this.searchTxt
         filterObj['searchBy'] = this.searchBy
         filterObj['priceInterval'] = this.filterCost
         filterObj['allowedPositions'] = this.positions.filter(item => {
@@ -145,7 +146,7 @@
     font-family: 'Raleway', sans-serif
   .btn-filter
     background #ecffea
-    color black
+    color #243237
     border 0
     border-top-right-radius 2px
     border-bottom-right-radius 2px
