@@ -42,114 +42,115 @@
     },
     methods: {
       createTeam () {
-        const self = this
-        const playerPositions = [
-          'goal_keeper', 'defender', 'mid_fielder', 'forward'
-        ]
-        let total = 0
-        total += this.team.players.goal_keeper.length
-        total += this.team.players.defender.length
-        total += this.team.players.mid_fielder.length
-        total += this.team.players.forward.length
 
-        if (this.team.date === '') {
+        // TOTAL PLAYERS = 11 CONSTRAINT
+        {
+          const total = this.team.players.goal_keeper.length +
+            this.team.players.defender.length +
+            this.team.players.mid_fielder.length +
+            this.team.players.forward.length
+
+          if (total !== 11) {
+            this.$store.dispatch('turnOnSnackbar', 'No puedes crear un equipo con menos de 11 jugadores')
+            return
+          }
+        }
+
+        // TEAM NAME CONSTRAINT
+        if (this.team.name === '') {
           this.$store.dispatch('turnOnSnackbar', 'Debes darle un nombre a tu equipo')
           return false
         }
-        if (total !== 11) {
-          console.log('empty')
-          this.$store.dispatch('turnOnSnackbar', 'No puedes crear un equipo con menos de 11 jugadores')
-          return
+
+        // TOTAL PLAYERS BY POSITION CONSTRAINT
+        {
+          const totalGoalKeeper = this.team.players.goal_keeper.length
+          const totalDefender = this.team.players.defender.length
+          const totalMidFielder = this.team.players.mid_fielder.length
+          const totalForward = this.team.players.forward.length
+
+          if (totalGoalKeeper < this.constraints.goal_keeper[0] ||
+            totalGoalKeeper > this.constraints.goal_keeper[1]) {
+            this.$store.dispatch('turnOnSnackbar', 'Debes escoger al menos un arquero')
+            return
+          }
+          if (totalDefender < this.constraints.defender[0] ||
+            totalDefender> this.constraints.defender[1]) {
+            this.$store.dispatch('turnOnSnackbar', 'Debes escoger al menos a un defensa')
+            return
+          }
+          if (totalMidFielder < this.constraints.mid_fielder[0] ||
+            totalMidFielder> this.constraints.mid_fielder[1]) {
+            this.$store.dispatch('turnOnSnackbar', 'Debes escoger al menos a un centrocampista')
+            return
+          }
+          if (totalForward < this.constraints.forward[0] ||
+            totalForward > this.constraints.forward[1]) {
+            this.$store.dispatch('turnOnSnackbar', 'Debes escoger al menos a un delantero')
+            return
+          }
         }
 
 
         let teamToCreate = []
-        let totalCaptain = 0
 
+        {
+          let isCaptain = false
+          const self = this
+          const playerPositions = [
+            'goal_keeper', 'defender', 'mid_fielder', 'forward'
+          ]
 
-        let totalGoalKeeper = this.team.players.goal_keeper.length
-        let totalDefender = this.team.players.defender.length
-        let totalMidFielder = this.team.players.mid_fielder.length
-        let totalForward = this.team.players.forward.length
+          playerPositions.map(positionName => {
 
-        playerPositions.map(positionName => {
-          this.team.players[positionName].map(player => {
-            if (player.internal_id === self.captain_id) {
-              player.is_captain = true
-              totalCaptain += 1
-            } else {
-              player.is_captain = false
-            }
-            teamToCreate.push(player)
+            this.team.players[positionName].map(player => {
+
+              if (player.internal_id === self.captain_id) {
+                player.is_captain = true
+                isCaptain = true
+              } else {
+                player.is_captain = false
+              }
+              teamToCreate.push(player)
+            })
           })
-        })
-        if (totalGoalKeeper < this.constraints.goal_keeper[0] ||
-          totalGoalKeeper > this.constraints.goal_keeper[1]) {
-          this.$store.dispatch('turnOnSnackbar', 'Debes escoger al menos un arquero')
-          return
-        }
-        if (totalDefender < this.constraints.defender[0] ||
-          totalDefender> this.constraints.defender[1]) {
-          this.$store.dispatch('turnOnSnackbar', 'Debes escoger al menos a un defensa')
-          return
-        }
-        if (totalMidFielder < this.constraints.mid_fielder[0] ||
-          totalMidFielder> this.constraints.mid_fielder[1]) {
-          this.$store.dispatch('turnOnSnackbar', 'Debes escoger al menos a un centrocampista')
-          return
-        }
-        if (totalForward < this.constraints.forward[0] ||
-          totalForward > this.constraints.forward[1]) {
-          this.$store.dispatch('turnOnSnackbar', 'Debes escoger al menos a un delantero')
-          return
-        }
 
-
-
-        if (totalCaptain < this.constraints.totalCaptains) {
-          this.$store.dispatch('turnOnSnackbar', 'Debes escoger a un capitan')
-          return
-        }
-        if (totalCaptain > this.constraints.totalCaptains) {
-          this.$store.dispatch('turnOnSnackbar', 'Solo puedes escoger a un capitan')
-          return
+          if (isCaptain === false) {
+            this.$store.dispatch('turnOnSnackbar', 'Debes escoger a un capitan')
+            return
+          }
         }
 
         const userId = this.$store.getters['auth/getUserId']
         const leagueId = this.$store.getters['createteam/leagueid']
-
         console.log(userId, leagueId)
-
         this.$store.state.isShortLoading = true
+
         this.$axios.$post('http://api.bombo.pe/api/v2.0/users/'+ userId + '/create-team', {
           team: {
             league_id: leagueId,
-            name: this.team.date,
+            name: this.team.name,
             players: teamToCreate
           }
         }).then(res => {
+
           this.$store.state.isShortLoading = false
           this.$store.dispatch('turnOnSnackbar', 'Equipo Creado!. Visita Mis Equipos para jugar')
           console.log(res)
           setTimeout(() => {
             this.$store.state.createteam.captainId = null
             this.$router.push('/client/teams')
-          }, 1000)
+          }, 800)
 
         }).catch(e => {
           this.$store.state.isShortLoading = false
-          this.$store.dispatch('turnOnSnackbar', 'Error al crear Equipo, pruebalo mas tarde.')
+          this.$store.dispatch('turnOnSnackbar', 'Error al crear Equipo, intent más tarde.')
           console.log(e)
         })
       },
       onPlayerSelected (data) {
-        let currentTotal = 0
-        currentTotal = this.team.players.goal_keeper.length +
-                      this.team.players.defender.length +
-                      this.team.players.mid_fielder.length +
-                      this.team.players.forward.length
 
-        let playerTypes = ['goal_keeper', 'defender', 'mid_fielder', 'forward']
+        const playerTypes = ['goal_keeper', 'defender', 'mid_fielder', 'forward']
         let teamToEvaluate = data.player.team
         let sameTeamCount = 0
 
@@ -160,6 +161,7 @@
 
         for (let i = 0; i < playerTypes.length; i++) {
           let type = playerTypes[i]
+
           for (let j = 0; j < this.team.players[type].length; j++) {
             let player = this.team.players[type][j]
             if (player.team === teamToEvaluate) {
@@ -171,60 +173,57 @@
           }
         }
 
-        if (currentTotal >= 11) {
-          this.$store.dispatch('turnOnSnackbar', 'No puedes agregar mas de 11 jugadores a tu equipo')
-          return false
-        }
-
-
         if (sameTeamCount >= this.constraints.maxPlayersSameTeam) {
           this.$store.dispatch('turnOnSnackbar', 'No puedes agregar mas de 3 jugadores del mismo equipo')
           return false
         }
 
-        if (sameTeamCount < this.constraints.maxPlayersSameTeam) {
+        const currentTotal = this.team.players.goal_keeper.length +
+          this.team.players.defender.length +
+          this.team.players.mid_fielder.length +
+          this.team.players.forward.length
 
-          if ( (this.constraints[data.type][1] > this.team.players[data.type].length) &&
-            ( this.constraints.total > currentTotal )
-          ) {
+        if (currentTotal >= 11) {
+          this.$store.dispatch('turnOnSnackbar', 'No puedes agregar mas de 11 jugadores a tu equipo')
+          return false
+        }
 
-            let lengthPlayers = this.team.players[data.type].length
-            if (lengthPlayers > 0) {
+        if ( (this.constraints[data.type][1] > this.team.players[data.type].length)) {
 
-              let isAlreadyAdded = false
-              for (let i = 0; i < lengthPlayers; i++) {
-                if ((data.player.internal_id === this.team.players[data.type][i].internal_id)) {
-                  isAlreadyAdded = true
-                  break
-                }
+          const lengthPlayers = this.team.players[data.type].length
+          if (lengthPlayers > 0) {
+
+            let isAlreadyAdded = false
+            for (let i = 0; i < lengthPlayers; i++) {
+              if ((data.player.internal_id === this.team.players[data.type][i].internal_id)) {
+                isAlreadyAdded = true
+                break
               }
+            }
 
-              if (isAlreadyAdded === false) {
-
-                this.team.players[data.type].push(data.player)
-              }
-            } else {
-
+            if (isAlreadyAdded === false) {
               this.team.players[data.type].push(data.player)
             }
           } else {
-            let playerType = {
-              'goal_keeper': 'portero',
-              'defender': 'defensa',
-              'mid_fielder': 'mediocampista',
-              'forward': 'delantero'
-            }
-            this.$store.dispatch('turnOnSnackbar', `No puedes agregar mas de ${this.constraints[data.type][1]} ${playerType[data.type]}(s)`)
-          }
-        }
 
+            this.team.players[data.type].push(data.player)
+          }
+        } else {
+          const playerType = {
+            'goal_keeper': 'portero',
+            'defender': 'defensa',
+            'mid_fielder': 'mediocampista',
+            'forward': 'delantero'
+          }
+          this.$store.dispatch('turnOnSnackbar', `No puedes agregar mas de ${this.constraints[data.type][1]} ${playerType[data.type]}(s)`)
+        }
 
       }
     },
     data () {
       return {
         team: {
-          date: '',
+          name: '',
           players: {
             goal_keeper: [],
             defender: [],

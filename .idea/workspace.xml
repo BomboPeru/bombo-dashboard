@@ -4,12 +4,9 @@
     <bookmark url="file://$PROJECT_DIR$/pages/client/createteam.vue" line="5" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bf24282d-3075-4fc1-a7e6-a1352eba2675" name="Default" comment="hide arraos in input type number&#10;fix team types order">
+    <list default="true" id="bf24282d-3075-4fc1-a7e6-a1352eba2675" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/components/InputText.vue" afterPath="$PROJECT_DIR$/components/InputText.vue" />
-      <change beforePath="$PROJECT_DIR$/components/PlayerRowCard.vue" afterPath="$PROJECT_DIR$/components/PlayerRowCard.vue" />
       <change beforePath="$PROJECT_DIR$/pages/client/createteam.vue" afterPath="$PROJECT_DIR$/pages/client/createteam.vue" />
-      <change beforePath="$PROJECT_DIR$/pages/client/profile.vue" afterPath="$PROJECT_DIR$/pages/client/profile.vue" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -26,11 +23,10 @@
       <file leaf-file-name="createteam.vue" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/pages/client/createteam.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
-              <caret line="10" column="14" lean-forward="true" selection-start-line="10" selection-start-column="14" selection-end-line="10" selection-end-column="14" />
+            <state relative-caret-position="192">
+              <caret line="8" column="16" lean-forward="true" selection-start-line="8" selection-start-column="16" selection-end-line="8" selection-end-column="16" />
               <folding>
-                <element signature="e#1410#5117#0" expanded="false" />
-                <element signature="e#5149#7793#0" expanded="false" />
+                <element signature="e#1410#5148#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -40,7 +36,7 @@
         <entry file="file://$PROJECT_DIR$/components/PlayerRowCard.vue">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="408">
-              <caret line="215" column="8" lean-forward="true" selection-start-line="215" selection-start-column="8" selection-end-line="215" selection-end-column="46" />
+              <caret line="215" column="8" lean-forward="false" selection-start-line="215" selection-start-column="8" selection-end-line="215" selection-end-column="46" />
               <folding>
                 <element signature="n#style#0;n#table#0;n#template#2;n#div#0;n#template#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#table#0;n#template#3;n#div#0;n#template#0;n#!!top" expanded="true" />
@@ -92,13 +88,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>ul-pro</find>
-      <find>.message</find>
-      <find>header</find>
-      <find>mnotifications</find>
-      <find>.title</find>
-      <find>ground-container</find>
-      <find>state.selectLeagueDialog</find>
       <find>selectCaptain</find>
       <find>callback</find>
       <find>onCreateTeamClick</find>
@@ -122,6 +111,13 @@
       <find>birthdayFake</find>
       <find>z-index</find>
       <find>player-row-card</find>
+      <find>currentTotal</find>
+      <find>lengthPlayers</find>
+      <find>daten</find>
+      <find>date</find>
+      <find>playerPositions</find>
+      <find>self</find>
+      <find>isCaptain</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -363,14 +359,7 @@
       <workItem from="1520801713453" duration="16644000" />
       <workItem from="1520887862463" duration="44802000" />
       <workItem from="1520974093864" duration="61472000" />
-      <workItem from="1521120602902" duration="99657000" />
-    </task>
-    <task id="LOCAL-00018" summary="binding with API">
-      <created>1519839057720</created>
-      <option name="number" value="00018" />
-      <option name="presentableId" value="LOCAL-00018" />
-      <option name="project" value="LOCAL" />
-      <updated>1519839057720</updated>
+      <workItem from="1521120602902" duration="102887000" />
     </task>
     <task id="LOCAL-00019" summary="testUSerId *ONLY TESTING">
       <created>1519860339574</created>
@@ -708,11 +697,18 @@
       <option name="project" value="LOCAL" />
       <updated>1521302846446</updated>
     </task>
-    <option name="localTasksCounter" value="67" />
+    <task id="LOCAL-00067" summary="show captain band on card team">
+      <created>1521312728955</created>
+      <option name="number" value="00067" />
+      <option name="presentableId" value="LOCAL-00067" />
+      <option name="project" value="LOCAL" />
+      <updated>1521312728956</updated>
+    </task>
+    <option name="localTasksCounter" value="68" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="645774000" />
+    <option name="totallyTimeSpent" value="649004000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="54" y="-11" width="1867" height="1092" extended-state="6" />
@@ -769,7 +765,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="register constraints&#10;redirect after create team" />
     <MESSAGE value="soccer-ground 1/2" />
     <MESSAGE value="fix menu toolbar" />
     <MESSAGE value="fix variable date&#10;nombres y apellidos?" />
@@ -794,11 +789,12 @@
     <MESSAGE value="empty team card list&#10;increase title team font" />
     <MESSAGE value="select team in /teams" />
     <MESSAGE value="hide arraos in input type number&#10;fix team types order" />
-    <option name="LAST_COMMIT_MESSAGE" value="hide arraos in input type number&#10;fix team types order" />
+    <MESSAGE value="show captain band on card team" />
+    <option name="LAST_COMMIT_MESSAGE" value="show captain band on card team" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="8" />
+      <option name="time" value="10" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -1157,7 +1153,7 @@
         <state relative-caret-position="540">
           <caret line="136" column="0" lean-forward="false" selection-start-line="136" selection-start-column="0" selection-end-line="136" selection-end-column="0" />
           <folding>
-            <element signature="n#style#0;n#li#1;n#ul#0;n#template#1;n#div#1;n#div#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#li#1;n#ul#0;n#template#1;n#div#1;n#div#0;n#template#0;n#!!top" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1189,7 +1185,7 @@
     <entry file="file://$PROJECT_DIR$/components/PlayerRowCard.vue">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="408">
-          <caret line="215" column="8" lean-forward="true" selection-start-line="215" selection-start-column="8" selection-end-line="215" selection-end-column="46" />
+          <caret line="215" column="8" lean-forward="false" selection-start-line="215" selection-start-column="8" selection-end-line="215" selection-end-column="46" />
           <folding>
             <element signature="n#style#0;n#table#0;n#template#2;n#div#0;n#template#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#table#0;n#template#3;n#div#0;n#template#0;n#!!top" expanded="true" />
@@ -1207,11 +1203,10 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/pages/client/createteam.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="10" column="14" lean-forward="true" selection-start-line="10" selection-start-column="14" selection-end-line="10" selection-end-column="14" />
+        <state relative-caret-position="192">
+          <caret line="8" column="16" lean-forward="true" selection-start-line="8" selection-start-column="16" selection-end-line="8" selection-end-column="16" />
           <folding>
-            <element signature="e#1410#5117#0" expanded="false" />
-            <element signature="e#5149#7793#0" expanded="false" />
+            <element signature="e#1410#5148#0" expanded="false" />
           </folding>
         </state>
       </provider>
