@@ -44,11 +44,8 @@
         this.$store.state.signOutDialog = false
       },
       logout () {
-        localStorage.removeItem('user')
-        localStorage.removeItem('userAccess')
-        localStorage.removeItem('userId')
-        localStorage.removeItem('token')
 
+        this.$store.commit('auth/removeAuth')
         this.$router.push('/')
       }
     }

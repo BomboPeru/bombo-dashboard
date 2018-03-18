@@ -31,19 +31,7 @@
       }
     },
     methods: {
-      fetchUser () {
-        auth.saveUser().then(done => {
-          console.log('done', done)
-          if (done) {
-            this.$router.push('/client/teams')
-          }
-        }, err => {
-          console.log(err)
-          this.message = 'username y/o password no es correcto.'
-        })
-      },
       login () {
-
         // loading on
         this.$store.state.isLoading = true
 
@@ -52,21 +40,35 @@
           password: this.password
         }).then(res => {
 
-            console.log('res?', res)
+          this.$axios.setToken(res.data.token, 'Bearer')
+          this.$store.commit('auth/setToken', res.data.token)
 
-            this.$axios.setToken(res.data.token, 'Bearer')
-            this.$store.commit('auth/setToken', res.data.token)
+          this.fetchUser(res.data.token)
+        })
+        .catch(err => {
+          // loading off
+          console.log('err?', err)
 
-            this.fetchUser()
-          })
-          .catch(err => {
-            // loading off
-            console.log('err?', err)
+          this.$store.state.isLoading = false
+          console.log(err)
+          this.message = 'username y/o password no es correcto.'
+        })
+      },
+      fetchUser (token) {
 
+        this.$store.dispatch('auth/fetchUser', token).then(done => {
+          console.log('done', done)
+          if (done) {
+            this.$router.push('/client/teams')
+          } else {
             this.$store.state.isLoading = false
-            console.log(err)
-            this.message = 'username y/o password no es correcto.'
-          })
+          }
+        }, err => {
+          console.log(err)
+          this.message = 'username y/o password no es correcto.'
+          this.$store.state.isLoading = false
+        })
+
       }
     }
   }

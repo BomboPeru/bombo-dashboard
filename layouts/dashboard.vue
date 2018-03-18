@@ -17,7 +17,6 @@
 
     <sign-out-dialog @onCollapse="onCollapseSignoutDialog"
                      :is-open="isSignoutDialog"/>
-
     <select-league-dialog
       :is-open="isSelectLeagueDialog"/>
 
@@ -98,14 +97,7 @@
         return this.$store.getters.snackbarMessage
       },
       saldo () {
-        if (process.server) return
-
-        const user = this.$store.getters['auth/getUser']
-        if ( user === null) {
-          return 0
-        } else {
-          return user.current_credit
-        }
+        return this.$store.state.current_credit
       }
     },
     data () {
@@ -121,13 +113,12 @@
       }
     },
     beforeCreate () {
-      this.$store.state.isLoading = true
-
-      const user = this.$store.getters['auth/getUser']
-      if (user === null) {
-        console.log('null data in localStorage')
-        this.$router.push('/login')
-      }
+      this.$store.dispatch('fetchUser')
+        .then(user => console.log('fetchUser') )
+        .catch(e=> {
+          console.log(e)
+          this.$router.push('/login')
+        })
     }
   }
 </script>

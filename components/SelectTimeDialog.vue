@@ -111,12 +111,17 @@
             pay_type: payType
           })
 
+          this.$store.dispatch('updateUser', response.data)
+
           this.$store.state.isShortLoading = false
           this.$store.dispatch('turnOnSnackbar', 'Equipo puesto en el juego!')
-          setTimeout(() => {
-            window.location.reload(true)
-          }, 1000)
+
+          this.$store.state.team.selectTimeDialog = false
+          // setTimeout(() => {
+          //   window.location.reload(true)
+          // }, 1000)
         } catch (e) {
+
           console.log(e.response.data)
           this.$store.state.isShortLoading = false
           this.$store.dispatch('turnOnSnackbar', e.response.data.error)

@@ -134,6 +134,7 @@
           }
         }).then(res => {
 
+          this.$store.dispatch('updateUser', res.data)
           this.$store.state.isShortLoading = false
           this.$store.dispatch('turnOnSnackbar', 'Equipo Creado!. Visita Mis Equipos para jugar')
           console.log(res)
@@ -254,7 +255,7 @@
       }
     },
     beforeDestroy () {
-      this.$store.commit('createteam/unsetleagueid')
+      // this.$store.commit('createteam/unsetleagueid')
     },
     mounted () {
     }

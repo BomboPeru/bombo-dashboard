@@ -1,7 +1,9 @@
 <template>
     <div id="toolbar" class="elevation">
       <div class="img-container">
-        <img src="../assets/bombo_transparency.png" alt="">
+        <nuxt-link to="/client/teams">
+          <img src="../assets/bombo_transparency.png" alt="">
+        </nuxt-link>
       </div>
       <div class="menu-btn">
         <img src="../assets/icons/menu.png" alt="" width="32px" height="32px" @click="openMenuSidebar">

@@ -80,6 +80,7 @@
             <!--<img src="../assets/img/cancha.png" alt="" width="100%">-->
           </div>
           <div class="players-layer" ref="playersLayer">
+
             <div class="portero-section">
               <div v-for="(player, key) in team.players.goal_keeper" :key="key+'-arquero2'" :player="player" class="portero-in-ground">
                 <span class="player-container">

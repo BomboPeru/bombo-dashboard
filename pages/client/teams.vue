@@ -2,7 +2,7 @@
   <div id="teams">
     <sidebar mode="teams"/>
 
-    <div v-if="hasNotTeams" class="container margin-sidebar">
+    <div v-if="teams[activeTypeTeam].length === 0" class="container margin-sidebar">
       <div class="empty-teams-message">
         <p>Aun no tienes ningun equipo
           {{ indexTypeTeams[activeTypeTeam] === 'en_juego' ? ' en juego' : indexTypeTeams[activeTypeTeam] }}
@@ -28,8 +28,8 @@
       <!--<template v-if="activeTypeTeam === 1">-->
         <team-card
           class="teamcard"
-          :style="{ 'flex-grow': mteams[activeTypeTeam].length > 3 ? '1':'0' }"
-          v-for="(team, i) in mteams[activeTypeTeam]"
+          :style="{ 'flex-grow': teams[activeTypeTeam].length > 3 ? '1':'0' }"
+          v-for="(team, i) in teams[activeTypeTeam]"
           :key="i+'card'"
           :id="team.id"
           :team="team"
@@ -56,12 +56,23 @@
       IconButton, TeamCard, Sidebar
     },
     computed: {
-      hasNotTeams () {
-        return this.mteams[this.activeTypeTeam].length === 0
-        // return (this.mteams['0'].length === 0) && (this.mteams['1'].length === 0) && (this.mteams['2'].length === 0)
-      },
       activeTypeTeam () {
         return this.$store.getters['team/activeTypeTeam']
+      },
+      teams () {
+        if (this.$store.getters['user'] === null || this.$store.getters['user'] === undefined) {
+          return {
+            0: [],
+            1: [],
+            2: []
+          }
+        } else {
+          return {
+            0: this.$store.getters['user'].saved_teams === null ? [] : this.$store.getters['user'].saved_teams,
+            1: this.$store.getters['user'].playing_teams === null ? [] : this.$store.getters['user'].playing_teams,
+            2: this.$store.getters['user'].old_teams === null ? [] : this.$store.getters['user'].old_teams
+          }
+        }
       }
     },
     data () {
@@ -79,22 +90,6 @@
         // this
         this.$store.state.team.selectLeagueDialog = true
       }
-    },
-    mounted () {
-      // loading on
-      this.$store.state.isLoading = true
-
-      // console.log('fetch teams')
-      // const userId = this.$store.getters['auth/userId']
-      // this.$axios.get('http://api.bombo.pe/api/v2.0/users/' + userId)
-      setTimeout(() => {
-        this.$store.dispatch('team/fetchUserData')
-          .then(res=> {
-            this.mteams = res
-            // loading off
-            this.$store.state.isLoading = false
-          })
-      }, 500)
     }
   }
 </script>

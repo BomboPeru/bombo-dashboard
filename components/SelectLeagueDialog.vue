@@ -69,7 +69,9 @@
           this.leagues = res.data.data
         })
         .catch(e => {
-          console.log(e)
+
+          // window.$nuxt.error({ statusCode, message })
+          console.log('>> e ', e.toString())
         })
     }
   }

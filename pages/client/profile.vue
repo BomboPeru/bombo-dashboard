@@ -48,44 +48,44 @@
       CcAvatar, InputText, Sidebar
     },
     computed: {
+      birthdayFake: {
+        get () {
+          const user = this.user
+          const birthdayFake = new Date(user.birthday)
+
+          const formatMonth = (((birthdayFake.getMonth() + 1).toString()).padStart(2, '0'))
+          let formatBirthday = formatMonth + '/' +
+            birthdayFake.getDate() + '/' +
+            birthdayFake.getFullYear()
+
+          return formatBirthday
+        },
+        set (value) {
+          this.user.birthday = (new Date(value)).toISOString()
+        }
+      }
     },
     data () {
       return {
-        date: '',
-        birthdayFake: '',
         user: {
           name: '',
           email: '',
           identity_document: '',
-          birthday: undefined
+          birthday: ''
         }
       }
     },
     methods: {
-      async fetchUser() {
-        const user = this.$store.getters['auth/getUser']
-
-        if (user === null) return
-
-        this.user.name = user.name
-        this.user.email = user.email
-        this.user.identity_document = user.identity_document
-
-        let birthdayFake = new Date(user.birthday)
-        const formatMonth = (((birthdayFake.getMonth() + 1).toString()).padStart(2, '0'))
-        let formatBirthday = formatMonth + '/' +
-          birthdayFake.getDate() + '/' +
-          birthdayFake.getFullYear()
-        this.birthdayFake = formatBirthday
-      },
       async updateUser () {
-        const userId = this.$store.getters['auth/getUserId']
+        // const userId = this.$store.getters['auth/getUserId']
+        // this.user.birthday = (new Date(this.birthdayFake)).toISOString()
 
-        this.user.birthday = (new Date(this.birthdayFake)).toISOString()
-        this.$axios.post('http://api.bombo.pe/api/v2.0/users/'+ userId +'/update-profile',
+        this.$axios.post('http://api.bombo.pe/api/v2.0/users/'+ this.user.id +'/update-profile',
           { user: this.user })
           .then(res => {
             console.log(res)
+            // res.data.data
+            this.$store.dispatch('updateUser', res.data.data)
             this.$store.dispatch('turnOnSnackbar', 'Perfil Actualizado')
           })
           .catch(e => {
@@ -95,7 +95,10 @@
       }
     },
     mounted () {
-      this.fetchUser()
+      // console.log('profile', this.$store.getters['user'])
+      const user = this.$store.getters['user']
+      // console.log('profile', this.user)
+      this.user = user
     }
   }
 </script>

@@ -12,6 +12,11 @@ const team = {
       1: 'en_juego',
       2: 'pasado'
     },
+    indexAccessTypeTeams: {
+      0: 'saved_teams',
+      1: 'playing_teams',
+      2: 'old_teams'
+    },
     teamNameToMakePlay: null,
     selectedLeague: null
   },
@@ -21,7 +26,7 @@ const team = {
     }
   },
   actions: {
-    async fetchUserData (context) {
+    async fetchTeams (context) {
       if (process.server) return
       const userId = localStorage.getItem('userId')
       // const token = localStorage.getItem('token')
@@ -34,8 +39,6 @@ const team = {
       teams['1'] = response.data.playing_teams === null ? [] : response.data.playing_teams
 
       teams['2'] = response.data.old_teams === null ? [] : response.data.old_teams
-
-      context.rootState.notifications = response.data.notifications
 
       return teams
     }

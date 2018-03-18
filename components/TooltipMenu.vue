@@ -21,7 +21,8 @@
 
             <li v-if="notifications.length === 0">
               <div style="text-align: center;">
-                <i class="fas fa-circle-notch fa-spin"></i>
+                <!--<i class="fas fa-circle-notch fa-spin"></i>-->
+                No tienes nuevas notificaciones
               </div>
             </li>
 
@@ -45,8 +46,8 @@
         </template>
 
         <template v-else-if="profile">
-          <p class="username">{{ profileData.name }}</p>
-          <p class="coins">{{ profileData.coins }}</p>
+          <p class="username">{{ user.name }}</p>
+          <p class="coins">{{ user.current_bombo_coins }} B</p>
           <div class="divider"></div>
           <ul class="ul-profile">
             <li v-for="(profileLink, i) in listProfileItems" :key="i+'-profile'">
@@ -94,6 +95,9 @@
         } else {
           return ''
         }
+      },
+      user () {
+        return this.$store.getters['user']
       }
     },
     data () {
@@ -131,17 +135,9 @@
            console.log(e)
           this.$store.dispatch('turnOnSnackbar', 'Problemas al eliminar notificación, intente más tarde')
         }
-      },
-      async fetchDataUser () {
-        const userId = this.$store.getters['auth/getUserId']
-        let response = await this.$axios.get('http://api.bombo.pe/api/v2.0/users/' + userId)
-        const userResponse = response.data.data
-        this.profileData.name = userResponse.name
-        this.profileData.coins = userResponse.current_bombo_coins + ' B'
       }
     },
     mounted () {
-      this.fetchDataUser()
     }
   }
 </script>
