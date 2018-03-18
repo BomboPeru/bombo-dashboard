@@ -34,7 +34,6 @@ module.exports = {
   ** Build configuration
   */
   build: {
-    vendor: ['vue-select'],
     /*
     ** Run ESLint on save
     */

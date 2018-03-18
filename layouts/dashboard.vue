@@ -121,6 +121,8 @@
       }
     },
     beforeCreate () {
+      this.$store.state.isLoading = true
+
       const user = this.$store.getters['auth/getUser']
       if (user === null) {
         console.log('null data in localStorage')

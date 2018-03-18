@@ -99,6 +99,7 @@
         const timeId = this.times[this.selectedTime].id
         const teamName = this.$store.state.team.teamNameToMakePlay
         const payType = this.payType === 1? 'bombocoins' : 'credit'
+        console.log('timeId', timeId, 'teamName', teamName, 'payTYpe', payType)
         try {
           const userId = this.$store.getters['auth/getUserId']
           this.$store.state.isShortLoading = true
