@@ -129,7 +129,9 @@
           let response = await this.$axios.post('http://api.bombo.pe/api/v2.0/users/' + userId + '/delete-notification', {
             notification_id: item.id
           })
-          this.$store.state.notifications = response.data.data.notifications
+
+          // console.log(response)
+          this.$store.dispatch('updateUser', response.data.data)
           this.$store.dispatch('turnOnSnackbar', 'Notificación eliminada')
         } catch (e) {
            console.log(e)
