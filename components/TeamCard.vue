@@ -40,7 +40,7 @@
                 </td>
               </tr>
               <tr :class="['label-team-info']">
-                <td style="width: 50%">RANKING:</td>
+                <td style="width: 50%">PUESTO EN EL BOMBO:</td>
                 <td style="width: 50%">PUNTAJE ACUMULADO:</td>
               </tr>
               <tr>
@@ -64,7 +64,7 @@
                 </td>
               </tr>
               <tr class="label-team-info">
-                <td  style="width: 50%">RANKING:</td>
+                <td  style="width: 50%">PUESTO EN EL BOMBO:</td>
                 <td  style="width: 50%">ESTADO EN EL EQUIPO:</td>
               </tr>
               <tr>
@@ -79,13 +79,13 @@
       <!--<div class="divider" v-if="typeCard !== 'en_juego'"></div>-->
 
       <div class="bottom-button-container" v-if="typeCard !== 'en_juego'">
-        <div class="button-play-again" v-if="typeCard === 'guardado'" @click="putInGameTeam(team)">
+        <div class="button-play-again elevation" v-if="typeCard === 'guardado'" @click="putInGameTeam(team)">
           JUEGA YA!
         </div>
-        <div class="button-delete" v-if="typeCard === 'pasados'">
+        <div class="button-delete elevation" v-if="typeCard === 'pasados'">
           Borrar
         </div>
-        <div class="button-save" v-if="typeCard === 'pasados'">
+        <div class="button-save elevation" v-if="typeCard === 'pasados'">
           Guardar
         </div>
       </div>
@@ -277,6 +277,8 @@ font2 = 'Titillium Web'
   // height 128px
   background #0F202D
   text-align center
+.league-background img
+  margin-top: 11px
 .subheader
   font-size 10px
   color #A6A6A6

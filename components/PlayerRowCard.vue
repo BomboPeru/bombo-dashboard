@@ -261,10 +261,10 @@
 
   .captain-band
     width: 41px;
-    top: -4px;
+    top: -6px;
     position: absolute;
     z-index: 400;
-    left: -5px;
+    left: -8px;
 
   .hover-select-captain
     position absolute
