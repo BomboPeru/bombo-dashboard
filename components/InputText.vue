@@ -1,5 +1,6 @@
 <template>
-    <div id="input-text">
+    <div id="input-text"
+         :style="{ 'width': width }">
       <span :class="['prepend-icon', big?'big-icon':'',
              responsive?'responsive-icon':'']" v-if="prependIcon !== ''"><i :class="['fas', prependIcon]"></i></span>
       <template v-if="type === 'date'">
@@ -14,8 +15,7 @@
                v-on:keypress="isDate"
                v-model="inputValue"
                :placeholder="type==='date'?'MM / DD / YYYY':placeholder"
-               :disabled="disabled"
-               :style="{ 'width': width }"/>
+               :disabled="disabled"/>
       </template>
       <template v-else>
         <input :type="type === 'date'? 'text':type"
@@ -28,8 +28,7 @@
                ref="inputText"
                v-model="inputValue"
                :placeholder="type==='date'?'dd-mm-yyyy':placeholder"
-               :disabled="disabled"
-               :style="{ 'width': width }"/>
+               :disabled="disabled"/>
       </template>
       <!--@input="updateValue()"-->
 
@@ -168,7 +167,8 @@
     display inline-block
   .input
     height 30px
-    width 340px
+    /*width 340px*/
+    width 100%
     border-radius: 15px
     border 0px solid black
     outline none

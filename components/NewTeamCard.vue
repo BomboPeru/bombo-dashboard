@@ -5,6 +5,9 @@
         <div :class="['header-title']">
           <span class="">{{ team.name===''?'PON UN NOMBRE A TU EQUIPO':team.name }}</span>
         </div>
+        <div class="saldo">
+          <span :class="['points-value', statusSaldo]">{{saldo}} M</span>
+        </div>
       </div>
 
       <div class="line elevation"></div>
@@ -12,26 +15,30 @@
       <div class="form-name">
         <!-- fa-shield-alt -->
         <input-text v-model="team.name"
-                    width="360px"
+                    width="65%"
                     solid class="input-text"
                     prepend-icon="fa-shield-alt"
                     placeholder="Nombre de tu equipo" big/>
-      </div>
-      <div class="points">
-        <span class="points-label">Saldo restante:</span>
-        <span class="points-value">{{saldo}} M</span>
-      </div>
-      <div class="progressbar">
-        <progress-bar :current-number="saldo" :max-number="100" />
-      </div>
-      <div class="tabs-container">
-        <button :class="['tab', 'elevation', activeTab===i?'activeTab':'inactiveTab', 'tab-'+i]"
-                v-for="(tab, i) in tabs"
-                @click="toggleTab(i)"
-                :key="i+'-tab'">{{ tab }}</button>
+
+        <div class="tabs-container">
+          <button :class="['tab', 'elevation', activeTab===i?'activeTab':'inactiveTab', 'tab-'+i]"
+                  v-for="(tab, i) in tabs"
+                  @click="toggleTab(i)"
+                  :key="i+'-tab'">  <i :class="['fas', tab.icon]"></i> </button>
+        </div>
+
+        <!--<progress-bar vertical :current-number="saldo" :max-number="100" height="50px" class="progress-bar" />-->
+
       </div>
 
-      <template v-if="tabs[activeTab] === 'LISTA'">
+      <!--<div class="points">-->
+        <!--<span class="points-label">Saldo restante:</span>-->
+      <!--</div>-->
+
+      <div class="">
+      </div>
+
+      <template v-if="tabs[activeTab].name === 'LISTA'">
 
         <div
           v-if="team.players.goal_keeper.length === 0 && team.players.defender.length === 0 && team.players.mid_fielder.length === 0 && team.players.forward.length === 0"
@@ -73,7 +80,7 @@
         </div>
       </template>
 
-      <template v-else-if="tabs[activeTab] === 'FORMACION'">
+      <template v-else-if="tabs[activeTab].name === 'FORMACION'">
         <div class="ground-container">
           <div style="text-align: center; overflow: hidden;" class="stadium-container">
             <img src="/team_resources/cancha_4.png" alt="" class="soccer-ground" width="130%" height="140%">
@@ -166,6 +173,16 @@
         let saldo = this.maxLimitCost - this.totalPoints
         return Math.round(saldo * 100) / 100
       },
+      statusSaldo () {
+        console.log('this.totalPoints', this.saldo)
+        if ((this.maxLimitCost * 2 / 3)  < this.saldo) {
+          return 'green-status'
+        } else if ((this.maxLimitCost / 3)  < this.saldo) {
+          return 'yellow-status'
+        } else {
+          return 'red-status'
+        }
+      },
       totalPoints () {
         let total = 0
 
@@ -182,7 +199,7 @@
       return{
         maxLimitCost: 100,
         activeTab: 0,
-        tabs: ['LISTA', 'FORMACION'],
+        tabs: [{ name: 'LISTA', icon: 'fa-list-alt' }, {name: 'FORMACION', icon: 'fa-align-center'} ],
         title: 'MI EQUIPO',
         isCaptain: ''
       }
@@ -225,11 +242,33 @@
     background #243337
     padding 0px 0px
 
+
+  .progress-bar
+    margin 8px 2px
+
+  .green-status
+    color #00BE8C !important
+  .yellow-status
+    color #FFC400 !important
+  .red-status
+    color #EA504C !important
+
+
+
   .header span
     padding 0px 0px
+
   .tabs-container
+    display inline-block
     text-align: center;
-    margin 8px 2px
+    margin 8px 12px
+  @media screen and (max-width: 360px)
+    margin 8px 0px
+
+  @media screen and (max-width: 1023px)
+    .tabs-container
+      margin 8px 4px
+
   .tab
     background #243237
     border 0px solid white
@@ -238,7 +277,8 @@
     font-family Titillium Web
     font-size 14px
     outline none
-    width: 92px;
+    height 40px
+    width: 50px;
   .tab-0
     border-top-left-radius 6px
     border-bottom-left-radius 6px
@@ -253,9 +293,6 @@
     color #fafafa
     background #445F69
 
-  .progressbar
-    padding 4px 20px
-
   .header-title
     flex-grow 1
     display inline-block
@@ -269,6 +306,9 @@
     font-size 18px
     font-weight bold
     font-family Titillium Web
+  @media screen and (max-width: 360px)
+    .header-title span
+      font-size 12px
 
   .line
     width 100%
@@ -279,24 +319,29 @@
     padding 20px 5px
     font-family Titillium Web
     text-align center
-    height calc(100vh - 457px)
+    height calc(100vh - 343px)
+    // height calc(100vh - 457px)
 
   .player-list
     margin-top 14px
-    height calc(100vh - 457px)
+    height calc(100vh - 343px)
+    // height calc(100vh - 457px)
     overflow-y: auto;
 
   @media screen and (max-width: 1023px)
     .player-list
-      height calc(100vh - 509px)
+      height calc(100vh - 398px)
+      // height calc(100vh - 509px)
     .empty-players
-      height calc(100vh - 509px)
+      height calc(100vh - 398px)
+      // height calc(100vh - 509px)
 
   .input-text
     display inline-block
   .points
   .form-name
-    margin-top 15px
+    margin-top 4px
+    margin-left 12px
     text-align center
   .name-label
   .points-value
@@ -310,15 +355,23 @@
     padding-right 15px
   .points-value
     font-weight bold
+  .saldo
+    float right
+    position relative
+    top 20px
+    right 20px
+  .saldo span
+    color white
 
   .ground-container
     padding 15px 15px
     position relative
-    height calc(100vh - 457px)
+    height calc(100vh - 343px)
+    // height calc(100vh - 457px)
     overflow-y: auto;
   @media screen and (max-width: 1023px)
     .ground-container
-      height calc(100vh - 504px)
+      height calc(100vh - 398px)
 
   .players-layer
     position absolute
@@ -392,6 +445,7 @@
   .soccer-ground
     position: relative;
     left: -13%;
+
   @media screen and (max-width: 1023px)
     .close-icon
       display block

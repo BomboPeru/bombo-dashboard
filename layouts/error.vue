@@ -77,4 +77,13 @@
   .ball-text a
     color white
     text-decoration none
+  @media screen and (max-width: 500px)
+    .big-title
+      font-size 100px
+    .title
+      font-size 18px
+      margin-top 20px
+    .title2
+      font-size 14px
+
 </style>

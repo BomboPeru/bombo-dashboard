@@ -310,7 +310,7 @@
       padding-right 200px
   @media screen and (max-width: 1023px)
     #createteam
-      min-height calc(100vh - 128px)
+      min-height calc(100vh - 112px)
     .mobile-btn-container
       display block
     .hide

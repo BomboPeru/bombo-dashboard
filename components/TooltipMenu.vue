@@ -182,6 +182,10 @@
     margin-bottom 12px
   .body
     padding 8px
+  .body
+    max-height: 50vh;
+    overflow-y: auto;
+
   .body ul
     list-style-type none
     padding 0
