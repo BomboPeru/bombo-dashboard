@@ -5,14 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bf24282d-3075-4fc1-a7e6-a1352eba2675" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/static/team_resources/c_band.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/static/team_resources/premier_league_icon_w.png" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/components/NewTeamCard.vue" afterPath="$PROJECT_DIR$/components/NewTeamCard.vue" />
-      <change beforePath="$PROJECT_DIR$/components/PlayerRowCard.vue" afterPath="$PROJECT_DIR$/components/PlayerRowCard.vue" />
       <change beforePath="$PROJECT_DIR$/components/TeamCard.vue" afterPath="$PROJECT_DIR$/components/TeamCard.vue" />
-      <change beforePath="$PROJECT_DIR$/layouts/dashboard.vue" afterPath="$PROJECT_DIR$/layouts/dashboard.vue" />
-      <change beforePath="$PROJECT_DIR$/pages/client/teams.vue" afterPath="$PROJECT_DIR$/pages/client/teams.vue" />
+      <change beforePath="$PROJECT_DIR$/nuxt.config.js" afterPath="$PROJECT_DIR$/nuxt.config.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -54,7 +49,7 @@
         <entry file="file://$PROJECT_DIR$/pages/client/teams.vue">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="324">
-              <caret line="119" column="29" lean-forward="true" selection-start-line="119" selection-start-column="29" selection-end-line="119" selection-end-column="29" />
+              <caret line="119" column="29" lean-forward="false" selection-start-line="119" selection-start-column="29" selection-end-line="119" selection-end-column="29" />
               <folding />
             </state>
           </provider>
@@ -100,11 +95,21 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="nuxt.config.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/nuxt.config.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="360">
+              <caret line="15" column="6" lean-forward="false" selection-start-line="15" selection-start-column="6" selection-end-line="15" selection-end-column="6" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="TeamCard.vue" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/components/TeamCard.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="484">
-              <caret line="272" column="20" lean-forward="false" selection-start-line="272" selection-start-column="20" selection-end-line="272" selection-end-column="20" />
+            <state relative-caret-position="324">
+              <caret line="317" column="19" lean-forward="false" selection-start-line="317" selection-start-column="19" selection-end-line="317" selection-end-column="19" />
               <folding>
                 <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#template#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#td#0;n#tr#1;n#tbody#0;n#table#0;n#div#1;n#div#0;n#div#0;n#template#0;n#!!top" expanded="true" />
@@ -128,16 +133,6 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="InputText.vue" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/components/InputText.vue">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="480">
-              <caret line="170" column="14" lean-forward="false" selection-start-line="170" selection-start-column="14" selection-end-line="170" selection-end-column="14" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
     </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
@@ -151,8 +146,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>mteams</find>
-      <find>.progressbar</find>
       <find>points-value</find>
       <find>totalPoints</find>
       <find>tabs-container</find>
@@ -170,7 +163,6 @@
       <find>team_resources</find>
       <find>.container</find>
       <find>info-in-play</find>
-      <find>table-teamname</find>
       <find>table-container</find>
       <find>list-players-container</find>
       <find>league-background</find>
@@ -181,6 +173,9 @@
       <find>selected-players-title</find>
       <find>table-window</find>
       <find>createdAt</find>
+      <find>label-team-info</find>
+      <find>title</find>
+      <find>table-teamname</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -223,7 +218,6 @@
         <option value="$PROJECT_DIR$/package.json" />
         <option value="$PROJECT_DIR$/components/RankingBoard.vue" />
         <option value="$PROJECT_DIR$/components/Sidebar.vue" />
-        <option value="$PROJECT_DIR$/nuxt.config.js" />
         <option value="$PROJECT_DIR$/components/SignOutDialog.vue" />
         <option value="$PROJECT_DIR$/pages/login.vue" />
         <option value="$PROJECT_DIR$/store/auth.js" />
@@ -245,6 +239,7 @@
         <option value="$PROJECT_DIR$/layouts/dashboard.vue" />
         <option value="$PROJECT_DIR$/components/PlayerRowCard.vue" />
         <option value="$PROJECT_DIR$/pages/client/teams.vue" />
+        <option value="$PROJECT_DIR$/nuxt.config.js" />
         <option value="$PROJECT_DIR$/components/TeamCard.vue" />
       </list>
     </option>
@@ -435,14 +430,7 @@
       <workItem from="1520974093864" duration="61472000" />
       <workItem from="1521120602902" duration="110949000" />
       <workItem from="1521338339777" duration="946000" />
-      <workItem from="1521390149645" duration="31503000" />
-    </task>
-    <task id="LOCAL-00027" summary="ranking">
-      <created>1520214022029</created>
-      <option name="number" value="00027" />
-      <option name="presentableId" value="LOCAL-00027" />
-      <option name="project" value="LOCAL" />
-      <updated>1520214022029</updated>
+      <workItem from="1521390149645" duration="32418000" />
     </task>
     <task id="LOCAL-00028" summary="ranking team card bind team_name">
       <created>1520215497789</created>
@@ -780,11 +768,18 @@
       <option name="project" value="LOCAL" />
       <updated>1521422326408</updated>
     </task>
-    <option name="localTasksCounter" value="76" />
+    <task id="LOCAL-00076" summary="teamcard">
+      <created>1521434151700</created>
+      <option name="number" value="00076" />
+      <option name="presentableId" value="LOCAL-00076" />
+      <option name="project" value="LOCAL" />
+      <updated>1521434151700</updated>
+    </task>
+    <option name="localTasksCounter" value="77" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="689515000" />
+    <option name="totallyTimeSpent" value="690430000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="45" y="56" width="1867" height="1092" extended-state="6" />
@@ -841,7 +836,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="checks in selecting dialog" />
     <MESSAGE value="temporal fix soccer ground in create team" />
     <MESSAGE value="alignments in player (desktop)" />
     <MESSAGE value="stadium fix height&#10;fix height saved team card" />
@@ -866,7 +860,8 @@
     <MESSAGE value="removing requests part II&#10;adding link to /client/teams from bombo image" />
     <MESSAGE value="add update user  after delete notifications" />
     <MESSAGE value="new team card" />
-    <option name="LAST_COMMIT_MESSAGE" value="new team card" />
+    <MESSAGE value="teamcard" />
+    <option name="LAST_COMMIT_MESSAGE" value="teamcard" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1005,14 +1000,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="305">
           <caret line="16" column="33" lean-forward="false" selection-start-line="16" selection-start-column="33" selection-end-line="16" selection-end-column="33" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/nuxt.config.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="744">
-          <caret line="31" column="25" lean-forward="false" selection-start-line="31" selection-start-column="0" selection-end-line="32" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -1251,7 +1238,7 @@
     <entry file="file://$PROJECT_DIR$/pages/client/teams.vue">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="324">
-          <caret line="119" column="29" lean-forward="true" selection-start-line="119" selection-start-column="29" selection-end-line="119" selection-end-column="29" />
+          <caret line="119" column="29" lean-forward="false" selection-start-line="119" selection-start-column="29" selection-end-line="119" selection-end-column="29" />
           <folding />
         </state>
       </provider>
@@ -1264,10 +1251,18 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/nuxt.config.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="15" column="6" lean-forward="false" selection-start-line="15" selection-start-column="6" selection-end-line="15" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/components/TeamCard.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="484">
-          <caret line="272" column="20" lean-forward="false" selection-start-line="272" selection-start-column="20" selection-end-line="272" selection-end-column="20" />
+        <state relative-caret-position="324">
+          <caret line="317" column="19" lean-forward="false" selection-start-line="317" selection-start-column="19" selection-end-line="317" selection-end-column="19" />
           <folding>
             <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#template#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#td#0;n#tr#1;n#tbody#0;n#table#0;n#div#1;n#div#0;n#div#0;n#template#0;n#!!top" expanded="true" />

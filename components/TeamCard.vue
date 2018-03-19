@@ -45,7 +45,7 @@
               </tr>
               <tr>
                 <td class="table-value">{{team.position}}</td>
-                <td class="table-value">{{team.total_points}}</td>
+                <td class="table-value total-points">{{team.total_points}}</td>
               </tr>
             </tbody>
           </table>
@@ -214,6 +214,10 @@
 </script>
 
 <style scoped lang="stylus">
+font = 'Nunito Sans'
+font2 = 'Titillium Web'
+/* Titillium Web */
+
 #round-card
   /*width 240px*/
   /*width 350px*/
@@ -222,6 +226,7 @@
   /*height 64vh*/
   overflow hidden
   background #fafafa
+  font-family: font
   /*margin-left 24px*/
   /*margin-right 24px*/
 
@@ -248,7 +253,7 @@
   color white
   font-size 18px
   font-weight bold
-  font-family Titillium Web
+  font-family font
   text-transform uppercase
   text-overflow: ellipsis;
   display: inline-block;
@@ -260,7 +265,7 @@
   color white
   font-size 12px
   font-weight bold
-  font-family Titillium Web
+  font-family font
   text-transform uppercase
 .guardados
   margin-top 2px
@@ -275,7 +280,7 @@
 .subheader
   font-size 10px
   color #A6A6A6
-  font-family Titillium Web
+  font-family font
 
 .created-at
   margin-top 6px
@@ -298,7 +303,7 @@
   left 50%
   transform translateX(-50%)
   text-align center
-  font-family Titillium Web
+  font-family font
   font-size 10px
   border-radius: 5px;
   overflow: hidden;
@@ -310,12 +315,14 @@
   font-size 10px
 .table-teamname
   height: 40px
+  font-family font2
 .table-teamname td
   color #3f3f3f
 .info-saved
   background: #25BF89
 .info-in-play
-  background: #ea504c
+  background #FE5567
+  // background: #ea504c
 .info-old
   background: #67A6F0
 
@@ -323,6 +330,10 @@
   font-size 22px
 .label-team-info
   height 22px
+.label-team-info td
+  color #323232
+.total-points
+  color #676766 !important
 .table-saved-card
 .table-points-ranking
   width 100%
@@ -334,7 +345,7 @@
   font-size 10px
 .table-value
   font-weight bold
-  color #25BF89
+  color #7ED321
   text-align center
   font-size 22px
 .table-value-cost
@@ -398,7 +409,7 @@
   padding-left 15px
   padding-right 15px
   padding-bottom 9px
-  padding-top 12px
+  padding-top 8px
   // height 67px
   line-height 27px
 .button-play-again
@@ -407,7 +418,7 @@
   padding 4px 20px 4px 20px
   color #FAFAFA
   font-weight bold
-  font-family Titillium Web
+  font-family font
   font-size 18px
   background #EA504C
   border-radius 12px
@@ -418,7 +429,7 @@
   padding 4px 28px 4px 28px
   color #FAFAFA
   font-weight bold
-  font-family Titillium Web
+  font-family font
   font-size 14px
   background #25BF89
   border-radius 12px
@@ -430,7 +441,7 @@
   padding 4px 12px 4px 12px
   color #FAFAFA
   font-weight bold
-  font-family Titillium Web
+  font-family font
   font-size 14px
   background #FFC400
   border-radius 12px
@@ -440,7 +451,7 @@
   background #445F69
   border-radius: 0px 0px 12px 12px;
   height 30px
-  font-family Titillium Web
+  font-family font
   text-align center
   color white
   font-size 14px
