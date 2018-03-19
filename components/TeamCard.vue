@@ -1,61 +1,106 @@
 <template>
     <div id="round-card" class="elevation rounded" :style="{ 'padding-bottom': collapsable?'0px':'5px', 'width': width }">
-      <div class="header" :style="{ background: typeColorCards[typeCard] }">
-        <div :style="{ 'text-align': typeCard !== 'en_juego'?'center':'left' }">
-          <span class="title" :style="{ 'text-align': typeCard !== 'en_juego'?'center':'left' }">{{ team.name }}</span>
-          <span class="right" v-if="typeCard === 'en_juego'">{{ points }}</span>
-          <span class="right guardados" v-if="typeCard === 'guardado'">
-            <template v-if="isFavoriteSaved">
-              <img src="../assets/icons/star_on.png" alt="" @click="toggleFavorite">
-            </template>
-            <template v-else>
-              <img src="../assets/icons/star_off.png" alt="" @click="toggleFavorite">
-            </template>
-          </span>
-          <!--<span class="right pasados" v-if="typeCard === 'pasados'">{{ points }}</span>-->
+
+      <!--<div class="window-title" :style="{ background: typeColorCards[typeCard] }">-->
+        <!--<div :style="{ 'text-align': typeCard !== 'en_juego'?'center':'left' }">-->
+          <!--<span class="title" :style="{ 'text-align': typeCard !== 'en_juego'?'center':'left' }">{{ team.name }}</span>-->
+          <!--<span class="right" v-if="typeCard === 'en_juego'">{{ points }}</span>-->
+          <!--<span class="right guardados" v-if="typeCard === 'guardado'">-->
+            <!--<template v-if="isFavoriteSaved">-->
+              <!--<img src="../assets/icons/star_on.png" alt="" @click="toggleFavorite">-->
+            <!--</template>-->
+            <!--<template v-else>-->
+              <!--<img src="../assets/icons/star_off.png" alt="" @click="toggleFavorite">-->
+            <!--</template>-->
+          <!--</span>-->
+          <!--&lt;!&ndash;<span class="right pasados" v-if="typeCard === 'pasados'">{{ points }}</span>&ndash;&gt;-->
+        <!--</div>-->
+      <!--</div>-->
+
+      <div class="header">
+        <div class="league-background" style="padding-top: 10px;">
+          <img :src="'/team_resources/premier_league_icon_w.png'" alt="" height="50px">
+        </div>
+
+        <!--<p class="created-at subheader">FECHA DE CREACION: {{ createdAt }}</p>-->
+
+        <div class="table-container elevation">
+
+          <table class="table-points-ranking" v-if="typeCard === 'en_juego' || typeCard === 'pasados'">
+            <tbody>
+              <tr :class="['table-window', typeCard==='en_juego'?'info-in-play':'info-old']">
+                <td colspan="2"></td>
+              </tr>
+              <tr cellpadding="0" cellspacing="0" :class="['table-teamname']">
+                <td cellpadding="0" cellspacing="0"
+                    style="width: 100%" colspan="2"
+                    class="">
+                  <div> {{ team.name }} </div>
+                  <div class="team-date"> {{ createAt }}</div>
+                </td>
+              </tr>
+              <tr :class="['label-team-info']">
+                <td style="width: 50%">RANKING:</td>
+                <td style="width: 50%">PUNTAJE ACUMULADO:</td>
+              </tr>
+              <tr>
+                <td class="table-value">{{team.position}}</td>
+                <td class="table-value">{{team.total_points}}</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <table class="table-saved-card" v-if="typeCard === 'guardado'">
+            <tbody>
+              <tr class="table-window info-saved">
+                <td colspan="2"></td>
+              </tr>
+              <tr cellpadding="0" cellspacing="0" class="table-teamname">
+                <td cellpadding="0" cellspacing="0"
+                    style="width: 100%" colspan="2"
+                    class="">
+                  <div> {{ team.name }} </div>
+                  <div class="team-date"> {{ createAt }}</div>
+                </td>
+              </tr>
+              <tr class="label-team-info">
+                <td  style="width: 50%">RANKING:</td>
+                <td  style="width: 50%">ESTADO EN EL EQUIPO:</td>
+              </tr>
+              <tr>
+                <td class="table-value-cost">{{team.position}}</td>
+                <td class="table-value-status"><span>{{team.state}}</span></td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       </div>
-      <div class="league-background" style="padding-top: 10px;">
-        <img :src="'/leagues/premier_league.png'" alt="" height="100px">
+
+      <!--<div class="divider" v-if="typeCard !== 'en_juego'"></div>-->
+
+      <div class="bottom-button-container" v-if="typeCard !== 'en_juego'">
+        <div class="button-play-again" v-if="typeCard === 'guardado'" @click="putInGameTeam(team)">
+          JUEGA YA!
+        </div>
+        <div class="button-delete" v-if="typeCard === 'pasados'">
+          Borrar
+        </div>
+        <div class="button-save" v-if="typeCard === 'pasados'">
+          Guardar
+        </div>
       </div>
-      <p class="created-at subheader">FECHA DE CREACION: {{ createdAt }}</p>
-      <div class="table-container">
-        <table class="table-points-ranking" v-if="typeCard === 'en_juego' || typeCard === 'pasados'">
-          <tbody>
-            <tr>
-              <td>PUESTO EN EL BOMBO:</td>
-              <td class="table-value">{{ranking}}</td>
-            </tr>
-            <tr>
-              <td>PUNTAJE ACUMULADO:</td>
-              <td class="table-value">{{points}}</td>
-            </tr>
-          </tbody>
-        </table>
-        <table class="table-saved-card" v-if="typeCard === 'guardado'">
-          <tbody>
-            <tr>
-              <td>COSTO PROMEDIO:</td>
-              <td class="table-value-cost">{{cost}}</td>
-            </tr>
-            <tr>
-              <td>ESTADO EN EL EQUIPO:</td>
-              <td class="table-value-status">
-                <span>{{status}}</span>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-      <div class="divider"></div>
+
+      <!--<div class="divider"></div>-->
+
       <!-- COLLAPSABLE -->
       <template v-if="collapsable">
         <div v-if="!isCollapsed" class="btn-expand" @click="expand">
           M&Aacute;S DETALLES
         </div>
       </template>
+
       <template v-if="collapsable === false || isCollapsed === true">
-        <p class="subheader selected-players-title">JUGADORES SELECCIONADOS</p>
+        <p class="subheader selected-players-title">JUGADORES</p>
         <!-- PLAYERS -->
         <div>
           <div :class="['list-players-container', typeCard === 'guardado'||typeCard === 'pasados'?'list-players-container-b':'']">
@@ -71,17 +116,8 @@
           </div>
         </div>
 
-        <div class="bottom-button-container" v-if="typeCard !== 'en_juego'">
-          <div class="button-play-again" v-if="typeCard === 'guardado'" @click="putInGameTeam(team)">
-            JUEGA YA!
-          </div>
-          <div class="button-delete" v-if="typeCard === 'pasados'">
-            Borrar
-          </div>
-          <div class="button-save" v-if="typeCard === 'pasados'">
-            Guardar
-          </div>
-        </div>
+
+
       </template>
       <template v-if="collapsable">
         <div v-if="isCollapsed" class="btn-expand" @click="collapse">
@@ -111,7 +147,6 @@
       title: String,
       points: Number,
       leagueImg: String,
-      createdAt: String,
       ranking: Number,
       players: Array,
       cost: String,
@@ -123,6 +158,16 @@
       width: {
         type: String,
         default: '420px'
+      }
+    },
+    computed: {
+      createAt () {
+        if (this.team.created_at === undefined) {
+          return ''
+        }
+        const date = new Date(this.team.created_at)
+        const month = date.getMonth() + 1
+        return date.getDate() + '/' + month + '/' + date.getFullYear()
       }
     },
     data () {
@@ -189,12 +234,12 @@
 .elevation
   box-shadow 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23)
   */
-.header
+.window-title
   width 100%
   height 38px
   background #fff
   padding 10px 0px
-.header div
+.window-title div
   padding 0px 18px
 .title
   position: relative;
@@ -223,40 +268,83 @@
   cursor pointer
 .league-background
   width 100%
-  height 128px
-  background #fafafa
+  height 163px
+  // height 128px
+  background #0F202D
   text-align center
 .subheader
   font-size 10px
   color #A6A6A6
   font-family Titillium Web
-  text-align center
+
 .created-at
   margin-top 6px
 .selected-players-title
+  margin-left: 12px
   margin-top 6px
 
+.header
+  position relative
+  // margin-bottom 30px
+  margin-bottom 50px
+
 .table-container
+  width: 70%
+  z-index: 2
+  background white
+  position absolute
+  // bottom -20px
+  bottom -34px
+  left 50%
+  transform translateX(-50%)
   text-align center
   font-family Titillium Web
-  font-size 12px
+  font-size 10px
+  border-radius: 5px;
+  overflow: hidden;
+
+
+.table-window
+  height 10px
+.team-date
+  font-size 10px
+.table-teamname
+  height: 40px
+.table-teamname td
+  color #3f3f3f
+.info-saved
+  background: #25BF89
+.info-in-play
+  background: #ea504c
+.info-old
+  background: #67A6F0
+
+.table-teamname td
+  font-size 22px
+.label-team-info
+  height 22px
 .table-saved-card
 .table-points-ranking
+  width 100%
   margin-left auto
   margin-right auto
+  border-collapse:collapse
+
 .table-saved-card
   font-size 10px
 .table-value
   font-weight bold
   color #25BF89
   text-align center
+  font-size 22px
 .table-value-cost
   text-align center
+  font-size 22px
 .table-value-status span
   text-align center
   font-weight bold
-  font-size 8px
-  border-radius 6.5px
+  font-size 12px
+  border-radius 22px
   color white
   background #25BF89
   padding-top 1px
@@ -277,12 +365,16 @@
 //  STILL MUTABLE
 .list-players-container
   // height 200px
-  height calc(100vh - 450px)
-  //height calc(100vh - 500px)
+  height calc(100vh - 429px)
+  // height calc(100vh - 374px)
+
+  // height calc(100vh - 450px)
+  // height calc(100vh - 500px)
   /*height 40vh*/
   overflow-y: auto
 .list-players-container-b
-  height calc(100vh - 502px) !important
+  height calc(100vh - 464px) !important
+  // height calc(100vh - 416px) !important
 
 @media screen and (max-width: 1023px)
   #round-card
@@ -306,8 +398,8 @@
   padding-left 15px
   padding-right 15px
   padding-bottom 9px
-  padding-top 22px
-  height 67px
+  padding-top 12px
+  // height 67px
   line-height 27px
 .button-play-again
   cursor pointer

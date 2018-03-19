@@ -174,7 +174,6 @@
         return Math.round(saldo * 100) / 100
       },
       statusSaldo () {
-        console.log('this.totalPoints', this.saldo)
         if ((this.maxLimitCost * 2 / 3)  < this.saldo) {
           return 'green-status'
         } else if ((this.maxLimitCost / 3)  < this.saldo) {

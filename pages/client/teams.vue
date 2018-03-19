@@ -99,13 +99,14 @@
   .container
     overflow-x auto
     overflow-y hidden
-    min-height: calc(100vh - 190px)
+    // min-height: calc(100vh - 190px)
+    height: calc(100vh - 140px)
     // min-height: calc(100vh - 280px)
     display: flex
     flex-wrap nowrap
     justify-content flex-start
     /*margin-top 62px*/
-    margin-top: 26px
+    margin-top: 12px
     padding-left 18px
     /*align-items: flex-start;*/
     align-items: stretch;
@@ -119,7 +120,7 @@
     /*display: inline-block*/
     // height calc(100vh - 300px)
     overflow-y auto
-    margin-right 8px
+    margin-right 17px
   .create-team-btn
     width 280px
   .empty-teams-message

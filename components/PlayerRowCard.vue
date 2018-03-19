@@ -46,7 +46,7 @@
               <div class="captain-band"
                    v-if="captainId === player.internal_id">
                 <img
-                     src="/team_resources/band_captain.png"
+                     src="/team_resources/c_band.png"
                      height="42px" alt="">
               </div>
               <squad-number :img="shirtUrl" :number="player.j_number"/>
@@ -79,7 +79,7 @@
               <div class="captain-band"
                    v-if="player.is_captain === true">
                 <img
-                  src="/team_resources/band_captain.png"
+                  src="/team_resources/c_band.png"
                   height="42px" alt="">
               </div>
 
