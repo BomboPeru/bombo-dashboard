@@ -312,7 +312,7 @@ font2 = 'Titillium Web'
 
 
 .table-window
-  height 10px
+  height 7px
 .team-date
   font-size 10px
 .table-teamname
