@@ -6,7 +6,6 @@
        </nuxt-link>
      </div>
      <div class="card-login rounded-sm">
-
        <div class="content">
          <div style="text-align: center; margin-top: 20px;">
            <img src="/landing/bombo_all_white.svg" width="180px" alt="">
@@ -105,6 +104,8 @@
 </script>
 
 <style scoped lang="stylus">
+
+
 
   .bombo-home
     position absolute

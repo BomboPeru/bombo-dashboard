@@ -31,7 +31,7 @@
     },
     computed: {
       toolbar() {
-        return this.$route.path !== '/login'
+        return this.$route.path === '/'
       },
       isLoading () {
         return this.$store.state.isLoading

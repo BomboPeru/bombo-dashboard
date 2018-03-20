@@ -1,97 +1,121 @@
 <template>
     <div id="register" class="background">
 
-      <div class="center">
-        <div class="card-container elevation rounded-sm">
-          <p class="title">Datos personales</p>
+      <div class="bombo-home">
+        <nuxt-link to="/">
+          <img src="/landing/bombo_outline2_3x.png" width="100px" alt="">
+        </nuxt-link>
+      </div>
 
-          <div class="warning" v-if="!isValidInput(constraints.name.rules, user.name)">
-            {{ constraints.name.message }}
-          </div>
-          <div>
-            <input-text placeholder="Nombres y Apellidos" v-model="user.name" big solid/>
-          </div>
-
-          <div class="warning" v-if="!isValidInput(constraints.email.rules, user.email)">
-            {{ constraints.email.message }}
-          </div>
-          <div>
-            <input-text placeholder="Correo electronico" v-model="user.email" big solid/>
-          </div>
-
-          <div class="warning" v-if="!isValidInput(constraints.identity_document.rules, user.identity_document)">
-            {{ constraints.identity_document.message }}
-          </div>
-          <div>
-            <input-text placeholder="Documento de identidad (DNI)"
-                        type="number"
-                        big solid
-                        v-model="user.identity_document"/>
-          </div>
-          <div class="birthday-label-container">
-            <label class="birthday-label">Fecha de nacimiento</label>
-          </div>
-
-          <div class="birthday-container">
-            <input-text placeholder="Fecha de nacimiento" big solid v-model="user.birthday_fake" type="date"/>
-          </div>
-          <p class="title">Datos de la cuenta</p>
-
-          <div class="warning" v-if="!isValidInput(constraints.username.rules, user.username)">
-            {{ constraints.username.message }}
-          </div>
-          <div>
-            <input-text placeholder="Nombre de usuario" big solid v-model="user.username"/>
-          </div>
-
-          <div class="warning" v-if="!isValidInput(constraints.password.rules, user.password)">
-            {{ constraints.password.message }}
-          </div>
-          <div>
-            <input-text placeholder="Contrasena" big solid v-model="user.password" type="password"/>
-          </div>
-
-          <div class="warning" v-if="!isValidInput(constraints.terms.rules, user.terms)">
-            {{ constraints.terms.message }}
-          </div>
-          <div style="margin-top: 4px">
-            <cc-checkbox v-model="user.terms"/>
-            <p class="terms-conditions">
-              <!--<input type="checkbox" v-model="termsChecked">-->
-              HE LEÍDO Y ACEPTO LOS <span @click="openTermsConditionsDialog">TERMINOS Y CONDICIONES</span>
-            </p>
-          </div>
-
-          <div>
-            <div class="btn-continue elevation" @click="createUser"
-                 :style="{ 'background': isValidForm?'#25BF89':'#969696' }">
-              Registrar
+      <div class="card-container elevation rounded-sm">
+        <div class="banner-side">
+          <p class="title-register">REGISTRATE</p>
+          <p class="phrase-register">No esperes para ser parte de bombo</p>
+        </div>
+        <div class="grid-content grid-content-side">
+          <div class="avatar-section">
+            <div>
+              <cc-avatar src="/landing/avatar_default.png" sm class="avatar"/>
+              <div class="upload-photo-indication">Selecciona tu foto de perfil</div>
             </div>
           </div>
+          <div class="column-a">
 
-          <div class="warning"> {{message}} </div>
+            <div class="group-form">
+              <div class="label" v-if="!isValidInput(constraints.name.rules, user.name)">
+                {{ constraints.name.message }}
+              </div>
+              <div>
+                <input type="text" class="input-form" placeholder="Nombre Completo" v-model="user.name">
+              </div>
+            </div>
 
+            <div class="group-form">
+              <div class="label">
+                Fecha de nacimiento
+              </div>
+              <div class="birthday-container">
+                <input type="date" class="input-form" placeholder="Fecha de nacimiento" v-model="user.birthday_fake">
+              </div>
+            </div>
+
+            <div class="group-form">
+              <div class="label" v-if="!isValidInput(constraints.identity_document.rules, user.identity_document)">
+                {{ constraints.identity_document.message }}
+              </div>
+              <div>
+                <input type="number" class="input-form" placeholder="Documento de identidad (DNI)" v-model="user.identity_document">
+              </div>
+            </div>
+
+          </div>
+          <div class="column-b">
+
+            <div class="group-form">
+              <div class="label" v-if="!isValidInput(constraints.email.rules, user.email)">
+                {{ constraints.email.message }}
+              </div>
+              <div>
+                <input type="text" class="input-form" placeholder="Correo electronico" v-model="user.email">
+              </div>
+            </div>
+
+            <div class="group-form">
+              <div class="label" v-if="!isValidInput(constraints.username.rules, user.username)">
+                {{ constraints.username.message }}
+              </div>
+              <div>
+                <input type="text" class="input-form" placeholder="Nombre de usuario" v-model="user.username">
+              </div>
+            </div>
+
+            <div class="group-form">
+              <div class="label" v-if="!isValidInput(constraints.password.rules, user.password)">
+                {{ constraints.password.message }}
+              </div>
+              <div>
+                <input type="password" class="input-form" placeholder="Contraseña">
+              </div>
+            </div>
+
+            <div class="group-form">
+              <div class="label" v-if="!isValidInput(constraints.password.rules, user.password)">
+                {{ constraints.password.message }}
+              </div>
+              <div>
+                <input type="password" class="input-form" placeholder="Repetir Contraseña" v-model="user.password">
+              </div>
+            </div>
+          </div>
+          <div class="signup-btn-section">
+
+            <!-- :style="{ 'background': isValidForm?'#25BF89':'#969696' }" -->
+            <div class="btn-continue elevation" @click="createUser">
+              Registrarse
+            </div>
+
+            <div class="warning"> {{message}} </div>
+
+          </div>
         </div>
+
       </div>
-      <div class="bottom-container">
-        <div class="link-login">
-          Ya eres usuario? <span @click="goToLogin">Inicia Sesion</span>
-        </div>
-      </div>
+
+
     </div>
 </template>
 
 <script>
   import InputText from '../components/InputText'
   import InputSelect from '../components/InputSelect'
-  import FormAlert from '../components/FormAlert'
-  import CcCheckbox from '../components/CcCheckbox'
+  import CcAvatar from '../components/CcAvatar'
+
   import auth from '../utils/auth'
 
   export default {
     name: 'register',
     components: {
-      InputText, InputSelect, FormAlert, CcCheckbox
+      InputText, InputSelect, CcAvatar
     },
     data () {
       return {
@@ -233,11 +257,21 @@
 </script>
 
 <style scoped lang="stylus">
-  toolbar_height = 76px
+
+  input[type='number'] {
+    appearance: textfield;
+  }
+  input[type='number']::-webkit-inner-spin-button,
+  input[type='number']::-webkit-outer-spin-button,
+  input[type='number']:hover::-webkit-inner-spin-button,
+  input[type='number']:hover::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
   #register
-    min-height calc(100vh - 76px)
-    /*background #fafafa*/
-    background: url(/signup_background.jpeg) center
+    min-height 100vh
+    background: url(/landing/background_login_register.png) center
     background-size cover
     /*
   .background
@@ -245,6 +279,12 @@
     background-blend-mode multiply
     background-size cover
     */
+
+  .bombo-home
+    position absolute
+    top 20px
+    left 30px
+
   .center
     padding-top 12px
     display: flex;
@@ -252,75 +292,138 @@
     align-items: center;
   .card-container
     overflow visible
+    background #0F202D
+    border-radius 15px
     padding 8px 20px
-  .title
-    color #445F69
-    font-family: Titillium Web;
-    font-weight bold
-    font-style: normal;
-    line-height: normal;
-    font-size: 16px;
-    padding-bottom 4px
-    margin-top 12px
+    position absolute
+    top 50%
+    left 50%
+    transform translateX(-50%) translateY(-50%)
+    height 500px
+    width 70vw
 
-  .terms-conditions
-    display inline-block
-    margin-left 8px
-    font-family: Titillium Web;
-    font-style: normal;
-    font-weight: normal;
-    line-height: normal;
-    font-size: 14px;
-    color: #445F69;
+  .grid-content
+    display grid
 
-  .terms-conditions span
-    font-weight: bold;
-    color #25BF89
-    cursor pointer
-  .bottom-container
-    padding-top 8px
-    padding-bottom 8px
+    width 100%
+    height: 100%;
+
+    grid-template-columns: 50% 50%;
+    grid-template-rows: 20% 60% 20%;
+
+  .grid-content-side
+    width 70%
+    float right
+  .banner-side
+    float left
+    background white
+    position absolute
+    width 30%
+    top 0
+    left 0
+    bottom 0
+    border-bottom-left-radius  15px
+    border-top-left-radius 15px
+    z-index: 3
+  .phrase-register
+  .title-register
     text-align center
+    color #72808a
+    font-family 'Nunito Sans'
+    font-weight bold
+
+  .title-register
+    margin-top 40px
+    font-size 22px
+  .phrase-register
+    font-size 14px
+
+  .avatar-section
+    grid-column-start: 1;
+    grid-column-end: 3;
+    grid-row-start: 1
+    grid-row-end: 2
+
+    position relative
+
+  .column-a
+    grid-column-start: 1;
+    grid-column-end: 2;
+    grid-row-start: 2
+    grid-row-end: 3
+  .column-b
+    grid-column-start: 2;
+    grid-column-end: 3;
+    grid-row-start: 2
+    grid-row-end: 3
+  .signup-btn-section
+    grid-column-start: 1;
+    grid-column-end: 3;
+    grid-row-start: 3
+    grid-row-end: 4
+
+    justify-self center
+    align-self center
+
+
+  .column-a
+    padding 4px 20px 0px 60px
+  .column-b
+    padding 4px 60px 0px 20px
+
+  .column-a
+  .column-b
+    display: flex;
+    flex-wrap: wrap;
+
+
+  .avatar
+    position absolute
+    top -60px
+    left 50%
+    transform translateX(-50%)
+  // z-index 20
+
+  .upload-photo-indication
+    color #bbb
+    font-family Raleway
+    font-size 12px
+    text-align center
+
+    position absolute
+    top 50px
+    left 50%
+    transform translateX(-50%)
+
+  .group-form
+    width 100%
+
+  .input-form
+    outline none
+    width 100%
+    border 0
+    background transparent
+    border-bottom 0.5px solid white
+    font-family Raleway
+    color white
+    padding-bottom: 4px;
 
   .btn-continue
-    /*display: inline-block*/
+    display: inline-block
     position relative
-    display: block
-    margin-top 46px
+    padding 12px 60px
     text-align center
     background: #25BF89;
-    border-radius: 3px;
-    padding 4px 28px 4px 28px
+    border-radius: 20px;
     cursor pointer
     color white
 
-    font-family: Titillium Web;
-    font-style: normal;
-    font-weight: 600;
-    line-height: normal;
-    font-size: 22px;
+    font-family: Raleway;
+    font-weight: 100;
+    font-size: 16px;
     margin-bottom 6px
     text-transform uppercase
-    transition all .2s ease-out
 
-  .btn-continue:hover
-    transform translateY(-4px)
-
-  .link-login
-    font-family: Titillium Web;
-    font-style: normal;
-    font-weight: 600;
-    line-height: normal;
-    font-size: 18px;
-    text-align: center;
-    color: #fafafa;
-
-  .link-login span
-    color #25BF89
-    cursor pointer
-
-  .form-input
-    display inline-block
 
   .birthday-label-container
     position relative
@@ -331,11 +434,83 @@
     left: 0;
     font-size: 11px;
     z-index: 9;
+  .label
+    color #bbbbbb
+    font-family Raleway
+    font-size 12px
+
   .warning
     color orangered
-    font-family: Titillium Web;
-    font-weight: bold;
-    font-size 16px
+    font-family Raleway
+    // font-weight: bold;
+    font-size 14px
 
+  @media screen and (max-width: 1023px)
+    .card-container
+      width 90vw
+    .grid-content-side
+      width 100%
+      float left
+    .banner-side
+      display none
 
+    .grid-content
+      grid-template-columns: 100%;
+      grid-template-rows: 20% 30% 30% 20%;
+
+    .avatar-section
+      grid-column-start: 1;
+      grid-column-end: 2;
+      grid-row-start: 1
+      grid-row-end: 2
+
+    .column-a
+      grid-column-start: 1;
+      grid-column-end: 2;
+      grid-row-start: 2
+      grid-row-end: 3
+
+      padding: 4px 50px;
+
+    .column-b
+      grid-column-start: 1;
+      grid-column-end: 2;
+      grid-row-start: 3
+      grid-row-end: 4
+
+      padding: 4px 50px;
+
+    .signup-btn-section
+      grid-column-start: 1;
+      grid-column-end: 2;
+      grid-row-start: 4
+      grid-row-end: 5
+
+      padding-top: 22px;
+
+  @media screen and (max-width: 500px)
+    .card-container
+      height 80vh
+      margin-top 30px
+      overflow auto
+    .grid-content
+      grid-template-columns: 100%;
+      grid-template-rows: auto auto auto 20%;
+    .avatar
+      position absolute
+      top 0px
+      left 50%
+      transform translateX(-50%)
+
+    .upload-photo-indication
+      position relative
+      top 0
+
+    .group-form
+      padding 8px 0px
+    .column-a
+      padding: 4px 12px;
+
+    .column-b
+      padding: 4px 12px;
 </style>

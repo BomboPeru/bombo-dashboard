@@ -57,38 +57,47 @@
                 <div class="status-payment">
                   <h3>Tu estás comprando</h3>
                   <h2>{{ plans[planSelected].name }}</h2>
-                  <h1><span class="currency-sign">s/</span> {{ plans[planSelected].amount }}</h1>
 
-                  <div class="card-img-container">
-                    <img :src="plans[planSelected].cardSrc" class="card-image" alt="">
+                  <div class="card-amount">
+                    <div class="amount-cost"><span class="currency-sign">s/</span> {{ plans[planSelected].amount }}</div>
+
+                    <div class="card-img-container">
+                      <img :src="plans[planSelected].cardSrc" class="card-image" alt="">
+                    </div>
                   </div>
                 </div>
 
                 <div class="form-payment">
 
-                  <h2 style="text-align: left; color: rgb(108, 126, 140) !important;">Introduce los datos de tu tarjeta</h2>
+                  <div class="title-form-payment">Introduce los datos de tu tarjeta</div>
 
-                  <div class="card-number-container">
-                    <div class="card-number-label">Número de tarjeta</div>
-                    <input type="number" class="card-number">
-                  </div>
-                  <div class="exp-cvc-container">
-                    <div class="exp-container">
-                      <div class="exp-cvc-label">Fecha de expiración</div>
-                      <input class="month" placeholder="MMMM" type="number">
-                      <input class="year" placeholder="YYYY" type="number">
+                  <div class="form-container">
+
+                    <div class="card-number-container">
+                      <div class="card-number-label">Número de tarjeta</div>
+                      <!-- fa-cc-visa -->
+                      <i :class="['fab', 'fa-cc-mastercard', 'card-type-icon']"></i>
+                      <input type="number" class="card-number">
                     </div>
-                    <div class="cvc-container">
-                      <div class="exp-cvc-label">CVV/CVC</div>
-                      <input class="cvv" placeholder="CVC" type="number">
+
+                    <div class="exp-cvc-container">
+                      <div class="exp-container">
+                        <div class="exp-cvc-label">Fecha de expiración</div>
+                        <input class="month" placeholder="MMMM" type="number">
+                        <input class="year" placeholder="YYYY" type="number">
+                      </div>
+                      <div class="cvc-container">
+                        <div class="exp-cvc-label">CVV/CVC</div>
+                        <input class="cvv" placeholder="CVC" type="number">
+                      </div>
                     </div>
                   </div>
 
                   <div class="pay-btn-container">
                     <button class="pay-btn elevation" @click="pay">COMPRAR AHORA</button>
                   </div>
-                </div>
 
+                </div>
               </div>
 
 
@@ -243,8 +252,12 @@
     bottom 0
 
   .card-number-container
-    margin-top 87px
     width 100%
+    position: relative;
+  .card-type-icon
+    position absolute
+    bottom 4px
+    right 2px
   .exp-cvc-container
     display inline-block
     width 100%
@@ -257,16 +270,16 @@
     color #868686
     font-weight bold
     font-family font1
-    font-size 14px
+    font-size 13px
   .cvc-container
     display: inline-block;
-    width: 30%;
+    width: 100px;
   .exp-container
-    width 40%
+    width 204px
     display inline-block
   .card-number
     margin 0 1%
-    width 100%
+    width 300px
 
   .year
   .month
@@ -290,10 +303,7 @@
     display none
   .desktop
     display block
-  .content
-    display flex
-    flex-direction row-reverse
-    flex-wrap wrap
+
   .next-btn i
   .prev-btn i
     cursor pointer
@@ -313,7 +323,7 @@
   @media screen and (max-width: 1023px)
     .next-btn
     .prev-btn
-      top 10px
+      top 54px
     .next-btn i
     .prev-btn i
       color white
@@ -327,35 +337,134 @@
       margin 0
       width 100%
 
+  .content
+    width 100%
+    display grid
+    grid-template-columns: 50% 50%;
+    grid-template-rows: auto;
+  // .form-payment
+
 
   .form-payment
-    flex-grow 2
+    grid-column-start: 1;
+    grid-column-end: 2;
+    grid-row-start: 1
+    grid-row-end: 2
     font-family font1 !important
-    position: relative
-    left: 64px
+    padding 12px 12px 12px 30px
+    display grid
+    grid-template-columns: 100%;
+    grid-template-rows: 25% 55% 40%;
+
+  .title-form-payment
+    line-height: 72px;
+    text-align: center;
+    color: rgb(108, 126, 140) !important;
+    font-size: 20px;
+    font-weight: bold;
+
+  .form-container
+    // width 100%
+    justify-self: center
+
+
+  .pay-btn-container
+    width 100%
+    align-self: end;
+    padding-bottom 32px
+
+
   .status-payment
-    flex-grow 1
+    grid-column-start: 2;
+    grid-column-end: 3;
+    grid-row-start: 1
+    grid-row-end: 2
+
+  .amount-cost
+    font-size 50px
+    font-weight bold
+    display inline-block
+    font-family 'Campton Bold Demo'
+
+  // .card-amount
+  .amount-cost
+    display block
+    text-align right
+    color white
+    font-size 80px
+    padding-right 32px
 
   .card-img-container
-    text-align: right;
-    position: relative;
-    top: 12%
-    right: 5%
+    text-align right
+    position relative
+    top: 75px;
+    display block
+
+  @media screen and (max-width: 1100px)
+    .content
+      width 100%
+      display grid
+      grid-template-columns: 60% 40%;
+      grid-template-rows: auto;
+
+
+  @media screen and (max-width: 1023px)
+    .content
+      width 100%
+      display grid
+      grid-template-columns: 100%;
+      grid-template-rows: 40% 60%;
+    // .form-payment
+
+    .form-payment
+      padding 0px 0px
+      grid-column-start: 1
+      grid-column-end: 2
+      grid-row-start: 2
+      grid-row-end: 3
+      font-family font1 !important
+
+    .status-payment
+      grid-column-start: 1;
+      grid-column-end: 2;
+      grid-row-start: 1
+      grid-row-end: 2
+
+    .card-number
+      width: 100%;
+
+    .form-container
+      padding: 8px 100px;
+
+    .exp-cvc-container
+      display: flex;
+      justify-content: space-between;
+
+    .card-amount
+      margin-top 20px
+      display: flex;
+      flex-wrap wrap
+      justify-content: center;
+      align-items: baseline;
+    .amount-cost
+      padding-right 12px
+      color black
+
+
   .card-image
     width 360px
 
   @media screen and (max-width: 1023px)
-    .status-payment h2
-      text-align center
-      padding-bottom 20px !important
+
     .card-img-container
       display inline-block
       position: relative;
-      top: 0px;
-      right 0px;
-      width 40%
+      top 0
+      right 0
+      text-align left
+
     .card-image
-      width 120px
+      width 200px
     .form-payment
       left: 0
     .card-number-container
@@ -376,6 +485,24 @@
     z-index 2
     padding 24px 36px
     // padding 24px 55px
+  @media screen and (max-width: 1100px)
+    .body
+      width 90vw
+  @media screen and (max-width: 500px)
+    .body
+      width 100vw
+    .card-container
+      border-radius: 0px !important;
+    .form-container
+      padding: 8px 24px;
+    .title-form-payment
+      font-size 18px
+      line-height: 22px;
+    .card-image
+      width 100px
+
+
+
 
   .body h2
     font-family 'Campton Bold Demo' !important
@@ -449,6 +576,7 @@
     color white
     font-weight bold
     font-family Titillium Web
+
   .email-label
     margin 16px
     color #7b7b7b
@@ -465,10 +593,11 @@
   .email-input::-webkit-input-placeholder
     font-family Titillium Web
     font-weight bold
+
   .pay-btn-container
     margin 16px 0px
-    position: relative;
-    top: 46px;
+    text-align center
+
   .pay-btn
     cursor pointer
     height 48px
@@ -480,9 +609,9 @@
     border 0
     outline 0
     color white
-    font-size 16px
+    font-size 18px
     font-weight bold
-    font-family Titillium Web
+    font-family Raleway
 
 
   .close-container
@@ -493,8 +622,12 @@
     position relative
     top -8px
     right -16px
+    z-index 9
   .close-btn i
     color white
+  @media screen and (max-width: 1023px)
+    .close-btn
+      right 17px
   .input-saldo
     background: transparent;
     font-size: 64px;
