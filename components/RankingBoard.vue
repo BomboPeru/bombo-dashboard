@@ -67,7 +67,7 @@
         if (this.leagueObj === undefined) {
           return []
         } else {
-          let times = []
+          // let times = []
           return this.leagueObj.times
         }
       },
@@ -76,6 +76,7 @@
           if (this.timeObj === undefined) {
             return false
           }
+          this.$emit('onSelectLeague', { league_id: this.leagueObj.id, time: this.timeObj  })
           this.fetchRanking()
           return true
         }

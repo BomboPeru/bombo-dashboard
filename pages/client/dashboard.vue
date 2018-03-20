@@ -3,12 +3,16 @@
     <sidebar mode="dashboard"/>
     <div class="content">
       <div :class="['section', activeTab === 0?'show':'hide']">
-        <ranking-card/>
+        <ranking-card @onSelectLeague="onSelectLeague"/>
       </div>
       <div :class="['section', 'matches-container', activeTab === 1?'show':'hide']">
-        <historic-match-card v-for="(item, i) in matches"
-                             :key="i+'-match-card'"
-                             :match="item"/>
+        <match-card flexible
+                    class="match-card"
+                    v-for="(item, i) in matches"
+                    :key="i+'-match-card'"
+                    :match="item"
+                    :date="date"
+                    :time="time"/>
       </div>
       <div :class="['section', 'teams-container', activeTab === 2?'show-flex':'hide']">
         <ul>
@@ -17,7 +21,7 @@
             <div>
               <team-card class="team-card"
                          :key="i+'-team'"
-                         :title="team.date"
+                         :title="team.name"
                          :ranking="team.ranking"
                          :points="team.points"
                          :created-at="team.createdAt"
@@ -34,15 +38,16 @@
 
 <script>
   import RankingCard from '../../components/RankingBoard'
-  import HistoricMatchCard from '../../components/HistoricMatchCard'
+  // import HistoricMatchCard from '../../components/HistoricMatchCard'
   import TeamCard from '../../components/TeamCard'
   import Sidebar from '~/components/Sidebar.vue'
+  import MatchCard from '../../components/MatchCard'
 
   export default {
     layout: 'dashboard',
     name: 'dashboard',
     components: {
-      RankingCard, HistoricMatchCard, TeamCard, Sidebar
+      RankingCard, TeamCard, Sidebar, MatchCard
     },
     computed: {
       activeTab () {
@@ -55,35 +60,35 @@
     },
     data () {
       return {
-        matches: [
-          { away: { events: [], date: 'FCB', score: '1' }, home: { events: [], date: 'RMD', score: '2' } }
-        ],
-        teams: [
-        ]
+        league_id: '',
+        time: 0,
+        date: '',
+        matches: [],
+        teams: []
       }
     },
     methods: {
+      onSelectLeague (matchesFromTime) {
+        this.league_id = matchesFromTime.league_id
+        this.date = matchesFromTime.time.start
+        this.time = matchesFromTime.time.number
+        this.fetchMatchesFromTime()
+      },
       async fetchMyTeams () {
         let response = await this.$axios.$get('http://api.bombo.pe/api/v1.0/user/' + this.testUserId)
         // console.log(response.data.playing_teams[0])
         this.teams = response.data.playing_teams
       },
-      async fetchAllMatches () {
+      async fetchMatchesFromTime () {
         const self = this
+        const leagueId = this.league_id
+        const time = this.time
+
         let response = await this.$axios({
           method: 'get',
-          url: 'http://open.bombo.pe/manager/get-works'
-          // auth: {
-          //   username: 'bregymr',
-          //   password: 'malpartida1'
-          // }
+          url: 'http://api.bombo.pe/api/v2.0/matches/' + leagueId + '/time/' + time
         })
-        const matches = response.data.data.filter((match) => {
-          return match.type === 'match'
-        })
-        for (let i = 0; i < matches.length; i++) {
-          self.fetchMatchById(matches[i].date)
-        }
+        this.matches = response.data.data
       },
       async fetchMatchById (matchId) {
         const response = await this.$axios.$get('http://open.bombo.pe/api/v1.0/' + matchId)
@@ -94,7 +99,6 @@
       }
     },
     mounted () {
-      this.matches = []
       // this.fetchMyTeams()
       // this.fetchAllMatches()
     }
@@ -104,6 +108,9 @@
 <style scoped lang="stylus">
   /*#matches*/
 
+  .match-card
+    margin-top 12px
+    margin-bottom 12px
   .content
     display flex
     justify-content space-around

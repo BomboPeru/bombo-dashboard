@@ -20,14 +20,10 @@
     data () {
       return {
         matches: [
-          { teamA: 'Chelsea', teamB: 'Man Utd' },
-          { teamA: 'Chelsea', teamB: 'Man Utd' },
-          { teamA: 'Chelsea', teamB: 'Man Utd' },
-          { teamA: 'Chelsea', teamB: 'Man Utd' },
-          { teamA: 'Chelsea', teamB: 'Man Utd' },
-          { teamA: 'Chelsea', teamB: 'Man Utd' },
         ]
       }
+    },
+    methods: {
     }
   }
 </script>

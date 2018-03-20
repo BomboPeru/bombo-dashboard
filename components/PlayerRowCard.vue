@@ -198,6 +198,7 @@
         return status
       }
     },
+    // active semi-active not-active suspended
     data () {
       return {
         kind: {

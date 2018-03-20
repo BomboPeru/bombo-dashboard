@@ -1,113 +1,100 @@
 <template>
     <div id="payments" v-if="isOpen">
       <dialog-container :fixed="true" @closeDialog="closeDialog">
-        <no-ssr>
-          <div class="elevation card-container body rounded-sm loading-container">
+          <div class="elevation card-container rounded-sm loading-container">
 
-            <div class="loading-process" v-if="isLoading">
-              <div class="loading-card elevation">
-                <div class="loadingIcon">
-                  <i class="fas fa-circle-notch fa-spin"></i>
-                </div>
-                <div class="loadingText">
-                  <p>Estamos procesando su compra, espere por favor.</p>
-                </div>
-              </div>
+            <div class="header-container desktop">
+
+              <svg class="header-background-desktop"
+                   width="100%"
+                   viewBox="0 0 100 100"
+                   height="100%"
+                   version="1.1"
+                   preserveAspectRatio="none">
+                <polygon points="100,0 75,0 60,50 75,100 100,100" :style="{ fill: plans[planSelected].backgroundColor }" />
+              </svg>
+            </div>
+            <div class="header-container mobile">
+              <svg class="header-background"
+                   width="100%"
+                   viewBox="0 0 100 100"
+                   height="200px"
+                   version="1.1"
+                   preserveAspectRatio="none">
+                <polygon points="0,0 0,50 100,100 100,0" :style="{ fill: plans[planSelected].backgroundColor }" />
+              </svg>
             </div>
 
-            <div class="close-container">
-              <div class="close-btn" @click="closeDialog">
-                <i class="fas fa-times"></i>
-              </div>
-            </div>
 
-            <h3>Recarga tu saldo para seguir jugando en Bombo</h3>
+            <div class="body">
 
-            <div class="plans-container">
-              <div :class="['plan-card', 'card-container', 'elevation', planSelected=== i?'selectedPlan':'']"
-                   v-for="(plan, i) in plans"
-                   :style="{background: plan.color }"
-                   :key="i"
-                   @click="setPlanSelected(i)">
-                <div class="price-label">{{ plan.price }}</div>
-                <div class="name-label">{{ plan.name }}</div>
-              </div>
-              <!--<div>-->
-                <!--<input type="text" class="input-saldo" ref="amountToCharge" placeholder="00.00" v-model="amount">-->
-              <!--</div>-->
-            </div>
-
-            <div class="plan-selection-container">
-              Plan seleccionado:
-              <template v-if="planSelected !== undefined">
-                {{ plans[planSelected].price }} ( {{ plans[planSelected].name.toUpperCase() }} )
-              </template>
-              <template v-else>
-                S/ 0
-              </template>
-            </div>
-
-            <div style="display: none">
-              <label class="email-label">Correo electronico</label>
-              {{ isDialogOpen }}
-              <div>
-                <input class="email-input"
-                       placeholder="aaaa@aaa.com"
-                       type="text" size="50"
-                       data-culqi="card[email]" id="card[email]">
-              </div>
-              <input id="tokenculqi" style="display: none;" value="0">
-            </div>
-            <div class="credit-card rounded elevation">
-              <div class="credit-card-brand">
-                <img :src="typeCC==='visa'? '/type_cards/visa_logo.png' : '/type_cards/master_card_logo.png'"
-                     style="filter: opacity(0.7);" height="26px" alt="">
-              </div>
-              <div>
-                <input class="input-card card-number"
-                       placeholder="0000 0000 0000 0000"
-                       v-model="ccFormatted"
-                       type="text"
-                       size="20"
-                       data-culqi="card[number]"
-                       id="card[number]">
-              </div>
-              <div class="bottom-part-card">
-                <div>
-                  <input class="input-card cvc"
-                         placeholder="CVC"
-                         value="123"
-                         maxlength="3"
-                         type="text"
-                         size="3"
-                         data-culqi="card[cvc]"
-                         id="card[cvv]">
-                </div>
-                <div>
-                <span class="expiring">
-                  VENCE <br>FIN DE
-                </span>
-                  <input class="input-card"
-                         value="09"
-                         placeholder="MM" type="text" maxlength="2" size="2" data-culqi="card[exp_month]" id="card[exp_month]">
-                  <span style="font-weight: bold; color: #fff; font-size: 22px;"> / </span>
-                  <input class="input-card"
-                         value="2020"
-                         placeholder="YY"
-                         type="text" maxlength="4" size="4" data-culqi="card[exp_year]" id="card[exp_year]">
+              <div class="loading-process" v-if="isLoading">
+                <div class="loading-card elevation">
+                  <div class="loadingIcon">
+                    <i class="fas fa-circle-notch fa-spin"></i>
+                  </div>
+                  <div class="loadingText">
+                    <p>Estamos procesando su compra, espere por favor.</p>
+                  </div>
                 </div>
               </div>
-              <!--<div class="pay-btn-container">-->
-                <!--<input id="inputSubmit" type="submit" class="pay-btn elevation" name="SUBMIT" @click="pay"/>-->
-              <!--</div>-->
+
+              <div class="close-container">
+                <div class="close-btn" @click="closeDialog">
+                  <i class="fas fa-times"></i>
+                </div>
+              </div>
+
+              <div class="next-btn" @click="nextPlan">
+                <img src="/payment/r_arrow.svg" width="32px" height="32px" alt="">
+              </div>
+              <div class="prev-btn" @click="prevPlan">
+                <img src="/payment/arrow_l.svg" width="32px" height="32px" alt="">
+              </div>
+
+              <div class="content">
+
+                <div class="status-payment">
+                  <h3>Tu estás comprando</h3>
+                  <h2>{{ plans[planSelected].name }}</h2>
+                  <h1><span class="currency-sign">s/</span> {{ plans[planSelected].amount }}</h1>
+
+                  <div class="card-img-container">
+                    <img :src="plans[planSelected].cardSrc" class="card-image" alt="">
+                  </div>
+                </div>
+
+                <div class="form-payment">
+
+                  <h2 style="text-align: left; color: rgb(108, 126, 140) !important;">Introduce los datos de tu tarjeta</h2>
+
+                  <div class="card-number-container">
+                    <div class="card-number-label">Número de tarjeta</div>
+                    <input type="number" class="card-number">
+                  </div>
+                  <div class="exp-cvc-container">
+                    <div class="exp-container">
+                      <div class="exp-cvc-label">Fecha de expiración</div>
+                      <input class="month" placeholder="MMMM" type="number">
+                      <input class="year" placeholder="YYYY" type="number">
+                    </div>
+                    <div class="cvc-container">
+                      <div class="exp-cvc-label">CVV/CVC</div>
+                      <input class="cvv" placeholder="CVC" type="number">
+                    </div>
+                  </div>
+
+                  <div class="pay-btn-container">
+                    <button class="pay-btn elevation" @click="pay">COMPRAR AHORA</button>
+                  </div>
+                </div>
+
+              </div>
+
 
             </div>
 
-            <div class="pay-btn-container">
-              <button class="pay-btn elevation" @click="pay">COMPRAR</button>
-            </div>
           </div>
-        </no-ssr>
       </dialog-container>
     </div>
 </template>
@@ -122,11 +109,22 @@
       isOpen: { type: Boolean, default: false }
     },
     methods: {
+      nextPlan () {
+        if (this.planSelected !== this.plans.length - 1) {
+          this.planSelected += 1
+        } else {
+          this.planSelected = 0
+        }
+      },
+      prevPlan () {
+        if (this.planSelected !== 0) {
+          this.planSelected -= 1
+        } else {
+          this.planSelected = this.plans.length - 1
+        }
+      },
       closeDialog () {
         this.$emit('onCollapse', false)
-      },
-      setPlanSelected (i) {
-        this.planSelected = i
       },
       fetchUser () {
         if (process.server) return
@@ -152,43 +150,6 @@
       },
       async pay () {
 
-        String.prototype.replaceAll = function(search, replacement) {
-          var target = this;
-          return target.replace(new RegExp(search, 'g'), replacement);
-        };
-
-        const email = document.getElementById('card[email]').value
-        const cvv = document.getElementById('card[cvv]').value
-        const cardNumber = document.getElementById('card[number]').value.replaceAll(' ','')
-        const mm = document.getElementById('card[exp_month]').value
-        const yyyy = document.getElementById('card[exp_year]').value
-
-        this.isLoading = true
-
-        try {
-          let response = await this.$axios.post('https://api.culqi.com/v2/tokens', {
-            email: email,
-            card_number: cardNumber,
-            cvv: cvv,
-            expiration_year: yyyy,
-            expiration_month: mm
-          }, { headers: { 'Authorization' : 'Bearer ' + 'pk_test_l3UyeISl0wtTzkSN' } })
-          // public_key: 'pk_live_Sabys0p2rhn2D4ZM',
-          const userId =  this.$store.getters['auth/getUserId']
-          let response2 = await this.$axios.post('http://api.bombo.pe/api/v2.0/users/' + userId + '/set-card', {
-            card_number: document.getElementById('card[number]').value,
-            token_card: response.data.number
-          })
-          console.log(response2)
-          const amount = parseFloat(this.amount)
-          let response3 = await this.$axios.post('http://api.bombo.pe/api/v2.0/users/' + userId + '/charge', {
-            how: amount * 100
-          })
-          console.log(response3)
-        } catch (e) {
-          console.log('culqi error', e)
-        }
-        this.isLoading = false
       }
     },
     computed: {
@@ -228,52 +189,229 @@
         amount: 20,
         isLoading: false,
         plans: [
-          { price: 'S/ 20', amount: 20, name: 'regular', color: 'linear-gradient(-114deg, rgb(210, 105, 202) 0%, rgb(222, 127, 71) 105%)' },
-          { price: 'S/ 30', amount: 30, name: 'grande', color: 'linear-gradient(-114deg, rgb(66, 158, 129) 0%, rgb(71, 138, 222) 105%)' },
-          { price: 'S/ 50', amount: 50, name: 'venti', color: 'linear-gradient(-114deg, rgb(93, 66, 158) 0%, rgb(222, 71, 189) 105%)' },
-          { price: 'S/ 100', amount: 100, name: 'venti', color: 'linear-gradient(-114deg, rgb(93, 66, 158) 0%, rgb(222, 71, 189) 105%)' }
+          { price: 'S/ 20', amount: 20, name: 'BOMBO PACK 1',
+            color: 'linear-gradient(-114deg, rgb(210, 105, 202) 0%, rgb(222, 127, 71) 105%)',
+            backgroundColor: '#FEB54B', cardSrc: '/payment/b_card_copy_4.png' },
+          { price: 'S/ 30', amount: 30, name: 'BOMBO PACK 2',
+            color: 'linear-gradient(-114deg, rgb(66, 158, 129) 0%, rgb(71, 138, 222) 105%)',
+            backgroundColor: '#FE63A2', cardSrc: '/payment/b_card_copy_3.png' },
+          { price: 'S/ 50', amount: 50, name: 'BOMBO PACK 3',
+            color: 'linear-gradient(-114deg, rgb(93, 66, 158) 0%, rgb(222, 71, 189) 105%)',
+            backgroundColor: '#4A48D2', cardSrc: '/payment/b_card_copy_2.png' },
+          { price: 'S/ 100', amount: 100, name: 'BOMBO PACK 4',
+            color: 'linear-gradient(-114deg, rgb(93, 66, 158) 0%, rgb(222, 71, 189) 105%)',
+            backgroundColor: '#FE5567', cardSrc: '/payment/b_card.png' }
         ],
-        planSelected: undefined
+        planSelected: 0
       }
     }
   }
 </script>
 
 <style scoped lang="stylus">
-  .credit-card
-    padding 12px 16px
-    margin 4px 10px
-    background url(/type_cards/mapa.png) no-repeat center, linear-gradient(141deg, #4dafff 0%, #3d8fef 75%)
-    background-size: cover;
-  .body
-    padding 24px 36px
-  .body h3
-    text-align center
-    color #7b7b7b
-  .plans-container
-    padding 4px 4px
-    margin 10px 4px
-    display flex
-    flex-wrap wrap
-    justify-content center
-    align-items: center
-  .plan-card
-    cursor pointer
-    margin 4px 4px
-    text-align center
-    overflow hidden
-    // -webkit-transition: width 1s ease, height 1s ease; /* For Safari 3.1 to 6.0 */
-    transition: width 1s fade, height 1s fade;
-  .price-label
-    height 70%
-    font-size: 28px;
-    line-height 70px
-    color white
+  font = 'Nunito Sans'
+  font1 = 'Raleway'
+  font2 = 'Titilium Web'
+
+  @font-face {
+    font-family 'Campton Bold Demo'
+    src url(/payment/Campton-BoldDEMO.otf)
+  }
+
+
+  .card-container
+    border-radius: 15px !important;
+
+  input[type='number'] {
+    appearance: textfield;
+  }
+  input[type='number']::-webkit-inner-spin-button,
+  input[type='number']::-webkit-outer-spin-button,
+  input[type='number']:hover::-webkit-inner-spin-button,
+  input[type='number']:hover::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  .header-background-desktop
+  .header-background
+    position absolute
+    top 0
+    left 0
+    z-index 1
+  .header-background-desktop
+    bottom 0
+
+  .card-number-container
+    margin-top 87px
+    width 100%
+  .exp-cvc-container
+    display inline-block
+    width 100%
+    margin-top 15px
+  .exp-container input
+    margin 0 1%
+  .card-number-label
+  .exp-cvc-label
+    margin 20px 1%
+    color #868686
     font-weight bold
-  .selectedPlan
-    width 120px
-    height 120px
-    // box-shadow: 0 3px 16px rgba(1, 59, 230, 0.54), 0 3px 6px rgba(25, 167, 24, 0.79)
+    font-family font1
+    font-size 14px
+  .cvc-container
+    display: inline-block;
+    width: 30%;
+  .exp-container
+    width 40%
+    display inline-block
+  .card-number
+    margin 0 1%
+    width 100%
+
+  .year
+  .month
+  .cvv
+  .card-number
+    font-size 18px
+    font-family font
+    color #0C1334
+    outline none
+    background: transparent;
+    border: 0;
+    border-bottom: 1px solid #AEAEAE;
+  .cvv
+    width 100%
+  .month
+    width 40%
+  .year
+    width 40%
+
+  .mobile
+    display none
+  .desktop
+    display block
+  .content
+    display flex
+    flex-direction row-reverse
+    flex-wrap wrap
+  .next-btn i
+  .prev-btn i
+    cursor pointer
+  .next-btn
+    color white
+    position absolute
+    top 50%
+    right 20px
+    transform translateY(-50%)
+  .prev-btn
+    color black
+    position absolute
+    top 50%
+    left 20px
+    transform translateY(-50%)
+
+  @media screen and (max-width: 1023px)
+    .next-btn
+    .prev-btn
+      top 10px
+    .next-btn i
+    .prev-btn i
+      color white
+
+  @media screen and (max-width: 1023px)
+    .desktop
+      display none
+    .mobile
+      display block
+    .content
+      margin 0
+      width 100%
+
+
+  .form-payment
+    flex-grow 2
+    font-family font1 !important
+    position: relative
+    left: 64px
+  .status-payment
+    flex-grow 1
+
+  .card-img-container
+    text-align: right;
+    position: relative;
+    top: 12%
+    right: 5%
+  .card-image
+    width 360px
+
+  @media screen and (max-width: 1023px)
+    .status-payment h2
+      text-align center
+      padding-bottom 20px !important
+    .card-img-container
+      display inline-block
+      position: relative;
+      top: 0px;
+      right 0px;
+      width 40%
+    .card-image
+      width 120px
+    .form-payment
+      left: 0
+    .card-number-container
+      margin 0
+      width 100%
+    .exp-cvc-container
+      margin 0
+      width 100%
+    .exp-container
+      width 60%
+
+
+
+  .body
+    width 80vw
+    height 600px
+    position relative
+    z-index 2
+    padding 24px 36px
+    // padding 24px 55px
+
+  .body h2
+    font-family 'Campton Bold Demo' !important
+
+  .body h3
+    color white
+  .body h3
+  .body h2
+  .body h1
+    text-align right
+    font-family font
+    margin 20px 0
+  .body h1
+    font-family 'Campton Bold Demo'
+    font-weight: bold;
+    color white
+    font-size: 80px !important;
+
+
+  @media screen and (max-width: 1023px)
+    .body
+      padding 0 0 !important
+    .body h2
+    .body h3
+    .body h1
+      margin 0px 0px !important
+      text-align center !important
+    .body h1
+      font-size 64px !important
+      display inline-block !important
+      color black !important
+
+  .currency-sign
+    font-family 'Raleway'
+    font-size: 30px
+
   .name-label
     height 30%
     color white
@@ -294,29 +432,6 @@
     height: 100%;
     background: #0c0c0cc7;
     z-index: 999;
-
-  #culqi-card-form
-    margin-top 18px
-  .credit-card-brand
-    float right
-    margin-bottom 18px
-  .card-number
-    font-size 28px !important
-    font-weight bold
-  .bottom-part-card
-    padding-top 36px
-    display: flex;
-    justify-content: space-between;
-  .expiring
-    font-size 10px
-    color white
-    display: inline-block;
-    line-height 12px
-    padding-right 10px
-    position relative
-    top 3px
-    font-weight bold
-
   .loading-card
     width 200px
     padding 10px 20px
@@ -329,17 +444,7 @@
   .loadingText
   .loadingIcon
     text-align center
-  .cvc
-    top: 7px;
-    position: relative;
-  .input-card
-    outline none
-    /*width: 100%;*/
-    font-weight bold
-    background: #ffffff00;
-    border: 0;
-    color: white;
-    font-size 20px
+
   .input-card::-webkit-input-placeholder
     color white
     font-weight bold
@@ -361,27 +466,25 @@
     font-family Titillium Web
     font-weight bold
   .pay-btn-container
-    margin 16px 8px
+    margin 16px 0px
+    position: relative;
+    top: 46px;
   .pay-btn
     cursor pointer
-    width 100%
     height 48px
-    display block
-    background #243337
-    border-radius 8px
+    padding-left 30px
+    padding-right 30px
+    display inline-block
+    background #01E19F
+    border-radius 24px
     border 0
     outline 0
     color white
     font-size 16px
     font-weight bold
     font-family Titillium Web
-  .plan-selection-container
-    padding-left 12px
-    font-size 22px
-    font-weight bold
-    font-family Titillium Web
-    color #7b7b7b
-    margin 20px 0px
+
+
   .close-container
     margin-bottom 20px
   .close-btn
@@ -390,6 +493,8 @@
     position relative
     top -8px
     right -16px
+  .close-btn i
+    color white
   .input-saldo
     background: transparent;
     font-size: 64px;

@@ -272,6 +272,7 @@
     line-height: normal;
     font-size: 14px;
     color: #445F69;
+
   .terms-conditions span
     font-weight: bold;
     color #25BF89
@@ -280,6 +281,7 @@
     padding-top 8px
     padding-bottom 8px
     text-align center
+
   .btn-continue
     /*display: inline-block*/
     position relative
@@ -300,6 +302,7 @@
     margin-bottom 6px
     text-transform uppercase
     transition all .2s ease-out
+
   .btn-continue:hover
     transform translateY(-4px)
 
@@ -311,11 +314,14 @@
     font-size: 18px;
     text-align: center;
     color: #fafafa;
+
   .link-login span
     color #25BF89
     cursor pointer
+
   .form-input
     display inline-block
+
   .birthday-label-container
     position relative
     margin-top 16px

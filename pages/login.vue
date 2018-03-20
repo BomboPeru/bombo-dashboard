@@ -1,16 +1,46 @@
 <template>
    <div id="login">
+     <div class="bombo-home">
+       <nuxt-link to="/">
+         <img src="/landing/bombo_outline2_3x.png" width="100px" alt="">
+       </nuxt-link>
+     </div>
      <div class="card-login rounded-sm">
-       <div>
-         <p class="title-login">Iniciar sesion</p>
+
+       <div class="content">
+         <div style="text-align: center; margin-top: 20px;">
+           <img src="/landing/bombo_all_white.svg" width="180px" alt="">
+         </div>
+         <div class="title-container">
+           <p class="title-login">INGRESA TUS DATOS</p>
+         </div>
+         <input class="input-text" autocomplete="off" type="text" v-model="username" placeholder="Username">
+         <input class="input-text" autocomplete="off" type="password" v-model="password" placeholder="Password">
+
+         <div class="btn-login" @click="login">
+           INGRESAR
+         </div>
+         <div class="forgot-password">
+           <nuxt-link to="/">
+             Olvidé mi contraseña
+           </nuxt-link>
+         </div>
+         <div class="error">
+           {{message}}
+         </div>
        </div>
-       <input-text big solid width="280px" v-model="username" placeholder="Username"/>
-       <input-text big solid width="280px" type="password" v-model="password" placeholder="Password"/>
-       <div class="btn-login" @click="login">
-         ENTRAR
-       </div>
-       <div class="error">
-         {{message}}
+
+       <div class="signup-section">
+         <div style="width: 60%; display: inline-block;" class="signup-info">
+           Si no tienes una cuenta, registrate ahora y disfruta de una experiencia de jugar en bombo
+         </div>
+         <div style="display: inline-block; float: right">
+           <div class="signup-btn">
+             <nuxt-link to="/register">
+               REGISTRARSE
+             </nuxt-link>
+           </div>
+         </div>
        </div>
      </div>
    </div>
@@ -75,42 +105,117 @@
 </script>
 
 <style scoped lang="stylus">
+
+  .bombo-home
+    position absolute
+    top 20px
+    left 30px
+
   .card-login
-    width 360px
-    padding-left 40px
+    font-family Raleway
+    width 415px
+    background #0F202D
+    box-shadow: 0 8px 24px 0 rgba(0,0,0,0.82);
+    border-radius: 13px;
+
+  .content
+    padding-left 60px
+    padding-right 60px
     padding-top 20px
-    padding-bottom 40px
-    background #243237
-  .title-login
-    font-family: Titillium Web;
-    font-weight bold
+    padding-bottom 20px
+
+  @media screen and (max-width: 1023px)
+    .card-login
+      padding-left 10px
+      padding-right 10px
+
+  ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: white;
+    opacity: 1; /* Firefox */
+  }
+  .input-text
+    outline none
+    width 75%
     color white
-    font-size 22px
-    display inline
+    font-family Raleway
+    margin-top 20px
+    margin-bottom 20px
+    margin-left 12.5%
+    margin-right 12.5%
+    background transparent
+    border 0
+    border-bottom 1px solid #bbc0c3
+    font-size 14px
+    padding-bottom: 3px;
+
+
+  .title-container
+    margin-top 37px
+    margin-bottom 60px
+
+  .title-login
+    font-family: Raleway;
+    font-weight: 500;
+    color white
+    font-size 16px
+    text-align center
+
+  .signup-section
+    margin-top 22px
+    margin-bottom 32px
+    margin-left 31px
+    margin-right 31px
+
+  .signup-btn
+    border 1px solid white
+    border-radius 18px
+    margin-left 20px
+    padding 6px 19px
+    font-size 10px
+    text-align center
+  .signup-btn a
+    text-decoration none
+    color white
+  .signup-info
+    color white
+    font-size 10px
+
   .btn-login
-    width 280px
-    background #25BF89
-    height 50px
-    margin-top: 10px;
+    width 60%
+    margin-left 20%
+    margin-right 20%
+
+    background #FE5567
+    height 40px
+    border-radius 25px
+    margin-top: 14px;
     cursor pointer
 
-    line-height 48px
+    line-height 40px
     text-align center
     color white
-    font-size 22px
-    font-family: Titillium Web;
-    font-weight bold
+    font-size 14px
+    font-weight: 600;
+    font-family: Raleway;
   .error
     padding-top 10px
     font-size 18px
-    font-family: Titillium Web;
+    font-family: Raleway;
     font-weight bold
     color #ec6a1f
+  .forgot-password
+    margin-top 12px
+    margin-bottom 4px
+    font-size 12px
+    text-align center
+  .forgot-password a
+    color cornflowerblue
 
   #login
-    background url(/login_background.jpeg)
+    background url(/landing/background_login_register.png)
     background-size cover
-    height calc(100vh - 76px)
+    height 100vh
+    // height calc(100vh - 76px)
 
     display: flex;
     flex-wrap: wrap;

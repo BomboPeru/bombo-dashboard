@@ -24,7 +24,10 @@
           <button :class="['tab', 'elevation', activeTab===i?'activeTab':'inactiveTab', 'tab-'+i]"
                   v-for="(tab, i) in tabs"
                   @click="toggleTab(i)"
-                  :key="i+'-tab'">  <i :class="['fas', tab.icon]"></i> </button>
+                  :key="i+'-tab'" style="width: 110px;">
+            <i :class="['fas', tab.icon]"></i>
+            {{ tab.name }}
+          </button>
         </div>
 
         <!--<progress-bar vertical :current-number="saldo" :max-number="100" height="50px" class="progress-bar" />-->

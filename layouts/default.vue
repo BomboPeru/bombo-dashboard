@@ -1,7 +1,7 @@
 <template>
   <div>
     <div id="cover-layout">
-      <basic-toolbar/>
+      <basic-toolbar v-if="toolbar"/>
       <nuxt/>
     </div>
 
@@ -30,6 +30,9 @@
       BasicToolbar, LoginDialog, TermsConditionsDialog, LoadingScreen, ShortLoadingScreen
     },
     computed: {
+      toolbar() {
+        return this.$route.path !== '/login'
+      },
       isLoading () {
         return this.$store.state.isLoading
       },

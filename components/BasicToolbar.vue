@@ -46,6 +46,7 @@
     },
     computed: {
       nonLanding () {
+        // return (this.$route.path === '/register')
         return this.$route.path !== '/'
       }
     },

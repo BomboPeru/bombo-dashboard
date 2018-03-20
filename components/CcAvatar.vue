@@ -1,6 +1,6 @@
 <template>
     <div id="cc-avatar" :class="['avatar-container', sm?'sm':'']">
-      <span class="shadow" :style="{ borderRadius: square? '0px':'50%' }"></span>
+      <span class="shadow" :style="{ borderRadius: square? '0px':'50%' }" @click="updatePhoto"></span>
       <img class="avatar-img" :src="src" :style="{ borderRadius: square? '0px':'50%' }" alt="">
     </div>
 </template>
@@ -15,6 +15,27 @@
         default: false
       },
       sm: Boolean
+    },
+    methods: {
+      updatePhoto () {
+        console.log('updatePhoto')
+
+        // this.$axios.post('http://api.bombo.pe/api/v2.0/users/'+ this.user.id +'/update-profile',
+        //   { user: this.user })
+        //   .then(res => {
+        //     console.log(res)
+        //     // res.data.data
+        //     this.$store.dispatch('updateUser', res.data.data)
+        //     this.$store.dispatch('turnOnSnackbar', 'Perfil Actualizado')
+        //   })
+        //   .catch(e => {
+        //     console.log(e)
+        //     this.$store.dispatch('turnOnSnackbar', 'Ocurrio un error. Intentalo mas tarde.')
+        //   })
+      }
+    },
+    mounted () {
+
     }
   }
 </script>

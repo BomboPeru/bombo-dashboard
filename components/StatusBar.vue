@@ -14,7 +14,8 @@
       </li>
       <li class="avatar" @click="openTooltip('profile')" >
         <span>
-          <img src="../assets/icons/avatar.png" width="40px" alt="">
+          <!--{{ urlPhoto }}-->
+          <img :src="url" v-if="url !== ''" class="avatar-img" width="40px" height="40px" alt="">
         </span>
       </li>
     </ul>
@@ -38,10 +39,19 @@
       },
       indicator () {
         return this.$store.state.notifications.length
+      },
+      urlPhoto () {
+        if (process.server) return ''
+        const userId = this.$store.getters['auth/getUserId']
+        // const token = this.$store.getters['auth/getToken']
+        const url = 'http://api.bombo.pe/api/v2.0/storage/users/' + userId + '/profile-photo'
+        console.log(url)
+        return url
       }
     },
     data () {
       return {
+        url: '',
         help: false,
         notification: false,
         profile: false,
@@ -65,11 +75,21 @@
         })
         this[name] = !this[name]
       }
+    },
+    mounted () {
+
+      const userId = this.$store.getters['auth/getUserId']
+      // const token = this.$store.getters['auth/getToken']
+      const url = 'http://api.bombo.pe/api/v2.0/storage/users/' + userId + '/profile-photo'
+      this.url = url
     }
   }
 </script>
 
 <style scoped lang="stylus">
+.avatar-img
+  border-radius 40px
+  overflow hidden
 .status-bar-container
   display inline
 #status-bar

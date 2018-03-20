@@ -17,6 +17,19 @@
         <!--</div>-->
       <!--</div>-->
 
+      <template v-if="typeCard !== 'en_juego'">
+        <div class="toggle-delete-btn" @click="toggleDelete">
+          <i class="far fa-trash-alt"></i>
+        </div>
+        <div v-if="deleteOpen" class="delete-dialog">
+          <div class="delete-container">
+            <div class="delete-text">Estas seguro de eliminar este equipo?</div>
+            <div class="delete-btn" @click="deleteTeamcard">Eliminar</div>
+            <div class="cancel-delete-btn" @click="toggleDelete">Cancelar</div>
+          </div>
+        </div>
+      </template>
+
       <div class="header">
         <div class="league-background" style="padding-top: 10px;">
           <img :src="'/team_resources/premier_league_icon_w.png'" alt="" height="50px">
@@ -172,6 +185,7 @@
     },
     data () {
       return {
+        deleteOpen: false,
         isCollapsed: false,
         isFavoriteSaved: true,
         playerPositions: {
@@ -193,6 +207,29 @@
       }
     },
     methods: {
+      toggleDelete () {
+        this.deleteOpen = !this.deleteOpen
+      },
+      deleteTeamcard () {
+        const userId = this.$store.getters['auth/getUserId']
+        const teamTypes = {
+          'guardado': 'saved',
+          'pasados': 'old'
+        }
+
+        this.$axios.post('http://api.bombo.pe/api/v2.0/users/'+ userId + '/delete-team', {
+          team_name: this.team.name,
+          team_type: teamTypes[this.typeCard]
+        })
+        .then(res => {
+          this.$store.dispatch('updateUser', res.data.data)
+          console.log(res)
+        })
+        .catch(err => {
+          console.log(err)
+        })
+
+      },
       toggleFavorite() {
         this.isFavoriteSaved = !this.isFavoriteSaved
       },
@@ -221,6 +258,7 @@ font2 = 'Titillium Web'
 #round-card
   /*width 240px*/
   /*width 350px*/
+  position relative
   width 420px
   flex-grow 1
   /*height 64vh*/
@@ -459,4 +497,51 @@ font2 = 'Titillium Web'
   font-size 14px
   line-height 30px
   cursor pointer
+.toggle-delete-btn
+  position absolute
+  top 10px
+  right 10px
+  z-index: 2
+  cursor pointer
+.toggle-delete-btn i
+  color white
+.delete-dialog
+  z-index 9
+  position absolute
+  top 0
+  left 0
+  bottom 0
+  right 0
+  background rgba(0, 0, 0, 0.62)
+.delete-container
+  position absolute
+  top 50%
+  left 50%
+  transform translateX(-50%)
+  text-align center
+  font-family: font2
+.delete-text
+  text-align center
+  padding-bottom 20px
+  color white
+
+.cancel-delete-btn
+  background #FFC400
+  color white
+.delete-btn
+  background #ea504c
+  color white
+
+.cancel-delete-btn
+.delete-btn
+  margin-left 2px
+  margin-right 2px
+  cursor pointer
+  text-align center
+  display inline-block
+  font-weight bold
+  width 80px
+  height 30px
+  line-height 30px
+  border-radius 15px
 </style>
