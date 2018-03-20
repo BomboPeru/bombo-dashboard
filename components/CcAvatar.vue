@@ -1,7 +1,7 @@
 <template>
-    <div id="cc-avatar" :class="['avatar-container', sm?'sm':'']">
-      <span class="shadow" :style="{ borderRadius: square? '0px':'50%' }" @click="updatePhoto"></span>
-      <img class="avatar-img" :src="src" :style="{ borderRadius: square? '0px':'50%' }" alt="">
+    <div id="cc-avatar" :class="['avatar-container', sm?'sm':'']" :style="{ borderRadius: square? '0px':'50px' }">
+      <span class="shadow" :style="{ borderRadius: square? '0px':'50px' }" @click="updatePhoto"></span>
+      <img class="avatar-img" :src="src" :style="{ borderRadius: square? '0px':'50px' }" alt="">
     </div>
 </template>
 

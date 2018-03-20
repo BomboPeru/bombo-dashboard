@@ -4,12 +4,10 @@
     <bookmark url="file://$PROJECT_DIR$/pages/client/createteam.vue" line="5" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bf24282d-3075-4fc1-a7e6-a1352eba2675" name="Default" comment="register">
-      <change beforePath="" afterPath="$PROJECT_DIR$/static/Campton-LightDEMO.otf" />
+    <list default="true" id="bf24282d-3075-4fc1-a7e6-a1352eba2675" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/components/BomboPayments.vue" afterPath="$PROJECT_DIR$/components/BomboPayments.vue" />
+      <change beforePath="$PROJECT_DIR$/components/CcAvatar.vue" afterPath="$PROJECT_DIR$/components/CcAvatar.vue" />
       <change beforePath="$PROJECT_DIR$/pages/register.vue" afterPath="$PROJECT_DIR$/pages/register.vue" />
-      <change beforePath="$PROJECT_DIR$/static/payment/Campton-BoldDEMO.otf" afterPath="$PROJECT_DIR$/static/Campton-BoldDEMO.otf" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -53,23 +51,23 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="register.vue" pinned="false" current-in-tab="true">
+      <file leaf-file-name="register.vue" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/pages/register.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-500">
-              <caret line="448" column="21" lean-forward="true" selection-start-line="448" selection-start-column="21" selection-end-line="448" selection-end-column="21" />
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding>
-                <element signature="e#4258#4305#0" expanded="true" />
+                <element signature="e#4259#4306#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CcAvatar.vue" pinned="false" current-in-tab="false">
+      <file leaf-file-name="CcAvatar.vue" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/components/CcAvatar.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="10" lean-forward="false" selection-start-line="0" selection-start-column="10" selection-end-line="0" selection-end-column="10" />
+            <state relative-caret-position="48">
+              <caret line="2" column="70" lean-forward="false" selection-start-line="2" selection-start-column="70" selection-end-line="2" selection-end-column="70" />
               <folding />
             </state>
           </provider>
@@ -135,9 +133,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>close-container</find>
-      <find>center</find>
-      <find>container</find>
       <find>card-container</find>
       <find>background</find>
       <find>content</find>
@@ -165,6 +160,9 @@
       <find>indication</find>
       <find>.label</find>
       <find>indica</find>
+      <find>terms</find>
+      <find>.rules</find>
+      <find>.column-a</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -214,7 +212,6 @@
         <option value="$PROJECT_DIR$/components/TooltipMenu.vue" />
         <option value="$PROJECT_DIR$/pages/client/teams.vue" />
         <option value="$PROJECT_DIR$/nuxt.config.js" />
-        <option value="$PROJECT_DIR$/components/CcAvatar.vue" />
         <option value="$PROJECT_DIR$/components/TeamCard.vue" />
         <option value="$PROJECT_DIR$/components/StatusBar.vue" />
         <option value="$PROJECT_DIR$/components/PlayerRowCard.vue" />
@@ -230,6 +227,7 @@
         <option value="$PROJECT_DIR$/pages/login.vue" />
         <option value="$PROJECT_DIR$/components/BomboPayments.vue" />
         <option value="$PROJECT_DIR$/pages/register.vue" />
+        <option value="$PROJECT_DIR$/components/CcAvatar.vue" />
       </list>
     </option>
   </component>
@@ -419,14 +417,7 @@
       <workItem from="1520974093864" duration="61472000" />
       <workItem from="1521120602902" duration="110949000" />
       <workItem from="1521338339777" duration="946000" />
-      <workItem from="1521390149645" duration="85563000" />
-    </task>
-    <task id="LOCAL-00033" summary="shirts, auth">
-      <created>1521156235683</created>
-      <option name="number" value="00033" />
-      <option name="presentableId" value="LOCAL-00033" />
-      <option name="project" value="LOCAL" />
-      <updated>1521156235683</updated>
+      <workItem from="1521390149645" duration="87121000" />
     </task>
     <task id="LOCAL-00034" summary="band captain">
       <created>1521157502696</created>
@@ -764,11 +755,18 @@
       <option name="project" value="LOCAL" />
       <updated>1521575116185</updated>
     </task>
-    <option name="localTasksCounter" value="82" />
+    <task id="LOCAL-00082" summary="register">
+      <created>1521578524091</created>
+      <option name="number" value="00082" />
+      <option name="presentableId" value="LOCAL-00082" />
+      <option name="project" value="LOCAL" />
+      <updated>1521578524091</updated>
+    </task>
+    <option name="localTasksCounter" value="83" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="743575000" />
+    <option name="totallyTimeSpent" value="745133000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="54" y="-4" width="1867" height="1085" extended-state="6" />
@@ -1233,14 +1231,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/components/CcAvatar.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="10" lean-forward="false" selection-start-line="0" selection-start-column="10" selection-end-line="0" selection-end-column="10" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$APPLICATION_HOME_DIR$/lib/webstorm.jar!/resources/html5-schema/html5/meta.rnc">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="293">
@@ -1262,11 +1252,19 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/pages/register.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-500">
-          <caret line="448" column="21" lean-forward="true" selection-start-line="448" selection-start-column="21" selection-end-line="448" selection-end-column="21" />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#4258#4305#0" expanded="true" />
+            <element signature="e#4259#4306#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/components/CcAvatar.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="48">
+          <caret line="2" column="70" lean-forward="false" selection-start-line="2" selection-start-column="70" selection-end-line="2" selection-end-column="70" />
+          <folding />
         </state>
       </provider>
     </entry>

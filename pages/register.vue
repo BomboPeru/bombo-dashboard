@@ -22,12 +22,12 @@
           <div class="column-a">
 
             <div class="group-form">
-              <div class="warning" v-if="!isValidInput(constraints.name.rules, user.name)">
+              <div class="warning" v-if="!isValidInput(constraints.name.rules, user.name) && hasSubmit">
                 {{ constraints.name.message }}
               </div>
               <div class="label" v-else> Nombre y Apellidos </div>
               <div>
-                <input type="text" class="input-form" placeholder="Nombre Completo" v-model="user.name">
+                <input type="text" class="input-form" placeholder="" v-model="user.name">
               </div>
             </div>
 
@@ -36,17 +36,17 @@
                 Fecha de nacimiento
               </div>
               <div class="birthday-container">
-                <input type="date" class="input-form" placeholder="Fecha de nacimiento" v-model="user.birthday_fake">
+                <input type="date" class="input-form" placeholder="" v-model="user.birthday_fake">
               </div>
             </div>
 
-            <div class="group-form">
-              <div class="warning" v-if="!isValidInput(constraints.identity_document.rules, user.identity_document)">
+            <div class="group-form last-item-col-a">
+              <div class="warning" v-if="!isValidInput(constraints.identity_document.rules, user.identity_document) && hasSubmit">
                 {{ constraints.identity_document.message }}
               </div>
               <div class="label" v-else> Documento de identidad </div>
               <div>
-                <input type="number" class="input-form" placeholder="Documento de identidad (DNI)" v-model="user.identity_document">
+                <input type="number" class="input-form" placeholder="" v-model="user.identity_document">
               </div>
             </div>
 
@@ -54,43 +54,43 @@
           <div class="column-b">
 
             <div class="group-form">
-              <div class="warning" v-if="!isValidInput(constraints.email.rules, user.email)">
+              <div class="warning" v-if="!isValidInput(constraints.email.rules, user.email) && hasSubmit">
                 {{ constraints.email.message }}
               </div>
               <div class="label" v-else> Correo electrónico </div>
 
               <div>
-                <input type="text" class="input-form" placeholder="Correo electrónico" v-model="user.email">
+                <input type="text" class="input-form" placeholder="" v-model="user.email">
               </div>
             </div>
 
             <div class="group-form">
-              <div class="warning" v-if="!isValidInput(constraints.username.rules, user.username)">
+              <div class="warning" v-if="!isValidInput(constraints.username.rules, user.username) && hasSubmit">
                 {{ constraints.username.message }}
               </div>
               <div class="label" v-else> Nombre de usuario </div>
               <div>
-                <input type="text" class="input-form" placeholder="Nombre de usuario" v-model="user.username">
+                <input type="text" class="input-form" placeholder="" v-model="user.username">
               </div>
             </div>
 
             <div class="group-form">
-              <div class="warning" v-if="!isValidInput(constraints.password.rules, user.password)">
+              <div class="warning" v-if="!isValidInput(constraints.password.rules, user.password) && hasSubmit">
                 {{ constraints.password.message }}
               </div>
               <div class="label" v-else> Contraseña </div>
               <div>
-                <input type="password" class="input-form" placeholder="Contraseña">
+                <input type="password" class="input-form" placeholder="" v-model="user.password">
               </div>
             </div>
 
             <div class="group-form">
-              <div class="warning" v-if="!isValidInput(constraints.password.rules, user.password)">
-                {{ constraints.password.message }}
+              <div class="warning" v-if="!isValidInput(constraints.repassword.rules, user.repassword) && hasSubmit">
+                {{ constraints.repassword.message }}
               </div>
               <div class="label" v-else> Repetir Contraseña </div>
               <div>
-                <input type="password" class="input-form" placeholder="Repetir Contraseña" v-model="user.password">
+                <input type="password" class="input-form" placeholder="" v-model="user.repassword">
               </div>
             </div>
           </div>
@@ -127,6 +127,7 @@
     data () {
       return {
         message: '',
+        hasSubmit: false,
         constraints: {
           name: {
             message: 'Ingresa tu nombre y apellidos',
@@ -142,27 +143,27 @@
             ]
           },
           username: {
-            message: 'Más de 6 caracteres',
+            message: 'Username debe tener más de 6 caracteres',
             rules: [
               a => a.length >= 6
             ]
           },
           password: {
-            message: 'Más de 8 caracteres',
+            message: 'Password debe tener más de 8 caracteres',
             rules: [
               a => a.length >= 8
             ]
           },
-          identity_document: {
-            message: 'Ingresa tu DNI',
+          repassword: {
+            message: 'Debe volver a escribir su password',
             rules: [
-              a => a.length === 8
+              a => a === this.user.password
             ]
           },
-          terms: {
-            message: 'Debes aceptar los terminos y condiciones',
+          identity_document: {
+            message: 'DNI: Ingresa tu DNI',
             rules: [
-              a => a === true
+              a => a.length === 8
             ]
           }
         },
@@ -175,7 +176,6 @@
           email: '',
           username: '',
           password: '',
-          terms: false
         }
       }
     },
@@ -201,7 +201,8 @@
         this.$store.commit('openTermsConditionsDialog')
       },
       async createUser () {
-        if (this.isValidForm) {
+        this.hasSubmit = true
+        if (this.isValidForm && ( this.user.password === this.user.repassword )) {
           if (this.user.name !== '' && this.user.email !== ''
             && this.user.username !== '' && this.user.password!== '') {
 
@@ -347,12 +348,12 @@
   .title-register
     text-align center
     color #72808a
-    font-weight bold
 
   .title-register
     margin-top 40px
     font-size 29px
     font-family 'Campton Bold Demo'
+    font-weight bold
   .phrase-register
     font-size 13px
     font-family 'Campton Light Demo'
@@ -384,6 +385,9 @@
     justify-self center
     align-self center
 
+  .last-item-col-a
+    align-self: center
+
 
   .column-a
     padding 4px 20px 0px 60px
@@ -401,10 +405,11 @@
     top -60px
     left 50%
     transform translateX(-50%)
+    box-shadow: 0 2px 18px 0 rgba(0,0,0,0.63);
   // z-index 20
 
   .upload-photo-indication
-    color #bbb
+    color rgba(255, 255, 255, 0.56)
     font-family Raleway
     font-size 12px
     text-align center
@@ -424,9 +429,9 @@
     background transparent
     font-size 14px
     border-bottom 0.5px solid rgba(255, 255, 255, 0.44)
-    font-family Raleway
+    font-family 'Nunito Sans'
     color white
-    padding-bottom: 6px;
+    padding-bottom: 4px;
 
   .btn-continue
     display: inline-block
