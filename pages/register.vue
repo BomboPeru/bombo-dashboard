@@ -22,9 +22,10 @@
           <div class="column-a">
 
             <div class="group-form">
-              <div class="label" v-if="!isValidInput(constraints.name.rules, user.name)">
+              <div class="warning" v-if="!isValidInput(constraints.name.rules, user.name)">
                 {{ constraints.name.message }}
               </div>
+              <div class="label" v-else> Nombre y Apellidos </div>
               <div>
                 <input type="text" class="input-form" placeholder="Nombre Completo" v-model="user.name">
               </div>
@@ -40,9 +41,10 @@
             </div>
 
             <div class="group-form">
-              <div class="label" v-if="!isValidInput(constraints.identity_document.rules, user.identity_document)">
+              <div class="warning" v-if="!isValidInput(constraints.identity_document.rules, user.identity_document)">
                 {{ constraints.identity_document.message }}
               </div>
+              <div class="label" v-else> Documento de identidad </div>
               <div>
                 <input type="number" class="input-form" placeholder="Documento de identidad (DNI)" v-model="user.identity_document">
               </div>
@@ -52,36 +54,41 @@
           <div class="column-b">
 
             <div class="group-form">
-              <div class="label" v-if="!isValidInput(constraints.email.rules, user.email)">
+              <div class="warning" v-if="!isValidInput(constraints.email.rules, user.email)">
                 {{ constraints.email.message }}
               </div>
+              <div class="label" v-else> Correo electrónico </div>
+
               <div>
-                <input type="text" class="input-form" placeholder="Correo electronico" v-model="user.email">
+                <input type="text" class="input-form" placeholder="Correo electrónico" v-model="user.email">
               </div>
             </div>
 
             <div class="group-form">
-              <div class="label" v-if="!isValidInput(constraints.username.rules, user.username)">
+              <div class="warning" v-if="!isValidInput(constraints.username.rules, user.username)">
                 {{ constraints.username.message }}
               </div>
+              <div class="label" v-else> Nombre de usuario </div>
               <div>
                 <input type="text" class="input-form" placeholder="Nombre de usuario" v-model="user.username">
               </div>
             </div>
 
             <div class="group-form">
-              <div class="label" v-if="!isValidInput(constraints.password.rules, user.password)">
+              <div class="warning" v-if="!isValidInput(constraints.password.rules, user.password)">
                 {{ constraints.password.message }}
               </div>
+              <div class="label" v-else> Contraseña </div>
               <div>
                 <input type="password" class="input-form" placeholder="Contraseña">
               </div>
             </div>
 
             <div class="group-form">
-              <div class="label" v-if="!isValidInput(constraints.password.rules, user.password)">
+              <div class="warning" v-if="!isValidInput(constraints.password.rules, user.password)">
                 {{ constraints.password.message }}
               </div>
+              <div class="label" v-else> Repetir Contraseña </div>
               <div>
                 <input type="password" class="input-form" placeholder="Repetir Contraseña" v-model="user.password">
               </div>
@@ -269,6 +276,16 @@
     margin: 0;
   }
 
+
+  @font-face {
+    font-family 'Campton Bold Demo'
+    src url(/Campton-BoldDEMO.otf)
+  }
+  @font-face {
+    font-family 'Campton Light Demo'
+    src url(/Campton-LightDEMO.otf)
+  }
+
   #register
     min-height 100vh
     background: url(/landing/background_login_register.png) center
@@ -301,6 +318,7 @@
     transform translateX(-50%) translateY(-50%)
     height 500px
     width 70vw
+    box-shadow: 0 8px 24px 0 rgba(0,0,0,0.82);
 
   .grid-content
     display grid
@@ -329,14 +347,15 @@
   .title-register
     text-align center
     color #72808a
-    font-family 'Nunito Sans'
     font-weight bold
 
   .title-register
     margin-top 40px
-    font-size 22px
+    font-size 29px
+    font-family 'Campton Bold Demo'
   .phrase-register
-    font-size 14px
+    font-size 13px
+    font-family 'Campton Light Demo'
 
   .avatar-section
     grid-column-start: 1;
@@ -403,10 +422,11 @@
     width 100%
     border 0
     background transparent
-    border-bottom 0.5px solid white
+    font-size 14px
+    border-bottom 0.5px solid rgba(255, 255, 255, 0.44)
     font-family Raleway
     color white
-    padding-bottom: 4px;
+    padding-bottom: 6px;
 
   .btn-continue
     display: inline-block
@@ -435,15 +455,15 @@
     font-size: 11px;
     z-index: 9;
   .label
-    color #bbbbbb
-    font-family Raleway
+    color rgba(255, 255, 255, 0.56)
+    font-family 'Nunito Sans'
     font-size 12px
 
   .warning
-    color orangered
-    font-family Raleway
+    color #f14066
+    font-family 'Nunito Sans'
     // font-weight: bold;
-    font-size 14px
+    font-size 12px
 
   @media screen and (max-width: 1023px)
     .card-container
@@ -513,4 +533,5 @@
 
     .column-b
       padding: 4px 12px;
+
 </style>

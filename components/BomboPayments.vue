@@ -224,7 +224,7 @@
 
   @font-face {
     font-family 'Campton Bold Demo'
-    src url(/payment/Campton-BoldDEMO.otf)
+    src url(/Campton-BoldDEMO.otf)
   }
 
 

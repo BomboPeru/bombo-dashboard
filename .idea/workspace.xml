@@ -4,13 +4,12 @@
     <bookmark url="file://$PROJECT_DIR$/pages/client/createteam.vue" line="5" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bf24282d-3075-4fc1-a7e6-a1352eba2675" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/static/landing/avatar_default.png" />
+    <list default="true" id="bf24282d-3075-4fc1-a7e6-a1352eba2675" name="Default" comment="register">
+      <change beforePath="" afterPath="$PROJECT_DIR$/static/Campton-LightDEMO.otf" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change beforePath="$PROJECT_DIR$/components/BomboPayments.vue" afterPath="$PROJECT_DIR$/components/BomboPayments.vue" />
-      <change beforePath="$PROJECT_DIR$/layouts/default.vue" afterPath="$PROJECT_DIR$/layouts/default.vue" />
-      <change beforePath="$PROJECT_DIR$/pages/login.vue" afterPath="$PROJECT_DIR$/pages/login.vue" />
       <change beforePath="$PROJECT_DIR$/pages/register.vue" afterPath="$PROJECT_DIR$/pages/register.vue" />
+      <change beforePath="$PROJECT_DIR$/static/payment/Campton-BoldDEMO.otf" afterPath="$PROJECT_DIR$/static/Campton-BoldDEMO.otf" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -57,10 +56,10 @@
       <file leaf-file-name="register.vue" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/pages/register.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-3696">
-              <caret line="35" column="0" lean-forward="false" selection-start-line="35" selection-start-column="0" selection-end-line="35" selection-end-column="0" />
+            <state relative-caret-position="-500">
+              <caret line="448" column="21" lean-forward="true" selection-start-line="448" selection-start-column="21" selection-end-line="448" selection-end-column="21" />
               <folding>
-                <element signature="e#3848#3895#0" expanded="true" />
+                <element signature="e#4258#4305#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -93,23 +92,11 @@
       <file leaf-file-name="BomboPayments.vue" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/components/BomboPayments.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="330">
-              <caret line="232" column="0" lean-forward="false" selection-start-line="232" selection-start-column="0" selection-end-line="242" selection-end-column="3" />
+            <state relative-caret-position="474">
+              <caret line="226" column="12" lean-forward="false" selection-start-line="226" selection-start-column="12" selection-end-line="226" selection-end-column="12" />
               <folding>
                 <element signature="n#div#0;n#div#2;n#div#0;n#dialog-container#0;n#div#0;n#template#0;n#!!top" expanded="false" />
                 <element signature="e#5496#6218#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="createteam.vue" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/pages/client/createteam.vue">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2488">
-              <caret line="128" column="50" lean-forward="false" selection-start-line="128" selection-start-column="50" selection-end-line="128" selection-end-column="50" />
-              <folding>
-                <element signature="e#5235#7629#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -148,8 +135,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>card-number-container</find>
-      <find>close-btn</find>
       <find>close-container</find>
       <find>center</find>
       <find>container</find>
@@ -178,6 +163,8 @@
       <find>grid-content-side</find>
       <find>.avatar</find>
       <find>indication</find>
+      <find>.label</find>
+      <find>indica</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -240,8 +227,8 @@
         <option value="$PROJECT_DIR$/components/BasicToolbar.vue" />
         <option value="$PROJECT_DIR$/layouts/dashboard.vue" />
         <option value="$PROJECT_DIR$/layouts/default.vue" />
-        <option value="$PROJECT_DIR$/components/BomboPayments.vue" />
         <option value="$PROJECT_DIR$/pages/login.vue" />
+        <option value="$PROJECT_DIR$/components/BomboPayments.vue" />
         <option value="$PROJECT_DIR$/pages/register.vue" />
       </list>
     </option>
@@ -322,13 +309,7 @@
               <item name="bombo-dashboard" type="b2602c69:ProjectViewProjectNode" />
               <item name="bombo-dashboard" type="462c0819:PsiDirectoryNode" />
               <item name="static" type="462c0819:PsiDirectoryNode" />
-              <item name="landing" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="bombo-dashboard" type="b2602c69:ProjectViewProjectNode" />
-              <item name="bombo-dashboard" type="462c0819:PsiDirectoryNode" />
-              <item name="static" type="462c0819:PsiDirectoryNode" />
-              <item name="leagues" type="462c0819:PsiDirectoryNode" />
+              <item name="payment" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="bombo-dashboard" type="b2602c69:ProjectViewProjectNode" />
@@ -360,16 +341,16 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/static" />
       <recent name="$PROJECT_DIR$/static/landing" />
       <recent name="$PROJECT_DIR$/static/payment" />
       <recent name="$PROJECT_DIR$/static/team_resources" />
       <recent name="$PROJECT_DIR$/layouts" />
-      <recent name="$PROJECT_DIR$/static" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/static" />
       <recent name="$PROJECT_DIR$/pages" />
       <recent name="$PROJECT_DIR$/static/js" />
-      <recent name="$PROJECT_DIR$/static" />
       <recent name="$PROJECT_DIR$/assets/styles" />
     </key>
   </component>
@@ -438,14 +419,7 @@
       <workItem from="1520974093864" duration="61472000" />
       <workItem from="1521120602902" duration="110949000" />
       <workItem from="1521338339777" duration="946000" />
-      <workItem from="1521390149645" duration="82981000" />
-    </task>
-    <task id="LOCAL-00032" summary="shirts, auth">
-      <created>1520817416646</created>
-      <option name="number" value="00032" />
-      <option name="presentableId" value="LOCAL-00032" />
-      <option name="project" value="LOCAL" />
-      <updated>1520817416646</updated>
+      <workItem from="1521390149645" duration="85563000" />
     </task>
     <task id="LOCAL-00033" summary="shirts, auth">
       <created>1521156235683</created>
@@ -783,11 +757,18 @@
       <option name="project" value="LOCAL" />
       <updated>1521514589851</updated>
     </task>
-    <option name="localTasksCounter" value="81" />
+    <task id="LOCAL-00081" summary="bombopayments&#10;register&#10;en un toque hago time dialog fui a almorzar">
+      <created>1521575116185</created>
+      <option name="number" value="00081" />
+      <option name="presentableId" value="LOCAL-00081" />
+      <option name="project" value="LOCAL" />
+      <updated>1521575116185</updated>
+    </task>
+    <option name="localTasksCounter" value="82" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="740993000" />
+    <option name="totallyTimeSpent" value="743575000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="54" y="-4" width="1867" height="1085" extended-state="6" />
@@ -844,9 +825,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="captain&#10;login 1/2" />
-    <MESSAGE value="register fixed 3/4&#10;teams add team" />
-    <MESSAGE value="ui remove bar" />
     <MESSAGE value="ui remove bar register" />
     <MESSAGE value="rules dialog" />
     <MESSAGE value="team card" />
@@ -869,7 +847,10 @@
     <MESSAGE value="band, play button, icon lion" />
     <MESSAGE value="line table" />
     <MESSAGE value="login&#10;bombo payments not finished" />
-    <option name="LAST_COMMIT_MESSAGE" value="login&#10;bombo payments not finished" />
+    <MESSAGE value="register&#10;en un toque hago time dialog fui a almorzar" />
+    <MESSAGE value="bombopayments&#10;register&#10;en un toque hago time dialog fui a almorzar" />
+    <MESSAGE value="register" />
+    <option name="LAST_COMMIT_MESSAGE" value="register" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -878,7 +859,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/plugins/vue-select.js" />
     <entry file="file://$PROJECT_DIR$/components/Sidebar.vue">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="8256">
@@ -1241,17 +1221,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/components/BomboPayments.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="232" column="0" lean-forward="false" selection-start-line="232" selection-start-column="0" selection-end-line="242" selection-end-column="3" />
-          <folding>
-            <element signature="n#div#0;n#div#2;n#div#0;n#dialog-container#0;n#div#0;n#template#0;n#!!top" expanded="false" />
-            <element signature="e#5496#6218#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/pages/login.vue">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="233">
@@ -1272,12 +1241,31 @@
         </state>
       </provider>
     </entry>
+    <entry file="jar://$APPLICATION_HOME_DIR$/lib/webstorm.jar!/resources/html5-schema/html5/meta.rnc">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="293">
+          <caret line="242" column="12" lean-forward="false" selection-start-line="242" selection-start-column="12" selection-end-line="242" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/components/BomboPayments.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="474">
+          <caret line="226" column="12" lean-forward="false" selection-start-line="226" selection-start-column="12" selection-end-line="226" selection-end-column="12" />
+          <folding>
+            <element signature="n#div#0;n#div#2;n#div#0;n#dialog-container#0;n#div#0;n#template#0;n#!!top" expanded="false" />
+            <element signature="e#5496#6218#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/pages/register.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-3696">
-          <caret line="35" column="0" lean-forward="false" selection-start-line="35" selection-start-column="0" selection-end-line="35" selection-end-column="0" />
+        <state relative-caret-position="-500">
+          <caret line="448" column="21" lean-forward="true" selection-start-line="448" selection-start-column="21" selection-end-line="448" selection-end-column="21" />
           <folding>
-            <element signature="e#3848#3895#0" expanded="true" />
+            <element signature="e#4258#4305#0" expanded="true" />
           </folding>
         </state>
       </provider>
