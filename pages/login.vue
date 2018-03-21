@@ -13,8 +13,14 @@
          <div class="title-container">
            <p class="title-login">INGRESA TUS DATOS</p>
          </div>
-         <input class="input-text" autocomplete="off" type="text" v-model="username" placeholder="Username">
-         <input class="input-text" autocomplete="off" type="password" v-model="password" placeholder="Password">
+         <div class="group-form">
+           <div class="label" > Username </div>
+           <input class="input-text" type="text" v-model="username" placeholder="Username">
+         </div>
+         <div class="group-form">
+           <div class="label" > Register </div>
+           <input class="input-text" type="password" v-model="password" placeholder="Password">
+         </div>
 
          <div class="btn-login" @click="login">
            INGRESAR
@@ -105,8 +111,6 @@
 
 <style scoped lang="stylus">
 
-
-
   .bombo-home
     position absolute
     top 20px
@@ -138,17 +142,25 @@
     outline none
     width 75%
     color white
-    font-family Raleway
-    margin-top 20px
+    font-family 'Nunito Sans'
+    margin-top 10px
     margin-bottom 20px
     margin-left 12.5%
     margin-right 12.5%
     background transparent
     border 0
-    border-bottom 1px solid #bbc0c3
+    border-bottom 0.5px solid rgba(255, 255, 255, 0.44)
     font-size 14px
     padding-bottom: 3px;
 
+  // .group-form
+
+  .label
+    color rgba(255, 255, 255, 0.56)
+    font-family 'Nunito Sans'
+    font-size 12px
+    margin-left 12.5%
+    margin-right 12.5%
 
   .title-container
     margin-top 37px

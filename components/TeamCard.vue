@@ -512,7 +512,7 @@ font2 = 'Titillium Web'
   left 0
   bottom 0
   right 0
-  background rgba(0, 0, 0, 0.62)
+  background rgba(0, 0, 0, 0.72)
 .delete-container
   position absolute
   top 50%
