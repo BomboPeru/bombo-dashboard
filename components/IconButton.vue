@@ -2,20 +2,26 @@
     <div id="icon-button" class="elevation-2" @click="onClick">
       <div :class="['text', iconDirection+'-text']">{{text}}</div>
       <div :class="['icon', iconDirection, 'elevation']" :style="{ background: color }">
-        <img :src="icons[icon]" class="icon-image" alt="">
+        <i v-if="faIcon !== ''" :class="['fab', 'fa-2x', faIcon]"></i>
+        <img v-else :src="icons[icon]" class="icon-image" alt="">
       </div>
     </div>
 </template>
 
 <script>
   import IconSvg from '../assets/icons/plus.svg'
+
   export default {
     name: 'icon-button',
     props: {
       text: String,
       color: String,
       icon: String,
-      iconDirection: String
+      iconDirection: String,
+      faIcon: {
+        type: String,
+        default: ''
+      }
     },
     data () {
       return {
@@ -69,12 +75,20 @@
   .right-text
     margin-right 50px
 
+  .fab
+    color white
+    margin-top 8px
+
   #icon-button:hover .icon
     width 60px
     height 60px
     top -5px
     transition all .2s ease-in
+
   #icon-button:hover .icon-image
+    transition all .2s ease-in
+    margin-top 13px
+  #icon-button:hover .fab
     transition all .2s ease-in
     margin-top 13px
 </style>

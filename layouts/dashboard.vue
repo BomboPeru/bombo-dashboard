@@ -11,7 +11,7 @@
                      icon-direction="right"
                      color="#EA504C"
                      @click="toggleBomboPayments"
-                     icon="plus"/>
+                     fa-icon="fa-bitcoin"/>
       </floating-container>
     </div>
 
@@ -114,15 +114,15 @@
     },
     beforeCreate () {
 
-      // this.$store.dispatch('fetchUser')
-      //   .then(user => {
-      //     this.$store.state.isLoading = false
-      //     console.log('fetchUser')
-      //   })
-      //   .catch(e=> {
-      //     console.log(e)
-      //     this.$router.push('/login')
-      //   })
+      this.$store.dispatch('fetchUser')
+        .then(user => {
+          this.$store.state.isLoading = false
+          console.log('fetchUser')
+        })
+        .catch(e=> {
+          console.log(e)
+          this.$router.push('/login')
+        })
     }
   }
 </script>
