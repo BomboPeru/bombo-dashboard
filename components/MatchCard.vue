@@ -1,7 +1,7 @@
 <template>
-    <div id="match-card" :class="['rounded-sm', 'elevation-2', flexible?'flexible':'']">
+    <div id="match-card" :style="{ width: width }" :class="['rounded-sm', 'elevation-2', flexible?'flexible':'']">
       <table style="width: 100%" class="table-content">
-        <thead>
+        <thead v-if="!notPlayed">
           <tr>
             <th style="width: 40%;">{{ match.away_name }}</th>
             <th style="width: 20%;"></th>
@@ -10,9 +10,9 @@
         </thead>
         <tbody>
           <tr style="height: 60px;">
-            <td style="width: 40%;" class="score-row">{{ match.away_score }}</td>
-            <td style="width: 20%;">vs</td>
-            <td style="width: 40%;" class="score-row">{{ match.home_score }}</td>
+            <td style="width: 40%;" :class="[notPlayed?'name-row':'score-row']">{{ notPlayed?match.away_name:match.away_score }}</td>
+            <td style="width: 20%;" class="vs">vs</td>
+            <td style="width: 40%;" :class="[notPlayed?'name-row':'score-row']">{{ notPlayed?match.home_name:match.home_score  }}</td>
           </tr>
         </tbody>
       </table>
@@ -30,7 +30,12 @@
       match: Object,
       time: Number,
       date: String,
-      flexible: Boolean
+      flexible: Boolean,
+      notPlayed: Boolean,
+      width: {
+        type: String,
+        default: '300px'
+      }
     },
     computed: {
       dateStart () {
@@ -47,7 +52,8 @@
     width 100% !important
   #match-card
     display inline-block
-    width 300px
+    // width 300px
+    background white
     font-weight bold
     font-family Titillium Web
   .info-container
@@ -66,6 +72,15 @@
     text-align center
   .score-row
     font-size: 38px;
+  .name-row
+    color #747474
+    font-weight normal
+    font-size: 20px;
+    font-family 'Nunito Sans'
+  .vs
+    color #747474
+    font-weight normal
+    font-size: 18px;
 
 
 </style>

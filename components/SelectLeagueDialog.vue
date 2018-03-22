@@ -64,15 +64,15 @@
     },
     mounted () {
 
-      this.$axios.get('http://api.bombo.pe/api/v2.0/leagues/all')
-        .then(res => {
-          this.leagues = res.data.data
-        })
-        .catch(e => {
-
-          // window.$nuxt.error({ statusCode, message })
-          console.log('>> e ', e.toString())
-        })
+      // this.$axios.get('http://api.bombo.pe/api/v2.0/leagues/all')
+      //   .then(res => {
+      //     this.leagues = res.data.data
+      //   })
+      //   .catch(e => {
+      //
+      //     // window.$nuxt.error({ statusCode, message })
+      //     console.log('>> e ', e.toString())
+      //   })
     }
   }
 </script>

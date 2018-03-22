@@ -113,15 +113,16 @@
       }
     },
     beforeCreate () {
-      this.$store.dispatch('fetchUser')
-        .then(user => {
-          this.$store.state.isLoading = false
-          console.log('fetchUser')
-        })
-        .catch(e=> {
-          console.log(e)
-          this.$router.push('/login')
-        })
+
+      // this.$store.dispatch('fetchUser')
+      //   .then(user => {
+      //     this.$store.state.isLoading = false
+      //     console.log('fetchUser')
+      //   })
+      //   .catch(e=> {
+      //     console.log(e)
+      //     this.$router.push('/login')
+      //   })
     }
   }
 </script>
