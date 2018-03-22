@@ -97,7 +97,7 @@
         return this.$store.getters.snackbarMessage
       },
       saldo () {
-        return this.$store.state.current_credit
+        return (this.$store.state.current_credit + this.$store.state.current_won_credit)
       }
     },
     data () {

@@ -41,15 +41,23 @@ nav_item_height_inactive = 76px
   font-size 16px
 .active
   background #fafafa !important
-  border-radius: 0px 0px 12px 12px
+  // border-radius: 0px 0px 12px 12px
+  border-radius 0
   box-shadow 0px 2px 4px rgba(0, 0, 0, 0.25)
   height nav_item_height !important
 .active a
   padding 0 29px !important
   color #445F69 !important
+
 .item
   height: 76px;
   display: inline-block;
   line-height: 76px;
+
+  user-select: none;
+  -moz-user-select: none;
+  -khtml-user-select: none;
+  -webkit-user-select: none;
+  -o-user-select: none;
 
 </style>

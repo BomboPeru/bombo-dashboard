@@ -15,7 +15,8 @@
         <div class="grid-content grid-content-side">
           <div class="avatar-section">
             <div>
-              <cc-avatar src="/landing/avatar_default.png" sm class="avatar"/>
+              <input type="file" style="display: none;" ref="inputFileImage" @change="atPhotoLoaded">
+              <cc-avatar :src="urlImage" @clickAvatar="clickAvatar" sm class="avatar"/>
               <div class="upload-photo-indication">Selecciona tu foto de perfil</div>
             </div>
           </div>
@@ -126,8 +127,10 @@
     },
     data () {
       return {
+        urlImage: '/landing/avatar_default.png',
         message: '',
         hasSubmit: false,
+        hasPhotoToUpload: false,
         constraints: {
           name: {
             message: 'Ingresa tu nombre y apellidos',
@@ -194,6 +197,24 @@
       validateRule: function (fn, input) {
         return fn(input)
       },
+      clickAvatar: function (_) {
+
+        this.$refs.inputFileImage.click()
+      },
+      atPhotoLoaded () {
+
+        const self = this
+        console.log(this.$refs.inputFileImage.files)
+
+        let reader = new FileReader()
+        reader.onload = function(e) {
+          self.urlImage = e.target.result
+        }
+        reader.readAsDataURL(this.$refs.inputFileImage.files[0])
+
+        this.hasPhotoToUpload = true
+
+      },
       goToLogin () {
         this.$router.push('/login')
       },
@@ -223,25 +244,31 @@
             try {
               let response = await this.$axios.$post('http://api.bombo.pe/auth/signup', this.user )
 
-              let responseLogin = await this.$axios.post('http://api.bombo.pe/auth/login', {
-                username: this.user.username,
-                password: this.user.password
-              })
+              if ( this.hasPhotoToUpload )
+              {
+                let formData = new FormData()
+                formData.append('photo', this.$refs.inputFileImage.files[0])
 
-              this.$axios.setToken(responseLogin.data.token, 'Bearer')
-              auth.setToken(responseLogin.data.token)
+                const userId = response.user.id
+                let request = new XMLHttpRequest()
+
+                request.open('POST', 'http://api.bombo.pe/api/v2.0/users/'+ userId +'/update-profile-photo')
+                request.setRequestHeader('Authorization', 'Bearer ' + response.token)
+                request.send(formData)
+              }
+
+              this.$axios.setToken(response.token, 'Bearer')
+              auth.setToken(response.token)
               auth.setUserId(response.user.id)
 
               // loading off
               this.$store.state.isLoading = false
-
               this.$router.push('/client/teams')
-
             } catch (e) {
               // loading off
               this.$store.state.isLoading = false
               console.log(e)
-              this.message = e.response.data.error
+              this.message = e.response.data.error || e
             }
           } else {
             console.log('invalid data')
@@ -323,7 +350,6 @@
 
   .grid-content
     display grid
-
     width 100%
     height: 100%;
 

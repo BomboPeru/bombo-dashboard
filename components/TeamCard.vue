@@ -17,10 +17,38 @@
         <!--</div>-->
       <!--</div>-->
 
+      <template v-if="typeCard === 'guardado'">
+        <div class="toggle-edit-btn" @click="toggleEdit">
+          <i class="far fa-edit"></i>
+        </div>
+      </template>
+      <div v-if="editOpen" class="edit-dialog">
+        <div class="edit-container">
+          <div class="edit-text">Estas seguro de editar este equipo?</div>
+          <div class="edit-btn" @click="edit">Editar</div>
+          <div class="cancel-edit-btn" @click="toggleEdit">Cancelar</div>
+        </div>
+      </div>
+
+      <template v-if="typeCard === 'guardado'">
+        <div class="toggle-duplicate-btn" @click="toggleDuplicate">
+          <i class="far fa-copy"></i>
+        </div>
+      </template>
+
+      <div v-if="duplicateOpen" class="duplicate-dialog">
+        <div class="duplicate-container">
+          <div class="duplicate-text">Estas seguro de duplicar a este equipo?</div>
+          <div class="duplicate-btn" @click="duplicate">Duplicar</div>
+          <div class="cancel-duplicate-btn" @click="toggleDuplicate">Cancelar</div>
+        </div>
+      </div>
+
       <template v-if="typeCard !== 'en_juego'">
         <div class="toggle-delete-btn" @click="toggleDelete">
           <i class="far fa-trash-alt"></i>
         </div>
+
         <div v-if="deleteOpen" class="delete-dialog">
           <div class="delete-container">
             <div class="delete-text">Estas seguro de eliminar este equipo?</div>
@@ -185,7 +213,9 @@
     },
     data () {
       return {
+        duplicateOpen: false,
         deleteOpen: false,
+        editOpen: false,
         isCollapsed: false,
         isFavoriteSaved: true,
         playerPositions: {
@@ -207,8 +237,32 @@
       }
     },
     methods: {
-      toggleDelete () {
-        this.deleteOpen = !this.deleteOpen
+      toggleDelete () { this.deleteOpen = !this.deleteOpen },
+      toggleDuplicate () { this.duplicateOpen = !this.duplicateOpen },
+      toggleEdit () { this.editOpen = !this.editOpen },
+      edit () {
+
+        const teamName = this.team.name
+
+        this.$store.commit('createteam/setleagueid', this.team.league_id)
+        this.$store.commit('createteam/setTeamName', teamName)
+
+        this.$router.push('/client/createteam')
+      },
+      duplicate() {
+        const userId = this.$store.getters['auth/getUserId']
+
+        this.$axios.post('http://api.bombo.pe/api/v2.0/users/'+ userId + '/duplicate-team', {
+          team_name: this.team.name
+        })
+          .then(res => {
+            this.$store.dispatch('updateUser', res.data.data)
+          })
+          .catch(err => {
+            this.$store.dispatch('turnOnSnackbar', 'Hubo un problema en esta operación. Intente mas tarde')
+            console.log(err)
+          })
+
       },
       deleteTeamcard () {
         const userId = this.$store.getters['auth/getUserId']
@@ -223,12 +277,11 @@
         })
         .then(res => {
           this.$store.dispatch('updateUser', res.data.data)
-          console.log(res)
         })
         .catch(err => {
+          this.$store.dispatch('turnOnSnackbar', 'Hubo un problema en esta operación. Intente mas tarde')
           console.log(err)
         })
-
       },
       toggleFavorite() {
         this.isFavoriteSaved = !this.isFavoriteSaved
@@ -497,14 +550,31 @@ font2 = 'Titillium Web'
   font-size 14px
   line-height 30px
   cursor pointer
+.toggle-duplicate-btn
+  position absolute
+  top 10px
+  right 46px
+  z-index: 2
+  cursor pointer
+.toggle-edit-btn
+  position absolute
+  top 10px
+  right 80px
+  z-index: 2
+  cursor pointer
 .toggle-delete-btn
   position absolute
   top 10px
   right 10px
   z-index: 2
   cursor pointer
+
+.toggle-edit-btn i
+.toggle-duplicate-btn i
 .toggle-delete-btn i
   color white
+.edit-dialog
+.duplicate-dialog
 .delete-dialog
   z-index 9
   position absolute
@@ -513,6 +583,8 @@ font2 = 'Titillium Web'
   bottom 0
   right 0
   background rgba(0, 0, 0, 0.72)
+.edit-container
+.duplicate-container
 .delete-container
   position absolute
   top 50%
@@ -520,19 +592,39 @@ font2 = 'Titillium Web'
   transform translateX(-50%)
   text-align center
   font-family: font2
+.edit-text
+.duplicate-text
 .delete-text
   text-align center
   padding-bottom 20px
   color white
-
 .cancel-delete-btn
   background #FFC400
   color white
+
+.edit-btn
+  background #5259F6
+  color white
+
+.cancel-edit-btn
+  background #FFC400
+  color white
+
 .delete-btn
   background #ea504c
   color white
+.duplicate-btn
+  background #25BF89
+  color white
+.cancel-duplicate-btn
+  background #FFC400
+  color white
 
+.cancel-edit-btn
+.cancel-duplicate-btn
 .cancel-delete-btn
+.duplicate-btn
+.edit-btn
 .delete-btn
   margin-left 2px
   margin-right 2px

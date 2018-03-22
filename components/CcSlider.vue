@@ -6,19 +6,19 @@
                   :max="max"
                   tooltip="always"
                   :tooltipDir="['top', 'top']"
-                  :sliderStyle="[{ 'backgroundColor': '#243337'}, { 'backgroundColor': '#243337'}]"
-                  :processStyle="{'backgroundColor': '#243337'}"
+                  :sliderStyle="[{ 'backgroundColor': color }, { 'backgroundColor': color }]"
+                  :processStyle="{'backgroundColor': color }"
                   :tooltipStyle="[{'backgroundColor': '#fafafa',
-                  'borderColor': '#243337',
+                  'borderColor': colorTooltip,
                   'border': '2px solid',
                   'font-family': 'Titillium Web',
-                  'color': '#243337',
+                  'color': colorTooltip,
                   },
                   { 'backgroundColor': '#fafafa',
-                    'borderColor': '#243337',
+                    'borderColor': colorTooltip,
                     'border': '2px solid',
                     'font-family': 'Titillium Web',
-                    'color': '#243337'
+                    'color': colorTooltip
                   }]"
                   v-model="localValue"/>
     </no-ssr>
@@ -39,11 +39,19 @@
       step: Number,
       max: Number,
       min: Number,
+      color: {
+        type: String,
+        default: '#243337'
+      },
+      colorTooltip: {
+        type: String,
+        default: '#243337'
+      },
       width: {
         type: String,
         Default: '150px'
       },
-      value: Array
+      value: [Array, Number]
     },
     computed: {
       localValue: {

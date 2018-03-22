@@ -31,7 +31,7 @@
     },
     computed: {
       toolbar() {
-        return this.$route.path === '/'
+        return this.$route.path === '/' || this.$route.path === '/forgotpassword'
       },
       isLoading () {
         return this.$store.state.isLoading

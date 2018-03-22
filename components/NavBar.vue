@@ -47,12 +47,14 @@
     data () {
       return {
         navbarItems: [
+          { date: 'INICIO', urlPath: '/client/home', justTitle: false },
           { date: 'MIS EQUIPOS', urlPath: '/client/teams', justTitle: false },
-          { date: 'PROXIMAS FECHAS', urlPath: '/client/matches', justTitle: false },
+          // { date: 'PROXIMAS FECHAS', urlPath: '/client/matches', justTitle: false },
           { date: 'TABLERO', urlPath: '/client/dashboard', justTitle: false },
-          { date: 'HISTORIAL', urlPath: '/client/history', justTitle: false },
+          // { date: 'HISTORIAL', urlPath: '/client/history', justTitle: false },
           { date: 'ARMA TU EQUIPO!', urlPath: '/client/createteam', justTitle: true },
-          { date: 'MI PERFIL', urlPath: '/client/profile', justTitle: true }
+          { date: 'MI PERFIL', urlPath: '/client/profile', justTitle: true },
+          { date: 'TRANSFERENCIAS', urlPath: '/client/billing', justTitle: false }
         ],
         isMenuNavItemOpen: false
       }
@@ -107,6 +109,12 @@ toolbar-height-mobile = 56px
 .dropdown-content li a
   text-decoration none
   color #fafafa
+
+  user-select: none;
+  -moz-user-select: none;
+  -khtml-user-select: none;
+  -webkit-user-select: none;
+  -o-user-select: none;
 .dropdown-content li:hover
   background #445F69
 /*.dropdown:hover .dropdown-content*/

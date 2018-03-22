@@ -18,20 +18,7 @@
     },
     methods: {
       updatePhoto () {
-        console.log('updatePhoto')
-
-        // this.$axios.post('http://api.bombo.pe/api/v2.0/users/'+ this.user.id +'/update-profile',
-        //   { user: this.user })
-        //   .then(res => {
-        //     console.log(res)
-        //     // res.data.data
-        //     this.$store.dispatch('updateUser', res.data.data)
-        //     this.$store.dispatch('turnOnSnackbar', 'Perfil Actualizado')
-        //   })
-        //   .catch(e => {
-        //     console.log(e)
-        //     this.$store.dispatch('turnOnSnackbar', 'Ocurrio un error. Intentalo mas tarde.')
-        //   })
+        this.$emit('clickAvatar', true)
       }
     },
     mounted () {
@@ -41,10 +28,13 @@
 </script>
 
 <style scoped lang="stylus">
-  .avatar-img
+  #cc-avatar
     width 150px
     height 150px
+    overflow hidden
     border-radius: 50%
+    position relative
+
   .shadow
     border-radius 50%
     position: absolute
@@ -53,6 +43,7 @@
     background-color rgba(0, 0, 0, 0)
     width: 100%
     height: 100%
+    z-index 10
   .shadow:hover
     background-color rgba(0, 0, 0, 0.27)
   .avatar-container
@@ -62,12 +53,20 @@
     // transform translateX(-50%)
   .sm
     display inline-block
-    width 100px
+    width 100px !important
+    height 100px !important
+    overflow hidden
+
   .sm img
-    width 100px
     height 100px
   .sm .shadow
     width 100px
     height 100px
+  .avatar-img
+    position absolute
+    top 50%
+    left 50%
+    transform translateX(-50%) translateY(-50%)
+    height: 100%;
 
 </style>

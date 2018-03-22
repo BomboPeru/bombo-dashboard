@@ -6,7 +6,8 @@
       <div class="container">
         <div class="profile-section">
           <div style="display: flex; justify-content: center;">
-            <cc-avatar square src="/profile_photo.png"/>
+            <input type="file" style="display: none;" ref="inputFileImage" @change="atPhotoLoaded">
+            <cc-avatar square :src="urlImage!==''?urlImage:'/profile_photo.png'" @clickAvatar="clickAvatar"/>
           </div>
           <div style="text-align: center">
             <div>
@@ -67,6 +68,7 @@
     },
     data () {
       return {
+        urlImage: '',
         user: {
           name: '',
           email: '',
@@ -76,6 +78,33 @@
       }
     },
     methods: {
+      clickAvatar (_) {
+        this.$refs.inputFileImage.click()
+      },
+      atPhotoLoaded () {
+
+        const self = this
+        console.log(this.$refs.inputFileImage.files)
+
+        let reader = new FileReader()
+        reader.onload = function(e) {
+          self.urlImage = e.target.result
+        }
+        reader.readAsDataURL(this.$refs.inputFileImage.files[0])
+
+        {
+          let formData = new FormData()
+          formData.append('photo', this.$refs.inputFileImage.files[0])
+
+          const userId = response.user.id
+          let request = new XMLHttpRequest()
+
+          request.open('POST', 'http://api.bombo.pe/api/v2.0/users/'+ userId +'/update-profile-photo')
+          request.setRequestHeader('Authorization', 'Bearer ' + response.token)
+          request.send(formData)
+        }
+
+      },
       async updateUser () {
         // const userId = this.$store.getters['auth/getUserId']
         // this.user.birthday = (new Date(this.birthdayFake)).toISOString()
@@ -99,6 +128,11 @@
       const user = this.$store.getters['user']
       // console.log('profile', this.user)
       this.user = user
+
+      const userId = this.$store.getters['auth/getUserId']
+      // const token = this.$store.getters['auth/getToken']
+      const url = 'http://api.bombo.pe/api/v2.0/storage/users/' + userId + '/profile-photo'
+      this.urlImage = url
     }
   }
 </script>

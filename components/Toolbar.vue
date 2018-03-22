@@ -40,7 +40,7 @@ toolbar-height = 76px
 toolbar-height-mobile = 56px
 
 #toolbar
-  background #243237
+  background #0F202D
   width 100%
   position relative
   /*top 0*/

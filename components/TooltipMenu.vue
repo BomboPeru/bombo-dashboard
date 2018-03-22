@@ -108,7 +108,7 @@
         },
         listProfileItems: [
           { name: 'Mi Perfil', url: '/client/profile' },
-          { name: 'Transferencias', url: '' }
+          { name: 'Transferencias', url: '/client/billing' }
         ],
         listSupportItems: [
           { name: 'FAQ', url: '' },
@@ -230,10 +230,12 @@
     line-height: normal;
     font-size: 14px;
     text-align: center;
-    color: #FFC400;
+    color: #EA504C;
     cursor pointer
   .ul-profile
     text-align center
+  .ul-profile a
+    font-size 16px
 
   .delete-icon
     position absolute

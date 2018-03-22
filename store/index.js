@@ -20,6 +20,8 @@ const store = () => {
       isShortLoading: false,
 
       current_credit: 0,
+      current_won_credit: 0,
+
       notifications: [],
       user: null
     },
@@ -78,6 +80,7 @@ const store = () => {
         context.state.user = data
         context.state.notifications = data.notifications
         context.state.current_credit = data.current_credit
+        context.state.current_won_credit = data.current_won_credit
 
         window.localStorage.setItem('user', JSON.stringify(data))
       },
@@ -102,6 +105,8 @@ const store = () => {
 
           context.state.user = response2.data.data
           context.state.current_credit = response2.data.data.current_credit
+          context.state.current_won_credit = response2.data.data.current_won_credit
+
           context.state.notifications = response2.data.data.notifications
 
           window.localStorage.setItem('user', JSON.stringify(response2.data.data))

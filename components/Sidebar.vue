@@ -60,7 +60,8 @@
           <div :class="['title-container', itemsForEachPath[activeSection].center?'center':'']">
             <span :class="['title-menu-section', itemsForEachPath[activeSection].center?'font-weight-light':'']"
                   v-if="activeSection !== 'TABLERO'">{{ activeSection }}</span>
-            <div class="btn-sidebar-1 elevation" @click="onCreateTeamClick">CREAR EQUIPO</div>
+            <div v-if="editMode !== true" class="btn-sidebar-1 elevation" @click="onCreateTeamClick">CREAR EQUIPO</div>
+            <div v-else class="btn-sidebar-1 elevation" @click="onEditTeamClick">ACTUALIZAR EQUIPO</div>
             <!--<div class="btn-sidebar-2 elevation" @click="openBomboPayments">RECARGA SALDO</div>-->
             <div class="btn-sidebar-3 elevation" @click="openRulesDialog">REGLAS DEL JUEGO</div>
           </div>
@@ -108,7 +109,8 @@
       sidebar: {
         type: Boolean,
         default: true
-      }
+      },
+      editMode: Boolean
     },
     computed: {
       tabSelected: {
@@ -137,7 +139,8 @@
           { name: 'HISTORIAL', urlPath: '/client/history' },
           { name: 'ARMA UN EQUIPO', urlPath: '/client/createteam' },
           { name: 'MI PERFIL', urlPath: '/client/profile' },
-          { name: 'PREGUNTAS FRECUENTES', urlPath: '/client/faq' }
+          { name: 'PREGUNTAS FRECUENTES', urlPath: '/client/faq' },
+          { name: 'TRANSFERENCIAS', urlPath: '/client/billing' }
         ],
         itemsForEachPath: {
           '': {
@@ -183,12 +186,19 @@
             items: [
             ]
           },
+          'TRANSFERENCIAS': {
+            center: true,
+            items: []
+          },
         }
       }
     },
     methods: {
       onCreateTeamClick () {
         this.$emit('onCreateTeamClick', null)
+      },
+      onEditTeamClick () {
+        this.$emit('onEditTeamClick', null)
       },
       openBomboPayments() {
         this.$store.state.bomboPayments = !this.$store.state.bomboPayments
@@ -250,7 +260,7 @@
     display block
     height: calc(100% - 128px)
     width: 232px;
-    z-index 1
+    z-index 10
     position: absolute;
     top: (52px + 76px);
     left: 0;
@@ -258,12 +268,20 @@
     padding-top: 20px;
   .sidebar-item
     position: relative
+    z-index 4
     width 240px
     height 56px
     margin-top 4px
     background-color: #243237;
     border-radius: 0px 12px 12px 0px;
     cursor pointer
+
+    user-select: none;
+    -moz-user-select: none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    -o-user-select: none;
+
   .sidebar-item-selected
     background #445F69
   .sidebar-item .line
@@ -364,6 +382,12 @@
     height: 40px;
     line-height: 40px;
     border-radius: 4px;
+
+    user-select: none;
+    -moz-user-select: none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    -o-user-select: none;
   .btn-sidebar-1
     font-size 22px
     margin-left: 16px;

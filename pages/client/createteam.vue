@@ -1,11 +1,16 @@
 <template>
     <div>
-      <sidebar mode="createteam" @onCreateTeamClick="createTeam"/>
+      <sidebar mode="createteam" @onCreateTeamClick="createTeam" @onEditTeamClick="editTeam" :editMode="editMode"/>
+
       <div id="createteam">
         <player-bank-card :class="['player-bank-card', activeTabView === 0?'show':'hide']" @onPlayerSelected="onPlayerSelected"/>
+
         <div :class="['new-team-section', (activeTabView === 1)?'show':'hide']">
           <div class="mobile-btn-container">
-            <div class="button-create rounded elevation" @click="createTeam">CREAR EQUIPO</div>
+
+            <div v-if="editMode === false" class="button-create rounded elevation" @click="createTeam">CREAR EQUIPO</div>
+            <div v-else class="button-create rounded elevation" @click="editTeam">ACTUALIZAR EQUIPO</div>
+
           </div>
           <new-team-card :team="team"/>
         </div>
@@ -41,8 +46,7 @@
       }
     },
     methods: {
-      createTeam () {
-
+      isValidTeam () {
         // TOTAL PLAYERS = 11 CONSTRAINT
         {
           const total = this.team.players.goal_keeper.length +
@@ -52,7 +56,7 @@
 
           if (total !== 11) {
             this.$store.dispatch('turnOnSnackbar', 'No puedes crear un equipo con menos de 11 jugadores')
-            return
+            return false
           }
         }
 
@@ -72,25 +76,24 @@
           if (totalGoalKeeper < this.constraints.goal_keeper[0] ||
             totalGoalKeeper > this.constraints.goal_keeper[1]) {
             this.$store.dispatch('turnOnSnackbar', 'Debes escoger al menos un arquero')
-            return
+            return false
           }
           if (totalDefender < this.constraints.defender[0] ||
             totalDefender> this.constraints.defender[1]) {
             this.$store.dispatch('turnOnSnackbar', 'Debes escoger al menos a un defensa')
-            return
+            return false
           }
           if (totalMidFielder < this.constraints.mid_fielder[0] ||
             totalMidFielder> this.constraints.mid_fielder[1]) {
             this.$store.dispatch('turnOnSnackbar', 'Debes escoger al menos a un centrocampista')
-            return
+            return false
           }
           if (totalForward < this.constraints.forward[0] ||
             totalForward > this.constraints.forward[1]) {
             this.$store.dispatch('turnOnSnackbar', 'Debes escoger al menos a un delantero')
-            return
+            return false
           }
         }
-
 
         let teamToCreate = []
 
@@ -117,8 +120,56 @@
 
           if (isCaptain === false) {
             this.$store.dispatch('turnOnSnackbar', 'Debes escoger a un capitan')
-            return
+            return false
           }
+        }
+
+        return teamToCreate
+      },
+      editTeam () {
+
+        const teamToEdit = this.isValidTeam()
+
+        if (teamToEdit === false) {
+          return null
+        }
+
+        const userId = this.$store.getters['auth/getUserId']
+        const leagueId = this.$store.getters['createteam/leagueid']
+
+        this.$store.state.isShortLoading = true
+
+        this.$axios.$post('http://api.bombo.pe/api/v2.0/users/'+ userId + '/edit-team', {
+          team: {
+            league_id: leagueId,
+            name: this.team.name,
+            players: teamToEdit
+          }
+        }).then(res => {
+
+          // console.log(res)
+          this.$store.dispatch('updateUser', res.data)
+          this.$store.state.isShortLoading = false
+          this.$store.dispatch('turnOnSnackbar', 'Equipo Creado!. Visita Mis Equipos para jugar')
+
+          setTimeout(() => {
+            this.$store.state.createteam.captainId = null
+            this.$router.push('/client/teams')
+          }, 800)
+
+        }).catch(e => {
+          this.$store.state.isShortLoading = false
+          this.$store.dispatch('turnOnSnackbar', 'Error al crear Equipo, intenta más tarde.')
+          console.log(e)
+        })
+
+      },
+      createTeam () {
+
+        const teamToCreate = this.isValidTeam()
+
+        if (teamToCreate === false) {
+          return null
         }
 
         const userId = this.$store.getters['auth/getUserId']
@@ -223,6 +274,7 @@
     },
     data () {
       return {
+        editMode: false,
         team: {
           name: '',
           players: {
@@ -247,6 +299,7 @@
     },
     beforeCreate () {
       if (process.server) return
+
       if (this.$store.getters['createteam/leagueid'] === null) {
         console.log(this.$store.getters['createteam/leagueid'], 'league id')
         setTimeout(() => {
@@ -255,9 +308,38 @@
       }
     },
     beforeDestroy () {
-      // this.$store.commit('createteam/unsetleagueid')
+      this.$store.commit('createteam/unsetTeamName')
     },
     mounted () {
+      const teamName = this.$store.getters['createteam/editTeamName']
+      if (teamName !== null) {
+        this.editMode = true
+        const savedTeams = this.$store.getters['user'].saved_teams
+
+        let savedTeamIndex = null
+        for ( let i = 0; i < savedTeams.length; i++) {
+          if (savedTeams[i].name === teamName) {
+            savedTeamIndex = i
+            this.team.name = savedTeams[i].name
+
+            // this.team.players[] = savedTeams[i].name
+            // this.team.name = savedTeams[i].name
+            break
+          }
+        }
+
+        const playerTypes = ['goal_keeper', 'defender', 'mid_fielder', 'forward']
+
+        for (let j = 0; j < playerTypes.length; j++) {
+          savedTeams[savedTeamIndex].players.map(player => {
+            if (player.position === playerTypes[j]) {
+              this.team.players[playerTypes[j]].push(player)
+            }
+          })
+        }
+
+
+      }
     }
   }
 </script>

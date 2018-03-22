@@ -15,7 +15,7 @@
       <div class="form-name">
         <!-- fa-shield-alt -->
         <input-text v-model="team.name"
-                    width="65%"
+                    width="45%"
                     solid class="input-text"
                     prepend-icon="fa-shield-alt"
                     placeholder="Nombre de tu equipo" big/>
@@ -325,7 +325,7 @@
     // height calc(100vh - 457px)
 
   .player-list
-    margin-top 14px
+    // margin-top 14px
     height calc(100vh - 343px)
     // height calc(100vh - 457px)
     overflow-y: auto;
@@ -343,7 +343,6 @@
   .points
   .form-name
     margin-top 4px
-    margin-left 12px
     text-align center
   .name-label
   .points-value

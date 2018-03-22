@@ -6,7 +6,7 @@
         <input-text v-model="email" placeholder="Correo Electronico"/>
         <p class="message">{{message}}</p>
         <div class="btn-container">
-          <div class="send-btn elevation">Enviar</div>
+          <div class="send-btn elevation" @click="send">Enviar</div>
         </div>
       </div>
     </div>
@@ -24,6 +24,13 @@
       return {
         email: '',
         message: ''
+      }
+    },
+    methods: {
+      send () {
+        this.$axios.$post('http://api.bombo.pe/auth/password-forgot', {
+          email: this.email
+        })
       }
     }
   }
@@ -56,6 +63,13 @@
     text-align: center;
     color: #000000;
   .send-btn
+    user-select: none;
+    -moz-user-select: none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    -o-user-select: none;
+
+    cursor pointer
     margin-top 48px
     display inline-block
     color white

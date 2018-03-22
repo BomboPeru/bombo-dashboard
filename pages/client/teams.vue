@@ -1,31 +1,33 @@
 <template>
-  <div id="teams">
-    <sidebar mode="teams"/>
+  <no-ssr>
 
-    <div v-if="teams[activeTypeTeam].length === 0" class="container margin-sidebar">
-      <div class="empty-teams-message">
-        <p>Aun no tienes ningun equipo
-          {{ indexTypeTeams[activeTypeTeam] === 'en_juego' ? ' en juego' : indexTypeTeams[activeTypeTeam] }}
-          <br> <span v-if="indexTypeTeams[activeTypeTeam] !== 'pasado' ">¡Crea uno YA!</span>
-        </p>
+    <div id="teams">
+      <sidebar mode="teams"/>
 
-        <icon-button v-if="indexTypeTeams[activeTypeTeam] === 'guardado' || indexTypeTeams[activeTypeTeam] === 'en_juego'"
-                     text="CREAR EQUIPO!"
-                     icon-direction="left"
-                     color="#25BF89"
-                     icon="plus"
-                     class="create-team-btn"
-                     @click="goToCreateTeam"
-        />
+      <div v-if="teams[activeTypeTeam].length === 0" class="container margin-sidebar">
+        <div class="empty-teams-message">
+          <p>Aun no tienes ningun equipo
+            {{ indexTypeTeams[activeTypeTeam] === 'en_juego' ? ' en juego' : indexTypeTeams[activeTypeTeam] }}
+            <br> <span v-if="indexTypeTeams[activeTypeTeam] !== 'pasado' ">¡Crea uno YA!</span>
+          </p>
+
+          <icon-button v-if="indexTypeTeams[activeTypeTeam] === 'guardado' || indexTypeTeams[activeTypeTeam] === 'en_juego'"
+                       text="CREAR EQUIPO!"
+                       icon-direction="left"
+                       color="#25BF89"
+                       icon="plus"
+                       class="create-team-btn"
+                       @click="goToCreateTeam"
+          />
+        </div>
       </div>
-    </div>
 
-    <div v-else class="container margin-sidebar">
+      <div v-else class="container margin-sidebar">
 
-      <!-- EN JUEGO -->
-      <!-- GUARDADOS -->
-      <!--&lt;!&ndash; PASADOS &ndash;&gt;-->
-      <!--<template v-if="activeTypeTeam === 1">-->
+        <!-- EN JUEGO -->
+        <!-- GUARDADOS -->
+        <!--&lt;!&ndash; PASADOS &ndash;&gt;-->
+        <!--<template v-if="activeTypeTeam === 1">-->
         <team-card
           class="teamcard"
           :style="{ 'flex-grow': teams[activeTypeTeam].length > 3 ? '1':'0' }"
@@ -40,8 +42,9 @@
           :league-img="team.leagueImg"
           :players="team.players"
         />
+      </div>
     </div>
-  </div>
+  </no-ssr>
 </template>
 
 <script>
@@ -87,7 +90,7 @@
     },
     methods: {
       goToCreateTeam () {
-        // this
+        // thisunsetTeamId
         this.$store.state.team.selectLeagueDialog = true
       }
     }

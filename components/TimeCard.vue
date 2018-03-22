@@ -7,7 +7,7 @@
            version="1.1"
            preserveAspectRatio="none"
            viewBox="0 0 100 100">
-        <polygon points="20,100 60,5 100,45 100,100"  :style="{ fill: selected?'#EA504C':'#36FFA5' }"/>
+        <polygon points="20,100 60,5 100,45 100,100"  :style="{ fill: selected?'#EA504C': enabled?'#36FFA5':'#7b7b7b' }"/>
       </svg>
       <p class="label">FECHA</p>
       <p class="number">{{time.number}}</p>
@@ -29,11 +29,18 @@
         const month = ((start.getMonth() + 1).toString()).padStart(2,'0')
         const date = ((start.getDate()).toString()).padStart(2,'0')
         return date + ' / ' + month + ' / ' + start.getFullYear()
+      },
+      enabled () {
+        const currentDate = (new Date()).getTime()
+        const timeDate = (new Date(this.time.start)).getTime()
+        return timeDate > currentDate
       }
     },
     methods: {
       selectTimeCard () {
-        this.$emit('onSelectTime', this.index)
+        if (enabled) {
+          this.$emit('onSelectTime', this.index)
+        }
       }
     }
   }

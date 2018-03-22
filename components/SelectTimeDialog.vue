@@ -53,7 +53,7 @@
           </div>
 
           <div class="warning" v-if="emptyTime">
-            Debes seleccionar una fecha para poder apostar.
+            Debes seleccionar una fecha válida para poder apostar.
           </div>
 
           <div class="disclaimer">
@@ -63,8 +63,8 @@
           </div>
 
           <div class="choose-pay-container">
-            <div :class="['pay-coins']" @click="pay(0)">APOSTAR CON BOMBO COINS</div>
-            <div :class="['pay-credit']" @click="pay(1)">APOSTAR CON TU CRÉDITO</div>
+            <div :class="['pay-coins']" @click="pay(0)">JUGAR CON BOMBO COINS</div>
+            <div :class="['pay-credit']" @click="pay(1)">JUGAR CON TU CRÉDITO</div>
           </div>
 
           <!--<div class="">-->
@@ -361,7 +361,7 @@
   @media screen and (max-width: 500px)
     .select-time-card
       width 100vw
-      height 100vh
+      height: 100vh
       border-radius 0px
     .list-times
       margin 0 0
