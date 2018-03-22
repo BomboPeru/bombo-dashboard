@@ -38,7 +38,7 @@
     },
     methods: {
       selectTimeCard () {
-        if (enabled) {
+        if (this.enabled) {
           this.$emit('onSelectTime', this.index)
         }
       }

@@ -143,10 +143,10 @@
     .container
       overflow-x auto
       overflow-y hidden
-      height: calc(100vh - 174px)
+      height: calc(100vh - 124px)
       display: flex;
       //justify-content flex-start
-      margin-top 62px
+      // margin-top 62px
       margin-left 0
       //min-height: calc(100vh - 128px)
     .margin-sidebar

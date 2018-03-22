@@ -9,7 +9,7 @@
       <transition name="sidebar">
         <div v-if="isOpen" class="sidebar">
           <div class="header">
-            <cc-avatar src="/profile_photo.png" sm class="avatar"/>
+            <cc-avatar :src="urlImage" sm class="avatar"/>
             <p class="name header-title">Name</p>
             <p class="header-title coins">
               <span class="coin-txt green">{{ credit_coin }}</span> <span> <i class="fas fa-bold green"></i> </span> &nbsp;&nbsp;/&nbsp;&nbsp;
@@ -56,6 +56,7 @@
     },
     data () {
       return {
+        urlImage: '',
         isOpen2: false,
         credit_coin: 0,
         bombo_coin: 0,
@@ -87,12 +88,23 @@
       close () {
         this.$store.state.menuSidebar = false
       }
+    },
+    mounted () {
+
+      const user = this.$store.getters['user']
+      // console.log('profile', this.user)
+      this.credit_coin = user.current_credit
+      this.bombo_coin = user.current_bombo_coins
+
+      const userId = this.$store.getters['auth/getUserId']
+      const url = 'http://api.bombo.pe/api/v2.0/storage/users/' + userId + '/profile-photo'
+      this.urlImage = url
     }
   }
 </script>
 
 <style scoped lang="stylus">
-  colorPrimary = #243237
+  colorPrimary = #0F202D
 
   #menu-sidebar
     position fixed
@@ -130,7 +142,7 @@
   .header-title
     color white
     font-family Titillium Web
-    font-size 18px
+    font-size 32px
   .coins
     font-size 14px !important
   .coin-txt
@@ -140,10 +152,12 @@
   .items ul
     list-style-type none
     padding-left 18px
+    margin-top 50px
   .items li
     text-align left
-    margin-bottom 18px
-    font-size 18px
+    margin-bottom 28px
+    margin-left 15%
+    font-size 28px
     color white
     font-family Titillium Web
   .item-icon
@@ -170,4 +184,16 @@
     transform translateX(-80%)
   }
 
+  @media screen and (max-width: 600px)
+    .header-title
+      color white
+      font-family Titillium Web
+      font-size 18px
+    .items li
+      text-align left
+      margin-bottom 18px
+      margin-left 0px
+      font-size 18px
+    .items ul
+      margin-top 20px
 </style>

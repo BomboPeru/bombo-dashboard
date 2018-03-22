@@ -127,7 +127,6 @@
         return date.getDate() + '/' + (date.getMonth() + 1) + '/' + date.getFullYear()
       },
       onSelectTime (i) {
-        console.log('selectedTime', i)
         this.selectedTime = i
       },
       fetchTimes () {

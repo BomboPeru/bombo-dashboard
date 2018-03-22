@@ -264,7 +264,7 @@
     position: absolute;
     top: (52px + 76px);
     left: 0;
-    background-color: #243237;
+    background-color: #0F202D;
     padding-top: 20px;
   .sidebar-item
     position: relative
@@ -272,7 +272,7 @@
     width 240px
     height 56px
     margin-top 4px
-    background-color: #243237;
+    background-color: #0F202D;
     border-radius: 0px 12px 12px 0px;
     cursor pointer
 
@@ -317,7 +317,7 @@
   .title-menu-section
     /*float left*/
     font-size 24px
-    color #243237
+    color #0F202D
     font-family Titillium Web
     font-weight bold
     margin 8px 0px 7px 21px
@@ -340,7 +340,7 @@
     margin 8px 1px
 
   .dashboard-navbar
-    background #243237
+    background #0F202D
     height 100%
     width 100%
     display: flex
@@ -409,7 +409,7 @@
     #sidebar
       width 100%
       height sidebar_height_mobile
-      background #243237
+      background #0F202D
       display flex
       justify-content space-around
     .collapse-movil
@@ -422,7 +422,7 @@
       line-height sub_nav_height
       font-family Titillium Web
     .sub-nav-btn
-      background #243237
+      background #0F202D
       flex-grow 1
       height sub_nav_height
       margin 0px 3px

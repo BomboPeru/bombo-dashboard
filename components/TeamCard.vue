@@ -480,21 +480,6 @@ font2 = 'Titillium Web'
   height calc(100vh - 464px) !important
   // height calc(100vh - 416px) !important
 
-@media screen and (max-width: 1023px)
-  #round-card
-    min-width 300px
-    height 64vh
-    overflow hidden
-    background #fafafa
-    margin-left 10px
-    margin-right 8px
-  .list-players-container
-    overflow-y: scroll
-    height: 50%
-
-@media screen and (max-width: 500px)
-  #round-card
-    min-width 90%
 
 .bottom-button-container
   display flex
@@ -636,4 +621,32 @@ font2 = 'Titillium Web'
   height 30px
   line-height 30px
   border-radius 15px
+
+
+@media screen and (max-width: 1023px)
+  #round-card
+    min-width 300px
+    height calc(100vh - 140px)
+    overflow hidden
+    background #fafafa
+    margin-left 10px
+    margin-right 8px
+
+  .list-players-container
+    overflow-y: scroll
+    height calc(100vh - 319px)
+  .league-background
+    height: 120px
+  .table-teamname td
+    font-size 16px
+  .button-play-again
+    font-size 12px
+  .header
+    margin-bottom: 40px;
+  .list-players-container-b
+    height calc(100vh - 376px) !important
+
+@media screen and (max-width: 500px)
+  #round-card
+    min-width 90%
 </style>

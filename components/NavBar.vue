@@ -15,7 +15,10 @@
           <span class="icon"> <img src="../assets/icons/arrow_down.png" width="20px" alt=""></span>
         </div>
       </div>
-      <div class="dropdown-content elevation" :style="{ 'visibility': isMenuNavItemOpen? 'visible' : 'collapse'}">
+      <!--
+           :style="{ 'display': isMenuNavItemOpen? 'block' : 'none'}"
+           -->
+      <div class="dropdown-content elevation" v-if="isMenuNavItemOpen">
         <ul class="dropdown-list">
           <li v-for="(item, i) in navbarItems" :key="i" class="dropdown-item"  v-if="item.justTitle === false">
             <a :href="item.urlPath">{{ item.date }}</a>
@@ -90,18 +93,20 @@ toolbar-height-mobile = 56px
 .dropdown-content
   display: block;
   position absolute
-  background-color: #f9f9f9;
+  // background-color: #f9f9f9;
   top toolbar-height
   left -50%
   width 200px
   padding: 12px 0px;
-  z-index: 1;
-  background #243237
-  visibility collapse
+  z-index: 22;
+  background #0F202D
+  // visibility collapse
 .dropdown-content ul
   padding-left  0
   list-style-type none
   text-align center
+  position relative
+  z-index: 23;
 .dropdown-content li
   padding-bottom 12px
   text-decoration none
@@ -120,6 +125,12 @@ toolbar-height-mobile = 56px
 /*.dropdown:hover .dropdown-content*/
   /*display: block;*/
 
+.nav-title
+  user-select: none;
+  -moz-user-select: none;
+  -khtml-user-select: none;
+  -webkit-user-select: none;
+  -o-user-select: none;
 
 /* TABLET */
 @media screen and (max-width: 1023px)

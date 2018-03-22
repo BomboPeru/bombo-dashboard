@@ -20,7 +20,7 @@
 
 <style lang="stylus" scoped>
 nav_item_width = 148px
-nav_item_height = 81px
+nav_item_height = 78px // 81px
 nav_item_height_inactive = 76px
 
 
@@ -36,18 +36,18 @@ nav_item_height_inactive = 76px
   text-decoration none
   position relative
   padding 0 15px
-  font-family Titillium Web
+  font-family 'Nunito Sans'
   font-weight normal
-  font-size 16px
+  font-size 14px
 .active
-  background #fafafa !important
-  // border-radius: 0px 0px 12px 12px
-  border-radius 0
+  background #ea504c !important
+  border-radius: 0px 0px 6px 6px
+  //border-radius 0
   box-shadow 0px 2px 4px rgba(0, 0, 0, 0.25)
   height nav_item_height !important
 .active a
   padding 0 29px !important
-  color #445F69 !important
+  color white !important
 
 .item
   height: 76px;

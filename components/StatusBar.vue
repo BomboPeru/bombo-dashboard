@@ -113,6 +113,13 @@
   font-size 12px
   position: relative
   top -5px
+#status-bar li
+  user-select: none;
+  -moz-user-select: none;
+  -khtml-user-select: none;
+  -webkit-user-select: none;
+  -o-user-select: none;
+
 @media screen and (max-width: 1023px)
   .help
   .avatar

@@ -308,6 +308,7 @@
     font-size 18px
     font-weight bold
     font-family Titillium Web
+
   @media screen and (max-width: 360px)
     .header-title span
       font-size 12px

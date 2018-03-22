@@ -142,7 +142,7 @@
     /*top 10px*/
     top 2px
     position relative
-    z-index 10
+    z-index 4
     font-family: 'Raleway', sans-serif
   .btn-filter
     background #ecffea
