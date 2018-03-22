@@ -4,7 +4,7 @@
         <li v-for="(item, i) in navbarItems" :key="i" v-if="item.justTitle === false">
           <nav-item
             :is-active="item.urlPath === $route.path"
-            :text="item.date"
+            :text="item.name"
             :url="item.urlPath"/>
         </li>
       </ul>
@@ -21,7 +21,7 @@
       <div class="dropdown-content elevation" v-if="isMenuNavItemOpen">
         <ul class="dropdown-list">
           <li v-for="(item, i) in navbarItems" :key="i" class="dropdown-item"  v-if="item.justTitle === false">
-            <a :href="item.urlPath">{{ item.date }}</a>
+            <nuxt-link :to="item.urlPath">{{ item.name }}</nuxt-link>
           </li>
         </ul>
       </div>
@@ -41,7 +41,7 @@
         let title = ''
         for (let i = 0; i < this.navbarItems.length; i++) {
           if ( this.navbarItems[i].urlPath === this.$route.path ) {
-            title = this.navbarItems[i].date
+            title = this.navbarItems[i].name
           }
         }
         return title
@@ -50,21 +50,20 @@
     data () {
       return {
         navbarItems: [
-          { date: 'INICIO', urlPath: '/client/home', justTitle: false },
-          { date: 'MIS EQUIPOS', urlPath: '/client/teams', justTitle: false },
-          // { date: 'PROXIMAS FECHAS', urlPath: '/client/matches', justTitle: false },
-          { date: 'TABLERO', urlPath: '/client/dashboard', justTitle: false },
-          // { date: 'HISTORIAL', urlPath: '/client/history', justTitle: false },
-          { date: 'ARMA TU EQUIPO!', urlPath: '/client/createteam', justTitle: true },
-          { date: 'MI PERFIL', urlPath: '/client/profile', justTitle: true },
-          { date: 'TRANSFERENCIAS', urlPath: '/client/billing', justTitle: false }
+          { name: 'INICIO', urlPath: '/client/home', justTitle: false },
+          { name: 'MIS EQUIPOS', urlPath: '/client/teams', justTitle: false },
+          // { name: 'PROXIMAS FECHAS', urlPath: '/client/matches', justTitle: false },
+          { name: 'TABLERO', urlPath: '/client/dashboard', justTitle: false },
+          // { name: 'HISTORIAL', urlPath: '/client/history', justTitle: false },
+          { name: 'ARMA TU EQUIPO!', urlPath: '/client/createteam', justTitle: true },
+          { name: 'MI PERFIL', urlPath: '/client/profile', justTitle: true },
+          { name: 'TRANSFERENCIAS', urlPath: '/client/billing', justTitle: false }
         ],
         isMenuNavItemOpen: false
       }
     },
     methods: {
       openNavItems () {
-        console.log('click')
         this.isMenuNavItemOpen = !this.isMenuNavItemOpen
       }
     }
@@ -98,7 +97,6 @@ toolbar-height-mobile = 56px
   left -50%
   width 200px
   padding: 12px 0px;
-  z-index: 22;
   background #0F202D
   // visibility collapse
 .dropdown-content ul
@@ -106,7 +104,6 @@ toolbar-height-mobile = 56px
   list-style-type none
   text-align center
   position relative
-  z-index: 23;
 .dropdown-content li
   padding-bottom 12px
   text-decoration none

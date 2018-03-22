@@ -173,8 +173,8 @@
           'ARMA UN EQUIPO': {
             items: [
               {name: 'JUGADORES', color:'#EA504C', type: 'normal'},
-              {name: 'EQUIPO', color:'#67A6F0', type: 'normal'},
-              {name: 'FIXTURE', color:'#25BF89', type: 'normal'}
+              {name: 'EQUIPO', color:'#67A6F0', type: 'normal'}
+              // {name: 'FIXTURE', color:'#25BF89', type: 'normal'}
             ]
           },
           'MI PERFIL': {

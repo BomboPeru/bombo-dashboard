@@ -43,9 +43,9 @@ toolbar-height-mobile = 56px
   background #0F202D
   width 100%
   position relative
-  /*top 0*/
-  /*left 0*/
   height toolbar-height
+  z-index: 99
+
 .menu-btn
   display none
 .img-container

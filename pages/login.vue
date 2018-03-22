@@ -36,7 +36,7 @@
        </div>
 
        <div class="signup-section">
-         <div style="width: 60%; display: inline-block;" class="signup-info">
+         <div style="width: 50%; display: inline-block;" class="signup-info">
            Si no tienes una cuenta, registrate ahora y disfruta de una experiencia de jugar en bombo
          </div>
          <div style="display: inline-block; float: right">
@@ -247,6 +247,27 @@
       margin-bottom 50px
     #login
       height 100%
+    .content
+      padding-left 25px
+      padding-right 25px
+      padding-top 20px
+      padding-bottom 20px
+    .label
+      margin-left 0
+      margin-right 0
+    .input-text
+      width 100%
+      margin-top 10px
+      margin-bottom 20px
+      margin-left 0
+      margin-right 0
+    .signup-section
+      margin-top 22px
+      margin-bottom 32px
+      margin-left 10px
+      margin-right 10px
+
+
   @media screen and (min-height: 501px)
     .card-login
       position absolute

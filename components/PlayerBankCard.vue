@@ -192,22 +192,6 @@
     background #fafafa
     overflow hidden
 
-  //  width 100px
-  //  white-space: nowrap;
-  //  overflow: hidden;
-  //  text-overflow: ellipsis;
-  @media screen and (max-width: 1222px)
-    .title
-      display: inline-block !important
-      width: 150px;
-
-
-  @media screen and (max-width: 1023px)
-    .title
-      display none !important
-    .round-card
-      width 100%
-      // max-height calc(100vh - 100px)
 
   .header
     width 100%
@@ -266,13 +250,33 @@
     width 21%
   .h-position
     width 15%
+
+  //  width 100px
+  //  white-space: nowrap;
+  //  overflow: hidden;
+  //  text-overflow: ellipsis;
+  @media screen and (max-width: 1222px)
+    .title
+      display: inline-block !important
+      width: 150px;
+
+  @media screen and (max-width: 1023px)
+    .title
+      display none !important
+    .round-card
+      width 100%
+    // max-height calc(100vh - 100px)
+    .content
+      height calc(100vh - 231px)
+
   @media screen and (max-width: 500px)
     .h-name
       width 36%
     .h-status
       width 12%
     .h-popularity
-      width 2%
+      display inline-block
+      width 30px
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
@@ -280,6 +284,8 @@
       width 12%
     .h-position
       width 20%
+    .player-bank-card
+      border-radius 0
 
 
 </style>

@@ -329,16 +329,25 @@
       width 8% !important
     .responsive-playername-bk
       width 22% !important
+      font-size 12px
     .responsive-status-bk
       position relative
       width 4% !important
     .responsive-popularity-bk
-      width 6% !important
+      width 8% !important
+      font-size 12px
     .responsive-cost-bk
-      width 15% !important
+      width 13% !important
+      font-size 12px
+      text-align right
+    .fa-money-bill-alt
+      display none
     .right-cover
       width 21% !important
-
+    .title
+      font-size 12px
+    .subtitle
+      font-size 10px
 
   .portero span
     background #67A6F0

@@ -24,9 +24,9 @@
           <button :class="['tab', 'elevation', activeTab===i?'activeTab':'inactiveTab', 'tab-'+i]"
                   v-for="(tab, i) in tabs"
                   @click="toggleTab(i)"
-                  :key="i+'-tab'" style="width: 110px;">
+                  :key="i+'-tab'">
             <i :class="['fas', tab.icon]"></i>
-            {{ tab.name }}
+            <span class="tab-text">{{ tab.name }}</span>
           </button>
         </div>
 
@@ -85,10 +85,14 @@
 
       <template v-else-if="tabs[activeTab].name === 'FORMACION'">
         <div class="ground-container">
-          <div style="text-align: center; overflow: hidden;" class="stadium-container">
-            <img src="/team_resources/cancha_4.png" alt="" class="soccer-ground" width="130%" height="140%">
-            <!--<img src="../assets/img/cancha.png" alt="" width="100%">-->
+
+          <div class="stadium-container">
+
+            <img src="/team_resources/soccer_field.png" alt="" class="soccer-ground-full" width="100%" height="90%">
+            <img src="/team_resources/half_soccer_field_b.png" alt="" class="soccer-ground-half" width="100%" height="90%">
+
           </div>
+
           <div class="players-layer" ref="playersLayer">
 
             <div class="portero-section">
@@ -264,6 +268,7 @@
     display inline-block
     text-align: center;
     margin 8px 12px
+
   @media screen and (max-width: 360px)
     margin 8px 0px
 
@@ -280,7 +285,8 @@
     font-size 14px
     outline none
     height 40px
-    width: 50px;
+    width 110px
+
   .tab-0
     border-top-left-radius 6px
     border-bottom-left-radius 6px
@@ -309,35 +315,30 @@
     font-weight bold
     font-family Titillium Web
 
-  @media screen and (max-width: 360px)
-    .header-title span
-      font-size 12px
-
-  .line
-    width 100%
-    background #25BF89
-    height 4px
+  .tab-text
+    display inline-block
 
   .empty-players
     padding 20px 5px
     font-family Titillium Web
     text-align center
-    height calc(100vh - 343px)
+    height calc(100vh - 340px)
     // height calc(100vh - 457px)
 
   .player-list
     // margin-top 14px
-    height calc(100vh - 343px)
+    height calc(100vh - 340px)
     // height calc(100vh - 457px)
     overflow-y: auto;
 
-  @media screen and (max-width: 1023px)
-    .player-list
-      height calc(100vh - 398px)
-      // height calc(100vh - 509px)
-    .empty-players
-      height calc(100vh - 398px)
-      // height calc(100vh - 509px)
+
+  .ground-container
+    padding 15px 15px
+    position relative
+    height calc(100vh - 340px)
+    // height calc(100vh - 457px)
+    overflow-y: auto;
+
 
   .input-text
     display inline-block
@@ -365,15 +366,43 @@
   .saldo span
     color white
 
-  .ground-container
-    padding 15px 15px
-    position relative
-    height calc(100vh - 343px)
-    // height calc(100vh - 457px)
-    overflow-y: auto;
+
   @media screen and (max-width: 1023px)
+    .player-list
+      height calc(100vh - 310px)
+      // height calc(100vh - 398px)
+      // height calc(100vh - 509px)
+    .empty-players
+      height calc(100vh - 310px)
+      // height calc(100vh - 398px)
+      // height calc(100vh - 509px)
     .ground-container
-      height calc(100vh - 398px)
+      height calc(100vh - 309px)
+
+  @media screen and (min-width: 1700px)
+    .ground-container
+      margin-top 50px
+      height calc(100vh - 390px)
+
+
+  @media screen and (max-width: 500px)
+    .ground-container
+      height calc(100vh - 310px)
+
+
+  @media screen and (max-width: 500px)
+    .header-title span
+      font-size 12px
+    .tab-text
+      display none
+    .tab
+      width auto
+
+    .line
+      width 100%
+      background #25BF89
+      height 4px
+
 
   .players-layer
     position absolute
@@ -388,16 +417,16 @@
   .delantero-section
     display flex
     flex-wrap wrap
-    height 90px
+    height 60px
     justify-content center
     align-items center
     text-align center
   .portero-section
     margin-top: 30px;
-    height 90px !important
+    height 80px !important
 
   .centrocampista-section
-    height 120px !important
+    height 80px !important
     margin-left: 110px;
     margin-right: 110px;
   .defensa-section
@@ -446,13 +475,21 @@
     text-overflow: ellipsis;
   .soccer-ground
     position: relative;
-    left: -13%;
+  .fas
+    margin-right 2px
+
+  .soccer-ground-half
+    display block
+  .soccer-ground-full
+    display none
 
   @media screen and (max-width: 1023px)
     .close-icon
       display block
-    /*.round-card*/
-      /*width 100%*/
+    .soccer-ground-half
+      display none
+    .soccer-ground-full
+      display block
 
 
   @media screen and (max-width: 600px)
@@ -465,6 +502,19 @@
     .delantero-section
       margin-left: 10px;
       margin-right: 10px;
+
+  @media screen and (max-width: 500px)
+    #new-team-card
+      border-radius 0
+    .header
+      height 40px
+    .header-title
+      line-height 28px
+    .saldo
+      top 8px
+    .tab
+      width 50px
+      font-size 12px
 
   @media screen and (max-width: 415px)
     .close-icon

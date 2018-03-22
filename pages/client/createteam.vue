@@ -373,6 +373,7 @@
     display none
     margin-bottom 18px
     text-align center
+
   .button-create
     /*width 100px*/
     width: 100%;
@@ -404,9 +405,24 @@
       margin 0
     /*.new-team-card*/
     /*margin 0 !important*/
-  @media screen and (max-width: 400px)
+  @media screen and (max-width: 500px)
     #createteam
       display block
+      padding 10px 0 0 0
+    .button-create
+      height 30px
+      line-height 32px
+      font-size 16px
+      width: 96%;
+      margin-left 2%
+      margin-right 2%
+    .mobile-btn-container
+      margin-bottom 8px
+    .new-team-section
+      margin 0 0
+
+
+
 
 
 </style>
