@@ -8,7 +8,7 @@
           <!--<nuxt-link to="/">COMO JUGAR</nuxt-link>-->
           <!--<nuxt-link to="/">CONTÁCTANOS</nuxt-link>-->
           <nuxt-link to="/register" class="register">Regístrate</nuxt-link>
-          <nuxt-link to="/login" class="login">INGRESA AHORA</nuxt-link>
+          <nuxt-link to="/login" class="login elevation">INGRESA AHORA</nuxt-link>
         </div>
       </div>
       <div :class="['menu-btn', !nonLanding?'dark-menu':'white-menu']" >
@@ -60,7 +60,7 @@
 
 <style scoped lang="stylus">
 
-  toolbar-height = 76px
+  toolbar-height = 92px
 
   #toolbar
     background #24323700
@@ -69,6 +69,7 @@
     /*top 0*/
     /*left 0*/
     height toolbar-height
+    z-index 10
   .transparent
     background #24323700
   .dark
@@ -89,7 +90,7 @@
   .links
     display block
     margin-left 150px
-    padding-top 22px
+    padding-top 37px
 
     /*
     display: flex;
@@ -110,10 +111,10 @@
     margin 0 15px
     text-decoration none
     color #131251
-    font-family Titillium Web
-    font-weight bold
-    font-size 16px
-    padding 4px 16px
+    font-family 'Nunito Sans'
+    font-weight 600
+    font-size 14px
+    padding: 10px 19px
   .white-link a
     color white !important
   .dark-link
@@ -126,6 +127,8 @@
     background #01E19F
     // border 2px solid white
     color white !important
+  // .custom-elevation
+
 
   .menu-btn
     cursor pointer
