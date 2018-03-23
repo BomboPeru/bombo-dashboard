@@ -116,8 +116,8 @@ const store = () => {
           return response2.data.data
         } catch (e) {
 
-          console.log(e)
-          return e
+          // console.log(e)
+          throw new Error(e)
         }
       }
     },

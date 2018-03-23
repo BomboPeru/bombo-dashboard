@@ -21,7 +21,7 @@ export default {
       return true
     } catch (e) {
       console.log(e)
-      return e
+      throw new Error(e)
     }
 
   },

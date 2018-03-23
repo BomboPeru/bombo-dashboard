@@ -139,6 +139,7 @@
     height 60px
     justify-content: space-around;
     align-items: center;
+    background: #0e212d;
   .tabs:last-child
     border-radius: 0px 10px 0px 0px;
 
@@ -190,8 +191,8 @@
     font-family Titillium Web
     font-weight bold
     text-align center
-    color #445F69
-    background: transparent;
+    color #fff
+    background: #0e212d;
     border: none;
     font-size: 14px;
     padding: 5px;

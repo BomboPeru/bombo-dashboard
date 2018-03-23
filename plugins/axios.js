@@ -12,9 +12,11 @@ export default function ({ app, store, redirect, error }) {
   app.$axios.onError(e => {
     console.log('request error <<<', typeof e)
     console.log('request error <<<', e.message)
+
     if (store.state.isLoading) store.state.isLoading = false
 
     console.log('request error <<<', e.response)
+
     if (e.response === undefined) {
       error({ message : e.message, statusCode: 500 })
       return

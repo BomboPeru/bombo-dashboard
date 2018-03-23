@@ -31,7 +31,8 @@
     },
     computed: {
       toolbar() {
-        return this.$route.path === '/' || this.$route.path === '/forgotpassword'
+        const routesWithToolbar = ['/', '/forgotpassword', '/faq']
+        return routesWithToolbar.indexOf(this.$route.path) !== -1
       },
       isLoading () {
         return this.$store.state.isLoading

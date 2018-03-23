@@ -19,18 +19,23 @@
               <span class="currency-sign">s/</span>{{amount}}
             </div>
             <div class="slider">
-              <cc-slider width="50%"
-                         color="#EA504C"
-                         colorTooltip="#EA504C"
-                         :min="1"
-                         :max="20"
-                         v-model="amount" class="cc-slider"/>
+              <template v-if="maxLimit > 1">
+                <cc-slider width="50%"
+                           color="#EA504C"
+                           colorTooltip="#EA504C"
+                           :min="1"
+                           :max="maxLimit"
+                           v-model="amount" class="cc-slider"/>
+              </template>
+              <template v-else>
+                <div class="sad-text">No posees suficiente crédito ganado para retirar</div>
+              </template>
             </div>
             <div class="input-container">
               <input-text append-icon="fa-credit-card" solid big v-model="account" placeholder="Número de cuenta"/>
             </div>
             <div class="btn-container">
-              <div class="btn-withdraw">RETIRAR DINERO</div>
+              <div class="btn-withdraw" @click="retire">RETIRAR DINERO</div>
             </div>
           </div>
 
@@ -39,7 +44,7 @@
         <div class="column-b">
           <div class="billing-section">
             <p class="title-b">Historial de transferencias</p>
-            <div class="table-container">
+            <div class="table-container" v-if="historial.length > 0">
               <table class="table elevation" cellspacing="0" cellpadding="0">
                 <thead class="header elevation">
                   <tr>
@@ -58,6 +63,9 @@
                   </tr>
                 </tbody>
               </table>
+            </div>
+            <div v-else class="alert-info">
+              Aun no se tiene registro de transferencias
             </div>
           </div>
         </div>
@@ -83,33 +91,59 @@
     data () {
       return {
         account: '',
-        amount: 5,
+        amount: 0,
+        maxLimit: 0,
         historial: [
-          { number: 0, date: '12/03/18', action: 'DEPOSITO', amount: 's/ 30.00' },
-          { number: 0, date: '12/03/18', action: 'DEPOSITO', amount: 's/ 30.00' },
-          { number: 0, date: '12/03/18', action: 'DEPOSITO', amount: 's/ 30.00' },
-          { number: 0, date: '12/03/18', action: 'DEPOSITO', amount: 's/ 30.00' },
-          { number: 0, date: '12/03/18', action: 'DEPOSITO', amount: 's/ 30.00' },
-          { number: 0, date: '12/03/18', action: 'DEPOSITO', amount: 's/ 30.00' },
-          { number: 0, date: '12/03/18', action: 'DEPOSITO', amount: 's/ 30.00' },
-          { number: 0, date: '12/03/18', action: 'DEPOSITO', amount: 's/ 30.00' },
-          { number: 0, date: '12/03/18', action: 'DEPOSITO', amount: 's/ 30.00' },
-          { number: 0, date: '12/03/18', action: 'DEPOSITO', amount: 's/ 30.00' },
-          { number: 0, date: '12/03/18', action: 'DEPOSITO', amount: 's/ 30.00' },
-          { number: 0, date: '12/03/18', action: 'DEPOSITO', amount: 's/ 30.00' },
-          { number: 0, date: '12/03/18', action: 'DEPOSITO', amount: 's/ 30.00' },
-          { number: 0, date: '12/03/18', action: 'DEPOSITO', amount: 's/ 30.00' },
-          { number: 0, date: '12/03/18', action: 'DEPOSITO', amount: 's/ 30.00' }
+
         ]
       }
     },
-    methods: {}
+    methods: {
+      async retire () {
+
+        // if (this.amount === 0) {
+        //   this.$store.dispatch('turnOnSnackbar', 'INSUFICIENTE SALDO PARA PROCEDER CON EL RETIRO')
+        //   return false
+        // }
+        // if (this.account === '') {
+        //   this.$store.dispatch('turnOnSnackbar', 'NUMERO DE CUENTA REQUERIDO')
+        //   return false
+        // }
+
+        try {
+          const userId = this.$store.getters['auth/getUserId']
+          const response = await this.$axios.$post(`http://api.bombo.pe/api/v2.0/users/${userId}/generate-retire`, {
+            how: 10,
+            account_number: '3333333333330033'
+          })
+
+          console.log('response', response)
+        } catch (e) {
+          this.$store.dispatch('turnOnSnackbar', 'Ahora no se puede proceder con la transferencia. Intente más tarde.')
+          console.log('error', e)
+        }
+
+
+      }
+    },
+    mounted () {
+      this.maxLimit = this.$store.state.current_won_credit
+    }
   }
 </script>
 
 <style scoped lang="stylus">
   /*#matches*/
   /*#billing*/
+  .alert-info
+    background lightblue
+    color #0e212d
+    border-radius 4px
+    font-weight bold
+    font-family Titillium Web
+    text-align center
+    padding 10px 30px
+
   .grid-container
     width 100%
     position relative
@@ -140,6 +174,7 @@
     width 70%
 
   .btn-withdraw
+    cursor pointer
     display inline-block
     border-radius 40px
     padding 4px 20px
@@ -164,6 +199,7 @@
   /*.img-a*/
     /*margin-top 40px*/
     /*margin-bottom 20px*/
+  .sad-text
   .img-a
   .info-a
   .amount
@@ -171,6 +207,10 @@
     font-family 'Nunito Sans'
     color #747474
     font-weight: bold;
+
+  .sad-text
+    color #EA504C
+    font-size: 14px;
 
   .info-a
     font-size: 14px;
