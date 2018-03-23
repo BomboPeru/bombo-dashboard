@@ -179,7 +179,8 @@
   .content-table
     padding-left 8px
     padding-right 10px
-    height calc(100vh - 300px)
+    // height calc(100vh - 300px)
+    height calc(100vh - 226px)
     overflow-y auto
 
   /*.league-select*/

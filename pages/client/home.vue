@@ -240,8 +240,10 @@
     display flex
     flex-wrap wrap
     justify-content center
+    height calc(100vh - 76px)
 
   .grid-container
+    margin-top 20px
     width 80vw
     height calc(100vh - 128px)
     display grid
@@ -446,8 +448,14 @@
       z-index 3
 
 
+
   @media screen and (max-width: 600px)
+
+    #home
+      height auto
+
     .grid-container
+      margin-top 0
       width 100%
       display grid
       grid-template-columns 100%

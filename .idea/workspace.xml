@@ -8,11 +8,6 @@
     <list default="true" id="bf24282d-3075-4fc1-a7e6-a1352eba2675" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change beforePath="$PROJECT_DIR$/components/RankingBoard.vue" afterPath="$PROJECT_DIR$/components/RankingBoard.vue" />
-      <change beforePath="$PROJECT_DIR$/components/RankingPlayerRowCard.vue" afterPath="$PROJECT_DIR$/components/RankingPlayerRowCard.vue" />
-      <change beforePath="$PROJECT_DIR$/components/RankingRowCard.vue" afterPath="$PROJECT_DIR$/components/RankingRowCard.vue" />
-      <change beforePath="$PROJECT_DIR$/components/SelectLeagueDialog.vue" afterPath="$PROJECT_DIR$/components/SelectLeagueDialog.vue" />
-      <change beforePath="$PROJECT_DIR$/components/Toolbar.vue" afterPath="$PROJECT_DIR$/components/Toolbar.vue" />
-      <change beforePath="$PROJECT_DIR$/nuxt.config.js" afterPath="$PROJECT_DIR$/nuxt.config.js" />
       <change beforePath="$PROJECT_DIR$/pages/client/home.vue" afterPath="$PROJECT_DIR$/pages/client/home.vue" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -27,11 +22,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="home.vue" pinned="false" current-in-tab="false">
+      <file leaf-file-name="home.vue" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/pages/client/home.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="445">
-              <caret line="232" column="16" lean-forward="false" selection-start-line="232" selection-start-column="16" selection-end-line="232" selection-end-column="16" />
+            <state relative-caret-position="377">
+              <caret line="454" column="17" lean-forward="true" selection-start-line="454" selection-start-column="17" selection-end-line="454" selection-end-column="17" />
               <folding>
                 <element signature="n#style#0;n#td#0;n#tr#0;n#tbody#0;n#table#0;n#div#1;n#div#0;n#div#1;n#div#0;n#div#3;n#div#0;n#div#0;n#template#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#td#1;n#tr#0;n#tbody#0;n#table#0;n#div#1;n#div#0;n#div#1;n#div#0;n#div#3;n#div#0;n#div#0;n#template#0;n#!!top" expanded="true" />
@@ -41,10 +36,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="RankingRowCard.vue" pinned="false" current-in-tab="true">
+      <file leaf-file-name="RankingRowCard.vue" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/components/RankingRowCard.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="120">
+            <state relative-caret-position="-1523">
               <caret line="5" column="45" lean-forward="false" selection-start-line="5" selection-start-column="45" selection-end-line="5" selection-end-column="45" />
               <folding />
             </state>
@@ -55,7 +50,7 @@
         <entry file="file://$PROJECT_DIR$/components/StatusBar.vue">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="456">
-              <caret line="73" column="18" lean-forward="true" selection-start-line="73" selection-start-column="18" selection-end-line="73" selection-end-column="91" />
+              <caret line="73" column="18" lean-forward="false" selection-start-line="73" selection-start-column="18" selection-end-line="73" selection-end-column="91" />
               <folding />
             </state>
           </provider>
@@ -64,8 +59,8 @@
       <file leaf-file-name="RankingBoard.vue" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/components/RankingBoard.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="192">
-              <caret line="41" column="39" lean-forward="false" selection-start-line="41" selection-start-column="35" selection-end-line="41" selection-end-column="39" />
+            <state relative-caret-position="445">
+              <caret line="182" column="30" lean-forward="false" selection-start-line="182" selection-start-column="30" selection-end-line="182" selection-end-column="30" />
               <folding />
             </state>
           </provider>
@@ -124,7 +119,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>link-question</find>
       <find>.info-a</find>
       <find>next-btn</find>
       <find>isDate</find>
@@ -149,11 +143,12 @@
       <find>ranking-container</find>
       <find>ranking-list-container</find>
       <find>300px</find>
-      <find>text-container</find>
       <find>league-select</find>
       <find>username</find>
       <find>ellipsis</find>
       <find>header-table</find>
+      <find>text-container</find>
+      <find>grid-container</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -216,9 +211,9 @@
         <option value="$PROJECT_DIR$/nuxt.config.js" />
         <option value="$PROJECT_DIR$/components/Toolbar.vue" />
         <option value="$PROJECT_DIR$/components/RankingPlayerRowCard.vue" />
-        <option value="$PROJECT_DIR$/pages/client/home.vue" />
-        <option value="$PROJECT_DIR$/components/RankingBoard.vue" />
         <option value="$PROJECT_DIR$/components/RankingRowCard.vue" />
+        <option value="$PROJECT_DIR$/components/RankingBoard.vue" />
+        <option value="$PROJECT_DIR$/pages/client/home.vue" />
       </list>
     </option>
   </component>
@@ -423,14 +418,7 @@
       <workItem from="1521390149645" duration="124274000" />
       <workItem from="1521680490260" duration="10039000" />
       <workItem from="1521728255952" duration="27376000" />
-      <workItem from="1521762200671" duration="30487000" />
-    </task>
-    <task id="LOCAL-00045" summary="fix variable date&#10;nombres y apellidos?">
-      <created>1521181457498</created>
-      <option name="number" value="00045" />
-      <option name="presentableId" value="LOCAL-00045" />
-      <option name="project" value="LOCAL" />
-      <updated>1521181457498</updated>
+      <workItem from="1521762200671" duration="30876000" />
     </task>
     <task id="LOCAL-00046" summary="register redirect to /client/teams">
       <created>1521183795750</created>
@@ -768,11 +756,18 @@
       <option name="project" value="LOCAL" />
       <updated>1521786218587</updated>
     </task>
-    <option name="localTasksCounter" value="94" />
+    <task id="LOCAL-00094" summary="improving home, rankingboard">
+      <created>1521798748501</created>
+      <option name="number" value="00094" />
+      <option name="presentableId" value="LOCAL-00094" />
+      <option name="project" value="LOCAL" />
+      <updated>1521798748501</updated>
+    </task>
+    <option name="localTasksCounter" value="95" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="850188000" />
+    <option name="totallyTimeSpent" value="850577000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="54" y="-4" width="1867" height="1092" extended-state="6" />
@@ -829,7 +824,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="fix flujo create team" />
     <MESSAGE value="toolbar ranking board" />
     <MESSAGE value="removing vendor vue-select" />
     <MESSAGE value="removing requests part II&#10;adding link to /client/teams from bombo image" />
@@ -854,7 +848,8 @@
     <MESSAGE value="endpoint fix, validation credit card" />
     <MESSAGE value="validation input card number" />
     <MESSAGE value="form ranking, billing" />
-    <option name="LAST_COMMIT_MESSAGE" value="form ranking, billing" />
+    <MESSAGE value="improving home, rankingboard" />
+    <option name="LAST_COMMIT_MESSAGE" value="improving home, rankingboard" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1193,20 +1188,8 @@
         <state relative-caret-position="354">
           <caret line="62" column="0" lean-forward="false" selection-start-line="62" selection-start-column="0" selection-end-line="62" selection-end-column="0" />
           <folding>
-            <element signature="n#style#0;n#td#0;n#tr#0;n#tbody#0;n#table#0;n#div#0;n#template#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#td#2;n#tr#0;n#tbody#0;n#table#0;n#div#0;n#template#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pages/client/home.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="445">
-          <caret line="232" column="16" lean-forward="false" selection-start-line="232" selection-start-column="16" selection-end-line="232" selection-end-column="16" />
-          <folding>
-            <element signature="n#style#0;n#td#0;n#tr#0;n#tbody#0;n#table#0;n#div#1;n#div#0;n#div#1;n#div#0;n#div#3;n#div#0;n#div#0;n#template#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#td#1;n#tr#0;n#tbody#0;n#table#0;n#div#1;n#div#0;n#div#1;n#div#0;n#div#3;n#div#0;n#div#0;n#template#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#td#2;n#tr#0;n#tbody#0;n#table#0;n#div#1;n#div#0;n#div#1;n#div#0;n#div#3;n#div#0;n#div#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#td#0;n#tr#0;n#tbody#0;n#table#0;n#div#0;n#template#0;n#!!top" expanded="false" />
+            <element signature="n#style#0;n#td#2;n#tr#0;n#tbody#0;n#table#0;n#div#0;n#template#0;n#!!top" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1214,24 +1197,36 @@
     <entry file="file://$PROJECT_DIR$/components/StatusBar.vue">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="456">
-          <caret line="73" column="18" lean-forward="true" selection-start-line="73" selection-start-column="18" selection-end-line="73" selection-end-column="91" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/components/RankingBoard.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="192">
-          <caret line="41" column="39" lean-forward="false" selection-start-line="41" selection-start-column="35" selection-end-line="41" selection-end-column="39" />
+          <caret line="73" column="18" lean-forward="false" selection-start-line="73" selection-start-column="18" selection-end-line="73" selection-end-column="91" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/components/RankingRowCard.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
+        <state relative-caret-position="-1523">
           <caret line="5" column="45" lean-forward="false" selection-start-line="5" selection-start-column="45" selection-end-line="5" selection-end-column="45" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/components/RankingBoard.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="445">
+          <caret line="182" column="30" lean-forward="false" selection-start-line="182" selection-start-column="30" selection-end-line="182" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pages/client/home.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="377">
+          <caret line="454" column="17" lean-forward="true" selection-start-line="454" selection-start-column="17" selection-end-line="454" selection-end-column="17" />
+          <folding>
+            <element signature="n#style#0;n#td#0;n#tr#0;n#tbody#0;n#table#0;n#div#1;n#div#0;n#div#1;n#div#0;n#div#3;n#div#0;n#div#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#td#1;n#tr#0;n#tbody#0;n#table#0;n#div#1;n#div#0;n#div#1;n#div#0;n#div#3;n#div#0;n#div#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#td#2;n#tr#0;n#tbody#0;n#table#0;n#div#1;n#div#0;n#div#1;n#div#0;n#div#3;n#div#0;n#div#0;n#template#0;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
