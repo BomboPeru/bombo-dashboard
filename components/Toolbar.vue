@@ -2,7 +2,7 @@
     <div id="toolbar" class="elevation">
       <div class="img-container">
         <nuxt-link to="/client/teams">
-          <img src="../assets/bombo_transparency.png" alt="">
+          <img src="/landing/bombo_all_white.svg" alt="">
         </nuxt-link>
       </div>
       <div class="menu-btn">
@@ -55,6 +55,7 @@ toolbar-height-mobile = 56px
   display inline-block
   position relative
 .img-container img
+  height: 42px
   position absolute
   top 50%
   transform translateY(-50%)

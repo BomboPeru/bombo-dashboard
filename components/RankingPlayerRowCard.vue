@@ -3,9 +3,9 @@
       <table width="98%" class="table">
         <tbody>
           <tr class="tr">
-            <td style="width: 10%">{{ player.ranking }}</td>
+            <td style="width: 10%" class="ranking">{{ index + 1 }}</td>
             <td style="width: 40%" class="name">{{ player.name }}</td>
-            <td style="width: 25%">{{ player.points }} pts</td>
+            <td style="width: 25%" class="cost">$ {{ player.cost }} M</td>
             <td style="width: 25%" class="position">{{ position }}</td>
           </tr>
         </tbody>
@@ -18,6 +18,7 @@
   export default {
     name: 'ranking-player-row-card',
     props: {
+      index: Number,
       player: Object,
       width: {
         type: String,
@@ -56,6 +57,14 @@
     display inline-block
     position relative
     z-index 3
+
+  .ranking
+    font-size 22px
+    font-weight bold
+    font-family 'Nunito Sans'
+    color #445dcc
+  .cost
+    font-weight bold
 
   .table
     position relative

@@ -11,7 +11,10 @@
               <li v-for="(item, i) in leagues" :key="i"
                   :class="['card-league', 'elevation', 'rounded', item.coming_soon===true?'blurred':'']"
                   @click="onClickLeague(item)">
-                <img :src="item.image===''? '/leagues/premier_league.png':item.image" alt="" @click="selectLeague(item)">
+                <img :src="item.photo===''? '/leagues/premier_league.png':item.photo" alt="" @click="selectLeague(item)">
+                <div class="title-container">
+                  {{ item.name }}
+                </div>
               </li>
             </ul>
           </div>
@@ -94,6 +97,7 @@
     border-radius: 10px 10px 0px 0px
   .card-header-line
     background #EA504C
+    height 5px
   .content ul
     list-style-type none
   .content ul
@@ -113,10 +117,22 @@
     display inline-block
     position relative
     margin 5px 5px
+  .title-container
+    height 30px
+    line-height 30px
+    position absolute
+    bottom 0
+    left 0
+    right 0
+    background rgba(234, 80, 76, 0.92)
+    color white
+    text-align center
+    font-family Titillium Web
+
   .blurred
     filter blur(0.4)
   .card-league img
-    width 250px
+    height 122px
   .card-container
     max-width 620px
     max-height 80vh

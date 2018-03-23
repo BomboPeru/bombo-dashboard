@@ -12,18 +12,18 @@
 
           <img src="/home/player.png" alt="" class="player-img">
 
-          <div class="text-container">
+          <div class="text-container" v-if="rankingPlayers.length > 0">
             <p>
               JUGADOR DE LA SEMANA
             </p>
             <p class="top-player-name">
-              {{ player.name }}
+              {{ rankingPlayers[0].name }}
             </p>
             <p>
-              PUNTOS
+              COSTO
             </p>
             <p class="top-player-points">
-              {{ player.points }}
+              $ {{ rankingPlayers[0].cost }} M
             </p>
           </div>
 
@@ -48,6 +48,7 @@
             </div>
           </div>
         </div>
+
         <div class="ranking-top-players custom-elevation">
           <svg class="svg"
                width="100%"
@@ -56,19 +57,25 @@
                preserveAspectRatio="none"
                viewBox="0 0 100 100">
 
-            <polygon points="0,100 0,60 80,20 100,80 100,100"  :style="{ fill: '#81A4AC' }"/>
+            <polygon points="0,100 0,60 80,20 100,80 100,100"  :style="{ fill: '#445dcc' }"/>
           </svg>
 
           <div class="ranking-container">
-            <p class="top-players">TOP 10 JUGADORES DE LA SEMANA</p>
+            <div class="header-section">
+              <p class="top-players">Top 10 jugadores de la semana</p>
+            </div>
+
             <div class="ranking-list-container">
               <div style="text-align: center;" v-for="(player, i) in rankingPlayers" :key="i+'-player-ranking'">
                 <ranking-player-row-card :player="player"
+                                         :index="i"
+                                         width="90%"
                                          class="ranking-player"/>
               </div>
             </div>
           </div>
         </div>
+
         <div class="next-matches-card custom-elevation">
           <svg class="svg"
                width="100%"
@@ -77,19 +84,45 @@
                preserveAspectRatio="none"
                viewBox="0 0 100 100">
 
-            <polygon points="50,10 58,0 100,0 100,30 90,45"  :style="{ fill: '#C8FF74' }"/>
+            <polygon points="50,10 58,0 100,0 100,30 90,45"  :style="{ fill: '#FF6565' }"/>
           </svg>
 
           <div class="next-matches-container">
-            <p class="title-next-matches">PROXIMAS FECHAS</p>
-            <div class="time-number">{{ number }}</div>
+            <div class="header-section elevation">
+              <p class="title-next-matches">Próxima fecha de </p>
+              <select v-model="league" class="league-select">
+                <option disabled :value="null">Selecciona una liga</option>
+
+                <option :value="league" v-for="(league, i) in leagues"
+                        :key="i+'-league'">{{ league.name }}</option>
+              </select>
+
+              <div class="time-number">{{ number }}</div>
+            </div>
+
             <div class="matches-card-section">
-              <match-card v-for="(match, i) in matches" :key="i"
-                          :match="match" :time="match.time"
-                          width="250px"
-                          :date="match.playing_day"
-                          class="match-card"
-                          notPlayed/>
+              <div v-for="(match, i) in matches" :key="i"
+                   class="mini-match-card elevation"
+                   :match="match"
+                   :time="match.time"
+                   width="250px"
+                   :date="match.playing_day"
+                   notPlayed>
+
+                <div class="mmc-top-title">{{ formatDate(match.playing_day) }}</div>
+                <div class="mmc-title">
+                  <table width="100%">
+                    <tbody>
+                    <tr>
+                      <td style="width: 40%">{{ match.away_name }} </td>
+                      <td style="width: 20%" class="vs">vs</td>
+                      <td style="width: 40%">{{ match.home_name }}</td>
+                    </tr>
+                    </tbody>
+                  </table>
+
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -105,59 +138,75 @@
     name: 'home',
     layout: 'dashboard',
     components: { MatchCard, RankingPlayerRowCard },
+    computed: {
+      leagues () {
+        return this.$store.state.leagues
+      },
+      league: {
+        get () {
+          return this.leagueObj
+        },
+        set (value) {
+          this.leagueObj = value
+          this.fetchLastMatches()
+        }
+      }
+    },
     data () {
       return {
         user: {},
-        leagues: [],
+        leagueObj: null,
         player: { name: 'No Name', points: 24 },
         number: 0,
         matches: [],
-        rankingPlayers: [
-          { position: 'goal_keeper', name: 'Julito Sans', points: 23, ranking: 1 },
-          { position: 'defender', name: 'Julito Sans', points: 13, ranking: 1 },
-          { position: 'mid_fielder', name: 'Julito Sans', points: 48, ranking: 1 },
-          { position: 'forward', name: 'Julito Sans', points: 33, ranking: 1 },
-          { position: 'forward', name: 'Julito Sans', points: 33, ranking: 1 },
-          { position: 'forward', name: 'Julito Sans', points: 33, ranking: 1 },
-          { position: 'forward', name: 'Julito Sans', points: 33, ranking: 1 },
-          { position: 'forward', name: 'Julito Sans', points: 33, ranking: 1 },
-          { position: 'forward', name: 'Julito Sans', points: 33, ranking: 1 },
-          { position: 'forward', name: 'Julito Sans', points: 33, ranking: 1 }
-        ]
+        rankingPlayers: []
       }
     },
-    mounted () {
-      this.user = this.$store.getters['user']
-      const self = this
+    methods: {
+      formatDate (value) {
+        const date = new Date(value)
+        const day = (date.getDate().toString()).padStart(2, '0')
+        const month = ((date.getMonth() + 1).toString()).padStart(2, '0')
+        return `${day} / ${month} / ${date.getFullYear()}`
+      },
+      async fetchLastMatches () {
+        const leagueId = this.leagueObj.id
+        {
+          let response = await this.$axios.$get(`http://api.bombo.pe/api/v2.0/matches/${leagueId}/current-time`)
+          this.number = response.data.number
+        }
+        {
+          let response = await this.$axios.$get(`http://api.bombo.pe/api/v2.0/matches/${leagueId}/current-matches`)
+          this.matches = response.data
+        }
+      },
+      async fetchRankingPlayers () {
+        {
+          let response = await this.$axios.$get('http://api.bombo.pe/api/v2.0/players/top-ten')
+          console.log('response', response)
+          this.rankingPlayers = response.data
+        }
+
+      }
+    },
+    beforeCreate() {
 
       this.$axios.get('http://api.bombo.pe/api/v2.0/leagues/all')
         .then(res => {
-          const leagues = res.data.data
           this.$store.state.leagues = res.data.data
-
-          const currentDate = new Date()
-          const premier_league = leagues[0]
-          let time = 0
-
-          for (let i = 0; i < premier_league.matches.length; i++) {
-            const playingDate = new Date(premier_league.matches[i].playing_day)
-            if (playingDate.getTime() > currentDate.getTime()) {
-              time = premier_league.matches[i].time
-              self.number = time
-              break
-            }
-          }
-          for (let i = 0; i < premier_league.matches.length; i++) {
-            if (time === premier_league.matches[i].time) {
-              self.matches.push(premier_league.matches[i])
-            }
-          }
-
+          this.leagueObj = res.data.data[0]
+          this.fetchLastMatches()
+          this.fetchRankingPlayers()
         })
         .catch(e => {
           // window.$nuxt.error({ statusCode, message })
           console.log('>> e ', e.toString())
         })
+    },
+    mounted () {
+      this.user = this.$store.getters['user']
+      const self = this
+
     }
   }
 </script>
@@ -167,14 +216,21 @@
   .custom-elevation
     box-shadow 0 3px 16px rgba(0, 0, 0, .16), 0 10px 32px rgba(0, 0, 0, 0.02)
 
+
+  .best-player-card
+    background #0e212d
   .text-container
     position relative
     z-index 3
     margin 12px 10px
+    color white
   .text-container p
     text-align right
+    padding-right 20px
+    font-size 12px
   .text-container .top-player-name
-    padding-right 130px
+    padding-right 20px
+    font-size 24px
   .text-container .top-player-points
     font-size 44px
     font-weight bold
@@ -200,6 +256,8 @@
     margin 10px
     position relative
     font-family 'Nunito Sans'
+    border-radius 6px
+    overflow hidden
 
 
   .best-player-card
@@ -271,45 +329,91 @@
     border-radius 40px
     color white
 
+  .header-section
+    background #0F202D
+    height 40px
+    line-height 40px
+    color white
+    padding-left 20px
+
   .title-next-matches
-    margin-top 20px
-    margin-left 20px
+  .league-select
+  .time-number
+    font-family Raleway
+    font-weight bold
+    color #d1d1d1
+
+
+  .title-next-matches
+    font-size 14px
+    display inline-block
+
+  .league-select
+    margin-left 3px
+    outline none
+    font-size 14px
+    border 0
+    background #0F202D
 
   .time-number
     position absolute
-    top -20px
+    top 0
     right 20px
-    color black
-    font-family 'Nunito Sans'
+    color white
     font-weight bold
-    font-size 120px
+    font-size 22px
 
   .matches-card-section
     width 100%
     display flex
     flex-wrap wrap
     justify-content: center
-    align-items start
-    height calc(70vh - 280px)
+    /*align-items start*/
+    height calc(70vh - 153px)
     overflow auto
-    margin-top 120px
-  .match-card
-    margin 10px 20px
+
+  .mini-match-card
+    background #0F202D
+    font-family 'Raleway'
+    display inline-block
+    padding 4px 4px
+    border-radius 4px
+    margin 4px 4px
+    width 220px
+    text-align center
+
+  .mmc-title
+  .mmc-top-title
+    text-transform uppercase
+
+  .mmc-top-title
+    margin-bottom 4px
+    padding-bottom 4px
+    margin-top 4px
+    font-size 12px
+    color #ffffffd9
 
 
+  .mmc-title
+    font-weight: bold;
+    font-size 14px
+    color rgba(255, 255, 255, 0.76)
+
+  .vs
+    font-size 12px
+    text-transform lowercase
   .ranking-player
     margin 4px 2px
 
   .ranking-list-container
     overflow auto
     text-align center
-    height calc(70vh - 200px)
+    height calc(70vh - 152px)
 
   .top-players
     text-align left
-    margin-top 20px
-    margin-bottom 40px
-    margin-left 20px
+    font-size 14px
+    font-family 'Raleway'
 
 
   @media screen and (min-width: 1700px)
@@ -338,6 +442,8 @@
     .ranking-container
       height: 100%;
       overflow: auto;
+      position relative
+      z-index 3
 
 
   @media screen and (max-width: 600px)
@@ -360,8 +466,6 @@
       overflow: auto;
       height 525px
       margin-top 31px
-    .time-number
-      font-size 55px
 
     .current-points-card
       grid-column-start 1

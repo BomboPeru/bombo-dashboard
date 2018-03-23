@@ -21,17 +21,17 @@
       </div>
 
       <div class="header-table">
-        <table>
-          <thead>
-            <tr>
-              <th v-for="(item, i) in headers"
-                  :key="i+'-ranking-header'"
-                  class="header-item">
-                {{ item }}
-              </th>
-            </tr>
-          </thead>
-        </table>
+        <!--<table>-->
+          <!--<thead>-->
+            <!--<tr>-->
+              <!--<th v-for="(item, i) in headers"-->
+                  <!--:key="i+'-ranking-header'"-->
+                  <!--class="header-item">-->
+                <!--{{ item }}-->
+              <!--</th>-->
+            <!--</tr>-->
+          <!--</thead>-->
+        <!--</table>-->
       </div>
 
       <template v-if="isRanking">
@@ -108,7 +108,7 @@
         this.$store.state.isShortLoading = true
 
         let response = await this.$axios.$get(`http://api.bombo.pe/api/v2.0/global/ranking/${leagueId}/${timeId}`)
-        this.ranking = response.data
+        this.ranking = response.data.reverse()
 
         this.$store.state.isShortLoading = false
       },
@@ -158,6 +158,7 @@
   .header-table
     padding-left 8px
     padding-right 10px
+    margin-bottom 10px
   .header-table table
     width 100%
   .header-item
