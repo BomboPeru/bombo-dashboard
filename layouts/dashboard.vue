@@ -17,8 +17,9 @@
 
     <sign-out-dialog @onCollapse="onCollapseSignoutDialog"
                      :is-open="isSignoutDialog"/>
+
     <select-league-dialog
-      :is-open="isSelectLeagueDialog"/>
+      v-if="isSelectLeagueDialog"/>
 
     <select-time-dialog :is-open="isSelectTimeDialog"/>
 

@@ -77,18 +77,24 @@
                       <div class="card-number-label">Número de tarjeta</div>
 
                       <i :class="['fab', iconCC, 'card-type-icon']"></i>
-                      <input type="number" class="card-number" v-model="creditInfo.card_number">
+                      <input type="text" class="card-number" @keypress="onKeyDown($event, 19)" v-model="cardNumber">
                     </div>
 
                     <div class="exp-cvc-container">
                       <div class="exp-container">
                         <div class="exp-cvc-label">Fecha de expiración</div>
-                        <input class="month" placeholder="MMMM" type="number" v-model="creditInfo.expiration_month">
-                        <input class="year" placeholder="YYYY" type="number" v-model="creditInfo.expiration_year">
+                        <input class="month" placeholder="MM" type="text"
+                               @keypress="onKeyDown($event, 2)"
+                               v-model="creditInfo.expiration_month">
+                        <input class="year" placeholder="YYYY" type="text"
+                               @keypress="onKeyDown($event, 4)"
+                               v-model="creditInfo.expiration_year">
                       </div>
                       <div class="cvc-container">
                         <div class="exp-cvc-label">CVV/CVC</div>
-                        <input class="cvv" placeholder="CVC" type="number"  v-model="creditInfo.cvv">
+                        <input class="cvv" placeholder="CVC" type="text"
+                               @keypress="onKeyDown($event, 3)"
+                               v-model="creditInfo.cvv">
                       </div>
                     </div>
                   </div>
@@ -116,6 +122,20 @@
       isOpen: { type: Boolean, default: false }
     },
     methods: {
+      onKeyDown(evt, limit){
+
+        if (evt.keyCode < 48 || evt.keyCode >= 57) {
+          evt.preventDefault()
+          return
+        }
+
+        if (evt.target.value.length > (limit-1)) {
+          if (evt.keyCode >= 48 && evt.keyCode <= 90) {
+              evt.preventDefault()
+              return
+          }
+        }
+      },
       nextPlan () {
         if (this.planSelected !== this.plans.length - 1) {
           this.planSelected += 1
@@ -171,6 +191,19 @@
       }
     },
     computed: {
+      cardNumber: {
+        get () {
+          return this.creditInfo.card_number
+        },
+        set (value) {
+          // let value = this.creditInfo.card_number
+          if (value.length === 4 || value.length === 9 || value.length === 14) {
+            value += '-'
+          }
+
+          this.creditInfo.card_number = value
+        }
+      },
       ccFormatted: {
         get () {
           return this.cardNumber

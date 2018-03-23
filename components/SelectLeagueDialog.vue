@@ -1,5 +1,5 @@
 <template>
-    <div id="select-league-dialog" v-if="isOpen">
+    <div id="select-league-dialog">
       <dialog-container @closeDialog="closeDialog" :fixed="false">
         <div class="elevation rounded card-container">
           <div class="card-header--primary header-content-center elevation">
@@ -27,9 +27,6 @@
     name: 'select-league-dialog',
     components: {
       DialogContainer
-    },
-    props: {
-      isOpen: { type: Boolean, default: false }
     },
     computed: {
       leagues () {
@@ -68,14 +65,17 @@
     },
     mounted () {
 
-      this.$axios.get('http://api.bombo.pe/api/v2.0/leagues/all')
-        .then(res => {
-          this.$store.state.leagues = res.data.data
-        })
-        .catch(e => {
-          // window.$nuxt.error({ statusCode, message })
-          console.log('>> e ', e.toString())
-        })
+      if (this.$store.state.leagues.length === 0) {
+        this.$axios.get('http://api.bombo.pe/api/v2.0/leagues/all')
+          .then(res => {
+            this.$store.state.leagues = res.data.data
+          })
+          .catch(e => {
+            // window.$nuxt.error({ statusCode, message })
+            console.log('>> e ', e.toString())
+          })
+      }
+
     }
   }
 </script>

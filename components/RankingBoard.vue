@@ -104,9 +104,10 @@
       },
       async fetchRanking () {
         const timeId = this.timeObj.id
+        const leagueId = this.leagueObj.id
         this.$store.state.isShortLoading = true
 
-        let response = await this.$axios.$get('http://api.bombo.pe/api/v2.0/global/ranking/' + timeId)
+        let response = await this.$axios.$get(`http://api.bombo.pe/api/v2.0/global/ranking/${leagueId}/${timeId}`)
         this.ranking = response.data
 
         this.$store.state.isShortLoading = false

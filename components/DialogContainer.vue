@@ -44,7 +44,7 @@
     left 0
     width 100%
     height 100vh
-    z-index: 999
+    z-index: 800
     display flex
     justify-content center
     align-items center
