@@ -1,18 +1,36 @@
 <template>
   <div id="index">
     <div class="header">
-      <div class="player-container">
-        <img src="/landing/jugador2.png" alt="" class="player">
-      </div>
-      <div class="content-container">
-        <p class="phrase">
-          El primer daily fantasy peruano donde podrás <span class="highlight">ganar dinero</span>
-        </p>
-        <div class="btn-login"  @click="goToLogin">
-          COMIENZA A GANAR <span class="arrow"> <img src="/landing/arrow_right.svg" alt=""> </span>
+      <div class="grid-container">
+
+        <div class="phrase-container">
+          <p class="phrase">
+            TE BRINDAMOS UNA <span class="highlight">JUGADA GRATIS</span> POR EL PRIMER DEPOSITO!
+          </p>
         </div>
+        <div class="phrase-2-container">
+          <p class="phrase-2">
+            ARMA TU ONCE IDEAL EN BOMBO DE LA PREMIER LEAGUE Y COMPITE CONTRA OTROS
+          </p>
+        </div>
+        <div class="phrase-3-container">
+          <p class="phrase-3">
+            El rendimiento de los once que elijas te hará ganar
+          </p>
+        </div>
+        <div class="phrase-4-container">
+          <div class="btn-login"  @click="goToLogin">
+            COMIENZA A GANAR
+          </div>
+        </div>
+
+        <div class="player-container">
+          <img src="/landing/player_2x.png" alt="" class="player">
+        </div>
+
       </div>
     </div>
+
     <div class="section">
       <p class="text-bg">GANA HASTA 20 VECES</p>
       <div class="blue-bar"></div>
@@ -35,18 +53,77 @@
 </script>
 
 <style scoped lang="stylus">
+
+  @font-face {
+    font-family 'Campton Bold Demo'
+    src url(/Campton-BoldDEMO.otf)
+  }
+  @font-face {
+    font-family 'Campton Light Demo'
+    src url(/Campton-LightDEMO.otf)
+  }
+
   #index
     font-family: Titillium Web;
   .header
     margin-top -76px
     height 90vh
-    background linear-gradient(62deg, #89F7FE 0%, #66A6FF 100%);
-    /*overflow hidden*/
+    background: #F3F5FC
+  .grid-container
+    display grid
+    grid-template-columns 50% 50%
+    grid-template-rows auto auto auto auto
+    width 100%
+
+  .player-container
+    grid-column-start: 2;
+    grid-column-end: 3;
+    grid-row-start: 1
+    grid-row-end: 5
+  .phrase-container
+    grid-column-start: 1;
+    grid-column-end: 2;
+    grid-row-start: 1
+    grid-row-end: 2
+  .phrase-2-container
+    grid-column-start: 1;
+    grid-column-end: 2;
+    grid-row-start: 2
+    grid-row-end: 3
+  .phrase-3-container
+    grid-column-start: 1;
+    grid-column-end: 2;
+    grid-row-start: 3
+    grid-row-end: 4
+  .phrase-4-container
+    grid-column-start: 1;
+    grid-column-end: 2;
+    grid-row-start: 4
+    grid-row-end: 5
+
+
+  .phrase
+    width 300px
+    display inline-block
+    text-align center
+    font-size 32px
+    font-family 'Campton Bold Demo'
+  .phrase-2
+    font-size 32px
+    font-family 'Campton Light Demo'
+  .phrase-3
+    font-weight: bold
+    font-family Raleway
+    font-size 32px
+
+
+  .player-container
+    text-align center
   .player
-    width 50%
-    position relative
-    top 100px
-    left 50px
+    width 64%
+
+
+
   @media screen and (min-width: 1300px)
     .player
       width 50%
@@ -58,38 +135,30 @@
     height: 100%;
     overflow-y: hidden;
 
-  .content-container
-    position absolute
-    top 50%
-    transform translateY(-80%)
-    right 10%
-    padding-right 50px
-    width 360px
-  .phrase
-    color #243237
-    font-family Raleway
-    font-size 26px
-    padding-bottom 24px
   .highlight
+    color #01E19F
     font-weight: bold;
-    font-style: italic;
+
   .btn-login
+    color white
+    font-family 'Nunito Sans'
     cursor pointer
     padding-left 15px
     font-weight bold
     height 42px
     line-height 42px
-    background white
+    background #FE5567
     width 200px
     border-radius 40px
     box-shadow: 0 15px 20px 0 rgba(0,0,0,0.32);
-    color #243237
+
   .arrow
     position relative
     top 1px
     left 8px
   .arrow img
     width 12px
+
   .section
     padding-top 30px
     padding-bottom 30px

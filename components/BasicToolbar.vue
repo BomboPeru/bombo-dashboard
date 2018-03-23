@@ -5,10 +5,10 @@
       </div>
       <div class="links uppercase">
         <div :class="['flex', nonLanding?'white-link':'dark-link']" >
-          <nuxt-link to="/">COMO JUGAR</nuxt-link>
-          <nuxt-link to="/">CONTÁCTANOS</nuxt-link>
+          <!--<nuxt-link to="/">COMO JUGAR</nuxt-link>-->
+          <!--<nuxt-link to="/">CONTÁCTANOS</nuxt-link>-->
           <nuxt-link to="/register" class="register">Regístrate</nuxt-link>
-          <nuxt-link to="/login" class="login">Inicia sesión</nuxt-link>
+          <nuxt-link to="/login" class="login">INGRESA AHORA</nuxt-link>
         </div>
       </div>
       <div :class="['menu-btn', !nonLanding?'dark-menu':'white-menu']" >
@@ -38,9 +38,9 @@
         menu : false,
         links: [
           { url: '/register', name: 'REGÍSTRATE' },
-          { url: '/login', name: 'INICIA SESION' },
-          { url: '/', name: 'COMO JUGAR' },
-          { url: '/', name: 'CONTÁCTENOS' }
+          { url: '/login', name: 'INICIA SESION' }
+          // { url: '/', name: 'COMO JUGAR' },
+          // { url: '/', name: 'CONTÁCTENOS' }
         ]
       }
     },
@@ -99,15 +99,17 @@
     */
   .flex
     display: flex
-    width: 100%
+    width: 40%
     justify-content: space-around
+    float right
+
   .links span
     cursor pointer
   .links span
   .links a
     margin 0 15px
     text-decoration none
-    color #24313A
+    color #131251
     font-family Titillium Web
     font-weight bold
     font-size 16px
@@ -121,7 +123,8 @@
     text-transform uppercase
   .login
     border-radius 18px
-    border 2px solid white
+    background #01E19F
+    // border 2px solid white
     color white !important
 
   .menu-btn
@@ -145,7 +148,7 @@
   .menu
     margin-right 10px
     padding 4px 10px
-    background #243237
+    background #131251
   .menu ul
     list-style-type none
     padding 4px 10px
