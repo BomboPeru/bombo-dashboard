@@ -41,9 +41,9 @@
           </svg>
 
           <div class="points-container">
-            <p class="title-points">PUNTOS BOMBO DE LA SEMANA</p>
+            <p class="title-points">TOTAL DE PUNTOS BONUS</p>
             <div class="points">
-              <div class="points-value">{{ coins }} <span class="b-points">B</span> </div>
+              <div class="points-value">{{ user.current_bombo_coins }} <span class="b-points">B</span> </div>
               <div class="btn-play elevation-2">JUGAR</div>
             </div>
           </div>
@@ -85,8 +85,9 @@
             <div class="time-number">{{ number }}</div>
             <div class="matches-card-section">
               <match-card v-for="(match, i) in matches" :key="i"
-                          :match="match" :time="number"
-                          width="200px"
+                          :match="match" :time="match.time"
+                          width="250px"
+                          :date="match.playing_day"
                           class="match-card"
                           notPlayed/>
             </div>
@@ -106,18 +107,11 @@
     components: { MatchCard, RankingPlayerRowCard },
     data () {
       return {
+        user: {},
+        leagues: [],
         player: { name: 'No Name', points: 24 },
-        coins: 22,
-        number: 22,
-        matches: [
-          { away_name: 'MAN UTD', home_name: 'MAN UTD', home_score: 0, away_score: 10 },
-          { away_name: 'MAN UTD', home_name: 'MAN UTD', home_score: 0, away_score: 10 },
-          { away_name: 'MAN UTD', home_name: 'MAN UTD', home_score: 0, away_score: 10 },
-          { away_name: 'MAN UTD', home_name: 'MAN UTD', home_score: 0, away_score: 10 },
-          { away_name: 'MAN UTD', home_name: 'MAN UTD', home_score: 0, away_score: 10 },
-          { away_name: 'MAN UTD', home_name: 'MAN UTD', home_score: 0, away_score: 10 },
-          { away_name: 'MAN UTD', home_name: 'MAN UTD', home_score: 0, away_score: 10 }
-        ],
+        number: 0,
+        matches: [],
         rankingPlayers: [
           { position: 'goal_keeper', name: 'Julito Sans', points: 23, ranking: 1 },
           { position: 'defender', name: 'Julito Sans', points: 13, ranking: 1 },
@@ -131,6 +125,39 @@
           { position: 'forward', name: 'Julito Sans', points: 33, ranking: 1 }
         ]
       }
+    },
+    mounted () {
+      this.user = this.$store.getters['user']
+      const self = this
+
+      this.$axios.get('http://api.bombo.pe/api/v2.0/leagues/all')
+        .then(res => {
+          const leagues = res.data.data
+          this.$store.state.leagues = res.data.data
+
+          const currentDate = new Date()
+          const premier_league = leagues[0]
+          let time = 0
+
+          for (let i = 0; i < premier_league.matches.length; i++) {
+            const playingDate = new Date(premier_league.matches[i].playing_day)
+            if (playingDate.getTime() > currentDate.getTime()) {
+              time = premier_league.matches[i].time
+              self.number = time
+              break
+            }
+          }
+          for (let i = 0; i < premier_league.matches.length; i++) {
+            if (time === premier_league.matches[i].time) {
+              self.matches.push(premier_league.matches[i])
+            }
+          }
+
+        })
+        .catch(e => {
+          // window.$nuxt.error({ statusCode, message })
+          console.log('>> e ', e.toString())
+        })
     }
   }
 </script>
@@ -283,6 +310,12 @@
     margin-top 20px
     margin-bottom 40px
     margin-left 20px
+
+
+  @media screen and (min-width: 1700px)
+    .points
+      top 0px
+      left 0px
 
   @media screen and (max-width: 1023px)
     .grid-container

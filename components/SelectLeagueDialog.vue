@@ -31,9 +31,13 @@
     props: {
       isOpen: { type: Boolean, default: false }
     },
+    computed: {
+      leagues () {
+        return this.$store.state.leagues
+      }
+    },
     data () {
       return {
-        leagues: []
       }
     },
     methods: {
@@ -66,10 +70,9 @@
 
       this.$axios.get('http://api.bombo.pe/api/v2.0/leagues/all')
         .then(res => {
-          this.leagues = res.data.data
+          this.$store.state.leagues = res.data.data
         })
         .catch(e => {
-
           // window.$nuxt.error({ statusCode, message })
           console.log('>> e ', e.toString())
         })

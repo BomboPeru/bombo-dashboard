@@ -94,7 +94,7 @@
         this.$store.dispatch('auth/fetchUser', token).then(done => {
           console.log('done', done)
           if (done) {
-            this.$router.push('/client/teams')
+            this.$router.push('/client/home')
           } else {
             this.$store.state.isLoading = false
           }

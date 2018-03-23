@@ -75,20 +75,20 @@
 
                     <div class="card-number-container">
                       <div class="card-number-label">Número de tarjeta</div>
-                      <!-- fa-cc-visa -->
-                      <i :class="['fab', 'fa-cc-mastercard', 'card-type-icon']"></i>
-                      <input type="number" class="card-number">
+
+                      <i :class="['fab', iconCC, 'card-type-icon']"></i>
+                      <input type="number" class="card-number" v-model="creditInfo.card_number">
                     </div>
 
                     <div class="exp-cvc-container">
                       <div class="exp-container">
                         <div class="exp-cvc-label">Fecha de expiración</div>
-                        <input class="month" placeholder="MMMM" type="number">
-                        <input class="year" placeholder="YYYY" type="number">
+                        <input class="month" placeholder="MMMM" type="number" v-model="creditInfo.expiration_month">
+                        <input class="year" placeholder="YYYY" type="number" v-model="creditInfo.expiration_year">
                       </div>
                       <div class="cvc-container">
                         <div class="exp-cvc-label">CVV/CVC</div>
-                        <input class="cvv" placeholder="CVC" type="number">
+                        <input class="cvv" placeholder="CVC" type="number"  v-model="creditInfo.cvv">
                       </div>
                     </div>
                   </div>
@@ -100,9 +100,7 @@
                 </div>
               </div>
 
-
             </div>
-
           </div>
       </dialog-container>
     </div>
@@ -135,14 +133,6 @@
       closeDialog () {
         this.$emit('onCollapse', false)
       },
-      fetchUser () {
-        if (process.server) return
-        let user = this.$store.getters['auth/getUser']
-
-        setTimeout(() => {
-          document.getElementById('card[email]').value = user.email
-        }, 1000)
-      },
       ccFormat (value) {
         var v = value.replace(/\s+/g, '').replace(/[^0-9]/gi, '')
         var matches = v.match(/\d{4,16}/g);
@@ -159,16 +149,28 @@
       },
       async pay () {
 
+        // lazy validation
+        if (this.creditInfo.card_number.length > 15 &&
+          this.creditInfo.cvv.length > 2 &&
+          this.creditInfo.expiration_month.length > 2 &&
+          this.creditInfo.expiration_year.length > 2) {
+
+          const user = this.$store.getters['user']
+          const email = user.email
+          this.creditInfo.email = email
+
+          const token = 'pk_live_Sabys0p2rhn2D4ZM'
+          const response = await this.$axios.$post('https://api.culqi.com/v2/tokens',
+            this.creditInfo, { headers: { Authorization: 'Bearer ' + token} })
+          console.log(response)
+
+
+        } else {
+          this.$store.dispatch('turnOnSnackbar', 'DATOS INVALIDOS')
+        }
       }
     },
     computed: {
-      isDialogOpen () {
-        console.log(this.isOpen)
-        if (this.isOpen === true) {
-          this.fetchUser()
-        }
-        return this.isOpen
-      },
       ccFormatted: {
         get () {
           return this.cardNumber
@@ -179,24 +181,30 @@
           this.cardNumber = formatValue
         }
       },
-      typeCC () {
-        const ccValue = this.cardNumber
-        if (ccValue === undefined) return 'visa'
+      iconCC () {
+        const ccValue = this.creditInfo.card_number
+        if (ccValue.length === 0) return 'fa-cc-visa'
         if (ccValue[0] === '4') {
-          return 'visa'
+          return 'fa-cc-visa'
         } else if (ccValue[0] === '5') {
-          return 'mastercard'
+          return 'fa-cc-mastercard'
         } else {
-          return 'visa'
+          return 'fa-cc-visa'
         }
       }
     },
     data () {
       return {
-        cardNumber: undefined,
         currency_code: 'PEN',
         amount: 20,
         isLoading: false,
+        creditInfo: {
+          card_number:'',
+          cvv: '',
+          expiration_year: '',
+          expiration_month: '',
+          email: ''
+        },
         plans: [
           { price: 'S/ 20', amount: 20, name: 'BOMBO PACK 1',
             color: 'linear-gradient(-114deg, rgb(210, 105, 202) 0%, rgb(222, 127, 71) 105%)',

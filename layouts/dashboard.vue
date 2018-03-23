@@ -123,6 +123,7 @@
           console.log(e)
           this.$router.push('/login')
         })
+
     }
   }
 </script>

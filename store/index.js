@@ -23,7 +23,9 @@ const store = () => {
       current_won_credit: 0,
 
       notifications: [],
-      user: null
+      user: null,
+
+      leagues: []
     },
     getters: {
       loginDialog (state) {
