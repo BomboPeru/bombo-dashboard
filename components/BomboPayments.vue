@@ -124,7 +124,7 @@
     methods: {
       onKeyDown(evt, limit){
 
-        if (evt.keyCode < 48 || evt.keyCode >= 57) {
+        if (evt.keyCode < 48 || evt.keyCode > 57) {
           evt.preventDefault()
           return
         }
@@ -170,18 +170,32 @@
       async pay () {
 
         // lazy validation
-        if (this.creditInfo.card_number.length > 15 &&
+        if (this.creditInfo.card_number.length > 18 &&
           this.creditInfo.cvv.length > 2 &&
-          this.creditInfo.expiration_month.length > 2 &&
+          this.creditInfo.expiration_month.length >= 2 &&
           this.creditInfo.expiration_year.length > 2) {
 
           const user = this.$store.getters['user']
           const email = user.email
           this.creditInfo.email = email
 
+          let creditCard = this.creditInfo.card_number
+          creditCard = `${creditCard.slice(0,4)}${creditCard.slice(5,9)}${creditCard.slice(10,14)}${creditCard.slice(15,19)}`
+
+          let request = {
+            card_number: creditCard,
+            cvv: this.creditInfo.cvv,
+            expiration_year: this.creditInfo.expiration_year,
+            expiration_month: this.creditInfo.expiration_month,
+            email: this.creditInfo.email
+          }
+
+
+          console.log('request',request)
+
           const token = 'pk_live_Sabys0p2rhn2D4ZM'
-          const response = await this.$axios.$post('https://api.culqi.com/v2/tokens',
-            this.creditInfo, { headers: { Authorization: 'Bearer ' + token} })
+          const response = await this.$axios.$post('https://api.culqi.com/v2/tokens', request,
+            { headers: { Authorization: 'Bearer ' + token} })
           console.log(response)
 
 
@@ -345,8 +359,8 @@
   .desktop
     display block
 
-  .next-btn i
-  .prev-btn i
+  .next-btn img
+  .prev-btn img
     cursor pointer
   .next-btn
     color white
