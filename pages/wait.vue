@@ -22,7 +22,10 @@
 
 <script>
   export default {
-    name: 'wait'
+    name: 'wait',
+    mounted () {
+      this.$store.state.isLoading = false
+    }
   }
 </script>
 

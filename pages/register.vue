@@ -500,6 +500,7 @@
     font-family 'Nunito Sans'
     // font-weight: bold;
     font-size 12px
+    text-align center
 
   @media screen and (max-width: 1023px)
     .card-container

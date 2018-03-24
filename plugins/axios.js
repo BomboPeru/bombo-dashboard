@@ -12,6 +12,7 @@ export default function ({ app, store, redirect, error }) {
   app.$axios.onError(e => {
     console.log('request error <<<', typeof e)
     console.log('request error <<<', e.message)
+    console.log('request error <<<', e.status)
 
     if (store.state.isLoading) store.state.isLoading = false
 
