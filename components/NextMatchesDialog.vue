@@ -10,7 +10,7 @@
 
             <div v-for="(match, i) in matches" :key="i"
                  class="mini-match-card elevation"
-                 :style="{ background: '#f26465' }">
+                 :style="{ background: '#818aab' }">
 
               <div class="mmc-top-title">{{ formatDate(match.playing_day) }}</div>
               <div class="mmc-title">
@@ -19,7 +19,7 @@
                   <tr>
                     <td style="width: 40%">{{ match.away_name }} </td>
                     <td style="width: 20%" class="vs">vs</td>
-                    <td style="width: 40%">{{ match.home_ame }}</td>
+                    <td style="width: 40%">{{ match.home_name }}</td>
                   </tr>
                   </tbody>
                 </table>

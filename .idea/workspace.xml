@@ -7,7 +7,7 @@
   <component name="ChangeListManager">
     <list default="true" id="bf24282d-3075-4fc1-a7e6-a1352eba2675" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/components/StatusBar.vue" afterPath="$PROJECT_DIR$/components/StatusBar.vue" />
+      <change beforePath="$PROJECT_DIR$/components/NextMatchesDialog.vue" afterPath="$PROJECT_DIR$/components/NextMatchesDialog.vue" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -51,7 +51,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="StatusBar.vue" pinned="false" current-in-tab="true">
+      <file leaf-file-name="StatusBar.vue" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/components/StatusBar.vue">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="792">
@@ -103,11 +103,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="NextMatchesDialog.vue" pinned="false" current-in-tab="false">
+      <file leaf-file-name="NextMatchesDialog.vue" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/components/NextMatchesDialog.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="504">
-              <caret line="21" column="57" lean-forward="false" selection-start-line="21" selection-start-column="57" selection-end-line="21" selection-end-column="57" />
+            <state relative-caret-position="288">
+              <caret line="12" column="47" lean-forward="false" selection-start-line="12" selection-start-column="47" selection-end-line="12" selection-end-column="47" />
               <folding />
             </state>
           </provider>
@@ -222,12 +222,12 @@
         <option value="$PROJECT_DIR$/store/createteam.js" />
         <option value="$PROJECT_DIR$/components/Sidebar.vue" />
         <option value="$PROJECT_DIR$/layouts/dashboard.vue" />
-        <option value="$PROJECT_DIR$/components/NextMatchesDialog.vue" />
         <option value="$PROJECT_DIR$/pages/register.vue" />
         <option value="$PROJECT_DIR$/pages/login.vue" />
         <option value="$PROJECT_DIR$/pages/client/profile.vue" />
         <option value="$PROJECT_DIR$/components/RankingRowCard.vue" />
         <option value="$PROJECT_DIR$/components/StatusBar.vue" />
+        <option value="$PROJECT_DIR$/components/NextMatchesDialog.vue" />
       </list>
     </option>
   </component>
@@ -439,14 +439,7 @@
       <workItem from="1521680490260" duration="10039000" />
       <workItem from="1521728255952" duration="27376000" />
       <workItem from="1521762200671" duration="43016000" />
-      <workItem from="1521846489214" duration="17236000" />
-    </task>
-    <task id="LOCAL-00056" summary="captain&#10;login 1/2">
-      <created>1521246898108</created>
-      <option name="number" value="00056" />
-      <option name="presentableId" value="LOCAL-00056" />
-      <option name="project" value="LOCAL" />
-      <updated>1521246898109</updated>
+      <workItem from="1521846489214" duration="17606000" />
     </task>
     <task id="LOCAL-00057" summary="team card">
       <created>1521248369556</created>
@@ -784,11 +777,18 @@
       <option name="project" value="LOCAL" />
       <updated>1521865181388</updated>
     </task>
-    <option name="localTasksCounter" value="105" />
+    <task id="LOCAL-00105" summary="status bar without help">
+      <created>1521865471408</created>
+      <option name="number" value="00105" />
+      <option name="presentableId" value="LOCAL-00105" />
+      <option name="project" value="LOCAL" />
+      <updated>1521865471408</updated>
+    </task>
+    <option name="localTasksCounter" value="106" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="879953000" />
+    <option name="totallyTimeSpent" value="880323000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="54" y="-4" width="1867" height="1092" extended-state="6" />
@@ -845,7 +845,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="login&#10;bombo payments not finished" />
     <MESSAGE value="register&#10;en un toque hago time dialog fui a almorzar" />
     <MESSAGE value="bombopayments&#10;register&#10;en un toque hago time dialog fui a almorzar" />
     <MESSAGE value="register part 2" />
@@ -870,7 +869,8 @@
     <MESSAGE value="create team" />
     <MESSAGE value="background login register" />
     <MESSAGE value="avatar profile" />
-    <option name="LAST_COMMIT_MESSAGE" value="avatar profile" />
+    <MESSAGE value="status bar without help" />
+    <option name="LAST_COMMIT_MESSAGE" value="status bar without help" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1176,14 +1176,6 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/components/NextMatchesDialog.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="504">
-          <caret line="21" column="57" lean-forward="false" selection-start-line="21" selection-start-column="57" selection-end-line="21" selection-end-column="57" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/static/login_background.jpeg">
       <provider selected="true" editor-type-id="images">
         <state />
@@ -1241,6 +1233,14 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="792">
           <caret line="33" column="6" lean-forward="false" selection-start-line="33" selection-start-column="6" selection-end-line="33" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/components/NextMatchesDialog.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="288">
+          <caret line="12" column="47" lean-forward="false" selection-start-line="12" selection-start-column="47" selection-end-line="12" selection-end-column="47" />
           <folding />
         </state>
       </provider>
