@@ -1,6 +1,6 @@
 <template>
   <div v-show="isOpen">
-    <div id="menu-sidebar">
+    <div id="menu-sidebar" @click="close">
 
       <div class="close-btn">
         <span class="close-i" @click="close">&times;</span>
