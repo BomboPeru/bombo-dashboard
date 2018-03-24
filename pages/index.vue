@@ -757,6 +757,13 @@
     .triangle-background-2 img
       height: 800px;
       width: 100vw;
+    .triangle-background-1 img
+      width 100%
+    .premier-logo img
+      height 150px
+    .plans-section
+      height auto
+
 
 
   @media screen and (max-width: 360px)

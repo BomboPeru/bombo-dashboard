@@ -6,20 +6,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bf24282d-3075-4fc1-a7e6-a1352eba2675" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/static/landing/mask_copy_2x.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/static/landing/mask_copy_2x_2.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/static/landing/money_2x.png" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/components/BasicToolbar.vue" afterPath="$PROJECT_DIR$/components/BasicToolbar.vue" />
-      <change beforePath="$PROJECT_DIR$/components/NavItem.vue" afterPath="$PROJECT_DIR$/components/NavItem.vue" />
-      <change beforePath="$PROJECT_DIR$/components/Sidebar.vue" afterPath="$PROJECT_DIR$/components/Sidebar.vue" />
-      <change beforePath="$PROJECT_DIR$/components/Toolbar.vue" afterPath="$PROJECT_DIR$/components/Toolbar.vue" />
-      <change beforePath="$PROJECT_DIR$/pages/client/createteam.vue" afterPath="$PROJECT_DIR$/pages/client/createteam.vue" />
-      <change beforePath="$PROJECT_DIR$/pages/client/teams.vue" afterPath="$PROJECT_DIR$/pages/client/teams.vue" />
       <change beforePath="$PROJECT_DIR$/pages/index.vue" afterPath="$PROJECT_DIR$/pages/index.vue" />
-      <change beforePath="$PROJECT_DIR$/pages/login.vue" afterPath="$PROJECT_DIR$/pages/login.vue" />
-      <change beforePath="$PROJECT_DIR$/pages/register.vue" afterPath="$PROJECT_DIR$/pages/register.vue" />
-      <change beforePath="$PROJECT_DIR$/static/landing/copa_2x.png" afterPath="" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -116,8 +104,8 @@
       <file leaf-file-name="index.vue" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/pages/index.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="436">
-              <caret line="743" column="18" lean-forward="false" selection-start-line="743" selection-start-column="18" selection-end-line="743" selection-end-column="18" />
+            <state relative-caret-position="412">
+              <caret line="764" column="17" lean-forward="false" selection-start-line="764" selection-start-column="17" selection-end-line="764" selection-end-column="17" />
               <folding>
                 <element signature="n#div#1;n#div#0;n#div#0;n#template#0;n#!!top" expanded="false" />
                 <element signature="n#div#2;n#div#0;n#template#0;n#!!top" expanded="false" />
@@ -177,10 +165,10 @@
       <find>cc-container</find>
       <find>fetchUser</find>
       <find>plans-short-text</find>
-      <find>triangle-background-1</find>
       <find>plans-section</find>
       <find>triangle-background-2</find>
       <find>premier-league-title</find>
+      <find>triangle-background-1</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -468,14 +456,7 @@
       <workItem from="1521680490260" duration="10039000" />
       <workItem from="1521728255952" duration="27376000" />
       <workItem from="1521762200671" duration="43016000" />
-      <workItem from="1521846489214" duration="30011000" />
-    </task>
-    <task id="LOCAL-00060" summary="rules dialog">
-      <created>1521252567155</created>
-      <option name="number" value="00060" />
-      <option name="presentableId" value="LOCAL-00060" />
-      <option name="project" value="LOCAL" />
-      <updated>1521252567157</updated>
+      <workItem from="1521846489214" duration="30289000" />
     </task>
     <task id="LOCAL-00061" summary="team card">
       <created>1521254119097</created>
@@ -813,11 +794,18 @@
       <option name="project" value="LOCAL" />
       <updated>1521873138552</updated>
     </task>
-    <option name="localTasksCounter" value="109" />
+    <task id="LOCAL-00109" summary="finish landing bombo v0.1">
+      <created>1521879927214</created>
+      <option name="number" value="00109" />
+      <option name="presentableId" value="LOCAL-00109" />
+      <option name="project" value="LOCAL" />
+      <updated>1521879927214</updated>
+    </task>
+    <option name="localTasksCounter" value="110" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="892728000" />
+    <option name="totallyTimeSpent" value="893006000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="54" y="-4" width="1867" height="1092" extended-state="6" />
@@ -874,7 +862,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="time card" />
     <MESSAGE value="billing, create home view" />
     <MESSAGE value="dashboard still fixing responsive view, changing colors" />
     <MESSAGE value="home wip, pwa conf" />
@@ -899,7 +886,8 @@
     <MESSAGE value="next matches" />
     <MESSAGE value="dashboard&#10;sidebar" />
     <MESSAGE value="landing" />
-    <option name="LAST_COMMIT_MESSAGE" value="landing" />
+    <MESSAGE value="finish landing bombo v0.1" />
+    <option name="LAST_COMMIT_MESSAGE" value="finish landing bombo v0.1" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1274,8 +1262,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/pages/index.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="436">
-          <caret line="743" column="18" lean-forward="false" selection-start-line="743" selection-start-column="18" selection-end-line="743" selection-end-column="18" />
+        <state relative-caret-position="412">
+          <caret line="764" column="17" lean-forward="false" selection-start-line="764" selection-start-column="17" selection-end-line="764" selection-end-column="17" />
           <folding>
             <element signature="n#div#1;n#div#0;n#div#0;n#template#0;n#!!top" expanded="false" />
             <element signature="n#div#2;n#div#0;n#template#0;n#!!top" expanded="false" />
