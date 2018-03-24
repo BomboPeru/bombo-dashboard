@@ -20,8 +20,12 @@
            -->
       <div class="dropdown-content elevation" v-if="isMenuNavItemOpen">
         <ul class="dropdown-list">
-          <li v-for="(item, i) in navbarItems" :key="i" class="dropdown-item"  v-if="item.justTitle === false">
-            <nuxt-link :to="item.urlPath">{{ item.name }}</nuxt-link>
+          <li v-for="(item, i) in navbarItems"
+              :key="i"
+              class="dropdown-item"
+              @click="goToLink(item.urlPath)"
+              v-if="item.justTitle === false">
+            {{ item.name }}
           </li>
         </ul>
       </div>
@@ -63,6 +67,10 @@
       }
     },
     methods: {
+      goToLink (url) {
+        this.isMenuNavItemOpen = false
+        this.$router.push(url)
+      },
       openNavItems () {
         this.isMenuNavItemOpen = !this.isMenuNavItemOpen
       }
@@ -108,8 +116,7 @@ toolbar-height-mobile = 56px
   padding-bottom 12px
   text-decoration none
   font-family Titillium Web
-.dropdown-content li a
-  text-decoration none
+.dropdown-content li
   color #fafafa
 
   user-select: none;
