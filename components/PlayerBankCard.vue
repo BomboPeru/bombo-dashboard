@@ -134,7 +134,7 @@
           this.$store.state.isLoading = true
         }
 
-        const response = await this.$axios.$get('http://api.bombo.pe/api/v2.0/players/all')
+        const response = await this.$axios.$get('https://api.bombo.pe/api/v2.0/players/all')
         if (response === undefined) return
 
         const data = response.data.slice(0,-1)

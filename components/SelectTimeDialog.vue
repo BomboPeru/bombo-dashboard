@@ -132,7 +132,7 @@
       fetchTimes () {
         this.$store.state.isShortLoading = true
 
-        this.$axios.get('http://api.bombo.pe/api/v2.0/leagues/all').then(res => {
+        this.$axios.get('https://api.bombo.pe/api/v2.0/leagues/all').then(res => {
             const league = res.data.data.filter(league => league.id === this.$store.state.team.selectedLeague)
             this.times = league[0].times.map(time => {
               time.datestart = this.simpleDateFormat((new Date(time.start)))
@@ -160,7 +160,7 @@
           const userId = this.$store.getters['auth/getUserId']
           this.$store.state.isShortLoading = true
 
-          let response = await this.$axios.$post('http://api.bombo.pe/api/v2.0/users/' + userId + '/to-play', {
+          let response = await this.$axios.$post('https://api.bombo.pe/api/v2.0/users/' + userId + '/to-play', {
             team_name: teamName,
             league_id: this.selectedLeague,
             time_id: timeId,

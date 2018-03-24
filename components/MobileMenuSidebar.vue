@@ -97,7 +97,7 @@
       this.bombo_coin = user.current_bombo_coins
 
       const userId = this.$store.getters['auth/getUserId']
-      const url = 'http://api.bombo.pe/api/v2.0/storage/users/' + userId + '/profile-photo'
+      const url = 'https://api.bombo.pe/api/v2.0/storage/users/' + userId + '/profile-photo'
       this.urlImage = url
     }
   }

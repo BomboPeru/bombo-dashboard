@@ -76,7 +76,7 @@
         this.fetchMatchesFromTime()
       },
       async fetchMyTeams () {
-        let response = await this.$axios.$get('http://api.bombo.pe/api/v1.0/user/' + this.testUserId)
+        let response = await this.$axios.$get('https://api.bombo.pe/api/v1.0/user/' + this.testUserId)
         // console.log(response.data.playing_teams[0])
         this.teams = response.data.playing_teams
       },
@@ -87,7 +87,7 @@
 
         let response = await this.$axios({
           method: 'get',
-          url: 'http://api.bombo.pe/api/v2.0/matches/' + leagueId + '/time/' + time
+          url: 'https://api.bombo.pe/api/v2.0/matches/' + leagueId + '/time/' + time
         })
         this.matches = response.data.data
       },

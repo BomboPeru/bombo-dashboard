@@ -8,7 +8,7 @@
 
         <div class="phrase-container">
           <p class="phrase">
-            TE BRINDAMOS UNA <span class="highlight">JUGADA GRATIS</span> POR EL PRIMER DEPOSITO!
+            TE BRINDAMOS UNA <span class="highlight">JUGADA GRATIS</span> POR EL PRIMER DEPÓSITO!
           </p>
         </div>
         <div class="phrase-2-container">

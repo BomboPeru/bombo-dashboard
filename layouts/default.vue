@@ -12,14 +12,12 @@
       <short-loading-screen v-if="isShortLoading"/>
     </transition>
 
-    <login-dialog :is-open="login" @onCollapse="closeLoginDialog"/>
     <terms-conditions-dialog :is-open="termsAndConditions" @onCollapse="closeTermsConditionsDialog"/>
   </div>
 </template>
 
 <script>
   import BasicToolbar from '../components/BasicToolbar'
-  import LoginDialog from '../components/LoginDialog'
   import TermsConditionsDialog from '../components/TermsConditionsDialog'
   import LoadingScreen from '~/components/LoadingScreen'
   import ShortLoadingScreen from '~/components/ShortLoadingScreen'
@@ -27,7 +25,7 @@
   export default {
     name: 'default',
     components: {
-      BasicToolbar, LoginDialog, TermsConditionsDialog, LoadingScreen, ShortLoadingScreen
+      BasicToolbar, TermsConditionsDialog, LoadingScreen, ShortLoadingScreen
     },
     computed: {
       toolbar() {
@@ -40,17 +38,11 @@
       isShortLoading () {
         return this.$store.state.isShortLoading
       },
-      login () {
-        return this.$store.getters.loginDialog
-      },
       termsAndConditions () {
         return this.$store.getters.termsAndConditionsDialog
       }
     },
     methods: {
-      closeLoginDialog () {
-        this.$store.commit('closeLoginDialog')
-      },
       closeTermsConditionsDialog () {
         this.$store.commit('closeTermsConditionsDialog')
       }

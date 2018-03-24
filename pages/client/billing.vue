@@ -112,7 +112,7 @@
 
         try {
           const userId = this.$store.getters['auth/getUserId']
-          const response = await this.$axios.$post(`http://api.bombo.pe/api/v2.0/users/${userId}/generate-retire`, {
+          const response = await this.$axios.$post(`https://api.bombo.pe/api/v2.0/users/${userId}/generate-retire`, {
             how: 10,
             account_number: '3333333333330033'
           })

@@ -139,7 +139,7 @@
 
         this.$store.state.isShortLoading = true
 
-        this.$axios.$post('http://api.bombo.pe/api/v2.0/users/'+ userId + '/edit-team', {
+        this.$axios.$post('https://api.bombo.pe/api/v2.0/users/'+ userId + '/edit-team', {
           team: {
             league_id: leagueId,
             name: this.team.name,
@@ -177,7 +177,7 @@
         console.log(userId, leagueId)
         this.$store.state.isShortLoading = true
 
-        this.$axios.$post('http://api.bombo.pe/api/v2.0/users/'+ userId + '/create-team', {
+        this.$axios.$post('https://api.bombo.pe/api/v2.0/users/'+ userId + '/create-team', {
           team: {
             league_id: leagueId,
             name: this.team.name,

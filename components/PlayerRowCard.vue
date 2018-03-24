@@ -156,7 +156,7 @@
       shirtUrl () {
         if (this.player.team !== undefined ) {
           const teamName = this.player.team.toLowerCase().replace(' ','_')
-          return 'http://api.bombo.pe/api/v2.0/shirts/' + teamName
+          return 'https://api.bombo.pe/api/v2.0/shirts/' + teamName
         } else {
           return ''
         }

@@ -9,7 +9,6 @@ const store = () => {
   return new Vuex.Store({
     state: {
       signOutDialog: false,
-      loginDialog: false,
       termsAndConditionsDialog: false,
       bomboPayments: false,
       snackbar: false,
@@ -28,9 +27,6 @@ const store = () => {
       leagues: []
     },
     getters: {
-      loginDialog (state) {
-        return state.loginDialog
-      },
       termsAndConditionsDialog (state) {
         return state.termsAndConditionsDialog
       },
@@ -54,12 +50,6 @@ const store = () => {
       }
     },
     mutations: {
-      openLoginDialog (state) {
-        state.loginDialog = true
-      },
-      closeLoginDialog (state) {
-        state.loginDialog = false
-      },
       openTermsConditionsDialog (state) {
         state.termsAndConditionsDialog = true
       },
@@ -96,12 +86,12 @@ const store = () => {
         }
 
         try {
-          const response = await axios.get('http://api.bombo.pe/auth/verify', { headers: { 'Authorization': 'Bearer ' + token }})
+          const response = await axios.get('https://api.bombo.pe/auth/verify', { headers: { 'Authorization': 'Bearer ' + token }})
           const userId = response.data.data.user.id
 
           window.localStorage.setItem('userId', userId)
 
-          const response2 = await axios.get('http://api.bombo.pe/api/v2.0/users/' + userId,
+          const response2 = await axios.get('https://api.bombo.pe/api/v2.0/users/' + userId,
             { headers: { 'Authorization': 'Bearer ' + token }})
 
 

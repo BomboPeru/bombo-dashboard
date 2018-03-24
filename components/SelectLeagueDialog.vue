@@ -69,7 +69,7 @@
     mounted () {
 
       if (this.$store.state.leagues.length === 0) {
-        this.$axios.get('http://api.bombo.pe/api/v2.0/leagues/all')
+        this.$axios.get('https://api.bombo.pe/api/v2.0/leagues/all')
           .then(res => {
             this.$store.state.leagues = res.data.data
           })

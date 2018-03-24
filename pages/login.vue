@@ -70,7 +70,7 @@
         // loading on
         this.$store.state.isLoading = true
 
-        this.$axios.post('http://api.bombo.pe/auth/login', {
+        this.$axios.post('https://api.bombo.pe/auth/login', {
           username: this.username,
           password: this.password
         }).then(res => {

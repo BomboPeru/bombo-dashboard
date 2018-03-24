@@ -107,13 +107,13 @@
         const leagueId = this.leagueObj.id
         this.$store.state.isShortLoading = true
 
-        let response = await this.$axios.$get(`http://api.bombo.pe/api/v2.0/global/ranking/${leagueId}/${timeId}`)
+        let response = await this.$axios.$get(`https://api.bombo.pe/api/v2.0/global/ranking/${leagueId}/${timeId}`)
         this.ranking = response.data.reverse()
 
         this.$store.state.isShortLoading = false
       },
       async fetchLeagues () {
-        let response = await this.$axios.$get('http://api.bombo.pe/api/v2.0/leagues/all')
+        let response = await this.$axios.$get('https://api.bombo.pe/api/v2.0/leagues/all')
         // leagues
 
         this.leagues = response.data

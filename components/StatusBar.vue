@@ -71,7 +71,7 @@
 
       const userId = this.$store.getters['auth/getUserId']
       // const token = this.$store.getters['auth/getToken']
-      const url = 'http://api.bombo.pe/api/v2.0/storage/users/' + userId + '/profile-photo'
+      const url = 'https://api.bombo.pe/api/v2.0/storage/users/' + userId + '/profile-photo'
       this.url = url
     }
   }
