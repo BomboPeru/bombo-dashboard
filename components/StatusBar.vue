@@ -1,11 +1,11 @@
 <template>
   <div class="status-bar-container">
     <ul id="status-bar" class="left-side">
-      <li class="help" @click="openTooltip('help')">
-        <span>
-          <img src="../assets/icons/help.svg" width="20px" alt="">
-        </span>
-      </li>
+      <!--<li class="help" @click="openTooltip('help')">-->
+        <!--<span>-->
+          <!--<img src="../assets/icons/help.svg" width="20px" alt="">-->
+        <!--</span>-->
+      <!--</li>-->
       <li class="notification"  @click="openTooltip('notification')">
         <div class="indicator" v-if="indicator > 0"><span>{{ indicator }}</span></div>
         <span>
@@ -18,7 +18,7 @@
         </span>
       </li>
     </ul>
-    <tooltip-menu listSupport v-if="help"/>
+    <!--<tooltip-menu listSupport v-if="help"/>-->
     <tooltip-menu listNotifications :notifications="notifications" v-if="notification"  right-offset="70px"/>
     <tooltip-menu profile v-if="profile" right-offset="30px"/>
   </div>
