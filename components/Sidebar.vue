@@ -261,11 +261,11 @@
     z-index 999
   .sidebar
     display block
-    height: calc(100% - 128px)
+    height: calc(100% - 116px)
     width: 232px;
     z-index 10
     position: absolute;
-    top: (52px + 76px);
+    top: (52px + 64px);
     left: 0;
     background-color: #0F202D;
     padding-top: 20px;

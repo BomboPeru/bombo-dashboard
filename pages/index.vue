@@ -36,15 +36,8 @@
     </div>
 
     <div class="first section padding-section">
-      <div class="svg">
-        <svg
-              width="100%"
-              height="800px"
-              version="1.1"
-              preserveAspectRatio="none"
-              viewBox="0 0 100 100">
-          <polygon points="0,0 40,50 0,150" style="fill: rgba(120,183,249,0.12); stroke-linejoin: round;"></polygon>
-        </svg>
+      <div class="triangle-background-1">
+        <img src="/landing/mask_copy_2x.png" alt="">
       </div>
       <div class="cards-container">
 
@@ -64,7 +57,7 @@
         </div>
         <div class="card-3 card">
           <div class="card-img-container">
-            <img src="/landing/copa_2x.png" alt="">
+            <img src="/landing/money_2x.png" alt="">
           </div>
           <div class="title-card">COMPITE Y GANA</div>
           <div class="text-card">El rendimiento de los 11 jugadores que escojas te hará ganar dinero.</div>
@@ -99,6 +92,7 @@
     </div>
 
     <div class="section padding-section premier-league-section">
+
       <div class="premier-text">
         Bombo cubre, por ahora, el resto de la temporada de la Premier League Inglesa
         y el Mundial. En el futuro cubriremos más ligas como La Liga Peruana y La Liga Española.
@@ -134,6 +128,11 @@
           <img src="/payment/b_card.png" class="b-card-4" alt="">
         </div>
       </div>
+
+      <div class="triangle-background-2">
+        <img src="/landing/mask_copy_2x_2.png" alt="">
+      </div>
+
     </div>
 
     <div class="footer">
@@ -160,10 +159,12 @@
           </div>
         </div>
       </div>
+
       <div class="footer-text">
         El cliente acepta que al usar y navegar en BOMBO utilizamos ciertas cookies de navegación para mejorar su experiencia. BOMBO solo utilizará cookies que mejoren su experiencia y no aquellas que interfieran, afecten o atenten en contra de su privacidad. Encontrará más información sobre el uso de cookies si lo desea registrándose y leyendo los Términos y Condiciones.
       </div>
     </div>
+
 
   </div>
 </template>
@@ -371,6 +372,11 @@
 
   .plans-section
     height 1000px
+    position relative
+    z-index 9
+  .plans-content
+    position: relative;
+    z-index: 99;
 
   .ball
     display inline-block
@@ -418,6 +424,8 @@
 
   .premier-league-title
     text-align right
+    position: relative;
+    z-index: 99;
   .premier-league-title p
     width 50%
     display inline-block
@@ -425,12 +433,15 @@
     display flex
     flex-wrap wrap
     justify-content space-around
-    align-items center
+    align-items: start;
     height 400px
+    position: relative;
   .premier-logo img
     height 200px
   .premier-league-section
     text-align right
+    position: relative;
+    z-index: 99;
   .premier-text
     display inline-block
     width 50%
@@ -438,14 +449,16 @@
     height 200px
     color #131251
     font-family Raleway
+    position: relative;
+    z-index 6
 
   .plans-title
     text-align left
   .plans-title p
     display inline-block
   .plans-text
-    padding-top 100px
-    height 400px
+    padding-top 40px
+    height 300px
     text-align center
   .plans-text p
     display inline-block
@@ -458,28 +471,20 @@
     text-align right
   .plans-short-text img
     width 50px
+    margin-left 10px
+    margin-right 10px
   .plans-short-text span
+    position relative
+    top 10px
     margin-left 10px
   .cc-container img
     width 250px
-  .b-card-1
-    position relative
-    z-index 9
-    right -150px
-  .b-card-2
-    position relative
-    z-index 8
-    top -60px
-    right -20px
-  .b-card-3
-    left -80px
-    z-index 7
-    position relative
-  .b-card-4
-    z-index 8
-    top -60px
-    left -190px
-    position relative
+  .plans-content
+    text-align center
+  .cc-container
+    width: 70%;
+    text-align: center;
+    display: inline-block;
 
 
   .player-container
@@ -545,6 +550,7 @@
     padding-top 20px
 
   .footer-text
+    margin-top 50px
     color white
     font-family Raleway
     padding 0 10%
@@ -577,14 +583,26 @@
     margin-bottom 8px
     font-size 17px
     font-weight 700
+  .triangle-background-1
+    width 100%
+    position absolute
+    top 0
+    left 0
+  .triangle-background-2 img
+    height: 1800px;
+    width: 100vw;
+  .triangle-background-2
+    position absolute
+    bottom 0
+    right 0
+
 
   @media screen and (min-width: 1500px)
     .grid-container
       width 80%
       margin 0 10%
-      padding-top 10%
     .player
-      width 50%
+      width 72%
       position relative
       top 50px
       left 50px
@@ -597,6 +615,11 @@
 
   @media screen and (max-width: 1023px)
 
+    .plans-short-text img
+      width 30px
+
+    .cc-container
+      width: 80%;
     .online-grid
       margin-top 0
     .player-container
@@ -643,27 +666,6 @@
     .cc-container img
       width 150px
 
-    .b-card-1
-    .b-card-2
-    .b-card-3
-    .b-card-4
-      width 100px
-      top 0
-      left 0
-      right 0
-
-    /*
-    .b-card-1
-      right -90px
-    .b-card-2
-      top -30px
-      right -20px
-    .b-card-3
-      left -20px
-    .b-card-4
-      top -30px
-      left -50px*/
-
 
   @media screen and (max-width: 800px)
     .player-container
@@ -683,9 +685,18 @@
       width 200px
     .left-side
       width 200px
+    .footer-text
+      margin-top 0
+    .cc-container
+      width: 90%;
+    .plans-text
+      padding-top 20px
+
+
 
 
   @media screen and (max-width: 500px)
+
     .online-text
       margin-top 0
     .online-text
@@ -700,21 +711,17 @@
     .footer-text
       padding-bottom 20px
     .grid-container
-      padding-top 40px
+      padding-top 87px
+
     .plans-text
       padding-top 12px
+      height 250px
     .plans-text p
       font-size 12px
 
     .cc-container
       text-align center
-    .b-card-1
-    .b-card-2
-    .b-card-3
-    .b-card-4
-      top 0
-      left 0
-      right 0
+
     .online-grid
       width 100%
       grid-template-columns 100%
@@ -731,6 +738,10 @@
       grid-row-start: 2
       grid-row-end: 3
 
+    .premier-league-content
+      padding-top 40px
+    .premier-league-title
+      padding-top 40px
     .premier-league-title
     .plans-title
     .online-title
@@ -743,6 +754,10 @@
       padding-top 20px
       text-align center
       height auto
+    .triangle-background-2 img
+      height: 800px;
+      width: 100vw;
+
 
   @media screen and (max-width: 360px)
     .phrase

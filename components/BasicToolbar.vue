@@ -1,14 +1,14 @@
 <template>
     <div id="toolbar" :class="[nonLanding?'dark':'transparent']">
       <div class="img-container">
-        <img :src="nonLanding? '/landing/bombo_transparency.png':'/landing/bombo_outline2_3x.png'" alt="">
+        <img :src="nonLanding? '/landing/bombo_transparency.png':'/landing/bombo_purple.png'" alt="">
       </div>
       <div class="links uppercase">
         <div :class="['flex', nonLanding?'white-link':'dark-link']" >
           <!--<nuxt-link to="/">COMO JUGAR</nuxt-link>-->
           <!--<nuxt-link to="/">CONTÁCTANOS</nuxt-link>-->
           <nuxt-link to="/register" class="register">Regístrate</nuxt-link>
-          <nuxt-link to="/wait" class="login elevation">INGRESA AHORA</nuxt-link>
+          <nuxt-link to="/login" class="login elevation">INGRESA AHORA</nuxt-link>
         </div>
       </div>
       <div :class="['menu-btn', !nonLanding?'dark-menu':'white-menu']" >
@@ -77,13 +77,13 @@
 
   .img-container
     float left
-    margin-left 23px
+    margin-left 50px
     min-height toolbar-height
     display inline-block
     position relative
   .img-container img
     position absolute
-    top 50%
+    top 60%
     transform translateY(-50%)
     width 116px
 

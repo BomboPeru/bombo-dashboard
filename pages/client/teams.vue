@@ -103,7 +103,7 @@
     overflow-x auto
     overflow-y hidden
     // min-height: calc(100vh - 190px)
-    height: calc(100vh - 140px)
+    height: calc(100vh - 128px)
     // min-height: calc(100vh - 280px)
     display: flex
     flex-wrap nowrap

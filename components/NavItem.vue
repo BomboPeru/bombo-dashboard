@@ -20,8 +20,8 @@
 
 <style lang="stylus" scoped>
 nav_item_width = 148px
-nav_item_height = 78px // 81px
-nav_item_height_inactive = 76px
+nav_item_height = 68px // 81px
+nav_item_height_inactive = 64px
 
 
 #nav-item:hover

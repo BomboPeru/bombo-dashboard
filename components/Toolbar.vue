@@ -36,7 +36,7 @@
 </script>
 
 <style scoped lang="stylus">
-toolbar-height = 76px
+toolbar-height = 64px
 toolbar-height-mobile = 56px
 
 #toolbar

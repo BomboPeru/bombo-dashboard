@@ -2,7 +2,7 @@
    <div id="login">
      <div class="bombo-home">
        <nuxt-link to="/">
-         <img src="/landing/bombo_outline2_3x.png" width="100px" alt="">
+         <img src="/landing/bombo_purple.png" width="100px" alt="">
        </nuxt-link>
      </div>
      <div class="card-login rounded-sm">
@@ -75,10 +75,10 @@
           password: this.password
         }).then(res => {
 
-          this.$axios.setToken(res.data.token, 'Bearer')
-          this.$store.commit('auth/setToken', res.data.token)
-
-          this.fetchUser(res.data.token)
+          // this.$axios.setToken(res.data.token, 'Bearer')
+          // this.$store.commit('auth/setToken', res.data.token)
+          // this.fetchUser(res.data.token)
+          this.$router.push('/wait')
         })
         .catch(err => {
           // loading off

@@ -351,7 +351,7 @@
 <style scoped lang="stylus">
   #createteam
     padding 23px 10px 0 10px
-    height calc(100vh - 128px)
+    height calc(100vh - 116px)
     // height calc(100vh - 99px)
     display flex
     flex-flow row

@@ -3,7 +3,7 @@
 
       <div class="bombo-home">
         <nuxt-link to="/">
-          <img src="/landing/bombo_outline2_3x.png" width="100px" alt="">
+          <img src="/landing/bombo_purple.png" width="100px" alt="">
         </nuxt-link>
       </div>
 
@@ -265,8 +265,8 @@
 
               // loading off
               this.message = 'Cuenta registrada con éxito'
+              this.$router.push('/')
 
-              // this.$router.push('/')
               // this.$router.push('/client/teams')
 
             } catch (e) {
