@@ -541,9 +541,13 @@
 
   @media screen and (max-width: 500px)
     .card-container
-      height 80vh
-      margin-top 30px
+      height 100vh
+      width 101%
+      margin-top 0
       overflow auto
+      border-radius 0
+    .signup-btn-section
+      padding-top 12px
     .grid-content
       grid-template-columns: 100%;
       grid-template-rows: auto auto auto 20%;

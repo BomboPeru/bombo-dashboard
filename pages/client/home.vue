@@ -381,7 +381,6 @@
     display flex
     flex-wrap wrap
     justify-content: center
-    align-items baseline
 
     height calc(70vh - 153px)
     overflow auto
@@ -472,7 +471,6 @@
 
 
   @media screen and (max-width: 600px)
-
     #home
       height auto
 

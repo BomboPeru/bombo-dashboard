@@ -12,8 +12,8 @@
             <cc-avatar :src="urlImage" sm class="avatar"/>
             <p class="name header-title">Name</p>
             <p class="header-title coins">
-              <span class="coin-txt green">{{ credit_coin }}</span> <span> <i class="fas fa-bold green"></i> </span> &nbsp;&nbsp;/&nbsp;&nbsp;
-              <span class="coin-txt yellow">{{ bombo_coin }}</span> <span><i class="far fa-money-bill-alt yellow"></i></span>
+              <span class="coin-txt green">{{ bombo_coin }}</span> <span> <i class="fas fa-bold green"></i> </span> &nbsp;&nbsp;/&nbsp;&nbsp;
+              <span class="coin-txt yellow">{{ credit_coin }}</span> <span><i class="far fa-money-bill-alt yellow"></i></span>
             </p>
           </div>
           <div class="items">
