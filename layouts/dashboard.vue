@@ -11,7 +11,9 @@
                      icon-direction="right"
                      color="#EA504C"
                      @click="toggleBomboPayments"
-                     fa-icon="fa-bitcoin"/>
+                     class="icon-saldo"
+                     collapsable
+                     icon="coin"/>
       </floating-container>
     </div>
 
@@ -170,4 +172,6 @@
 .loading-enter, .loading-leave-to /* .fade-leave-active below version 2.1.8 */ {
   opacity: 0;
 }
+.icon-saldo
+  left -80px
 </style>

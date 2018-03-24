@@ -32,7 +32,7 @@
                                :text="item.name"
                                icon-direction="left"
                                :color="item.color"
-                               :icon="item.icon"
+                               fa-icon="fa-plus"
                                @click="callback(item.name)"
                                class="bottom-btn"/>
                 </template>

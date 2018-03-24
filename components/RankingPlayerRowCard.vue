@@ -5,12 +5,12 @@
           <tr class="tr">
             <td style="width: 10%" class="ranking">{{ index + 1 }}</td>
             <td style="width: 40%" class="name">{{ player.name }}</td>
-            <td style="width: 25%" class="cost">$ {{ player.cost }} M</td>
+            <td style="width: 25%" class="cost">{{ player.points || 0 }} Pts</td>
             <td style="width: 25%" class="position">{{ position }}</td>
           </tr>
         </tbody>
       </table>
-      <div class="cover-color" :style="{ background: color }"></div>
+      <!--<div class="cover-color" :style="{ background: color }"></div>-->
     </div>
 </template>
 
@@ -78,7 +78,7 @@
     text-align left
   .position
     font-weight bold
-    color white
+    color black
   .cover-color
     position absolute
     z-index 1

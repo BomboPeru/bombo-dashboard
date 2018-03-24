@@ -35,7 +35,7 @@
 
   #floating-container
     position absolute
-    margin 24px 28px
+    margin 34px 28px
   .bottom-right
     bottom 0
     right 0

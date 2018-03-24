@@ -1,7 +1,7 @@
 <template>
     <div id="toolbar" class="elevation">
       <div class="img-container">
-        <nuxt-link to="/client/teams">
+        <nuxt-link to="/client/home">
           <img src="/landing/bombo_all_white.svg" alt="">
         </nuxt-link>
       </div>
@@ -55,11 +55,14 @@ toolbar-height-mobile = 56px
   display inline-block
   position relative
 .img-container img
-  height: 42px
+  height: 35px
   position absolute
   top 50%
   transform translateY(-50%)
 
+@media screen and (min-width: 1700px)
+  .img-container img
+    height 42px
 
 @media screen and (max-width: 1023px)
   .img-container

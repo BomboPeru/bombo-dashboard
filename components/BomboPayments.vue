@@ -100,7 +100,7 @@
                   </div>
 
                   <div class="pay-btn-container">
-                    <button class="pay-btn elevation" @click="pay">COMPRAR AHORA</button>
+                    <button :class="['pay-btn', 'elevation', payButtonEnabled?'':'pay-btn-disabled']"  @click="pay">{{ payButtonText }}</button>
                   </div>
 
                 </div>
@@ -169,6 +169,13 @@
       },
       async pay () {
 
+        if (!this.payButtonEnabled) {
+          return null
+        }
+
+        this.payButtonEnabled = false
+        this.payButtonText = 'Espere...'
+
         // lazy validation
         if (this.creditInfo.card_number.length > 18 &&
           this.creditInfo.cvv.length > 2 &&
@@ -193,10 +200,53 @@
 
           console.log('request',request)
 
-          const token = 'pk_live_Sabys0p2rhn2D4ZM'
-          const response = await this.$axios.$post('https://api.culqi.com/v2/tokens', request,
-            { headers: { Authorization: 'Bearer ' + token} })
-          console.log(response)
+          const token = this.$store.getters['auth/getToken']
+          const publicKey = 'pk_live_Sabys0p2rhn2D4ZM'
+
+
+          try {
+
+            {
+              const response = await this.$axios.$post('https://api.culqi.com/v2/tokens', request,
+                { headers: { Authorization: 'Bearer ' + publicKey } })
+
+
+              let request2 = {
+                card_number: request.card_number,
+                token_card: response.id
+              }
+              console.log('request2', request2)
+
+              const response2 = await this.$axios.$post(`http://api.bombo.pe/api/v2.0/users/${user.id}/set-card`, request2,
+                { headers: { Authorization: 'Bearer ' + token} })
+
+              console.log('reponse2', response2)
+
+              this.payButtonText = 'COMPRAR AHORA'
+              this.payButtonEnabled = true
+
+              const amount = this.plans[this.planSelected].amount
+              let finalRequest = {
+                how: amount
+              }
+
+              const finalResponse = await this.$axios.$post(`http://api.bombo.pe/api/v2.0/users/${user.id}/charge`, finalRequest,
+                { headers: { Authorization: 'Bearer ' + token} })
+
+              console.log('finalResponse', finalResponse)
+
+              this.$store.dispatch('turnOnSnackbar', 'Felicidades! tu compra ha sido realizada con exito.')
+            }
+
+          } catch (e) {
+            console.log('e bombo pa',e.toString())
+            this.$store.dispatch('turnOnSnackbar', e.response.data.user_message)
+
+            this.payButtonEnabled = true
+            this.payButtonText = 'COMPRAR AHORA'
+
+          }
+
 
 
         } else {
@@ -245,6 +295,8 @@
         currency_code: 'PEN',
         amount: 20,
         isLoading: false,
+        payButtonEnabled: true,
+        payButtonText: 'COMPRAR AHORA',
         creditInfo: {
           card_number:'',
           cvv: '',
@@ -427,6 +479,9 @@
     width 100%
     align-self: end;
     padding-bottom 32px
+  .pay-btn-disabled
+    background gray !important
+    cursor none !important
 
 
   .status-payment

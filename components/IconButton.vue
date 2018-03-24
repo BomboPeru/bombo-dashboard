@@ -1,8 +1,8 @@
 <template>
-    <div id="icon-button" class="elevation-2" @click="onClick">
+    <div id="icon-button" :class="['elevation-2', collapsable?'collapse':'']" @click="onClick">
       <div :class="['text', iconDirection+'-text']">{{text}}</div>
       <div :class="['icon', iconDirection, 'elevation']" :style="{ background: color }">
-        <i v-if="faIcon !== ''" :class="['fab', 'fa-2x', faIcon]"></i>
+        <i v-if="faIcon !== ''" :class="['fas', 'fa-2x', faIcon]"></i>
         <img v-else :src="icons[icon]" class="icon-image" alt="">
       </div>
     </div>
@@ -10,6 +10,7 @@
 
 <script>
   import IconSvg from '../assets/icons/plus.svg'
+  import CoinSvg from '../assets/icons/coins.svg'
 
   export default {
     name: 'icon-button',
@@ -18,6 +19,7 @@
       color: String,
       icon: String,
       iconDirection: String,
+      collapsable: Boolean,
       faIcon: {
         type: String,
         default: ''
@@ -26,7 +28,8 @@
     data () {
       return {
         icons: {
-          plus: IconSvg
+          plus: IconSvg,
+          coin: CoinSvg
         }
       }
     },
@@ -41,23 +44,25 @@
 <style scoped lang="stylus">
 
   #icon-button
-    height 50px
+    height 52px
     display inline-block
     position relative
     min-width 200px
     background #fafafa
-    border-radius: 10px
+    border-radius: 5px
     cursor: pointer
     z-index: 9;
   .icon
-    border-radius: 10px
+    border-radius: 5px
     height 100%
     position absolute
     top 0
-    width 50px
+    width 52px
     text-align center
   .icon img
     margin-top 8px
+    height 30px
+    width 30px
   .right
     right -2px
   .left
@@ -75,20 +80,33 @@
   .right-text
     margin-right 50px
 
-  .fab
+  .fas
     color white
-    margin-top 8px
+    margin-top 10px
+
+  .collapse
+    min-width 50px !important
+    transition all .5s ease-in
+
+  .collapse .text
+    display none !important
+  .collapse:hover
+    min-width 200px !important
+  .collapse:hover .text
+    display block !important
+    transition all .5s ease-in
 
   #icon-button:hover .icon
     width 60px
     height 60px
-    top -5px
+    top -4px
     transition all .2s ease-in
+    display block
 
   #icon-button:hover .icon-image
     transition all .2s ease-in
     margin-top 13px
-  #icon-button:hover .fab
+  #icon-button:hover .fas
     transition all .2s ease-in
     margin-top 13px
 </style>

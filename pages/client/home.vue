@@ -23,7 +23,7 @@
               COSTO
             </p>
             <p class="top-player-points">
-              $ {{ rankingPlayers[0].cost }} M
+              {{ rankingPlayers[0].points || 0 }} Pts
             </p>
           </div>
 
@@ -57,7 +57,7 @@
                preserveAspectRatio="none"
                viewBox="0 0 100 100">
 
-            <polygon points="0,100 0,60 80,20 100,80 100,100"  :style="{ fill: '#445dcc' }"/>
+            <polygon points="0,100 0,60 80,20 100,80 100,100"  :style="{ fill: '#ffffff' }"/>
           </svg>
 
           <div class="ranking-container">
@@ -77,18 +77,19 @@
         </div>
 
         <div class="next-matches-card custom-elevation">
-          <svg class="svg"
-               width="100%"
-               height="100%"
-               version="1.1"
-               preserveAspectRatio="none"
-               viewBox="0 0 100 100">
 
-            <polygon points="50,10 58,0 100,0 100,30 90,45"  :style="{ fill: '#FF6565' }"/>
-          </svg>
+          <!--<svg class="svg"-->
+               <!--width="100%"-->
+               <!--height="100%"-->
+               <!--version="1.1"-->
+               <!--preserveAspectRatio="none"-->
+               <!--viewBox="0 0 100 100">-->
+
+            <!--<polygon points="50,10 58,0 100,0 100,30 90,45"  :style="{ fill: '#FF6565' }"/>-->
+          <!--</svg>-->
 
           <div class="next-matches-container">
-            <div class="header-section elevation">
+            <div class="header-section">
               <p class="title-next-matches">Próxima fecha de </p>
               <select v-model="league" class="league-select">
                 <option disabled :value="null">Selecciona una liga</option>
@@ -103,13 +104,19 @@
             <div class="matches-card-section">
               <div v-for="(match, i) in matches" :key="i"
                    class="mini-match-card elevation"
-                   :match="match"
-                   :time="match.time"
-                   width="250px"
-                   :date="match.playing_day"
-                   notPlayed>
+                   :style="{ background: teamColors[match.away_name] || '#595b65' }">
 
                 <div class="mmc-top-title">{{ formatDate(match.playing_day) }}</div>
+                <div class="mmc-background">
+                  <svg class="svg"
+                       width="100%"
+                       height="100%"
+                       version="1.1"
+                       preserveAspectRatio="none"
+                       viewBox="0 0 100 100">
+                    <polygon points="40,100 60,0 100,0 100,100"  :style="{ fill: teamColors[match.home_name] || '#6697a5' }"/>
+                  </svg>
+                </div>
                 <div class="mmc-title">
                   <table width="100%">
                     <tbody>
@@ -132,6 +139,7 @@
 
 <script>
   import MatchCard from '../../components/MatchCard'
+  import TeamColors from '../../assets/json/premier_league_colors'
   import RankingPlayerRowCard from '../../components/RankingPlayerRowCard'
 
   export default {
@@ -159,7 +167,8 @@
         player: { name: 'No Name', points: 24 },
         number: 0,
         matches: [],
-        rankingPlayers: []
+        rankingPlayers: [],
+        teamColors: {}
       }
     },
     methods: {
@@ -206,7 +215,8 @@
     mounted () {
       this.user = this.$store.getters['user']
       const self = this
-
+      console.log(TeamColors)
+      this.teamColors = TeamColors
     }
   }
 </script>
@@ -218,12 +228,12 @@
 
 
   .best-player-card
-    background #0e212d
+    background #fff
   .text-container
     position relative
     z-index 3
     margin 12px 10px
-    color white
+    color black
   .text-container p
     text-align right
     padding-right 20px
@@ -332,18 +342,19 @@
     color white
 
   .header-section
-    background #0F202D
+    background white
     height 40px
     line-height 40px
-    color white
-    padding-left 20px
+    color dimgrey
+    padding 8px 20px
+
 
   .title-next-matches
   .league-select
   .time-number
     font-family Raleway
     font-weight bold
-    color #d1d1d1
+    color dimgrey
 
 
   .title-next-matches
@@ -351,17 +362,17 @@
     display inline-block
 
   .league-select
-    margin-left 3px
+    margin-left 10px
     outline none
     font-size 14px
     border 0
-    background #0F202D
+    color #272727
+    background white
 
   .time-number
     position absolute
-    top 0
+    top 8px
     right 20px
-    color white
     font-weight bold
     font-size 22px
 
@@ -370,12 +381,15 @@
     display flex
     flex-wrap wrap
     justify-content: center
-    /*align-items start*/
+    align-items baseline
+
     height calc(70vh - 153px)
     overflow auto
+    margin-top: 17px;
+
 
   .mini-match-card
-    background #0F202D
+    background #f26465
     font-family 'Raleway'
     display inline-block
     padding 4px 4px
@@ -383,10 +397,16 @@
     margin 4px 4px
     width 220px
     text-align center
+    position relative
+
+  /*.mmc-background*/
+    /*position relative*/
 
   .mmc-title
   .mmc-top-title
     text-transform uppercase
+    position relative
+    z-index 10
 
   .mmc-top-title
     margin-bottom 4px
@@ -416,6 +436,8 @@
     text-align left
     font-size 14px
     font-family 'Raleway'
+    color dimgrey !important
+    font-weight: bold;
 
 
   @media screen and (min-width: 1700px)
