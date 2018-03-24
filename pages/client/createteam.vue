@@ -254,11 +254,15 @@
             }
 
             if (isAlreadyAdded === false) {
+
+
               this.team.players[data.type].push(data.player)
+              this.$store.state.createteam.playersList.splice(data.i, 1)
             }
           } else {
 
             this.team.players[data.type].push(data.player)
+            this.$store.state.createteam.playersList.splice(data.i, 1)
           }
         } else {
           const playerType = {

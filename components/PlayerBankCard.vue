@@ -32,7 +32,7 @@
             :key="key + '-player'"
             :player="player"
             :position="playerTypesConversions[player.position]"
-            @onPlayerSelected="selectPlayer(player, player.position)"/>
+            @onPlayerSelected="selectPlayer(player, player.position, key)"/>
         </div>
       </no-ssr>
     </div>
@@ -58,6 +58,14 @@
       SearchComponent, PlayerRowCard, PlayersFilter
     },
     computed: {
+      playersList: {
+        get () {
+          return this.$store.state.createteam.playersList
+        },
+        set (value) {
+          this.$store.state.createteam.playersList = value
+        }
+      }
     },
     data () {
       return {
@@ -65,7 +73,7 @@
         // unused
         teams: [],
         backuplist: [],
-        playersList: [],
+        // playersList: [],
         searchText: '',
         playerTypesConversions: {
           'goal_keeper': 'ARQUERO',
@@ -138,7 +146,7 @@
         this.$store.state.isLoading = false
 
       },
-      async fetchSomething(searchText) {
+      async fetchSomething (searchText) {
         // const data = response.data.slice(0,5)
         // const data = SampleData
 
@@ -169,11 +177,14 @@
         }
         console.log('fetch done')
       },
-      selectPlayer (player, type) {
+      selectPlayer (player, type, i) {
+
         let data = {
           player: player,
-          type: type
+          type: type,
+          i: i
         }
+
         this.$emit('onPlayerSelected', data)
       }
     },

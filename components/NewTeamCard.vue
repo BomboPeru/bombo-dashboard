@@ -226,6 +226,7 @@
         let index = this.team.players[type].indexOf(player)
         if (index !== -1) {
           this.team.players[type].splice(index, 1)
+          this.$store.state.createteam.playersList.push(player)
         }
       }
     }

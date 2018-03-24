@@ -5,7 +5,8 @@ const createteam = {
     activeTabViews: 0,
     captainId: null,
     rulesDialog: false,
-    editTeamName: null
+    editTeamName: null,
+    playersList: []
   },
   mutations: {
     setActiveTabView (state, index) {
