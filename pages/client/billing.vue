@@ -23,7 +23,7 @@
                 <cc-slider width="50%"
                            color="#EA504C"
                            colorTooltip="#EA504C"
-                           :min="1"
+                           :min="20"
                            :max="maxLimit"
                            v-model="amount" class="cc-slider"/>
               </template>
@@ -101,20 +101,20 @@
     methods: {
       async retire () {
 
-        // if (this.amount === 0) {
-        //   this.$store.dispatch('turnOnSnackbar', 'INSUFICIENTE SALDO PARA PROCEDER CON EL RETIRO')
-        //   return false
-        // }
-        // if (this.account === '') {
-        //   this.$store.dispatch('turnOnSnackbar', 'NUMERO DE CUENTA REQUERIDO')
-        //   return false
-        // }
+        if (this.amount >= 20) {
+          this.$store.dispatch('turnOnSnackbar', 'INSUFICIENTE SALDO PARA PROCEDER CON EL RETIRO. SE ACEPTAN RETIROS MAYORES A s/ 20')
+          return false
+        }
+        if (this.account === '') {
+          this.$store.dispatch('turnOnSnackbar', 'NUMERO DE CUENTA REQUERIDO')
+          return false
+        }
 
         try {
           const userId = this.$store.getters['auth/getUserId']
-          const response = await this.$axios.$post(`https://api.bombo.pe/api/v2.0/users/${userId}/generate-retire`, {
-            how: 10,
-            account_number: '3333333333330033'
+          const response = await this.$axios.$post(`api/v2.0/users/${userId}/generate-retire`, {
+            how: this.amount,
+            account_number: this.account
           })
 
           console.log('response', response)

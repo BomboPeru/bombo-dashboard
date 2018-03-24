@@ -60,7 +60,7 @@
         {
           const leagueId = this.$store.getters['createteam/leagueid']
 
-          let response = await this.$axios.$get(`https://api.bombo.pe/api/v2.0/matches/${leagueId}/current-matches`)
+          let response = await this.$axios.$get(`api/v2.0/matches/${leagueId}/current-matches`)
           this.matches = response.data
         }
       }

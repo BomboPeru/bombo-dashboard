@@ -126,7 +126,7 @@
         this.$store.dispatch('turnOnSnackbar', 'Eliminando notificación')
 
         try {
-          let response = await this.$axios.post('https://api.bombo.pe/api/v2.0/users/' + userId + '/delete-notification', {
+          let response = await this.$axios.post(`api/v2.0/users/${userId}/delete-notification`, {
             notification_id: item.id
           })
 

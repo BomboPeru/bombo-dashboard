@@ -100,7 +100,7 @@
           const token = this.$store.getters['auth/getToken']
           let request = new XMLHttpRequest()
 
-          request.open('POST', 'https://api.bombo.pe/api/v2.0/users/'+ userId +'/update-profile-photo')
+          request.open('POST', 'api/v2.0/users/'+ userId +'/update-profile-photo')
           request.setRequestHeader('Authorization', 'Bearer ' + token)
           request.send(formData)
 
@@ -112,7 +112,7 @@
         // const userId = this.$store.getters['auth/getUserId']
         // this.user.birthday = (new Date(this.birthdayFake)).toISOString()
 
-        this.$axios.post('https://api.bombo.pe/api/v2.0/users/'+ this.user.id +'/update-profile',
+        this.$axios.post('api/v2.0/users/'+ this.user.id +'/update-profile',
           { user: this.user })
           .then(res => {
             console.log(res)
@@ -134,7 +134,7 @@
 
       const userId = this.$store.getters['auth/getUserId']
       // const token = this.$store.getters['auth/getToken']
-      const url = 'https://api.bombo.pe/api/v2.0/storage/users/' + userId + '/profile-photo'
+      const url = 'api/v2.0/storage/users/' + userId + '/profile-photo'
       this.urlImage = url
     }
   }

@@ -217,7 +217,7 @@
               }
               console.log('request2', request2)
 
-              const response2 = await this.$axios.$post(`https://api.bombo.pe/api/v2.0/users/${user.id}/set-card`, request2,
+              const response2 = await this.$axios.$post(`api/v2.0/users/${user.id}/set-card`, request2,
                 { headers: { Authorization: 'Bearer ' + token} })
 
               console.log('reponse2', response2)
@@ -230,7 +230,7 @@
                 how: amount
               }
 
-              const finalResponse = await this.$axios.$post(`https://api.bombo.pe/api/v2.0/users/${user.id}/charge`, finalRequest,
+              const finalResponse = await this.$axios.$post(`api/v2.0/users/${user.id}/charge`, finalRequest,
                 { headers: { Authorization: 'Bearer ' + token} })
 
               console.log('finalResponse', finalResponse)

@@ -28,7 +28,7 @@
     },
     methods: {
       send () {
-        this.$axios.$post('https://api.bombo.pe/auth/password-forgot', {
+        this.$axios.$post('auth/password-forgot', {
           email: this.email
         })
       }

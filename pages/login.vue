@@ -70,7 +70,7 @@
         // loading on
         this.$store.state.isLoading = true
 
-        this.$axios.post('https://api.bombo.pe/auth/login', {
+        this.$axios.post('auth/login', {
           username: this.username,
           password: this.password
         }).then(res => {
@@ -78,6 +78,8 @@
           // this.$axios.setToken(res.data.token, 'Bearer')
           // this.$store.commit('auth/setToken', res.data.token)
           // this.fetchUser(res.data.token)
+
+          this.$store.state.isLoading = false
           this.$router.push('/wait')
         })
         .catch(err => {

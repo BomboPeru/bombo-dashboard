@@ -31,7 +31,7 @@ const team = {
       const userId = localStorage.getItem('userId')
       // const token = localStorage.getItem('token')
 
-      let response = await this.$axios.$get('http://api.bombo.pe/api/v2.0/users/' + userId)
+      let response = await this.$axios.$get('api/v2.0/users/' + userId)
       //
       let teams = {}
       teams['0'] = response.data.saved_teams === null ? [] : response.data.saved_teams

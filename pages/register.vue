@@ -242,7 +242,7 @@
             // loading on
             this.$store.state.isLoading = true
             try {
-              let response = await this.$axios.$post('https://api.bombo.pe/auth/signup', this.user )
+              let response = await this.$axios.$post('auth/signup', this.user )
 
               if ( this.hasPhotoToUpload )
               {
@@ -252,7 +252,7 @@
                 const userId = response.user.id
                 let request = new XMLHttpRequest()
 
-                request.open('POST', 'https://api.bombo.pe/api/v2.0/users/'+ userId +'/update-profile-photo')
+                request.open('POST', 'api/v2.0/users/'+ userId +'/update-profile-photo')
                 request.setRequestHeader('Authorization', 'Bearer ' + response.token)
                 request.send(formData)
               }

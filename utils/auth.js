@@ -8,12 +8,12 @@ export default {
     if (token === null) return false
 
     try {
-      const res = await axios.get('http://api.bombo.pe/auth/verify', { headers: { 'Authorization': 'Bearer ' + token }})
+      const res = await axios.get('auth/verify', { headers: { 'Authorization': 'Bearer ' + token }})
 
       const userId = res.data.data.user.id
       window.localStorage.setItem('userId', userId)
 
-      const response = await axios.get('http://api.bombo.pe/api/v2.0/users/' + userId,
+      const response = await axios.get('api/v2.0/users/' + userId,
         { headers: { 'Authorization': 'Bearer ' + token }})
 
       window.localStorage.setItem('user', JSON.stringify(response.data.data))
@@ -31,7 +31,7 @@ export default {
     const token = window.localStorage.getItem('token')
     if (token === null) return false
     try {
-      const res = await axios.get('http://api.bombo.pe/auth/verify', { headers: { 'Authorization': 'Bearer ' + token }})
+      const res = await axios.get('auth/verify', { headers: { 'Authorization': 'Bearer ' + token }})
 
       const currentTimeInSeconds = new Date().getTime() / 1000
       window.localStorage.setItem('userId', res.data.data.user.id)

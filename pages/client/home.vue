@@ -181,17 +181,17 @@
       async fetchLastMatches () {
         const leagueId = this.leagueObj.id
         {
-          let response = await this.$axios.$get(`https://api.bombo.pe/api/v2.0/matches/${leagueId}/current-time`)
+          let response = await this.$axios.$get(`api/v2.0/matches/${leagueId}/current-time`)
           this.number = response.data.number
         }
         {
-          let response = await this.$axios.$get(`https://api.bombo.pe/api/v2.0/matches/${leagueId}/current-matches`)
+          let response = await this.$axios.$get(`api/v2.0/matches/${leagueId}/current-matches`)
           this.matches = response.data
         }
       },
       async fetchRankingPlayers () {
         {
-          let response = await this.$axios.$get('https://api.bombo.pe/api/v2.0/players/top-ten')
+          let response = await this.$axios.$get('api/v2.0/players/top-ten')
           console.log('response', response)
           this.rankingPlayers = response.data
         }
@@ -200,7 +200,7 @@
     },
     beforeCreate() {
 
-      this.$axios.get('https://api.bombo.pe/api/v2.0/leagues/all')
+      this.$axios.get('api/v2.0/leagues/all')
         .then(res => {
           this.$store.state.leagues = res.data.data
           this.leagueObj = res.data.data[0]

@@ -26,6 +26,9 @@ module.exports = {
     '@nuxtjs/axios',
     // '@nuxtjs/pwa'
   ],
+  axios: {
+    baseURL: 'https://api-test.bombo.pe/'
+  },
   // manifest: {
   //   name: 'Bombo',
   //   lang: 'en-US',

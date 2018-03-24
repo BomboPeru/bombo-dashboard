@@ -252,7 +252,7 @@
       duplicate() {
         const userId = this.$store.getters['auth/getUserId']
 
-        this.$axios.post('https://api.bombo.pe/api/v2.0/users/'+ userId + '/duplicate-team', {
+        this.$axios.post('api/v2.0/users/'+ userId + '/duplicate-team', {
           team_name: this.team.name
         })
           .then(res => {
@@ -271,7 +271,7 @@
           'pasados': 'old'
         }
 
-        this.$axios.post('https://api.bombo.pe/api/v2.0/users/'+ userId + '/delete-team', {
+        this.$axios.post('api/v2.0/users/'+ userId + '/delete-team', {
           team_name: this.team.name,
           team_type: teamTypes[this.typeCard]
         })
