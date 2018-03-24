@@ -764,8 +764,6 @@
     .plans-section
       height auto
 
-
-
   @media screen and (max-width: 360px)
     .phrase
       font-size 22px

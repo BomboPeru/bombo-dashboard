@@ -238,23 +238,19 @@
 
   @media screen and (max-width: 1023px)
     .card-login
-      width 320px
+      width  80vw
       padding-left 20px
-  @media screen and (max-height: 500px)
+      border-radius 0 !important
+
+  @media screen and (max-width: 500px)
     .card-login
-      position relative
-      margin-top 50px
-      margin-bottom 50px
-    #login
-      height 100%
+      width 100%
+      padding-left 20px
     .content
       padding-left 25px
       padding-right 25px
       padding-top 20px
       padding-bottom 20px
-    .label
-      margin-left 0
-      margin-right 0
     .input-text
       width 100%
       margin-top 10px
@@ -266,6 +262,18 @@
       margin-bottom 32px
       margin-left 10px
       margin-right 10px
+
+  @media screen and (max-height: 500px)
+    .card-login
+      position relative
+      margin-top 50px
+      margin-bottom 50px
+    #login
+      height 100%
+
+    .label
+      margin-left 0
+      margin-right 0
 
 
   @media screen and (min-height: 501px)
