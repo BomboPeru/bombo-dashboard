@@ -6,16 +6,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bf24282d-3075-4fc1-a7e6-a1352eba2675" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/components/NextMatchesDialog.vue" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/static/landing/background_login_register.jpg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/static/avatar.png" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/components/Sidebar.vue" afterPath="$PROJECT_DIR$/components/Sidebar.vue" />
-      <change beforePath="$PROJECT_DIR$/layouts/dashboard.vue" afterPath="$PROJECT_DIR$/layouts/dashboard.vue" />
-      <change beforePath="$PROJECT_DIR$/pages/login.vue" afterPath="$PROJECT_DIR$/pages/login.vue" />
-      <change beforePath="$PROJECT_DIR$/pages/register.vue" afterPath="$PROJECT_DIR$/pages/register.vue" />
-      <change beforePath="$PROJECT_DIR$/static/bombo_dashboard_login.jpg" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/static/landing/background_login_register.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/store/createteam.js" afterPath="$PROJECT_DIR$/store/createteam.js" />
+      <change beforePath="$PROJECT_DIR$/components/RankingRowCard.vue" afterPath="$PROJECT_DIR$/components/RankingRowCard.vue" />
+      <change beforePath="$PROJECT_DIR$/pages/client/profile.vue" afterPath="$PROJECT_DIR$/pages/client/profile.vue" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -39,11 +33,51 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="login.vue" pinned="false" current-in-tab="true">
+      <file leaf-file-name="RankingRowCard.vue" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/components/RankingRowCard.vue">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="162">
+              <caret line="8" column="101" lean-forward="false" selection-start-line="8" selection-start-column="101" selection-end-line="8" selection-end-column="101" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="login.vue" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/pages/login.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="168">
-              <caret line="227" column="56" lean-forward="false" selection-start-line="227" selection-start-column="56" selection-end-line="227" selection-end-column="56" />
+            <state relative-caret-position="528">
+              <caret line="242" column="39" lean-forward="false" selection-start-line="242" selection-start-column="39" selection-end-line="242" selection-end-column="39" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="StatusBar.vue" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/components/StatusBar.vue">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="400">
+              <caret line="73" column="18" lean-forward="false" selection-start-line="73" selection-start-column="18" selection-end-line="73" selection-end-column="91" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="profile.vue" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/pages/client/profile.vue">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="216">
+              <caret line="9" column="67" lean-forward="false" selection-start-line="9" selection-start-column="67" selection-end-line="9" selection-end-column="67" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="RankingBoard.vue" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/components/RankingBoard.vue">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="288">
+              <caret line="12" column="0" lean-forward="false" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -54,46 +88,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="268">
               <caret line="311" column="14" lean-forward="false" selection-start-line="311" selection-start-column="14" selection-end-line="311" selection-end-column="14" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="createteam.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/store/createteam.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="472">
-              <caret line="52" column="12" lean-forward="false" selection-start-line="52" selection-start-column="4" selection-end-line="52" selection-end-column="12" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/store/index.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-432">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="createteam.vue" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/pages/client/createteam.vue">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="4241">
-              <caret line="264" column="52" lean-forward="false" selection-start-line="264" selection-start-column="12" selection-end-line="264" selection-end-column="52" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Sidebar.vue" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/components/Sidebar.vue">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="612">
-              <caret line="404" column="19" lean-forward="false" selection-start-line="404" selection-start-column="19" selection-end-line="404" selection-end-column="19" />
               <folding />
             </state>
           </provider>
@@ -191,7 +185,6 @@
         <option value="$PROJECT_DIR$/pages/forgotpassword.vue" />
         <option value="$PROJECT_DIR$/components/CcSlider.vue" />
         <option value="$PROJECT_DIR$/components/TooltipMenu.vue" />
-        <option value="$PROJECT_DIR$/pages/client/profile.vue" />
         <option value="$PROJECT_DIR$/components/CcAvatar.vue" />
         <option value="$PROJECT_DIR$/components/StatusBar.vue" />
         <option value="$PROJECT_DIR$/components/PlayersFilter.vue" />
@@ -212,7 +205,6 @@
         <option value="$PROJECT_DIR$/pages/client/billing.vue" />
         <option value="$PROJECT_DIR$/components/SelectLeagueDialog.vue" />
         <option value="$PROJECT_DIR$/components/MatchCard.vue" />
-        <option value="$PROJECT_DIR$/components/RankingRowCard.vue" />
         <option value="$PROJECT_DIR$/components/RankingBoard.vue" />
         <option value="$PROJECT_DIR$/components/BasicToolbar.vue" />
         <option value="$PROJECT_DIR$/pages/index.vue" />
@@ -236,6 +228,8 @@
         <option value="$PROJECT_DIR$/components/NextMatchesDialog.vue" />
         <option value="$PROJECT_DIR$/pages/register.vue" />
         <option value="$PROJECT_DIR$/pages/login.vue" />
+        <option value="$PROJECT_DIR$/pages/client/profile.vue" />
+        <option value="$PROJECT_DIR$/components/RankingRowCard.vue" />
       </list>
     </option>
   </component>
@@ -289,6 +283,18 @@
               <item name="bombo-dashboard" type="b2602c69:ProjectViewProjectNode" />
               <item name="bombo-dashboard" type="462c0819:PsiDirectoryNode" />
               <item name="assets" type="462c0819:PsiDirectoryNode" />
+              <item name="icons" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="bombo-dashboard" type="b2602c69:ProjectViewProjectNode" />
+              <item name="bombo-dashboard" type="462c0819:PsiDirectoryNode" />
+              <item name="assets" type="462c0819:PsiDirectoryNode" />
+              <item name="img" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="bombo-dashboard" type="b2602c69:ProjectViewProjectNode" />
+              <item name="bombo-dashboard" type="462c0819:PsiDirectoryNode" />
+              <item name="assets" type="462c0819:PsiDirectoryNode" />
               <item name="styles" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -325,12 +331,6 @@
             <path>
               <item name="bombo-dashboard" type="b2602c69:ProjectViewProjectNode" />
               <item name="bombo-dashboard" type="462c0819:PsiDirectoryNode" />
-              <item name="static" type="462c0819:PsiDirectoryNode" />
-              <item name="landing" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="bombo-dashboard" type="b2602c69:ProjectViewProjectNode" />
-              <item name="bombo-dashboard" type="462c0819:PsiDirectoryNode" />
               <item name="store" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -358,9 +358,9 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/static" />
       <recent name="$PROJECT_DIR$/static/landing" />
       <recent name="$PROJECT_DIR$/components" />
-      <recent name="$PROJECT_DIR$/static" />
       <recent name="$PROJECT_DIR$/static/team_resources" />
       <recent name="$PROJECT_DIR$/static/payment" />
     </key>
@@ -441,14 +441,7 @@
       <workItem from="1521680490260" duration="10039000" />
       <workItem from="1521728255952" duration="27376000" />
       <workItem from="1521762200671" duration="43016000" />
-      <workItem from="1521846489214" duration="15566000" />
-    </task>
-    <task id="LOCAL-00054" summary="stadium fix height&#10;fix height saved team card">
-      <created>1521235337639</created>
-      <option name="number" value="00054" />
-      <option name="presentableId" value="LOCAL-00054" />
-      <option name="project" value="LOCAL" />
-      <updated>1521235337639</updated>
+      <workItem from="1521846489214" duration="16953000" />
     </task>
     <task id="LOCAL-00055" summary="loading bombo&#10;fix hegith new team card&#10;notifications">
       <created>1521242679313</created>
@@ -786,11 +779,18 @@
       <option name="project" value="LOCAL" />
       <updated>1521861950381</updated>
     </task>
-    <option name="localTasksCounter" value="103" />
+    <task id="LOCAL-00103" summary="background login register">
+      <created>1521863767526</created>
+      <option name="number" value="00103" />
+      <option name="presentableId" value="LOCAL-00103" />
+      <option name="project" value="LOCAL" />
+      <updated>1521863767526</updated>
+    </task>
+    <option name="localTasksCounter" value="104" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="878283000" />
+    <option name="totallyTimeSpent" value="879670000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="54" y="-4" width="1867" height="1092" extended-state="6" />
@@ -847,7 +847,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="band, play button, icon lion" />
     <MESSAGE value="line table" />
     <MESSAGE value="login&#10;bombo payments not finished" />
     <MESSAGE value="register&#10;en un toque hago time dialog fui a almorzar" />
@@ -872,7 +871,8 @@
     <MESSAGE value="collapse menu sidebar" />
     <MESSAGE value="register" />
     <MESSAGE value="create team" />
-    <option name="LAST_COMMIT_MESSAGE" value="create team" />
+    <MESSAGE value="background login register" />
+    <option name="LAST_COMMIT_MESSAGE" value="background login register" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -881,14 +881,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/components/SelectLeagueDialog.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="98" column="22" lean-forward="false" selection-start-line="98" selection-start-column="16" selection-end-line="98" selection-end-column="22" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/components/MatchCard.vue">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="456">
@@ -905,30 +897,6 @@
     <entry file="file://$PROJECT_DIR$/static/landing/bombo_all_white.svg">
       <provider selected="true" editor-type-id="images">
         <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/components/StatusBar.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1752">
-          <caret line="73" column="18" lean-forward="false" selection-start-line="73" selection-start-column="18" selection-end-line="73" selection-end-column="91" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/components/RankingRowCard.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="5" column="45" lean-forward="false" selection-start-line="5" selection-start-column="45" selection-end-line="5" selection-end-column="45" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/components/RankingBoard.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4368">
-          <caret line="182" column="30" lean-forward="false" selection-start-line="182" selection-start-column="30" selection-end-line="182" selection-end-column="30" />
-          <folding />
-        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/static/landing/bombo_outline2_3x.png">
@@ -1239,10 +1207,42 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/components/StatusBar.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="400">
+          <caret line="73" column="18" lean-forward="false" selection-start-line="73" selection-start-column="18" selection-end-line="73" selection-end-column="91" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/pages/login.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="168">
-          <caret line="227" column="56" lean-forward="false" selection-start-line="227" selection-start-column="56" selection-end-line="227" selection-end-column="56" />
+        <state relative-caret-position="528">
+          <caret line="242" column="39" lean-forward="false" selection-start-line="242" selection-start-column="39" selection-end-line="242" selection-end-column="39" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pages/client/profile.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="216">
+          <caret line="9" column="67" lean-forward="false" selection-start-line="9" selection-start-column="67" selection-end-line="9" selection-end-column="67" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/components/RankingBoard.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="288">
+          <caret line="12" column="0" lean-forward="false" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/components/RankingRowCard.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="162">
+          <caret line="8" column="101" lean-forward="false" selection-start-line="8" selection-start-column="101" selection-end-line="8" selection-end-column="101" />
           <folding />
         </state>
       </provider>

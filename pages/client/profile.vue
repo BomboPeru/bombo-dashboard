@@ -7,7 +7,7 @@
         <div class="profile-section">
           <div style="display: flex; justify-content: center;">
             <input type="file" style="display: none;" ref="inputFileImage" @change="atPhotoLoaded">
-            <cc-avatar square :src="urlImage!==''?urlImage:'/profile_photo.png'" @clickAvatar="clickAvatar"/>
+            <cc-avatar square :src="urlImage!==''?urlImage:'/avatar.png'" @clickAvatar="clickAvatar"/>
           </div>
           <div style="text-align: center">
             <div>
@@ -96,12 +96,15 @@
           let formData = new FormData()
           formData.append('photo', this.$refs.inputFileImage.files[0])
 
-          const userId = response.user.id
+          const userId = this.$store.getters['auth/getUserId']
+          const token = this.$store.getters['auth/getToken']
           let request = new XMLHttpRequest()
 
           request.open('POST', 'http://api.bombo.pe/api/v2.0/users/'+ userId +'/update-profile-photo')
-          request.setRequestHeader('Authorization', 'Bearer ' + response.token)
+          request.setRequestHeader('Authorization', 'Bearer ' + token)
           request.send(formData)
+
+          this.$store.dispatch('turnOnSnackbar', 'Avatar actualizado')
         }
 
       },
