@@ -316,7 +316,7 @@
 
   #register
     min-height 100vh
-    background: url(/landing/background_login_register.png) center
+    background: url(/landing/background_login_register.jpg) center
     background-size cover
     /*
   .background

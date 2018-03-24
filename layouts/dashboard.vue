@@ -33,6 +33,8 @@
 
     <snackbar :show="snackbar" :message="snackbarMessage"/>
 
+    <next-matches-dialog v-if="nextMatchesDialog"/>
+
     <mobile-menu-sidebar/>
 
     <transition name="loading">
@@ -53,6 +55,7 @@
   import SelectLeagueDialog from '~/components/SelectLeagueDialog'
   import SignOutDialog from '~/components/SignOutDialog'
   import BomboPayments from '~/components/BomboPayments'
+  import NextMatchesDialog from '~/components/NextMatchesDialog'
   import SelectTimeDialog from '~/components/SelectTimeDialog'
   import MobileMenuSidebar from '~/components/MobileMenuSidebar'
   import LoadingScreen from '~/components/LoadingScreen'
@@ -65,7 +68,7 @@
       Toolbar, FloatingContainer, IconButton,
       SelectLeagueDialog, SignOutDialog, Snackbar, BomboPayments,
       SelectTimeDialog, MobileMenuSidebar, LoadingScreen, ShortLoadingScreen,
-      RulesDialog
+      RulesDialog, NextMatchesDialog
     },
     computed: {
       rulesDialog () {
@@ -79,6 +82,9 @@
       },
       isSignoutDialog () {
         return this.$store.state.signOutDialog
+      },
+      nextMatchesDialog () {
+        return this.$store.state.createteam.nextMatchesDialog
       },
       bomboPayments () {
         return this.$store.state.bomboPayments

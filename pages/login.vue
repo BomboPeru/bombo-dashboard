@@ -225,7 +225,7 @@
     color cornflowerblue
 
   #login
-    background url(/landing/background_login_register.png)
+    background url(/landing/background_login_register.jpg)
     background-size cover
     height 100vh
     // height calc(100vh - 76px)

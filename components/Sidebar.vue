@@ -62,8 +62,8 @@
                   v-if="activeSection !== 'TABLERO'">{{ activeSection }}</span>
             <div v-if="editMode !== true" class="btn-sidebar-1 elevation" @click="onCreateTeamClick">CREAR EQUIPO</div>
             <div v-else class="btn-sidebar-1 elevation" @click="onEditTeamClick">ACTUALIZAR EQUIPO</div>
-            <!--<div class="btn-sidebar-2 elevation" @click="openBomboPayments">RECARGA SALDO</div>-->
             <div class="btn-sidebar-3 elevation" @click="openRulesDialog">REGLAS DEL JUEGO</div>
+            <div class="btn-sidebar-2 elevation" @click="openNextMatches">PROXIMOS ENCUENTROS</div>
           </div>
         </div>
       </template>
@@ -202,6 +202,9 @@
       },
       openBomboPayments() {
         this.$store.state.bomboPayments = !this.$store.state.bomboPayments
+      },
+      openNextMatches () {
+        this.$store.state.createteam.nextMatchesDialog = !this.$store.state.createteam.nextMatchesDialog
       },
       openRulesDialog () {
         this.$store.state.createteam.rulesDialog = true
@@ -398,6 +401,8 @@
   .btn-sidebar-2
     background: #EA504C;
     color: white;
+    margin-left 16px
+    margin-right 16px
 
   .btn-sidebar-3
     margin-right: 16px;
