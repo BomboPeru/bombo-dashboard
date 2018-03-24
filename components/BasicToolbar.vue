@@ -8,7 +8,7 @@
           <!--<nuxt-link to="/">COMO JUGAR</nuxt-link>-->
           <!--<nuxt-link to="/">CONTÁCTANOS</nuxt-link>-->
           <nuxt-link to="/register" class="register">Regístrate</nuxt-link>
-          <nuxt-link to="/login" class="login elevation">INGRESA AHORA</nuxt-link>
+          <nuxt-link to="/wait" class="login elevation">INGRESA AHORA</nuxt-link>
         </div>
       </div>
       <div :class="['menu-btn', !nonLanding?'dark-menu':'white-menu']" >
@@ -122,6 +122,10 @@
 
   .uppercase
     text-transform uppercase
+  .register
+    border 1px solid black
+    border-radius 30px
+    padding 10px 30px
   .login
     border-radius 18px
     background #01E19F

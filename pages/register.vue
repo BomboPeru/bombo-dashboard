@@ -257,13 +257,18 @@
                 request.send(formData)
               }
 
-              this.$axios.setToken(response.token, 'Bearer')
-              auth.setToken(response.token)
-              auth.setUserId(response.user.id)
+              this.$store.state.isLoading = false
+
+              // this.$axios.setToken(response.token, 'Bearer')
+              // auth.setToken(response.token)
+              // auth.setUserId(response.user.id)
 
               // loading off
-              this.$store.state.isLoading = false
-              this.$router.push('/client/teams')
+              this.message = 'Cuenta registrada con éxito'
+
+              // this.$router.push('/')
+              // this.$router.push('/client/teams')
+
             } catch (e) {
               // loading off
               this.$store.state.isLoading = false

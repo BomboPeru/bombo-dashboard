@@ -237,14 +237,13 @@
 
               this.$store.dispatch('turnOnSnackbar', 'Felicidades! tu compra ha sido realizada con exito.')
             }
-
           } catch (e) {
             console.log('e bombo pa',e.toString())
             this.$store.dispatch('turnOnSnackbar', e.response.data.user_message)
 
             this.payButtonEnabled = true
             this.payButtonText = 'COMPRAR AHORA'
-
+            this.$store.dispatch('turnOnSnackbar', 'Ha ocurrido un problema. Intenta de nuevo.')
           }
 
 

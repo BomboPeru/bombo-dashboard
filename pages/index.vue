@@ -13,6 +13,7 @@
         </div>
         <div class="phrase-2-container">
           <p class="phrase-2">
+
             ARMA TU ONCE IDEAL EN BOMBO DE LA PREMIER LEAGUE Y COMPITE CONTRA OTROS
           </p>
         </div>
@@ -52,33 +53,32 @@
             <img src="/landing/registrate_2x.png" alt="">
           </div>
           <div class="title-card">REGISTRATE</div>
-          <div class="text-card">Entra a crearte una cuenta en esta página, es gratuito.</div>
+          <div class="text-card">Entra y registrate. No pierdas la oportunidad de ser parte de esta increíble experiencia.</div>
         </div>
         <div class="card-2 card">
           <div class="card-img-container">
             <img src="/landing/jugadores_2x.png" alt="">
           </div>
           <div class="title-card"> ARMA TU <span class="once">11</span> IDEAL</div>
-          <div class="text-card">Es gratuito armar tus equipos prueba todas las combinaciones que quieras</div>
+          <div class="text-card">Prueba todas las combinaciones que quieras de manera gratuita. </div>
         </div>
         <div class="card-3 card">
           <div class="card-img-container">
             <img src="/landing/copa_2x.png" alt="">
           </div>
-          <div class="title-card">COMPITE</div>
-          <div class="text-card">Con los equipos que más prefieras compite
-            fecha por fecha y gana premios en efectivo (ganan los primeros 50).</div>
+          <div class="title-card">COMPITE Y GANA</div>
+          <div class="text-card">El rendimiento de los 11 jugadores que escojas te hará ganar dinero.</div>
         </div>
       </div>
     </div>
 
     <div class="section online-section padding-section">
       <div class="online-title">
-        <span class="ball"></span> JUGANDO AHORA MISMO
+        <span class="ball"></span> COMPITE A TIEMPO REAL
       </div>
       <div class="online-grid">
         <div class="online-table">
-
+          <img src="/landing/rectangle_2_2x.png" height="500px" alt="">
         </div>
         <div class="online-text">
           <p>Muchos de nuestros usuarios están jugando ahora mismo,
@@ -98,15 +98,14 @@
       </div>
     </div>
 
-    <div class="section padding-section">
-      <div class="premier-league-content">
-        <div class="premier-logo">
-          <img src="/landing/premier_2x.png" alt="">
-        </div>
-        <div class="premier-text">
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do ei
-          smod tempor incididunt ut labore et dolore magna aliqua.
-        </div>
+    <div class="section padding-section premier-league-section">
+      <div class="premier-text">
+        Bombo cubre, por ahora, el resto de la temporada de la Premier League Inglesa
+        y el Mundial. En el futuro cubriremos más ligas como La Liga Peruana y La Liga Española.
+      </div>
+      <div class="premier-league-content premier-logo">
+        <img src="/landing/premier_2x.png" alt="">
+        <img src="/landing/copa_mundial_logo_2x.png" alt="">
       </div>
     </div>
 
@@ -119,8 +118,13 @@
         </div>
         <div class="plans-text">
           <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
-            incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi.
+            Una vez creada la cuenta y los equipos puedes competir.
+            La entrada a cada competencia cuesta 10 soles.
+            Las recargas de cada cuenta se pueden hacer con 4 diferentes montos: 20, 30, 50 y 100 soles.
+            Con el primer depósito regalamos una jugada gratis.
+          </p>
+          <p class="plans-short-text">
+            Aceptamos <span><img src="/landing/visa_2x.png" alt=""><img src="/landing/master_card_2x.png" alt=""></span>
           </p>
         </div>
         <div class="cc-container">
@@ -132,6 +136,34 @@
       </div>
     </div>
 
+    <div class="footer">
+      <div class="footer-container">
+        <div class="right-side">
+          <div class="bombo-footer">
+            <img src="/landing/bombo_all_white.svg" width="100px" alt="">
+          </div>
+          <div class="social-images">
+            <img src="/landing/twitter_logo_2x.png" width="30px" alt="">
+            <img src="/landing/instagram_logo_2x.png" width="30px" alt="">
+            <img src="/landing/facebook_logo_2x.png" width="30px" alt="">
+          </div>
+        </div>
+        <div class="left-side">
+
+          <div class="other-images">
+            <img src="/landing/plus_18_movie_2x.png" width="30px" alt="">
+            <img src="/landing/cer_file_format_2x.png" width="30px" alt="">
+          </div>
+          <div class="contact-section">
+            <div class="raleway-bold">CONTACTO</div>
+            <div>hello@bombo.pe</div>
+          </div>
+        </div>
+      </div>
+      <div class="footer-text">
+        El cliente acepta que al usar y navegar en BOMBO utilizamos ciertas cookies de navegación para mejorar su experiencia. BOMBO solo utilizará cookies que mejoren su experiencia y no aquellas que interfieran, afecten o atenten en contra de su privacidad. Encontrará más información sobre el uso de cookies si lo desea registrándose y leyendo los Términos y Condiciones.
+      </div>
+    </div>
 
   </div>
 </template>
@@ -332,6 +364,7 @@
   .premier-league-title
   .plans-title
   .online-title
+    text-align center !important
     font-size 42px
     color #131251
     font-family 'Campton Bold Demo'
@@ -353,6 +386,7 @@
     height: 700px;
 
   .online-grid
+    margin-top 50px
     display grid
     width 100%
     grid-template-columns 50% 50%
@@ -362,6 +396,8 @@
     grid-column-end: 2;
     grid-row-start: 1
     grid-row-end: 2
+    align-self center
+    justify-self center
   .online-text
     grid-column-start: 2;
     grid-column-end: 3;
@@ -390,36 +426,40 @@
     flex-wrap wrap
     justify-content space-around
     align-items center
-    height 600px
-  .premier-logo
-    display inline-block
-    text-align center
+    height 400px
   .premier-logo img
     height 200px
+  .premier-league-section
+    text-align right
   .premier-text
     display inline-block
-    text-align center
-    width 350px
+    width 50%
+    padding-top 100px
+    height 200px
     color #131251
     font-family Raleway
 
   .plans-title
     text-align left
   .plans-title p
-    width 50%
     display inline-block
   .plans-text
+    padding-top 100px
     height 400px
     text-align center
-    display flex
-    justify-content center
-    align-items center
   .plans-text p
     display inline-block
     width 70%
     font-family Raleway
     font-size 18px
     color #010045
+  .plans-short-text
+    padding-top 50px
+    text-align right
+  .plans-short-text img
+    width 50px
+  .plans-short-text span
+    margin-left 10px
   .cc-container img
     width 250px
   .b-card-1
@@ -438,7 +478,7 @@
   .b-card-4
     z-index 8
     top -60px
-    left -150px
+    left -190px
     position relative
 
 
@@ -490,7 +530,53 @@
     left 50%
     transform translateX(-50%)
 
+  .footer
+    background #3E3E3E
+    width 100%
+    height 300px
+    text-align center
+  .footer-container
+    width 80%
+    display flex
+    flex-wrap wrap
+    justify-content space-between
+    margin-left 10%
+    margin-right 10%
+    padding-top 20px
 
+  .footer-text
+    color white
+    font-family Raleway
+    padding 0 10%
+
+  .right-side
+    display inline-block
+    width 300px
+    height: 120px;
+  .left-side
+    float right
+    display inline-block
+    width 300px
+    height: 120px;
+  .other-images img
+    margin 0 10px
+  .other-images
+    margin-bottom 10px
+
+  .social-images
+    margin-top 20px
+    text-align center
+  .social-images img
+    margin 0 10px
+
+  .contact-section
+    color white
+    font-family Raleway
+    font-size 17px
+  .raleway-bold
+    margin-bottom 8px
+    font-size 17px
+    font-weight 700
 
   @media screen and (min-width: 1500px)
     .grid-container
@@ -510,6 +596,9 @@
       padding: 0 20%;
 
   @media screen and (max-width: 1023px)
+
+    .online-grid
+      margin-top 0
     .player-container
       display none
 
@@ -550,8 +639,20 @@
 
     .plans-text
       height 300px
+
     .cc-container img
       width 150px
+
+    .b-card-1
+    .b-card-2
+    .b-card-3
+    .b-card-4
+      width 100px
+      top 0
+      left 0
+      right 0
+
+    /*
     .b-card-1
       right -90px
     .b-card-2
@@ -561,7 +662,7 @@
       left -20px
     .b-card-4
       top -30px
-      left -50px
+      left -50px*/
 
 
   @media screen and (max-width: 800px)
@@ -578,10 +679,32 @@
       transform: translateX(-50%);
     .padding-section
       padding: 0 20px;
+    .right-side
+      width 200px
+    .left-side
+      width 200px
+
 
   @media screen and (max-width: 500px)
+    .online-text
+      margin-top 0
+    .online-text
+      width 100% !important
+    .online-table img
+      height 300px
+    .footer-container
+      display flex
+      justify-content center
+    .footer
+      height auto
+    .footer-text
+      padding-bottom 20px
     .grid-container
       padding-top 40px
+    .plans-text
+      padding-top 12px
+    .plans-text p
+      font-size 12px
 
     .cc-container
       text-align center
@@ -607,7 +730,7 @@
       grid-column-end: 2;
       grid-row-start: 2
       grid-row-end: 3
-      width 60%
+
     .premier-league-title
     .plans-title
     .online-title
@@ -615,6 +738,11 @@
       text-align center
     .ball
       top 0px
+    .premier-text
+      width 100%
+      padding-top 20px
+      text-align center
+      height auto
 
   @media screen and (max-width: 360px)
     .phrase
