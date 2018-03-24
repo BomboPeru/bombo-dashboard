@@ -405,7 +405,7 @@
     margin-right 16px
 
   .btn-sidebar-3
-    margin-right: 16px;
+    margin-right: 3px;
     background: #5657ea;
     color: white;
 

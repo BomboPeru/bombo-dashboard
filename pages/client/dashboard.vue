@@ -21,6 +21,7 @@
             <div>
               <team-card class="team-card"
                          :key="i+'-team'"
+                         :team="team"
                          :title="team.name"
                          :ranking="team.ranking"
                          :points="team.points"
@@ -101,6 +102,7 @@
     mounted () {
       // this.fetchMyTeams()
       // this.fetchAllMatches()
+      this.teams = this.$store.getters['user'].playing_teams
     }
   }
 </script>
