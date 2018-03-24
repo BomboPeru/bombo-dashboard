@@ -265,7 +265,10 @@
 
               // loading off
               this.message = 'Cuenta registrada con éxito'
-              this.$router.push('/')
+              setTimeout( () => {
+
+                this.$router.push('/')
+              }, 3000)
 
               // this.$router.push('/client/teams')
 
@@ -499,7 +502,7 @@
     color #f14066
     font-family 'Nunito Sans'
     // font-weight: bold;
-    font-size 12px
+    font-size 18px
     text-align center
 
   @media screen and (max-width: 1023px)

@@ -212,9 +212,9 @@
     font-family: Raleway;
   .error
     padding-top 10px
-    font-size 18px
+    font-size 14px
     font-family: Raleway;
-    font-weight bold
+    font-weight 500
     color #ec6a1f
   .forgot-password
     margin-top 12px
