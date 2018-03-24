@@ -7,32 +7,8 @@
   <component name="ChangeListManager">
     <list default="true" id="bf24282d-3075-4fc1-a7e6-a1352eba2675" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/components/BomboPayments.vue" afterPath="$PROJECT_DIR$/components/BomboPayments.vue" />
-      <change beforePath="$PROJECT_DIR$/components/LoginDialog.vue" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/components/MobileMenuSidebar.vue" afterPath="$PROJECT_DIR$/components/MobileMenuSidebar.vue" />
-      <change beforePath="$PROJECT_DIR$/components/NewTeamCard.vue" afterPath="$PROJECT_DIR$/components/NewTeamCard.vue" />
-      <change beforePath="$PROJECT_DIR$/components/NextMatchesDialog.vue" afterPath="$PROJECT_DIR$/components/NextMatchesDialog.vue" />
-      <change beforePath="$PROJECT_DIR$/components/PlayerBankCard.vue" afterPath="$PROJECT_DIR$/components/PlayerBankCard.vue" />
-      <change beforePath="$PROJECT_DIR$/components/PlayerRowCard.vue" afterPath="$PROJECT_DIR$/components/PlayerRowCard.vue" />
-      <change beforePath="$PROJECT_DIR$/components/RankingBoard.vue" afterPath="$PROJECT_DIR$/components/RankingBoard.vue" />
-      <change beforePath="$PROJECT_DIR$/components/RankingRowCard.vue" afterPath="$PROJECT_DIR$/components/RankingRowCard.vue" />
-      <change beforePath="$PROJECT_DIR$/components/SelectLeagueDialog.vue" afterPath="$PROJECT_DIR$/components/SelectLeagueDialog.vue" />
-      <change beforePath="$PROJECT_DIR$/components/SelectTimeDialog.vue" afterPath="$PROJECT_DIR$/components/SelectTimeDialog.vue" />
-      <change beforePath="$PROJECT_DIR$/components/StatusBar.vue" afterPath="$PROJECT_DIR$/components/StatusBar.vue" />
-      <change beforePath="$PROJECT_DIR$/components/TeamCard.vue" afterPath="$PROJECT_DIR$/components/TeamCard.vue" />
-      <change beforePath="$PROJECT_DIR$/components/TooltipMenu.vue" afterPath="$PROJECT_DIR$/components/TooltipMenu.vue" />
-      <change beforePath="$PROJECT_DIR$/layouts/default.vue" afterPath="$PROJECT_DIR$/layouts/default.vue" />
-      <change beforePath="$PROJECT_DIR$/pages/client/billing.vue" afterPath="$PROJECT_DIR$/pages/client/billing.vue" />
-      <change beforePath="$PROJECT_DIR$/pages/client/createteam.vue" afterPath="$PROJECT_DIR$/pages/client/createteam.vue" />
-      <change beforePath="$PROJECT_DIR$/pages/client/dashboard.vue" afterPath="$PROJECT_DIR$/pages/client/dashboard.vue" />
-      <change beforePath="$PROJECT_DIR$/pages/client/home.vue" afterPath="$PROJECT_DIR$/pages/client/home.vue" />
-      <change beforePath="$PROJECT_DIR$/pages/client/profile.vue" afterPath="$PROJECT_DIR$/pages/client/profile.vue" />
-      <change beforePath="$PROJECT_DIR$/pages/forgotpassword.vue" afterPath="$PROJECT_DIR$/pages/forgotpassword.vue" />
+      <change beforePath="$PROJECT_DIR$/nuxt.config.js" afterPath="$PROJECT_DIR$/nuxt.config.js" />
       <change beforePath="$PROJECT_DIR$/pages/index.vue" afterPath="$PROJECT_DIR$/pages/index.vue" />
-      <change beforePath="$PROJECT_DIR$/pages/login.vue" afterPath="$PROJECT_DIR$/pages/login.vue" />
-      <change beforePath="$PROJECT_DIR$/pages/register.vue" afterPath="$PROJECT_DIR$/pages/register.vue" />
-      <change beforePath="$PROJECT_DIR$/store/auth.js" afterPath="$PROJECT_DIR$/store/auth.js" />
-      <change beforePath="$PROJECT_DIR$/store/index.js" afterPath="$PROJECT_DIR$/store/index.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -46,16 +22,6 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="FormAlert.vue" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/components/FormAlert.vue">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-216">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="FloatingContainer.vue" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/components/FloatingContainer.vue">
           <provider selected="true" editor-type-id="text-editor">
@@ -96,6 +62,16 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="nuxt.config.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/nuxt.config.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="336">
+              <caret line="14" column="92" lean-forward="false" selection-start-line="14" selection-start-column="92" selection-end-line="14" selection-end-column="92" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="CcSlider.vue" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/components/CcSlider.vue">
           <provider selected="true" editor-type-id="text-editor">
@@ -109,8 +85,8 @@
       <file leaf-file-name="index.vue" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/pages/index.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="144">
-              <caret line="9" column="28" lean-forward="true" selection-start-line="9" selection-start-column="28" selection-end-line="9" selection-end-column="28" />
+            <state relative-caret-position="708">
+              <caret line="260" column="17" lean-forward="false" selection-start-line="260" selection-start-column="17" selection-end-line="260" selection-end-column="17" />
               <folding />
             </state>
           </provider>
@@ -159,9 +135,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>playersList</find>
-      <find>btn-sidebar-2</find>
-      <find>mini-match-card</find>
       <find>online-title</find>
       <find>PLANS-TITLE</find>
       <find>premier-logo</find>
@@ -189,6 +162,9 @@
       <find>fetchUser</find>
       <find>.card-login</find>
       <find>makePlayTeam</find>
+      <find>deposito</find>
+      <find>.phrase</find>
+      <find>.depos</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -228,7 +204,6 @@
         <option value="$PROJECT_DIR$/pages/client/teams.vue" />
         <option value="$PROJECT_DIR$/components/Toolbar.vue" />
         <option value="$PROJECT_DIR$/components/BasicToolbar.vue" />
-        <option value="$PROJECT_DIR$/nuxt.config.js" />
         <option value="$PROJECT_DIR$/pages/login.vue" />
         <option value="$PROJECT_DIR$/store/auth.js" />
         <option value="$PROJECT_DIR$/pages/register.vue" />
@@ -253,6 +228,7 @@
         <option value="$PROJECT_DIR$/store/index.js" />
         <option value="$PROJECT_DIR$/layouts/default.vue" />
         <option value="$PROJECT_DIR$/components/BomboPayments.vue" />
+        <option value="$PROJECT_DIR$/nuxt.config.js" />
         <option value="$PROJECT_DIR$/pages/index.vue" />
       </list>
     </option>
@@ -464,14 +440,7 @@
       <workItem from="1521680490260" duration="10039000" />
       <workItem from="1521728255952" duration="27376000" />
       <workItem from="1521762200671" duration="43016000" />
-      <workItem from="1521846489214" duration="33292000" />
-    </task>
-    <task id="LOCAL-00063" summary="delete notification binded">
-      <created>1521255375975</created>
-      <option name="number" value="00063" />
-      <option name="presentableId" value="LOCAL-00063" />
-      <option name="project" value="LOCAL" />
-      <updated>1521255375975</updated>
+      <workItem from="1521846489214" duration="34470000" />
     </task>
     <task id="LOCAL-00064" summary="empty team card list&#10;increase title team font">
       <created>1521256374445</created>
@@ -809,11 +778,18 @@
       <option name="project" value="LOCAL" />
       <updated>1521908581796</updated>
     </task>
-    <option name="localTasksCounter" value="112" />
+    <task id="LOCAL-00112" summary="deposito con tilde&#10;https&#10;deleting loginDialog">
+      <created>1521909582819</created>
+      <option name="number" value="00112" />
+      <option name="presentableId" value="LOCAL-00112" />
+      <option name="project" value="LOCAL" />
+      <updated>1521909582819</updated>
+    </task>
+    <option name="localTasksCounter" value="113" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="896009000" />
+    <option name="totallyTimeSpent" value="897187000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="54" y="-4" width="1867" height="1092" extended-state="6" />
@@ -827,7 +803,7 @@
       <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Floobits" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19967087" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.19967087" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32827735" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -870,7 +846,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="home wip, pwa conf" />
     <MESSAGE value="modifying icons" />
     <MESSAGE value="create team responsive wip" />
     <MESSAGE value="testing bombo payments" />
@@ -895,7 +870,8 @@
     <MESSAGE value="finish landing bombo v0.1" />
     <MESSAGE value="responsiveness iphone 5S" />
     <MESSAGE value="visuals" />
-    <option name="LAST_COMMIT_MESSAGE" value="visuals" />
+    <MESSAGE value="deposito con tilde&#10;https&#10;deleting loginDialog" />
+    <option name="LAST_COMMIT_MESSAGE" value="deposito con tilde&#10;https&#10;deleting loginDialog" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -904,14 +880,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/store/dashboard.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/store/createteam.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="520">
@@ -1310,10 +1278,18 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/nuxt.config.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="336">
+          <caret line="14" column="92" lean-forward="false" selection-start-line="14" selection-start-column="92" selection-end-line="14" selection-end-column="92" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/pages/index.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="144">
-          <caret line="9" column="28" lean-forward="true" selection-start-line="9" selection-start-column="28" selection-end-line="9" selection-end-column="28" />
+        <state relative-caret-position="708">
+          <caret line="260" column="17" lean-forward="false" selection-start-line="260" selection-start-column="17" selection-end-line="260" selection-end-column="17" />
           <folding />
         </state>
       </provider>

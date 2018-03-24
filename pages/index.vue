@@ -8,7 +8,7 @@
 
         <div class="phrase-container">
           <p class="phrase">
-            TE BRINDAMOS UNA <span class="highlight">JUGADA GRATIS</span> POR EL PRIMER DEPÓSITO!
+            TE BRINDAMOS UNA <span class="highlight">JUGADA GRATIS</span> POR EL <br>PRIMER DEPÓSITO!
           </p>
         </div>
         <div class="phrase-2-container">
@@ -258,7 +258,8 @@
     display inline-block
     text-align center
     font-size: 42px;
-    font-family 'Campton Bold Demo'
+    font-weight 900
+    font-family Raleway !important
 
   .phrase-2-container
     text-align: center;
@@ -595,7 +596,6 @@
     position absolute
     bottom 0
     right 0
-
 
   @media screen and (min-width: 1500px)
     .grid-container
