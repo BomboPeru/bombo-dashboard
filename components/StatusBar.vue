@@ -34,11 +34,16 @@
     },
     computed: {
       notifications () {
-        return this.$store.state.notifications
+        let notifications = this.$store.state.notifications
+        return notifications
       },
       indicator () {
         return this.$store.state.notifications.length
+      },
+      BASE_URL () {
+        return this.$store.state.BASE_URL
       }
+
     },
     data () {
       return {
@@ -71,7 +76,7 @@
 
       const userId = this.$store.getters['auth/getUserId']
       // const token = this.$store.getters['auth/getToken']
-      const url = 'api/v2.0/storage/users/' + userId + '/profile-photo'
+      const url = this.BASE_URL + 'api/v2.0/storage/users/' + userId + '/profile-photo'
       this.url = url
     }
   }

@@ -75,7 +75,7 @@
         </div>
         <div class="online-text">
           <p>Muchos de nuestros usuarios están jugando ahora mismo,
-            que esperas para ser el siguiente, ademas recuerda que por esta semana <span class="highlight">tu primera compra viene con una jugada gratis!</span></p>
+            que esperas para ser el siguiente, además recuerda que por esta semana <span class="highlight">tu primera compra viene con una jugada gratis!</span></p>
           <div class="img-online">
             <img src="/landing/quality_2x.png" alt="">
           </div>
@@ -112,7 +112,7 @@
         </div>
         <div class="plans-text">
           <p>
-            Una vez creada la cuenta y los equipos puedes competir.
+            Una vez creada la cuenta y los equipos, puedes competir.
             La entrada a cada competencia cuesta 10 soles.
             Las recargas de cada cuenta se pueden hacer con 4 diferentes montos: 20, 30, 50 y 100 soles.
             Con el primer depósito regalamos una jugada gratis.

@@ -8,7 +8,7 @@
           <!--<nuxt-link to="/">COMO JUGAR</nuxt-link>-->
           <!--<nuxt-link to="/">CONTÁCTANOS</nuxt-link>-->
           <nuxt-link to="/register" class="register">Regístrate</nuxt-link>
-          <nuxt-link to="/login" class="login elevation">INGRESA AHORA</nuxt-link>
+          <nuxt-link to="/login" class="login elevation">INICIAR SESIÓN</nuxt-link>
         </div>
       </div>
       <div :class="['menu-btn', !nonLanding?'dark-menu':'white-menu']" >

@@ -10,21 +10,20 @@
             <cc-avatar square :src="urlImage!==''?urlImage:'/avatar.png'" @clickAvatar="clickAvatar"/>
           </div>
           <div style="text-align: center">
+
             <div>
-              <input-text solid placeholder="Nombres y Apellidos" v-model="user.name" big/>
+              <input-text solid placeholder="Nombres y Apellidos" v-model="user.name" disabled big/>
             </div>
             <div>
               <input-text solid placeholder="Email" v-model="user.email" big/>
             </div>
             <div>
-              <input-text solid placeholder="DNI" type="number" v-model="user.identity_document" big/>
+              <input-text solid placeholder="DNI" type="number" v-model="user.identity_document" big disabled/>
             </div>
             <div>
-              <input-text solid placeholder="Cumpleaños" v-model="birthdayFake" type="date" big/>
+              <input-text solid placeholder="Cumpleaños" v-model="birthdayFake" type="date" big disabled/>
             </div>
-            <!--<div>-->
-            <!--<input-text solid placeholder="Email" v-model="user.email" big/>-->
-            <!--</div>-->
+
             <div class="btn-container" style="display: flex; justify-content: center;">
               <div class="update-btn elevation" @click="updateUser">ACTUALIZAR PERFIL</div>
             </div>
@@ -49,6 +48,10 @@
       CcAvatar, InputText, Sidebar
     },
     computed: {
+      BASE_URL () {
+        return this.$store.state.BASE_URL
+      },
+
       birthdayFake: {
         get () {
           const user = this.user
@@ -134,7 +137,7 @@
 
       const userId = this.$store.getters['auth/getUserId']
       // const token = this.$store.getters['auth/getToken']
-      const url = 'api/v2.0/storage/users/' + userId + '/profile-photo'
+      const url = this.BASE_URL + 'api/v2.0/storage/users/' + userId + '/profile-photo'
       this.urlImage = url
     }
   }

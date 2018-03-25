@@ -1,76 +1,77 @@
 <template>
   <div>
     <sidebar mode="simple"/>
-
-    <div id="billing">
-      <div class="grid-container">
-        <div class="v-divider"></div>
-        <div class="column-a">
-          <div class="withdraw-section">
-            <p class="title-a">Retirar Dinero</p>
-            <div class="section-1">
-              <div class="img-a">
-                <img src="/payment/wallet_pic.png" alt="" width="180px">
+    <no-ssr>
+      <div id="billing">
+        <div class="grid-container">
+          <div class="v-divider"></div>
+          <div class="column-a">
+            <div class="withdraw-section">
+              <p class="title-a">Retirar Dinero</p>
+              <div class="section-1">
+                <div class="img-a">
+                  <img src="/payment/wallet_pic.png" alt="" width="180px">
+                </div>
+                <p class="info-a">Al retirar tus ganancias se descontará de tu cuenta de bombo y
+                  en los próximos 5 días hábiles realizaremos el depósito en tu cuenta bancaria</p>
               </div>
-              <p class="info-a">Al retirar tus ganancias se descontará de tu cuenta de bombo y
-                en los próximos 5 días hábiles realizaremos el depósito en tu cuenta bancaria</p>
+              <div class="amount">
+                <span class="currency-sign">s/</span>{{amount}}
+              </div>
+              <div class="slider">
+                <template v-if="maxLimit > 1">
+                  <cc-slider width="50%"
+                             color="#EA504C"
+                             colorTooltip="#EA504C"
+                             :interval="1"
+                             :min="20"
+                             :max="maxLimit"
+                             v-model="amount" class="cc-slider"/>
+                </template>
+                <template v-else>
+                  <div class="sad-text">No posees suficiente crédito ganado para retirar</div>
+                </template>
+              </div>
+              <div class="input-container">
+                <input-text append-icon="fa-credit-card" solid big v-model="account" placeholder="Número de cuenta"/>
+              </div>
+              <div class="btn-container">
+                <div class="btn-withdraw" @click="retire">RETIRAR DINERO</div>
+              </div>
             </div>
-            <div class="amount">
-              <span class="currency-sign">s/</span>{{amount}}
-            </div>
-            <div class="slider">
-              <template v-if="maxLimit > 1">
-                <cc-slider width="50%"
-                           color="#EA504C"
-                           colorTooltip="#EA504C"
-                           :min="20"
-                           :max="maxLimit"
-                           v-model="amount" class="cc-slider"/>
-              </template>
-              <template v-else>
-                <div class="sad-text">No posees suficiente crédito ganado para retirar</div>
-              </template>
-            </div>
-            <div class="input-container">
-              <input-text append-icon="fa-credit-card" solid big v-model="account" placeholder="Número de cuenta"/>
-            </div>
-            <div class="btn-container">
-              <div class="btn-withdraw" @click="retire">RETIRAR DINERO</div>
-            </div>
+
           </div>
-
-
-        </div>
-        <div class="column-b">
-          <div class="billing-section">
-            <p class="title-b">Historial de transferencias</p>
-            <div class="table-container" v-if="historial.length > 0">
-              <table class="table elevation" cellspacing="0" cellpadding="0">
-                <thead class="header elevation">
+          <div class="column-b">
+            <div class="billing-section">
+              <p class="title-b">Historial de transferencias</p>
+              <div class="table-container" v-if="historial.length > 0">
+                <table class="table elevation" cellspacing="0" cellpadding="0">
+                  <thead class="header elevation">
                   <tr>
-                    <th>Nro.</th>
+                    <th>COD</th>
                     <th>Fecha</th>
                     <th>Acción</th>
                     <th>Monto</th>
                   </tr>
-                </thead>
-                <tbody class="table-body">
+                  </thead>
+                  <tbody class="table-body">
                   <tr v-for="(registry, i) in historial" :key="i+'-registry'" class="tr-registry">
-                    <td>{{ registry.number }}</td>
-                    <td> {{ registry.date }} </td>
-                    <td> {{ registry.action }} </td>
+                    <td>{{ registry.code }}</td>
+                    <td> {{ formatDate(registry.at) }} </td>
+                    <td> {{ registry.user_email === undefined? 'DEPOSITO':'RETIRO' }} </td>
                     <td> {{ registry.amount }}</td>
                   </tr>
-                </tbody>
-              </table>
-            </div>
-            <div v-else class="alert-info">
-              Aun no se tiene registro de transferencias
+                  </tbody>
+                </table>
+              </div>
+              <div v-else class="alert-info">
+                Aun no se tiene registro de transferencias
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
+    </no-ssr>
   </div>
 </template>
 
@@ -87,26 +88,44 @@
       InputText, Sidebar, CcSlider
     },
     computed: {
+      maxLimit () {
+        return this.$store.state.current_won_credit
+      },
+      historial () {
+        if (process.server) return []
+        let historial = []
+
+        historial = this.$store.getters['user'].payments
+        historial = historial.concat(this.$store.getters['user'].retires)
+
+        console.log('retires', this.$store.getters['user'].retires)
+        console.log(historial)
+
+        return historial
+      }
     },
     data () {
       return {
         account: '',
-        amount: 0,
-        maxLimit: 0,
-        historial: [
-
-        ]
+        amount: 0
       }
     },
     methods: {
+      formatDate (value) {
+        const date = new Date(value)
+        const day = (date.getDate().toString()).padStart(2, '0')
+        const month = ((date.getMonth() + 1).toString()).padStart(2, '0')
+        return `${day} / ${month} / ${date.getFullYear()}`
+      },
       async retire () {
 
-        if (this.amount >= 20) {
-          this.$store.dispatch('turnOnSnackbar', 'INSUFICIENTE SALDO PARA PROCEDER CON EL RETIRO. SE ACEPTAN RETIROS MAYORES A s/ 20')
+        console.log(this.amount)
+        if (this.amount < 20) {
+          this.$store.dispatch('turnOnSnackbar', 'Ud. puede retirar montos de al menos s/ 20.')
           return false
         }
-        if (this.account === '') {
-          this.$store.dispatch('turnOnSnackbar', 'NUMERO DE CUENTA REQUERIDO')
+        if (this.account.length <= 6) {
+          this.$store.dispatch('turnOnSnackbar', 'NUMERO DE CUENTA INVALIDO')
           return false
         }
 
@@ -117,7 +136,9 @@
             account_number: this.account
           })
 
-          console.log('response', response)
+
+          this.$store.dispatch('updateUser', response.data)
+
         } catch (e) {
           this.$store.dispatch('turnOnSnackbar', 'Ahora no se puede proceder con la transferencia. Intente más tarde.')
           console.log('error', e)
@@ -125,9 +146,6 @@
 
 
       }
-    },
-    mounted () {
-      this.maxLimit = this.$store.state.current_won_credit
     }
   }
 </script>

@@ -204,6 +204,8 @@
           const publicKey = 'pk_live_Sabys0p2rhn2D4ZM'
 
 
+          this.$store.state.isShortLoading = true
+
           try {
 
             {
@@ -233,11 +235,17 @@
               const finalResponse = await this.$axios.$post(`api/v2.0/users/${user.id}/charge`, finalRequest,
                 { headers: { Authorization: 'Bearer ' + token} })
 
-              console.log('finalResponse', finalResponse)
 
+              console.log('finalResponse', finalResponse)
+              this.$store.dispatch('updateUser', finalResponse.data)
+
+              this.$store.state.isShortLoading = false
               this.$store.dispatch('turnOnSnackbar', 'Felicidades! tu compra ha sido realizada con exito.')
+              this.$store.state.bomboPayments = false
+
             }
           } catch (e) {
+            this.$store.state.isShortLoading = false
             console.log('e bombo pa',e.toString())
             this.$store.dispatch('turnOnSnackbar', e.response.data.user_message)
 

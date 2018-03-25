@@ -118,8 +118,6 @@
   import InputSelect from '../components/InputSelect'
   import CcAvatar from '../components/CcAvatar'
 
-  import auth from '../utils/auth'
-
   export default {
     name: 'register',
     components: {
@@ -260,8 +258,6 @@
               this.$store.state.isLoading = false
 
               // this.$axios.setToken(response.token, 'Bearer')
-              // auth.setToken(response.token)
-              // auth.setUserId(response.user.id)
 
               // loading off
               this.message = 'Cuenta registrada con éxito'

@@ -104,7 +104,7 @@
             <div class="matches-card-section">
               <div v-for="(match, i) in matches" :key="i"
                    class="mini-match-card elevation"
-                   :style="{ background: teamColors[match.away_name] || '#595b65' }">
+                   :style="{ background: '#fafafa' }">
 
                 <div class="mmc-top-title">{{ formatDate(match.playing_day) }}</div>
                 <div class="mmc-background">
@@ -114,8 +114,17 @@
                        version="1.1"
                        preserveAspectRatio="none"
                        viewBox="0 0 100 100">
-                    <polygon points="40,100 60,0 100,0 100,100"  :style="{ fill: teamColors[match.home_name] || '#6697a5' }"/>
+                    <polygon points="80,100 100,80 100,100"  :style="{ fill: teamColors[match.home_name] || '#6697a5' }"/>
                   </svg>
+                  <svg class="svg"
+                       width="100%"
+                       height="100%"
+                       version="1.1"
+                       preserveAspectRatio="none"
+                       viewBox="0 0 100 100">
+                    <polygon points="0,0 0,20 20,0"  :style="{ fill: teamColors[match.away_name] || '#6697a5' }"/>
+                  </svg>
+
                 </div>
                 <div class="mmc-title">
                   <table width="100%">
@@ -406,19 +415,18 @@
     text-transform uppercase
     position relative
     z-index 10
+    color black
 
   .mmc-top-title
     margin-bottom 4px
     padding-bottom 4px
     margin-top 4px
     font-size 12px
-    color #ffffffd9
 
 
   .mmc-title
-    font-weight: bold;
-    font-size 14px
-    color rgba(255, 255, 255, 0.76)
+    font-weight: 500;
+    font-size 13px
 
   .vs
     font-size 12px

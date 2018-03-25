@@ -98,7 +98,7 @@
             <div class="portero-section">
               <div v-for="(player, key) in team.players.goal_keeper" :key="key+'-arquero2'" :player="player" class="portero-in-ground">
                 <span class="player-container">
-                  <squad-number ground :img="baseUrl + 'api/v2.0/shirts/' + player.team.toLowerCase().replace(' ','_')" :number="player.j_number"/>
+                  <squad-number ground :img="BASE_URL + 'api/v2.0/shirts/' + player.team.toLowerCase().replace(' ','_')" :number="player.j_number"/>
                   <div class="close-icon">
                     <img src="../assets/icons/close_ground.svg" width="30px" alt="" @click="deletePlayer(player, 'goal_keeper')">
                   </div>
@@ -111,7 +111,7 @@
             <div class="defensa-section">
               <div v-for="(player, key) in team.players.defender" :key="key+'-defensa2'" :player="player" class="defensa-in-ground">
                 <span class="player-container">
-                  <squad-number ground :img="baseUrl + 'api/v2.0/shirts/' + player.team.toLowerCase().replace(' ','_')" :number="player.j_number"/>
+                  <squad-number ground :img="BASE_URL + 'api/v2.0/shirts/' + player.team.toLowerCase().replace(' ','_')" :number="player.j_number"/>
                   <div class="close-icon">
                     <img src="../assets/icons/close_ground.svg" width="30px" alt="" @click="deletePlayer(player, 'defender')">
                   </div>
@@ -125,7 +125,7 @@
             <div class="centrocampista-section">
               <div v-for="(player, key) in team.players.mid_fielder" :key="key+'-centrocampista2'" :player="player" class="centrocampista-in-ground">
                 <span class="player-container">
-                  <squad-number ground :img="baseUrl + 'api/v2.0/shirts/' + player.team.toLowerCase().replace(' ','_')" :number="player.j_number"/>
+                  <squad-number ground :img="BASE_URL + 'api/v2.0/shirts/' + player.team.toLowerCase().replace(' ','_')" :number="player.j_number"/>
                   <div class="close-icon">
                     <img src="../assets/icons/close_ground.svg" width="30px" alt="" @click="deletePlayer(player, 'mid_fielder')">
                   </div>
@@ -139,7 +139,7 @@
             <div class="delantero-section">
               <div v-for="(player, key) in team.players.forward" :key="key+'-delantero2'" :player="player" class="delantero-in-ground">
                 <span class="player-container">
-                  <squad-number ground :img="baseUrl + 'api/v2.0/shirts/' + player.team.toLowerCase().replace(' ','_')" :number="player.j_number"/>
+                  <squad-number ground :img="BASE_URL + 'api/v2.0/shirts/' + player.team.toLowerCase().replace(' ','_')" :number="player.j_number"/>
                   <div class="close-icon">
                     <img src="../assets/icons/close_ground.svg" width="30px" alt="" @click="deletePlayer(player, 'forward')">
                   </div>
@@ -172,9 +172,12 @@
       team: Object
     },
     computed: {
+      BASE_URL () {
+        return this.$store.state.BASE_URL
+      },
       shirtUrl () {
         const teamName = this.player.team.toLowerCase().replace(' ','_')
-        return this.baseUrl + 'api/v2.0/shirts/' + teamName
+        return this.BASE_URL + 'api/v2.0/shirts/' + teamName
       },
       saldo () {
         let saldo = this.maxLimitCost - this.totalPoints
@@ -203,7 +206,6 @@
     },
     data () {
       return{
-        baseUrl: 'https://api.bombo.pe/',
         maxLimitCost: 100,
         activeTab: 0,
         tabs: [{ name: 'LISTA', icon: 'fa-list-alt' }, {name: 'FORMACION', icon: 'fa-align-center'} ],

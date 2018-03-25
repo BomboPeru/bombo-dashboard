@@ -6,7 +6,7 @@
             <td id="position">{{team.position}}</td>
             <td id="photo">
               <div class="">
-                <img :src="`https://api.bombo.pe/api/v2.0/storage/users/${team.creator}/profile-photo`" alt="" height="36px">
+                <img :src="`${BASE_URL}api/v2.0/storage/users/${team.creator}/profile-photo`" alt="" height="36px">
               </div>
             </td>
             <td id="team-name">
@@ -32,6 +32,11 @@
     name: 'ranking-row-card',
     props: {
       team: Object
+    },
+    computed: {
+      BASE_URL () {
+        return this.$store.state.BASE_URL
+      }
     }
   }
 </script>

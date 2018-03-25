@@ -47,12 +47,14 @@ const auth = {
       if (token === null || token === undefined) return false
 
       try {
-        const response = await axios.get('auth/verify', { headers: { 'Authorization': 'Bearer ' + token }})
+        console.log('BASE_URL', context.rootState.BASE_URL)
+
+        const response = await axios.get(context.rootState.BASE_URL + 'auth/verify', { headers: { 'Authorization': 'Bearer ' + token }})
         const userId = response.data.data.user.id
 
         window.localStorage.setItem('userId', userId)
 
-        const response2 = await axios.get('api/v2.0/users/' + userId,
+        const response2 = await axios.get(context.rootState.BASE_URL + 'api/v2.0/users/' + userId,
           { headers: { 'Authorization': 'Bearer ' + token }})
 
         window.localStorage.setItem('user', JSON.stringify(response2.data.data))

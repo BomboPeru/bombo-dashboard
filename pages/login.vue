@@ -18,7 +18,7 @@
            <input class="input-text" type="text" v-model="username" placeholder="Username">
          </div>
          <div class="group-form">
-           <div class="label" > Register </div>
+           <div class="label" > Password </div>
            <input class="input-text" type="password" v-model="password" placeholder="Password">
          </div>
 
@@ -37,7 +37,7 @@
 
        <div class="signup-section">
          <div style="width: 50%; display: inline-block;" class="signup-info">
-           Si no tienes una cuenta, registrate ahora y disfruta de una experiencia de jugar en bombo
+           Si no tienes una cuenta, registrate ahora y disfruta de esta increíble experiencia
          </div>
          <div style="display: inline-block; float: right">
            <div class="signup-btn">
@@ -53,7 +53,6 @@
 
 <script>
   import InputText from '../components/InputText'
-  import auth from '../utils/auth'
 
   export default {
     name: 'login',
@@ -75,12 +74,14 @@
           password: this.password
         }).then(res => {
 
-          // this.$axios.setToken(res.data.token, 'Bearer')
-          // this.$store.commit('auth/setToken', res.data.token)
-          // this.fetchUser(res.data.token)
-
           this.$store.state.isLoading = false
-          this.$router.push('/wait')
+          this.$axios.setToken(res.data.token, 'Bearer')
+          this.$store.commit('auth/setToken', res.data.token)
+          this.fetchUser(res.data.token)
+          this.$router.push('/client/home')
+
+          // this.$store.state.isLoading = false
+          // this.$router.push('/wait')
         })
         .catch(err => {
           // loading off

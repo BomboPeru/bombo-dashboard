@@ -150,13 +150,16 @@
       }
     },
     computed: {
+      BASE_URL () {
+        return this.$store.state.BASE_URL
+      },
       captainId () {
         return this.$store.state.createteam.captainId
       },
       shirtUrl () {
         if (this.player.team !== undefined ) {
           const teamName = this.player.team.toLowerCase().replace(' ','_')
-          return 'api/v2.0/shirts/' + teamName
+          return this.BASE_URL + 'api/v2.0/shirts/' + teamName
         } else {
           return ''
         }

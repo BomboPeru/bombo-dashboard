@@ -18,6 +18,7 @@ const store = () => {
       isLoading: false,
       isShortLoading: false,
 
+      BASE_URL: 'https://api-test.bombo.pe/',
       current_credit: 0,
       current_won_credit: 0,
 
@@ -86,17 +87,18 @@ const store = () => {
         }
 
         try {
-          const response = await axios.get('auth/verify', { headers: { 'Authorization': 'Bearer ' + token }})
+          const response = await axios.get(context.state.BASE_URL + 'auth/verify', { headers: { 'Authorization': 'Bearer ' + token }})
           const userId = response.data.data.user.id
 
           window.localStorage.setItem('userId', userId)
 
-          const response2 = await axios.get('api/v2.0/users/' + userId,
+          const response2 = await axios.get(context.state.BASE_URL + 'api/v2.0/users/' + userId,
             { headers: { 'Authorization': 'Bearer ' + token }})
 
 
           context.state.user = response2.data.data
           context.state.current_credit = response2.data.data.current_credit
+
           context.state.current_won_credit = response2.data.data.current_won_credit
 
           context.state.notifications = response2.data.data.notifications

@@ -80,8 +80,9 @@
           'Tema General': [
             { question: '¿Quiénes somos?', answer: 'Somos Bombo. La primera plataforma online peruana que ofrece la oportunidad al usuario de competir contra otros usuarios en un Daily Fantasy  de fútbol y ganar dinero por esto.', show: false },
             { question: '¿Qué es un Daily Fantasy?',
-              answer: 'El Daily Fantasy es un sistema en que la plataforma les brinda a los usuarios el mismo presupuesto de monedas, para que así, estos puedan armar su once ideal de la liga en que la persona decida competir. \n' +
-              'El puntaje del usuario se determina en base al rendimiento en vida real de los once jugadores que la persona escogió. \n' +
+              answer: 'El Daily Fantasy es un sistema en que la plataforma les brinda a los usuarios el mismo presupuesto de monedas, para ' +
+              'que así, estos puedan armar su once ideal de jugadores de la liga de fútbol en que la persona decida competir.  ' +
+              'El puntaje del usuario se determina en base al rendimiento en vida real de los once jugadores que la persona escogió.  ' +
               'Al final de cada fecha, la persona que cuente con más puntaje será el que gane más dinero.', show: false },
             { question: '¿Cuántas personas ganan?',
               answer: 'Ganan las personas que al final de cada fecha, estén ubicados en las primeras 50 posiciones. ', show: false },
@@ -131,11 +132,11 @@
     cursor pointer
     font-family: 'Nunito Sans';
     font-style: normal;
-    font-weight: normal;
+    font-weight: 500;
     line-height: normal;
     font-size: 18px;
     text-align: center;
-    color: #445F69;
+    color: #435bdc;
 
   .question
     margin-top 20px
