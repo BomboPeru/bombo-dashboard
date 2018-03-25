@@ -445,7 +445,7 @@
     z-index: 99;
   .premier-text
     font-size 18px
-    width 70%
+    // width 70%
     padding-top 40px
     height 200px
     color #131251
