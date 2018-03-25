@@ -12,8 +12,8 @@
                 {{ player.name }}
               </td>
               <td class="responsive-status-bk" style="width: 10%;" :style="{ 'color': statusPlayer.color }">
-                <i class="fas fa-xs fa-circle"></i>
                 <div class="tooltip-status">{{ statusPlayer.text }}</div>
+                <i :class="['fas', 'fa-xs', statusPlayer.icon ]"></i>
               </td>
               <td class="responsive-popularity-bk" style="width: 15%;">
                 {{ player.popularity }} %
@@ -170,31 +170,36 @@
       statusPlayer () {
         let status = {
           color: '#fff',
+          icon: 'fa-plus',
           text: ''
         }
-        switch (this.player.status) {
-          case 'semi-active':
+        switch (this.player.state) {
+          case 'semiactive':
             status = {
-              color: 'yellow',
-              text: 'Lesionado, 50% de prop. de jugar'
+              color: '#c99f2b',
+              icon: 'fa-plus',
+              text: '50% posibilidad de jugar'
             }
             break
-          case 'not-active':
+          case 'not_active':
             status = {
-              color: 'red',
-              text: 'Lesionado, poca probabilidad de jugar'
+              color: '#ff0000',
+              icon: 'fa-plus',
+              text: '0% posibilidad de jugar'
             }
             break
           case 'suspended':
             status = {
-              color: 'black',
+              color: '#ff0000',
+              icon: 'fa-circle',
               text: 'Suspendido, imposible que juegue'
             }
             break
           default:
             status = {
               color: '#3dde00',
-              text: ''
+              icon: 'fa-circle',
+              text: '100% posibilidad de jugar'
             }
             break
         }
@@ -290,15 +295,22 @@
     background #232323ab
   .hover-select-captain:hover .select-text
     color white
+  .responsive-status-bk
+    position relative
   .responsive-status-bk:hover .tooltip-status
     display inline-block
   .tooltip-status
     display none
+    width 150px
+    text-align center
     padding 4px 4px
     position absolute
-    top 0
-    left -50%
-    background rgba(0, 0, 0, 0.51)
+    border-radius 3px
+    top -30px
+    left -75px
+    z-index 10
+    font-size 12px
+    background rgba(0, 0, 0, 0.81)
     color white
 
   .select-text

@@ -139,10 +139,10 @@
 
         // const data = response.data.slice(0,-1)
         const data = response.data.sort((playerA, playerB) => {
-          if (playerA.cost < playerB.cost) {
+          if (playerA.cost > playerB.cost) {
             return -1
           }
-          if (playerA.cost > playerB.cost) {
+          if (playerA.cost < playerB.cost) {
             return 1
           }
           return 0
