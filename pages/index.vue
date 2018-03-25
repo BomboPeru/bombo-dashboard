@@ -440,13 +440,13 @@
   .premier-logo img
     height 200px
   .premier-league-section
-    text-align right
+    text-align center
     position: relative;
     z-index: 99;
   .premier-text
-    display inline-block
-    width 50%
-    padding-top 100px
+    font-size 18px
+    width 70%
+    padding-top 40px
     height 200px
     color #131251
     font-family Raleway
