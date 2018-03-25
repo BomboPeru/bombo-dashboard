@@ -50,6 +50,10 @@
       CcAvatar
     },
     computed: {
+
+      BASE_URL () {
+        return this.$store.state.BASE_URL
+      },
       isOpen () {
         return this.$store.state.menuSidebar
       }
@@ -97,7 +101,7 @@
       this.bombo_coin = user.current_bombo_coins
 
       const userId = this.$store.getters['auth/getUserId']
-      const url = 'api/v2.0/storage/users/' + userId + '/profile-photo'
+      const url = this.BASE_URL + 'api/v2.0/storage/users/' + userId + '/profile-photo'
       this.urlImage = url
     }
   }

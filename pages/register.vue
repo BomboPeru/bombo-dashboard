@@ -33,11 +33,14 @@
             </div>
 
             <div class="group-form">
+              <div class="warning" v-if="wrongBirthday && hasSubmit">
+                {{ constraintBirthdayMessage }}
+              </div>
               <div class="label">
                 Fecha de nacimiento
               </div>
               <div class="birthday-container">
-                <input type="date" class="input-form" placeholder="" v-model="user.birthday_fake">
+                <input type="date" class="input-form" placeholder="yyyy-mm-dd" v-model="user.birthday_fake">
               </div>
             </div>
 
@@ -95,11 +98,19 @@
               </div>
             </div>
           </div>
+
           <div class="signup-btn-section">
 
             <!-- :style="{ 'background': isValidForm?'#25BF89':'#969696' }" -->
-            <div class="btn-continue elevation" @click="createUser">
-              Registrarse
+            <!--  openTermsConditionsDialog -->
+            <div class="info-terms">
+              Al registrarme acepto los <span class="terms-link" @click="openTermsConditionsDialog">términos y condiciones</span>
+            </div>
+
+            <div style="text-align: center">
+              <div class="btn-continue elevation" @click="createUser">
+                Registrarse
+              </div>
             </div>
 
             <div class="warning"> {{message}} </div>
@@ -128,6 +139,8 @@
         urlImage: '/landing/avatar_default.png',
         message: '',
         hasSubmit: false,
+        wrongBirthday: false,
+        constraintBirthdayMessage: 'Ingrese formato de fecha yyyy-mm-dd',
         hasPhotoToUpload: false,
         constraints: {
           name: {
@@ -222,8 +235,17 @@
       async createUser () {
         this.hasSubmit = true
         if (this.isValidForm && ( this.user.password === this.user.repassword )) {
-          if (this.user.name !== '' && this.user.email !== ''
-            && this.user.username !== '' && this.user.password!== '') {
+
+          {
+
+            console.log('this.user.birthday_fake', this.user.birthday_fake)
+
+
+
+            if ( isNaN(Date.parse(this.user.birthday_fake)) ) {
+              this.wrongBirthday = true
+              return
+            }
 
             let birthdayDate = new Date(this.user.birthday_fake)
             this.user.birthday = birthdayDate.toISOString()
@@ -274,8 +296,7 @@
               console.log(e)
               this.message = e.response.data.error || e
             }
-          } else {
-            console.log('invalid data')
+
           }
         }
         console.log('isValidForm', this.isValidForm)
@@ -285,7 +306,9 @@
       isValidForm () {
         const self = this
         let isValid = true
+
         for (let key in this.constraints) {
+          console.log('key',key)
           isValid = this.isValidInput(self.constraints[key].rules, self.user[key])
           if (!isValid) break
         }
@@ -497,9 +520,16 @@
   .warning
     color #f14066
     font-family 'Nunito Sans'
-    // font-weight: bold;
-    font-size 18px
+    font-size 12px
     text-align center
+  .info-terms
+    color #fafafa
+    font-size 12px
+    text-align center
+    padding-bottom: 10px
+  .terms-link
+    cursor pointer
+    color #71c5c5
 
   @media screen and (max-width: 1023px)
     .card-container

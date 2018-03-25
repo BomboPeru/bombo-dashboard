@@ -57,11 +57,12 @@
     display flex
     flex-wrap wrap
     justify-content center
+    align-items start
   .card-content
     width 80%
     background #fafafa
     border-radius: 10px;
-    height: 561px;
+    // height: 561px;
     overflow-y auto
     margin 15px 16px 18px 16px
     padding 15px 16px 18px 16px

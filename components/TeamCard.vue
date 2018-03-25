@@ -1,5 +1,5 @@
 <template>
-    <div id="round-card" class="elevation rounded" :style="{ 'padding-bottom': collapsable?'0px':'5px', 'width': width }">
+    <div id="team-card" class="elevation rounded" :class="[collapsable?'collapse-team-card':'team-card']">
 
       <!--<div class="window-title" :style="{ background: typeColorCards[typeCard] }">-->
         <!--<div :style="{ 'text-align': typeCard !== 'en_juego'?'center':'left' }">-->
@@ -308,11 +308,13 @@ font = 'Nunito Sans'
 font2 = 'Titillium Web'
 /* Titillium Web */
 
-#round-card
+.team-card
+  width 420px
+
+#team-card
   /*width 240px*/
   /*width 350px*/
   position relative
-  width 420px
   flex-grow 1
   /*height 64vh*/
   overflow hidden
@@ -526,7 +528,7 @@ font2 = 'Titillium Web'
   flex-grow 1
 
 .btn-expand
-  background #445F69
+  background #46cc90
   border-radius: 0px 0px 12px 12px;
   height 30px
   font-family font
@@ -624,13 +626,17 @@ font2 = 'Titillium Web'
 
 
 @media screen and (max-width: 1023px)
-  #round-card
-    min-width 300px
+  #team-card
     height calc(100vh - 140px)
     overflow hidden
     background #fafafa
     margin-left 10px
     margin-right 8px
+  .team-card
+    min-width 300px
+  /*.collapse-team-card*/
+    /*width 100%*/
+
 
   .list-players-container
     overflow-y: scroll
@@ -647,6 +653,15 @@ font2 = 'Titillium Web'
     height calc(100vh - 376px) !important
 
 @media screen and (max-width: 500px)
-  #round-card
-    min-width 90%
+  /*.collapse-team-card*/
+    /*min-width 90% !important*/
+  .team-card
+    min-width 300px
+  .collapse-team-card
+    height: auto !important
+  .collapse-team-card .list-players-container
+    height calc(100vh - 344px) !important
+
+
+
 </style>

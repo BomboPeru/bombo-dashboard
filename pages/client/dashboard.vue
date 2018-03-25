@@ -139,4 +139,6 @@
       display none
     .show-flex
       display flex
+    .teams-container
+      justify-content: center
 </style>

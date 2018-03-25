@@ -39,7 +39,7 @@
         return this.$store.state.isShortLoading
       },
       termsAndConditions () {
-        return this.$store.getters.termsAndConditionsDialog
+        return this.$store.getters['termsAndConditionsDialog']
       }
     },
     methods: {
