@@ -17,7 +17,7 @@
                 </p>
 
                 <div class="btn-container">
-                  <div class="purchase-btn" @click="purchase">COMPRAR</div>
+                  <div class="purchase-btn" @click="makePlayTeam">COMPRAR</div>
                   <div class="cancel-purchase-btn" @click="payType = null">CANCELAR</div>
                 </div>
               </div>
@@ -148,14 +148,13 @@
         this.$store.state.team.selectTimeDialog = false
       },
       async makePlayTeam () {
-        if (this.selectedTime === null) return
         //  make update of team
-
         const timeId = this.times[this.selectedTime].id
         const teamName = this.$store.state.team.teamNameToMakePlay
         const payType = this.payTypes[this.payType].type
 
         console.log('timeId', timeId, 'teamName', teamName, 'payType', payType)
+
         try {
           const userId = this.$store.getters['auth/getUserId']
           this.$store.state.isShortLoading = true
@@ -173,9 +172,9 @@
           this.$store.dispatch('turnOnSnackbar', 'Equipo puesto en el juego!')
 
           this.$store.state.team.selectTimeDialog = false
-          // setTimeout(() => {
-          //   window.location.reload(true)
-          // }, 1000)
+          setTimeout(() => {
+            window.location.reload(true)
+          }, 2000)
         } catch (e) {
 
           console.log(e.response.data)

@@ -95,8 +95,8 @@
         if (process.server) return []
         let historial = []
 
-        historial = this.$store.getters['user'].payments
-        historial = historial.concat(this.$store.getters['user'].retires)
+        historial = this.$store.getters['user'].payments || []
+        historial = historial.concat(this.$store.getters['user'].retires || [])
 
         console.log('retires', this.$store.getters['user'].retires)
         console.log(historial)
@@ -107,7 +107,7 @@
     data () {
       return {
         account: '',
-        amount: 0
+        amount: 20
       }
     },
     methods: {
