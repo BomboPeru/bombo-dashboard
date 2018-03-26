@@ -196,7 +196,6 @@
     -webkit-user-select: none;
     -o-user-select: none;
 
-
   .signup-btn a
     text-decoration none
     color white

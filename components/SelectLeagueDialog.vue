@@ -116,7 +116,14 @@
     height 122px
     display inline-block
     position relative
-    margin 5px 5px
+    margin 5px 5
+
+    user-select: none;
+    -moz-user-select: none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    -o-user-select: none;
+
   .title-container
     height 30px
     line-height 30px

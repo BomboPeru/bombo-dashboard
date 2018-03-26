@@ -57,6 +57,13 @@
     border-radius 5px
     box-shadow 1px 1px 20px rgba(0, 0, 0, .16), 0 3px 10px rgba(0, 0, 0, .13)
 
+    user-select: none;
+    -moz-user-select: none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    -o-user-select: none;
+
+
   #time-card p
     position relative
     z-index 3
