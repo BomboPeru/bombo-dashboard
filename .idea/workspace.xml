@@ -7,7 +7,9 @@
   <component name="ChangeListManager">
     <list default="true" id="bf24282d-3075-4fc1-a7e6-a1352eba2675" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/components/MatchCard.vue" afterPath="$PROJECT_DIR$/components/MatchCard.vue" />
+      <change beforePath="$PROJECT_DIR$/components/RulesDialog.vue" afterPath="$PROJECT_DIR$/components/RulesDialog.vue" />
+      <change beforePath="$PROJECT_DIR$/components/SelectLeagueDialog.vue" afterPath="$PROJECT_DIR$/components/SelectLeagueDialog.vue" />
+      <change beforePath="$PROJECT_DIR$/pages/client/billing.vue" afterPath="$PROJECT_DIR$/pages/client/billing.vue" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -21,31 +23,21 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="login.vue" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/pages/login.vue">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="4704">
-              <caret line="196" column="25" lean-forward="false" selection-start-line="196" selection-start-column="25" selection-end-line="196" selection-end-column="25" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="SelectTimeDialog.vue" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/components/SelectTimeDialog.vue">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="936">
-              <caret line="39" column="41" lean-forward="false" selection-start-line="39" selection-start-column="32" selection-end-line="39" selection-end-column="41" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="SelectLeagueDialog.vue" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/components/SelectLeagueDialog.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2880">
-              <caret line="120" column="0" lean-forward="false" selection-start-line="120" selection-start-column="0" selection-end-line="120" selection-end-column="0" />
+            <state relative-caret-position="613">
+              <caret line="158" column="18" lean-forward="false" selection-start-line="158" selection-start-column="18" selection-end-line="158" selection-end-column="18" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="RulesDialog.vue" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/components/RulesDialog.vue">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="360">
+              <caret line="90" column="19" lean-forward="false" selection-start-line="90" selection-start-column="19" selection-end-line="90" selection-end-column="19" />
               <folding />
             </state>
           </provider>
@@ -65,7 +57,7 @@
         <entry file="file://$PROJECT_DIR$/components/PlayersFilter.vue">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="100">
-              <caret line="192" column="33" lean-forward="true" selection-start-line="192" selection-start-column="33" selection-end-line="192" selection-end-column="33" />
+              <caret line="192" column="33" lean-forward="false" selection-start-line="192" selection-start-column="33" selection-end-line="192" selection-end-column="33" />
               <folding />
             </state>
           </provider>
@@ -85,22 +77,32 @@
         <entry file="file://$PROJECT_DIR$/pages/client/dashboard.vue">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="1704">
-              <caret line="73" column="36" lean-forward="true" selection-start-line="73" selection-start-column="36" selection-end-line="73" selection-end-column="36" />
+              <caret line="73" column="36" lean-forward="false" selection-start-line="73" selection-start-column="36" selection-end-line="73" selection-end-column="36" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MatchCard.vue" pinned="false" current-in-tab="true">
+      <file leaf-file-name="MatchCard.vue" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/components/MatchCard.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="546">
-              <caret line="82" column="20" lean-forward="true" selection-start-line="82" selection-start-column="20" selection-end-line="82" selection-end-column="20" />
+            <state relative-caret-position="282">
+              <caret line="71" column="21" lean-forward="false" selection-start-line="71" selection-start-column="21" selection-end-line="71" selection-end-column="21" />
               <folding>
                 <element signature="n#style#0;n#th#0;n#tr#0;n#thead#0;n#table#0;n#div#0;n#template#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#th#1;n#tr#0;n#thead#0;n#table#0;n#div#0;n#template#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#th#2;n#tr#0;n#thead#0;n#table#0;n#div#0;n#template#0;n#!!top" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="billing.vue" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/pages/client/billing.vue">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="480">
+              <caret line="51" column="49" lean-forward="false" selection-start-line="51" selection-start-column="49" selection-end-line="51" selection-end-column="49" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -138,7 +140,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>vue-the-mask</find>
       <find>selectedTypeAccounts</find>
       <find>input-select</find>
       <find>cc-input-container</find>
@@ -168,6 +169,7 @@
       <find>close</find>
       <find>card-league</find>
       <find>700</find>
+      <find>img</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -214,7 +216,6 @@
         <option value="$PROJECT_DIR$/components/FloatingContainer.vue" />
         <option value="$PROJECT_DIR$/components/CcCheckbox.vue" />
         <option value="$PROJECT_DIR$/components/RankingRowCard.vue" />
-        <option value="$PROJECT_DIR$/components/RulesDialog.vue" />
         <option value="$PROJECT_DIR$/components/TeamCard.vue" />
         <option value="$PROJECT_DIR$/components/TooltipMenu.vue" />
         <option value="$PROJECT_DIR$/components/SignOutDialog.vue" />
@@ -222,17 +223,18 @@
         <option value="$PROJECT_DIR$/store/index.js" />
         <option value="$PROJECT_DIR$/nuxt.config.js" />
         <option value="$PROJECT_DIR$/pages/client/home.vue" />
-        <option value="$PROJECT_DIR$/pages/client/billing.vue" />
         <option value="$PROJECT_DIR$/components/BasicToolbar.vue" />
         <option value="$PROJECT_DIR$/components/BomboPayments.vue" />
         <option value="$PROJECT_DIR$/components/IconButton.vue" />
         <option value="$PROJECT_DIR$/pages/register.vue" />
         <option value="$PROJECT_DIR$/pages/login.vue" />
         <option value="$PROJECT_DIR$/components/TimeCard.vue" />
-        <option value="$PROJECT_DIR$/components/SelectLeagueDialog.vue" />
         <option value="$PROJECT_DIR$/components/MobileMenuSidebar.vue" />
         <option value="$PROJECT_DIR$/components/PlayersFilter.vue" />
         <option value="$PROJECT_DIR$/components/MatchCard.vue" />
+        <option value="$PROJECT_DIR$/components/RulesDialog.vue" />
+        <option value="$PROJECT_DIR$/components/SelectLeagueDialog.vue" />
+        <option value="$PROJECT_DIR$/pages/client/billing.vue" />
       </list>
     </option>
   </component>
@@ -450,14 +452,7 @@
       <workItem from="1522013991036" duration="27203000" />
       <workItem from="1522077827349" duration="5894000" />
       <workItem from="1522088278251" duration="1040000" />
-      <workItem from="1522092018560" duration="344000" />
-    </task>
-    <task id="LOCAL-00090" summary="testing bombo payments">
-      <created>1521766165604</created>
-      <option name="number" value="00090" />
-      <option name="presentableId" value="LOCAL-00090" />
-      <option name="project" value="LOCAL" />
-      <updated>1521766165606</updated>
+      <workItem from="1522092018560" duration="3035000" />
     </task>
     <task id="LOCAL-00091" summary="endpoint fix, validation credit card">
       <created>1521777861174</created>
@@ -795,11 +790,18 @@
       <option name="project" value="LOCAL" />
       <updated>1522092223917</updated>
     </task>
-    <option name="localTasksCounter" value="139" />
+    <task id="LOCAL-00139" summary="uppercase dashboard">
+      <created>1522092372500</created>
+      <option name="number" value="00139" />
+      <option name="presentableId" value="LOCAL-00139" />
+      <option name="project" value="LOCAL" />
+      <updated>1522092372500</updated>
+    </task>
+    <option name="localTasksCounter" value="140" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="951732000" />
+    <option name="totallyTimeSpent" value="954423000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="54" y="-11" width="1867" height="1092" extended-state="6" />
@@ -882,7 +884,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="wait close loading" />
     <MESSAGE value="register success message" />
     <MESSAGE value="adding base Url" />
     <MESSAGE value="api test" />
@@ -907,7 +908,8 @@
     <MESSAGE value="user select none" />
     <MESSAGE value="user name menu sidebar" />
     <MESSAGE value="player filter" />
-    <option name="LAST_COMMIT_MESSAGE" value="player filter" />
+    <MESSAGE value="uppercase dashboard" />
+    <option name="LAST_COMMIT_MESSAGE" value="uppercase dashboard" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1048,13 +1050,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/components/RulesDialog.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3360">
-          <caret line="220" column="41" lean-forward="false" selection-start-line="220" selection-start-column="41" selection-end-line="220" selection-end-column="41" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/static/js/drift.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="360">
@@ -1132,14 +1127,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pages/client/billing.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="504">
-          <caret line="21" column="53" lean-forward="false" selection-start-line="21" selection-start-column="53" selection-end-line="21" selection-end-column="53" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/static/landing/bombo_all_white.svg">
       <provider selected="true" editor-type-id="images">
         <state />
@@ -1197,8 +1184,8 @@
         <state relative-caret-position="12504">
           <caret line="523" column="0" lean-forward="false" selection-start-line="523" selection-start-column="0" selection-end-line="523" selection-end-column="0" />
           <folding>
-            <element signature="n#style#0;n#div#1;n#div#3;n#div#1;n#div#1;n#div#0;n#template#0;n#!!top" expanded="true" />
-            <element signature="e#5239#5286#0" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#div#3;n#div#1;n#div#1;n#div#0;n#template#0;n#!!top" expanded="false" />
+            <element signature="e#5239#5286#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1215,14 +1202,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="936">
           <caret line="39" column="41" lean-forward="false" selection-start-line="39" selection-start-column="32" selection-end-line="39" selection-end-column="41" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/components/SelectLeagueDialog.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2880">
-          <caret line="120" column="0" lean-forward="false" selection-start-line="120" selection-start-column="0" selection-end-line="120" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -1254,7 +1233,7 @@
     <entry file="file://$PROJECT_DIR$/components/PlayersFilter.vue">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="100">
-          <caret line="192" column="33" lean-forward="true" selection-start-line="192" selection-start-column="33" selection-end-line="192" selection-end-column="33" />
+          <caret line="192" column="33" lean-forward="false" selection-start-line="192" selection-start-column="33" selection-end-line="192" selection-end-column="33" />
           <folding />
         </state>
       </provider>
@@ -1270,20 +1249,44 @@
     <entry file="file://$PROJECT_DIR$/pages/client/dashboard.vue">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1704">
-          <caret line="73" column="36" lean-forward="true" selection-start-line="73" selection-start-column="36" selection-end-line="73" selection-end-column="36" />
+          <caret line="73" column="36" lean-forward="false" selection-start-line="73" selection-start-column="36" selection-end-line="73" selection-end-column="36" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/components/MatchCard.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="546">
-          <caret line="82" column="20" lean-forward="true" selection-start-line="82" selection-start-column="20" selection-end-line="82" selection-end-column="20" />
+        <state relative-caret-position="282">
+          <caret line="71" column="21" lean-forward="false" selection-start-line="71" selection-start-column="21" selection-end-line="71" selection-end-column="21" />
           <folding>
             <element signature="n#style#0;n#th#0;n#tr#0;n#thead#0;n#table#0;n#div#0;n#template#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#th#1;n#tr#0;n#thead#0;n#table#0;n#div#0;n#template#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#th#2;n#tr#0;n#thead#0;n#table#0;n#div#0;n#template#0;n#!!top" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/components/RulesDialog.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="90" column="19" lean-forward="false" selection-start-line="90" selection-start-column="19" selection-end-line="90" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/components/SelectLeagueDialog.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="613">
+          <caret line="158" column="18" lean-forward="false" selection-start-line="158" selection-start-column="18" selection-end-line="158" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pages/client/billing.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="480">
+          <caret line="51" column="49" lean-forward="false" selection-start-line="51" selection-start-column="49" selection-end-line="51" selection-end-column="49" />
+          <folding />
         </state>
       </provider>
     </entry>

@@ -91,11 +91,11 @@
               </tr>
               <tr>
                 <td>Empató</td>
-                <td>7</td>
+                <td>1</td>
               </tr>
               <tr>
                 <td>Perdió</td>
-                <td>1</td>
+                <td>0.9</td>
               </tr>
               </tbody>
             </table>
@@ -105,7 +105,8 @@
 
           </div>
           <div class="content-2">
-            Puntaje del jugador = Puntaje de cada jugador x Multiplicador
+            Puntaje del jugador = Puntaje de cada jugador x Multiplicador <br>
+            *Puntaje del capitán se multiplica x2
           </div>
 
         </div>

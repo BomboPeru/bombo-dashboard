@@ -107,13 +107,20 @@
     padding-bottom 19px
     text-align center
 
+
+  .card-league img
+    width: 100%;
+    height auto
   .card-league
     overflow hidden
     cursor pointer
     background #fafafa
-    width 250px
-    /*height 200px*/
-    height 122px
+
+    width: 250px;
+    height: 130px;
+
+    // width 250px
+    // height 122px
     display inline-block
     position relative
     margin 5px 5
@@ -138,8 +145,7 @@
 
   .blurred
     filter blur(0.4)
-  .card-league img
-    height 122px
+
   .card-container
     max-width 620px
     max-height 80vh
@@ -147,10 +153,10 @@
 
   @media screen and (max-width: 1023px)
     .card-league
-      width 80px
-      height 50px
-    .card-league img
-      width 80px
+      width: 113px;
+      height: 77px;
+    /*.card-league img*/
+      /*width 80px*/
     .card-container
       max-width 300px
 </style>
