@@ -107,10 +107,15 @@
         const leagueId = this.leagueObj.id
         this.$store.state.isShortLoading = true
 
-        let response = await this.$axios.$get(`api/v2.0/global/ranking/${leagueId}/${timeId}`)
-        this.ranking = response.data.reverse()
+        try {
+          let response = await this.$axios.$get(`api/v2.0/global/ranking/${leagueId}/${timeId}`)
+          this.ranking = response.data.reverse()
 
-        this.$store.state.isShortLoading = false
+          this.$store.state.isShortLoading = false
+        } catch (e) {
+          console.log(e)
+          this.$store.state.isShortLoading = false
+        }
       },
       async fetchLeagues () {
         let response = await this.$axios.$get('api/v2.0/leagues/all')

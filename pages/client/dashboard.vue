@@ -80,11 +80,16 @@
         const leagueId = this.league_id
         const time = this.time
 
-        let response = await this.$axios({
-          method: 'get',
-          url: 'api/v2.0/matches/' + leagueId + '/time/' + time
-        })
-        this.matches = response.data.data
+        try {
+          let response = await this.$axios({
+            method: 'get',
+            url: 'api/v2.0/matches/' + leagueId + '/time/' + time
+          })
+          this.matches = response.data.data
+        } catch (e) {
+          console.log('dashboard', e)
+          this.$store.dispatch('turnOnSnackbar', e.response.data.error)
+        }
       }
     },
     mounted () {
