@@ -38,7 +38,7 @@
         menu : false,
         links: [
           { url: '/register', name: 'REGÍSTRATE' },
-          { url: '/login', name: 'INICIA SESION' }
+          { url: '/login', name: 'INICIA SESIÓN' }
           // { url: '/', name: 'COMO JUGAR' },
           // { url: '/', name: 'CONTÁCTENOS' }
         ]

@@ -149,10 +149,10 @@
           },
           'MIS EQUIPOS': {
             items: [
-              {name: 'GUARDADOS', color:'#25BF89', type: 'normal'},
-              {name: 'EN JUEGO', color: '#EA504C', type: 'normal'},
-              {name: 'PASADOS', color:'#67A6F0', type: 'normal'},
-              {name: '¡CREAR EQUIPO!', color:'#25BF89', type: 'bottom', icon: 'plus'}
+              {name: 'GUARDADOS', color:'#01e19f', type: 'normal'},
+              {name: 'EN JUEGO', color: '#fe5567', type: 'normal'},
+              {name: 'PASADOS', color:'#4a47d2', type: 'normal'},
+              {name: '¡CREAR EQUIPO!', color:'#01e19f', type: 'bottom', icon: 'plus'}
             ]
           },
           'PROXIMAS FECHAS': {
@@ -161,9 +161,9 @@
           },
           'TABLERO': {
             items: [
-              {name: 'TABLA DE POSICIONES', color: '#EA504C', type: 'normal'},
-              {name: 'PARTIDOS', color:'#25BF89', type: 'normal'},
-              {name: 'TUS EQUIPOS', color:'#67A6F0', type: 'normal'}
+              {name: 'TABLA DE POSICIONES', color: '#fe5567', type: 'normal'},
+              {name: 'PARTIDOS', color:'#01e19f', type: 'normal'},
+              {name: 'TUS EQUIPOS', color:'#4a47d2', type: 'normal'}
             ]
           },
           'HISTORIAL': {
@@ -172,8 +172,8 @@
           },
           'ARMA UN EQUIPO': {
             items: [
-              {name: 'JUGADORES', color:'#EA504C', type: 'normal'},
-              {name: 'EQUIPO', color:'#67A6F0', type: 'normal'}
+              {name: 'JUGADORES', color:'#fe5567', type: 'normal'},
+              {name: 'EQUIPO', color:'#4a47d2', type: 'normal'}
               // {name: 'FIXTURE', color:'#25BF89', type: 'normal'}
             ]
           },

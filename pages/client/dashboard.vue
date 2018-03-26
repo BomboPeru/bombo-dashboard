@@ -18,7 +18,7 @@
         <ul>
           <li v-for="(team, i) in teams"
               :key="i+'-team'">
-            <div>
+            <div style="text-align: center;">
               <team-card class="team-card"
                          :key="i+'-team'"
                          :team="team"

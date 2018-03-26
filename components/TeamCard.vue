@@ -225,9 +225,9 @@
           'forward':'DELANTERO'
         },
         typeColorCards: {
-          en_juego: '#EA504C',
-          guardado: '#25BF89',
-          pasados: '#67A6F0'
+          en_juego: '#fe5567',
+          guardado: '#01e19f',
+          pasados: '#4a47d2'
         }
       }
     },
@@ -414,12 +414,12 @@ font2 = 'Titillium Web'
 .table-teamname td
   color #3f3f3f
 .info-saved
-  background: #25BF89
+  background: #01e19f
 .info-in-play
-  background #FE5567
+  background #fe5567
   // background: #ea504c
 .info-old
-  background: #67A6F0
+  background: #4a47d2
 
 .table-teamname td
   font-size 22px
@@ -625,6 +625,14 @@ font2 = 'Titillium Web'
   border-radius 15px
 
 
+.collapse-team-card
+  width 96%
+  display inline-block
+
+@media screen and (min-width: 1500px)
+  .collapse-team-card
+    width 80%
+
 @media screen and (max-width: 1023px)
   #team-card
     height calc(100vh - 140px)
@@ -659,6 +667,9 @@ font2 = 'Titillium Web'
     min-width 300px
   .collapse-team-card
     height: auto !important
+    width 100%
+    margin-left 0 !important
+    margin-right 0 !important
   .collapse-team-card .list-players-container
     height calc(100vh - 344px) !important
 

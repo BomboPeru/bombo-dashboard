@@ -270,7 +270,7 @@
     overflow: auto;
 
   .header
-    background #7452FF
+    background #4a47d2
     color white
   .header tr
     height: 50px;
