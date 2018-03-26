@@ -104,7 +104,11 @@
             <!-- :style="{ 'background': isValidForm?'#25BF89':'#969696' }" -->
             <!--  openTermsConditionsDialog -->
             <div class="info-terms">
-              Al registrarme acepto los <span class="terms-link" @click="openTermsConditionsDialog">términos y condiciones</span>
+              Al registrarme acepto los
+              <a href="/terms" target="_blank" class="terms-link">
+                términos y condiciones
+              </a>
+              <!--<span class="terms-link" @click="openTermsConditionsDialog">términos y condiciones</span>-->
             </div>
 
             <div style="text-align: center">

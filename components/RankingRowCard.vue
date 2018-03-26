@@ -15,6 +15,14 @@
                 Equipo: {{team.name}}
               </div>
             </td>
+
+            <td id="earning">
+              <div class="label-earnings">Premio</div>
+              <div class="earnings">
+                {{Math.round(team.prize_b_coins * 100)/100}} <i class="fas fa-bold fa-xs"></i> / {{Math.round(team.prize_money * 100)/100}} <i class="fas fa-money-bill-alt fa-xs"></i>
+              </div>
+            </td>
+
             <td id="score">
               <div class="label-points">Puntos</div>
               <div class="points">
@@ -78,6 +86,19 @@
   #team-name div
     display block
     width 120px
+  #earning
+    width 62px
+    font-size: 12px;
+  .label-earnings
+    text-align center
+  .label-earnings
+  .earnings
+    color #594eec
+    font-size 10px
+    font-weight: bold;
+  .earnings
+    font-size 18px
+
   .username
     font-size 14px
     font-weight: bold;

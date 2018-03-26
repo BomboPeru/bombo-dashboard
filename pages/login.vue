@@ -26,9 +26,9 @@
            INGRESAR
          </div>
          <div class="forgot-password">
-           <nuxt-link to="/">
+           <a href="/forgotpassword" target="_blank">
              Olvidé mi contraseña
-           </nuxt-link>
+           </a>
          </div>
          <div class="error">
            {{message}}
@@ -211,7 +211,7 @@
     text-align center
     color white
     font-size 14px
-    font-weight: 600;
+    font-weight: 500;
     font-family: Raleway;
   .error
     padding-top 10px
