@@ -7,9 +7,7 @@
   <component name="ChangeListManager">
     <list default="true" id="bf24282d-3075-4fc1-a7e6-a1352eba2675" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/components/SelectLeagueDialog.vue" afterPath="$PROJECT_DIR$/components/SelectLeagueDialog.vue" />
-      <change beforePath="$PROJECT_DIR$/components/TimeCard.vue" afterPath="$PROJECT_DIR$/components/TimeCard.vue" />
-      <change beforePath="$PROJECT_DIR$/pages/login.vue" afterPath="$PROJECT_DIR$/pages/login.vue" />
+      <change beforePath="$PROJECT_DIR$/components/MobileMenuSidebar.vue" afterPath="$PROJECT_DIR$/components/MobileMenuSidebar.vue" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -86,7 +84,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SelectLeagueDialog.vue" pinned="false" current-in-tab="true">
+      <file leaf-file-name="SelectLeagueDialog.vue" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/components/SelectLeagueDialog.vue">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="540">
@@ -96,11 +94,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="BomboPayments.vue" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/components/BomboPayments.vue">
+      <file leaf-file-name="MobileMenuSidebar.vue" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/components/MobileMenuSidebar.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="516">
-              <caret line="772" column="0" lean-forward="false" selection-start-line="772" selection-start-column="0" selection-end-line="772" selection-end-column="0" />
+            <state relative-caret-position="216">
+              <caret line="12" column="48" lean-forward="false" selection-start-line="12" selection-start-column="48" selection-end-line="12" selection-end-column="48" />
               <folding />
             </state>
           </provider>
@@ -203,7 +201,6 @@
         <option value="$PROJECT_DIR$/components/PlayerBankCard.vue" />
         <option value="$PROJECT_DIR$/components/PlayerRowCard.vue" />
         <option value="$PROJECT_DIR$/components/SelectTimeDialog.vue" />
-        <option value="$PROJECT_DIR$/components/MobileMenuSidebar.vue" />
         <option value="$PROJECT_DIR$/layouts/default.vue" />
         <option value="$PROJECT_DIR$/pages/index.vue" />
         <option value="$PROJECT_DIR$/components/Sidebar.vue" />
@@ -234,6 +231,7 @@
         <option value="$PROJECT_DIR$/pages/login.vue" />
         <option value="$PROJECT_DIR$/components/TimeCard.vue" />
         <option value="$PROJECT_DIR$/components/SelectLeagueDialog.vue" />
+        <option value="$PROJECT_DIR$/components/MobileMenuSidebar.vue" />
       </list>
     </option>
   </component>
@@ -450,14 +448,7 @@
       <workItem from="1521955978735" duration="3357000" />
       <workItem from="1522013991036" duration="27203000" />
       <workItem from="1522077827349" duration="5894000" />
-      <workItem from="1522088278251" duration="648000" />
-    </task>
-    <task id="LOCAL-00087" summary="home wip, pwa conf">
-      <created>1521744399765</created>
-      <option name="number" value="00087" />
-      <option name="presentableId" value="LOCAL-00087" />
-      <option name="project" value="LOCAL" />
-      <updated>1521744399765</updated>
+      <workItem from="1522088278251" duration="885000" />
     </task>
     <task id="LOCAL-00088" summary="modifying icons">
       <created>1521745081684</created>
@@ -795,11 +786,18 @@
       <option name="project" value="LOCAL" />
       <updated>1522088834900</updated>
     </task>
-    <option name="localTasksCounter" value="136" />
+    <task id="LOCAL-00136" summary="user select none">
+      <created>1522088935908</created>
+      <option name="number" value="00136" />
+      <option name="presentableId" value="LOCAL-00136" />
+      <option name="project" value="LOCAL" />
+      <updated>1522088935908</updated>
+    </task>
+    <option name="localTasksCounter" value="137" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="950996000" />
+    <option name="totallyTimeSpent" value="951233000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="54" y="-11" width="1867" height="1092" extended-state="6" />
@@ -856,7 +854,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="visuals" />
     <MESSAGE value="deposito con tilde&#10;https&#10;deleting loginDialog" />
     <MESSAGE value="tilde" />
     <MESSAGE value="wait close loading" />
@@ -881,7 +878,8 @@
     <MESSAGE value="register" />
     <MESSAGE value="bombo url" />
     <MESSAGE value="close bombop, user select none, button espere" />
-    <option name="LAST_COMMIT_MESSAGE" value="close bombop, user select none, button espere" />
+    <MESSAGE value="user select none" />
+    <option name="LAST_COMMIT_MESSAGE" value="user select none" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -890,11 +888,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/static/landing/instagram_logo_2x.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/static/landing/cer_file_format_2x.png">
       <provider selected="true" editor-type-id="images">
         <state />
@@ -1253,6 +1246,14 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="540">
           <caret line="120" column="0" lean-forward="true" selection-start-line="120" selection-start-column="0" selection-end-line="120" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/components/MobileMenuSidebar.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="216">
+          <caret line="12" column="48" lean-forward="false" selection-start-line="12" selection-start-column="48" selection-end-line="12" selection-end-column="48" />
           <folding />
         </state>
       </provider>

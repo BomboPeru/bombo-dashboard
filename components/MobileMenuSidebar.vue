@@ -10,7 +10,7 @@
         <div v-if="isOpen" class="sidebar">
           <div class="header">
             <cc-avatar :src="urlImage" sm class="avatar"/>
-            <p class="name header-title">Name</p>
+            <p class="name header-title">{{ name }}</p>
             <p class="header-title coins">
               <span class="coin-txt green">{{ bombo_coin }}</span> <span> <i class="fas fa-bold green"></i> </span> &nbsp;&nbsp;/&nbsp;&nbsp;
               <span class="coin-txt yellow">{{ credit_coin }}</span> <span><i class="far fa-money-bill-alt yellow"></i></span>
@@ -64,6 +64,7 @@
         isOpen2: false,
         credit_coin: 0,
         bombo_coin: 0,
+        name: '',
         items: [
           { label: 'Mi Perfil', icon: 'fa-user-circle', action: () => {
               this.close()
@@ -97,6 +98,7 @@
 
       const user = this.$store.getters['user']
       // console.log('profile', this.user)
+      this.name = user.name
       this.credit_coin = user.current_credit
       this.bombo_coin = user.current_bombo_coins
 
