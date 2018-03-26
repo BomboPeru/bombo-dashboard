@@ -18,7 +18,7 @@ const store = () => {
       isLoading: false,
       isShortLoading: false,
 
-      BASE_URL: 'https://api-test.bombo.pe/',
+      BASE_URL: 'https://api.bombo.pe/',
       current_credit: 0,
       current_won_credit: 0,
 
