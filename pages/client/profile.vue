@@ -103,7 +103,7 @@
           const token = this.$store.getters['auth/getToken']
           let request = new XMLHttpRequest()
 
-          request.open('POST', 'api/v2.0/users/'+ userId +'/update-profile-photo')
+          request.open('POST', this.BASE_URL + 'api/v2.0/users/'+ userId +'/update-profile-photo')
           request.setRequestHeader('Authorization', 'Bearer ' + token)
           request.send(formData)
 

@@ -8,10 +8,10 @@
       </div>
 
       <div class="card-container elevation rounded-sm">
-        <div class="banner-side">
-          <p class="title-register">REGISTRATE</p>
-          <p class="phrase-register">No esperes para ser parte de bombo</p>
-        </div>
+        <!--<div class="banner-side">-->
+          <!--<p class="title-register">REGISTRATE</p>-->
+          <!--<p class="phrase-register">No esperes para ser parte de bombo</p>-->
+        <!--</div>-->
         <div class="grid-content grid-content-side">
           <div class="avatar-section">
             <div>
@@ -403,7 +403,7 @@
     grid-template-rows: 20% 60% 20%;
 
   .grid-content-side
-    width 70%
+    // width 70%
     float right
   .banner-side
     float left
