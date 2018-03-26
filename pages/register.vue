@@ -245,8 +245,6 @@
 
             console.log('this.user.birthday_fake', this.user.birthday_fake)
 
-
-
             if ( isNaN(Date.parse(this.user.birthday_fake)) ) {
               this.wrongBirthday = true
               return
@@ -284,16 +282,19 @@
 
               this.$store.state.isLoading = false
 
-              // this.$axios.setToken(response.token, 'Bearer')
+              this.$axios.setToken(response.token, 'Bearer')
+              this.$store.commit('auth/setToken', response.token)
+              this.$store.dispatch('updateUser', response.user)
+
 
               // loading off
               this.message = 'Cuenta registrada con éxito'
               setTimeout( () => {
 
-                this.$router.push('/')
+                this.$router.push('/client/home')
+                // this.$router.push('/')
               }, 3000)
 
-              // this.$router.push('/client/teams')
 
             } catch (e) {
               // loading off

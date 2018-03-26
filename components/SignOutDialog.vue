@@ -47,6 +47,7 @@
 
         this.$store.commit('auth/removeAuth')
         this.$router.push('/')
+        this.$store.state.signOutDialog = false
       }
     }
   }

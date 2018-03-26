@@ -15,7 +15,7 @@
                        text="CREAR EQUIPO!"
                        icon-direction="left"
                        color="#25BF89"
-                       icon="plus"
+                       fa-icon="fa-plus"
                        class="create-team-btn"
                        @click="goToCreateTeam"
           />

@@ -75,6 +75,8 @@ const store = () => {
         context.state.current_credit = data.current_credit
         context.state.current_won_credit = data.current_won_credit
 
+
+        window.localStorage.setItem('userId', data.id)
         window.localStorage.setItem('user', JSON.stringify(data))
       },
       async fetchUser (context) {
