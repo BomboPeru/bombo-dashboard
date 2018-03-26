@@ -9,8 +9,8 @@
           <div class="content">
 
             <div v-for="(match, i) in matches" :key="i"
-                 class="mini-match-card elevation"
-                 :style="{ background: '#818aab' }">
+                 class="mini-match-card elevation">
+              <!-- :style="{ background: '#818aab' }" -->
 
               <div class="mmc-top-title">{{ formatDate(match.playing_day) }}</div>
               <div class="mmc-title">
@@ -95,9 +95,11 @@
     flex-wrap wrap
     justify-content center
     overflow auto
+    margin-top: 18px;
+    margin-bottom: 18px;
 
   .mini-match-card
-    background #f26465
+    background #ececec
     font-family 'Raleway'
     display inline-block
     padding 4px 4px
@@ -121,7 +123,7 @@
     padding-bottom 4px
     margin-top 4px
     font-size 12px
-    color #ffffffd9
+    color #2d2d2d
 
   @media screen and (max-width: 500px)
     .card-container

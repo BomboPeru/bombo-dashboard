@@ -12,8 +12,12 @@
                 <div class="img-a">
                   <img src="/payment/wallet_pic.png" alt="" width="180px">
                 </div>
-                <p class="info-a">Al retirar tus ganancias se descontará de tu cuenta de bombo y
-                  en los próximos 5 días hábiles realizaremos el depósito en tu cuenta bancaria</p>
+                <!--<p class="info-a">Al retirar tus ganancias se descontará de tu cuenta de bombo y-->
+                  <!--en los próximos 5 días hábiles realizaremos el depósito en tu cuenta bancaria</p>-->
+
+              </div>
+              <div class="indicator">
+                1. Selecciona el monto que quieres retirar.
               </div>
               <div class="amount">
                 <span class="currency-sign">s/</span>{{amount}}
@@ -32,9 +36,38 @@
                   <div class="sad-text">No posees suficiente crédito ganado para retirar</div>
                 </template>
               </div>
+
+              <!--<div class="indicator">-->
+                <!--2. Inserta el banco y tu número de cuenta.-->
+              <!--</div>-->
+
               <div class="input-container">
-                <input-text append-icon="fa-credit-card" solid big v-model="account" placeholder="Número de cuenta"/>
+                <select name="" id="" v-model="typeAccount" class="input-select">
+                  <option v-for="(item, i) in typeAccounts"
+                          :key="i+'-type-account'"
+                          :value="item">{{ item }}</option>
+                </select>
+                <!--<input type="text" :mask="['####-####-####-####']" v-model="account">-->
+
+                <div class="cc-input-container">
+                  <the-mask :mask="['####-####-####-####']" v-model="account" class="cc-input-text"/>
+                  <i class="icon-input fas fa-credit-card"></i>
+                </div>
+                <!--<input-text append-icon="fa-credit-card"-->
+                            <!--solid big-->
+                            <!--v-model="account"-->
+                            <!--placeholder="Número de cuenta"/>-->
               </div>
+
+              <div class="rememberme-section">
+                <cc-checkbox v-model="rememberAccount"/>
+                <span>Recordar Cuenta</span>
+              </div>
+
+              <!--<div class="indicator">-->
+                <!--3. Retirar Dinero.-->
+              <!--</div>-->
+
               <div class="btn-container">
                 <div class="btn-withdraw" @click="retire">RETIRAR DINERO</div>
               </div>
@@ -59,7 +92,7 @@
                     <td>{{ registry.code }}</td>
                     <td> {{ formatDate(registry.at) }} </td>
                     <td> {{ registry.user_email === undefined? 'DEPOSITO':'RETIRO' }} </td>
-                    <td> {{ registry.amount }}</td>
+                    <td> {{ registry.amount || registry.how }}</td>
                   </tr>
                   </tbody>
                 </table>
@@ -78,15 +111,19 @@
 <script>
   // import IconButton from '../../components/IconButton'
   import InputText from '../../components/InputText'
+  import CcCheckbox from '../../components/CcCheckbox'
   import Sidebar from '~/components/Sidebar.vue'
   import CcSlider from '~/components/CcSlider'
+
+  import {TheMask, mask} from 'vue-the-mask'
 
   export default {
     layout: 'dashboard',
     name: 'billing',
     components: {
-      InputText, Sidebar, CcSlider
+      InputText, Sidebar, CcSlider, CcCheckbox, TheMask
     },
+    directives: { mask },
     computed: {
       maxLimit () {
         return this.$store.state.current_won_credit
@@ -98,15 +135,15 @@
         historial = this.$store.getters['user'].payments || []
         historial = historial.concat(this.$store.getters['user'].retires || [])
 
-        console.log('retires', this.$store.getters['user'].retires)
-        console.log(historial)
-
         return historial
       }
     },
     data () {
       return {
+        typeAccount: 'BCP',
+        typeAccounts: ['BCP','INTERBANK', 'SCOTIABANK', 'BBVA', 'BANBIF'],
         account: '',
+        rememberAccount: false,
         amount: 20
       }
     },
@@ -119,33 +156,45 @@
       },
       async retire () {
 
-        console.log(this.amount)
         if (this.amount < 20) {
           this.$store.dispatch('turnOnSnackbar', 'Ud. puede retirar montos de al menos s/ 20.')
           return false
         }
         if (this.account.length <= 6) {
-          this.$store.dispatch('turnOnSnackbar', 'NUMERO DE CUENTA INVALIDO')
+          this.$store.dispatch('turnOnSnackbar', 'Número de cuenta inválido')
           return false
         }
 
         try {
           const userId = this.$store.getters['auth/getUserId']
+          const typeAccount = this.typeAccount.toLowerCase()
+
           const response = await this.$axios.$post(`api/v2.0/users/${userId}/generate-retire`, {
             how: this.amount,
-            account_number: this.account
+            type_account: typeAccount,
+            account_number: this.account,
+            save: this.rememberAccount
           })
 
 
           this.$store.dispatch('updateUser', response.data)
+          this.$store.dispatch('turnOnSnackbar', 'Transacción realizado con éxito.')
 
         } catch (e) {
           this.$store.dispatch('turnOnSnackbar', 'Ahora no se puede proceder con la transferencia. Intente más tarde.')
           console.log('error', e)
         }
-
-
       }
+    },
+    mounted () {
+
+      if (this.$store.getters['user'].saved_retire_account !== '' &&
+        this.$store.getters['user'].type_of_saved_retire_account !== '') {
+
+        this.account = this.$store.getters['user'].saved_retire_account
+        this.typeAccount = this.$store.getters['user'].type_of_saved_retire_account.toUpperCase()
+      }
+
     }
   }
 </script>
@@ -204,6 +253,54 @@
     font-size 14px
     font-family 'Nunito Sans'
 
+  .indicator
+    text-align center
+    font-family 'Nunito Sans'
+    color #747474
+    font-weight: bold;
+
+
+  .cc-input-container
+    position relative
+    display inline-block
+  .cc-input-container .icon-input
+    position: absolute;
+    top: 15px;
+    right: 9px;
+    color #747474
+
+  .cc-input-text
+    outline none
+    height: 50px;
+    background: white;
+    border: 0;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, .25);
+    font-family: Titillium Web;
+    color: #747474;
+    width 200px
+    padding 1px 30px 1px 10px
+
+  .input-select
+    outline none
+    position: relative;
+    height: 50px;
+    background: white;
+    border: 0;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, .25);
+    font-family: Titillium Web;
+    color: #747474;
+
+  .rememberme-section
+    text-align center
+    font-family: Titillium Web;
+    margin-bottom 20px
+    color #777
+
+  .rememberme-section span
+    position relative
+    top -4px
+    left 8px
+
   .input-container
   .btn-container
   .slider
@@ -212,6 +309,7 @@
   .btn-container
     padding-bottom 20px
   .input-container
+    margin-top 20px
     margin-bottom 20px
 
   /*.img-a*/
@@ -287,6 +385,8 @@
   .section-1
     display flex
     flex-wrap wrap
+    justify-content: center;
+
 
   .img-a
     display inline-block

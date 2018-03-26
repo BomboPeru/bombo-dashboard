@@ -50,9 +50,9 @@ nav_item_height_inactive = 64px
   color white !important
 
 .item
-  height: 76px;
+  height: nav_item_height;
   display: inline-block;
-  line-height: 76px;
+  line-height: nav_item_height;
 
   user-select: none;
   -moz-user-select: none;

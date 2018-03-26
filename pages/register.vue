@@ -230,7 +230,8 @@
         this.$router.push('/login')
       },
       openTermsConditionsDialog () {
-        this.$store.commit('openTermsConditionsDialog')
+        this.$router.push('/terms')
+        // this.$store.commit('openTermsConditionsDialog')
       },
       async createUser () {
         this.hasSubmit = true

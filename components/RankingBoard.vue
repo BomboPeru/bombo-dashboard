@@ -103,7 +103,7 @@
         return '' + date.getDate() + '/' + (date.getMonth() + 1) + '/' + date.getFullYear()
       },
       async fetchRanking () {
-        const timeId = this.timeObj.number
+        const timeId = this.timeObj.id
         const leagueId = this.leagueObj.id
         this.$store.state.isShortLoading = true
 

@@ -34,7 +34,8 @@
 <style scoped lang="stylus">
 
   #floating-container
-    position absolute
+    // position absolute
+    position fixed
     margin 34px 28px
   .bottom-right
     bottom 0
