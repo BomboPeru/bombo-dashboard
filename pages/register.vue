@@ -104,7 +104,12 @@
             <!-- :style="{ 'background': isValidForm?'#25BF89':'#969696' }" -->
             <!--  openTermsConditionsDialog -->
             <div class="info-terms">
-              Al registrarme acepto los
+
+              <div class="warning" v-if="!isValidInput(constraints.terms_checked.rules, check_terms) && hasSubmit">
+                {{ constraints.terms_checked.message }}
+              </div>
+              <input class="check-terms" type="checkbox" v-model="check_terms">
+              Acepto los
               <a href="/terms" target="_blank" class="terms-link">
                 términos y condiciones
               </a>
@@ -132,6 +137,7 @@
   import InputText from '../components/InputText'
   import InputSelect from '../components/InputSelect'
   import CcAvatar from '../components/CcAvatar'
+  // import CcCheckbox from '../components/CcCheckbox'
 
   export default {
     name: 'register',
@@ -141,6 +147,7 @@
     data () {
       return {
         urlImage: '/landing/avatar_default.png',
+        check_terms: false,
         message: '',
         hasSubmit: false,
         wrongBirthday: false,
@@ -182,6 +189,12 @@
             message: 'DNI: Ingresa tu DNI',
             rules: [
               a => a.length === 8
+            ]
+          },
+          terms_checked: {
+            message: 'Debes de aceptar los términos y condiciones',
+            rules: [
+              a => a === true
             ]
           }
         },
@@ -537,6 +550,9 @@
     cursor pointer
     color #71c5c5
 
+  .check-terms
+    position relative
+    top 2px
   @media screen and (max-width: 1023px)
     .card-container
       width 90vw
