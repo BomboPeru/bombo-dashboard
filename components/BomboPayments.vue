@@ -258,6 +258,10 @@
 
         } else {
           this.$store.dispatch('turnOnSnackbar', 'DATOS INVALIDOS')
+
+          this.payButtonEnabled = true
+          this.payButtonText = 'COMPRAR AHORA'
+
         }
       }
     },
@@ -382,7 +386,7 @@
   .exp-cvc-label
     margin 20px 1%
     color #868686
-    font-weight bold
+    font-weight 500
     font-family font1
     font-size 13px
   .cvc-container
@@ -427,12 +431,24 @@
     top 50%
     right 20px
     transform translateY(-50%)
+    user-select: none;
+    -moz-user-select: none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    -o-user-select: none;
+
   .prev-btn
     color black
     position absolute
     top 50%
     left 20px
     transform translateY(-50%)
+    user-select: none;
+    -moz-user-select: none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    -o-user-select: none;
+
 
   @media screen and (max-width: 1023px)
     .next-btn
@@ -475,7 +491,7 @@
     text-align: center;
     color: rgb(108, 126, 140) !important;
     font-size: 20px;
-    font-weight: bold;
+    font-weight: 500;
 
   .form-container
     // width 100%
@@ -489,6 +505,12 @@
   .pay-btn-disabled
     background gray !important
     cursor none !important
+    user-select: none;
+    -moz-user-select: none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    -o-user-select: none;
+
 
 
   .status-payment
@@ -727,8 +749,15 @@
     outline 0
     color white
     font-size 18px
-    font-weight bold
+    font-weight 500
     font-family Raleway
+
+    user-select: none;
+    -moz-user-select: none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    -o-user-select: none;
+
 
 
   .close-container
@@ -737,9 +766,16 @@
     cursor pointer
     float right
     position relative
-    top -8px
+    top 3px
     right -16px
     z-index 9
+
+    user-select: none;
+    -moz-user-select: none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    -o-user-select: none;
+
   .close-btn i
     color white
   @media screen and (max-width: 1023px)

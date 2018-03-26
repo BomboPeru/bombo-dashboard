@@ -52,6 +52,13 @@
     border-radius: 5px
     cursor: pointer
     z-index: 9;
+
+    user-select: none;
+    -moz-user-select: none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    -o-user-select: none;
+
   .icon
     border-radius: 5px
     height 100%

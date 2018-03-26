@@ -521,6 +521,13 @@
     margin-bottom 6px
     text-transform uppercase
 
+    user-select: none;
+    -moz-user-select: none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    -o-user-select: none;
+
+
 
   .birthday-label-container
     position relative

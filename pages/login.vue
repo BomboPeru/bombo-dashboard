@@ -189,6 +189,14 @@
     padding 6px 19px
     font-size 10px
     text-align center
+
+    user-select: none;
+    -moz-user-select: none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    -o-user-select: none;
+
+
   .signup-btn a
     text-decoration none
     color white
@@ -213,6 +221,14 @@
     font-size 14px
     font-weight: 500;
     font-family: Raleway;
+
+    user-select: none;
+    -moz-user-select: none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    -o-user-select: none;
+
+
   .error
     padding-top 10px
     font-size 14px
