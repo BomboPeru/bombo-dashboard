@@ -105,10 +105,10 @@
             <!--  openTermsConditionsDialog -->
             <div class="info-terms">
 
-              <div class="warning" v-if="!isValidInput(constraints.terms_checked.rules, check_terms) && hasSubmit">
+              <div class="warning" v-if="!isValidInput(constraints.terms_checked.rules, user.terms_checked) && hasSubmit">
                 {{ constraints.terms_checked.message }}
               </div>
-              <input class="check-terms" type="checkbox" v-model="check_terms">
+              <input class="check-terms" type="checkbox" v-model="user.terms_checked">
               Acepto los
               <a href="/terms" target="_blank" class="terms-link">
                 términos y condiciones
@@ -147,7 +147,6 @@
     data () {
       return {
         urlImage: '/landing/avatar_default.png',
-        check_terms: false,
         message: '',
         hasSubmit: false,
         wrongBirthday: false,
@@ -207,6 +206,7 @@
           email: '',
           username: '',
           password: '',
+          terms_checked: false
         }
       }
     },

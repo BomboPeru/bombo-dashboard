@@ -7,8 +7,7 @@
   <component name="ChangeListManager">
     <list default="true" id="bf24282d-3075-4fc1-a7e6-a1352eba2675" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/pages/client/billing.vue" afterPath="$PROJECT_DIR$/pages/client/billing.vue" />
-      <change beforePath="$PROJECT_DIR$/pages/client/home.vue" afterPath="$PROJECT_DIR$/pages/client/home.vue" />
+      <change beforePath="$PROJECT_DIR$/pages/register.vue" afterPath="$PROJECT_DIR$/pages/register.vue" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -32,7 +31,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="billing.vue" pinned="false" current-in-tab="true">
+      <file leaf-file-name="billing.vue" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/pages/client/billing.vue">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="280">
@@ -66,7 +65,7 @@
         <entry file="file://$PROJECT_DIR$/pages/client/home.vue">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="228">
-              <caret line="228" column="34" lean-forward="true" selection-start-line="228" selection-start-column="34" selection-end-line="228" selection-end-column="34" />
+              <caret line="228" column="34" lean-forward="false" selection-start-line="228" selection-start-column="34" selection-end-line="228" selection-end-column="34" />
               <folding />
             </state>
           </provider>
@@ -112,14 +111,14 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="register.vue" pinned="false" current-in-tab="false">
+      <file leaf-file-name="register.vue" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/pages/register.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="7900">
-              <caret line="554" column="9" lean-forward="false" selection-start-line="554" selection-start-column="9" selection-end-line="554" selection-end-column="9" />
+            <state relative-caret-position="425">
+              <caret line="277" column="25" lean-forward="false" selection-start-line="277" selection-start-column="25" selection-end-line="277" selection-end-column="25" />
               <folding>
                 <element signature="n#style#0;n#div#1;n#div#3;n#div#1;n#div#1;n#div#0;n#template#0;n#!!top" expanded="true" />
-                <element signature="e#5225#5272#0" expanded="true" />
+                <element signature="e#5239#5286#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -138,7 +137,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>card-league</find>
       <find>vendor</find>
       <find>build</find>
       <find>pdf</find>
@@ -168,6 +166,7 @@
       <find>openTermsConditionsDialog</find>
       <find>api-test</find>
       <find>console.lo</find>
+      <find>check_terms</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -230,9 +229,9 @@
         <option value="$PROJECT_DIR$/pages/client/teams.vue" />
         <option value="$PROJECT_DIR$/store/index.js" />
         <option value="$PROJECT_DIR$/nuxt.config.js" />
-        <option value="$PROJECT_DIR$/pages/register.vue" />
         <option value="$PROJECT_DIR$/pages/client/home.vue" />
         <option value="$PROJECT_DIR$/pages/client/billing.vue" />
+        <option value="$PROJECT_DIR$/pages/register.vue" />
       </list>
     </option>
   </component>
@@ -437,14 +436,7 @@
       <workItem from="1521924280044" duration="13747000" />
       <workItem from="1521955978735" duration="3357000" />
       <workItem from="1522013991036" duration="27203000" />
-      <workItem from="1522077827349" duration="4032000" />
-    </task>
-    <task id="LOCAL-00083" summary="register part 2">
-      <created>1521580085119</created>
-      <option name="number" value="00083" />
-      <option name="presentableId" value="LOCAL-00083" />
-      <option name="project" value="LOCAL" />
-      <updated>1521580085119</updated>
+      <workItem from="1522077827349" duration="4822000" />
     </task>
     <task id="LOCAL-00084" summary="time card">
       <created>1521595492894</created>
@@ -782,11 +774,18 @@
       <option name="project" value="LOCAL" />
       <updated>1522080510639</updated>
     </task>
-    <option name="localTasksCounter" value="132" />
+    <task id="LOCAL-00132" summary="billing">
+      <created>1522083087671</created>
+      <option name="number" value="00132" />
+      <option name="presentableId" value="LOCAL-00132" />
+      <option name="project" value="LOCAL" />
+      <updated>1522083087672</updated>
+    </task>
+    <option name="localTasksCounter" value="133" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="948486000" />
+    <option name="totallyTimeSpent" value="949276000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="78" y="88" width="1867" height="1092" extended-state="6" />
@@ -843,7 +842,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="next matches" />
     <MESSAGE value="dashboard&#10;sidebar" />
     <MESSAGE value="finish landing bombo v0.1" />
     <MESSAGE value="responsiveness iphone 5S" />
@@ -868,7 +866,8 @@
     <MESSAGE value="fix register flow" />
     <MESSAGE value="api-test to api" />
     <MESSAGE value="checkbox terms" />
-    <option name="LAST_COMMIT_MESSAGE" value="checkbox terms" />
+    <MESSAGE value="billing" />
+    <option name="LAST_COMMIT_MESSAGE" value="billing" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1220,21 +1219,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pages/register.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="7900">
-          <caret line="554" column="9" lean-forward="false" selection-start-line="554" selection-start-column="9" selection-end-line="554" selection-end-column="9" />
-          <folding>
-            <element signature="n#style#0;n#div#1;n#div#3;n#div#1;n#div#1;n#div#0;n#template#0;n#!!top" expanded="true" />
-            <element signature="e#5225#5272#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/pages/client/home.vue">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="228">
-          <caret line="228" column="34" lean-forward="true" selection-start-line="228" selection-start-column="34" selection-end-line="228" selection-end-column="34" />
+          <caret line="228" column="34" lean-forward="false" selection-start-line="228" selection-start-column="34" selection-end-line="228" selection-end-column="34" />
           <folding />
         </state>
       </provider>
@@ -1244,6 +1232,17 @@
         <state relative-caret-position="280">
           <caret line="21" column="53" lean-forward="false" selection-start-line="21" selection-start-column="53" selection-end-line="21" selection-end-column="53" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pages/register.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="425">
+          <caret line="277" column="25" lean-forward="false" selection-start-line="277" selection-start-column="25" selection-end-line="277" selection-end-column="25" />
+          <folding>
+            <element signature="n#style#0;n#div#1;n#div#3;n#div#1;n#div#1;n#div#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="e#5239#5286#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
