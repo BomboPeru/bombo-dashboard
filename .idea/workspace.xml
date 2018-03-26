@@ -7,7 +7,7 @@
   <component name="ChangeListManager">
     <list default="true" id="bf24282d-3075-4fc1-a7e6-a1352eba2675" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/pages/register.vue" afterPath="$PROJECT_DIR$/pages/register.vue" />
+      <change beforePath="$PROJECT_DIR$/components/BasicToolbar.vue" afterPath="$PROJECT_DIR$/components/BasicToolbar.vue" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -91,27 +91,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="login.vue" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/pages/login.vue">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="528">
-              <caret line="91" column="64" lean-forward="false" selection-start-line="91" selection-start-column="64" selection-end-line="91" selection-end-column="64" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Sidebar.vue" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/components/Sidebar.vue">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="576">
-              <caret line="33" column="50" lean-forward="false" selection-start-line="33" selection-start-column="50" selection-end-line="34" selection-end-column="48" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="register.vue" pinned="false" current-in-tab="true">
+      <file leaf-file-name="register.vue" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/pages/register.vue">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="425">
@@ -120,6 +100,16 @@
                 <element signature="n#style#0;n#div#1;n#div#3;n#div#1;n#div#1;n#div#0;n#template#0;n#!!top" expanded="true" />
                 <element signature="e#5239#5286#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="BasicToolbar.vue" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/components/BasicToolbar.vue">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="96">
+              <caret line="4" column="62" lean-forward="false" selection-start-line="4" selection-start-column="62" selection-end-line="4" selection-end-column="62" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -137,7 +127,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>vendor</find>
       <find>build</find>
       <find>pdf</find>
       <find>IMG</find>
@@ -167,6 +156,7 @@
       <find>api-test</find>
       <find>console.lo</find>
       <find>check_terms</find>
+      <find>img-container</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -210,7 +200,6 @@
         <option value="$PROJECT_DIR$/pages/index.vue" />
         <option value="$PROJECT_DIR$/components/Sidebar.vue" />
         <option value="$PROJECT_DIR$/pages/client/dashboard.vue" />
-        <option value="$PROJECT_DIR$/components/BasicToolbar.vue" />
         <option value="$PROJECT_DIR$/components/NextMatchesDialog.vue" />
         <option value="$PROJECT_DIR$/plugins/vue-pdf.js" />
         <option value="$PROJECT_DIR$/components/TermsConditionsDialog.vue" />
@@ -232,6 +221,7 @@
         <option value="$PROJECT_DIR$/pages/client/home.vue" />
         <option value="$PROJECT_DIR$/pages/client/billing.vue" />
         <option value="$PROJECT_DIR$/pages/register.vue" />
+        <option value="$PROJECT_DIR$/components/BasicToolbar.vue" />
       </list>
     </option>
   </component>
@@ -297,11 +287,6 @@
             <path>
               <item name="bombo-dashboard" type="b2602c69:ProjectViewProjectNode" />
               <item name="bombo-dashboard" type="462c0819:PsiDirectoryNode" />
-              <item name="components" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="bombo-dashboard" type="b2602c69:ProjectViewProjectNode" />
-              <item name="bombo-dashboard" type="462c0819:PsiDirectoryNode" />
               <item name="layouts" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -317,13 +302,18 @@
             <path>
               <item name="bombo-dashboard" type="b2602c69:ProjectViewProjectNode" />
               <item name="bombo-dashboard" type="462c0819:PsiDirectoryNode" />
-              <item name="pages" type="462c0819:PsiDirectoryNode" />
-              <item name="client" type="462c0819:PsiDirectoryNode" />
+              <item name="plugins" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="bombo-dashboard" type="b2602c69:ProjectViewProjectNode" />
               <item name="bombo-dashboard" type="462c0819:PsiDirectoryNode" />
-              <item name="plugins" type="462c0819:PsiDirectoryNode" />
+              <item name="static" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="bombo-dashboard" type="b2602c69:ProjectViewProjectNode" />
+              <item name="bombo-dashboard" type="462c0819:PsiDirectoryNode" />
+              <item name="static" type="462c0819:PsiDirectoryNode" />
+              <item name="landing" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="bombo-dashboard" type="b2602c69:ProjectViewProjectNode" />
@@ -436,14 +426,7 @@
       <workItem from="1521924280044" duration="13747000" />
       <workItem from="1521955978735" duration="3357000" />
       <workItem from="1522013991036" duration="27203000" />
-      <workItem from="1522077827349" duration="4822000" />
-    </task>
-    <task id="LOCAL-00084" summary="time card">
-      <created>1521595492894</created>
-      <option name="number" value="00084" />
-      <option name="presentableId" value="LOCAL-00084" />
-      <option name="project" value="LOCAL" />
-      <updated>1521595492894</updated>
+      <workItem from="1522077827349" duration="5264000" />
     </task>
     <task id="LOCAL-00085" summary="billing, create home view">
       <created>1521686513087</created>
@@ -781,11 +764,18 @@
       <option name="project" value="LOCAL" />
       <updated>1522083087672</updated>
     </task>
-    <option name="localTasksCounter" value="133" />
+    <task id="LOCAL-00133" summary="register">
+      <created>1522085275910</created>
+      <option name="number" value="00133" />
+      <option name="presentableId" value="LOCAL-00133" />
+      <option name="project" value="LOCAL" />
+      <updated>1522085275911</updated>
+    </task>
+    <option name="localTasksCounter" value="134" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="949276000" />
+    <option name="totallyTimeSpent" value="949718000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="78" y="88" width="1867" height="1092" extended-state="6" />
@@ -842,7 +832,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="dashboard&#10;sidebar" />
     <MESSAGE value="finish landing bombo v0.1" />
     <MESSAGE value="responsiveness iphone 5S" />
     <MESSAGE value="visuals" />
@@ -867,7 +856,8 @@
     <MESSAGE value="api-test to api" />
     <MESSAGE value="checkbox terms" />
     <MESSAGE value="billing" />
-    <option name="LAST_COMMIT_MESSAGE" value="billing" />
+    <MESSAGE value="register" />
+    <option name="LAST_COMMIT_MESSAGE" value="register" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -954,11 +944,6 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/static/landing/bombo_all_white.svg">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/static/landing/player_2x.png">
       <provider selected="true" editor-type-id="images">
         <state />
@@ -998,14 +983,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/components/BasicToolbar.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2790">
-          <caret line="41" column="0" lean-forward="false" selection-start-line="41" selection-start-column="0" selection-end-line="41" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -1243,6 +1220,19 @@
             <element signature="n#style#0;n#div#1;n#div#3;n#div#1;n#div#1;n#div#0;n#template#0;n#!!top" expanded="true" />
             <element signature="e#5239#5286#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/landing/bombo_all_white.svg">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/components/BasicToolbar.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="96">
+          <caret line="4" column="62" lean-forward="false" selection-start-line="4" selection-start-column="62" selection-end-line="4" selection-end-column="62" />
+          <folding />
         </state>
       </provider>
     </entry>

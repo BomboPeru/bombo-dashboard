@@ -1,7 +1,9 @@
 <template>
     <div id="toolbar" :class="[nonLanding?'dark':'transparent']">
       <div class="img-container">
-        <img :src="nonLanding? '/landing/bombo_transparency.png':'/landing/bombo_purple.png'" alt="">
+        <nuxt-link :to="bomboLogoUrl">
+          <img :src="nonLanding? '/landing/bombo_all_white.svg':'/landing/bombo_purple.png'" alt="">
+        </nuxt-link>
       </div>
       <div class="links uppercase">
         <div :class="['flex', nonLanding?'white-link':'dark-link']" >
@@ -48,6 +50,9 @@
       nonLanding () {
         // return (this.$route.path === '/register')
         return this.$route.path !== '/'
+      },
+      bomboLogoUrl () {
+        return (this.$route.path === '/forgotpassword' || this.$route.path === '/faq') ? '/client/home':'/'
       }
     },
     methods: {
