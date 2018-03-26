@@ -2,7 +2,7 @@
     <div id="match-card" :style="{ width: width }" :class="['rounded-sm', 'elevation-2', flexible?'flexible':'']">
       <table style="width: 100%" class="table-content">
         <thead v-if="!notPlayed">
-          <tr>
+          <tr class="team_names">
             <th style="width: 40%;">{{ match.away_name }}</th>
             <th style="width: 20%;"></th>
             <th style="width: 40%;">{{ match.home_name }}</th>
@@ -81,6 +81,9 @@
     color #747474
     font-weight normal
     font-size: 18px;
+
+  .team_names th
+    text-transform uppercase
 
 
 </style>
