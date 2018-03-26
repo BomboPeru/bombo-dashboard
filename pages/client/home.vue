@@ -201,7 +201,6 @@
       async fetchRankingPlayers () {
         {
           let response = await this.$axios.$get('api/v2.0/players/top-ten')
-          console.log('response', response)
           this.rankingPlayers = response.data
         }
 
@@ -213,8 +212,10 @@
         .then(res => {
           this.$store.state.leagues = res.data.data
           this.leagueObj = res.data.data[0]
+
           this.fetchLastMatches()
           this.fetchRankingPlayers()
+
         })
         .catch(e => {
           // window.$nuxt.error({ statusCode, message })
