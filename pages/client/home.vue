@@ -225,7 +225,7 @@
     mounted () {
       this.user = this.$store.getters['user']
       const self = this
-      console.log(TeamColors)
+      // console.log(TeamColors)
       this.teamColors = TeamColors
     }
   }

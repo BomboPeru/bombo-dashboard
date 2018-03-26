@@ -19,7 +19,7 @@
               <div class="indicator">
                 1. Selecciona el monto que quieres retirar.
               </div>
-              <div class="amount">
+              <div class="amount" v-if="maxLimit > 1">
                 <span class="currency-sign">s/</span>{{amount}}
               </div>
               <div class="slider">
