@@ -108,7 +108,8 @@
         },
         listProfileItems: [
           { name: 'Mi Perfil', url: '/client/profile' },
-          { name: 'Transferencias', url: '/client/billing' }
+          { name: 'Transferencias', url: '/client/billing' },
+          { name: 'FAQ', url: '/faq' }
         ],
         listSupportItems: [
           { name: 'FAQ', url: '' },

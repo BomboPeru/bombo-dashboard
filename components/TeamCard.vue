@@ -70,23 +70,25 @@
           <table class="table-points-ranking" v-if="typeCard === 'en_juego' || typeCard === 'pasados'">
             <tbody>
               <tr :class="['table-window', typeCard==='en_juego'?'info-in-play':'info-old']">
-                <td colspan="2"></td>
+                <td colspan="3"></td>
               </tr>
               <tr cellpadding="0" cellspacing="0" :class="['table-teamname']">
                 <td cellpadding="0" cellspacing="0"
-                    style="width: 100%" colspan="2"
+                    style="width: 100%" colspan="3"
                     class="">
                   <div> {{ team.name }} </div>
                   <div class="team-date"> {{ createAt }}</div>
                 </td>
               </tr>
               <tr :class="['label-team-info']">
-                <td style="width: 50%">PUESTO EN EL BOMBO:</td>
-                <td style="width: 50%">PUNTAJE ACUMULADO:</td>
+                <td style="width: 33%">PUESTO EN EL BOMBO:</td>
+                <td style="width: 33%">PUNTAJE ACUMULADO:</td>
+                <td style="width: 33%">PREMIO B COINS:</td>
               </tr>
               <tr>
                 <td class="table-value">{{team.position}}</td>
                 <td class="table-value total-points">{{team.total_points}}</td>
+                <td class="table-value total-points">{{team.prize_b_coins}}</td>
               </tr>
             </tbody>
           </table>

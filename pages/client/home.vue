@@ -50,15 +50,15 @@
         </div>
 
         <div class="ranking-top-players custom-elevation">
-          <svg class="svg"
-               width="100%"
-               height="100%"
-               version="1.1"
-               preserveAspectRatio="none"
-               viewBox="0 0 100 100">
+          <!--<svg class="svg"-->
+               <!--width="100%"-->
+               <!--height="100%"-->
+               <!--version="1.1"-->
+               <!--preserveAspectRatio="none"-->
+               <!--viewBox="0 0 100 100">-->
 
-            <polygon points="0,100 0,60 80,20 100,80 100,100"  :style="{ fill: '#ffffff' }"/>
-          </svg>
+            <!--<polygon points="0,100 0,60 80,20 100,80 100,100"  :style="{ fill: '#ffffff' }"/>-->
+          <!--</svg>-->
 
           <div class="ranking-container">
             <div class="header-section">
@@ -362,7 +362,7 @@
   .league-select
   .time-number
     font-family Raleway
-    font-weight bold
+    font-weight 500
     color dimgrey
 
 
@@ -444,7 +444,7 @@
     font-size 14px
     font-family 'Raleway'
     color dimgrey !important
-    font-weight: bold;
+    font-weight: 500;
 
 
   @media screen and (min-width: 1700px)

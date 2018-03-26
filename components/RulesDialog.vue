@@ -11,97 +11,101 @@
           </div>
 
           <div class="content">
+
             <div class="rules">
               <ul>
                 <li v-for="(item, i) in rules" :key="i+'-rule'">{{item}}</li>
               </ul>
             </div>
+            <table>
+              <thead>
+              <tr>
+                <th colspan="2">PUNTAJE DE CADA JUGADOR</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr>
+                <td>Gol (ARQ o DEF)</td>
+                <td>8</td>
+              </tr>
+              <tr>
+                <td>Gol (MED)</td>
+                <td>7</td>
+              </tr>
+              <tr>
+                <td>Gol (DEL)</td>
+                <td>6</td>
+              </tr>
+              <tr>
+                <td>Asistencia</td>
+                <td>4</td>
+              </tr>
+              <tr>
+                <td>Jugó el partido</td>
+                <td>1</td>
+              </tr>
+              <tr>
+                <td>Jugó todo el partido</td>
+                <td>2</td>
+              </tr>
+              <tr>
+                <td>Amarilla</td>
+                <td>-1</td>
+              </tr>
+              <tr>
+                <td>Roja</td>
+                <td>-2</td>
+              </tr>
+              <tr>
+                <td>Autogol</td>
+                <td>-3</td>
+              </tr>
+              <tr>
+                <td>Arco en 0 (DEF)</td>
+                <td>3</td>
+              </tr>
+              <tr>
+                <td>Arco en 0 (ARQ)</td>
+                <td>6</td>
+              </tr>
+              <tr>
+                <td>Penal fallado</td>
+                <td>-3</td>
+              </tr>
+              <tr>
+                <td>Penal tapado</td>
+                <td>4</td>
+              </tr>
+              </tbody>
+            </table>
+            <table>
+              <thead>
+              <tr>
+                <th colspan="2">MULTIPLICADOR</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr>
+                <td>Ganó</td>
+                <td>1.1</td>
+              </tr>
+              <tr>
+                <td>Empató</td>
+                <td>7</td>
+              </tr>
+              <tr>
+                <td>Perdió</td>
+                <td>1</td>
+              </tr>
+              </tbody>
+            </table>
 
-            <div class="tables">
-              <table>
-                <thead>
-                <tr>
-                  <th colspan="2">PUNTAJE DE CADA JUGADOR</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                  <td>Gol (ARQ o DEF)</td>
-                  <td>8</td>
-                </tr>
-                <tr>
-                  <td>Gol (MED)</td>
-                  <td>7</td>
-                </tr>
-                <tr>
-                  <td>Gol (DEL)</td>
-                  <td>6</td>
-                </tr>
-                <tr>
-                  <td>Asistencia</td>
-                  <td>4</td>
-                </tr>
-                <tr>
-                  <td>Jugó el partido</td>
-                  <td>1</td>
-                </tr>
-                <tr>
-                  <td>Jugó todo el partido</td>
-                  <td>2</td>
-                </tr>
-                <tr>
-                  <td>Amarilla</td>
-                  <td>-1</td>
-                </tr>
-                <tr>
-                  <td>Roja</td>
-                  <td>-2</td>
-                </tr>
-                <tr>
-                  <td>Autogol</td>
-                  <td>-3</td>
-                </tr>
-                <tr>
-                  <td>Arco en 0 (DEF)</td>
-                  <td>3</td>
-                </tr>
-                <tr>
-                  <td>Arco en 0 (ARQ)</td>
-                  <td>6</td>
-                </tr>
-                <tr>
-                  <td>Penal fallado</td>
-                  <td>-3</td>
-                </tr>
-                <tr>
-                  <td>Penal tapado</td>
-                  <td>4</td>
-                </tr>
-                </tbody>
-              </table>
-              <table>
-                <thead>
-                <tr>
-                  <th colspan="2">MULTIPLICADOR</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                  <td>Ganó</td>
-                  <td>1.1</td>
-                </tr>
-                <tr>
-                  <td>Empató</td>
-                  <td>7</td>
-                </tr>
-                <tr>
-                  <td>Perdió</td>
-                  <td>1</td>
-                </tr>
-                </tbody>
-              </table>
-            </div>
+            <!--<div class="tables">-->
+            <!--</div>-->
 
+          </div>
+          <div class="content-2">
+            Puntaje del jugador = Puntaje de cada jugador x Multiplicador
           </div>
 
         </div>
@@ -160,10 +164,26 @@
   .blurred
     filter blur(0.4)
   .card-container
-    max-width 820px
+    max-width 80vw
   .content
     max-height 80vh
     overflow-y auto
+    padding 10px 20px 20px 20px
+
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: start;
+  .content-2
+    color #243237
+    text-align center
+    padding 10px 20px 20px 20px
+    font-size 14px
+  .content table
+    color #243237
+    padding 0 10px 0 10px
+    font-size 14px
+
   .title-rule
     color #243237
     text-align center
@@ -181,18 +201,26 @@
     padding 4px 40px
   .rules li
     padding-bottom 4px
-  .tables
-    text-align center
-  .tables table
-    display inline-block
+  /*.tables*/
+    /*text-align center*/
+  /*.tables table*/
+    /*display inline-block*/
 
   @media screen and (max-width: 1023px)
     .card-container
-      max-width 300px
+      min-width 300px
     .content
       max-height none
       height auto
       overflow-y auto
+
+  @media screen and (max-width: 500px)
+    .card-container
+      max-width 100wv !important
+      border-radius 0
+    .card-container .card-header--primary
+      border-radius: 0
+
 
 
 
