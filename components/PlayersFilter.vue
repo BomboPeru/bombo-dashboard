@@ -153,7 +153,7 @@
     min-width 100px
     height 30px
     outline none
-    font-weight bold
+    font-weight 500
     font-family: 'Raleway', sans-serif
     /*font-family Titillium Web*/
   .filter-box
@@ -172,7 +172,7 @@
     top -5px
     margin-left 4px
     font-size 13px
-    font-weight bold
+    font-weight 500
     /*font-family Titillium Web*/
     font-family: 'Raleway', sans-serif
 
@@ -189,7 +189,7 @@
     border-bottom-left-radius 4px
   .title-filter
     font-size 13px
-    font-weight bold
+    font-weight 500
     /*font-family Titillium Web*/
     font-family: 'Raleway', sans-serif
 
@@ -209,7 +209,7 @@
     text-align center
     line-height 38px
     font-size 13px
-    font-weight bold
+    font-weight 500
     /*font-family Titillium Web*/
     font-family: 'Raleway', sans-serif
     color white
