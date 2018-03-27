@@ -186,7 +186,8 @@
     },
     methods: {
       clickPlay () {
-        this.$router.push('/client/teams')
+        // this.$router.push('/client/teams')
+        this.$store.state.team.selectLeagueDialog = true
       },
       formatDate (value) {
         const date = new Date(value)
