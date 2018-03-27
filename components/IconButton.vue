@@ -104,16 +104,16 @@
     transition all .2s ease-in
 
   #icon-button:hover .icon
-    width 60px
-    height 60px
-    top -4px
+    // width 60px
+    // height 60px
+    // top -4px
     transition all .2s ease-in
     display block
 
   #icon-button:hover .icon-image
     transition all .2s ease-in
-    margin-top 13px
+    // margin-top 13px
   #icon-button:hover .fas
     transition all .2s ease-in
-    margin-top 13px
+    // margin-top 13px
 </style>
