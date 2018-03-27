@@ -50,7 +50,6 @@
       CcAvatar
     },
     computed: {
-
       BASE_URL () {
         return this.$store.state.BASE_URL
       },

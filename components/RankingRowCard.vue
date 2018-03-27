@@ -79,6 +79,9 @@
   #photo div
     display block
     width 36px
+  #photo img
+    overflow: hidden;
+    border-radius: 21px;
   #team-name
     width 132px
     font-size: 12px;
@@ -87,7 +90,7 @@
     display block
     width 120px
   #earning
-    width 62px
+    width 129px
     font-size: 12px;
   .label-earnings
     text-align center

@@ -203,7 +203,6 @@
           const token = this.$store.getters['auth/getToken']
           const publicKey = 'pk_live_Sabys0p2rhn2D4ZM'
 
-
           this.$store.state.isShortLoading = true
 
           try {
@@ -224,8 +223,6 @@
 
               console.log('reponse2', response2)
 
-              this.payButtonText = 'COMPRAR AHORA'
-              this.payButtonEnabled = true
 
               const amount = this.plans[this.planSelected].amount
               let finalRequest = {
@@ -235,6 +232,9 @@
               const finalResponse = await this.$axios.$post(`api/v2.0/users/${user.id}/charge`, finalRequest,
                 { headers: { Authorization: 'Bearer ' + token} })
 
+
+              this.payButtonText = 'COMPRAR AHORA'
+              this.payButtonEnabled = true
 
               console.log('finalResponse', finalResponse)
               this.$store.dispatch('updateUser', finalResponse.data)
