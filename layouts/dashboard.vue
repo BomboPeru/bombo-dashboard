@@ -106,7 +106,7 @@
         return this.$store.getters.snackbarMessage
       },
       saldo () {
-        return (this.$store.state.current_credit + this.$store.state.current_won_credit)
+        return Math.round( 100 * (this.$store.state.current_credit + this.$store.state.current_won_credit) ) / 100
       }
     },
     data () {

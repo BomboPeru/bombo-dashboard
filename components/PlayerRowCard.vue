@@ -16,7 +16,7 @@
                 <i :class="['fas', 'fa-xs', statusPlayer.icon ]"></i>
               </td>
               <td class="responsive-popularity-bk" style="width: 15%;">
-                {{ player.popularity }} %
+                {{ roundDecimals(player.popularity) }} %
               </td>
               <td class="responsive-cost-bk" style="width: 20%;">
                 <i class="far fa-money-bill-alt"></i>
@@ -218,6 +218,9 @@
       }
     },
     methods: {
+      roundDecimals(value) {
+        return Math.round(value * 100 ) / 100
+      },
       selectPlayer (player) {
         this.$emit('onPlayerSelected', player)
       },

@@ -14,7 +14,7 @@
           <icon-button v-if="indexTypeTeams[activeTypeTeam] === 'guardado' || indexTypeTeams[activeTypeTeam] === 'en_juego'"
                        text="CREAR EQUIPO!"
                        icon-direction="left"
-                       color="#25BF89"
+                       color="#01e19f"
                        fa-icon="fa-plus"
                        class="create-team-btn"
                        @click="goToCreateTeam"

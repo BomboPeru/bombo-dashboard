@@ -87,8 +87,8 @@
               </tr>
               <tr>
                 <td class="table-value">{{team.position}}</td>
-                <td class="table-value total-points">{{team.total_points}}</td>
-                <td class="table-value total-points">{{team.prize_b_coins}}</td>
+                <td class="table-value total-points">{{ roundDecimals(team.total_points) }}</td>
+                <td class="table-value total-points">{{ roundDecimals(team.prize_b_coins) }}</td>
               </tr>
             </tbody>
           </table>
@@ -239,6 +239,9 @@
       }
     },
     methods: {
+      roundDecimals(value) {
+        return Math.round(value * 100 ) / 100
+      },
       toggleDelete () { this.deleteOpen = !this.deleteOpen },
       toggleDuplicate () { this.duplicateOpen = !this.duplicateOpen },
       toggleEdit () { this.editOpen = !this.editOpen },
