@@ -84,6 +84,11 @@
               this.close()
               this.$router.push('/client/faq')
             }
+          },
+          { label: 'Cerrar sesión', icon: 'fa-sign-out-alt', action: () => {
+              this.close()
+              return this.$store.state.signOutDialog = true
+            }
           }
         ]
       }

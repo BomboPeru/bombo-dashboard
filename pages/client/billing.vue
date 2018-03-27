@@ -4,7 +4,9 @@
     <no-ssr>
       <div id="billing">
         <div class="grid-container">
+
           <div class="v-divider"></div>
+
           <div class="column-a">
             <div class="withdraw-section">
               <p class="title-a">Retirar Dinero</p>
@@ -394,6 +396,8 @@
     width 50%
 
   @media screen and (max-width: 1023px)
+    .v-divider
+      display none
     .info-a
       padding-top 0
       width 50%

@@ -29,7 +29,6 @@ const auth = {
       if (process.server) return
 
       localStorage.removeItem('user')
-      localStorage.removeItem('userAccess')
       localStorage.removeItem('userId')
       localStorage.removeItem('token')
     }
