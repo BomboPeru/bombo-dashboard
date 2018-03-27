@@ -6,7 +6,7 @@
             <td id="position">{{team.position}}</td>
             <td id="photo">
               <div class="">
-                <img :src="`${BASE_URL}api/v2.0/storage/users/${team.creator}/profile-photo`" alt="" height="36px">
+                <img :src="`${BASE_URL}api/v2.0/storage/users/${team.creator}/profile-photo`" alt="" height="32px">
               </div>
             </td>
             <td id="team-name">
@@ -67,31 +67,43 @@
     /*font-weight bold*/
   #ranking-row-card > table
     width 100%
+
   #position
-    width 30px
+    // width 30px
+    width 5%
     text-align center
     font-size: 24px;
     font-weight: bold;
     color #594eec
   #photo
-    width 36px
+    // width 36px
+    width 10%
     font-size: 14px;
   #photo div
     display block
-    width 36px
+    // width 36px
   #photo img
     overflow: hidden;
     border-radius: 21px;
   #team-name
-    width 132px
+    width 30%
+    //width 132px
     font-size: 12px;
     text-transform uppercase
   #team-name div
     display block
     width 120px
   #earning
-    width 129px
+    width 20%
+    // width 129px
     font-size: 12px;
+  #score
+    width 15%
+    // width 60px
+    font-weight bold
+    font-size: 12px;
+    text-align center
+
   .label-earnings
     text-align center
   .label-earnings
@@ -99,6 +111,7 @@
     color #594eec
     font-size 10px
     font-weight: bold;
+    text-align: center;
   .earnings
     font-size 18px
 
@@ -118,9 +131,4 @@
     font-weight: bold;
 
 
-  #score
-    width 60px
-    font-weight bold
-    font-size: 12px;
-    text-align center
 </style>
