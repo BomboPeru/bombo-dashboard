@@ -107,7 +107,7 @@ html {
 ::-webkit-scrollbar-thumb
   width: 3px;
   height: 6px;
-  background-color: #000000
+  background-color: #5d5d5d
 
 .loading-enter-active, .loading-leave-active {
   transition: opacity .5s;

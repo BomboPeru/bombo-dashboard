@@ -37,6 +37,7 @@
     // position absolute
     position fixed
     margin 34px 28px
+    z-index 54
   .bottom-right
     bottom 0
     right 0

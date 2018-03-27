@@ -101,7 +101,7 @@
         positions: [
           { date: 'ARQ', color: '#67A6F0', enabled: false },
           { date: 'DEF', color: '#A789E8', enabled: false },
-          { date: 'MED', color: '#CDE344', enabled: false },
+          { date: 'CEN', color: '#CDE344', enabled: false },
           { date: 'DEL', color: '#FDA237', enabled: false }
         ]
       }

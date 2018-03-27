@@ -7,7 +7,7 @@
       <nuxt/>
 
       <floating-container bottom-right class="fab" v-if="showFABBomboPayments">
-        <icon-button :text="'S/ ' + saldo"
+        <icon-button :text="`S/ ${saldo} & ${bomboCoins} B`"
                      icon-direction="right"
                      color="#EA504C"
                      @click="toggleBomboPayments"
@@ -104,6 +104,9 @@
       },
       snackbarMessage () {
         return this.$store.getters.snackbarMessage
+      },
+      bomboCoins () {
+        return this.$store.getters['user'].current_bombo_coins
       },
       saldo () {
         return Math.round( 100 * (this.$store.state.current_credit + this.$store.state.current_won_credit) ) / 100

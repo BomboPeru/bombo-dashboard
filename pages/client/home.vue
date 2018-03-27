@@ -41,10 +41,14 @@
           </svg>
 
           <div class="points-container">
-            <p class="title-points">TOTAL DE PUNTOS BONUS</p>
+            <p class="title-points">TOTAL DE PUNTOS BONUS / CREDITO</p>
             <div class="points">
-              <div class="points-value">{{ user.current_bombo_coins }} <span class="b-points">B</span> </div>
-              <div class="btn-play elevation-2">JUGAR</div>
+              <div>
+                <div class="points-value">{{ user.current_bombo_coins }} <span class="b-points">B</span></div>
+                <span class="slash-value">/</span>
+                <div class="credit-value">{{ user.current_credit }} <span class="credit-points"><i class="fas fa-money-bill-alt fa-xs"></i></span> </div>
+              </div>
+              <div class="btn-play elevation-2" @click="clickPlay">JUGAR</div>
             </div>
           </div>
         </div>
@@ -181,6 +185,9 @@
       }
     },
     methods: {
+      clickPlay () {
+        this.$router.push('/client/teams')
+      },
       formatDate (value) {
         const date = new Date(value)
         const day = (date.getDate().toString()).padStart(2, '0')
@@ -326,23 +333,30 @@
     text-align center
     margin-top 20px
     font-size 14px
+  .slash-value
+  .credit-value
   .points-value
     font-family Titillium Web
     font-weight bold
-    font-size 122px
+    font-size 39px
     display inline-block
+  .credit-value
+    color #ecb43f
+  .points-value
     color #594EEC
+  .slash-value
+    color #4a4c4b
+
   .b-points
     font-weight bold
-    font-size 75px
+
   .points
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
     align-items: center;
-    position relative
-    top -40px
-    left -20px
+    height: 100px;
+
   .btn-play
     display inline-block
     background #594EEC
@@ -452,6 +466,17 @@
     .points
       top 0px
       left 0px
+      height: 180px;
+    .text-container
+      margin 48px 10px
+    .slash-value
+    .credit-value
+    .points-value
+      font-family Titillium Web
+      font-weight bold
+      font-size 79px
+
+
 
   @media screen and (max-width: 1023px)
     .grid-container
@@ -482,7 +507,10 @@
   @media screen and (max-width: 600px)
     #home
       height auto
-
+    .points-value
+      font-size 42px
+    .b-points
+      font-size 42px
     .grid-container
       margin-top 0
       width 100%

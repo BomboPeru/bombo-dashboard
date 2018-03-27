@@ -186,6 +186,8 @@
   @media screen and (max-width: 1023px)
     .menu-btn
       display inline
+    .img-container
+      margin-left 20px
   @media screen and (max-width: 1023px)
     .links
       display none

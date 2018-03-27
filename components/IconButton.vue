@@ -93,7 +93,7 @@
 
   .collapse
     min-width 50px !important
-    transition all .5s ease-in
+    transition all .2s ease-in
 
   .collapse .text
     display none !important
@@ -101,7 +101,7 @@
     min-width 200px !important
   .collapse:hover .text
     display block !important
-    transition all .5s ease-in
+    transition all .2s ease-in
 
   #icon-button:hover .icon
     width 60px

@@ -10,10 +10,10 @@
         <div v-if="isOpen" class="sidebar">
           <div class="header">
             <cc-avatar :src="urlImage" sm class="avatar"/>
-            <p class="name header-title">{{ name }}</p>
+            <p class="name header-title">{{ user.name }}</p>
             <p class="header-title coins">
-              <span class="coin-txt green">{{ bombo_coin }}</span> <span> <i class="fas fa-bold green"></i> </span> &nbsp;&nbsp;/&nbsp;&nbsp;
-              <span class="coin-txt yellow">{{ credit_coin }}</span> <span><i class="far fa-money-bill-alt yellow"></i></span>
+              <span class="coin-txt green">{{ user.current_bombo_coins }}</span> <span> <i class="fas fa-bold green"></i> </span> &nbsp;&nbsp;/&nbsp;&nbsp;
+              <span class="coin-txt yellow">{{ user.current_credit }}</span> <span><i class="far fa-money-bill-alt yellow"></i></span>
             </p>
           </div>
           <div class="items">
@@ -50,16 +50,23 @@
       CcAvatar
     },
     computed: {
+      user () {
+        return this.$store.getters['user']
+      },
+
       BASE_URL () {
         return this.$store.state.BASE_URL
       },
       isOpen () {
         return this.$store.state.menuSidebar
+      },
+      urlImage () {
+        const userId = this.$store.getters['auth/getUserId']
+        return this.BASE_URL + 'api/v2.0/storage/users/' + userId + '/profile-photo'
       }
     },
     data () {
       return {
-        urlImage: '',
         isOpen2: false,
         credit_coin: 0,
         bombo_coin: 0,
@@ -106,9 +113,6 @@
       this.credit_coin = user.current_credit
       this.bombo_coin = user.current_bombo_coins
 
-      const userId = this.$store.getters['auth/getUserId']
-      const url = this.BASE_URL + 'api/v2.0/storage/users/' + userId + '/profile-photo'
-      this.urlImage = url
     }
   }
 </script>

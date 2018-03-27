@@ -28,7 +28,7 @@
               </div>
               <div class="label" v-else> Nombre y Apellidos </div>
               <div>
-                <input type="text" class="input-form" placeholder="" v-model="user.name">
+                <input type="text" :class="['input-form', (!isValidInput(constraints.name.rules, user.name) && hasSubmit)?'input-warning':'']" placeholder="" v-model="user.name">
               </div>
             </div>
 
@@ -39,8 +39,13 @@
               <div class="label">
                 Fecha de nacimiento
               </div>
+
               <div class="birthday-container">
-                <input type="date" class="input-form" placeholder="yyyy-mm-dd" v-model="user.birthday_fake">
+
+                <input-date-select v-model="user.birthday_fake"/>
+
+                <!--<input type="date" :class="['input-form', (wrongBirthday && hasSubmit)?'input-warning':'']" class="input-form" placeholder="yyyy-mm-dd" v-model="user.birthday_fake">-->
+
               </div>
             </div>
 
@@ -50,7 +55,10 @@
               </div>
               <div class="label" v-else> Documento de identidad </div>
               <div>
-                <input type="number" class="input-form" placeholder="" v-model="user.identity_document">
+                <input type="number"
+                       :class="['input-form', (!isValidInput(constraints.identity_document.rules, user.identity_document) && hasSubmit)?'input-warning':'']"
+                       placeholder=""
+                       v-model="user.identity_document">
               </div>
             </div>
 
@@ -64,7 +72,8 @@
               <div class="label" v-else> Correo electrónico </div>
 
               <div>
-                <input type="text" class="input-form" placeholder="" v-model="user.email">
+                <input type="text"
+                       :class="['input-form', (!isValidInput(constraints.email.rules, user.email) && hasSubmit)?'input-warning':'']" placeholder="" v-model="user.email">
               </div>
             </div>
 
@@ -74,7 +83,9 @@
               </div>
               <div class="label" v-else> Nombre de usuario </div>
               <div>
-                <input type="text" class="input-form" placeholder="" v-model="user.username">
+                <input type="text"
+                       :class="['input-form', (!isValidInput(constraints.username.rules, user.username) && hasSubmit)?'input-warning':'']"
+                       placeholder="" v-model="user.username">
               </div>
             </div>
 
@@ -84,7 +95,9 @@
               </div>
               <div class="label" v-else> Contraseña </div>
               <div>
-                <input type="password" class="input-form" placeholder="" v-model="user.password">
+                <input type="password"
+                       :class="['input-form', (!isValidInput(constraints.password.rules, user.password) && hasSubmit)?'input-warning':'']"
+                       placeholder="" v-model="user.password">
               </div>
             </div>
 
@@ -94,7 +107,9 @@
               </div>
               <div class="label" v-else> Repetir Contraseña </div>
               <div>
-                <input type="password" class="input-form" placeholder="" v-model="user.repassword">
+                <input type="password"
+                       :class="['input-form', (!isValidInput(constraints.repassword.rules, user.repassword) && hasSubmit)?'input-warning':'']"
+                       placeholder="" v-model="user.repassword">
               </div>
             </div>
           </div>
@@ -137,12 +152,12 @@
   import InputText from '../components/InputText'
   import InputSelect from '../components/InputSelect'
   import CcAvatar from '../components/CcAvatar'
-  // import CcCheckbox from '../components/CcCheckbox'
+  import InputDateSelect from '../components/InputDateSelect'
 
   export default {
     name: 'register',
     components: {
-      InputText, InputSelect, CcAvatar
+      InputText, InputSelect, CcAvatar, InputDateSelect
     },
     data () {
       return {
@@ -199,7 +214,7 @@
         },
         user: {
           name: '',
-          birthday_fake: '',
+          birthday_fake: '2000-1-1',
           birthday: '',
           document_type: 'DNI',
           identity_document: '',
@@ -232,7 +247,6 @@
       atPhotoLoaded () {
 
         const self = this
-        console.log(this.$refs.inputFileImage.files)
 
         let reader = new FileReader()
         reader.onload = function(e) {
@@ -261,6 +275,8 @@
             if ( isNaN(Date.parse(this.user.birthday_fake)) ) {
               this.wrongBirthday = true
               return
+            } else {
+              this.wrongBirthday = false
             }
 
             let birthdayDate = new Date(this.user.birthday_fake)
@@ -390,7 +406,7 @@
     top 50%
     left 50%
     transform translateX(-50%) translateY(-50%)
-    height 500px
+    height 600px
     width 70vw
     box-shadow: 0 8px 24px 0 rgba(0,0,0,0.82);
 
@@ -505,6 +521,10 @@
     color white
     padding-bottom: 4px;
 
+  .input-warning
+    border-bottom 0.5px solid rgb(187, 54, 89)
+
+
   .btn-continue
     display: inline-block
     position relative
@@ -606,7 +626,7 @@
   @media screen and (max-width: 500px)
     .card-container
       height 100vh
-      width 101%
+      width 100%
       margin-top 0
       overflow auto
       border-radius 0
