@@ -14,7 +14,7 @@
       </li>
       <li class="avatar" @click="openTooltip('profile')" >
         <span>
-          <img :src="url" v-if="url !== ''" class="avatar-img" width="40px" height="40px" alt="">
+          <img :src="userUrlImage" v-if="userUrlImage !== ''" class="avatar-img" width="40px" height="40px" alt="">
         </span>
       </li>
     </ul>
@@ -42,12 +42,13 @@
       },
       BASE_URL () {
         return this.$store.state.BASE_URL
+      },
+      userUrlImage () {
+        return this.$store.state.userUrlImage
       }
-
     },
     data () {
       return {
-        url: '',
         help: false,
         notification: false,
         profile: false,
@@ -77,10 +78,10 @@
     },
     mounted () {
 
-      const userId = this.$store.getters['auth/getUserId']
-      // const token = this.$store.getters['auth/getToken']
-      const url = this.BASE_URL + 'api/v2.0/storage/users/' + userId + '/profile-photo'
-      this.url = url
+      if (this.$store.state.userUrlImage === '') {
+        const userId = this.$store.getters['auth/getUserId']
+        this.$store.state.userUrlImage = this.BASE_URL + 'api/v2.0/storage/users/' + userId + '/profile-photo'
+      }
     }
   }
 </script>

@@ -7,7 +7,7 @@
         <div class="profile-section">
           <div style="display: flex; justify-content: center;">
             <input type="file" style="display: none;" ref="inputFileImage" @change="atPhotoLoaded">
-            <cc-avatar square :src="urlImage!==''?urlImage:'/avatar.png'" @clickAvatar="clickAvatar"/>
+            <cc-avatar square :src="userUrlImage!==''?userUrlImage:'/avatar.png'" @clickAvatar="clickAvatar"/>
           </div>
           <div style="text-align: center">
 
@@ -51,7 +51,6 @@
       BASE_URL () {
         return this.$store.state.BASE_URL
       },
-
       birthdayFake: {
         get () {
           const user = this.user
@@ -67,11 +66,13 @@
         set (value) {
           this.user.birthday = (new Date(value)).toISOString()
         }
+      },
+      userUrlImage () {
+        return this.$store.state.userUrlImage
       }
     },
     data () {
       return {
-        urlImage: '',
         user: {
           name: '',
           email: '',
@@ -91,7 +92,7 @@
 
         let reader = new FileReader()
         reader.onload = function(e) {
-          self.urlImage = e.target.result
+          self.$store.state.userUrlImage = e.target.result
         }
         reader.readAsDataURL(this.$refs.inputFileImage.files[0])
 
@@ -135,10 +136,11 @@
       // console.log('profile', this.user)
       this.user = user
 
-      const userId = this.$store.getters['auth/getUserId']
-      // const token = this.$store.getters['auth/getToken']
-      const url = this.BASE_URL + 'api/v2.0/storage/users/' + userId + '/profile-photo'
-      this.urlImage = url
+      if (this.$store.state.userUrlImage === '') {
+        const userId = this.$store.getters['auth/getUserId']
+        // const token = this.$store.getters['auth/getToken']
+        this.$store.state.userUrlImage = this.BASE_URL + 'api/v2.0/storage/users/' + userId + '/profile-photo'
+      }
     }
   }
 </script>

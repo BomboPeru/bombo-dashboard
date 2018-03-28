@@ -28,7 +28,9 @@
               </div>
               <div class="label" v-else> Nombre y Apellidos </div>
               <div>
-                <input type="text" :class="['input-form', (!isValidInput(constraints.name.rules, user.name) && hasSubmit)?'input-warning':'']" placeholder="" v-model="user.name">
+                <input type="text"
+                       :class="['input-form', (!isValidInput(constraints.name.rules, user.name) && hasSubmit)?'input-warning':'']"
+                       placeholder="" v-model="user.name">
               </div>
             </div>
 
@@ -516,7 +518,7 @@
     width 100%
     border 0
     background transparent
-    font-size 14px
+    font-size 16px
     border-bottom 0.5px solid rgba(255, 255, 255, 0.44)
     font-family 'Nunito Sans'
     color white
@@ -560,9 +562,9 @@
     font-size: 11px;
     z-index: 9;
   .label
-    color rgba(255, 255, 255, 0.56)
+    color rgba(255, 255, 255, 0.86)
     font-family 'Nunito Sans'
-    font-size 12px
+    font-size 14px
 
   .warning
     color #f14066

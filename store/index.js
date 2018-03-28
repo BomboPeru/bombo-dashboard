@@ -8,6 +8,8 @@ import axios from 'axios'
 const store = () => {
   return new Vuex.Store({
     state: {
+      BASE_URL: 'https://api.bombo.pe/',
+
       signOutDialog: false,
       termsAndConditionsDialog: false,
       bomboPayments: false,
@@ -18,12 +20,12 @@ const store = () => {
       isLoading: false,
       isShortLoading: false,
 
-      BASE_URL: 'https://api.bombo.pe/',
       current_credit: 0,
       current_won_credit: 0,
 
       notifications: [],
       user: null,
+      userUrlImage: '',
 
       leagues: []
     },
