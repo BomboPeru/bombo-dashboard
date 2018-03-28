@@ -3,7 +3,7 @@
       <div class="title-notifications" v-if="listNotifications">
         {{ title }}
       </div>
-      <p class="title" v-else>{{ title }}</p>
+      <!--<p class="title" v-else-if="">{{ title }}</p>-->
 
       <div class="body">
         <div class="divider"></div>
@@ -33,7 +33,7 @@
                 <i class="far fa-trash-alt"></i>
               </div>
 
-              <div :class="['subject', notification.subject==='Incongruencias'?'warning':'']">
+              <div :class="['subject']">
                 {{ notification.title }}
               </div>
 

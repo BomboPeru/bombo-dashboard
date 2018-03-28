@@ -292,46 +292,46 @@
             }
 
             // loading on
-            // this.$store.state.isLoading = true
+            this.$store.state.isLoading = true
 
-            // try {
-            //   let response = await this.$axios.$post('auth/signup', this.user )
-            //
-            //   if ( this.hasPhotoToUpload )
-            //   {
-            //     let formData = new FormData()
-            //     formData.append('photo', this.$refs.inputFileImage.files[0])
-            //
-            //     const userId = response.user.id
-            //     let request = new XMLHttpRequest()
-            //
-            //     request.open('POST', 'api/v2.0/users/'+ userId +'/update-profile-photo')
-            //     request.setRequestHeader('Authorization', 'Bearer ' + response.token)
-            //     request.send(formData)
-            //   }
-            //
-            //   this.$store.state.isLoading = false
-            //
-            //   this.$axios.setToken(response.token, 'Bearer')
-            //   this.$store.commit('auth/setToken', response.token)
-            //   this.$store.dispatch('updateUser', response.user)
-            //
-            //
-            //   // loading off
-            //   this.message = 'Cuenta registrada con éxito'
-            //   setTimeout( () => {
-            //
-            //     this.$router.push('/client/home')
-            //     // this.$router.push('/')
-            //   }, 3000)
-            //
-            //
-            // } catch (e) {
-            //   // loading off
-            //   this.$store.state.isLoading = false
-            //   console.log(e)
-            //   this.message = e.response.data.error || e
-            // }
+            try {
+              let response = await this.$axios.$post('auth/signup', this.user )
+
+              if ( this.hasPhotoToUpload )
+              {
+                let formData = new FormData()
+                formData.append('photo', this.$refs.inputFileImage.files[0])
+
+                const userId = response.user.id
+                let request = new XMLHttpRequest()
+
+                request.open('POST', 'api/v2.0/users/'+ userId +'/update-profile-photo')
+                request.setRequestHeader('Authorization', 'Bearer ' + response.token)
+                request.send(formData)
+              }
+
+              this.$store.state.isLoading = false
+
+              this.$axios.setToken(response.token, 'Bearer')
+              this.$store.commit('auth/setToken', response.token)
+              this.$store.dispatch('updateUser', response.user)
+
+
+              // loading off
+              this.message = 'Cuenta registrada con éxito'
+              setTimeout( () => {
+
+                this.$router.push('/client/home')
+                // this.$router.push('/')
+              }, 3000)
+
+
+            } catch (e) {
+              // loading off
+              this.$store.state.isLoading = false
+              console.log(e)
+              this.message = e.response.data.error || e
+            }
 
           }
         }
