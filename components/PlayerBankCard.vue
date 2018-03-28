@@ -95,7 +95,7 @@
 
         const playerPositions = {
           'goal_keeper': 'ARQ',
-          'mid_fielder': 'MED',
+          'mid_fielder': 'CEN',
           'defender': 'DEF',
           'forward': 'DEL'
         }

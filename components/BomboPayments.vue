@@ -223,7 +223,6 @@
 
               console.log('reponse2', response2)
 
-
               const amount = this.plans[this.planSelected].amount
               let finalRequest = {
                 how: amount

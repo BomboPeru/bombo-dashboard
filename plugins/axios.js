@@ -26,5 +26,6 @@ export default function ({ app, store, redirect, error }) {
     if (e.response.status === 401) {
       redirect('/')
     }
+
   })
 }

@@ -30,6 +30,8 @@
       send () {
         this.$axios.$post('auth/password-forgot', {
           email: this.email
+        }).then(res => {
+          this.message = 'En unos momentos te llegará un correo para restaurar tu contraseña'
         })
       }
     }
