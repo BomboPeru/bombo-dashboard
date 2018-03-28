@@ -1,16 +1,16 @@
 <template>
   <div id="input-date">
-    <select name="" v-model="date" @input="inputObserver" @change="checkMonth">
+    <select name="" v-model="date" @change="checkMonth">
       <option v-for="n in 31"
               :key="n+'-date'"
               :value="n">{{ n }}</option>
     </select>
-    <select name="" v-model="month" @input="inputObserver" @change="checkMonth">
+    <select name="" v-model="month" @change="checkMonth">
       <option v-for="(item, i) in monthList"
               :key="i+'-month'"
               :value="item.value">{{ item.label }}</option>
     </select>
-    <select name="" v-model="year" @input="inputObserver">
+    <select name="" v-model="year" @change="inputObserver">
       <option v-for="n in 100"
               :key="n+'-date'"
               :value="currentYear - n">{{ currentYear - n }}</option>
@@ -63,6 +63,8 @@
             this.date = 30
           }
         }
+
+        this.inputObserver()
       },
       inputObserver () {
 

@@ -7,6 +7,7 @@
   <component name="ChangeListManager">
     <list default="true" id="bf24282d-3075-4fc1-a7e6-a1352eba2675" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change beforePath="$PROJECT_DIR$/components/InputDateSelect.vue" afterPath="$PROJECT_DIR$/components/InputDateSelect.vue" />
       <change beforePath="$PROJECT_DIR$/pages/register.vue" afterPath="$PROJECT_DIR$/pages/register.vue" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -51,14 +52,24 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="register.vue" pinned="false" current-in-tab="true">
+      <file leaf-file-name="register.vue" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/pages/register.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="376">
-              <caret line="167" column="51" lean-forward="false" selection-start-line="167" selection-start-column="51" selection-end-line="167" selection-end-column="51" />
+            <state relative-caret-position="200">
+              <caret line="154" column="56" lean-forward="false" selection-start-line="154" selection-start-column="56" selection-end-line="154" selection-end-column="56" />
               <folding>
-                <marker date="1522219386667" expanded="true" signature="301:473" ph="..." />
+                <marker date="1522219626910" expanded="true" signature="301:473" ph="..." />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="InputDateSelect.vue" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/components/InputDateSelect.vue">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="408">
+              <caret line="66" column="28" lean-forward="false" selection-start-line="66" selection-start-column="28" selection-end-line="66" selection-end-column="28" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -66,7 +77,7 @@
       <file leaf-file-name="PlayersFilter.vue" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/components/PlayersFilter.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2090">
+            <state relative-caret-position="1874">
               <caret line="103" column="22" lean-forward="false" selection-start-line="103" selection-start-column="19" selection-end-line="103" selection-end-column="22" />
               <folding />
             </state>
@@ -98,16 +109,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="504">
               <caret line="231" column="32" lean-forward="false" selection-start-line="231" selection-start-column="32" selection-end-line="232" selection-end-column="56" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="IconButton.vue" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/components/IconButton.vue">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="216">
-              <caret line="82" column="21" lean-forward="false" selection-start-line="82" selection-start-column="21" selection-end-line="82" selection-end-column="21" />
               <folding />
             </state>
           </provider>
@@ -219,7 +220,6 @@
         <option value="$PROJECT_DIR$/store/auth.js" />
         <option value="$PROJECT_DIR$/layouts/default.vue" />
         <option value="$PROJECT_DIR$/components/BasicToolbar.vue" />
-        <option value="$PROJECT_DIR$/components/InputDateSelect.vue" />
         <option value="$PROJECT_DIR$/components/MobileMenuSidebar.vue" />
         <option value="$PROJECT_DIR$/components/FloatingContainer.vue" />
         <option value="$PROJECT_DIR$/components/IconButton.vue" />
@@ -231,6 +231,7 @@
         <option value="$PROJECT_DIR$/components/PlayersFilter.vue" />
         <option value="$PROJECT_DIR$/components/PlayerBankCard.vue" />
         <option value="$PROJECT_DIR$/pages/register.vue" />
+        <option value="$PROJECT_DIR$/components/InputDateSelect.vue" />
       </list>
     </option>
   </component>
@@ -420,14 +421,7 @@
       <workItem from="1522013991036" duration="27203000" />
       <workItem from="1522077827349" duration="5894000" />
       <workItem from="1522088278251" duration="1040000" />
-      <workItem from="1522092018560" duration="31856000" />
-    </task>
-    <task id="LOCAL-00102" summary="create team">
-      <created>1521861950381</created>
-      <option name="number" value="00102" />
-      <option name="presentableId" value="LOCAL-00102" />
-      <option name="project" value="LOCAL" />
-      <updated>1521861950381</updated>
+      <workItem from="1522092018560" duration="32626000" />
     </task>
     <task id="LOCAL-00103" summary="background login register">
       <created>1521863767526</created>
@@ -765,11 +759,18 @@
       <option name="project" value="LOCAL" />
       <updated>1522205784889</updated>
     </task>
-    <option name="localTasksCounter" value="151" />
+    <task id="LOCAL-00151" summary="fix birthday label register">
+      <created>1522219418849</created>
+      <option name="number" value="00151" />
+      <option name="presentableId" value="LOCAL-00151" />
+      <option name="project" value="LOCAL" />
+      <updated>1522219418850</updated>
+    </task>
+    <option name="localTasksCounter" value="152" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="983244000" />
+    <option name="totallyTimeSpent" value="984014000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="54" y="-11" width="1867" height="1092" extended-state="6" />
@@ -852,7 +853,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="retire" />
     <MESSAGE value="commit open in new tab" />
     <MESSAGE value="rules, text bolds" />
     <MESSAGE value="home" />
@@ -877,7 +877,8 @@
     <MESSAGE value="critical fix current_credit" />
     <MESSAGE value="select league" />
     <MESSAGE value="player filter" />
-    <option name="LAST_COMMIT_MESSAGE" value="player filter" />
+    <MESSAGE value="fix birthday label register" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix birthday label register" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1206,14 +1207,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/components/InputDateSelect.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="666">
-          <caret line="84" column="0" lean-forward="false" selection-start-line="84" selection-start-column="0" selection-end-line="84" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/components/RankingRowCard.vue">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1728">
@@ -1278,14 +1271,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/components/PlayersFilter.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2090">
-          <caret line="103" column="22" lean-forward="false" selection-start-line="103" selection-start-column="19" selection-end-line="103" selection-end-column="22" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/components/PlayerBankCard.vue">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="288">
@@ -1296,11 +1281,27 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/pages/register.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="376">
-          <caret line="167" column="51" lean-forward="false" selection-start-line="167" selection-start-column="51" selection-end-line="167" selection-end-column="51" />
+        <state relative-caret-position="200">
+          <caret line="154" column="56" lean-forward="false" selection-start-line="154" selection-start-column="56" selection-end-line="154" selection-end-column="56" />
           <folding>
-            <marker date="1522219386667" expanded="true" signature="301:473" ph="..." />
+            <marker date="1522219626910" expanded="true" signature="301:473" ph="..." />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/components/PlayersFilter.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1874">
+          <caret line="103" column="22" lean-forward="false" selection-start-line="103" selection-start-column="19" selection-end-line="103" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/components/InputDateSelect.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="408">
+          <caret line="66" column="28" lean-forward="false" selection-start-line="66" selection-start-column="28" selection-end-line="66" selection-end-column="28" />
+          <folding />
         </state>
       </provider>
     </entry>
