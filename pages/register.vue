@@ -165,7 +165,7 @@
         message: '',
         hasSubmit: false,
         wrongBirthday: false,
-        constraintBirthdayMessage: 'Ingrese formato de fecha yyyy-mm-dd',
+        constraintBirthdayMessage: 'Ingrese fecha',
         hasPhotoToUpload: false,
         constraints: {
           name: {
