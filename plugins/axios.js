@@ -1,6 +1,5 @@
 export default function ({ app, store, redirect, error }) {
 
-  console.log('RE :: ','setting setToken each time reloads, executed in client side (apparently)')
   app.$axios.setToken(store.getters['auth/getToken'], 'Bearer')
 
   // app.$axios.onRequest(config => {
