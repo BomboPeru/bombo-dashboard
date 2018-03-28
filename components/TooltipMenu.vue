@@ -1,12 +1,13 @@
 <template>
     <div id="tooltip-menu" class="elevation rounded-sm" :style="{ 'right': rightOffset }">
+
       <div class="title-notifications" v-if="listNotifications">
         {{ title }}
       </div>
       <!--<p class="title" v-else-if="">{{ title }}</p>-->
 
       <div class="body">
-        <div class="divider"></div>
+        <!--<div class="divider"></div>-->
 
         <template v-if="listSupport">
           <ul class="ul-support">
@@ -47,13 +48,16 @@
 
         <template v-else-if="profile">
           <p class="username">{{ user.name }}</p>
-          <p class="coins">{{ user.current_bombo_coins }} B</p>
+          <p class="coins">{{ user.current_bombo_coins }} B /
+            <span class="credit">{{ user.current_credit }} <i class="far fa-money-bill-alt"></i></span>
+
+          </p>
           <div class="divider"></div>
           <ul class="ul-profile">
-            <li v-for="(profileLink, i) in listProfileItems" :key="i+'-profile'">
-              <nuxt-link :to="profileLink.url">
+            <li v-for="(profileLink, i) in listProfileItems" :key="i+'-profile'" @click="profileLink.action">
+              <!--<nuxt-link :to="profileLink.url">-->
                 {{ profileLink.name }}
-              </nuxt-link>
+              <!--</nuxt-link>-->
             </li>
           </ul>
           <p class="signout-item" @click="logOut">Cerrar session</p>
@@ -107,9 +111,21 @@
           coins: '0B'
         },
         listProfileItems: [
-          { name: 'Mi Perfil', url: '/client/profile' },
-          { name: 'Transferencias', url: '/client/billing' },
-          { name: 'FAQ', url: '/faq' }
+          { name: 'Mi Perfil', url: '/client/profile', action: () => {
+              this.$router.push('/client/profile')
+              this.$emit('onClose', 'profile')
+            }
+          },
+          { name: 'Transferencias', url: '/client/billing', action: () => {
+              this.$router.push('/client/billing')
+              this.$emit('onClose', 'profile')
+            }
+          },
+          { name: 'FAQ', url: '/faq', action: () => {
+              this.$router.push('/faq')
+              this.$emit('onClose', 'profile')
+            }
+          }
         ],
         listSupportItems: [
           { name: 'FAQ', url: '' },
@@ -138,9 +154,30 @@
            console.log(e)
           this.$store.dispatch('turnOnSnackbar', 'Problemas al eliminar notificación, intente más tarde')
         }
+      },
+      clickEventHandler: function (e) {
+        let self = this
+
+        if (self.listNotifications){
+          if (!(document.getElementById('tooltip-menu').children[0].contains(e.target) ||
+              document.getElementById('tooltip-menu').children[1].contains(e.target))) {
+            self.$emit('onClose', 'notification')
+          }
+        } else if (self.profile) {
+          if (!document.getElementById('tooltip-menu').children[0].contains(e.target)) {
+            self.$emit('onClose', 'profile')
+          }
+        }
+
       }
     },
     mounted () {
+      // let self = this
+
+      window.addEventListener('click', this.clickEventHandler)
+    },
+    beforeDestroy () {
+      window.removeEventListener('click', this.clickEventHandler)
     }
   }
 </script>
@@ -225,6 +262,9 @@
     font-size: 14px;
     text-align: center;
     color: #25BF89;
+  .credit
+    color: #FFC400;
+
   .signout-item
     margin-top 23px
     font-weight: 600;
@@ -235,8 +275,9 @@
     cursor pointer
   .ul-profile
     text-align center
-  .ul-profile a
     font-size 16px
+    cursor pointer
+  /*.ul-profile a*/
 
   .delete-icon
     position absolute

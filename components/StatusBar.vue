@@ -19,8 +19,8 @@
       </li>
     </ul>
     <!--<tooltip-menu listSupport v-if="help"/>-->
-    <tooltip-menu listNotifications :notifications="notifications" v-if="notification"  right-offset="70px"/>
-    <tooltip-menu profile v-if="profile" right-offset="30px"/>
+    <tooltip-menu listNotifications :notifications="notifications" v-if="notification"  right-offset="70px" @onClose="closeMenu"/>
+    <tooltip-menu profile v-if="profile" right-offset="30px" @onClose="closeMenu"/>
   </div>
 </template>
 
@@ -70,6 +70,9 @@
           }
         })
         this[name] = !this[name]
+      },
+      closeMenu (key) {
+        this[key] = false
       }
     },
     mounted () {
