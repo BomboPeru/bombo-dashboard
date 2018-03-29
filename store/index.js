@@ -78,7 +78,6 @@ const store = () => {
         context.state.current_credit = data.current_credit
         context.state.current_won_credit = data.current_won_credit
 
-
         window.localStorage.setItem('userId', data.id)
         window.localStorage.setItem('user', JSON.stringify(data))
       },
@@ -103,9 +102,7 @@ const store = () => {
 
           context.state.user = response2.data.data
           context.state.current_credit = response2.data.data.current_credit
-
           context.state.current_won_credit = response2.data.data.current_won_credit
-
           context.state.notifications = response2.data.data.notifications
 
           window.localStorage.setItem('user', JSON.stringify(response2.data.data))

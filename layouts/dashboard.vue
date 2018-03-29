@@ -136,7 +136,8 @@
           console.log(e)
           this.$router.push('/login')
         })
-
+    },
+    mounted () {
     }
   }
 </script>

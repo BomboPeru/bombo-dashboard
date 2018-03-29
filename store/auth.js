@@ -24,16 +24,16 @@ const auth = {
     setToken (state, value) {
       if (process.server) return
       window.localStorage.setItem('token', value)
-    },
-    removeAuth () {
+    }
+  },
+  actions: {
+    removeAuth (context) {
       if (process.server) return
 
       localStorage.removeItem('user')
       localStorage.removeItem('userId')
       localStorage.removeItem('token')
-    }
-  },
-  actions: {
+    },
     setUser (context, user) {
       if (process.server) return
       localStorage.setItem('user', JSON.stringify(user))
@@ -58,6 +58,7 @@ const auth = {
 
         window.localStorage.setItem('user', JSON.stringify(response2.data.data))
 
+        context.rootState.userUrlImage = context.rootState.BASE_URL + 'api/v2.0/storage/users/' + userId + '/profile-photo'
         context.rootState.user = response2.data.data
         return true
       } catch (e) {

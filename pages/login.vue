@@ -78,7 +78,7 @@
           this.$axios.setToken(res.data.token, 'Bearer')
           this.$store.commit('auth/setToken', res.data.token)
           this.fetchUser(res.data.token)
-          this.$router.push('/client/home')
+
 
           // this.$store.state.isLoading = false
           // this.$router.push('/wait')
@@ -97,7 +97,9 @@
         this.$store.dispatch('auth/fetchUser', token).then(done => {
           console.log('done', done)
           if (done) {
+
             this.$router.push('/client/home')
+
           } else {
             this.$store.state.isLoading = false
           }
