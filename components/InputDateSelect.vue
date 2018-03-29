@@ -68,7 +68,10 @@
       },
       inputObserver () {
 
-        let date = `${this.year}-${this.month}-${this.date}`
+        const month = (this.month.toString()).padStart(2, '0')
+        const day = (this.date.toString()).padStart(2, '0')
+
+        let date = `${this.year}-${month}-${day}`
         this.$emit('input', date)
       }
     }

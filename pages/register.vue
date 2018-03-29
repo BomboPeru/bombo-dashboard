@@ -216,7 +216,7 @@
         },
         user: {
           name: '',
-          birthday_fake: '2000-1-1',
+          birthday_fake: '2000-01-01',
           birthday: '',
           document_type: 'DNI',
           identity_document: '',
@@ -271,10 +271,10 @@
         if (this.isValidForm && ( this.user.password === this.user.repassword )) {
 
           {
-
             console.log('this.user.birthday_fake', this.user.birthday_fake)
 
-            if ( isNaN(Date.parse(this.user.birthday_fake)) ) {
+            if ( isNaN(Date.parse(this.user.birthday_fake) ) ) {
+
               this.wrongBirthday = true
               return
             } else {

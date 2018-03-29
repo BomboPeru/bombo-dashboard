@@ -5,13 +5,10 @@
     <bookmark url="file://$PROJECT_DIR$/pages/register.vue" line="18" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bf24282d-3075-4fc1-a7e6-a1352eba2675" name="Default" comment="profile avatar">
+    <list default="true" id="bf24282d-3075-4fc1-a7e6-a1352eba2675" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/components/MobileMenuSidebar.vue" afterPath="$PROJECT_DIR$/components/MobileMenuSidebar.vue" />
-      <change beforePath="$PROJECT_DIR$/components/StatusBar.vue" afterPath="$PROJECT_DIR$/components/StatusBar.vue" />
-      <change beforePath="$PROJECT_DIR$/pages/client/profile.vue" afterPath="$PROJECT_DIR$/pages/client/profile.vue" />
+      <change beforePath="$PROJECT_DIR$/components/InputDateSelect.vue" afterPath="$PROJECT_DIR$/components/InputDateSelect.vue" />
       <change beforePath="$PROJECT_DIR$/pages/register.vue" afterPath="$PROJECT_DIR$/pages/register.vue" />
-      <change beforePath="$PROJECT_DIR$/store/index.js" afterPath="$PROJECT_DIR$/store/index.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -38,8 +35,8 @@
       <file leaf-file-name="profile.vue" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/pages/client/profile.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-2592">
-              <caret line="9" column="81" lean-forward="false" selection-start-line="9" selection-start-column="30" selection-end-line="9" selection-end-column="81" />
+            <state relative-caret-position="384">
+              <caret line="129" column="12" lean-forward="true" selection-start-line="129" selection-start-column="12" selection-end-line="129" selection-end-column="12" />
               <folding />
             </state>
           </provider>
@@ -58,11 +55,22 @@
       <file leaf-file-name="register.vue" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/pages/register.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="336">
-              <caret line="29" column="19" lean-forward="true" selection-start-line="29" selection-start-column="19" selection-end-line="29" selection-end-column="19" />
+            <state relative-caret-position="-59">
+              <caret line="216" column="15" lean-forward="true" selection-start-line="216" selection-start-column="15" selection-end-line="216" selection-end-column="15" />
               <folding>
-                <marker date="1522262804800" expanded="true" signature="301:473" ph="..." />
+                <element signature="e#6283#6330#0" expanded="true" />
+                <marker date="1522297145845" expanded="true" signature="301:473" ph="..." />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="InputDateSelect.vue" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/components/InputDateSelect.vue">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="306">
+              <caret line="71" column="41" lean-forward="false" selection-start-line="71" selection-start-column="41" selection-end-line="71" selection-end-column="41" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -177,7 +185,6 @@
         <option value="$PROJECT_DIR$/components/BomboPayments.vue" />
         <option value="$PROJECT_DIR$/components/PlayersFilter.vue" />
         <option value="$PROJECT_DIR$/components/PlayerBankCard.vue" />
-        <option value="$PROJECT_DIR$/components/InputDateSelect.vue" />
         <option value="$PROJECT_DIR$/plugins/axios.js" />
         <option value="$PROJECT_DIR$/components/TooltipMenu.vue" />
         <option value="$PROJECT_DIR$/store/index.js" />
@@ -185,6 +192,7 @@
         <option value="$PROJECT_DIR$/components/MobileMenuSidebar.vue" />
         <option value="$PROJECT_DIR$/components/StatusBar.vue" />
         <option value="$PROJECT_DIR$/pages/register.vue" />
+        <option value="$PROJECT_DIR$/components/InputDateSelect.vue" />
       </list>
     </option>
   </component>
@@ -375,14 +383,7 @@
       <workItem from="1522077827349" duration="5894000" />
       <workItem from="1522088278251" duration="1040000" />
       <workItem from="1522092018560" duration="33211000" />
-      <workItem from="1522256031985" duration="5908000" />
-    </task>
-    <task id="LOCAL-00107" summary="dashboard&#10;sidebar">
-      <created>1521866526351</created>
-      <option name="number" value="00107" />
-      <option name="presentableId" value="LOCAL-00107" />
-      <option name="project" value="LOCAL" />
-      <updated>1521866526351</updated>
+      <workItem from="1522256031985" duration="11613000" />
     </task>
     <task id="LOCAL-00108" summary="landing">
       <created>1521873138552</created>
@@ -720,11 +721,18 @@
       <option name="project" value="LOCAL" />
       <updated>1522259826149</updated>
     </task>
-    <option name="localTasksCounter" value="156" />
+    <task id="LOCAL-00156" summary="profile avatar">
+      <created>1522262830561</created>
+      <option name="number" value="00156" />
+      <option name="presentableId" value="LOCAL-00156" />
+      <option name="project" value="LOCAL" />
+      <updated>1522262830561</updated>
+    </task>
+    <option name="localTasksCounter" value="157" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="990507000" />
+    <option name="totallyTimeSpent" value="996212000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="54" y="-4" width="1867" height="1085" extended-state="6" />
@@ -807,7 +815,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="api-test to api" />
     <MESSAGE value="checkbox terms" />
     <MESSAGE value="billing" />
     <MESSAGE value="register" />
@@ -832,7 +839,8 @@
     <MESSAGE value="commenting details, (irrelevant commit)" />
     <MESSAGE value="push right now" />
     <MESSAGE value="tooltip menu profile notifications collapsable" />
-    <option name="LAST_COMMIT_MESSAGE" value="tooltip menu profile notifications collapsable" />
+    <MESSAGE value="profile avatar" />
+    <option name="LAST_COMMIT_MESSAGE" value="profile avatar" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1112,14 +1120,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/components/InputDateSelect.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="24">
-          <caret line="54" column="21" lean-forward="false" selection-start-line="54" selection-start-column="21" selection-end-line="54" selection-end-column="21" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/components/PlayersFilter.vue">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="24">
@@ -1211,14 +1211,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pages/client/profile.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2592">
-          <caret line="9" column="81" lean-forward="false" selection-start-line="9" selection-start-column="30" selection-end-line="9" selection-end-column="81" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/components/Toolbar.vue">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="168">
@@ -1235,12 +1227,29 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/pages/client/profile.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="384">
+          <caret line="129" column="12" lean-forward="true" selection-start-line="129" selection-start-column="12" selection-end-line="129" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/components/InputDateSelect.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="71" column="41" lean-forward="false" selection-start-line="71" selection-start-column="41" selection-end-line="71" selection-end-column="41" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/pages/register.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="336">
-          <caret line="29" column="19" lean-forward="true" selection-start-line="29" selection-start-column="19" selection-end-line="29" selection-end-column="19" />
+        <state relative-caret-position="-59">
+          <caret line="216" column="15" lean-forward="true" selection-start-line="216" selection-start-column="15" selection-end-line="216" selection-end-column="15" />
           <folding>
-            <marker date="1522262804800" expanded="true" signature="301:473" ph="..." />
+            <element signature="e#6283#6330#0" expanded="true" />
+            <marker date="1522297145845" expanded="true" signature="301:473" ph="..." />
           </folding>
         </state>
       </provider>
