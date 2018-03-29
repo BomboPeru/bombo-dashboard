@@ -62,7 +62,7 @@
             <td style="width: 25%;" class="position-action" @click="selectPlayer(player)">
               <span>{{ positionInShort }}</span>
               <span>
-                <i class="far fa-trash-alt add-action"></i>
+                <i class="far fa-times-circle add-action"></i>
               </span>
             </td>
           </tr>

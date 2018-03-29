@@ -207,7 +207,7 @@
     data () {
       return{
         maxLimitCost: 100,
-        activeTab: 0,
+        activeTab: 1,
         tabs: [{ name: 'LISTA', icon: 'fa-list-alt' }, {name: 'FORMACION', icon: 'fa-align-center'} ],
         title: 'MI EQUIPO',
         isCaptain: ''
