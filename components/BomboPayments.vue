@@ -77,24 +77,31 @@
                       <div class="card-number-label">Número de tarjeta</div>
 
                       <i :class="['fab', iconCC, 'card-type-icon']"></i>
-                      <input type="text" class="card-number" @keypress="onKeyDown($event, 19)" v-model="cardNumber">
+                      <the-mask type="text"
+                             class="card-number"
+                             placeholder="0000-0000-0000-0000"
+                             :mask="['####-####-####-####']"
+                             v-model="creditInfo.card_number"/>
                     </div>
 
                     <div class="exp-cvc-container">
                       <div class="exp-container">
                         <div class="exp-cvc-label">Fecha de expiración</div>
-                        <input class="month" placeholder="MM" type="text"
-                               @keypress="onKeyDown($event, 2)"
-                               v-model="creditInfo.expiration_month">
-                        <input class="year" placeholder="YYYY" type="text"
-                               @keypress="onKeyDown($event, 4)"
-                               v-model="creditInfo.expiration_year">
+                        <the-mask class="month" placeholder="MM" type="text"
+                                  :mask="['##']"
+                                  v-model="creditInfo.expiration_month"/>
+                        <the-mask class="year"
+                                  placeholder="YYYY"
+                                  type="text"
+                                  :mask="['####']"
+                                  v-model="creditInfo.expiration_year"/>
                       </div>
                       <div class="cvc-container">
                         <div class="exp-cvc-label">CVV/CVC</div>
-                        <input class="cvv" placeholder="CVC" type="text"
-                               @keypress="onKeyDown($event, 3)"
-                               v-model="creditInfo.cvv">
+                        <the-mask class="cvv"
+                                  placeholder="CVC" type="text"
+                                  :mask="['###']"
+                                  v-model="creditInfo.cvv"/>
                       </div>
                     </div>
                   </div>
@@ -114,28 +121,15 @@
 
 <script>
   import DialogContainer from './DialogContainer'
+  import { TheMask } from 'vue-the-mask'
 
   export default {
     name: 'bombo-payments',
-    components: { DialogContainer },
+    components: { DialogContainer, TheMask },
     props: {
       isOpen: { type: Boolean, default: false }
     },
     methods: {
-      onKeyDown(evt, limit){
-
-        if (evt.keyCode < 48 || evt.keyCode > 57) {
-          evt.preventDefault()
-          return
-        }
-
-        if (evt.target.value.length > (limit-1)) {
-          if (evt.keyCode >= 48 && evt.keyCode <= 90) {
-              evt.preventDefault()
-              return
-          }
-        }
-      },
       nextPlan () {
         if (this.planSelected !== this.plans.length - 1) {
           this.planSelected += 1
@@ -153,23 +147,26 @@
       closeDialog () {
         this.$emit('onCollapse', false)
       },
-      ccFormat (value) {
-        var v = value.replace(/\s+/g, '').replace(/[^0-9]/gi, '')
-        var matches = v.match(/\d{4,16}/g);
-        var match = matches && matches[0] || ''
-        var parts = []
-        for (let i=0, len=match.length; i<len; i+=4) {
-          parts.push(match.substring(i, i+4))
-        }
-        if (parts.length) {
-          return parts.join(' ')
-        } else {
-          return value
-        }
-      },
       async pay () {
 
         if (!this.payButtonEnabled) {
+          return null
+        }
+
+
+
+        if (this.creditInfo.card_number.length !== 16 ||
+          this.creditInfo.cvv.length !== 3 ||
+          this.creditInfo.expiration_month.length !== 2 ||
+          this.creditInfo.expiration_year.length !== 4) {
+
+          this.$store.dispatch('turnOnSnackbar', 'Datos inválidos.')
+          return null
+        }
+
+        if ( parseInt(this.creditInfo.expiration_month) > 12 ) {
+
+          this.$store.dispatch('turnOnSnackbar', 'Datos inválidos.')
           return null
         }
 
@@ -177,117 +174,78 @@
         this.payButtonText = 'Espere...'
 
         // lazy validation
-        if (this.creditInfo.card_number.length > 18 &&
-          this.creditInfo.cvv.length > 2 &&
-          this.creditInfo.expiration_month.length >= 2 &&
-          this.creditInfo.expiration_year.length > 2) {
 
-          const user = this.$store.getters['user']
-          const email = user.email
-          this.creditInfo.email = email
+        const user = this.$store.getters['user']
+        const email = user.email
+        this.creditInfo.email = email
 
-          let creditCard = this.creditInfo.card_number
-          creditCard = `${creditCard.slice(0,4)}${creditCard.slice(5,9)}${creditCard.slice(10,14)}${creditCard.slice(15,19)}`
+        const creditCard = this.creditInfo.card_number
 
-          let request = {
-            card_number: creditCard,
-            cvv: this.creditInfo.cvv,
-            expiration_year: this.creditInfo.expiration_year,
-            expiration_month: this.creditInfo.expiration_month,
-            email: this.creditInfo.email
-          }
+        let request = {
+          card_number: creditCard,
+          cvv: this.creditInfo.cvv,
+          expiration_year: this.creditInfo.expiration_year,
+          expiration_month: this.creditInfo.expiration_month,
+          email: this.creditInfo.email
+        }
 
+        // console.log('request',request)
 
-          console.log('request',request)
+        const token = this.$store.getters['auth/getToken']
+        const publicKey = 'pk_live_Sabys0p2rhn2D4ZM'
 
-          const token = this.$store.getters['auth/getToken']
-          const publicKey = 'pk_live_Sabys0p2rhn2D4ZM'
+        this.$store.state.isShortLoading = true
 
-          this.$store.state.isShortLoading = true
+        try {
 
-          try {
-
-            {
-              const response = await this.$axios.$post('https://api.culqi.com/v2/tokens', request,
-                { headers: { Authorization: 'Bearer ' + publicKey } })
+          {
+            const response = await this.$axios.$post('https://api.culqi.com/v2/tokens', request,
+              { headers: { Authorization: 'Bearer ' + publicKey } })
 
 
-              let request2 = {
-                card_number: request.card_number,
-                token_card: response.id
-              }
-              console.log('request2', request2)
-
-              const response2 = await this.$axios.$post(`api/v2.0/users/${user.id}/set-card`, request2,
-                { headers: { Authorization: 'Bearer ' + token} })
-
-              console.log('reponse2', response2)
-
-              const amount = this.plans[this.planSelected].amount
-              let finalRequest = {
-                how: amount
-              }
-
-              const finalResponse = await this.$axios.$post(`api/v2.0/users/${user.id}/charge`, finalRequest,
-                { headers: { Authorization: 'Bearer ' + token} })
-
-
-              this.payButtonText = 'COMPRAR AHORA'
-              this.payButtonEnabled = true
-
-              console.log('finalResponse', finalResponse)
-              this.$store.dispatch('updateUser', finalResponse.data)
-
-              this.$store.state.isShortLoading = false
-              this.$store.dispatch('turnOnSnackbar', 'Felicidades! tu compra ha sido realizada con exito.')
-              this.$store.state.bomboPayments = false
-
+            let request2 = {
+              card_number: request.card_number,
+              token_card: response.id
             }
-          } catch (e) {
-            this.$store.state.isShortLoading = false
-            console.log('e bombo pa',e.toString())
-            this.$store.dispatch('turnOnSnackbar', e.response.data.user_message)
+            console.log('request2', request2)
 
-            this.payButtonEnabled = true
+            const response2 = await this.$axios.$post(`api/v2.0/users/${user.id}/set-card`, request2,
+              { headers: { Authorization: 'Bearer ' + token} })
+
+            console.log('reponse2', response2)
+
+            const amount = this.plans[this.planSelected].amount
+            let finalRequest = {
+              how: amount
+            }
+
+            const finalResponse = await this.$axios.$post(`api/v2.0/users/${user.id}/charge`, finalRequest,
+              { headers: { Authorization: 'Bearer ' + token} })
+
+
             this.payButtonText = 'COMPRAR AHORA'
-            this.$store.dispatch('turnOnSnackbar', 'Ha ocurrido un problema. Intenta de nuevo.')
+            this.payButtonEnabled = true
+
+            console.log('finalResponse', finalResponse)
+            this.$store.dispatch('updateUser', finalResponse.data)
+
+            this.$store.state.isShortLoading = false
+            this.$store.dispatch('turnOnSnackbar', 'Felicidades! tu compra ha sido realizada con exito.')
+            this.$store.state.bomboPayments = false
+
           }
-
-
-
-        } else {
-          this.$store.dispatch('turnOnSnackbar', 'DATOS INVALIDOS')
+        } catch (e) {
+          this.$store.state.isShortLoading = false
+          console.log('e bombo pa',e.toString())
+          this.$store.dispatch('turnOnSnackbar', e.response.data.user_message)
 
           this.payButtonEnabled = true
           this.payButtonText = 'COMPRAR AHORA'
-
         }
+
       }
     },
     computed: {
-      cardNumber: {
-        get () {
-          return this.creditInfo.card_number
-        },
-        set (value) {
-          // let value = this.creditInfo.card_number
-          if (value.length === 4 || value.length === 9 || value.length === 14) {
-            value += '-'
-          }
-
-          this.creditInfo.card_number = value
-        }
-      },
-      ccFormatted: {
-        get () {
-          return this.cardNumber
-          // return '4111 1111 1111 1111'
-        },
-        set (value) {
-          let formatValue = this.ccFormat(value)
-          this.cardNumber = formatValue
-        }
-      },
       iconCC () {
         const ccValue = this.creditInfo.card_number
         if (ccValue.length === 0) return 'fa-cc-visa'
@@ -298,11 +256,13 @@
         } else {
           return 'fa-cc-visa'
         }
+      },
+      plans () {
+        return this.$store.state.payment.plans
       }
     },
     data () {
       return {
-        currency_code: 'PEN',
         amount: 20,
         isLoading: false,
         payButtonEnabled: true,
@@ -314,20 +274,6 @@
           expiration_month: '',
           email: ''
         },
-        plans: [
-          { price: 'S/ 20', amount: 20, name: 'BOMBO PACK 1',
-            color: 'linear-gradient(-114deg, rgb(210, 105, 202) 0%, rgb(222, 127, 71) 105%)',
-            backgroundColor: '#FEB54B', cardSrc: '/payment/b_card_copy_4.png' },
-          { price: 'S/ 30', amount: 30, name: 'BOMBO PACK 2',
-            color: 'linear-gradient(-114deg, rgb(66, 158, 129) 0%, rgb(71, 138, 222) 105%)',
-            backgroundColor: '#FE63A2', cardSrc: '/payment/b_card_copy_3.png' },
-          { price: 'S/ 50', amount: 50, name: 'BOMBO PACK 3',
-            color: 'linear-gradient(-114deg, rgb(93, 66, 158) 0%, rgb(222, 71, 189) 105%)',
-            backgroundColor: '#4A48D2', cardSrc: '/payment/b_card_copy_2.png' },
-          { price: 'S/ 100', amount: 100, name: 'BOMBO PACK 4',
-            color: 'linear-gradient(-114deg, rgb(93, 66, 158) 0%, rgb(222, 71, 189) 105%)',
-            backgroundColor: '#FE5567', cardSrc: '/payment/b_card.png' }
-        ],
         planSelected: 0
       }
     }

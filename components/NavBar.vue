@@ -61,7 +61,8 @@
           // { name: 'HISTORIAL', urlPath: '/client/history', justTitle: false },
           { name: 'ARMA TU EQUIPO!', urlPath: '/client/createteam', justTitle: true },
           { name: 'MI PERFIL', urlPath: '/client/profile', justTitle: true },
-          { name: 'TRANSFERENCIAS', urlPath: '/client/billing', justTitle: false }
+          { name: 'TRANSFERENCIAS', urlPath: '/client/billing', justTitle: false },
+          { name: 'RECARGAS', urlPath: '/client/payments', justTitle: true }
         ],
         isMenuNavItemOpen: false
       }

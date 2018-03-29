@@ -3,6 +3,7 @@ import team from './teams'
 import createteam from './createteam'
 import auth from './auth'
 import dashboard from './dashboard'
+import payment from './payment'
 import axios from 'axios'
 
 const store = () => {
@@ -121,7 +122,8 @@ const store = () => {
       team,
       createteam,
       dashboard,
-      auth
+      auth,
+      payment
     }
   })
 }

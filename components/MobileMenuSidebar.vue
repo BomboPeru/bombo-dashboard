@@ -83,12 +83,12 @@
           },
           { label: 'Recargar Credito', icon: 'fa-credit-card', action: () => {
               this.close()
-              this.$store.state.bomboPayments = !this.$store.state.bomboPayments
+              this.$router.push('/client/payments')
             }
           },
           { label: 'FAQ', icon: 'fa-question-circle', action: () => {
               this.close()
-              this.$router.push('/client/faq')
+              this.$router.push('/faq')
             }
           },
           { label: 'Cerrar sesión', icon: 'fa-sign-out-alt', action: () => {

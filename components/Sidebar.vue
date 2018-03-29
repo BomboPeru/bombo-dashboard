@@ -170,6 +170,10 @@
             items: [
             ]
           },
+          'RECARGA': {
+            items: [
+            ]
+          },
           'ARMA UN EQUIPO': {
             items: [
               {name: 'JUGADORES', color:'#fe5567', type: 'normal'},
