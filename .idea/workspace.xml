@@ -5,15 +5,9 @@
     <bookmark url="file://$PROJECT_DIR$/pages/register.vue" line="18" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bf24282d-3075-4fc1-a7e6-a1352eba2675" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/pages/client/payments.vue" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/store/payment.js" />
+    <list default="true" id="bf24282d-3075-4fc1-a7e6-a1352eba2675" name="Default" comment="bombopayments and bombopayments mobile&#10;navbar issue">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/components/BomboPayments.vue" afterPath="$PROJECT_DIR$/components/BomboPayments.vue" />
-      <change beforePath="$PROJECT_DIR$/components/MobileMenuSidebar.vue" afterPath="$PROJECT_DIR$/components/MobileMenuSidebar.vue" />
-      <change beforePath="$PROJECT_DIR$/components/NavBar.vue" afterPath="$PROJECT_DIR$/components/NavBar.vue" />
-      <change beforePath="$PROJECT_DIR$/components/Sidebar.vue" afterPath="$PROJECT_DIR$/components/Sidebar.vue" />
-      <change beforePath="$PROJECT_DIR$/store/index.js" afterPath="$PROJECT_DIR$/store/index.js" />
+      <change beforePath="$PROJECT_DIR$/assets/styles/main.styl" afterPath="$PROJECT_DIR$/assets/styles/main.styl" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -52,8 +46,18 @@
       <file leaf-file-name="nuxt.config.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/nuxt.config.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="546">
+            <state relative-caret-position="690">
               <caret line="57" column="27" lean-forward="false" selection-start-line="57" selection-start-column="27" selection-end-line="57" selection-end-column="27" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="main.styl" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/assets/styles/main.styl">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="640">
+              <caret line="36" column="0" lean-forward="true" selection-start-line="36" selection-start-column="0" selection-end-line="36" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -101,22 +105,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="billing.vue" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/pages/client/billing.vue">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="396">
-              <caret line="53" column="56" lean-forward="false" selection-start-line="53" selection-start-column="28" selection-end-line="53" selection-end-column="56" />
-              <folding>
-                <element signature="e#4449#4499#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Sidebar.vue" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Sidebar.vue" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/components/Sidebar.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="136">
+            <state relative-caret-position="1216">
               <caret line="171" column="12" lean-forward="false" selection-start-line="171" selection-start-column="12" selection-end-line="171" selection-end-column="12" />
               <folding />
             </state>
@@ -126,7 +118,7 @@
       <file leaf-file-name="MobileMenuSidebar.vue" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/components/MobileMenuSidebar.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1635">
+            <state relative-caret-position="-237">
               <caret line="72" column="16" lean-forward="false" selection-start-line="72" selection-start-column="16" selection-end-line="72" selection-end-column="16" />
               <folding />
             </state>
@@ -190,7 +182,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/components/NewTeamCard.vue" />
         <option value="$PROJECT_DIR$/utils/auth.js" />
         <option value="$PROJECT_DIR$/components/SelectTimeDialog.vue" />
         <option value="$PROJECT_DIR$/pages/index.vue" />
@@ -241,6 +232,7 @@
         <option value="$PROJECT_DIR$/package.json" />
         <option value="$PROJECT_DIR$/nuxt.config.js" />
         <option value="$PROJECT_DIR$/components/Sidebar.vue" />
+        <option value="$PROJECT_DIR$/assets/styles/main.styl" />
       </list>
     </option>
   </component>
@@ -284,6 +276,17 @@
             <path>
               <item name="bombo-dashboard" type="b2602c69:ProjectViewProjectNode" />
               <item name="bombo-dashboard" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="bombo-dashboard" type="b2602c69:ProjectViewProjectNode" />
+              <item name="bombo-dashboard" type="462c0819:PsiDirectoryNode" />
+              <item name="assets" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="bombo-dashboard" type="b2602c69:ProjectViewProjectNode" />
+              <item name="bombo-dashboard" type="462c0819:PsiDirectoryNode" />
+              <item name="assets" type="462c0819:PsiDirectoryNode" />
+              <item name="styles" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="bombo-dashboard" type="b2602c69:ProjectViewProjectNode" />
@@ -431,14 +434,7 @@
       <workItem from="1522077827349" duration="5894000" />
       <workItem from="1522088278251" duration="1040000" />
       <workItem from="1522092018560" duration="33211000" />
-      <workItem from="1522256031985" duration="23050000" />
-    </task>
-    <task id="LOCAL-00109" summary="finish landing bombo v0.1">
-      <created>1521879927214</created>
-      <option name="number" value="00109" />
-      <option name="presentableId" value="LOCAL-00109" />
-      <option name="project" value="LOCAL" />
-      <updated>1521879927214</updated>
+      <workItem from="1522256031985" duration="23503000" />
     </task>
     <task id="LOCAL-00110" summary="responsiveness iphone 5S">
       <created>1521883127644</created>
@@ -776,11 +772,18 @@
       <option name="project" value="LOCAL" />
       <updated>1522297609456</updated>
     </task>
-    <option name="localTasksCounter" value="158" />
+    <task id="LOCAL-00158" summary="bombopayments and bombopayments mobile&#10;navbar issue">
+      <created>1522309979305</created>
+      <option name="number" value="00158" />
+      <option name="presentableId" value="LOCAL-00158" />
+      <option name="project" value="LOCAL" />
+      <updated>1522309979305</updated>
+    </task>
+    <option name="localTasksCounter" value="159" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1007649000" />
+    <option name="totallyTimeSpent" value="1008102000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="54" y="-4" width="1867" height="1085" extended-state="6" />
@@ -863,7 +866,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="billing" />
     <MESSAGE value="register" />
     <MESSAGE value="bombo url" />
     <MESSAGE value="close bombop, user select none, button espere" />
@@ -888,7 +890,8 @@
     <MESSAGE value="tooltip menu profile notifications collapsable" />
     <MESSAGE value="profile avatar" />
     <MESSAGE value="fix date in register" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix date in register" />
+    <MESSAGE value="bombopayments and bombopayments mobile&#10;navbar issue" />
+    <option name="LAST_COMMIT_MESSAGE" value="bombopayments and bombopayments mobile&#10;navbar issue" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -897,14 +900,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/pages/login.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4704">
-          <caret line="196" column="25" lean-forward="false" selection-start-line="196" selection-start-column="25" selection-end-line="196" selection-end-column="25" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/components/SelectTimeDialog.vue">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="936">
@@ -1228,14 +1223,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/components/MobileMenuSidebar.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1635">
-          <caret line="72" column="16" lean-forward="false" selection-start-line="72" selection-start-column="16" selection-end-line="72" selection-end-column="16" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/pages/client/billing.vue">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="396">
@@ -1298,18 +1285,34 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/components/Sidebar.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1216">
+          <caret line="171" column="12" lean-forward="false" selection-start-line="171" selection-start-column="12" selection-end-line="171" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/components/MobileMenuSidebar.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-237">
+          <caret line="72" column="16" lean-forward="false" selection-start-line="72" selection-start-column="16" selection-end-line="72" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/nuxt.config.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="546">
+        <state relative-caret-position="690">
           <caret line="57" column="27" lean-forward="false" selection-start-line="57" selection-start-column="27" selection-end-line="57" selection-end-column="27" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/components/Sidebar.vue">
+    <entry file="file://$PROJECT_DIR$/assets/styles/main.styl">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="171" column="12" lean-forward="false" selection-start-line="171" selection-start-column="12" selection-end-line="171" selection-end-column="12" />
+        <state relative-caret-position="640">
+          <caret line="36" column="0" lean-forward="true" selection-start-line="36" selection-start-column="0" selection-end-line="36" selection-end-column="0" />
           <folding />
         </state>
       </provider>
