@@ -9,7 +9,7 @@
       <template v-if="alreadySigned">
         <div class="reenter-username" @click="goToHome">
           <i class="far fa-user"></i>
-          Hi, <span class="user-hello"> {{ username }}</span>
+          Hola, <span class="user-hello"> {{ username }}</span>
         </div>
       </template>
       <template v-else>
