@@ -73,14 +73,34 @@
       },
       goToHome () {
         this.$router.push('/client/home')
+      },
+      async verifyToken (token) {
+        const BASE_URL = this.$store.state.BASE_URL
+
+        try {
+          const response = await axios.get(BASE_URL + 'auth/verify', { headers: { 'Authorization': 'Bearer ' + token }})
+          return true
+        } catch (e) {
+          return false
+        }
       }
     },
     mounted () {
 
-      if (this.$store.getters['user'] !== null) {
-        this.alreadySigned = true
-        this.username = this.$store.getters['user'].username
+      if (this.$store.getters['auth/getToken'] !== null) {
+        this.verifyToken(this.$store.getters['auth/getToken']).then(isValid => {
+          if (isValid) {
+            if (this.$store.getters['user'] !== null) {
+              this.alreadySigned = true
+              this.username = this.$store.getters['user'].username
+            }
+          } else {
+
+            this.$store.dispatch('auth/removeAuth')
+          }
+        })
       }
+
     }
   }
 </script>

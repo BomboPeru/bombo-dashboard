@@ -8,6 +8,7 @@
     <list default="true" id="bf24282d-3075-4fc1-a7e6-a1352eba2675" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change beforePath="$PROJECT_DIR$/components/BasicToolbar.vue" afterPath="$PROJECT_DIR$/components/BasicToolbar.vue" />
+      <change beforePath="$PROJECT_DIR$/plugins/axios.js" afterPath="$PROJECT_DIR$/plugins/axios.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -21,20 +22,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="SignOutDialog.vue" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/components/SignOutDialog.vue">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="552">
-              <caret line="47" column="47" lean-forward="false" selection-start-line="47" selection-start-column="47" selection-end-line="47" selection-end-column="47" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="auth.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/store/auth.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="120">
+            <state relative-caret-position="984">
               <caret line="41" column="19" lean-forward="false" selection-start-line="41" selection-start-column="10" selection-end-line="41" selection-end-column="19" />
               <folding />
             </state>
@@ -44,8 +35,8 @@
       <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/store/index.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="403">
-              <caret line="45" column="10" lean-forward="false" selection-start-line="45" selection-start-column="6" selection-end-line="45" selection-end-column="10" />
+            <state relative-caret-position="571">
+              <caret line="94" column="0" lean-forward="false" selection-start-line="93" selection-start-column="0" selection-end-line="94" selection-end-column="0" />
               <folding>
                 <element signature="e#0#23#0" expanded="true" />
               </folding>
@@ -58,16 +49,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="936">
               <caret line="99" column="0" lean-forward="false" selection-start-line="99" selection-start-column="0" selection-end-line="99" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="PlayerBankCard.vue" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/components/PlayerBankCard.vue">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2688">
-              <caret line="133" column="37" lean-forward="false" selection-start-line="133" selection-start-column="28" selection-end-line="133" selection-end-column="37" />
               <folding />
             </state>
           </provider>
@@ -86,8 +67,28 @@
       <file leaf-file-name="BasicToolbar.vue" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/components/BasicToolbar.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="288">
-              <caret line="12" column="14" lean-forward="true" selection-start-line="12" selection-start-column="14" selection-end-line="12" selection-end-column="14" />
+            <state relative-caret-position="258">
+              <caret line="88" column="0" lean-forward="true" selection-start-line="88" selection-start-column="0" selection-end-line="88" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SignOutDialog.vue" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/components/SignOutDialog.vue">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="528">
+              <caret line="46" column="0" lean-forward="true" selection-start-line="46" selection-start-column="0" selection-end-line="47" selection-end-column="47" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="axios.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/plugins/axios.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="600">
+              <caret line="25" column="0" lean-forward="true" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -208,7 +209,6 @@
         <option value="$PROJECT_DIR$/pages/forgotpassword.vue" />
         <option value="$PROJECT_DIR$/components/PlayersFilter.vue" />
         <option value="$PROJECT_DIR$/components/PlayerBankCard.vue" />
-        <option value="$PROJECT_DIR$/plugins/axios.js" />
         <option value="$PROJECT_DIR$/components/TooltipMenu.vue" />
         <option value="$PROJECT_DIR$/pages/client/profile.vue" />
         <option value="$PROJECT_DIR$/pages/register.vue" />
@@ -230,6 +230,7 @@
         <option value="$PROJECT_DIR$/store/auth.js" />
         <option value="$PROJECT_DIR$/components/PlayerRowCard.vue" />
         <option value="$PROJECT_DIR$/components/NewTeamCard.vue" />
+        <option value="$PROJECT_DIR$/plugins/axios.js" />
         <option value="$PROJECT_DIR$/components/BasicToolbar.vue" />
       </list>
     </option>
@@ -432,14 +433,7 @@
       <workItem from="1522077827349" duration="5894000" />
       <workItem from="1522088278251" duration="1040000" />
       <workItem from="1522092018560" duration="33211000" />
-      <workItem from="1522256031985" duration="34092000" />
-    </task>
-    <task id="LOCAL-00114" summary="wait close loading">
-      <created>1521912640209</created>
-      <option name="number" value="00114" />
-      <option name="presentableId" value="LOCAL-00114" />
-      <option name="project" value="LOCAL" />
-      <updated>1521912640209</updated>
+      <workItem from="1522256031985" duration="35175000" />
     </task>
     <task id="LOCAL-00115" summary="register success message">
       <created>1521913092318</created>
@@ -777,11 +771,18 @@
       <option name="project" value="LOCAL" />
       <updated>1522371428475</updated>
     </task>
-    <option name="localTasksCounter" value="163" />
+    <task id="LOCAL-00163" summary="spanish Hi">
+      <created>1522371484075</created>
+      <option name="number" value="00163" />
+      <option name="presentableId" value="LOCAL-00163" />
+      <option name="project" value="LOCAL" />
+      <updated>1522371484075</updated>
+    </task>
+    <option name="localTasksCounter" value="164" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1018691000" />
+    <option name="totallyTimeSpent" value="1019774000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="54" y="-4" width="1867" height="1085" extended-state="6" />
@@ -864,7 +865,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="user name menu sidebar" />
     <MESSAGE value="uppercase dashboard" />
     <MESSAGE value="numero cuenta, rules" />
     <MESSAGE value="profile url avatar, register" />
@@ -889,7 +889,8 @@
     <MESSAGE value="avatar photo profile" />
     <MESSAGE value="equis" />
     <MESSAGE value="toolbar&#10;info team captain&#10;center position delete icon" />
-    <option name="LAST_COMMIT_MESSAGE" value="toolbar&#10;info team captain&#10;center position delete icon" />
+    <MESSAGE value="spanish Hi" />
+    <option name="LAST_COMMIT_MESSAGE" value="spanish Hi" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1018,14 +1019,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="216">
           <caret line="82" column="21" lean-forward="false" selection-start-line="82" selection-start-column="21" selection-end-line="82" selection-end-column="21" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/plugins/axios.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="48">
-          <caret line="2" column="0" lean-forward="false" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -1240,22 +1233,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/components/SignOutDialog.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="552">
-          <caret line="47" column="47" lean-forward="false" selection-start-line="47" selection-start-column="47" selection-end-line="47" selection-end-column="47" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/store/auth.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="41" column="19" lean-forward="false" selection-start-line="41" selection-start-column="10" selection-end-line="41" selection-end-column="19" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/components/PlayerBankCard.vue">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2688">
@@ -1288,16 +1265,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/store/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="403">
-          <caret line="45" column="10" lean-forward="false" selection-start-line="45" selection-start-column="6" selection-end-line="45" selection-end-column="10" />
-          <folding>
-            <element signature="e#0#23#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/components/PlayerRowCard.vue">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1728">
@@ -1314,10 +1281,44 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/plugins/axios.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="600">
+          <caret line="25" column="0" lean-forward="true" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/store/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="571">
+          <caret line="94" column="0" lean-forward="false" selection-start-line="93" selection-start-column="0" selection-end-line="94" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#23#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/store/auth.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="984">
+          <caret line="41" column="19" lean-forward="false" selection-start-line="41" selection-start-column="10" selection-end-line="41" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/components/SignOutDialog.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="528">
+          <caret line="46" column="0" lean-forward="true" selection-start-line="46" selection-start-column="0" selection-end-line="47" selection-end-column="47" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/components/BasicToolbar.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="288">
-          <caret line="12" column="14" lean-forward="true" selection-start-line="12" selection-start-column="14" selection-end-line="12" selection-end-column="14" />
+        <state relative-caret-position="258">
+          <caret line="88" column="0" lean-forward="true" selection-start-line="88" selection-start-column="0" selection-end-line="88" selection-end-column="0" />
           <folding />
         </state>
       </provider>
