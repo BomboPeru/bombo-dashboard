@@ -191,7 +191,8 @@
 
         // console.log('request',request)
 
-        const token = this.$store.getters['auth/getToken']
+        const token = window.localStorage.getItem('token')
+        // this.$store.getters['auth/getToken']
         const publicKey = 'pk_live_Sabys0p2rhn2D4ZM'
 
         this.$store.state.isShortLoading = true
@@ -201,7 +202,6 @@
           {
             const response = await this.$axios.$post('https://api.culqi.com/v2/tokens', request,
               { headers: { Authorization: 'Bearer ' + publicKey } })
-
 
             let request2 = {
               card_number: request.card_number,
