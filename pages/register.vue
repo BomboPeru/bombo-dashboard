@@ -133,13 +133,14 @@
               <!--<span class="terms-link" @click="openTermsConditionsDialog">términos y condiciones</span>-->
             </div>
 
+            <div class="warning final-warning"> {{message}} </div>
+
             <div style="text-align: center">
               <div class="btn-continue elevation" @click="createUser">
                 Registrarse
               </div>
             </div>
 
-            <div class="warning"> {{message}} </div>
 
           </div>
         </div>
@@ -333,7 +334,11 @@
               // loading off
               this.$store.state.isLoading = false
               console.log(e)
-              this.message = e.response.data.error || e
+              if (e.response.data.error === 'already exists') {
+                this.message = 'Usuario con el mismo username y/o email ya existe'
+              } else {
+                this.message = e.response.data.error || e
+              }
             }
 
           }
@@ -572,6 +577,12 @@
     font-family 'Nunito Sans'
     font-size 12px
     text-align center
+  .final-warning
+    font-family: Raleway;
+    font-weight: 500;
+    font-size 14px
+    padding: 10px 0;
+
   .info-terms
     color #fafafa
     font-size 12px

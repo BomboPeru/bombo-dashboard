@@ -245,13 +245,22 @@
       toggleDelete () { this.deleteOpen = !this.deleteOpen },
       toggleDuplicate () { this.duplicateOpen = !this.duplicateOpen },
       toggleEdit () { this.editOpen = !this.editOpen },
+
       edit () {
 
         const teamName = this.team.name
 
+        console.log(this.team)
         this.$store.commit('createteam/setleagueid', this.team.league_id)
         this.$store.commit('createteam/setTeamName', teamName)
 
+        const player = this.team.players
+        for (let i = 0; i < player.length; i++) {
+          if (player[i].is_captain) {
+            this.$store.state.createteam.captainId = player[i].internal_id
+            break
+          }
+        }
         this.$router.push('/client/createteam')
       },
       duplicate() {

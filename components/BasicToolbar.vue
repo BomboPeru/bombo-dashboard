@@ -7,12 +7,22 @@
         </nuxt-link>
       </div>
 
-      <template v-if="alreadySigned">
+      <template v-if="fetching">
+        <div class="content-loader">
+          <content-loader primaryColor="#131251">
+            <rect x="0" y="0" rx="3" ry="3" width="24" height="24" />
+            <rect x="50" y="0" rx="3" ry="3" width="200" height="24" />
+          </content-loader>
+        </div>
+      </template>
+
+      <template v-else-if="alreadySigned">
         <div class="reenter-username" @click="goToHome">
           <i class="far fa-user"></i>
           Hola, <span class="user-hello"> {{ username }}</span>
         </div>
       </template>
+
       <template v-else>
         <div class="links uppercase">
           <div :class="['flex', nonLanding?'white-link':'dark-link']" >
@@ -43,11 +53,16 @@
 </template>
 
 <script>
+  import { ContentLoader } from 'vue-content-loader'
 
   export default {
     name: 'basic-toolbar',
+    components: {
+      ContentLoader
+    },
     data () {
       return {
+        fetching: true,
         alreadySigned: false,
         username: '',
         menu : false,
@@ -98,7 +113,11 @@
             this.alreadySigned = true
             this.username = response.user.name
           }
+          this.fetching = false
+
         })
+      } else {
+        this.fetching = false
       }
 
     }
@@ -133,6 +152,15 @@
     top 60%
     transform translateY(-50%)
     width 116px
+
+  .content-loader
+    float right
+    position absolute
+    top: 50px;
+    right: 15px;
+    cursor: pointer;
+    width: 200px
+
 
   .reenter-username
     float right

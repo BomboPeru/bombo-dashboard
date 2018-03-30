@@ -19,7 +19,7 @@
             <td id="earning">
               <div class="label-earnings">Premio</div>
               <div class="earnings">
-                {{Math.round(team.prize_b_coins * 100)/100}} <i class="fas fa-bold fa-xs"></i> / {{Math.round(team.prize_money * 100)/100}} <i class="fas fa-money-bill-alt fa-xs"></i>
+                {{Math.round(team.prize_b_coins * 100)/100}} <i class="fas fa-bold fa-xs"></i> <br> {{Math.round(team.prize_money * 100)/100}} <i class="fas fa-money-bill-alt fa-xs"></i>
               </div>
             </td>
 
@@ -70,7 +70,7 @@
 
   #position
     // width 30px
-    width 5%
+    width 10%
     text-align center
     font-size: 24px;
     font-weight: bold;
@@ -81,10 +81,12 @@
     font-size: 14px;
   #photo div
     display block
-    // width 36px
   #photo img
     overflow: hidden;
-    border-radius: 21px;
+    border-radius: 30px;
+    width 32px
+    object-fit: cover;
+
   #team-name
     width 30%
     //width 132px
@@ -109,11 +111,9 @@
   .label-earnings
   .earnings
     color #594eec
-    font-size 10px
+    font-size 14px
     font-weight: bold;
     text-align: center;
-  .earnings
-    font-size 18px
 
   .username
     font-size 14px
