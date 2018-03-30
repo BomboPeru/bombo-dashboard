@@ -85,6 +85,12 @@
 
       <template v-else-if="tabs[activeTab].name === 'FORMACION'">
         <div class="ground-container">
+          <div class="captain-indication">
+            <div class="captain-icon"> <i class="fas fa-info-circle"></i> </div>
+            <div class="captain-indication-text">
+              Debes escoger a un capitán en la vista de tu lista de jugadores.
+            </div>
+          </div>
 
           <div class="stadium-container">
 
@@ -343,6 +349,30 @@
     // height calc(100vh - 457px)
     overflow-y: auto;
 
+  .captain-indication
+    position absolute
+    top 0
+    left 10px
+    z-index 4
+    height 24px
+    font-family Titillium Web
+    font-size 14px
+    padding 0 0px 0 6px
+    background #393939
+    border-radius 10px
+    color white
+
+
+  .captain-indication:hover
+    padding 0 12px 0 6px
+  .captain-indication:hover .captain-indication-text
+    display inline-block
+  .captain-icon
+    margin-right 4px
+    display: inline-block;
+    color white
+  .captain-indication-text
+    display none
 
   .input-text
     display inline-block

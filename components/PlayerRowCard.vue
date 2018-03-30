@@ -60,7 +60,7 @@
               {{ player.cost }} M
             </td>
             <td style="width: 25%;" class="position-action" @click="selectPlayer(player)">
-              <span>{{ positionInShort }}</span>
+              <span class="position-in-short">{{ positionInShort }}</span>
               <span>
                 <i class="far fa-times-circle add-action"></i>
               </span>
@@ -244,11 +244,7 @@
     box-shadow: 0px 1px 8px rgba(0, 0, 0, 0.25);
     position: relative
 
-  /*.card-player span*/
-    /*display inline-block*/
-    /*text-align center*/
-    /*vertical-align: middle*/
-    /*font-size 14px*/
+
   .right-cover
     background red
     z-index 1
@@ -270,6 +266,16 @@
     top 4px
     right 10px
     float right
+
+  .fa-times-circle
+    right 24px
+  .position-in-short
+    padding-right: 21px;
+
+  @media screen and (max-width: 1023px)
+    .position-in-short
+      padding-right: 0;
+
 
   .captain-band
     width: 41px;
@@ -341,7 +347,7 @@
       text-align center
       padding-left 5px
     .add-action
-      right -2px
+      right 2px
 
     .responsive-squadnumber-bk
       width 8% !important

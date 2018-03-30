@@ -5,17 +5,27 @@
           <img :src="nonLanding? '/landing/bombo_all_white.svg':'/landing/bombo_purple.png'" alt="">
         </nuxt-link>
       </div>
-      <div class="links uppercase">
-        <div :class="['flex', nonLanding?'white-link':'dark-link']" >
-          <!--<nuxt-link to="/">COMO JUGAR</nuxt-link>-->
-          <!--<nuxt-link to="/">CONTÁCTANOS</nuxt-link>-->
-          <nuxt-link to="/register" class="register">Regístrate</nuxt-link>
-          <nuxt-link to="/login" class="login elevation">INICIAR SESIÓN</nuxt-link>
+
+      <template v-if="alreadySigned">
+        <div class="reenter-username" @click="goToHome">
+          <i class="far fa-user"></i>
+          Hi, <span class="user-hello"> {{ username }}</span>
         </div>
-      </div>
-      <div :class="['menu-btn', !nonLanding?'dark-menu':'white-menu']" >
-        <i class="fas fa-bars fa-2x" @click="openMenu"></i>
-      </div>
+      </template>
+      <template v-else>
+        <div class="links uppercase">
+          <div :class="['flex', nonLanding?'white-link':'dark-link']" >
+            <!--<nuxt-link to="/">COMO JUGAR</nuxt-link>-->
+            <!--<nuxt-link to="/">CONTÁCTANOS</nuxt-link>-->
+            <nuxt-link to="/register" class="register">Regístrate</nuxt-link>
+            <nuxt-link to="/login" class="login elevation">INICIAR SESIÓN</nuxt-link>
+          </div>
+        </div>
+        <div :class="['menu-btn', !nonLanding?'dark-menu':'white-menu']" >
+          <i class="fas fa-bars fa-2x" @click="openMenu"></i>
+        </div>
+      </template>
+
       <transition name="menu">
         <div v-if="menu" class="menu-container">
           <div class="menu elevation">
@@ -37,6 +47,8 @@
     name: 'basic-toolbar',
     data () {
       return {
+        alreadySigned: false,
+        username: '',
         menu : false,
         links: [
           { url: '/register', name: 'REGÍSTRATE' },
@@ -58,6 +70,16 @@
     methods: {
       openMenu () {
         this.menu = !this.menu
+      },
+      goToHome () {
+        this.$router.push('/client/home')
+      }
+    },
+    mounted () {
+
+      if (this.$store.getters['user'] !== null) {
+        this.alreadySigned = true
+        this.username = this.$store.getters['user'].username
       }
     }
   }
@@ -91,6 +113,33 @@
     top 60%
     transform translateY(-50%)
     width 116px
+
+  .reenter-username
+    float right
+    position absolute
+    top 44px
+    right 50px
+    cursor pointer
+  .reenter-username .fa-user
+    padding-right 10px
+
+  .reenter-username .user-hello
+    font-size 20px
+    font-weight 700
+    font-family 'Nunito Sans'
+
+  @media screen and (max-width: 1023px)
+    .reenter-username
+      top 44px
+      right 20px
+      font-size 12px
+    .reenter-username .user-hello
+      font-size 14px
+    .img-container img
+      width 70px
+
+
+
 
   .links
     display block
