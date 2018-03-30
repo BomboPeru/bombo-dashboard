@@ -94,6 +94,12 @@ const store = () => {
         }, context.state.snackbarDuration)
       },
       updateUser (context, data) {
+
+        if (context.state.userId === '') {
+
+          context.state.userId = data.id
+          Cookie.set('userId', data.id)
+        }
         // context.state.userId = data.id
         context.state.user = data
         context.state.notifications = data.notifications
