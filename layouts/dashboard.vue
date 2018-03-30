@@ -106,7 +106,6 @@
         return this.$store.getters.snackbarMessage
       },
       bomboCoins () {
-        if (process.server) return 0
         return this.$store.getters['user'].current_bombo_coins
       },
       saldo () {
@@ -127,15 +126,14 @@
     },
     beforeCreate () {
 
-      this.$store.dispatch('fetchUser')
-        .then(user => {
-          this.$store.state.isLoading = false
-          console.log('fetchUser')
-        })
-        .catch(e=> {
-          console.log(e)
-          this.$router.push('/login')
-        })
+      // this.$store.dispatch('fetchUser')
+      //   .then(user => {
+      //     this.$store.state.isLoading = false
+      //   })
+      //   .catch(e=> {
+      //     console.log(e)
+      //     this.$router.push('/login')
+      //   })
     },
     mounted () {
     }

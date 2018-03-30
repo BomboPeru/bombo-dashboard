@@ -26,34 +26,6 @@
           </thead>
         </table>
       </div>
-      <!--<div class="content">-->
-        <!--<table>-->
-          <!--<thead>-->
-            <!--<tr>-->
-              <!--<th class="green-dot"></th>-->
-              <!--<th class="min">Min</th>-->
-              <!--<th class="event">Evento</th>-->
-              <!--<th class="player">Jugador</th>-->
-              <!--<th class="score">Puntos</th>-->
-              <!--<th class="yellow-dot"></th>-->
-            <!--</tr>-->
-          <!--</thead>-->
-          <!--<tbody>-->
-            <!--<tr class="content-tr" v-for="(event, i) in events" :key="i+'-match-fact'">-->
-              <!--&lt;!&ndash;<template v-for="(event, j) in player.data.events">&ndash;&gt;-->
-                <!--&lt;!&ndash;<td class="green-dot"> <span class="green-ball" v-if="player.type === 'home'"></span></td>&ndash;&gt;-->
-                <!--<td ></td>-->
-                <!--<td class="min">{{ event.event.at }}</td>-->
-                <!--<td class="event"> {{eventTypes[event.event.type] }} </td>-->
-                <!--<td class="player"> {{ event.player.date }}</td>-->
-                <!--<td>{{ pointTypes[event.event.type]===undefined?0:pointTypes[event.event.type] }}</td>-->
-                <!--&lt;!&ndash;<td :class="['score', player.yellow?'score-yellow':'score-green']">{{ player.score }} </td>&ndash;&gt;-->
-                <!--&lt;!&ndash;<td class="yellow-dot"> <span class="yellow-ball" v-if="player.type === 'away'"></span> </td>&ndash;&gt;-->
-              <!--&lt;!&ndash;</template>&ndash;&gt;-->
-            <!--</tr>-->
-          <!--</tbody>-->
-        <!--</table>-->
-      <!--</div>-->
     </div>
 </template>
 

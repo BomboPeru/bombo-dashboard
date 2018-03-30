@@ -124,6 +124,10 @@
     components: {
       InputText, Sidebar, CcSlider, CcCheckbox, TheMask
     },
+    async fetch ({ store }) {
+      await store.dispatch('fetchUser')
+    },
+    middleware: 'authenticated',
     directives: { mask },
     computed: {
       maxLimit () {
@@ -167,7 +171,7 @@
         }
 
         try {
-          const userId = this.$store.getters['auth/getUserId']
+          const userId = this.$store.getters['userId']
           const typeAccount = this.typeAccount.toLowerCase()
 
           const response = await this.$axios.$post(`api/v2.0/users/${userId}/generate-retire`, {

@@ -1,5 +1,6 @@
 <template>
     <div id="toolbar" :class="[nonLanding?'dark':'transparent']">
+
       <div class="img-container">
         <nuxt-link :to="bomboLogoUrl">
           <img :src="nonLanding? '/landing/bombo_all_white.svg':'/landing/bombo_purple.png'" alt="">
@@ -78,8 +79,8 @@
         const BASE_URL = this.$store.state.BASE_URL
 
         try {
-          const response = await axios.get(BASE_URL + 'auth/verify', { headers: { 'Authorization': 'Bearer ' + token }})
-          return true
+          const response = await this.$axios.get(BASE_URL + 'auth/verify', { headers: { 'Authorization': 'Bearer ' + token }})
+          return response.data.data
         } catch (e) {
           return false
         }
@@ -88,15 +89,14 @@
     mounted () {
 
       if (this.$store.getters['auth/getToken'] !== null) {
-        this.verifyToken(this.$store.getters['auth/getToken']).then(isValid => {
-          if (isValid) {
-            if (this.$store.getters['user'] !== null) {
-              this.alreadySigned = true
-              this.username = this.$store.getters['user'].username
-            }
-          } else {
+        this.verifyToken(this.$store.getters['auth/getToken']).then(response => {
 
+          if (response === false) {
             this.$store.dispatch('auth/removeAuth')
+          }
+          else {
+            this.alreadySigned = true
+            this.username = response.user.name
           }
         })
       }
@@ -144,7 +144,7 @@
     padding-right 10px
 
   .reenter-username .user-hello
-    font-size 20px
+    font-size 18px
     font-weight 700
     font-family 'Nunito Sans'
 

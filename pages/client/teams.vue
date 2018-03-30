@@ -55,6 +55,10 @@
   export default {
     layout: 'dashboard',
     name: 'myteams',
+    async fetch ({ store }) {
+      await store.dispatch('fetchUser')
+    },
+    middleware: 'authenticated',
     components: {
       IconButton, TeamCard, Sidebar
     },

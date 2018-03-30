@@ -255,7 +255,7 @@
         this.$router.push('/client/createteam')
       },
       duplicate() {
-        const userId = this.$store.getters['auth/getUserId']
+        const userId = this.$store.getters['userId']
 
         this.$axios.post('api/v2.0/users/'+ userId + '/duplicate-team', {
           team_name: this.team.name
@@ -270,7 +270,7 @@
 
       },
       deleteTeamcard () {
-        const userId = this.$store.getters['auth/getUserId']
+        const userId = this.$store.getters['userId']
         const teamTypes = {
           'guardado': 'saved',
           'pasados': 'old'

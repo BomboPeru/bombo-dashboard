@@ -156,9 +156,14 @@
   import RankingPlayerRowCard from '../../components/RankingPlayerRowCard'
 
   export default {
+
     name: 'home',
     layout: 'dashboard',
     components: { MatchCard, RankingPlayerRowCard },
+    middleware: 'authenticated',
+    async fetch ({ store }) {
+      await store.dispatch('fetchUser')
+    },
     computed: {
       leagues () {
         return this.$store.state.leagues

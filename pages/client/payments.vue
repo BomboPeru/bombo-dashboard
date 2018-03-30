@@ -117,6 +117,10 @@
     components: {
       TheMask
     },
+    middleware: 'authenticated',
+    async fetch ({ store }) {
+      await store.dispatch('fetchUser')
+    },
     methods: {
       nextPlan () {
         if (this.planSelected !== this.plans.length - 1) {
@@ -178,9 +182,7 @@
 
 
         // console.log('request',request)
-
-        // const token = this.$store.getters['auth/getToken']
-        const token = window.localStorage.getItem('token')
+        const token = this.$store.getters['auth/getToken']
         const publicKey = 'pk_live_Sabys0p2rhn2D4ZM'
 
         this.$store.state.isShortLoading = true

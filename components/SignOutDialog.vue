@@ -46,6 +46,7 @@
       logout () {
 
         this.$store.dispatch('auth/removeAuth')
+        this.$store.state.userUrlImage = ''
         this.$router.push('/')
         this.$store.state.signOutDialog = false
       }

@@ -50,6 +50,10 @@
     components: {
       RankingCard, TeamCard, Sidebar, MatchCard
     },
+    middleware: 'authenticated',
+    async fetch ({ store }) {
+      await store.dispatch('fetchUser')
+    },
     computed: {
       activeTab () {
         return this.$store.getters['dashboard/activeTabView']

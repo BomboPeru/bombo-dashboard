@@ -191,9 +191,9 @@
 
         // console.log('request',request)
 
-        const token = window.localStorage.getItem('token')
-        // this.$store.getters['auth/getToken']
+        const token = this.$store.getters['auth/getToken']
         const publicKey = 'pk_live_Sabys0p2rhn2D4ZM'
+
 
         this.$store.state.isShortLoading = true
 

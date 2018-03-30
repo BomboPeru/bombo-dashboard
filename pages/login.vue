@@ -53,6 +53,7 @@
 
 <script>
   import InputText from '../components/InputText'
+  import Cookie from 'js-cookie'
 
   export default {
     name: 'login',
@@ -64,6 +65,7 @@
         message: ''
       }
     },
+    middleware: 'notAuthenticated',
     methods: {
       login () {
         // loading on
@@ -76,9 +78,11 @@
 
           this.$store.state.isLoading = false
           this.$axios.setToken(res.data.token, 'Bearer')
-          this.$store.commit('auth/setToken', res.data.token)
-          this.fetchUser(res.data.token)
 
+          this.$store.commit('auth/setToken', res.data.token)
+
+
+          this.fetchUser(res.data.token)
 
           // this.$store.state.isLoading = false
           // this.$router.push('/wait')
@@ -94,12 +98,10 @@
       },
       fetchUser (token) {
 
-        this.$store.dispatch('auth/fetchUser', token).then(done => {
+        this.$store.dispatch('fetchUser', token).then(done => {
           console.log('done', done)
           if (done) {
-
             this.$router.push('/client/home')
-
           } else {
             this.$store.state.isLoading = false
           }

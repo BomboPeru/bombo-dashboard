@@ -29,6 +29,10 @@
     components: {
       PlayerBankCard, NewTeamCard, Sidebar
     },
+    middleware: 'authenticated',
+    async fetch ({ store }) {
+      await store.dispatch('fetchUser')
+    },
     computed: {
       captain_id () {
         return this.$store.state.createteam.captainId
@@ -134,7 +138,7 @@
           return null
         }
 
-        const userId = this.$store.getters['auth/getUserId']
+        const userId = this.$store.getters['userId']
         const leagueId = this.$store.getters['createteam/leagueid']
 
         this.$store.state.isShortLoading = true
@@ -172,7 +176,7 @@
           return null
         }
 
-        const userId = this.$store.getters['auth/getUserId']
+        const userId = this.$store.getters['userId']
         const leagueId = this.$store.getters['createteam/leagueid']
         console.log(userId, leagueId)
         this.$store.state.isShortLoading = true

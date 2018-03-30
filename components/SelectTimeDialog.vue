@@ -156,7 +156,7 @@
         console.log('timeId', timeId, 'teamName', teamName, 'payType', payType)
 
         try {
-          const userId = this.$store.getters['auth/getUserId']
+          const userId = this.$store.getters['userId']
           this.$store.state.isShortLoading = true
 
           let response = await this.$axios.$post('api/v2.0/users/' + userId + '/to-play', {

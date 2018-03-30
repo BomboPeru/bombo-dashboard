@@ -47,6 +47,10 @@
     components: {
       CcAvatar, InputText, Sidebar
     },
+    middleware: 'authenticated',
+    async fetch ({ store }) {
+      await store.dispatch('fetchUser')
+    },
     computed: {
       BASE_URL () {
         return this.$store.state.BASE_URL
@@ -100,7 +104,7 @@
           let formData = new FormData()
           formData.append('photo', this.$refs.inputFileImage.files[0])
 
-          const userId = this.$store.getters['auth/getUserId']
+          const userId = this.$store.getters['userId']
           const token = this.$store.getters['auth/getToken']
           let request = new XMLHttpRequest()
 
@@ -113,7 +117,7 @@
 
       },
       async updateUser () {
-        // const userId = this.$store.getters['auth/getUserId']
+        // const userId = this.$store.getters['userId']
         // this.user.birthday = (new Date(this.birthdayFake)).toISOString()
 
         this.$axios.post('api/v2.0/users/'+ this.user.id +'/update-profile',
@@ -137,7 +141,7 @@
       this.user = user
 
       if (this.$store.state.userUrlImage === '') {
-        const userId = this.$store.getters['auth/getUserId']
+        const userId = this.$store.getters['userId']
         // const token = this.$store.getters['auth/getToken']
         this.$store.state.userUrlImage = this.BASE_URL + 'api/v2.0/storage/users/' + userId + '/profile-photo'
       }

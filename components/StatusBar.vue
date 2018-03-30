@@ -77,9 +77,8 @@
       }
     },
     mounted () {
-
       if (this.$store.state.userUrlImage === '') {
-        const userId = this.$store.getters['auth/getUserId']
+        const userId = this.$store.getters['userId']
         this.$store.state.userUrlImage = this.BASE_URL + 'api/v2.0/storage/users/' + userId + '/profile-photo'
       }
     }

@@ -155,37 +155,6 @@
         this.$store.state.isLoading = false
 
       },
-      async fetchSomething (searchText) {
-        // const data = response.data.slice(0,5)
-        // const data = SampleData
-
-        console.log('fetching', searchText)
-        if (searchText !== '') {
-
-          console.log('do something')
-          let results = {}
-          for (let key = 0; key < data.length; key++) {
-
-            for (let typePlayer = 0; typePlayer < playerTypes.length ;typePlayer++) {
-              data[key][playerTypes[typePlayer]].map(player => {
-                if (player.date.toUpperCase().includes(searchText.toUpperCase())) {
-                  if (results[key] === undefined) {
-                    results[key] = {}
-                  }
-                  if (results[key][playerTypes[typePlayer]] === undefined) {
-                    results[key][playerTypes[typePlayer]] = []
-                  }
-                  results[key][playerTypes[typePlayer]].push(player)
-                }
-              })
-            }
-          }
-          this.teams = results
-        } else {
-          this.teams = data
-        }
-        console.log('fetch done')
-      },
       selectPlayer (player, type, i) {
 
         let data = {

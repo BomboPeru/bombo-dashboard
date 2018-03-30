@@ -139,7 +139,7 @@
         this.$store.state.signOutDialog = true
       },
       async deleteNotification (item) {
-        const userId = this.$store.getters['auth/getUserId']
+        const userId = this.$store.getters['userId']
         this.$store.dispatch('turnOnSnackbar', 'Eliminando notificación')
 
         try {

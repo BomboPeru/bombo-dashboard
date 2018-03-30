@@ -161,6 +161,7 @@
     components: {
       InputText, InputSelect, CcAvatar, InputDateSelect
     },
+    middleware: 'notAuthenticated',
     data () {
       return {
         urlImage: '/landing/avatar_default.png',
