@@ -3,6 +3,7 @@ node_modules
 
 # idea
 .idea
+.idea/*
 
 # logs
 npm-debug.log
