@@ -5,6 +5,7 @@
     <bookmark url="file://$PROJECT_DIR$/pages/register.vue" line="18" />
   </component>
   <component name="ChangeListManager">
+<<<<<<< Updated upstream
     <list default="true" id="bf24282d-3075-4fc1-a7e6-a1352eba2675" name="Default" comment="payments reformat">
       <change beforePath="$PROJECT_DIR$/.idea/bombo-dashboard.iml" afterPath="" />
       <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterPath="" />
@@ -14,6 +15,9 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="" />
       <change beforePath="$PROJECT_DIR$/components/RankingRowCard.vue" afterPath="$PROJECT_DIR$/components/RankingRowCard.vue" />
     </list>
+=======
+    <list default="true" id="bf24282d-3075-4fc1-a7e6-a1352eba2675" name="Default" comment="" />
+>>>>>>> Stashed changes
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
     <ignored path="$PROJECT_DIR$/tmp/" />
@@ -49,8 +53,13 @@
       <file leaf-file-name="BomboPayments.vue" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/components/BomboPayments.vue">
           <provider selected="true" editor-type-id="text-editor">
+<<<<<<< Updated upstream
             <state relative-caret-position="594">
               <caret line="153" column="9" lean-forward="false" selection-start-line="153" selection-start-column="9" selection-end-line="153" selection-end-column="9" />
+=======
+            <state relative-caret-position="408">
+              <caret line="17" column="4" lean-forward="true" selection-start-line="17" selection-start-column="4" selection-end-line="17" selection-end-column="4" />
+>>>>>>> Stashed changes
               <folding />
             </state>
           </provider>
@@ -426,6 +435,7 @@
       <workItem from="1522092018560" duration="33211000" />
       <workItem from="1522256031985" duration="64389000" />
     </task>
+<<<<<<< Updated upstream
     <task id="LOCAL-00124" summary="teamcard">
       <created>1522032300510</created>
       <option name="number" value="00124" />
@@ -454,6 +464,8 @@
       <option name="project" value="LOCAL" />
       <updated>1522051203680</updated>
     </task>
+=======
+>>>>>>> Stashed changes
     <task id="LOCAL-00128" summary="home">
       <created>1522078350431</created>
       <option name="number" value="00128" />
@@ -769,14 +781,51 @@
       <option name="project" value="LOCAL" />
       <updated>1522479932571</updated>
     </task>
+<<<<<<< Updated upstream
     <option name="localTasksCounter" value="173" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
     <option name="totallyTimeSpent" value="1053230000" />
+=======
+    <task id="LOCAL-00173" summary="ranking row card size price/bombocoins">
+      <created>1522481060244</created>
+      <option name="number" value="00173" />
+      <option name="presentableId" value="LOCAL-00173" />
+      <option name="project" value="LOCAL" />
+      <updated>1522481060244</updated>
+    </task>
+    <task id="LOCAL-00174" summary=".idea ignoring">
+      <created>1522481199961</created>
+      <option name="number" value="00174" />
+      <option name="presentableId" value="LOCAL-00174" />
+      <option name="project" value="LOCAL" />
+      <updated>1522481199961</updated>
+    </task>
+    <task id="LOCAL-00175" summary=".idea deleting">
+      <created>1522481263459</created>
+      <option name="number" value="00175" />
+      <option name="presentableId" value="LOCAL-00175" />
+      <option name="project" value="LOCAL" />
+      <updated>1522481263459</updated>
+    </task>
+    <task id="LOCAL-00176" summary=".idea ignoring">
+      <created>1522481342897</created>
+      <option name="number" value="00176" />
+      <option name="presentableId" value="LOCAL-00176" />
+      <option name="project" value="LOCAL" />
+      <updated>1522481342897</updated>
+    </task>
+    <option name="localTasksCounter" value="177" />
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="1053547000" />
+>>>>>>> Stashed changes
   </component>
   <component name="ToolWindowManager">
     <frame x="54" y="-4" width="1867" height="1085" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Cargo" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -785,7 +834,7 @@
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.56663054" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Floobits" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32936078" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32936078" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21503016" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32827735" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -894,7 +943,15 @@
     <MESSAGE value="userId" />
     <MESSAGE value="fix select time dialog" />
     <MESSAGE value="payments reformat" />
+<<<<<<< Updated upstream
     <option name="LAST_COMMIT_MESSAGE" value="payments reformat" />
+=======
+    <MESSAGE value="ranking row card size price/bombocoins" />
+    <MESSAGE value="ignoring .idea" />
+    <MESSAGE value=".idea deleting" />
+    <MESSAGE value=".idea ignoring" />
+    <option name="LAST_COMMIT_MESSAGE" value=".idea ignoring" />
+>>>>>>> Stashed changes
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1292,8 +1349,13 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/components/BomboPayments.vue">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< Updated upstream
         <state relative-caret-position="594">
           <caret line="153" column="9" lean-forward="false" selection-start-line="153" selection-start-column="9" selection-end-line="153" selection-end-column="9" />
+=======
+        <state relative-caret-position="408">
+          <caret line="17" column="4" lean-forward="true" selection-start-line="17" selection-start-column="4" selection-end-line="17" selection-end-column="4" />
+>>>>>>> Stashed changes
           <folding />
         </state>
       </provider>
