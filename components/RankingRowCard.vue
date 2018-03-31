@@ -19,7 +19,8 @@
             <td id="earning">
               <div class="label-earnings">Premio</div>
               <div class="earnings">
-                {{Math.round(team.prize_b_coins * 100)/100}} <i class="fas fa-bold fa-xs"></i> <br> {{Math.round(team.prize_money * 100)/100}} <i class="fas fa-money-bill-alt fa-xs"></i>
+                {{ Math.round(team.prize_b_coins * 100) / 100 }} <i class="fas fa-bold fa-xs"></i> /
+                {{ Math.round(team.prize_money * 100)/100 }} <i class="fas fa-money-bill-alt fa-xs"></i>
               </div>
             </td>
 
@@ -96,7 +97,7 @@
     display block
     width 120px
   #earning
-    width 20%
+    width 30%
     // width 129px
     font-size: 12px;
   #score
@@ -108,12 +109,14 @@
 
   .label-earnings
     text-align center
+    font-size 10px
   .label-earnings
   .earnings
     color #594eec
-    font-size 14px
     font-weight: bold;
     text-align: center;
+  .earnings
+    font-size 14px
 
   .username
     font-size 14px
