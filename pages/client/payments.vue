@@ -313,11 +313,10 @@
     color white
   .title-2
     font-family 'Campton Bold Demo'
-  .card-image
-    width 100px
+
   .amount-cost
     font-family 'Campton Bold Demo'
-    font-size 40px
+    font-size 60px
   .currency-sign
     font-family 'Raleway'
     font-size 24px
@@ -327,9 +326,10 @@
     display flex
     flex-wrap wrap
     justify-content center
-    align-items center
+    align-items: flex-end;
     margin: 10px 28px
     position relative
+
   .prev-btn
     position absolute
     top 20%
@@ -342,17 +342,26 @@
 
   .card-img-container
     margin-left: 5px;
+    width 30%
+  .card-image
+    width 100%
+
   .amount-cost
   .card-img-container
     display inline-block
+
   .amount-cost
     position relative
 
   .form-payment
     font-family 'Nunito Sans'
   .title-form-payment
-    font-weight: 600;
+    font-family Raleway
+    font-weight: 500;
+    color #6c7e8c
     text-align center
+    font-size 20px
+
 
 
   .year
@@ -365,38 +374,59 @@
     outline none
     background: transparent;
     border: 0;
-    border-bottom: 2px solid #AEAEAE;
+    border-bottom: 1px solid #AEAEAE;
 
   .card-number
     width 100%
 
   .mm-yyyy-form
-    margin-left 10%
-    width 80%
+    // margin-left 10%
+    display inline-block
 
   .mm-yyyy-form .month
     display inline-block
     width 20%
-    margin 4px
+    margin-right 4px
   .mm-yyyy-form .year
     display inline-block
-    margin 4px
+    margin-left 4px
     width 30%
 
   .cvc-container
-    width 50%
-    margin 20px 10%
+    display inline-block
+    width: auto
+    // margin 20px 10%
+    margin 20px 0px
   .cvv
-    width 100%
-
+    width 100px
   .cvc-label
-    font-weight: 600;
+    width 100px
 
-  .exp-label
   .card-number-label
     padding-left: 10%
-    font-weight: 600;
 
+  .exp-label
+    display inline-block
+  .exp-container
+    display inline-block
+    width 160px
+  .exp-cvc-container
+    display flex
+    flex-wrap wrap
+    justify-content space-between
+    margin-left 10%
+    margin-right 10%
+
+
+
+  .cvc-label
+  .exp-label
+  .card-number-label
+    padding-bottom 14px
+    color #868686
+    font-weight 500
+    font-family Raleway
+    font-size: 13px;
 
   .exp-container
   .card-number-container
@@ -440,5 +470,15 @@
   .pay-btn-disabled
     background gray !important
     cursor none !important
+
+  @media screen and (max-width: 400px)
+    .title-form-payment
+      font-size 16px
+    .title-form-payment
+      font-size 16px
+    .card-img-container
+      width 115px
+    .exp-container
+      width 140px
 
 </style>

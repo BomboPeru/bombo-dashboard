@@ -153,8 +153,6 @@
           return null
         }
 
-
-
         if (this.creditInfo.card_number.length !== 16 ||
           this.creditInfo.cvv.length !== 3 ||
           this.creditInfo.expiration_month.length !== 2 ||
