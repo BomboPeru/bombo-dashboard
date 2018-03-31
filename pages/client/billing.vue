@@ -16,7 +16,6 @@
                 </div>
                 <!--<p class="info-a">Al retirar tus ganancias se descontará de tu cuenta de bombo y-->
                   <!--en los próximos 5 días hábiles realizaremos el depósito en tu cuenta bancaria</p>-->
-
               </div>
               <div class="indicator">
                 1. Selecciona el monto que quieres retirar.

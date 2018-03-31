@@ -132,12 +132,13 @@
       fetchTimes () {
         this.$store.state.isShortLoading = true
 
-        this.$axios.get('api/v2.0/leagues/all').then(res => {
-            const league = res.data.data.filter(league => league.id === this.$store.state.team.selectedLeague)
-            this.times = league[0].times.map(time => {
-              time.datestart = this.simpleDateFormat((new Date(time.start)))
-              return time
-            })
+        this.$axios.get(`api/v2.0/leagues/${this.$store.state.team.selectedLeague}`).then(res => {
+          const league = res.data.data
+
+          this.times = league.times.map(time => {
+            time.datestart = this.simpleDateFormat((new Date(time.start)))
+            return time
+          })
           this.$store.state.isShortLoading = false
         }).catch(e => {
             this.$store.state.isShortLoading = false
