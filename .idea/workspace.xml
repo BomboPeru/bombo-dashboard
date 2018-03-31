@@ -5,12 +5,7 @@
     <bookmark url="file://$PROJECT_DIR$/pages/register.vue" line="18" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bf24282d-3075-4fc1-a7e6-a1352eba2675" name="Default" comment=".workspace deleting2">
-      <change beforePath="$PROJECT_DIR$/.idea/bombo-dashboard.iml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" afterPath="" />
+    <list default="true" id="bf24282d-3075-4fc1-a7e6-a1352eba2675" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -379,14 +374,7 @@
       <workItem from="1522088278251" duration="1040000" />
       <workItem from="1522092018560" duration="33211000" />
       <workItem from="1522256031985" duration="64389000" />
-      <workItem from="1522483456364" duration="970000" />
-    </task>
-    <task id="LOCAL-00131" summary="checkbox terms">
-      <created>1522080510638</created>
-      <option name="number" value="00131" />
-      <option name="presentableId" value="LOCAL-00131" />
-      <option name="project" value="LOCAL" />
-      <updated>1522080510639</updated>
+      <workItem from="1522483456364" duration="1004000" />
     </task>
     <task id="LOCAL-00132" summary="billing">
       <created>1522083087671</created>
@@ -724,11 +712,18 @@
       <option name="project" value="LOCAL" />
       <updated>1522484395105</updated>
     </task>
-    <option name="localTasksCounter" value="180" />
+    <task id="LOCAL-00180" summary=".workspace deleting3">
+      <created>1522484454411</created>
+      <option name="number" value="00180" />
+      <option name="presentableId" value="LOCAL-00180" />
+      <option name="project" value="LOCAL" />
+      <updated>1522484454412</updated>
+    </task>
+    <option name="localTasksCounter" value="181" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1054498000" />
+    <option name="totallyTimeSpent" value="1054532000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="54" y="-4" width="1867" height="1085" extended-state="6" />
@@ -810,7 +805,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="push right now" />
     <MESSAGE value="tooltip menu profile notifications collapsable" />
     <MESSAGE value="profile avatar" />
     <MESSAGE value="fix date in register" />
@@ -835,7 +829,8 @@
     <MESSAGE value=".idea ignoring" />
     <MESSAGE value=".workspace deleting" />
     <MESSAGE value=".workspace deleting2" />
-    <option name="LAST_COMMIT_MESSAGE" value=".workspace deleting2" />
+    <MESSAGE value=".workspace deleting3" />
+    <option name="LAST_COMMIT_MESSAGE" value=".workspace deleting3" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
