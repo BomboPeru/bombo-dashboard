@@ -31,9 +31,7 @@
         return date + ' / ' + month + ' / ' + start.getFullYear()
       },
       enabled () {
-        const currentDate = (new Date()).getTime()
-        const timeDate = (new Date(this.time.start)).getTime()
-        return timeDate > currentDate
+        return this.time.active_for_bet
       }
     },
     methods: {
