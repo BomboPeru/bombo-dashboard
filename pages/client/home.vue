@@ -164,6 +164,11 @@
     async fetch ({ store }) {
       await store.dispatch('fetchUser')
     },
+    head () {
+      return {
+        title: 'Bombo - Inicio'
+      }
+    },
     computed: {
       leagues () {
         return this.$store.state.leagues

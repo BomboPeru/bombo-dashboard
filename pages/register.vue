@@ -162,6 +162,14 @@
     components: {
       InputText, InputSelect, CcAvatar, InputDateSelect
     },
+    head () {
+      return {
+        title: 'Bombo - Regístrate!',
+        meta: [
+          { hid: 'description', name: 'description', content: 'Bombo, Regístrate' }
+        ]
+      }
+    },
     middleware: 'notAuthenticated',
     data () {
       return {

@@ -58,6 +58,14 @@
   export default {
     name: 'login',
     components: { InputText },
+    head () {
+      return {
+        title: 'Bombo - Inicia sesión',
+        meta: [
+          { hid: 'description', name: 'description', content: 'Bombo, Inicia sesión' }
+        ]
+      }
+    },
     data () {
       return {
         username: '',
