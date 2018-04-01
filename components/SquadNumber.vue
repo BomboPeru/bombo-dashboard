@@ -1,5 +1,5 @@
 <template>
-    <span id="squad-number" class="shirt">
+    <span id="squad-number" class="shirt" @click="clicked">
       <img :src="img === ''?'/shirt_placeholder.svg':img"
            class="dorsal-src"
            :style="{ top: ground===false?'-5px':'-28px', left: ground===false?'-2px':'-11px' }"
@@ -30,6 +30,11 @@
         default: '/shirt_placeholder.svg'
       },
       number: [String, Number]
+    },
+    methods: {
+      clicked () {
+        this.$emit('click', null)
+      }
     }
   }
 </script>

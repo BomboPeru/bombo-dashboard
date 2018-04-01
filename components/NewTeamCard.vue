@@ -104,7 +104,16 @@
             <div class="portero-section">
               <div v-for="(player, key) in team.players.goal_keeper" :key="key+'-arquero2'" :player="player" class="portero-in-ground">
                 <span class="player-container">
-                  <squad-number ground :img="BASE_URL + 'api/v2.0/shirts/' + player.team.toLowerCase().replace(' ','_')" :number="player.j_number"/>
+
+                  <div class="captain-band"
+                       v-if="captainId === player.internal_id">
+                    <img
+                      src="/team_resources/captain_band_stadium.png"
+                      height="22px" alt="">
+                  </div>
+                  <squad-number ground
+                                @click="selectCaptain(player)"
+                                :img="BASE_URL + 'api/v2.0/shirts/' + player.team.toLowerCase().replace(' ','_')" :number="player.j_number"/>
                   <div class="close-icon">
                     <img src="../assets/icons/close_ground.svg" width="30px" alt="" @click="deletePlayer(player, 'goal_keeper')">
                   </div>
@@ -117,7 +126,16 @@
             <div class="defensa-section">
               <div v-for="(player, key) in team.players.defender" :key="key+'-defensa2'" :player="player" class="defensa-in-ground">
                 <span class="player-container">
-                  <squad-number ground :img="BASE_URL + 'api/v2.0/shirts/' + player.team.toLowerCase().replace(' ','_')" :number="player.j_number"/>
+                  <div class="captain-band"
+                       v-if="captainId === player.internal_id">
+                    <img
+                      src="/team_resources/captain_band_stadium.png"
+                      height="22px" alt="">
+                  </div>
+                  <squad-number ground
+                                @click="selectCaptain(player)"
+                                :img="BASE_URL + 'api/v2.0/shirts/' + player.team.toLowerCase().replace(' ','_')" :number="player.j_number"/>
+
                   <div class="close-icon">
                     <img src="../assets/icons/close_ground.svg" width="30px" alt="" @click="deletePlayer(player, 'defender')">
                   </div>
@@ -131,7 +149,15 @@
             <div class="centrocampista-section">
               <div v-for="(player, key) in team.players.mid_fielder" :key="key+'-centrocampista2'" :player="player" class="centrocampista-in-ground">
                 <span class="player-container">
-                  <squad-number ground :img="BASE_URL + 'api/v2.0/shirts/' + player.team.toLowerCase().replace(' ','_')" :number="player.j_number"/>
+                  <div class="captain-band"
+                       v-if="captainId === player.internal_id">
+                    <img
+                      src="/team_resources/captain_band_stadium.png"
+                      height="22px" alt="">
+                  </div>
+                  <squad-number ground
+                                @click="selectCaptain(player)"
+                                :img="BASE_URL + 'api/v2.0/shirts/' + player.team.toLowerCase().replace(' ','_')" :number="player.j_number"/>
                   <div class="close-icon">
                     <img src="../assets/icons/close_ground.svg" width="30px" alt="" @click="deletePlayer(player, 'mid_fielder')">
                   </div>
@@ -145,7 +171,16 @@
             <div class="delantero-section">
               <div v-for="(player, key) in team.players.forward" :key="key+'-delantero2'" :player="player" class="delantero-in-ground">
                 <span class="player-container">
-                  <squad-number ground :img="BASE_URL + 'api/v2.0/shirts/' + player.team.toLowerCase().replace(' ','_')" :number="player.j_number"/>
+                  <div class="captain-band"
+                       v-if="captainId === player.internal_id">
+                    <img
+                      src="/team_resources/captain_band_stadium.png"
+                      height="22px" alt="">
+                  </div>
+                  <squad-number ground
+                                @click="selectCaptain(player)"
+                                :img="BASE_URL + 'api/v2.0/shirts/' + player.team.toLowerCase().replace(' ','_')"
+                                :number="player.j_number"/>
                   <div class="close-icon">
                     <img src="../assets/icons/close_ground.svg" width="30px" alt="" @click="deletePlayer(player, 'forward')">
                   </div>
@@ -180,6 +215,9 @@
     computed: {
       BASE_URL () {
         return this.$store.state.BASE_URL
+      },
+      captainId () {
+        return this.$store.state.createteam.captainId
       },
       shirtUrl () {
         const teamName = this.player.team.toLowerCase().replace(' ','_')
@@ -237,6 +275,11 @@
           this.team.players[type].splice(index, 1)
           this.$store.state.createteam.playersList.push(player)
         }
+      },
+      selectCaptain (player) {
+
+        console.log('captain selected !')
+        this.$store.state.createteam.captainId = player.internal_id
       }
     }
   }
@@ -400,6 +443,13 @@
   .saldo span
     color white
 
+
+  .captain-band
+    width: 41px;
+    top: -6px;
+    position: absolute;
+    z-index: 400;
+    left: -8px;
 
   @media screen and (max-width: 1023px)
     .player-list
