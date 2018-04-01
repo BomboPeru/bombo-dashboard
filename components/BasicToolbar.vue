@@ -17,7 +17,7 @@
       </template>
 
       <template v-else-if="alreadySigned">
-        <div class="reenter-username" @click="goToHome">
+        <div :class="[nonLanding?'dark':'', 'reenter-username']" @click="goToHome">
           <i class="far fa-user"></i>
           Hola, <span class="user-hello"> {{ username }}</span>
         </div>
@@ -161,6 +161,10 @@
     cursor: pointer;
     width: 200px
 
+  .dark
+  .dark .fa-user
+  .dark .user-hello
+    color white
 
   .reenter-username
     float right
