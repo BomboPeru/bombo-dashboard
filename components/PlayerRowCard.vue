@@ -236,7 +236,11 @@
     },
     methods: {
       roundDecimals(value) {
-        return Math.round(value * 100 ) / 100
+        if (value >= 1) {
+          return Math.round(value * 100 ) / 100
+        } else {
+          return 0
+        }
       },
       selectPlayer (player) {
         this.$emit('onPlayerSelected', player)
