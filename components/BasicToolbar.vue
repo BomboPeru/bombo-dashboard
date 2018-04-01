@@ -139,7 +139,7 @@
   .transparent
     background #24323700
   .dark
-    background #243237 !important
+    background #0F202D !important
 
   .img-container
     float left

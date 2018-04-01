@@ -13,18 +13,23 @@
          <div class="title-container">
            <p class="title-login">INGRESA TUS DATOS</p>
          </div>
-         <div class="group-form">
-           <div class="label" > Username </div>
-           <input class="input-text" type="text" v-model="username" placeholder="Username">
-         </div>
-         <div class="group-form">
-           <div class="label" > Password </div>
-           <input class="input-text" type="password" v-model="password" placeholder="Password">
-         </div>
 
-         <div class="btn-login" @click="login">
-           INGRESAR
-         </div>
+         <form v-on:submit.prevent="login">
+           <div class="group-form">
+             <div class="label" > Username </div>
+             <input class="input-text" type="text" v-model="username" placeholder="Username">
+           </div>
+           <div class="group-form">
+             <div class="label" > Password </div>
+             <input class="input-text" type="password" v-model="password" placeholder="Password">
+           </div>
+
+           <input type="submit" class="btn-login" @click="login" value="INGRESAR"/>
+             <!--INGRESAR-->
+           <!--</input>-->
+         </form>
+
+
          <div class="forgot-password">
            <a href="/forgotpassword" target="_blank">
              Olvidé mi contraseña
@@ -222,6 +227,7 @@
 
     background #FE5567
     height 40px
+    border 0
     border-radius 25px
     margin-top: 14px;
     cursor pointer
