@@ -18,7 +18,6 @@ const auth = {
     }
   },
   actions: {
-
     removeAuth (context) {
       Cookie.remove('userId')
       Cookie.remove('token')
