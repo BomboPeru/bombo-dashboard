@@ -82,13 +82,15 @@
               </tr>
               <tr :class="['label-team-info']">
                 <td style="width: 33%">PUESTO EN EL BOMBO:</td>
+                <td style="width: 33%">PREMIOS:</td>
                 <td style="width: 33%">PUNTAJE ACUMULADO:</td>
-                <td style="width: 33%">PREMIO B COINS:</td>
               </tr>
               <tr>
                 <td class="table-value">{{team.position}}</td>
+                <td class="table-value total-points">
+                  {{roundDecimals(team.prize_b_coins)}} <i class="fas fa-bold fa-xs"></i> /
+                  {{roundDecimals(team.prize_money)}} <i class="fas fa-money-bill-alt fa-xs"></i> </td>
                 <td class="table-value total-points">{{ roundDecimals(team.total_points) }}</td>
-                <td class="table-value total-points">{{ roundDecimals(team.prize_b_coins) }}</td>
               </tr>
             </tbody>
           </table>
