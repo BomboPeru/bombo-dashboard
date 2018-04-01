@@ -10,9 +10,10 @@
               </td>
               <td class="responsive-playername-bk" style="width: 30%;">
                 {{ player.name }}
+                <div class="tooltip tooltip-vs"> vs {{ vsTeam }}</div>
               </td>
               <td class="responsive-status-bk" style="width: 10%;" :style="{ 'color': statusPlayer.color }">
-                <div class="tooltip-status">{{ statusPlayer.text }}</div>
+                <div class="tooltip tooltip-status">{{ statusPlayer.text }}</div>
                 <i :class="['fas', 'fa-xs', statusPlayer.icon ]"></i>
               </td>
               <td class="responsive-popularity-bk" style="width: 15%;">
@@ -136,6 +137,14 @@
 <script>
   import SquadNumber from './SquadNumber'
 
+  String.prototype.capitalize = function () {
+    let words = this.split(' ')
+    for (let i = 0; i < words.length; i++) {
+      words[i] = words[i].charAt(0).toUpperCase() + words[i].slice(1)
+    }
+    return words.join(' ')
+  }
+
   export default {
     name: 'player-row-card',
     components: {
@@ -150,6 +159,14 @@
       }
     },
     computed: {
+      vsTeam () {
+        if (this.$store.state.createteam.nextMatchesTeam !== null) {
+          const teamPlayer = this.player.team.toLowerCase()
+          return (this.$store.state.createteam.nextMatchesTeam[teamPlayer]).capitalize()
+        } else {
+          return ''
+        }
+      },
       BASE_URL () {
         return this.$store.state.BASE_URL
       },
@@ -308,19 +325,25 @@
     position relative
   .responsive-status-bk:hover .tooltip-status
     display inline-block
-  .tooltip-status
+  .responsive-playername-bk:hover .tooltip-vs
+    display inline-block
+
+  .tooltip
     display none
     width 150px
     text-align center
     padding 4px 4px
     position absolute
     border-radius 3px
-    top -30px
-    left -75px
     z-index 10
     font-size 12px
     background rgba(0, 0, 0, 0.81)
     color white
+  .tooltip-status
+    top -30px
+    left -75px
+  .tooltip-vs
+    margin-left 10px
 
   .select-text
     display inline-block

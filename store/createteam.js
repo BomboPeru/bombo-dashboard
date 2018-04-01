@@ -7,7 +7,8 @@ const createteam = {
     rulesDialog: false,
     editTeamName: null,
     playersList: [],
-    nextMatchesDialog: false
+    nextMatchesDialog: false,
+    nextMatchesTeam: null
   },
   mutations: {
     setActiveTabView (state, index) {

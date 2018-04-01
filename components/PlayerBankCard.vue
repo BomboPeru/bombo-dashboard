@@ -151,6 +151,23 @@
         this.playersList = data
         this.backuplist = data
 
+
+        // matches
+        const leagueId = this.$store.getters['createteam/leagueid']
+        let response2 = await this.$axios.$get(`api/v2.0/matches/${leagueId}/current-matches`)
+        let matches = response2.data
+        let nextMatchTeam = {}
+
+        matches.map(match => {
+          let away = match.away_name
+          let home = match.home_name
+
+          nextMatchTeam[away] = home
+          nextMatchTeam[home] = away
+        })
+
+        this.$store.state.createteam.nextMatchesTeam = nextMatchTeam
+
         // loading off
         this.$store.state.isLoading = false
 
