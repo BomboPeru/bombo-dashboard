@@ -47,6 +47,11 @@
     components: {
       CcAvatar, InputText, Sidebar
     },
+    head () {
+      return {
+        title: 'Bombo - Mi Perfil'
+      }
+    },
     middleware: 'authenticated',
     async fetch ({ store }) {
       await store.dispatch('fetchUser')

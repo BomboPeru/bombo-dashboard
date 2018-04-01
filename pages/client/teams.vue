@@ -62,6 +62,11 @@
     components: {
       IconButton, TeamCard, Sidebar
     },
+    head () {
+      return {
+        title: 'Bombo - Mis Equipos'
+      }
+    },
     computed: {
       activeTypeTeam () {
         return this.$store.getters['team/activeTypeTeam']
