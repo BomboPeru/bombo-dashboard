@@ -78,7 +78,7 @@ export const actions = {
   nuxtServerInit ({ commit, state }, { req }) {
 
     console.log('nuxtServerInit')
-    console.log('req.headers', req.headers)
+    // console.log('req.headers', req.headers)
 
     // init
     state.userId = ''
@@ -92,16 +92,14 @@ export const actions = {
         // console.log('parsed.token', cookieParsed)
         let token = null
         token = cookieParsed.token
-        console.log('token', token)
         state.userId = cookieParsed.userId
         commit('auth/setToken', token)
 
-      } else {
-
-        state.userId = ''
-        commit('auth/setToken', null)
       }
-
+      // else {
+      //   state.userId = ''
+      //   commit('auth/setToken', null)
+      // }
     }
   },
   turnOnSnackbar (context, message) {
