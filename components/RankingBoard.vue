@@ -1,7 +1,7 @@
 <template>
-    <div id="ranking-board" class="elevation rounded ranking-card">
+    <div id="ranking-board" :class="['elevation', 'rounded', 'ranking-card', landing?'perspective':'']">
 
-      <div class="tabs">
+      <div class="tabs" v-if="landing === false">
 
         <select v-model="leagueObj" class="league-select">
           <option disabled :value="undefined">Selecciona una liga</option>
@@ -19,6 +19,9 @@
         </select>
 
       </div>
+      <div class="tabs tab-landing" v-else>
+        RANKING DE NUESTROS JUGADORES
+      </div>
 
       <div class="header-table">
         <!--<table>-->
@@ -34,8 +37,8 @@
         <!--</table>-->
       </div>
 
-      <template v-if="isRanking">
-        <div class="content-table" v-if="ranking.length > 0">
+      <template v-if="landing">
+        <div :class="[landing?'content-table-landing':'content-table']" v-if="ranking.length > 0">
           <ranking-row-card class="ranking-row-card"
                             v-for="(item, i) in ranking"
                             :key="i+'-ranking-user'"
@@ -44,12 +47,26 @@
         <div class="empty-ranking" v-else>
           Aun no sale los resultados para esta fecha
         </div>
-
       </template>
-      <template v-else-if="!isRanking">
-        <div class="empty-ranking">
-          Selecciona una fecha para visualizar las posiciones
-        </div>
+      <template v-else>
+        <template v-if="isRanking">
+          <div :class="[landing?'content-table-landing':'content-table']" v-if="ranking.length > 0">
+            <ranking-row-card class="ranking-row-card"
+                              v-for="(item, i) in ranking"
+                              :key="i+'-ranking-user'"
+                              :team="item"/>
+          </div>
+          <div class="empty-ranking" v-else>
+            Aun no sale los resultados para esta fecha
+          </div>
+
+        </template>
+        <template v-else-if="!isRanking">
+          <div :class="landing?'empty-ranking-landing':'empty-ranking'">
+            Selecciona una fecha para visualizar las posiciones
+          </div>
+        </template>
+
       </template>
     </div>
 </template>
@@ -61,6 +78,12 @@
     name: 'ranking-board',
     components: {
       RankingRowCard
+    },
+    props: {
+      landing: {
+        type: Boolean,
+        default: false
+      }
     },
     computed: {
       times () {
@@ -117,6 +140,11 @@
           this.$store.state.isShortLoading = false
         }
       },
+      async fetchRankingForLanding() {
+        let response = await this.$axios.$get('api/v2.0/global/ranking/for-landing')
+        this.ranking = response.data.reverse()
+
+      },
       async fetchLeagues () {
         let response = await this.$axios.$get('api/v2.0/leagues/all')
         // leagues
@@ -138,7 +166,11 @@
       }
     },
     mounted () {
-      this.fetchLeagues()
+      if (this.landing === true) {
+        this.fetchRankingForLanding()
+      } else {
+        this.fetchLeagues()
+      }
     }
   }
 </script>
@@ -152,6 +184,8 @@
     min-height 50px
     border-radius: 4px
     overflow: hidden;
+  .perspective
+    transform: perspective(61em) rotateY(36deg)
   .tabs
     display flex
     height 60px
@@ -160,7 +194,8 @@
     background: #0e212d;
   .tabs:last-child
     border-radius: 0px 10px 0px 0px;
-
+  .tab-landing
+    color white
   .tab
     font-family Titillium Web
     font-weight bold
@@ -194,6 +229,10 @@
     color #445F69
     line-height calc(100vh - 300px)
     height calc(100vh - 300px)
+  .empty-ranking-landing
+    line-height 500px
+    height 400px
+
   .content-table
     padding-left 8px
     padding-right 10px
@@ -205,6 +244,10 @@
     /*background red*/
   /*.time-select*/
     /*background red*/
+  .content-table-landing
+    height 400px
+    overflow-y auto
+
   .league-select
   .time-select
     outline none
@@ -217,4 +260,5 @@
     font-size: 14px;
     padding: 5px;
     height: 40px;
+
 </style>
