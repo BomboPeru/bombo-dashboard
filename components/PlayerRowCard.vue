@@ -315,7 +315,7 @@
     padding 4px 4px
     position absolute
     border-radius 3px
-    top -30px
+    top 22px
     left -75px
     z-index 10
     font-size 12px
