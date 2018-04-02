@@ -38,7 +38,7 @@ export const state = () => ({
   leagues: []
 })
 
-export const getters = () => ({
+export const getters = {
   termsAndConditionsDialog (state) {
     return state.termsAndConditionsDialog
   },
@@ -57,10 +57,10 @@ export const getters = () => ({
   userId (state) {
     return state.userId
   }
-})
+}
 
 
-export const mutations = () => ({
+export const mutations = {
   openTermsConditionsDialog (state) {
     state.termsAndConditionsDialog = true
   },
@@ -71,10 +71,10 @@ export const mutations = () => ({
     state.snackbarMessage = message
     state.snackbar = true
   }
-})
+}
 
 
-export const actions = () => ({
+export const actions = {
   nuxtServerInit ({ commit, state }, { req }) {
 
     console.log('nuxtServerInit')
@@ -95,10 +95,13 @@ export const actions = () => ({
         console.log('token', token)
         state.userId = cookieParsed.userId
         commit('auth/setToken', token)
+
       } else {
+
         state.userId = ''
         commit('auth/setToken', null)
       }
+
     }
   },
   turnOnSnackbar (context, message) {
@@ -151,7 +154,7 @@ export const actions = () => ({
       throw new Error(e)
     }
   }
-})
+}
 
 const store = () => {
   return new Vuex.Store({
@@ -159,6 +162,7 @@ const store = () => {
     getters,
     mutations,
     actions,
+
     modules: {
       team,
       createteam,

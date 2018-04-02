@@ -1,20 +1,26 @@
+
+export const state = () => ({
+  tabViews: ['TABLA DE POSICIONES','PARTIDOS','TUS EQUIPOS'],
+  activeTabViews: 0
+})
+
+export const mutations = {
+  setActiveTabView (state, index) {
+    state.activeTabViews = index
+  }
+}
+
+export const getters = {
+  activeTabView (state) {
+    return state.activeTabViews
+  }
+}
+
 const dashboard = {
   namespaced: true,
-  state: {
-    tabViews: ['TABLA DE POSICIONES','PARTIDOS','TUS EQUIPOS'],
-    activeTabViews: 0
-  },
-  mutations: {
-    setActiveTabView (state, index) {
-      state.activeTabViews = index
-    }
-  },
-  actions: {},
-  getters: {
-    activeTabView (state) {
-      return state.activeTabViews
-    }
-  }
+  state,
+  mutations,
+  getters
 }
 
 export default dashboard
