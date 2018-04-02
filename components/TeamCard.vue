@@ -275,7 +275,7 @@
         const userId = this.$store.getters['auth/getUserId']
         const teamTypes = {
           'guardado': 'saved',
-          'pasados': 'old'
+          'pasado': 'old'
         }
 
         this.$axios.post('api/v2.0/users/'+ userId + '/delete-team', {
