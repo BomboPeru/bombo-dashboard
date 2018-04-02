@@ -306,7 +306,7 @@
     left 0
     bottom 0
     z-index 10
-    border-radius 15px
+    border-radius 4px
     width 100%
     background rgba(0, 0, 0, 0.8)
   .confirmation-content
