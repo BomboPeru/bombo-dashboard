@@ -71,7 +71,8 @@
       </div>
       <div class="online-grid">
         <div class="online-table">
-          <img src="/landing/rectangle_2_2x.png" height="500px" alt="">
+          <ranking-board landing/>
+          <!--<img src="/landing/rectangle_2_2x.png" height="500px" alt="">-->
         </div>
         <div class="online-text">
           <p>Muchos de nuestros usuarios están jugando ahora mismo,
@@ -170,9 +171,13 @@
 </template>
 
 <script>
+  import RankingBoard from '../components/RankingBoard'
 
   export default {
     // layout: 'dashboard',
+    components: {
+      RankingBoard
+    },
     methods: {
       goToLogin() {
         this.$router.push('/login')
@@ -701,8 +706,13 @@
       margin-top 0
     .online-text
       width 100% !important
+    .online-table
+      margin-top 50px
+      margin-bottom 50px
     .online-table img
       height 300px
+    .online-section
+      height: auto;
     .footer-container
       display flex
       justify-content center
