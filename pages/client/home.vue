@@ -46,7 +46,7 @@
               <div>
                 <div class="points-value">{{ user.current_bombo_coins }} <span class="b-points">B</span></div>
                 <span class="slash-value">/</span>
-                <div class="credit-value">{{ user.current_credit }} <span class="credit-points"><i class="fas fa-money-bill-alt fa-xs"></i></span> </div>
+                <div class="credit-value">{{ saldo }} <span class="credit-points"><i class="fas fa-money-bill-alt fa-xs"></i></span> </div>
               </div>
               <div class="btn-play elevation-2" @click="clickPlay">JUGAR</div>
             </div>
@@ -171,6 +171,9 @@
           this.leagueObj = value
           this.fetchLastMatches()
         }
+      },
+      saldo () {
+        return Math.round( 100 * (this.$store.state.current_credit + this.$store.state.current_won_credit) ) / 100
       }
     },
     data () {
