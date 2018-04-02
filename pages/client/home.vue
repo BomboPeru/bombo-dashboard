@@ -69,7 +69,7 @@
 
         <div class="ranking-container">
           <div class="header">
-            <p class="title-card title-card-center">TOP JUGADORES EN EL BOMBO</p>
+            <p class="title-card title-card-center">TOP JUGADORES DE LA SEMANA</p>
           </div>
 
           <div class="ranking-list-container">
@@ -284,9 +284,9 @@
                     </td>
                   </tr>
                   <tr>
-                    <td style="width: 40%">{{ match.away_name }} </td>
+                    <td style="width: 40%">{{ match.home_name }} </td>
                     <td style="width: 20%" class="vs"></td>
-                    <td style="width: 40%">{{ match.home_name }}</td>
+                    <td style="width: 40%">{{ match.away_name }}</td>
                   </tr>
                   </tbody>
                 </table>
