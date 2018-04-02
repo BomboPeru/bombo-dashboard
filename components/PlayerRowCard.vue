@@ -345,7 +345,7 @@
     background rgba(0, 0, 0, 0.81)
     color white
   .tooltip-status
-    top -30px
+    top 24px
     left -75px
   .tooltip-vs
     margin-left 10px
