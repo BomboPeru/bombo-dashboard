@@ -81,9 +81,9 @@
                 </td>
               </tr>
               <tr :class="['label-team-info']">
-                <td style="width: 33%">PUESTO EN EL BOMBO:</td>
-                <td style="width: 33%">PREMIOS:</td>
-                <td style="width: 33%">PUNTAJE ACUMULADO:</td>
+                <td style="width: 25%">PUESTO EN EL BOMBO</td>
+                <td style="width: 50%">PREMIOS</td>
+                <td style="width: 25%">PUNTAJE ACUMULADO</td>
               </tr>
               <tr>
                 <td class="table-value">{{team.position}}</td>
