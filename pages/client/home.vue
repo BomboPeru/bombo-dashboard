@@ -418,7 +418,7 @@
         })
         .catch(e => {
           // window.$nuxt.error({ statusCode, message })
-          console.log('>> e ', e.toString())
+          console.log('>> e home', e.toString())
         })
     },
     mounted () {

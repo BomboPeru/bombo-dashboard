@@ -54,17 +54,7 @@
     lodash "^4.2.0"
     to-fast-properties "^2.0.0"
 
-"@nuxtjs/auth@^4.0.0-rc.3":
-  version "4.0.0-rc.3"
-  resolved "https://registry.yarnpkg.com/@nuxtjs/auth/-/auth-4.0.0-rc.3.tgz#8db725d1854c41761becf5ee719f747d90aff9ef"
-  dependencies:
-    "@nuxtjs/axios" "^5.0.0-rc.2"
-    cookie "^0.3.1"
-    dotprop "^1.0.2"
-    js-cookie "^2.2.0"
-    lodash "^4.17.4"
-
-"@nuxtjs/axios@^5.0.0-rc.2", "@nuxtjs/axios@^5.1.1":
+"@nuxtjs/axios@^5.1.1":
   version "5.1.1"
   resolved "https://registry.yarnpkg.com/@nuxtjs/axios/-/axios-5.1.1.tgz#2aec0bfc6cee8dc682b05402af25c0c6bc72a70c"
   dependencies:
@@ -998,10 +988,6 @@ bluebird@^3.1.1, bluebird@^3.4.7, bluebird@^3.5.0, bluebird@^3.5.1:
   version "3.5.1"
   resolved "https://registry.yarnpkg.com/bluebird/-/bluebird-3.5.1.tgz#d9551f9de98f1fcda1e683d17ee91a0602ee2eb9"
 
-blueimp-gallery@^2.27.0:
-  version "2.33.0"
-  resolved "https://registry.yarnpkg.com/blueimp-gallery/-/blueimp-gallery-2.33.0.tgz#f897912a1bbf65be904454d5990be6155799dd45"
-
 bn.js@^4.0.0, bn.js@^4.1.0, bn.js@^4.1.1, bn.js@^4.4.0:
   version "4.11.8"
   resolved "https://registry.yarnpkg.com/bn.js/-/bn.js-4.11.8.tgz#2cde09eb5ee341f484746bb0309b3253b1b1442f"
@@ -1847,7 +1833,7 @@ deep-is@~0.1.3:
   version "0.1.3"
   resolved "https://registry.yarnpkg.com/deep-is/-/deep-is-0.1.3.tgz#b369d6fb5dbc13eecf524f91b070feedc357cf34"
 
-deepmerge@^2.0.0, deepmerge@^2.0.1:
+deepmerge@^2.0.0:
   version "2.0.1"
   resolved "https://registry.yarnpkg.com/deepmerge/-/deepmerge-2.0.1.tgz#25c1c24f110fb914f80001b925264dd77f3f4312"
 
@@ -1980,10 +1966,6 @@ domutils@1.5.1:
   dependencies:
     dom-serializer "0"
     domelementtype "1"
-
-dotprop@^1.0.2:
-  version "1.0.2"
-  resolved "https://registry.yarnpkg.com/dotprop/-/dotprop-1.0.2.tgz#0559e898156f3dddb6be62794e5d6ef30eceb705"
 
 duplexer@^0.1.1:
   version "0.1.1"
@@ -3602,7 +3584,7 @@ longest@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/longest/-/longest-1.0.1.tgz#30a0b2da38f73770e8294a0d22e6625ed77d0097"
 
-loose-envify@^1.0.0, loose-envify@^1.2.0:
+loose-envify@^1.0.0:
   version "1.3.1"
   resolved "https://registry.yarnpkg.com/loose-envify/-/loose-envify-1.3.1.tgz#d1a8ad33fa9ce0e713d65fdd0ac8b748d478c848"
   dependencies:
@@ -5519,10 +5501,6 @@ shell-quote@^1.6.1:
     array-reduce "~0.0.0"
     jsonify "~0.0.0"
 
-shvl@^1.1.1:
-  version "1.2.0"
-  resolved "https://registry.yarnpkg.com/shvl/-/shvl-1.2.0.tgz#5e2de474c68b8430602689a7d35100ad2cb33fec"
-
 signal-exit@^3.0.0, signal-exit@^3.0.2:
   version "3.0.2"
   resolved "https://registry.yarnpkg.com/signal-exit/-/signal-exit-3.0.2.tgz#b5fdc08f1287ea1178628e415e25132b73646c6d"
@@ -6217,12 +6195,6 @@ vm-browserify@0.0.4:
   dependencies:
     indexof "0.0.1"
 
-vue-clickaway@^2.1.0:
-  version "2.1.0"
-  resolved "https://registry.yarnpkg.com/vue-clickaway/-/vue-clickaway-2.1.0.tgz#392de764751f31cd20787e8fb3a6e319825f8d4f"
-  dependencies:
-    loose-envify "^1.2.0"
-
 vue-content-loader@^0.2.1:
   version "0.2.1"
   resolved "https://registry.yarnpkg.com/vue-content-loader/-/vue-content-loader-0.2.1.tgz#0eb332e2a72643d57fb209d72d6526573b191f5a"
@@ -6239,12 +6211,6 @@ vue-eslint-parser@^2.0.1:
     espree "^3.5.2"
     esquery "^1.0.0"
     lodash "^4.17.4"
-
-vue-gallery@^1.3.2:
-  version "1.3.2"
-  resolved "https://registry.yarnpkg.com/vue-gallery/-/vue-gallery-1.3.2.tgz#f2c18c5e6b724f97e40eae3368b9d7c2bfe24267"
-  dependencies:
-    blueimp-gallery "^2.27.0"
 
 vue-hot-reload-api@^2.2.0:
   version "2.2.4"
@@ -6322,13 +6288,6 @@ vue-the-mask@^0.11.1:
 vue@^2.5.13:
   version "2.5.13"
   resolved "https://registry.yarnpkg.com/vue/-/vue-2.5.13.tgz#95bd31e20efcf7a7f39239c9aa6787ce8cf578e1"
-
-vuex-persistedstate@^2.4.2:
-  version "2.4.2"
-  resolved "https://registry.yarnpkg.com/vuex-persistedstate/-/vuex-persistedstate-2.4.2.tgz#a8caf63b07ce4bdff6d82b29634c051ead382bf3"
-  dependencies:
-    deepmerge "^2.0.1"
-    shvl "^1.1.1"
 
 vuex@^3.0.1:
   version "3.0.1"

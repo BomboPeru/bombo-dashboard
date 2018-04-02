@@ -23,23 +23,11 @@ module.exports = {
     ]
   },
   modules: [
-    '@nuxtjs/axios',
-    // '@nuxtjs/pwa'
+    '@nuxtjs/axios'
   ],
   axios: {
     baseURL: 'https://api.bombo.pe/'
   },
-  // manifest: {
-  //   name: 'Bombo',
-  //   lang: 'en-US',
-  //   display: "standalone"
-  // },
-  // meta: {
-  //   theme_color: '#0F202D'
-  // },
-  // icon: {
-  //   iconSrc: '/favicon.png'
-  // },
   plugins: [
     { src: '~/plugins/axios', ssr: false }
   ],

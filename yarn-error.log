@@ -1,5 +1,5 @@
 Arguments: 
-  /home/anargu/.nvm/versions/node/v8.0.0/bin/node /usr/share/yarn/bin/yarn.js dev
+  /home/anargu/.nvm/versions/node/v8.0.0/bin/node /usr/share/yarn/bin/yarn.js remove @nuxtjs/pwa
 
 PATH: 
   /home/anargu/Downloads/cocos2d-x-3.16/templates:/home/anargu/Downloads:/home/anargu/Downloads/cocos2d-x-3.16/tools/cocos2d-console/bin:/home/anargu/.cargo/bin:/media/anargu/LinuxMedia/sdks/flutter/bin:/usr/lib/dart/bin:/home/anargu/.pyenv/plugins/pyenv-virtualenv/shims:/home/anargu/.pyenv/shims:/home/anargu/.pyenv/bin:/usr/lib/dart/bin:/home/anargu/.nvm/versions/node/v8.0.0/bin:/home/anargu/bin:/home/anargu/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/usr/local/go/bin:/bin:/home/anargu/.go/bin
@@ -31,11 +31,15 @@ npm manifest:
     "dependencies": {
       "@nuxtjs/auth": "^4.0.0-rc.3",
       "@nuxtjs/axios": "^5.1.1",
+      "cookieparser": "^0.1.0",
       "css-loader": "^0.28.9",
+      "js-cookie": "^2.2.0",
       "nuxt": "^1.0.0",
       "stylus": "^0.54.5",
       "stylus-loader": "^3.0.1",
       "vue-clickaway": "^2.1.0",
+      "vue-content-loader": "^0.2.1",
+      "vue-gallery": "^1.3.2",
       "vue-slider-component": "^2.5.8",
       "vue-style-loader": "^3.1.2",
       "vue-the-mask": "^0.11.1",
@@ -587,7 +591,7 @@ Lockfile:
       babel-traverse "^6.24.1"
       babel-types "^6.24.1"
   
-  babel-helper-vue-jsx-merge-props@^2.0.2:
+  babel-helper-vue-jsx-merge-props@^2.0.2, babel-helper-vue-jsx-merge-props@^2.0.3:
     version "2.0.3"
     resolved "https://registry.yarnpkg.com/babel-helper-vue-jsx-merge-props/-/babel-helper-vue-jsx-merge-props-2.0.3.tgz#22aebd3b33902328e513293a8e4992b384f9f1b6"
   
@@ -1053,6 +1057,10 @@ Lockfile:
   bluebird@^3.1.1, bluebird@^3.4.7, bluebird@^3.5.0, bluebird@^3.5.1:
     version "3.5.1"
     resolved "https://registry.yarnpkg.com/bluebird/-/bluebird-3.5.1.tgz#d9551f9de98f1fcda1e683d17ee91a0602ee2eb9"
+  
+  blueimp-gallery@^2.27.0:
+    version "2.33.0"
+    resolved "https://registry.yarnpkg.com/blueimp-gallery/-/blueimp-gallery-2.33.0.tgz#f897912a1bbf65be904454d5990be6155799dd45"
   
   bn.js@^4.0.0, bn.js@^4.1.0, bn.js@^4.1.1, bn.js@^4.4.0:
     version "4.11.8"
@@ -1624,6 +1632,10 @@ Lockfile:
   cookie@0.3.1, cookie@^0.3.1:
     version "0.3.1"
     resolved "https://registry.yarnpkg.com/cookie/-/cookie-0.3.1.tgz#e7e0a1f9ef43b4c8ba925c5c5a96e806d16873bb"
+  
+  cookieparser@^0.1.0:
+    version "0.1.0"
+    resolved "https://registry.yarnpkg.com/cookieparser/-/cookieparser-0.1.0.tgz#ea12cb1085c174f3167faeaf7985f79abe671d0e"
   
   copy-concurrently@^1.0.0:
     version "1.0.5"
@@ -6271,6 +6283,12 @@ Lockfile:
     dependencies:
       loose-envify "^1.2.0"
   
+  vue-content-loader@^0.2.1:
+    version "0.2.1"
+    resolved "https://registry.yarnpkg.com/vue-content-loader/-/vue-content-loader-0.2.1.tgz#0eb332e2a72643d57fb209d72d6526573b191f5a"
+    dependencies:
+      babel-helper-vue-jsx-merge-props "^2.0.3"
+  
   vue-eslint-parser@^2.0.1:
     version "2.0.2"
     resolved "https://registry.yarnpkg.com/vue-eslint-parser/-/vue-eslint-parser-2.0.2.tgz#8d603545e9d7c134699075bd1772af1ffd86b744"
@@ -6281,6 +6299,12 @@ Lockfile:
       espree "^3.5.2"
       esquery "^1.0.0"
       lodash "^4.17.4"
+  
+  vue-gallery@^1.3.2:
+    version "1.3.2"
+    resolved "https://registry.yarnpkg.com/vue-gallery/-/vue-gallery-1.3.2.tgz#f2c18c5e6b724f97e40eae3368b9d7c2bfe24267"
+    dependencies:
+      blueimp-gallery "^2.27.0"
   
   vue-hot-reload-api@^2.2.0:
     version "2.2.4"
@@ -6587,17 +6611,10 @@ Lockfile:
       window-size "0.1.0"
 
 Trace: 
-  Error: Command failed.
-  Exit code: 1
-  Command: sh
-  Arguments: -c nuxt
-  Directory: /home/anargu/dev/projects/bombo-dashboard
-  Output:
-  
-      at ProcessTermError.MessageError (/usr/share/yarn/lib/cli.js:186:110)
-      at new ProcessTermError (/usr/share/yarn/lib/cli.js:226:113)
-      at ChildProcess.<anonymous> (/usr/share/yarn/lib/cli.js:30281:17)
-      at emitTwo (events.js:125:13)
-      at ChildProcess.emit (events.js:213:7)
-      at maybeClose (internal/child_process.js:887:16)
-      at Process.ChildProcess._handle.onexit (internal/child_process.js:208:5)
+  Error: This module isn't specified in a manifest.
+      at new MessageError (/usr/share/yarn/lib/cli.js:186:110)
+      at Object.<anonymous> (/usr/share/yarn/lib/cli.js:60445:15)
+      at Generator.next (<anonymous>)
+      at step (/usr/share/yarn/lib/cli.js:98:30)
+      at /usr/share/yarn/lib/cli.js:109:13
+      at <anonymous>
