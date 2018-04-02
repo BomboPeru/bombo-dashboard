@@ -432,7 +432,6 @@
       if (this.user.old_teams === null) this.old_teams = 0
       else this.old_teams = this.user.old_teams.length
 
-
       const self = this
       // console.log(TeamColors)
       this.teamColors = TeamColors
