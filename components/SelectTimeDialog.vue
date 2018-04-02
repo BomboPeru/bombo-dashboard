@@ -218,7 +218,7 @@
     padding 10px
     background: #fafafa
     position relative
-    border-radius 15px
+    border-radius: 4px
 
   .close-icon
     position absolute

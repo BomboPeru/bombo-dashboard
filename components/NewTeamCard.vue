@@ -341,11 +341,11 @@
     width 110px
 
   .tab-0
-    border-top-left-radius 6px
-    border-bottom-left-radius 6px
+    border-top-left-radius 2px
+    border-bottom-left-radius 2px
   .tab-1
-    border-top-right-radius 6px
-    border-bottom-right-radius 6px
+    border-top-right-radius 2px
+    border-bottom-right-radius 2px
 
   .activeTab
     color #fafafa

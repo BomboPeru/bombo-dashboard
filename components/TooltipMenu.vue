@@ -49,7 +49,7 @@
         <template v-else-if="profile">
           <p class="username">{{ user.name }}</p>
           <p class="coins">{{ user.current_bombo_coins }} B /
-            <span class="credit">{{ user.current_credit }} <i class="far fa-money-bill-alt"></i></span>
+            <span class="credit">{{ user.current_credit + user.current_won_credit}} <i class="far fa-money-bill-alt"></i></span>
 
           </p>
           <div class="divider"></div>

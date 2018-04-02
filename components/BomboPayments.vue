@@ -290,7 +290,7 @@
 
 
   .card-container
-    border-radius: 15px !important;
+    border-radius: 4px !important;
 
   input[type='number'] {
     appearance: textfield;

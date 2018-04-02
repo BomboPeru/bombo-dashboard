@@ -325,7 +325,8 @@ font2 = 'Titillium Web'
 /* Titillium Web */
 
 .team-card
-  width 420px
+  /*width 420px*/
+  width 354px
 
 #team-card
   /*width 240px*/
@@ -342,6 +343,8 @@ font2 = 'Titillium Web'
   /*height: 72%;*/
   /*padding-bottom: 12px;*/
 
+.rounded
+  border-radius 4px !important
 /*
 .rounded
   border-radius 10px
@@ -545,7 +548,7 @@ font2 = 'Titillium Web'
 
 .btn-expand
   background #46cc90
-  border-radius: 0px 0px 12px 12px;
+  border-radius: 0px 0px 2px 2px;
   height 30px
   font-family font
   text-align center

@@ -382,13 +382,13 @@
     padding: 0px 35px;
     font-family Titillium Web
     font-weight bold
+    border-radius 20px
 
     margin-top: 6px;
     min-width: 150px;
     text-align: center;
     height: 40px;
     line-height: 40px;
-    border-radius: 4px;
 
     user-select: none;
     -moz-user-select: none;

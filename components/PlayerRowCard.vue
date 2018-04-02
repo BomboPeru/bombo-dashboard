@@ -76,7 +76,7 @@
         <table class="row-table" style="width: 100%;">
           <tbody>
           <tr>
-            <td style="width: 20%;">
+            <td style="width: 30%;">
               <div class="captain-band"
                    v-if="player.is_captain === true">
                 <img
@@ -85,24 +85,24 @@
               </div>
 
               <squad-number :img="shirtUrl"
-                            style="top: 3px;"
+                            style="top: 3px; left: -8px"
                             :number="player.j_number"/>
             </td>
-            <td style="width: 32%;">
+            <td style="width: 40%;">
               <div class="title" style="margin-top: -3px;">{{ player.name }}</div>
               <div class="subtitle" style="margin-top: -5px;">{{ player.team }}</div>
             </td>
-            <td style="width: 25%; text-align: center">
+            <td style="width: 15%; text-align: center">
               <div class="subtitle" style="margin-top: -3px;">Puntos</div>
               <div class="title" style="margin-top: -7px;">{{ player.points }}</div>
             </td>
-            <td style="width: 25%;" class="position-action">
+            <td style="width: 15%;" class="position-action">
               <span>{{ positionInShort }}</span>
             </td>
           </tr>
           </tbody>
         </table>
-        <div class="right-cover" :style="{ 'background': kind[position].color, 'width': '21%'  }"></div>
+        <div class="right-cover" :style="{ 'background': kind[position].color, 'width': '15%'  }"></div>
 
       </template>
 
@@ -253,8 +253,9 @@
 </script>
 
 <style scoped lang="stylus">
+
   .card-player
-    border-radius 6px
+    border-radius 2px
     padding-top: 4px
     padding-bottom: 4px
     padding-right: 5px
@@ -270,8 +271,8 @@
     background red
     z-index 1
     position: absolute;
-    border-top-right-radius 6px
-    border-bottom-right-radius 6px
+    border-top-right-radius 2px
+    border-bottom-right-radius 2px
     /*border-radius: 6px;*/
     right: 0;
     top: 0;
@@ -339,7 +340,7 @@
     padding 4px 4px
     position absolute
     border-radius 3px
-    z-index 10
+    z-index 20
     font-size 12px
     background rgba(0, 0, 0, 0.81)
     color white

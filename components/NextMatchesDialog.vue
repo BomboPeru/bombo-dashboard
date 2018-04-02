@@ -83,7 +83,7 @@
     position relative
     font-size 24px
     font-weight bold
-    border-radius: 10px 10px 0px 0px
+    // border-radius: 4px 4px 0px 0px
   .card-header-line
     background #f26465
 

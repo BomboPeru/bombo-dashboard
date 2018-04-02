@@ -1,12 +1,12 @@
 <template>
-    <div id="ranking-player-row-card" class="elevation-2" :style="{ width: width }">
+    <div id="ranking-player-row-card" class="" :style="{ width: width }">
       <table width="98%" class="table">
         <tbody>
           <tr class="tr">
-            <td style="width: 10%" class="ranking">{{ index + 1 }}</td>
-            <td style="width: 40%" class="name">{{ player.name }}</td>
+            <td style="width: 25%" class="ranking">{{ index + 1 }}</td>
+            <td style="width: 50%" class="name">{{ player.name }}</td>
             <td style="width: 25%" class="cost">{{ player.points || 0 }} Pts</td>
-            <td style="width: 25%" class="position">{{ position }}</td>
+            <!--<td style="width: 25%" class="position">{{ position }}</td>-->
           </tr>
         </tbody>
       </table>
@@ -50,7 +50,7 @@
 
 <style scoped lang="stylus">
   #ranking-player-row-card
-    background #fafafa
+    background #f0f4ff
     border-radius 6px
     font-family Titillium Web
     overflow hidden
@@ -63,8 +63,7 @@
     font-weight bold
     font-family 'Nunito Sans'
     color #445dcc
-  .cost
-    font-weight bold
+
 
   .table
     position relative
@@ -74,10 +73,10 @@
     height 42px
   .tr
     text-align center
+    font-size 12px
   .name
     text-align left
   .position
-    font-weight bold
     color black
   .cover-color
     position absolute

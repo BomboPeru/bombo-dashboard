@@ -122,6 +122,19 @@
         // leagues
 
         this.leagues = response.data
+
+        // init ranking
+        if (response.data.length === 0) {
+          return
+        }
+        let response2 = await this.$axios.$get(`api/v2.0/matches/${response.data[0].id}/current-time`)
+        this.leagueObj = response.data[0]
+        this.leagueObj.times.map(time => {
+          if (time.number === response2.data.number) {
+            this.timeObj = time
+          }
+        })
+
       }
     },
     mounted () {
@@ -137,7 +150,7 @@
   .ranking-card
     background #fafafa
     min-height 50px
-    border-radius: 12px
+    border-radius: 4px
     overflow: hidden;
   .tabs
     display flex

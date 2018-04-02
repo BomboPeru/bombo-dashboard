@@ -9,7 +9,7 @@
           <div class="content">
             <ul>
               <li v-for="(item, i) in leagues" :key="i"
-                  :class="['card-league', 'elevation', 'rounded', item.coming_soon===true?'blurred':'']"
+                  :class="['card-league', 'elevation', 'rounded-sm', item.coming_soon===true?'blurred':'']"
                   @click="onClickLeague(item)">
                 <img :src="item.photo===''? '/leagues/premier_league.png':item.photo" alt="" @click="selectLeague(item)">
                 <div class="title-container">
@@ -94,7 +94,7 @@
     position relative
     font-size 24px
     font-weight bold
-    border-radius: 10px 10px 0px 0px
+    border-radius: 4px 4px 0px 0px
   .card-header-line
     background #EA504C
     height 5px
