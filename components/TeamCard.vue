@@ -13,7 +13,7 @@
               <!--<img src="../assets/icons/star_off.png" alt="" @click="toggleFavorite">-->
             <!--</template>-->
           <!--</span>-->
-          <!--&lt;!&ndash;<span class="right pasados" v-if="typeCard === 'pasados'">{{ points }}</span>&ndash;&gt;-->
+          <!--&lt;!&ndash;<span class="right pasado" v-if="typeCard === 'pasado'">{{ points }}</span>&ndash;&gt;-->
         <!--</div>-->
       <!--</div>-->
 
@@ -67,7 +67,7 @@
 
         <div class="table-container elevation">
 
-          <table class="table-points-ranking" v-if="typeCard === 'en_juego' || typeCard === 'pasados'">
+          <table class="table-points-ranking" v-if="typeCard === 'en_juego' || typeCard === 'pasado'">
             <tbody>
               <tr :class="['table-window', typeCard==='en_juego'?'info-in-play':'info-old']">
                 <td colspan="3"></td>
@@ -81,9 +81,9 @@
                 </td>
               </tr>
               <tr :class="['label-team-info']">
-                <td style="width: 33%">PUESTO EN EL BOMBO:</td>
-                <td style="width: 33%">PREMIOS:</td>
-                <td style="width: 33%">PUNTAJE ACUMULADO:</td>
+                <td style="width: 25%">PUESTO EN EL BOMBO</td>
+                <td style="width: 50%">PREMIOS</td>
+                <td style="width: 25%">PUNTAJE ACUMULADO</td>
               </tr>
               <tr>
                 <td class="table-value">{{team.position}}</td>
@@ -127,10 +127,10 @@
         <div class="button-play-again elevation" v-if="typeCard === 'guardado'" @click="putInGameTeam(team)">
           JUEGA YA!
         </div>
-        <div class="button-delete elevation" v-if="typeCard === 'pasados'">
+        <div class="button-delete elevation" v-if="typeCard === 'pasado'">
           Borrar
         </div>
-        <div class="button-save elevation" v-if="typeCard === 'pasados'">
+        <div class="button-save elevation" v-if="typeCard === 'pasado'">
           Guardar
         </div>
       </div>
@@ -148,7 +148,7 @@
         <p class="subheader selected-players-title">JUGADORES</p>
         <!-- PLAYERS -->
         <div>
-          <div :class="['list-players-container', typeCard === 'guardado'||typeCard === 'pasados'?'list-players-container-b':'']">
+          <div :class="['list-players-container', typeCard === 'guardado'||typeCard === 'pasado'?'list-players-container-b':'']">
             <player-row-card v-for="(item, i) in players" :key="i+'prc-player'" mode="small-a" :player="item" :position="playerPositions[item.position]"/>
 
             <!--<player-row-card v-for="(item, i) in players.goal_keeper" :key="i+'prc-portero'" mode="small-a" :player="item" position="ARQUERO"/>-->
@@ -231,7 +231,7 @@
         typeColorCards: {
           en_juego: '#fe5567',
           guardado: '#01e19f',
-          pasados: '#4a47d2'
+          pasado: '#4a47d2'
         }
       }
     },
@@ -284,7 +284,7 @@
         const userId = this.$store.getters['userId']
         const teamTypes = {
           'guardado': 'saved',
-          'pasados': 'old'
+          'pasado': 'old'
         }
 
         this.$axios.post('api/v2.0/users/'+ userId + '/delete-team', {
