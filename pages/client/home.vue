@@ -549,7 +549,7 @@
     color #594EEC
     font-family Raleway
     font-weight 900
-    margin 12px 20px 10px 20px
+    margin 12px 20px 10px 16px
     font-size 16px
 
   .title-card-center
@@ -653,7 +653,7 @@
     font-family Raleway
     font-weight 900
     float: right
-    margin: 10px 22px 0 0
+    margin: 10px 10px 0 0
 
   .header-section
     background white
@@ -748,18 +748,53 @@
     .points
       top 0px
       left 0px
+
+    .status-card-content
+      margin-top 40px
+
     .text-container
       margin 48px 10px
-    .status-card-content
-      margin-top 20px
+    .first-price-cup
+      margin-top 10px
+      font-size 30px
+    .first-price-text
+      font-size 28px
+    .price-item
+      font-size 22px
+      height 50px
+      line-height 50px
+    .empty-tutorial-items
+      height 200px
+      line-height 200px
 
 
   @media screen and (max-width: 1023px)
     .grid-container
       width 100%
       display grid
-      grid-template-columns 50% 50%
-      grid-template-rows 30% 70%
+      grid-template-columns 100%
+      grid-template-rows 200px 400px 600px 400px
+
+    .status-card
+      grid-column-start 1
+      grid-column-end 2
+      grid-row-start 1
+      grid-row-end 2
+    .prices-card
+      grid-column-start 1
+      grid-column-end 2
+      grid-row-start 2
+      grid-row-end 3
+    .next-matches-card
+      grid-column-start 1
+      grid-column-end 2
+      grid-row-start 3
+      grid-row-end 4
+    .ranking-top-players
+      grid-column-start 1
+      grid-column-end 2
+      grid-row-start 4
+      grid-row-end 5
 
     .points
       display: flex;
@@ -769,6 +804,7 @@
       position relative
       top 0px
       left 0px
+
     .ranking-list-container
       height auto
     .ranking-container
