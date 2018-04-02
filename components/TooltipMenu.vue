@@ -143,12 +143,12 @@
         this.$store.dispatch('turnOnSnackbar', 'Eliminando notificación')
 
         try {
-          let response = await this.$axios.post(`api/v2.0/users/${userId}/delete-notification`, {
+          let response = await this.$axios.$post(`api/v2.0/users/${userId}/delete-notification`, {
             notification_id: item.id
           })
 
           // console.log(response)
-          this.$store.dispatch('updateUser', response.data.data)
+          this.$store.dispatch('updateUser', response.data)
           this.$store.dispatch('turnOnSnackbar', 'Notificación eliminada')
         } catch (e) {
            console.log(e)

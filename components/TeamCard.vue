@@ -268,11 +268,11 @@
       duplicate() {
         const userId = this.$store.getters['userId']
 
-        this.$axios.post('api/v2.0/users/'+ userId + '/duplicate-team', {
+        this.$axios.$post('api/v2.0/users/'+ userId + '/duplicate-team', {
           team_name: this.team.name
         })
           .then(res => {
-            this.$store.dispatch('updateUser', res.data.data)
+            this.$store.dispatch('updateUser', res.data)
           })
           .catch(err => {
             this.$store.dispatch('turnOnSnackbar', 'Hubo un problema en esta operación. Intente mas tarde')
@@ -287,12 +287,12 @@
           'pasado': 'old'
         }
 
-        this.$axios.post('api/v2.0/users/'+ userId + '/delete-team', {
+        this.$axios.$post('api/v2.0/users/'+ userId + '/delete-team', {
           team_name: this.team.name,
           team_type: teamTypes[this.typeCard]
         })
         .then(res => {
-          this.$store.dispatch('updateUser', res.data.data)
+          this.$store.dispatch('updateUser', res.data)
         })
         .catch(err => {
           this.$store.dispatch('turnOnSnackbar', 'Hubo un problema en esta operación. Intente mas tarde')

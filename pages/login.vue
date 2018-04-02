@@ -84,18 +84,18 @@
         // loading on
         this.$store.state.isLoading = true
 
-        this.$axios.post('auth/login', {
+        this.$axios.$post('auth/login', {
           username: this.username,
           password: this.password
         }).then(res => {
 
           this.$store.state.isLoading = false
-          this.$axios.setToken(res.data.token, 'Bearer')
+          this.$axios.setToken(res.token, 'Bearer')
 
-          this.$store.commit('auth/setToken', res.data.token)
+          this.$store.commit('auth/setToken', res.token)
 
 
-          this.fetchUser(res.data.token)
+          this.fetchUser(res.token)
 
           // this.$store.state.isLoading = false
           // this.$router.push('/wait')

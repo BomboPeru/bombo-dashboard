@@ -63,8 +63,8 @@
           </div>
 
           <div class="choose-pay-container">
-            <div :class="['pay-coins']" @click="pay(0)">JUGAR CON BOMBO COINS</div>
-            <div :class="['pay-credit']" @click="pay(1)">JUGAR CON TU CRÉDITO</div>
+            <div :class="['pay-coins']" @click="pay(0)">JUGAR CON BOMBO COINS (10 B)</div>
+            <div :class="['pay-credit']" @click="pay(1)">JUGAR CON TU CRÉDITO (S/ 10)</div>
           </div>
 
           <!--<div class="">-->

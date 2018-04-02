@@ -124,13 +124,11 @@
       async updateUser () {
         // const userId = this.$store.getters['userId']
         // this.user.birthday = (new Date(this.birthdayFake)).toISOString()
-
-        this.$axios.post('api/v2.0/users/'+ this.user.id +'/update-profile',
+        this.$axios.$post('api/v2.0/users/'+ this.user.id +'/update-profile',
           { user: this.user })
           .then(res => {
-            console.log(res)
             // res.data.data
-            this.$store.dispatch('updateUser', res.data.data)
+            this.$store.dispatch('updateUser', res.data)
             this.$store.dispatch('turnOnSnackbar', 'Perfil Actualizado')
           })
           .catch(e => {
