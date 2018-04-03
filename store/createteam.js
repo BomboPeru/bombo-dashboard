@@ -4,9 +4,9 @@ export const state = () => ({
   tabViews: ['JUGADORES','EQUIPO','FIXTURE'],
   activeTabViews: 0,
   captainId: null,
-  rulesDialog: false,
   editTeamName: null,
   playersList: [],
+  rulesDialog: false,
   nextMatchesDialog: false,
   nextMatchesTeam: null
 })
