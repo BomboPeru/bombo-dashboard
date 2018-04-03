@@ -97,17 +97,17 @@ const actions = {
 
       {
         // --- STEP 1 ---
-        const response = await axios.$post('https://api.culqi.com/v2/tokens', request,
+        const response = await axios.post('https://api.culqi.com/v2/tokens', request,
           { headers: { Authorization: 'Bearer ' + publicKey } })
 
         let request2 = {
           card_number: request.card_number,
-          token_card: response.id
+          token_card: response.data.id
         }
         console.log('request2', request2)
 
         // --- STEP 2 ---
-        const response2 = await axios.$post(`api/v2.0/users/${user.id}/set-card`, request2,
+        const response2 = await axios.post(`api/v2.0/users/${user.id}/set-card`, request2,
           { headers: { Authorization: 'Bearer ' + token} })
 
         console.log('response2', response2)
@@ -119,15 +119,15 @@ const actions = {
 
 
         // --- STEP 3 ---
-        const finalResponse = await axios.$post(`api/v2.0/users/${user.id}/charge`, finalRequest,
+        const finalResponse = await axios.post(`api/v2.0/users/${user.id}/charge`, finalRequest,
           { headers: { Authorization: 'Bearer ' + token} })
 
 
         state.payButtonText = 'COMPRAR AHORA'
         state.payButtonEnabled = true
 
-        console.log('finalResponse', finalResponse)
-        dispatch('updateUser', finalResponse.data, { root: true })
+        console.log('finalResponse', finalResponse.data)
+        dispatch('updateUser', finalResponse.data.data, { root: true })
 
         rootState.isShortLoading = false
         dispatch('turnOnSnackbar', 'Felicidades! tu compra ha sido realizada con exito.', { root: true })
