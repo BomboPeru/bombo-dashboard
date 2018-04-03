@@ -17,7 +17,7 @@
                        color="#01e19f"
                        fa-icon="fa-plus"
                        class="create-team-btn"
-                       @click="goToCreateTeam"
+                       @click="openSelectLeagueDialog"
           />
         </div>
       </div>
@@ -29,18 +29,12 @@
         <!--&lt;!&ndash; PASADOS &ndash;&gt;-->
         <!--<template v-if="activeTypeTeam === 1">-->
         <team-card
-          class="teamcard"
-          :style="{ 'flex-grow': teams[activeTypeTeam].length > 3 ? '1':'0' }"
           v-for="(team, i) in teams[activeTypeTeam]"
           :key="i+'card'"
-          :id="team.id"
+          class="teamcard" :style="{ 'flex-grow': teams[activeTypeTeam].length > 3 ? '1':'0' }"
           :team="team"
-          :title="team.name"
-          :points="team.points"
-          :ranking="team.ranking"
-          :type-card="indexTypeTeams[activeTypeTeam]"
-          :league-img="team.leagueImg"
           :players="team.players"
+          :type-card="indexTypeTeams[activeTypeTeam]"
         />
       </div>
     </div>
@@ -89,16 +83,11 @@
     },
     data () {
       return {
-        indexTypeTeams: this.$store.state.team.indexTypeTeams,
-        mteams: {
-          0: [],
-          1: [],
-          2: []
-        }
+        indexTypeTeams: this.$store.state.team.indexTypeTeams
       }
     },
     methods: {
-      goToCreateTeam () {
+      openSelectLeagueDialog () {
         // thisunsetTeamId
         this.$store.state.team.selectLeagueDialog = true
       }

@@ -20,15 +20,10 @@
               :key="i+'-team'">
             <div style="text-align: center;">
               <team-card class="team-card"
-                         :key="i+'-team'"
-                         :team="team"
-                         :title="team.name"
-                         :ranking="team.ranking"
-                         :points="team.points"
-                         :created-at="team.createdAt"
-                         :players="team.players"
                          :collapsable="true"
-                          width="100%"/>
+                         :team="team"
+                         :players="team.players"
+              />
             </div>
           </li>
         </ul>

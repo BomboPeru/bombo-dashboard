@@ -149,19 +149,13 @@
         <!-- PLAYERS -->
         <div>
           <div :class="['list-players-container', typeCard === 'guardado'||typeCard === 'pasado'?'list-players-container-b':'']">
-            <player-row-card v-for="(item, i) in players" :key="i+'prc-player'" mode="small-a" :player="item" :position="playerPositions[item.position]"/>
-
-            <!--<player-row-card v-for="(item, i) in players.goal_keeper" :key="i+'prc-portero'" mode="small-a" :player="item" position="ARQUERO"/>-->
-
-            <!--<player-row-card v-for="(item, i) in players.defender" :key="i+'prc-defensa'" mode="small-a" :player="item" position="DEFENSA"/>-->
-
-            <!--<player-row-card v-for="(item, i) in players.mid_fielder" :key="i+'prc-centrocampista'" mode="small-a" :player="item" position="CENTROCAMPISTA"/>-->
-
-            <!--<player-row-card v-for="(item, i) in players.forward" :key="i+'prc-delantero'" mode="small-a" :player="item" position="DELANTERO"/>-->
+            <player-row-card v-for="(item, i) in players"
+                             :key="i+'prc-player'"
+                             mode="small-a"
+                             :player="item"
+                             :position="playerPositions[item.position]"/>
           </div>
         </div>
-
-
 
       </template>
       <template v-if="collapsable">
@@ -188,21 +182,10 @@
         default: 'en_juego'
       },
       team: Object,
-      id: String,
-      title: String,
-      points: Number,
-      leagueImg: String,
-      ranking: Number,
       players: Array,
-      cost: String,
-      status: String,
       collapsable: {
         type: Boolean,
         default: false
-      },
-      width: {
-        type: String,
-        default: '420px'
       }
     },
     computed: {
