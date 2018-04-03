@@ -109,7 +109,6 @@
 
 <script>
   import { TheMask } from 'vue-the-mask'
-  // import Cleave from 'cleave.js'
 
   export default {
     name: 'payments',
@@ -120,124 +119,6 @@
     middleware: 'authenticated',
     async fetch ({ store }) {
       await store.dispatch('fetchUser')
-    },
-    methods: {
-      nextPlan () {
-        if (this.planSelected !== this.plans.length - 1) {
-          this.planSelected += 1
-        } else {
-          this.planSelected = 0
-        }
-      },
-      prevPlan () {
-        if (this.planSelected !== 0) {
-          this.planSelected -= 1
-        } else {
-          this.planSelected = this.plans.length - 1
-        }
-      },
-      closeDialog () {
-        this.$emit('onCollapse', false)
-      },
-      async pay () {
-
-        if (!this.payButtonEnabled) {
-          return null
-        }
-
-        if (this.creditInfo.card_number.length !== 16 ||
-          this.creditInfo.cvv.length !== 3 ||
-          this.creditInfo.expiration_month.length !== 2 ||
-          this.creditInfo.expiration_year.length !== 4) {
-
-          this.$store.dispatch('turnOnSnackbar', 'Datos inválidos.')
-          return null
-        }
-
-        if ( parseInt(this.creditInfo.expiration_month) > 12 ) {
-
-          this.$store.dispatch('turnOnSnackbar', 'Datos inválidos.')
-          return null
-        }
-
-
-        this.payButtonEnabled = false
-        this.payButtonText = 'Espere...'
-
-        // lazy validation
-
-        const user = this.$store.getters['user']
-        const email = user.email
-        this.creditInfo.email = email
-
-        const creditCard = this.creditInfo.card_number
-
-        let request = {
-          card_number: creditCard,
-          cvv: this.creditInfo.cvv,
-          expiration_year: this.creditInfo.expiration_year,
-          expiration_month: this.creditInfo.expiration_month,
-          email: this.creditInfo.email
-        }
-
-
-        // console.log('request',request)
-        const token = this.$store.getters['auth/getToken']
-        const publicKey = 'pk_live_Sabys0p2rhn2D4ZM'
-
-        this.$store.state.isShortLoading = true
-
-        try {
-
-          {
-            const response = await this.$axios.$post('https://api.culqi.com/v2/tokens', request,
-              { headers: { Authorization: 'Bearer ' + publicKey } })
-
-
-            let request2 = {
-              card_number: request.card_number,
-              token_card: response.id
-            }
-            console.log('request2', request2)
-
-            const response2 = await this.$axios.$post(`api/v2.0/users/${user.id}/set-card`, request2,
-              { headers: { Authorization: 'Bearer ' + token} })
-
-            console.log('reponse2', response2)
-
-            const amount = this.plans[this.planSelected].amount
-            let finalRequest = {
-              how: amount
-            }
-
-            const finalResponse = await this.$axios.$post(`api/v2.0/users/${user.id}/charge`, finalRequest,
-              { headers: { Authorization: 'Bearer ' + token} })
-
-
-            this.payButtonText = 'COMPRAR AHORA'
-            this.payButtonEnabled = true
-
-            console.log('finalResponse', finalResponse)
-            this.$store.dispatch('updateUser', finalResponse.data)
-
-            this.$store.state.isShortLoading = false
-            this.$store.dispatch('turnOnSnackbar', 'Felicidades! tu compra ha sido realizada con exito.')
-            this.$store.state.bomboPayments = false
-
-          }
-        } catch (e) {
-          this.$store.state.isShortLoading = false
-          console.log('e bombo pa',e.toString())
-          this.$store.dispatch('turnOnSnackbar', e.response.data.user_message)
-
-          this.payButtonEnabled = true
-          this.payButtonText = 'COMPRAR AHORA'
-        }
-
-
-
-
-      }
     },
     computed: {
       iconCC () {
@@ -253,24 +134,32 @@
       },
       plans () {
         return this.$store.state.payment.plans
-      }
+      },
+      planSelected: {
+        get () {
+          return this.$store.state.payment.planSelected
+        },
+        set (value) {
+          this.$store.state.payment.planSelected = value
+        }
+      },
+      payButtonEnabled () { return this.$store.state.payment.payButtonEnabled },
+      payButtonText () { return this.$store.state.payment.payButtonText },
+      creditInfo () { return this.$store.state.payment.creditInfo }
     },
     data () {
-      return {
-        isLoading: false,
-        payButtonEnabled: true,
-        payButtonText: 'COMPRAR AHORA',
-        creditInfo: {
-          card_number:'',
-          cvv: '',
-          expiration_year: '',
-          expiration_month: '',
-          email: ''
-        },
-        planSelected: 0
-      }
+      return {}
     },
-    mounted () {
+    methods: {
+      nextPlan () {
+        this.$store.commit('payment/nextPlan')
+      },
+      prevPlan () {
+        this.$store.commit('payment/prevPlan')
+      },
+      pay () {
+        this.$store.dispatch('payment/pay')
+      }
     }
   }
 </script>
