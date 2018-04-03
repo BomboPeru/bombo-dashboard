@@ -107,6 +107,7 @@
       },
       bomboCoins () {
         if (process.server) return 0
+        if (this.$store.getters['user'] === null) return 0
         return this.$store.getters['user'].current_bombo_coins
       },
       saldo () {

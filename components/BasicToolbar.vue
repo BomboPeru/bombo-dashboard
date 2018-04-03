@@ -6,7 +6,9 @@
         </nuxt-link>
       </div>
 
-      <template v-if="alreadySigned">
+
+      <template v-if="!sessionVerified"></template>
+      <template v-else-if="alreadySigned">
         <div class="reenter-username" @click="goToHome">
           <i class="far fa-user"></i>
           Hola, <span class="user-hello"> {{ username }}</span>
@@ -47,6 +49,7 @@
     name: 'basic-toolbar',
     data () {
       return {
+        sessionVerified: false,
         alreadySigned: false,
         username: '',
         menu : false,
@@ -78,7 +81,7 @@
         const BASE_URL = this.$store.state.BASE_URL
 
         try {
-          const response = await axios.get(BASE_URL + 'auth/verify', { headers: { 'Authorization': 'Bearer ' + token }})
+          const response = await this.$axios.get(BASE_URL + 'auth/verify', { headers: { 'Authorization': 'Bearer ' + token }})
           return true
         } catch (e) {
           return false
@@ -98,7 +101,10 @@
 
             this.$store.dispatch('auth/removeAuth')
           }
+          this.sessionVerified = true
         })
+      } else {
+        this.sessionVerified = true
       }
 
     }
