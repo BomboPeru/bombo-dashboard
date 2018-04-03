@@ -6,7 +6,6 @@
         </nuxt-link>
       </div>
 
-
       <template v-if="!sessionVerified"></template>
       <template v-else-if="alreadySigned">
         <div class="reenter-username" @click="goToHome">
