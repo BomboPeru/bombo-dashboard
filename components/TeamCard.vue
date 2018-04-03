@@ -1,22 +1,6 @@
 <template>
     <div id="team-card" class="elevation rounded" :class="[collapsable?'collapse-team-card':'team-card']">
 
-      <!--<div class="window-title" :style="{ background: typeColorCards[typeCard] }">-->
-        <!--<div :style="{ 'text-align': typeCard !== 'en_juego'?'center':'left' }">-->
-          <!--<span class="title" :style="{ 'text-align': typeCard !== 'en_juego'?'center':'left' }">{{ team.name }}</span>-->
-          <!--<span class="right" v-if="typeCard === 'en_juego'">{{ points }}</span>-->
-          <!--<span class="right guardados" v-if="typeCard === 'guardado'">-->
-            <!--<template v-if="isFavoriteSaved">-->
-              <!--<img src="../assets/icons/star_on.png" alt="" @click="toggleFavorite">-->
-            <!--</template>-->
-            <!--<template v-else>-->
-              <!--<img src="../assets/icons/star_off.png" alt="" @click="toggleFavorite">-->
-            <!--</template>-->
-          <!--</span>-->
-          <!--&lt;!&ndash;<span class="right pasado" v-if="typeCard === 'pasado'">{{ points }}</span>&ndash;&gt;-->
-        <!--</div>-->
-      <!--</div>-->
-
       <template v-if="typeCard === 'guardado'">
         <div class="toggle-edit-btn" @click="toggleEdit">
           <i class="far fa-edit"></i>
@@ -62,8 +46,6 @@
         <div class="league-background" style="padding-top: 10px;">
           <img :src="'/team_resources/premier_league_icon_w.png'" alt="" height="50px">
         </div>
-
-        <!--<p class="created-at subheader">FECHA DE CREACION: {{ createdAt }}</p>-->
 
         <div class="table-container elevation">
 
@@ -121,9 +103,7 @@
         </div>
       </div>
 
-      <!--<div class="divider" v-if="typeCard !== 'en_juego'"></div>-->
-
-      <div class="bottom-button-container" v-if="typeCard !== 'en_juego'">
+      <div class="actions-button-container" v-if="typeCard !== 'en_juego'">
         <div class="button-play-again elevation" v-if="typeCard === 'guardado'" @click="putInGameTeam(team)">
           JUEGA YA!
         </div>
@@ -134,8 +114,6 @@
           Guardar
         </div>
       </div>
-
-      <!--<div class="divider"></div>-->
 
       <!-- COLLAPSABLE -->
       <template v-if="collapsable">
@@ -156,8 +134,8 @@
                              :position="playerPositions[item.position]"/>
           </div>
         </div>
-
       </template>
+
       <template v-if="collapsable">
         <div v-if="isCollapsed" class="btn-expand" @click="collapse">
           MINIMIZAR
@@ -235,7 +213,6 @@
 
         const teamName = this.team.name
 
-        console.log(this.team)
         this.$store.commit('createteam/setleagueid', this.team.league_id)
         this.$store.commit('createteam/setTeamName', teamName)
 
@@ -296,8 +273,6 @@
         this.$store.state.team.teamNameToMakePlay = team.name
         this.$store.state.team.selectTimeDialog = true
       }
-    },
-    mounted () {
     }
   }
 </script>
@@ -305,7 +280,6 @@
 <style scoped lang="stylus">
 font = 'Nunito Sans'
 font2 = 'Titillium Web'
-/* Titillium Web */
 
 .team-card
   /*width 420px*/
@@ -334,38 +308,7 @@ font2 = 'Titillium Web'
 .elevation
   box-shadow 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23)
   */
-.window-title
-  width 100%
-  height 38px
-  background #fff
-  padding 10px 0px
-.window-title div
-  padding 0px 18px
-.title
-  position: relative;
-  top -3px
-  text-align left
-  color white
-  font-size 18px
-  font-weight bold
-  font-family font
-  text-transform uppercase
-  text-overflow: ellipsis;
-  display: inline-block;
-  white-space: nowrap;
-  overflow: hidden;
-  width: 150px;
-.right
-  float right
-  color white
-  font-size 12px
-  font-weight bold
-  font-family font
-  text-transform uppercase
-.guardados
-  margin-top 2px
-  margin-right -4px
-  cursor pointer
+
 .league-background
   width 100%
   height 163px
@@ -379,8 +322,6 @@ font2 = 'Titillium Web'
   color #A6A6A6
   font-family font
 
-.created-at
-  margin-top 6px
 .selected-players-title
   margin-left: 12px
   margin-top 6px
@@ -460,22 +401,12 @@ font2 = 'Titillium Web'
   padding-left 10px
   padding-right 10px
 
-.divider
-  margin-top 8px
-  height 0px
-  border 1px solid #E8E8E8
-  width 90%
-  position: relative
-  left: 50%
-  transform: translateX(-50%)
-
 //  NOTE: MANAGED TO BE FILL THE HEIGHT AND STILL BE RESPONSIVE
 //  STILL MUTABLE
 .list-players-container
   // height 200px
   height calc(100vh - 429px)
   // height calc(100vh - 374px)
-
   // height calc(100vh - 450px)
   // height calc(100vh - 500px)
   /*height 40vh*/
@@ -485,7 +416,7 @@ font2 = 'Titillium Web'
   // height calc(100vh - 416px) !important
 
 
-.bottom-button-container
+.actions-button-container
   display flex
   justify-content space-around
   padding-left 15px
@@ -626,7 +557,6 @@ font2 = 'Titillium Web'
   line-height 30px
   border-radius 15px
 
-
 .collapse-team-card
   width 96%
   display inline-block
@@ -646,8 +576,6 @@ font2 = 'Titillium Web'
     min-width 300px
   /*.collapse-team-card*/
     /*width 100%*/
-
-
   .list-players-container
     overflow-y: scroll
     height calc(100vh - 319px)
