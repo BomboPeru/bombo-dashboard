@@ -139,7 +139,10 @@
 
         this.$store.state.isShortLoading = true
 
+        const oldTeamName = this.oldTeamName
+
         this.$axios.$post('api/v2.0/users/'+ userId + '/edit-team', {
+          old_team_name: oldTeamName,
           team: {
             league_id: leagueId,
             name: this.team.name,
@@ -150,7 +153,7 @@
           // console.log(res)
           this.$store.dispatch('updateUser', res.data)
           this.$store.state.isShortLoading = false
-          this.$store.dispatch('turnOnSnackbar', 'Equipo Creado!. Visita Mis Equipos para jugar')
+          this.$store.dispatch('turnOnSnackbar', 'Equipo Editado!. Visita Mis Equipos para jugar')
 
           setTimeout(() => {
             this.$store.state.createteam.captainId = null
@@ -162,7 +165,6 @@
           this.$store.dispatch('turnOnSnackbar', 'Error al crear Equipo, intenta más tarde.')
           console.log(e)
         })
-
       },
       createTeam () {
 
@@ -184,7 +186,6 @@
             players: teamToCreate
           }
         }).then(res => {
-
           this.$store.dispatch('updateUser', res.data)
           this.$store.state.isShortLoading = false
           this.$store.dispatch('turnOnSnackbar', 'Equipo Creado!. Visita Mis Equipos para jugar')
@@ -193,7 +194,6 @@
             this.$store.state.createteam.captainId = null
             this.$router.push('/client/teams')
           }, 800)
-
         }).catch(e => {
           this.$store.state.isShortLoading = false
           this.$store.dispatch('turnOnSnackbar', 'Error al crear Equipo, intent más tarde.')
@@ -279,6 +279,7 @@
     data () {
       return {
         editMode: false,
+        oldTeamName: '',
         team: {
           name: '',
           players: {
@@ -319,6 +320,7 @@
       if (teamName !== null) {
         this.editMode = true
         const savedTeams = this.$store.getters['user'].saved_teams
+        this.oldTeamName = teamName
 
         let savedTeamIndex = null
         for ( let i = 0; i < savedTeams.length; i++) {
