@@ -142,8 +142,10 @@
         const leagueId = this.$store.getters['createteam/leagueid']
 
         this.$store.state.isShortLoading = true
+        const oldTeamName = this.oldTeamName
 
         this.$axios.$post('api/v2.0/users/'+ userId + '/edit-team', {
+          old_team_name: oldTeamName,
           team: {
             league_id: leagueId,
             name: this.team.name,
@@ -154,7 +156,7 @@
           // console.log(res)
           this.$store.dispatch('updateUser', res.data)
           this.$store.state.isShortLoading = false
-          this.$store.dispatch('turnOnSnackbar', 'Equipo Creado!. Visita Mis Equipos para jugar')
+          this.$store.dispatch('turnOnSnackbar', 'Equipo Editado!. Visita Mis Equipos para jugar')
 
           setTimeout(() => {
             this.$store.state.createteam.captainId = null
@@ -282,6 +284,7 @@
     },
     data () {
       return {
+        oldTeamName: '',
         editMode: false,
         team: {
           name: '',
@@ -323,6 +326,7 @@
       if (teamName !== null) {
         this.editMode = true
         const savedTeams = this.$store.getters['user'].saved_teams
+        this.oldTeamName = teamName
 
         let savedTeamIndex = null
         for ( let i = 0; i < savedTeams.length; i++) {
