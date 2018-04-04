@@ -63,6 +63,11 @@
           <span class="price">{{ item.price }}</span>
         </div>
 
+
+        <div class="prices-card-note">
+          *1 entrada = S/ 10 o 10 Bombo coins
+        </div>
+
       </div>
 
       <div class="ranking-top-players custom-elevation">
@@ -515,6 +520,11 @@
     grid-row-start 3
     grid-row-end 4
 
+  .prices-card-note
+    font-family Titillium Web
+    font-size 12px
+    color #535353
+    text-align center
 
   .empty-tutorial-items
     background #E7EDFF
