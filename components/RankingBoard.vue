@@ -40,6 +40,7 @@
       <template v-if="landing">
         <div :class="[landing?'content-table-landing':'content-table']" v-if="ranking.length > 0">
           <ranking-row-card class="ranking-row-card"
+                            :landing="landing"
                             v-for="(item, i) in ranking"
                             :key="i+'-ranking-user'"
                             :team="item"/>
@@ -52,6 +53,7 @@
         <template v-if="isRanking">
           <div :class="[landing?'content-table-landing':'content-table']" v-if="ranking.length > 0">
             <ranking-row-card class="ranking-row-card"
+                              :landing="landing"
                               v-for="(item, i) in ranking"
                               :key="i+'-ranking-user'"
                               :team="item"/>

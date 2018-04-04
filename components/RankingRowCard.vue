@@ -10,10 +10,18 @@
               </div>
             </td>
             <td id="team-name">
-              <div class="username">{{team.creator}}</div>
-              <div class="ellipsis teamname">
-                Equipo: {{team.name}}
-              </div>
+              <template v-if="landing">
+                <div class="username">{{team.creator}}</div>
+                <div class="ellipsis teamname">
+                  Equipo: {{team.name}}
+                </div>
+              </template>
+              <template v-else>
+                <div class="username">{{team.name}}</div>
+                <div class="ellipsis teamname">
+                  {{team.creator}}
+                </div>
+              </template>
             </td>
 
             <td id="earning">
@@ -40,7 +48,8 @@
   export default {
     name: 'ranking-row-card',
     props: {
-      team: Object
+      team: Object,
+      landing: Boolean
     },
     computed: {
       BASE_URL () {
