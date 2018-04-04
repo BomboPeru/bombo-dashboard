@@ -33,7 +33,6 @@
               </div>
             </div>
           </div>
-
         </div>
 
         <div class="prices-card custom-elevation">
@@ -61,6 +60,10 @@
                :class="[i%2?'price-pair':'price-nopair', 'price-item']">
             <span class="place">{{ item.place }}</span>
             <span class="price">{{ item.price }}</span>
+          </div>
+
+          <div class="prices-card-note">
+            *1 entrada = S/ 10 o 10 Bombo coins
           </div>
 
         </div>
@@ -513,6 +516,13 @@
     grid-column-end 6
     grid-row-start 3
     grid-row-end 4
+
+
+  .prices-card-note
+    font-family Titillium Web
+    font-size 12px
+    color #535353
+    text-align center
 
 
   .empty-tutorial-items
