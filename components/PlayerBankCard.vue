@@ -134,6 +134,9 @@
           this.$store.state.isLoading = true
         }
 
+        const leagueId = this.$store.getters['createteam/leagueid']
+
+        // const response = await this.$axios.$get(`api/v2.0/players/${leagueId}/all`)
         const response = await this.$axios.$get('api/v2.0/players/all')
         if (response === undefined) return
 
@@ -153,7 +156,6 @@
 
 
         // matches
-        const leagueId = this.$store.getters['createteam/leagueid']
         let response2 = await this.$axios.$get(`api/v2.0/matches/${leagueId}/current-matches`)
         let matches = response2.data
         let nextMatchTeam = {}
