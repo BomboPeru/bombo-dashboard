@@ -223,6 +223,7 @@
             break
           }
         }
+        this.toggleEdit()
         this.$router.push('/client/createteam')
       },
       duplicate() {
@@ -237,6 +238,9 @@
           .catch(err => {
             this.$store.dispatch('turnOnSnackbar', 'Hubo un problema en esta operación. Intente mas tarde')
             console.log(err)
+          })
+          .finally(() => {
+            this.toggleDuplicate()
           })
 
       },
@@ -257,6 +261,9 @@
         .catch(err => {
           this.$store.dispatch('turnOnSnackbar', 'Hubo un problema en esta operación. Intente mas tarde')
           console.log(err)
+        })
+        .finally(() => {
+          this.toggleDelete()
         })
       },
       toggleFavorite() {
