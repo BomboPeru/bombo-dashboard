@@ -107,7 +107,7 @@ const actions = {
         console.log('request2', request2)
 
         // --- STEP 2 ---
-        const response2 = await axios.post(`api/v2.0/users/${user.id}/set-card`, request2,
+        const response2 = await axios.post(`${rootState.BASE_URL}api/v2.0/users/${user.id}/set-card`, request2,
           { headers: { Authorization: 'Bearer ' + token} })
 
         console.log('response2', response2)
@@ -117,9 +117,8 @@ const actions = {
           how: amount
         }
 
-
         // --- STEP 3 ---
-        const finalResponse = await axios.post(`api/v2.0/users/${user.id}/charge`, finalRequest,
+        const finalResponse = await axios.post(`${rootState.BASE_URL}api/v2.0/users/${user.id}/charge`, finalRequest,
           { headers: { Authorization: 'Bearer ' + token} })
 
 
