@@ -55,15 +55,15 @@ const actions = {
 
     if (state.creditInfo.card_number.length !== 16 ||
       state.creditInfo.cvv.length !== 3 ||
-      state.creditInfo.expiration_month.length !== 2 ||
+      !(state.creditInfo.expiration_month.length === 2 || state.creditInfo.expiration_month.length === 1) ||
       state.creditInfo.expiration_year.length !== 4
     ) {
-      dispatch('turnOnSnackbar', 'Datos inválidos.', { root: true })
+      dispatch('turnOnSnackbar', 'Datos inválidos. Revisa el formato al ingresar tus datos', { root: true })
       return null
     }
 
-    if ( parseInt(state.creditInfo.expiration_month) > 12 ) {
-      dispatch('turnOnSnackbar', 'Datos inválidos.', { root: true })
+    if ( parseInt(state.creditInfo.expiration_month) > 12 || parseInt(state.creditInfo.expiration_month) === 0) {
+      dispatch('turnOnSnackbar', 'Datos inválidos. Mes inválido. (formato: MM)', { root: true })
       return null
     }
 
