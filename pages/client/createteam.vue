@@ -165,7 +165,11 @@
 
         }).catch(e => {
           this.$store.state.isShortLoading = false
-          this.$store.dispatch('turnOnSnackbar', 'Error al crear Equipo, intenta más tarde.')
+          if (e.response !== undefined) {
+            this.$store.dispatch('turnOnSnackbar', `Error: ${e.response.data.error}`)
+          } else {
+            this.$store.dispatch('turnOnSnackbar', `Error al crear Equipo, intente más tarde.`)
+          }
           console.log(e)
         })
 
@@ -202,7 +206,12 @@
 
         }).catch(e => {
           this.$store.state.isShortLoading = false
-          this.$store.dispatch('turnOnSnackbar', 'Error al crear Equipo, intent más tarde.')
+
+          if (e.response !== undefined) {
+            this.$store.dispatch('turnOnSnackbar', `Error: ${e.response.data.error}`)
+          } else {
+            this.$store.dispatch('turnOnSnackbar', `Error al crear Equipo, intente más tarde.`)
+          }
           console.log(e)
         })
       },
