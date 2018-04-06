@@ -3,16 +3,16 @@
       <table style="width: 100%" class="table-content">
         <thead v-if="!notPlayed">
           <tr class="team_names">
-            <th style="width: 40%;">{{ match.away_name }}</th>
-            <th style="width: 20%;"></th>
             <th style="width: 40%;">{{ match.home_name }}</th>
+            <th style="width: 20%;"></th>
+            <th style="width: 40%;">{{ match.away_name}}</th>
           </tr>
         </thead>
         <tbody>
           <tr style="height: 60px;">
-            <td style="width: 40%;" :class="[notPlayed?'name-row':'score-row']">{{ notPlayed?match.away_name:match.away_score }}</td>
+            <td style="width: 40%;" :class="[notPlayed?'name-row':'score-row']">{{ notPlayed?match.home_name:match.home_score }}</td>
             <td style="width: 20%;" class="vs">vs</td>
-            <td style="width: 40%;" :class="[notPlayed?'name-row':'score-row']">{{ notPlayed?match.home_name:match.home_score  }}</td>
+            <td style="width: 40%;" :class="[notPlayed?'name-row':'score-row']">{{ notPlayed?match.away_name:match.away_score }}</td>
           </tr>
         </tbody>
       </table>
