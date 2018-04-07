@@ -88,7 +88,7 @@
           <div class="captain-indication">
             <div class="captain-icon"> <i class="fas fa-info-circle"></i> </div>
             <div class="captain-indication-text">
-              Debes escoger a un capitán en la vista de tu lista de jugadores.
+              Escoge al capitán haciendo click sobre la camiseta del jugador.
             </div>
           </div>
 
