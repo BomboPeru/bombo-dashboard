@@ -17,9 +17,9 @@
                 <table width="100%">
                   <tbody>
                   <tr>
-                    <td style="width: 40%">{{ match.away_name }} </td>
+                    <td style="width: 40%">{{ match.home_name }} </td>
                     <td style="width: 20%" class="vs">vs</td>
-                    <td style="width: 40%">{{ match.home_name }}</td>
+                    <td style="width: 40%">{{ match.away_name }}</td>
                   </tr>
                   </tbody>
                 </table>
