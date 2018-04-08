@@ -83,18 +83,18 @@
             return false
           }
           if (totalDefender < this.constraints.defender[0] ||
-            totalDefender> this.constraints.defender[1]) {
-            this.$store.dispatch('turnOnSnackbar', 'Debes escoger al menos a un defensa')
+            totalDefender > this.constraints.defender[1]) {
+            this.$store.dispatch('turnOnSnackbar', `Debes escoger entre ${this.constraints.defender[0]} y ${this.constraints.defender[1]} defensa(s)`)
             return false
           }
           if (totalMidFielder < this.constraints.mid_fielder[0] ||
-            totalMidFielder> this.constraints.mid_fielder[1]) {
-            this.$store.dispatch('turnOnSnackbar', 'Debes escoger al menos a un centrocampista')
+            totalMidFielder > this.constraints.mid_fielder[1]) {
+            this.$store.dispatch('turnOnSnackbar', `Debes escoger entre ${this.constraints.mid_fielder[0]} y ${this.constraints.mid_fielder[1]} centrocampista(s)`)
             return false
           }
           if (totalForward < this.constraints.forward[0] ||
             totalForward > this.constraints.forward[1]) {
-            this.$store.dispatch('turnOnSnackbar', 'Debes escoger al menos a un delantero')
+            this.$store.dispatch('turnOnSnackbar', `Debes escoger entre ${this.constraints.forward[0]} y ${this.constraints.forward[1]} delantero(s)`)
             return false
           }
         }
