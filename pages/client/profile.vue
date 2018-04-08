@@ -155,7 +155,7 @@
 <style scoped lang="stylus">
   /*#matches*/
   #profile
-    height calc(100vh - 128px)
+    height calc(100vh - 116px)
     display flex
     justify-content center
   .container
@@ -231,6 +231,8 @@
     font-family: Titillium Web;
 
   @media screen and (max-width: 1023px)
+    #profile
+      height calc(100vh - 56px)
     .container
       display block
       width 100%

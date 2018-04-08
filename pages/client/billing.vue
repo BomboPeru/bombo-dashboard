@@ -206,6 +206,14 @@
 <style scoped lang="stylus">
   /*#matches*/
   /*#billing*/
+
+  #billing
+    height calc(100vh - 116px)
+    overflow-y auto
+  @media screen and (max-width: 1023px)
+    #billing
+      height calc(100vh - 56px)
+
   .alert-info
     background lightblue
     color #0e212d

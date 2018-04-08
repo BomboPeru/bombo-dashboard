@@ -490,6 +490,7 @@
     font-family 'Nunito Sans'
     border-radius 2px
     overflow hidden
+    background #fff
 
   .status-card
     grid-column-start 1

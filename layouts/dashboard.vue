@@ -148,14 +148,13 @@
 }
 
 .background
-  /*background url(../assets/background/background_desktop.png)*/
+  background: #e8ecf0
   background-size cover
 .fab
   display block
 
 @media screen and (max-width: 1023px)
   .background
-    /*background url(../assets/background/background_mobile.png)*/
   .content
     margin-left 0px
   .fab
