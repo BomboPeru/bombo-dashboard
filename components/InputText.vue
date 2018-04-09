@@ -190,7 +190,8 @@
     background white
     color #424242
     border-radius: 0px
-    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25)
+    // box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25)
+    box-shadow: 0 3px 8px 0 rgba(0,0,0,0.50);
   .prepend-icon
   .append-icon
     position absolute
@@ -208,7 +209,7 @@
     padding-left 34px
   .big-input
     font-size 16px
-    height 50px
+    height 40px
   .big-icon
     top 17px !important
 

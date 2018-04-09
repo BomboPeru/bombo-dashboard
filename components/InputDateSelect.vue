@@ -1,16 +1,16 @@
 <template>
   <div id="input-date">
-    <select name="" v-model="date" @change="checkMonth">
+    <select name="" v-model="date" @change="checkMonth" :class="[big?'big':'', solid?'solid':'']">
       <option v-for="n in 31"
               :key="n+'-date'"
               :value="n">{{ n }}</option>
     </select>
-    <select name="" v-model="month" @change="checkMonth">
+    <select name="" v-model="month" @change="checkMonth" :class="[big?'big':'', solid?'solid':'']">
       <option v-for="(item, i) in monthList"
               :key="i+'-month'"
               :value="item.value">{{ item.label }}</option>
     </select>
-    <select name="" v-model="year" @change="inputObserver">
+    <select name="" v-model="year" @change="inputObserver" :class="[big?'big':'', solid?'solid':'']">
       <option v-for="n in 100"
               :key="n+'-date'"
               :value="currentYear - n">{{ currentYear - n }}</option>
@@ -22,7 +22,9 @@
   export default {
     name: 'input-date-select',
     props: {
-      value: String
+      value: String,
+      big: Boolean,
+      solid: Boolean
     },
     computed: {
       currentYear () {
@@ -88,4 +90,13 @@
     border: 0;
     border-bottom: 1px solid rgba(255, 255, 255, .60);
 
+  .solid
+    background white !important
+    color #424242 !important
+    border-radius: 0px
+    // box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25)
+    box-shadow: 0 3px 8px 0 rgba(0,0,0,0.50);
+    margin 10px 4px
+  .big
+    height 40px
 </style>

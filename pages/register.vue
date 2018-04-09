@@ -8,11 +8,17 @@
       </div>
 
       <div class="card-container elevation rounded-sm">
+
         <!--<div class="banner-side">-->
           <!--<p class="title-register">REGISTRATE</p>-->
           <!--<p class="phrase-register">No esperes para ser parte de bombo</p>-->
         <!--</div>-->
+
+        <div class="window-title">
+        </div>
+
         <div class="grid-content grid-content-side">
+
           <div class="avatar-section">
             <div>
               <input type="file" style="display: none;" ref="inputFileImage" @change="atPhotoLoaded">
@@ -20,99 +26,143 @@
               <div class="upload-photo-indication">Selecciona tu foto de perfil</div>
             </div>
           </div>
-          <div class="column-a">
 
-            <div class="group-form">
+          <!--<div class="column-a">-->
+
+          <div class="group-form item-1">
+
+            <div class="inner-item">
               <div class="warning" v-if="!isValidInput(constraints.name.rules, user.name) && hasSubmit">
                 {{ constraints.name.message }}
               </div>
-              <div class="label" v-else> Nombre y Apellidos </div>
+              <div class="label" v-else> Nombre </div>
               <div>
-                <input type="text"
-                       :class="['input-form', (!isValidInput(constraints.name.rules, user.name) && hasSubmit)?'input-warning':'']"
-                       placeholder="" v-model="user.name">
+                <input-text big solid v-model="user.name" width="100%" placeholder="Ex. Juan"/>
+                <!--<input type="text"-->
+                <!--:class="['input-form', (!isValidInput(constraints.name.rules, user.name) && hasSubmit)?'input-warning':'']"-->
+                <!--placeholder="" v-model="user.name">-->
               </div>
             </div>
+          </div>
 
-            <div class="group-form">
+          <div class="group-form last-item-col-a item-2">
+            <div class="inner-item">
+              <div class="warning" v-if="!isValidInput(constraints.email.rules, user.email) && hasSubmit">
+                {{ constraints.email.message }}
+              </div>
+              <div class="label" v-else> Email </div>
+
+              <div>
+                <input-text big solid v-model="user.email" width="100%" placeholder="Ex. juan@example.com"/>
+                <!--<input type="text"-->
+                <!--:class="['input-form', (!isValidInput(constraints.email.rules, user.email) && hasSubmit)?'input-warning':'']" -->
+                <!--placeholder="" v-model="user.email">-->
+              </div>
+            </div>
+          </div>
+
+
+          <div class="group-form item-3">
+
+            <div class="inner-item">
               <div class="warning" v-if="wrongBirthday && hasSubmit">
                 {{ constraintBirthdayMessage }}
               </div>
-              <div class="label">
+              <div class="label birthday-label">
                 Fecha de nacimiento
               </div>
 
               <div class="birthday-container">
 
-                <input-date-select v-model="user.birthday_fake"/>
+                <input-date-select big solid v-model="user.birthday_fake"/>
 
                 <!--<input type="date" :class="['input-form', (wrongBirthday && hasSubmit)?'input-warning':'']" class="input-form" placeholder="yyyy-mm-dd" v-model="user.birthday_fake">-->
 
               </div>
             </div>
-
-            <div class="group-form last-item-col-a">
-              <div class="warning" v-if="!isValidInput(constraints.identity_document.rules, user.identity_document) && hasSubmit">
-                {{ constraints.identity_document.message }}
-              </div>
-              <div class="label" v-else> Documento de identidad </div>
-              <div>
-                <input type="number"
-                       :class="['input-form', (!isValidInput(constraints.identity_document.rules, user.identity_document) && hasSubmit)?'input-warning':'']"
-                       placeholder=""
-                       v-model="user.identity_document">
-              </div>
-            </div>
-
           </div>
-          <div class="column-b">
 
-            <div class="group-form">
-              <div class="warning" v-if="!isValidInput(constraints.email.rules, user.email) && hasSubmit">
-                {{ constraints.email.message }}
-              </div>
-              <div class="label" v-else> Correo electrónico </div>
-
-              <div>
-                <input type="text"
-                       :class="['input-form', (!isValidInput(constraints.email.rules, user.email) && hasSubmit)?'input-warning':'']" placeholder="" v-model="user.email">
-              </div>
-            </div>
-
-            <div class="group-form">
+          <div class="group-form item-4">
+            <div class="inner-item">
               <div class="warning" v-if="!isValidInput(constraints.username.rules, user.username) && hasSubmit">
                 {{ constraints.username.message }}
               </div>
               <div class="label" v-else> Nombre de usuario </div>
               <div>
-                <input type="text"
-                       :class="['input-form', (!isValidInput(constraints.username.rules, user.username) && hasSubmit)?'input-warning':'']"
-                       placeholder="" v-model="user.username">
+                <input-text big solid width="100%" v-model="user.username" placeholder="Ex. juanperez1234"/>
+                <!--<input type="text"-->
+                <!--:class="['input-form', (!isValidInput(constraints.username.rules, user.username) && hasSubmit)?'input-warning':'']"-->
+                <!--placeholder="" v-model="user.username">-->
               </div>
             </div>
+          </div>
 
-            <div class="group-form">
+          <!--</div>-->
+
+          <!--<div class="column-b">-->
+
+          <div class="group-form item-5">
+            <div class="inner-item">
+              <div class="warning" v-if="!isValidInput(constraints.surname.rules, user.surname) && hasSubmit">
+                {{ constraints.surname.message }}
+              </div>
+              <div class="label" v-else> Apellidos </div>
+              <div>
+                <input-text big solid v-model="user.surname" width="100%" placeholder="Ex. Perez"/>
+                <!--<input type="number"-->
+                <!--:class="['input-form', (!isValidInput(constraints.identity_document.rules, user.identity_document) && hasSubmit)?'input-warning':'']"-->
+                <!--placeholder=""-->
+                <!--v-model="user.identity_document">-->
+              </div>
+
+            </div>
+          </div>
+
+          <div class="group-form last-item-col-a item-6">
+            <div class="inner-item">
+              <div class="warning" v-if="!isValidInput(constraints.identity_document.rules, user.identity_document) && hasSubmit">
+                {{ constraints.identity_document.message }}
+              </div>
+              <div class="label" v-else> Documento de identidad </div>
+              <div>
+                <input-text big solid v-model="user.identity_document" width="100%" type="number" placeholder="Ex. 23423423"/>
+                <!--<input type="number"-->
+                <!--:class="['input-form', (!isValidInput(constraints.identity_document.rules, user.identity_document) && hasSubmit)?'input-warning':'']"-->
+                <!--placeholder=""-->
+                <!--v-model="user.identity_document">-->
+              </div>
+            </div>
+          </div>
+
+
+          <div class="group-form item-7">
+            <div class="inner-item">
               <div class="warning" v-if="!isValidInput(constraints.password.rules, user.password) && hasSubmit">
                 {{ constraints.password.message }}
               </div>
               <div class="label" v-else> Contraseña </div>
               <div>
-                <input type="password"
-                       :class="['input-form', (!isValidInput(constraints.password.rules, user.password) && hasSubmit)?'input-warning':'']"
-                       placeholder="" v-model="user.password">
+                <input-text big solid v-model="user.password" width="100%" type="password" placeholder="*********"/>
+                <!--<input type="password"-->
+                <!--:class="['input-form', (!isValidInput(constraints.password.rules, user.password) && hasSubmit)?'input-warning':'']"-->
+                <!--placeholder="" v-model="user.password">-->
               </div>
             </div>
+          </div>
 
-            <div class="group-form">
+          <div class="group-form item-8">
+            <div class="inner-item">
               <div class="warning" v-if="!isValidInput(constraints.repassword.rules, user.repassword) && hasSubmit">
                 {{ constraints.repassword.message }}
               </div>
               <div class="label" v-else> Repetir Contraseña </div>
               <div>
-                <input type="password"
-                       :class="['input-form', (!isValidInput(constraints.repassword.rules, user.repassword) && hasSubmit)?'input-warning':'']"
-                       placeholder="" v-model="user.repassword">
+                <input-text big solid v-model="user.repasswordpassword" width="100%" type="password" placeholder="*********"/>
+                <!--<input type="password"-->
+                <!--:class="['input-form', (!isValidInput(constraints.repassword.rules, user.repassword) && hasSubmit)?'input-warning':'']"-->
+                <!--placeholder="" v-model="user.repassword">-->
               </div>
+
             </div>
           </div>
 
@@ -125,15 +175,14 @@
               <div class="warning" v-if="!isValidInput(constraints.terms_checked.rules, user.terms_checked) && hasSubmit">
                 {{ constraints.terms_checked.message }}
               </div>
-              <input class="check-terms" type="checkbox" v-model="user.terms_checked">
-              Acepto los
+              <cc-checkbox2 v-model="user.terms_checked" solid big/>
+              <!--<input class="check-terms" type="checkbox" v-model="user.terms_checked">-->
+              Leí y acepto los
               <a href="/terms" target="_blank" class="terms-link">
                 términos y condiciones
               </a>
               <!--<span class="terms-link" @click="openTermsConditionsDialog">términos y condiciones</span>-->
             </div>
-
-            <div class="warning final-warning"> {{message}} </div>
 
             <div style="text-align: center">
               <div class="btn-continue elevation" @click="createUser">
@@ -141,7 +190,7 @@
               </div>
             </div>
 
-
+            <div class="warning"> {{message}} </div>
           </div>
         </div>
 
@@ -156,11 +205,12 @@
   import InputSelect from '../components/InputSelect'
   import CcAvatar from '../components/CcAvatar'
   import InputDateSelect from '../components/InputDateSelect'
+  import CcCheckbox2 from '../components/CcCheckbox2'
 
   export default {
     name: 'register',
     components: {
-      InputText, InputSelect, CcAvatar, InputDateSelect
+      InputText, InputSelect, CcAvatar, InputDateSelect, CcCheckbox2
     },
     head () {
       return {
@@ -181,10 +231,15 @@
         hasPhotoToUpload: false,
         constraints: {
           name: {
-            message: 'Ingresa tu nombre y apellidos',
+            message: 'Ingresa tu nombre',
             rules: [
-              a => a.length > 3,
-              a => /\s/.test(a)
+              a => a.length > 1
+            ]
+          },
+          surname: {
+            message: 'Ingresa tus apellidos',
+            rules: [
+              a => a.length > 1
             ]
           },
           email: {
@@ -226,6 +281,7 @@
         },
         user: {
           name: '',
+          surname: '',
           birthday_fake: '2000-01-01',
           birthday: '',
           document_type: 'DNI',
@@ -305,6 +361,8 @@
 
             // loading on
             this.$store.state.isLoading = true
+
+            this.user.name += ' ' + this.user.surname
 
             try {
               let response = await this.$axios.$post('auth/signup', this.user )
@@ -414,17 +472,27 @@
     display: flex;
     justify-content: center;
     align-items: center;
+  .window-title
+    background #0F202D
+    position absolute
+    top 0
+    left 0
+    right 0
+    height 30px
+
   .card-container
     overflow visible
-    background #0F202D
-    border-radius 15px
+    // background #0F202D
+    background #fff
+    border-radius 4px
     padding 8px 20px
     position absolute
-    top 50%
+    top 53%
     left 50%
     transform translateX(-50%) translateY(-50%)
-    height 600px
-    width 70vw
+    // height 600px
+    height auto
+    width 700px
     box-shadow: 0 8px 24px 0 rgba(0,0,0,0.82);
 
   .grid-content
@@ -433,7 +501,7 @@
     height: 100%;
 
     grid-template-columns: 50% 50%;
-    grid-template-rows: 20% 60% 20%;
+    grid-template-rows: auto auto auto auto auto auto 20%;
 
   .grid-content-side
     // width 70%
@@ -475,17 +543,17 @@
     grid-column-start: 1;
     grid-column-end: 2;
     grid-row-start: 2
-    grid-row-end: 3
+    grid-row-end: 7
   .column-b
     grid-column-start: 2;
     grid-column-end: 3;
     grid-row-start: 2
-    grid-row-end: 3
+    grid-row-end: 7
   .signup-btn-section
     grid-column-start: 1;
     grid-column-end: 3;
-    grid-row-start: 3
-    grid-row-end: 4
+    grid-row-start: 7
+    grid-row-end: 8
 
     justify-self center
     align-self center
@@ -499,11 +567,68 @@
   .column-b
     padding 4px 60px 0px 20px
 
-  .column-a
-  .column-b
-    display: flex;
-    flex-wrap: wrap;
+  /*.column-a*/
+  /*.column-b*/
+    /*display: subgrid*/
+    // grid-template-columns: 100%;
+    // grid-template-rows: auto auto auto auto auto auto;
+    // flex-wrap: wrap;
 
+  .item-1
+  .item-2
+  .item-3
+  .item-4
+  .item-5
+  .item-6
+  .item-7
+  .item-8
+    text-align center
+
+  .item-1
+    grid-column-start: 1;
+    grid-column-end: 2;
+    grid-row-start: 2
+    grid-row-end: 3
+  .item-2
+    grid-column-start: 1;
+    grid-column-end: 3;
+    grid-row-start: 3
+    grid-row-end: 4
+  .item-3
+    grid-column-start: 1;
+    grid-column-end: 2;
+    grid-row-start: 4
+    grid-row-end: 5
+  .item-4
+    grid-column-start: 1;
+    grid-column-end: 3;
+    grid-row-start: 5
+    grid-row-end: 6
+  .item-5
+    grid-column-start: 2;
+    grid-column-end: 3;
+    grid-row-start: 2
+    grid-row-end: 3
+  .item-6
+    grid-column-start: 2;
+    grid-column-end: 3;
+    grid-row-start: 4
+    grid-row-end: 5
+  .item-7
+    grid-column-start: 1;
+    grid-column-end: 2;
+    grid-row-start: 6
+    grid-row-end: 7
+  .item-8
+    grid-column-start: 2;
+    grid-column-end: 3;
+    grid-row-start: 6
+    grid-row-end: 7
+
+  .inner-item
+    margin 0 12px
+  .birthday-container
+    text-align left
 
   .avatar
     position absolute
@@ -514,15 +639,16 @@
   // z-index 20
 
   .upload-photo-indication
-    color rgba(255, 255, 255, 0.56)
-    font-family Raleway
-    font-size 12px
+    color #A6A5FF
+    font-family 'Nunito Sans'
+    font-size 10px
     text-align center
 
     position absolute
     top 50px
     left 50%
     transform translateX(-50%)
+
 
   .group-form
     width 100%
@@ -547,7 +673,7 @@
     position relative
     padding 12px 60px
     text-align center
-    background: #25BF89;
+    background: #01E19F;
     border-radius: 20px;
     cursor pointer
     color white
@@ -566,46 +692,46 @@
 
 
 
-  .birthday-label-container
-    position relative
-    margin-top 16px
   .birthday-label
-    position: absolute;
-    top: -5px;
-    left: 0;
-    font-size: 11px;
-    z-index: 9;
+    margin-bottom 0px
+
   .label
-    color rgba(255, 255, 255, 0.86)
+    // color rgba(255, 255, 255, 0.86)
+    color #4A48D2
+    font-weight: 100
     font-family 'Nunito Sans'
-    font-size 14px
+    font-size 13px
+    text-align: left
+    margin-top 10px
 
   .warning
     color #f14066
     font-family 'Nunito Sans'
     font-size 12px
-    text-align center
-  .final-warning
-    font-family: Raleway;
-    font-weight: 500;
-    font-size 14px
-    padding: 10px 0;
-
+    text-align left
+    font-weight 700
   .info-terms
-    color #fafafa
-    font-size 12px
+    // color #fafafa
+    color #4A48D2
+    font-size 16px
     text-align center
     padding-bottom: 10px
+
   .terms-link
     cursor pointer
-    color #71c5c5
+    color #4A48D2
 
   .check-terms
     position relative
     top 2px
   @media screen and (max-width: 1023px)
     .card-container
-      width 90vw
+      width 500px
+      height 100vh
+      margin-top 0
+      overflow auto
+
+
     .grid-content-side
       width 100%
       float left
@@ -614,35 +740,72 @@
 
     .grid-content
       grid-template-columns: 100%;
-      grid-template-rows: 20% 30% 30% 20%;
+      grid-template-rows: 20% auto auto auto auto auto auto auto auto 20%;
 
     .avatar-section
       grid-column-start: 1;
       grid-column-end: 2;
       grid-row-start: 1
       grid-row-end: 2
+    .avatar
+      position absolute
+      top 0
+      left 50%
+      transform translateX(-50%)
+      box-shadow: 0 2px 18px 0 rgba(0,0,0,0.63);
 
-    .column-a
+    .upload-photo-indication
+      position relative
+      top 0
+      left 50%
+      transform translateX(-50%)
+
+    .item-1
       grid-column-start: 1;
       grid-column-end: 2;
       grid-row-start: 2
       grid-row-end: 3
-
-      padding: 4px 50px;
-
-    .column-b
+    .item-2
       grid-column-start: 1;
       grid-column-end: 2;
       grid-row-start: 3
       grid-row-end: 4
-
-      padding: 4px 50px;
-
-    .signup-btn-section
+    .item-3
+      grid-column-start: 1;
+      grid-column-end: 2;
+      grid-row-start: 5
+      grid-row-end: 6
+    .item-4
+      grid-column-start: 1;
+      grid-column-end: 2;
+      grid-row-start: 6
+      grid-row-end: 7
+    .item-5
+      grid-column-start: 1;
+      grid-column-end: 2;
+      grid-row-start: 7
+      grid-row-end: 8
+    .item-6
       grid-column-start: 1;
       grid-column-end: 2;
       grid-row-start: 4
       grid-row-end: 5
+    .item-7
+      grid-column-start: 1;
+      grid-column-end: 2;
+      grid-row-start: 8
+      grid-row-end: 9
+    .item-8
+      grid-column-start: 1;
+      grid-column-end: 2;
+      grid-row-start: 9
+      grid-row-end: 10
+
+    .signup-btn-section
+      grid-column-start: 1;
+      grid-column-end: 2;
+      grid-row-start: 10
+      grid-row-end: 11
 
       padding-top: 22px;
 
@@ -657,7 +820,7 @@
       padding-top 12px
     .grid-content
       grid-template-columns: 100%;
-      grid-template-rows: auto auto auto 20%;
+      grid-template-rows: auto auto auto auto auto auto 20%;
     .avatar
       position absolute
       top 0px

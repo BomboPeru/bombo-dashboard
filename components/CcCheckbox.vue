@@ -25,6 +25,7 @@
 <style scoped lang="stylus">
   colorPrimary = #243337
   disabledColor = #7b7b7b
+
   #checkbox
     cursor pointer
     display inline-block
