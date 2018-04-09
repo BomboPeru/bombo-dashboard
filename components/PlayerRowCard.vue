@@ -10,7 +10,7 @@
               </td>
               <td class="responsive-playername-bk" style="width: 30%;">
                 {{ player.name }}
-                <div class="tooltip tooltip-vs"> vs {{ vsTeam }}</div>
+                <div class="tooltip tooltip-vs">{{ vsTeam }}</div>
               </td>
               <td class="responsive-status-bk" style="width: 10%;" :style="{ 'color': statusPlayer.color }">
                 <div class="tooltip tooltip-status">{{ statusPlayer.text }}</div>
@@ -162,7 +162,9 @@
       vsTeam () {
         if (this.$store.state.createteam.nextMatchesTeam !== null) {
           const teamPlayer = this.player.team.toLowerCase()
-          return (this.$store.state.createteam.nextMatchesTeam[teamPlayer]).capitalize()
+          const enemyTeam = this.$store.state.createteam.nextMatchesTeam[teamPlayer]
+          const ownTeam = this.$store.state.createteam.nextMatchesTeam[enemyTeam.name]
+          return `${(ownTeam.name).capitalize()} ( ${ownTeam.type} ) vs ${(enemyTeam.name).capitalize()} ( ${enemyTeam.type} )`
         } else {
           return ''
         }

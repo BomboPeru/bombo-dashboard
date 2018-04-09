@@ -164,8 +164,8 @@
           let away = match.away_name
           let home = match.home_name
 
-          nextMatchTeam[away] = home
-          nextMatchTeam[home] = away
+          nextMatchTeam[away] = { name: home, type: 'L' }
+          nextMatchTeam[home] = { name: away, type: 'V' }
         })
 
         this.$store.state.createteam.nextMatchesTeam = nextMatchTeam
