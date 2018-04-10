@@ -55,7 +55,7 @@
                   <i :class="['fab', iconCC, 'card-type-icon']"></i>
                   <the-mask type="text"
                             placeholder="0000-0000-0000-0000"
-                            :mask="['####-####-####-####']"
+                            :mask="['####-####-####-####', '####-####-####-###']"
                             class="card-number"
                             v-model="creditInfo.card_number"/>
                 </div>
