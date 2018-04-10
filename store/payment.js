@@ -53,7 +53,7 @@ const actions = {
       return null
     }
 
-    if (state.creditInfo.card_number.length !== 16 ||
+    if (!(state.creditInfo.card_number.length === 16 || state.creditInfo.card_number.length === 15) ||
       state.creditInfo.cvv.length !== 3 ||
       !(state.creditInfo.expiration_month.length === 2 || state.creditInfo.expiration_month.length === 1) ||
       state.creditInfo.expiration_year.length !== 4

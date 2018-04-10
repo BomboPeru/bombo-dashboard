@@ -80,7 +80,7 @@
                       <the-mask type="text"
                              class="card-number"
                              placeholder="0000-0000-0000-0000"
-                             :mask="['####-####-####-####']"
+                             :mask="['####-####-####-####', '####-####-####-###']"
                              v-model="creditInfo.card_number"/>
                     </div>
 
