@@ -148,7 +148,8 @@
 }
 
 .background
-  background: #e8ecf0
+  // background: #e8ecf0
+  background: #fff
   background-size cover
 .fab
   display block

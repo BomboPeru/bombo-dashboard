@@ -74,7 +74,7 @@
 
               <div class="birthday-container">
 
-                <input-date-select big solid v-model="user.birthday_fake"/>
+                <input-date-select big solid flex v-model="user.birthday_fake"/>
 
                 <!--<input type="date" :class="['input-form', (wrongBirthday && hasSubmit)?'input-warning':'']" class="input-form" placeholder="yyyy-mm-dd" v-model="user.birthday_fake">-->
 
@@ -175,7 +175,7 @@
               <div class="warning" v-if="!isValidInput(constraints.terms_checked.rules, user.terms_checked) && hasSubmit">
                 {{ constraints.terms_checked.message }}
               </div>
-              <cc-checkbox2 v-model="user.terms_checked" solid big/>
+              <cc-checkbox2 v-model="user.terms_checked" solid big class="checkbox-input"/>
               <!--<input class="check-terms" type="checkbox" v-model="user.terms_checked">-->
               Leí y acepto los
               <a href="/terms" target="_blank" class="terms-link">
@@ -185,7 +185,7 @@
             </div>
 
             <div style="text-align: center">
-              <div class="btn-continue elevation" @click="createUser">
+              <div class="btn-continue" @click="createUser">
                 Registrarse
               </div>
             </div>
@@ -206,6 +206,7 @@
   import CcAvatar from '../components/CcAvatar'
   import InputDateSelect from '../components/InputDateSelect'
   import CcCheckbox2 from '../components/CcCheckbox2'
+  import InputSelect from '../components/InputSelect'
 
   export default {
     name: 'register',
@@ -671,12 +672,13 @@
   .btn-continue
     display: inline-block
     position relative
-    padding 12px 60px
+    padding 15px 48px
     text-align center
     background: #01E19F;
-    border-radius: 20px;
+    border-radius: 40px;
     cursor pointer
     color white
+    box-shadow: 0 2px 18px 0 rgba(0,0,0,0.23)
 
     font-family: Raleway;
     font-weight: 100;
@@ -716,7 +718,10 @@
     font-size 16px
     text-align center
     padding-bottom: 10px
-
+  .checkbox-input
+    position relative
+    top 4px
+    left -4px
   .terms-link
     cursor pointer
     color #4A48D2
