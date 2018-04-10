@@ -2,11 +2,14 @@
     <div id="input-select"
          @click="openItemsMenu">
       <input-text type="text"
+                  width="100px"
                   v-model="inputValue"
                   @input="updateValue"
                   placeholder="select item"
                   :disabled="true"
-                  :square="square"/>
+                  :big="big"
+                  :solid="solid"
+                  :square="square" append-icon="fa-angle-down"/>
       <div class="menu" v-if="isShowed">
         <ul>
           <li v-for="(item, i) in items"
@@ -34,6 +37,9 @@
     },
     props: {
       items: Array,
+
+      big: Boolean,
+      solid: Boolean,
       square: {
         type: Boolean,
         default: false
@@ -55,7 +61,13 @@
 </script>
 
 <style scoped lang="stylus">
+  #input-select
+    display inline-block
+    position relative
   .menu
+    position absolute
+    bottom -14px
+    left -1px
     width 100px
     background #929292
   .menu ul

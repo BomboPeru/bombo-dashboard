@@ -20,11 +20,9 @@
         <div class="grid-content grid-content-side">
 
           <div class="avatar-section">
-            <div>
               <input type="file" style="display: none;" ref="inputFileImage" @change="atPhotoLoaded">
               <cc-avatar :src="urlImage" @clickAvatar="clickAvatar" sm class="avatar"/>
               <div class="upload-photo-indication">Selecciona tu foto de perfil</div>
-            </div>
           </div>
 
           <!--<div class="column-a">-->
@@ -125,7 +123,10 @@
               </div>
               <div class="label" v-else> Documento de identidad </div>
               <div>
-                <input-text big solid v-model="user.identity_document" width="100%" type="number" placeholder="Ex. 23423423"/>
+                <select name="" id="" v-model="user.document_type" class="select-type-id">
+                  <option value="DNI">DNI</option>
+                </select>
+                <input-text big solid v-model="user.identity_document" width="70%" type="number" placeholder="Ex. 23423423"/>
                 <!--<input type="number"-->
                 <!--:class="['input-form', (!isValidInput(constraints.identity_document.rules, user.identity_document) && hasSubmit)?'input-warning':'']"-->
                 <!--placeholder=""-->
@@ -184,13 +185,14 @@
               <!--<span class="terms-link" @click="openTermsConditionsDialog">términos y condiciones</span>-->
             </div>
 
+            <div class="warning"> {{message}} </div>
+
             <div style="text-align: center">
               <div class="btn-continue" @click="createUser">
                 Registrarse
               </div>
             </div>
 
-            <div class="warning"> {{message}} </div>
           </div>
         </div>
 
@@ -206,7 +208,6 @@
   import CcAvatar from '../components/CcAvatar'
   import InputDateSelect from '../components/InputDateSelect'
   import CcCheckbox2 from '../components/CcCheckbox2'
-  import InputSelect from '../components/InputSelect'
 
   export default {
     name: 'register',
@@ -493,7 +494,7 @@
     transform translateX(-50%) translateY(-50%)
     // height 600px
     height auto
-    width 700px
+    width 560px
     box-shadow: 0 8px 24px 0 rgba(0,0,0,0.82);
 
   .grid-content
@@ -502,7 +503,7 @@
     height: 100%;
 
     grid-template-columns: 50% 50%;
-    grid-template-rows: auto auto auto auto auto auto 20%;
+    grid-template-rows: 70px auto auto auto auto auto 20%;
 
   .grid-content-side
     // width 70%
@@ -631,8 +632,11 @@
   .birthday-container
     text-align left
 
+  .item-6
+    text-align: left
+
   .avatar
-    position absolute
+    position absolute !important
     top -60px
     left 50%
     transform translateX(-50%)
@@ -697,6 +701,23 @@
   .birthday-label
     margin-bottom 0px
 
+  .select-type-id
+    height 40px
+    font-size 16px
+    background white
+    color #424242
+    border-radius 0px
+    box-shadow: 0 3px 8px 0 rgba(0,0,0,0.50)
+    margin 10px 6px 10px 0px
+    outline none
+    border 0
+    width 26%
+    position: relative;
+    top: -1px;
+    font-family 'Nunito Sans'
+    padding: 0 4px
+
+
   .label
     // color rgba(255, 255, 255, 0.86)
     color #4A48D2
@@ -718,6 +739,11 @@
     font-size 16px
     text-align center
     padding-bottom: 10px
+    margin-top 40px
+    margin-bottom 16px
+  .btn-continue
+    margin-bottom 40px
+
   .checkbox-input
     position relative
     top 4px

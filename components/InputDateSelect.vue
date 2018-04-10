@@ -104,11 +104,12 @@
     height 40px
     font-size 16px
   .flex
+    margin-left -4px
     width 100%
   .flex #date-select
-    width 20%
+    width 25%
   .flex #month-select
-    width 40%
-  .flex #year-select
-    width 30%
+    width 33%
+  /*.flex #year-select*/
+    /*width 30%*/
 </style>
