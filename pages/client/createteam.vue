@@ -221,7 +221,7 @@
         let teamToEvaluate = data.player.team
         let sameTeamCount = 0
 
-        if ((this.totalCost + data.player.cost) >= this.saldo) {
+        if ((this.totalCost + data.player.cost) > this.saldo) {
           this.$store.dispatch('turnOnSnackbar', 'Sin saldo suficiente para adquirir a este jugador')
           return false
         }
