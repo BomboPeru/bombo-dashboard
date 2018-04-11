@@ -257,7 +257,7 @@
             ]
           },
           password: {
-            message: 'Password debe tener más de 8 caracteres',
+            message: 'Password con más de 8 caracteres',
             rules: [
               a => a.length >= 8
             ]
@@ -503,7 +503,7 @@
     height: 100%;
 
     grid-template-columns: 50% 50%;
-    grid-template-rows: 70px auto auto auto auto auto 20%;
+    grid-template-rows: 60px auto auto auto auto auto 20%;
 
   .grid-content-side
     // width 70%
@@ -755,14 +755,20 @@
   .check-terms
     position relative
     top 2px
+   @media screen and (max-width: 1300px)
+    .info-terms
+      margin-top 10px
+      margin-bottom 8px
+    .btn-continue
+      margin-bottom 10px
+
   @media screen and (max-width: 1023px)
+
     .card-container
       width 500px
-      height 100vh
+      //height 100vh
       margin-top 0
       overflow auto
-
-
     .grid-content-side
       width 100%
       float left
@@ -771,13 +777,8 @@
 
     .grid-content
       grid-template-columns: 100%;
-      grid-template-rows: 20% auto auto auto auto auto auto auto auto 20%;
+      grid-template-rows: 120px auto auto auto auto auto auto auto auto auto;
 
-    .avatar-section
-      grid-column-start: 1;
-      grid-column-end: 2;
-      grid-row-start: 1
-      grid-row-end: 2
     .avatar
       position absolute
       top 0
@@ -786,11 +787,16 @@
       box-shadow: 0 2px 18px 0 rgba(0,0,0,0.63);
 
     .upload-photo-indication
-      position relative
-      top 0
+      position absolute
+      top 110px !important
       left 50%
       transform translateX(-50%)
 
+    .avatar-section
+      grid-column-start: 1;
+      grid-column-end: 2;
+      grid-row-start: 1
+      grid-row-end: 2
     .item-1
       grid-column-start: 1;
       grid-column-end: 2;
@@ -838,7 +844,7 @@
       grid-row-start: 10
       grid-row-end: 11
 
-      padding-top: 22px;
+      padding-top: 8px;
 
   @media screen and (max-width: 500px)
     .card-container
@@ -847,20 +853,23 @@
       margin-top 0
       overflow auto
       border-radius 0
+      top: 49.5%
+      left: 50%
     .signup-btn-section
       padding-top 12px
     .grid-content
       grid-template-columns: 100%;
-      grid-template-rows: auto auto auto auto auto auto 20%;
+      grid-template-rows: auto auto auto auto auto auto auto auto auto auto auto;
+
     .avatar
-      position absolute
+      position relative !important
       top 0px
       left 50%
       transform translateX(-50%)
 
     .upload-photo-indication
       position relative
-      top 0
+      top 0 !important
 
     .group-form
       padding 8px 0px

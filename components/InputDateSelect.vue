@@ -39,18 +39,18 @@
         month: 1,
         year: 2000,
         monthList: [
-          { label: 'Enero', value: 1 },
-          { label: 'Febrero', value: 2 },
-          { label: 'Marzo', value: 3 },
-          { label: 'Abril', value: 4 },
-          { label: 'Mayo', value: 5 },
-          { label: 'Junio', value: 6 },
-          { label: 'Julio', value: 7 },
-          { label: 'Agosto', value: 8 },
-          { label: 'Setiembre', value: 9 },
-          { label: 'Octubre', value: 10 },
-          { label: 'Noviembre', value: 11 },
-          { label: 'Diciembre', value: 12 }
+          { label: 'ENE', value: 1 },
+          { label: 'FEB', value: 2 },
+          { label: 'MAR', value: 3 },
+          { label: 'ABR', value: 4 },
+          { label: 'MAY', value: 5 },
+          { label: 'JUN', value: 6 },
+          { label: 'JUL', value: 7 },
+          { label: 'AGO', value: 8 },
+          { label: 'SET', value: 9 },
+          { label: 'OCT', value: 10 },
+          { label: 'NOV', value: 11 },
+          { label: 'DIC', value: 12 }
         ]
       }
     },
