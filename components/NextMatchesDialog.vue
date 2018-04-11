@@ -17,6 +17,11 @@
                 <table width="100%">
                   <tbody>
                   <tr>
+                    <td style="width: 40%"> <img src="/team_resources/soccer_team_shield.svg" width="20px" alt=""> </td>
+                    <td style="width: 20%" class="vs"></td>
+                    <td style="width: 40%"> <img src="/team_resources/soccer_team_shield.svg" width="20px" alt=""> </td>
+                  </tr>
+                  <tr>
                     <td style="width: 40%">{{ match.home_name }} </td>
                     <td style="width: 20%" class="vs">vs</td>
                     <td style="width: 40%">{{ match.away_name }}</td>
@@ -90,7 +95,7 @@
   .card-container
     width 80vw
   .content
-    height 400px
+    height auto
     display flex
     flex-wrap wrap
     justify-content center
@@ -99,8 +104,8 @@
     margin-bottom: 18px;
 
   .mini-match-card
-    background #ececec
-    font-family 'Raleway'
+    background #f9f9f9
+    font-family Titillium Web
     display inline-block
     padding 4px 4px
     border-radius 4px
@@ -125,6 +130,9 @@
     font-size 12px
     color #2d2d2d
 
+  .vs
+    font-size 16px
+    text-transform lowercase
   @media screen and (max-width: 500px)
     .card-container
       width 100%
@@ -133,12 +141,9 @@
       border-radius 0
 
     .mmc-title
-      font-weight: bold;
+      font-weight: 100;
       font-size 14px
       color rgba(255, 255, 255, 0.76)
 
-  .vs
-    font-size 12px
-    text-transform lowercase
 
 </style>
