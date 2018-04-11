@@ -16,8 +16,9 @@
           </tr>
         </tbody>
       </table>
-      <div class="info-container">
+      <div :class="['info-container', match.match_state === 'ended'?'finalized':'']">
         <div class="date">{{ dateStart }}</div>
+        <div class="match-state"> {{ MatchStates[match.match_state] }} </div>
         <div class="time">Fecha {{ time }}</div>
       </div>
     </div>
@@ -39,9 +40,17 @@
     },
     computed: {
       dateStart () {
-        const date = new Date(this.date)
+        const date = new Date(this.match.playing_day)
         const month = date.getMonth() + 1
         return date.getDate() + '/' + month + '/' + date.getFullYear()
+      }
+    },
+    data () {
+      return {
+        MatchStates: {
+          'programmed': 'Por Jugar',
+          'ended': 'Finalizado'
+        }
       }
     }
   }
@@ -62,8 +71,19 @@
     width 100%
     color white
     padding 0px 10px
+    position relative
+  .finalized
+    background #FFC400
   .time
     float right
+  .date
+    float left
+  .match-state
+    position absolute
+    top 8px
+    left 50%
+    transform translateX(-50%)
+    text-align center
   .date
   .time
     line-height 40px
