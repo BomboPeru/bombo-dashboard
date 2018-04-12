@@ -45,10 +45,17 @@
           return
         }
 
+        this.message = ''
         this.$axios.$post('auth/password-forgot', {
           email: this.email
         }).then(res => {
           this.message = 'En unos momentos te llegará un correo para restaurar tu contraseña'
+        }).catch(err => {
+          if (err.response.data.error === 'not found') {
+            this.message = 'Correo no registrado, asegúrate de escribir tu email correctamente.'
+          } else {
+            this.message = 'Ocurrió un problema, intenta más tarde o contáctanos pronto.'
+          }
         })
       }
     }
@@ -60,8 +67,8 @@
   #forgotpassword
     background url(/landing/background_login_register.jpg)
     background-size cover
-    height 100vh
-    // height calc(100vh - 76px)
+    // height 100vh
+    height calc(100vh - 92px)
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -152,4 +159,8 @@
     font-size: 14px;
     text-align: center;
     color: orangered;
+
+  @media screen and (max-width: 500px)
+    .card-forgotpass
+      border-radius 0 !important
 </style>
