@@ -6,8 +6,8 @@
         </div>
         <!--<search-component v-model="search"/>-->
         <players-filter @changeFilter="filterModified"
-                        @changeSearchBy="changeSearchBy"
-                        @searchValue="searchByKeyword"/>
+                        @changeSearchBy="dynamicSearch"
+                        @searchValue="dynamicSearch"/>
       </div>
       <div class="line elevation"></div>
       <!-- header -->
@@ -72,6 +72,7 @@
         title: 'JUGADORES DE LA TEMPORADA',
         // unused
         teams: [],
+        filteredList: null,
         backuplist: [],
         // playersList: [],
         searchText: '',
@@ -87,8 +88,30 @@
       }
     },
     methods: {
-      changeSearchBy (value) {
-        this.filterObj.searchBy = value
+      dynamicSearch (filterObj) {
+        this.filterObj = filterObj
+
+        const value = filterObj.searchTxt || ''
+
+        const searchBy = this.filterObj.searchBy === 'player' ? 'name': this.filterObj.searchBy
+        if (value === '') {
+          if (this.filteredList === null) {
+            this.playersList = this.backuplist
+          } else {
+            this.playersList = this.filteredList
+          }
+          return
+        }
+
+        if (this.filteredList === null) {
+          this.playersList = this.backuplist.filter(player => {
+            return (player[searchBy].toLowerCase()).includes(value.toLowerCase())
+          })
+        } else {
+          this.playersList = this.filteredList.filter(player => {
+            return (player[searchBy].toLowerCase()).includes(value.toLowerCase())
+          })
+        }
       },
       async filterModified (filterObj) {
         this.filterObj = filterObj
@@ -109,20 +132,12 @@
           return (filterObj.priceInterval[0] < player.cost) && ( filterObj.priceInterval[1] > player.cost )
         })
 
+        this.filteredList = this.playersList
+
         const searchBy = filterObj.searchBy === 'player' ? 'name': filterObj.searchBy
 
         this.playersList = await this.playersList.filter(player => {
           return (player[searchBy].toLowerCase()).includes(filterObj.searchTxt.toLowerCase())
-        })
-      },
-      async searchByKeyword (value) {
-        const searchBy = this.filterObj.searchBy === 'player' ? 'name': this.filterObj.searchBy
-        if (value === '') {
-          this.playersList = this.backuplist
-          return
-        }
-        this.playersList = await this.backuplist.filter(player => {
-          return (player[searchBy].toLowerCase()).includes(value.toLowerCase())
         })
       },
       async fetchPlayers () {
@@ -153,7 +168,6 @@
         // this.teams = data
         this.playersList = data
         this.backuplist = data
-
 
         // matches
         let response2 = await this.$axios.$get(`api/v2.0/matches/${leagueId}/current-matches`)

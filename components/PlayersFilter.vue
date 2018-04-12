@@ -8,7 +8,7 @@
                     prepend-icon="fa-search"
                     :placeholder="placeholderSearchbar"/>
       </div>
-      <button class="btn-filter" @click="openFilterBox">
+      <button :class="['btn-filter', filterBox?'btn-filter-pressed':'']" @click="openFilterBox">
         <i class="fas fa-sliders-h"></i>
         &nbsp;FILTROS
       </button>
@@ -78,7 +78,8 @@
         set (value) {
           // this.searchTxt = ''
           this.searchBy = value === true ? 'team' : 'player'
-          this.$emit('changeSearchBy', this.searchBy)
+          let filterObj = this.prepareFilterObj()
+          this.$emit('changeSearchBy', filterObj)
         }
       },
       checkboxPlayer: {
@@ -88,7 +89,8 @@
         set (value) {
           // this.searchTxt = ''
           this.searchBy = value === true ? 'player' : 'team'
-          this.$emit('changeSearchBy', this.searchBy)
+          let filterObj = this.prepareFilterObj()
+          this.$emit('changeSearchBy', filterObj)
         }
       }
     },
@@ -99,16 +101,17 @@
         searchBy: 'player',
         filterCost: [0, 30],
         positions: [
-          { date: 'ARQ', color: '#67A6F0', enabled: false },
-          { date: 'DEF', color: '#A789E8', enabled: false },
-          { date: 'CEN', color: '#CDE344', enabled: false },
-          { date: 'DEL', color: '#FDA237', enabled: false }
+          { name: 'ARQ', color: '#67A6F0', enabled: true },
+          { name: 'DEF', color: '#A789E8', enabled: true },
+          { name: 'CEN', color: '#CDE344', enabled: true },
+          { name: 'DEL', color: '#FDA237', enabled: true }
         ]
       }
     },
     methods: {
       listenSearchValue (value) {
-        this.$emit('searchValue', value)
+        let filterObj = this.prepareFilterObj()
+        this.$emit('searchValue', filterObj)
       },
       openFilterBox () {
         this.filterBox = !this.filterBox
@@ -116,8 +119,7 @@
       toggleTag (tag) {
         tag.enabled = !tag.enabled
       },
-      initFilter () {
-      //  do something
+      prepareFilterObj () {
         let filterObj = {}
         filterObj['searchTxt'] = this.searchTxt
         filterObj['searchBy'] = this.searchBy
@@ -125,8 +127,14 @@
         filterObj['allowedPositions'] = this.positions.filter(item => {
           return item.enabled === true
         }).map(item => {
-          return item.date
+          return item.name
         })
+        return filterObj
+      },
+      initFilter () {
+      //  do something
+        let filterObj = this.prepareFilterObj()
+
         this.$emit('changeFilter', filterObj)
         this.filterBox = !this.filterBox
       }
@@ -156,6 +164,10 @@
     font-weight 500
     font-family: 'Raleway', sans-serif
     /*font-family Titillium Web*/
+  .btn-filter-pressed
+    background #adcea8
+    color #243237
+
   .filter-box
     position absolute
     top 50px

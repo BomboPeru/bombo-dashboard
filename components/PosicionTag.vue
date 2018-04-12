@@ -1,6 +1,6 @@
 <template>
     <div id="position-tag" class="rounded-short elevation" :style="{background: tag.enabled?tag.color: '#71747A'}" @click="toggleTag">
-      {{ tag.date }}
+      {{ tag.name }}
     </div>
 </template>
 
