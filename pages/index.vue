@@ -598,7 +598,7 @@
     height: 1800px;
     width: 100vw;
   .triangle-background-2
-    position absolute
+    position absolute !important
     bottom 0
     right 0
 
