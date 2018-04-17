@@ -163,6 +163,9 @@
         if (this.$store.state.createteam.nextMatchesTeam !== null) {
           const teamPlayer = this.player.team.toLowerCase()
           const enemyTeam = this.$store.state.createteam.nextMatchesTeam[teamPlayer]
+          if (enemyTeam === undefined) {
+            return 'No está contemplado en la fecha de juego de Bombo'
+          }
           const ownTeam = this.$store.state.createteam.nextMatchesTeam[enemyTeam.name]
           return `${(ownTeam.name).capitalize()} ( ${ownTeam.type} ) vs ${(enemyTeam.name).capitalize()} ( ${enemyTeam.type} )`
         } else {
