@@ -92,10 +92,17 @@
             <p class="title-card">TUTORIALES</p>
           </div>
 
-          <div>
-            <div class="empty-tutorial-items">
-              Pronto agregaremos las guías de juego ;)
-            </div>
+          <div style="text-align: center">
+            <iframe width="560"
+                    height="200"
+                    src="https://www.youtube.com/embed/aQqvMNxEDlo"
+                    frameborder="0"
+                    allow="autoplay;
+                      encrypted-media" allowfullscreen></iframe>
+
+            <!--<div class="empty-tutorial-items">-->
+              <!--Pronto agregaremos las guías de juego ;)-->
+            <!--</div>-->
           </div>
         </div>
 
