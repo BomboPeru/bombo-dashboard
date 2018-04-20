@@ -476,9 +476,9 @@
     height calc(100vh - 76px)
 
   .grid-container
-    margin-top 20px
+    margin-top 10px
     width 80vw
-    height calc(100vh - 128px)
+    height calc(100vh - 74px)
     display grid
     grid-template-columns 20% 20% 20% 20% 20%
     grid-template-rows 33% 33% 33%
@@ -523,8 +523,8 @@
     grid-row-end 4
 
   .iframe-video
-    width 90%
-    height 120px
+    width 95%
+    height 140px
 
   .prices-card-note
     font-family Titillium Web
@@ -697,7 +697,7 @@
     flex-wrap wrap
     justify-content: center
 
-    height calc(70vh - 226px)
+    height calc(70vh - 161px)
     overflow auto
     margin-top: 17px;
 
@@ -784,8 +784,8 @@
       height 200px
       line-height 200px
     .iframe-video
-      width 80%
-      height 210px
+      width 90%
+      height 260px
 
 
   @media screen and (max-width: 1023px)
