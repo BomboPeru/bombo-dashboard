@@ -93,8 +93,7 @@
           </div>
 
           <div style="text-align: center">
-            <iframe width="560"
-                    height="200"
+            <iframe class="iframe-video"
                     src="https://www.youtube.com/embed/aQqvMNxEDlo"
                     frameborder="0"
                     allow="autoplay;
@@ -525,6 +524,9 @@
     grid-row-start 3
     grid-row-end 4
 
+  .iframe-video
+    width 520
+    height 120
 
   .prices-card-note
     font-family Titillium Web
@@ -783,6 +785,9 @@
     .empty-tutorial-items
       height 200px
       line-height 200px
+    .iframe-video
+      width 520
+      height 200
 
 
   @media screen and (max-width: 1023px)
