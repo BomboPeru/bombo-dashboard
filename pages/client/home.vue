@@ -94,11 +94,9 @@
 
           <div style="text-align: center">
             <iframe class="iframe-video"
-                    src="https://www.youtube.com/embed/aQqvMNxEDlo"
+                    src="https://www.youtube.com/embed/D0DwDVuAWyU?rel=0"
                     frameborder="0"
-                    allow="autoplay;
-                      encrypted-media" allowfullscreen></iframe>
-
+                    allow="autoplay; encrypted-media" allowfullscreen></iframe>
             <!--<div class="empty-tutorial-items">-->
               <!--Pronto agregaremos las guías de juego ;)-->
             <!--</div>-->
@@ -525,8 +523,8 @@
     grid-row-end 4
 
   .iframe-video
-    width 520
-    height 120
+    width 90%
+    height 120px
 
   .prices-card-note
     font-family Titillium Web
@@ -786,7 +784,7 @@
       height 200px
       line-height 200px
     .iframe-video
-      width 520
+      width 80%
       height 200
 
 
