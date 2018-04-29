@@ -43,7 +43,7 @@
                             :landing="landing"
                             v-for="(item, i) in ranking"
                             :key="i+'-ranking-user'"
-                            :team="item"/>
+                            :user="item"/>
         </div>
         <div class="empty-ranking" v-else>
           Aun no sale los resultados para esta fecha
@@ -56,7 +56,7 @@
                               :landing="landing"
                               v-for="(item, i) in ranking"
                               :key="i+'-ranking-user'"
-                              :team="item"/>
+                              :user="item"/>
           </div>
           <div class="empty-ranking" v-else>
             Aun no sale los resultados para esta fecha

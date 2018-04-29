@@ -3,7 +3,6 @@
       <div class="grid-container">
 
         <div class="status-card custom-elevation">
-
           <div class="points-container">
 
             <div class="header">

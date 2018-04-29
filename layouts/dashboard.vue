@@ -182,4 +182,7 @@
 }
 .icon-saldo
   left -80px
+
+#drift-widget-container
+  z-index 9999 !important
 </style>

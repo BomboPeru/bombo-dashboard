@@ -88,6 +88,20 @@
       }
     },
     methods: {
+      weightSearch (valueWord, playerName) {
+        let matches = 0
+        const maxNumMatches = valueWord.length
+        const factorSearch = 0.7
+        for (let i = 0; i < valueWord.length; i++) {
+          if (playerName[i] === undefined) {
+            break
+          }
+          if (valueWord[i] === playerName[i]) {
+            matches++
+          }
+        }
+        return (maxNumMatches * factorSearch <=  matches)
+      },
       dynamicSearch (filterObj) {
         this.filterObj = filterObj
 
@@ -105,7 +119,8 @@
 
         if (this.filteredList === null) {
           this.playersList = this.backuplist.filter(player => {
-            return (player[searchBy].toLowerCase()).includes(value.toLowerCase())
+            // return (player[searchBy].toLowerCase()).includes(value.toLowerCase())
+            return this.weightSearch(value.toLowerCase(), player[searchBy].toLowerCase())
           })
         } else {
           this.playersList = this.filteredList.filter(player => {
@@ -156,7 +171,12 @@
         if (response === undefined) return
 
         // const data = response.data.slice(0,-1)
+        let player = 1
+        response.data.map(player => {
+          player.simple_name = player.name
+        })
         const data = response.data.sort((playerA, playerB) => {
+          player++
           if (playerA.cost > playerB.cost) {
             return -1
           }
