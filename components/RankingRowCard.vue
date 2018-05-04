@@ -1,5 +1,9 @@
 <template>
-    <div id="ranking-row-card" class="elevation rounded" @mouseover="rankingRowCardHover" @mouseleave="rankingRowCardLeave">
+  <!--
+  @mouseover="rankingRowCardHover"
+  @mouseleave="rankingRowCardLeave"
+  -->
+    <div id="ranking-row-card" class="elevation rounded">
 
       <table class="ranking-row-card-table">
         <tbody>
@@ -43,30 +47,30 @@
         </tbody>
       </table>
 
-      <div class="userteam-container" ref="userteamContainer">
-        <div class="userteam-card">
-          <div class="userteam-card-header">
-            <div class="header-title userteam-team-name">{{ user.name }}</div>
-            <div class="header-title userteam-creator">{{ user.creator }}</div>
-          </div>
-          <ul>
-            <li class="userteam-row" v-for="(item, i) in user.players" :key="i">
-              <div class="player-shirt">
-                <squad-number :img="shirtUrl(item)" :number="item.j_number"/>
-              </div>
-              <div class="player-names">
-                <div class="player-name">{{ item.name }}</div><div class="player-teamname">{{ item.team }}</div>
-              </div>
-              <div class="player-points">
-                <div class="player-point-title">Puntos</div><div class="player-point">{{ item.points }}</div>
-              </div>
-              <div class="player-position" :style="{ background: kindPlayer[item.position].color }">
-                {{ formatPosition(playerTypesConversions[item.position]) }}
-              </div>
-            </li>
-          </ul>
-        </div>
-      </div>
+      <!--<div class="userteam-container" ref="userteamContainer">-->
+        <!--<div class="userteam-card">-->
+          <!--<div class="userteam-card-header">-->
+            <!--<div class="header-title userteam-team-name">{{ user.name }}</div>-->
+            <!--<div class="header-title userteam-creator">{{ user.creator }}</div>-->
+          <!--</div>-->
+          <!--<ul>-->
+            <!--<li class="userteam-row" v-for="(item, i) in user.players" :key="i">-->
+              <!--<div class="player-shirt">-->
+                <!--<squad-number :img="shirtUrl(item)" :number="item.j_number"/>-->
+              <!--</div>-->
+              <!--<div class="player-names">-->
+                <!--<div class="player-name">{{ item.name }}</div><div class="player-teamname">{{ item.team }}</div>-->
+              <!--</div>-->
+              <!--<div class="player-points">-->
+                <!--<div class="player-point-title">Puntos</div><div class="player-point">{{ item.points }}</div>-->
+              <!--</div>-->
+              <!--<div class="player-position" :style="{ background: kindPlayer[item.position].color }">-->
+                <!--{{ formatPosition(playerTypesConversions[item.position]) }}-->
+              <!--</div>-->
+            <!--</li>-->
+          <!--</ul>-->
+        <!--</div>-->
+      <!--</div>-->
 
     </div>
 </template>
