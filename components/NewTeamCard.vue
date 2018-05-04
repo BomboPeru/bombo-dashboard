@@ -111,6 +111,12 @@
                       src="/team_resources/captain_band_stadium.png"
                       height="22px" alt="">
                   </div>
+                  <div class="captain-band-hover"
+                       v-else>
+                    <img
+                      src="/team_resources/captain_band_stadium.png"
+                      height="22px" alt="">
+                  </div>
                   <squad-number ground
                                 @click="selectCaptain(player)"
                                 :img="BASE_URL + 'api/v2.0/shirts/' + player.team.toLowerCase().replace(' ','_')" :number="player.j_number"/>
@@ -128,6 +134,12 @@
                 <span class="player-container">
                   <div class="captain-band"
                        v-if="captainId === player.internal_id">
+                    <img
+                      src="/team_resources/captain_band_stadium.png"
+                      height="22px" alt="">
+                  </div>
+                  <div class="captain-band-hover"
+                       v-else>
                     <img
                       src="/team_resources/captain_band_stadium.png"
                       height="22px" alt="">
@@ -155,6 +167,13 @@
                       src="/team_resources/captain_band_stadium.png"
                       height="22px" alt="">
                   </div>
+                  <div class="captain-band-hover"
+                       v-else>
+                    <img
+                      src="/team_resources/captain_band_stadium.png"
+                      height="22px" alt="">
+                  </div>
+
                   <squad-number ground
                                 @click="selectCaptain(player)"
                                 :img="BASE_URL + 'api/v2.0/shirts/' + player.team.toLowerCase().replace(' ','_')" :number="player.j_number"/>
@@ -173,6 +192,12 @@
                 <span class="player-container">
                   <div class="captain-band"
                        v-if="captainId === player.internal_id">
+                    <img
+                      src="/team_resources/captain_band_stadium.png"
+                      height="22px" alt="">
+                  </div>
+                  <div class="captain-band-hover"
+                       v-else>
                     <img
                       src="/team_resources/captain_band_stadium.png"
                       height="22px" alt="">
@@ -444,12 +469,17 @@
     color white
 
 
+  .captain-band-hover
   .captain-band
     width: 41px;
     top: -6px;
     position: absolute;
     z-index: 400;
-    left: -8px;
+    left: -2px;
+  .player-container:hover .captain-band-hover
+    display: block
+  .captain-band-hover
+    display: none
 
   @media screen and (max-width: 1023px)
     .player-list
