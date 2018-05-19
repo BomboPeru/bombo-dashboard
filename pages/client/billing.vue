@@ -50,7 +50,7 @@
                 </select>
                 <!--<input type="text" :mask="['####-####-####-####']" v-model="account">-->
                 <div class="cc-input-container">
-                  <the-mask :mask="['###-########-#-##']" v-model="account" class="cc-input-text"/>
+                  <the-mask :mask="['###-########-#-##', '###-########-#-####', '###-###-############-##']" v-model="account" class="cc-input-text"/>
                   <i class="icon-input fas fa-credit-card"></i>
                 </div>
                 <!--<input-text append-icon="fa-credit-card"-->
